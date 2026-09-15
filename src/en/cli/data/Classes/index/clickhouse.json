@@ -11,25 +11,81 @@
   {
    "name": "Common methods",
    "methods": [
-    "ExecuteRequest",
-    "GetExternalTableStructure",
-    "GetHTTPConnectionSettings",
-    "GetRequestSettings",
-    "GetSessionSettings"
+    {
+     "name": "ExecuteRequest",
+     "nocli": false
+    },
+    {
+     "name": "GetExternalTableStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetHTTPConnectionSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetRequestSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetSessionSettings",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Grpc",
    "methods": [
-    "GetGRPCConnectionSettings",
-    "GetTlsSettings",
-    "ProcessGRPCReceiving",
-    "ProcessGRPCSending"
+    {
+     "name": "GetGRPCConnectionSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetTlsSettings",
+     "nocli": false
+    },
+    {
+     "name": "ProcessGRPCReceiving",
+     "nocli": false
+    },
+    {
+     "name": "ProcessGRPCSending",
+     "nocli": false
+    },
+    {
+     "name": "CloseGRPCStream",
+     "nocli": true
+    },
+    {
+     "name": "CompleteGRPCSending",
+     "nocli": true
+    },
+    {
+     "name": "CreateGRPCConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetGRPCMessage",
+     "nocli": true
+    },
+    {
+     "name": "OpenGRPCStream",
+     "nocli": true
+    },
+    {
+     "name": "SendGRPCData",
+     "nocli": true
+    },
+    {
+     "name": "SendGRPCMessage",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "ExecuteRequest",
    "id": "EXECUTEREQUEST",
    "description": "Executes a request with the specified parameters",
@@ -62,6 +118,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetHTTPConnectionSettings",
    "id": "GETHTTPCONNECTIONSETTINGS",
    "description": "Gets the settings structure for HTTP connection",
@@ -94,6 +151,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetRequestSettings",
    "id": "GETREQUESTSETTINGS",
    "description": "Forms the request description structure",
@@ -158,6 +216,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetExternalTableStructure",
    "id": "GETEXTERNALTABLESTRUCTURE",
    "description": "Gets the description structure of the external table of the request",
@@ -198,6 +257,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetSessionSettings",
    "id": "GETSESSIONSETTINGS",
    "description": "Forms the session settings structure for executing the request",
@@ -230,6 +290,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetGRPCConnectionSettings",
    "id": "GETGRPCCONNECTIONSETTINGS",
    "description": "Gets the settings structure for gRPC connection",
@@ -270,6 +331,222 @@
    "region": "Grpc"
   },
   {
+   "nocli": true,
+   "name": "CreateGRPCConnection",
+   "id": "CREATEGRPCCONNECTION",
+   "description": "Opens a GRPC connection for working with ClickHouse",
+   "params": [
+    {
+     "title": "ConnectionSettings",
+     "name": "--set",
+     "types": "Structure Of KeyAndValue",
+     "description": "Connection parameters. See GetGRPCConnectionSettings",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": true,
+   "name": "OpenGRPCStream",
+   "id": "OPENGRPCSTREAM",
+   "description": "Initializes the I\nO stream for communication",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "GRPC connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number",
+     "description": "Timeout (in ms)",
+     "default": 10000,
+     "short": "-t"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": true,
+   "name": "SendGRPCMessage",
+   "id": "SENDGRPCMESSAGE",
+   "description": "Sends the next message to the client or bidirectional stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "GRPC connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Request",
+     "name": "--req",
+     "types": "Structure Of KeyAndValue",
+     "description": "Request data. See GetRequestSettings",
+     "default": null,
+     "short": "-r"
+    },
+    {
+     "title": "Session",
+     "name": "--session",
+     "types": "Structure Of KeyAndValue",
+     "description": "Session settings. See GetSessionSettings",
+     "default": "Empty value",
+     "short": "-n"
+    },
+    {
+     "title": "WaitNext",
+     "name": "--next",
+     "types": "Boolean",
+     "description": "Flag for waiting for the next messages after the current one",
+     "default": "false",
+     "short": "-x"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": true,
+   "name": "SendGRPCData",
+   "id": "SENDGRPCDATA",
+   "description": "Sends part of the data (additional QueryInfo) to the stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "GRPC connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Data",
+     "name": "--data",
+     "types": "Arbitrary",
+     "description": "A string, collection, binary data, or file path to send",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "WaitNext",
+     "name": "--next",
+     "types": "Boolean",
+     "description": "Flag for waiting for the next messages after the current one",
+     "default": "false",
+     "short": "-n"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": true,
+   "name": "GetGRPCMessage",
+   "id": "GETGRPCMESSAGE",
+   "description": "Gets the next message from the stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "DefaultFormat",
+     "name": "--format",
+     "types": "String",
+     "description": "Expected data format if the server did not return output_format",
+     "default": "Empty value",
+     "short": "-f"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": true,
+   "name": "CompleteGRPCSending",
+   "id": "COMPLETEGRPCSENDING",
+   "description": "Closes the sending channel in a client or bidirectional stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": true,
+   "name": "CloseGRPCStream",
+   "id": "CLOSEGRPCSTREAM",
+   "description": "Close stream by ID",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Grpc"
+  },
+  {
+   "nocli": false,
    "name": "ProcessGRPCSending",
    "id": "PROCESSGRPCSENDING",
    "description": "Initializes the stream, sends the request and a set of data in a specified order, receiving one message upon completion",
@@ -318,6 +595,7 @@
    "region": "Grpc"
   },
   {
+   "nocli": false,
    "name": "ProcessGRPCReceiving",
    "id": "PROCESSGRPCRECEIVING",
    "description": "Initializes the stream, sends the request, and receives messages until closure or a set limit is reached",
@@ -366,6 +644,7 @@
    "region": "Grpc"
   },
   {
+   "nocli": false,
    "name": "GetTlsSettings",
    "id": "GETTLSSETTINGS",
    "description": "Forms settings for using TLS",

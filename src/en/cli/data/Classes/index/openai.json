@@ -9,52 +9,116 @@
   {
    "name": "Requests processing",
    "methods": [
-    "GetAssistantMessage",
-    "GetEmbeddings",
-    "GetImageDescriptionStructure",
-    "GetImageMessageStructure",
-    "GetImages",
-    "GetMessageStructure",
-    "GetResponse",
-    "GetSystemMessage",
-    "GetUserMessage"
+    {
+     "name": "GetAssistantMessage",
+     "nocli": false
+    },
+    {
+     "name": "GetEmbeddings",
+     "nocli": false
+    },
+    {
+     "name": "GetImageDescriptionStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetImageMessageStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetImages",
+     "nocli": false
+    },
+    {
+     "name": "GetMessageStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetResponse",
+     "nocli": false
+    },
+    {
+     "name": "GetSystemMessage",
+     "nocli": false
+    },
+    {
+     "name": "GetUserMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Assistants",
    "methods": [
-    "CreateAssistant",
-    "DeleteAssistant",
-    "GetAssistantsList",
-    "RetrieveAssistant"
+    {
+     "name": "CreateAssistant",
+     "nocli": false
+    },
+    {
+     "name": "DeleteAssistant",
+     "nocli": false
+    },
+    {
+     "name": "GetAssistantsList",
+     "nocli": false
+    },
+    {
+     "name": "RetrieveAssistant",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File management",
    "methods": [
-    "DeleteFile",
-    "DownloadFile",
-    "GetFileInformation",
-    "GetFilesList",
-    "UploadFile"
+    {
+     "name": "DeleteFile",
+     "nocli": false
+    },
+    {
+     "name": "DownloadFile",
+     "nocli": false
+    },
+    {
+     "name": "GetFileInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Audio processing",
    "methods": [
-    "CreateTranscription",
-    "GenerateSpeech"
+    {
+     "name": "CreateTranscription",
+     "nocli": false
+    },
+    {
+     "name": "GenerateSpeech",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Models management",
    "methods": [
-    "GetModelList"
+    {
+     "name": "GetModelList",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetResponse",
    "id": "GETRESPONSE",
    "description": "Generates a response for a given text query",
@@ -111,6 +175,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetImages",
    "id": "GETIMAGES",
    "description": "Generates images based on the specified description",
@@ -159,6 +224,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetEmbeddings",
    "id": "GETEMBEDDINGS",
    "description": "Gets the embeddings for the given entries",
@@ -215,6 +281,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetMessageStructure",
    "id": "GETMESSAGESTRUCTURE",
    "description": "Gets the structure of an arbitrary message for the request message list",
@@ -247,6 +314,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetUserMessage",
    "id": "GETUSERMESSAGE",
    "description": "Gets the structure of a message from the user for use in a request",
@@ -271,6 +339,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetAssistantMessage",
    "id": "GETASSISTANTMESSAGE",
    "description": "Gets the structure of a message from the assistant for use in a request",
@@ -287,6 +356,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetSystemMessage",
    "id": "GETSYSTEMMESSAGE",
    "description": "Gets the structure of a system message for use in a request",
@@ -303,6 +373,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetImageMessageStructure",
    "id": "GETIMAGEMESSAGESTRUCTURE",
    "description": "Gets the message structure based on the image for the request message list",
@@ -335,6 +406,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetImageDescriptionStructure",
    "id": "GETIMAGEDESCRIPTIONSTRUCTURE",
    "description": "Get image description structure for generation",
@@ -383,6 +455,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetAssistantsList",
    "id": "GETASSISTANTSLIST",
    "description": "Retrieves a list of assistants with or without filtering",
@@ -431,6 +504,7 @@
    "region": "Assistants"
   },
   {
+   "nocli": false,
    "name": "CreateAssistant",
    "id": "CREATEASSISTANT",
    "description": "Creates an assistant based on the model and instruction",
@@ -495,6 +569,7 @@
    "region": "Assistants"
   },
   {
+   "nocli": false,
    "name": "RetrieveAssistant",
    "id": "RETRIEVEASSISTANT",
    "description": "Retrieves information about an assistant by ID",
@@ -535,6 +610,7 @@
    "region": "Assistants"
   },
   {
+   "nocli": false,
    "name": "DeleteAssistant",
    "id": "DELETEASSISTANT",
    "description": "Deletes a previously created assistant",
@@ -575,6 +651,7 @@
    "region": "Assistants"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Get a list of files with or without filtering",
@@ -623,6 +700,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Uploads a file for further use in other requests",
@@ -679,6 +757,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GetFileInformation",
    "id": "GETFILEINFORMATION",
    "description": "Gets information about the file",
@@ -719,6 +798,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "DownloadFile",
    "id": "DOWNLOADFILE",
    "description": "Get file data from the server",
@@ -759,6 +839,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "DeleteFile",
    "id": "DELETEFILE",
    "description": "Deletes a previously uploaded file",
@@ -799,6 +880,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GenerateSpeech",
    "id": "GENERATESPEECH",
    "description": "Generates audio with the specified text for speech synthesis",
@@ -863,6 +945,7 @@
    "region": "Audio processing"
   },
   {
+   "nocli": false,
    "name": "CreateTranscription",
    "id": "CREATETRANSCRIPTION",
    "description": "Creates a text transcription for the selected audio file",
@@ -927,6 +1010,7 @@
    "region": "Audio processing"
   },
   {
+   "nocli": false,
    "name": "GetModelList",
    "id": "GETMODELLIST",
    "description": "Receives a list of available models",

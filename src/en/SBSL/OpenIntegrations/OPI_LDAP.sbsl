@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_LDAP
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_LDAP
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_LDAP(Исполнитель)
@@ -18,13 +18,28 @@
     знч КомандаCLI: Строка = "ldap"
     
     @Глобально
-    // Метод FormConnectionParameters
-    // Form LDAP connection parameters collection
-    //
-    // URL      - String: Server URL (ldap: or ldaps:)
-    // BindDN   - String: DN for bind (необяз. по ум. - Empty value)
-    // Password - String: Password for bind (необяз. по ум. - Empty value)
-    // Timeout  - Number: Timeout of operations in seconds (необяз. по ум. - 30)
+    метод CreateConnection(ConnectionParams: Объект?, Tls: Объект? = Неопределено, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-p", ConnectionParams)
+        Опции.Вставить("-t", Tls)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseConnection(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseConnection", Опции)
+        
+    ;
+
+    @Глобально
     метод FormConnectionParameters(URL: Объект?, BindDN: Объект? = Неопределено, Password: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -38,10 +53,6 @@
     ;
 
     @Глобально
-    // Метод GetConnectionConfiguration
-    // Return current connection settings
-    //
-    // Connection - Arbitrary: AddIn object with open connection
     метод GetConnectionConfiguration(Connection: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -52,11 +63,16 @@
     ;
 
     @Глобально
-    // Метод GetTlsSettings
-    // Form TLS connection settings structure for LDAP connection
-    //
-    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
-    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
+    метод IsConnector(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsConnector", Опции)
+        
+    ;
+
+    @Глобально
     метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -68,14 +84,30 @@
     ;
 
     @Глобально
-    // Метод PerformSearch
-    // Perform LDAP search
-    //
-    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
-    // Base       - String: Base search DN
-    // Filter     - String: LDAP (необяз. по ум. - (objectClass=*))
-    // Attributes - Array of String, Undefined: List of attributes for selection (необяз. по ум. - Empty value)
-    // Region     - String: Scope: base, one, subtree (необяз. по ум. - subtree)
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(Connection: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
+        
+    ;
+
+    @Глобально
     метод PerformSearch(Connection: Объект?, Base: Объект?, Filter: Объект? = Неопределено, Attributes: Объект? = Неопределено, Region: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -90,12 +122,6 @@
     ;
 
     @Глобально
-    // Метод Add
-    // Add record to LDAP directory
-    //
-    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
-    // DN         - String: DN of added record
-    // Attributes - Structure Of KeyAndValue: Record attributes
     метод Add(Connection: Объект?, DN: Объект?, Attributes: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -108,12 +134,6 @@
     ;
 
     @Глобально
-    // Метод Change
-    // Modify record in LDAP directory
-    //
-    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
-    // DN         - String: DN of modified record
-    // Changes    - Array of Structure: List of attribute changes
     метод Change(Connection: Объект?, DN: Объект?, Changes: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -126,11 +146,6 @@
     ;
 
     @Глобально
-    // Метод Delete
-    // Delete record from LDAP directory
-    //
-    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
-    // DN         - String: DN of deleted record
     метод Delete(Connection: Объект?, DN: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -142,13 +157,6 @@
     ;
 
     @Глобально
-    // Метод Compare
-    // Compare LDAP record attribute value
-    //
-    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
-    // DN         - String: DN record
-    // Attribute  - String: AttributeName
-    // Value      - String: Expected value
     метод Compare(Connection: Объект?, DN: Объект?, Attribute: Объект?, Value: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

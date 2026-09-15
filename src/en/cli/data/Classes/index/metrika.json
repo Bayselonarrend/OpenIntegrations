@@ -11,35 +11,78 @@
   {
    "name": "Tags management",
    "methods": [
-    "CreateTag",
-    "DeleteTag",
-    "GetTag",
-    "GetTagsList",
-    "UpdateTag"
+    {
+     "name": "CreateTag",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTag",
+     "nocli": false
+    },
+    {
+     "name": "GetTag",
+     "nocli": false
+    },
+    {
+     "name": "GetTagsList",
+     "nocli": false
+    },
+    {
+     "name": "UpdateTag",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Counters management",
    "methods": [
-    "CreateCounter",
-    "DeleteCounter",
-    "GetCounter",
-    "GetCounterFilterStructure",
-    "GetCountersList",
-    "GetCounterStructure",
-    "RestoreCounter",
-    "UpdateCounter"
+    {
+     "name": "CreateCounter",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCounter",
+     "nocli": false
+    },
+    {
+     "name": "GetCounter",
+     "nocli": false
+    },
+    {
+     "name": "GetCounterFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetCountersList",
+     "nocli": false
+    },
+    {
+     "name": "GetCounterStructure",
+     "nocli": false
+    },
+    {
+     "name": "RestoreCounter",
+     "nocli": false
+    },
+    {
+     "name": "UpdateCounter",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Actions management",
    "methods": [
-    "GetActionsList"
+    {
+     "name": "GetActionsList",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "CreateTag",
    "id": "CREATETAG",
    "description": "Creates a tag with the specified name",
@@ -64,6 +107,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "UpdateTag",
    "id": "UPDATETAG",
    "description": "Changes the tag name by ID",
@@ -96,6 +140,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "GetTag",
    "id": "GETTAG",
    "description": "Gets the tag by ID",
@@ -120,6 +165,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "DeleteTag",
    "id": "DELETETAG",
    "description": "Deletes a tag by ID",
@@ -144,6 +190,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "GetTagsList",
    "id": "GETTAGSLIST",
    "description": "Gets a list of the users tags",
@@ -160,6 +207,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "CreateCounter",
    "id": "CREATECOUNTER",
    "description": "Creates a counter by field description",
@@ -184,6 +232,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "UpdateCounter",
    "id": "UPDATECOUNTER",
    "description": "Changes counter field values by ID",
@@ -216,6 +265,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "GetCounter",
    "id": "GETCOUNTER",
    "description": "Gets information about the counter by ID",
@@ -240,6 +290,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "DeleteCounter",
    "id": "DELETECOUNTER",
    "description": "Deletes a counter by ID",
@@ -264,6 +315,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "RestoreCounter",
    "id": "RESTORECOUNTER",
    "description": "Restores a previously deleted counter by ID",
@@ -288,6 +340,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "GetCountersList",
    "id": "GETCOUNTERSLIST",
    "description": "Gets a list of available counters with or without filtering",
@@ -312,6 +365,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "GetCounterStructure",
    "id": "GETCOUNTERSTRUCTURE",
    "description": "Gets the structure of standard fields for counter creation",
@@ -328,6 +382,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "GetCounterFilterStructure",
    "id": "GETCOUNTERFILTERSTRUCTURE",
    "description": "Gets the structure of filter fields to get the list of counters",
@@ -344,6 +399,7 @@
    "region": "Counters management"
   },
   {
+   "nocli": false,
    "name": "GetActionsList",
    "id": "GETACTIONSLIST",
    "description": "Gets the list of actions of the selected counter",

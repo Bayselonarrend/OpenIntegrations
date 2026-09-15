@@ -11,47 +11,111 @@
   {
    "name": "Authorization",
    "methods": [
-    "FormCodeRetrievalLink",
-    "GetServiceAccountToken",
-    "GetTokenByCode",
-    "RefreshToken"
+    {
+     "name": "FormCodeRetrievalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetServiceAccountToken",
+     "nocli": false
+    },
+    {
+     "name": "GetTokenByCode",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Calendar metadata management",
    "methods": [
-    "ClearMainCalendar",
-    "CreateCalendar",
-    "DeleteCalendar",
-    "EditCalendarMetadata",
-    "GetCalendarMetadata"
+    {
+     "name": "ClearMainCalendar",
+     "nocli": false
+    },
+    {
+     "name": "CreateCalendar",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCalendar",
+     "nocli": false
+    },
+    {
+     "name": "EditCalendarMetadata",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarMetadata",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Calendar list management",
    "methods": [
-    "AddCalendarToList",
-    "DeleteCalendarFromList",
-    "EditListCalendar",
-    "GetCalendarList",
-    "GetListCalendar"
+    {
+     "name": "AddCalendarToList",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCalendarFromList",
+     "nocli": false
+    },
+    {
+     "name": "EditListCalendar",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarList",
+     "nocli": false
+    },
+    {
+     "name": "GetListCalendar",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Event management",
    "methods": [
-    "CreateEvent",
-    "DeleteEvent",
-    "EditEvent",
-    "GetEvent",
-    "GetEventDescription",
-    "GetEventList",
-    "MoveEvent"
+    {
+     "name": "CreateEvent",
+     "nocli": false
+    },
+    {
+     "name": "DeleteEvent",
+     "nocli": false
+    },
+    {
+     "name": "EditEvent",
+     "nocli": false
+    },
+    {
+     "name": "GetEvent",
+     "nocli": false
+    },
+    {
+     "name": "GetEventDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetEventList",
+     "nocli": false
+    },
+    {
+     "name": "MoveEvent",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "FormCodeRetrievalLink",
    "id": "FORMCODERETRIEVALLINK",
    "description": "Returns URL for browser authorization",
@@ -92,6 +156,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetTokenByCode",
    "id": "GETTOKENBYCODE",
    "description": "Gets token by code from browser authorization",
@@ -124,6 +189,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Updates token by Refresh token",
@@ -156,6 +222,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetServiceAccountToken",
    "id": "GETSERVICEACCOUNTTOKEN",
    "description": "Gets authorization token by service account data",
@@ -188,6 +255,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "CreateCalendar",
    "id": "CREATECALENDAR",
    "description": "Creates an empty calendar",
@@ -212,6 +280,7 @@
    "region": "Calendar metadata management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarMetadata",
    "id": "GETCALENDARMETADATA",
    "description": "Gets calendar information by ID",
@@ -236,6 +305,7 @@
    "region": "Calendar metadata management"
   },
   {
+   "nocli": false,
    "name": "EditCalendarMetadata",
    "id": "EDITCALENDARMETADATA",
    "description": "Edits properties of an existing calendar",
@@ -276,6 +346,7 @@
    "region": "Calendar metadata management"
   },
   {
+   "nocli": false,
    "name": "ClearMainCalendar",
    "id": "CLEARMAINCALENDAR",
    "description": "Clears the event list of the primary calendar",
@@ -292,6 +363,7 @@
    "region": "Calendar metadata management"
   },
   {
+   "nocli": false,
    "name": "DeleteCalendar",
    "id": "DELETECALENDAR",
    "description": "Deletes a calendar by ID",
@@ -316,6 +388,7 @@
    "region": "Calendar metadata management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarList",
    "id": "GETCALENDARLIST",
    "description": "Gets an array of account calendars",
@@ -332,6 +405,7 @@
    "region": "Calendar list management"
   },
   {
+   "nocli": false,
    "name": "AddCalendarToList",
    "id": "ADDCALENDARTOLIST",
    "description": "Adds an existing calendar to the user's list",
@@ -356,6 +430,7 @@
    "region": "Calendar list management"
   },
   {
+   "nocli": false,
    "name": "GetListCalendar",
    "id": "GETLISTCALENDAR",
    "description": "Gets a calendar from the user's list by ID",
@@ -380,6 +455,7 @@
    "region": "Calendar list management"
   },
   {
+   "nocli": false,
    "name": "DeleteCalendarFromList",
    "id": "DELETECALENDARFROMLIST",
    "description": "Removes a calendar from the user's list",
@@ -404,6 +480,7 @@
    "region": "Calendar list management"
   },
   {
+   "nocli": false,
    "name": "EditListCalendar",
    "id": "EDITLISTCALENDAR",
    "description": "Edits the properties of a calendar from the user's list",
@@ -452,6 +529,7 @@
    "region": "Calendar list management"
   },
   {
+   "nocli": false,
    "name": "GetEventDescription",
    "id": "GETEVENTDESCRIPTION",
    "description": "Gets an empty layout to create the event",
@@ -468,6 +546,7 @@
    "region": "Event management"
   },
   {
+   "nocli": false,
    "name": "GetEventList",
    "id": "GETEVENTLIST",
    "description": "Gets the list of all calendar events",
@@ -492,6 +571,7 @@
    "region": "Event management"
   },
   {
+   "nocli": false,
    "name": "GetEvent",
    "id": "GETEVENT",
    "description": "Gets an event by ID",
@@ -524,6 +604,7 @@
    "region": "Event management"
   },
   {
+   "nocli": false,
    "name": "CreateEvent",
    "id": "CREATEEVENT",
    "description": "Creates a new event",
@@ -556,6 +637,7 @@
    "region": "Event management"
   },
   {
+   "nocli": false,
    "name": "MoveEvent",
    "id": "MOVEEVENT",
    "description": "Moves an event to another calendar",
@@ -596,6 +678,7 @@
    "region": "Event management"
   },
   {
+   "nocli": false,
    "name": "EditEvent",
    "id": "EDITEVENT",
    "description": "Edits an existing event",
@@ -636,6 +719,7 @@
    "region": "Event management"
   },
   {
+   "nocli": false,
    "name": "DeleteEvent",
    "id": "DELETEEVENT",
    "description": "Deletes an event by ID",

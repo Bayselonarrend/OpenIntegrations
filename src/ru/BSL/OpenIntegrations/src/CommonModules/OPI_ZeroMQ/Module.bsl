@@ -1,6 +1,6 @@
 // OneScript: ./OInt/api/zeromq/Modules/OPI_ZeroMQ.os
 // Lib: ZeroMQ
-// CLI: none
+// CLI: zeromq
 // Keywords: zeromq, zmq
 
 // DocsCategory: Exchange

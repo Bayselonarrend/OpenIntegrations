@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_Lua
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_Lua
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_Lua(Исполнитель)
@@ -18,15 +18,95 @@
     знч КомандаCLI: Строка = "lua"
     
     @Глобально
-    // Метод CallScriptFunction
-    // Executes Lua code from a string or file and calls the specified function
-    //
-    // Lua          - Arbitrary: Lua AddIn or Lua version to run
-    // Script       - String: Lua code or file path
-    // FunctionName - String: Function name or path in module.func format
-    // Parameters   - Map Of KeyAndValue: Function parameters, if necessary (необяз. по ум. - Empty value)
-    // Packages     - Map Of KeyAndValue: Packages: key > name, value > code or file path (необяз. по ум. - Empty value)
-    // Variables    - Map Of KeyAndValue: Module global variables, if necessary (необяз. по ум. - Empty value)
+    метод CreateVM(Version: Объект?, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateVM", Опции)
+        
+    ;
+
+    @Глобально
+    метод Restart(Lua: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Restart", Опции)
+        
+    ;
+
+    @Глобально
+    метод CallFunction(Lua: Объект?, FunctionName: Объект?, Parameters: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-f", FunctionName)
+        Опции.Вставить("-p", Parameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CallFunction", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsVM(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsVM", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(AddInObject: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", AddInObject)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-c", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
+        
+    ;
+
+    @Глобально
+    метод ExecuteCodeFromString(Lua: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteCodeFromString", Опции)
+        
+    ;
+
+    @Глобально
+    метод ExecuteCodeFromFile(Lua: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteCodeFromFile", Опции)
+        
+    ;
+
+    @Глобально
     метод CallScriptFunction(Lua: Объект?, Script: Объект?, FunctionName: Объект?, Parameters: Объект? = Неопределено, Packages: Объект? = Неопределено, Variables: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -42,11 +122,6 @@
     ;
 
     @Глобально
-    // Метод CompileCodeFromString
-    // Converts source code to Lua bytecode
-    //
-    // Lua  - Arbitrary: Lua AddIn or Lua version to run
-    // Code - String: Source code for compilation
     метод CompileCodeFromString(Lua: Объект?, Code: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -58,11 +133,6 @@
     ;
 
     @Глобально
-    // Метод CompileCodeFromFile
-    // Converts a source code file to Lua bytecode
-    //
-    // Lua  - Arbitrary: Lua AddIn or Lua version to run
-    // Path - String: Script file path
     метод CompileCodeFromFile(Lua: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -74,15 +144,28 @@
     ;
 
     @Глобально
-    // Метод CallByteCodeFunction
-    // Executes bytecode and calls the specified function
-    //
-    // Lua          - Arbitrary: Lua AddIn or Lua version to run
-    // Bytecode     - String, BinaryData: Byte code or file path
-    // FunctionName - String: Function name or path in module.func format
-    // Parameters   - Map Of KeyAndValue: Function parameters, if necessary (необяз. по ум. - Empty value)
-    // Packages     - Map Of KeyAndValue: Packages: key > name, value > code or file path (необяз. по ум. - Empty value)
-    // Variables    - Map Of KeyAndValue: Module global variables, if necessary (необяз. по ум. - Empty value)
+    метод ExecuteBytecode(Lua: Объект?, Bytecode: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-c", Bytecode)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteBytecode", Опции)
+        
+    ;
+
+    @Глобально
+    метод ExecuteBytecodeFromFile(Lua: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteBytecodeFromFile", Опции)
+        
+    ;
+
+    @Глобально
     метод CallByteCodeFunction(Lua: Объект?, Bytecode: Объект?, FunctionName: Объект?, Parameters: Объект? = Неопределено, Packages: Объект? = Неопределено, Variables: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -94,6 +177,63 @@
         Опции.Вставить("-g", Variables)
         
         возврат Исполнитель.Выполнить(КомандаCLI, "CallByteCodeFunction", Опции)
+        
+    ;
+
+    @Глобально
+    метод SetGlobalVariable(Lua: Объект?, Name: Объект?, Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetGlobalVariable", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetGlobalVariable(Lua: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-n", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetGlobalVariable", Опции)
+        
+    ;
+
+    @Глобально
+    метод AttachPackageFromString(Lua: Объект?, PackageName: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-n", PackageName)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AttachPackageFromString", Опции)
+        
+    ;
+
+    @Глобально
+    метод AttachPackageFromFile(Lua: Объект?, PackageName: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-n", PackageName)
+        Опции.Вставить("-f", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AttachPackageFromFile", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetPackagesList(Lua: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetPackagesList", Опции)
         
     ;
     

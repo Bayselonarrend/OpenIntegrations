@@ -9,39 +9,79 @@
   {
    "name": "Page management",
    "methods": [
-    "CreatePage",
-    "CreatePageInDatabase",
-    "EditPageProperties",
-    "GetPage"
+    {
+     "name": "CreatePage",
+     "nocli": false
+    },
+    {
+     "name": "CreatePageInDatabase",
+     "nocli": false
+    },
+    {
+     "name": "EditPageProperties",
+     "nocli": false
+    },
+    {
+     "name": "GetPage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Database management",
    "methods": [
-    "CreateDatabase",
-    "EditDatabaseProperties",
-    "GetDatabase"
+    {
+     "name": "CreateDatabase",
+     "nocli": false
+    },
+    {
+     "name": "EditDatabaseProperties",
+     "nocli": false
+    },
+    {
+     "name": "GetDatabase",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Blocks management",
    "methods": [
-    "CreateBlock",
-    "DeleteBlock",
-    "ReturnBlock",
-    "ReturnChildBlocks"
+    {
+     "name": "CreateBlock",
+     "nocli": false
+    },
+    {
+     "name": "DeleteBlock",
+     "nocli": false
+    },
+    {
+     "name": "ReturnBlock",
+     "nocli": false
+    },
+    {
+     "name": "ReturnChildBlocks",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Users",
    "methods": [
-    "GetUserData",
-    "UserList"
+    {
+     "name": "GetUserData",
+     "nocli": false
+    },
+    {
+     "name": "UserList",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "CreatePage",
    "id": "CREATEPAGE",
    "description": "Creates a child page above another parent page",
@@ -74,6 +114,7 @@
    "region": "Page management"
   },
   {
+   "nocli": false,
    "name": "CreatePageInDatabase",
    "id": "CREATEPAGEINDATABASE",
    "description": "Creates a page in the parent database",
@@ -106,6 +147,7 @@
    "region": "Page management"
   },
   {
+   "nocli": false,
    "name": "GetPage",
    "id": "GETPAGE",
    "description": "Gets information about the page by ID",
@@ -130,6 +172,7 @@
    "region": "Page management"
   },
   {
+   "nocli": false,
    "name": "EditPageProperties",
    "id": "EDITPAGEPROPERTIES",
    "description": "Changes the properties of an existing page",
@@ -186,6 +229,7 @@
    "region": "Page management"
   },
   {
+   "nocli": false,
    "name": "CreateDatabase",
    "id": "CREATEDATABASE",
    "description": "Creates a database",
@@ -226,6 +270,7 @@
    "region": "Database management"
   },
   {
+   "nocli": false,
    "name": "GetDatabase",
    "id": "GETDATABASE",
    "description": "Get database information",
@@ -250,6 +295,7 @@
    "region": "Database management"
   },
   {
+   "nocli": false,
    "name": "EditDatabaseProperties",
    "id": "EDITDATABASEPROPERTIES",
    "description": "Edits properties of an existing database",
@@ -298,6 +344,7 @@
    "region": "Database management"
   },
   {
+   "nocli": false,
    "name": "CreateBlock",
    "id": "CREATEBLOCK",
    "description": "Creates a new block based on an existing block",
@@ -338,6 +385,7 @@
    "region": "Blocks management"
   },
   {
+   "nocli": false,
    "name": "ReturnBlock",
    "id": "RETURNBLOCK",
    "description": "Returns the block structure by ID",
@@ -370,6 +418,7 @@
    "region": "Blocks management"
   },
   {
+   "nocli": false,
    "name": "ReturnChildBlocks",
    "id": "RETURNCHILDBLOCKS",
    "description": "Returns list of child blocks of parent block",
@@ -394,6 +443,7 @@
    "region": "Blocks management"
   },
   {
+   "nocli": false,
    "name": "DeleteBlock",
    "id": "DELETEBLOCK",
    "description": "Deletes block by ID",
@@ -418,6 +468,7 @@
    "region": "Blocks management"
   },
   {
+   "nocli": false,
    "name": "UserList",
    "id": "USERLIST",
    "description": "Returns a list of workspace users",
@@ -434,6 +485,7 @@
    "region": "Users"
   },
   {
+   "nocli": false,
    "name": "GetUserData",
    "id": "GETUSERDATA",
    "description": "Gets user data by ID",

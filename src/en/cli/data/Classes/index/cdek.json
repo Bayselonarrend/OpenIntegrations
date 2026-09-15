@@ -9,52 +9,146 @@
   {
    "name": "Common methods",
    "methods": [
-    "GetCashboxChecksByDate",
-    "GetDeliveryCashRegistry",
-    "GetDeliveryCashTransfers",
-    "GetOfficeFilterDescription",
-    "GetOfficeList",
-    "GetRegionsList",
-    "GetToken"
+    {
+     "name": "GetCashboxChecksByDate",
+     "nocli": false
+    },
+    {
+     "name": "GetDeliveryCashRegistry",
+     "nocli": false
+    },
+    {
+     "name": "GetDeliveryCashTransfers",
+     "nocli": false
+    },
+    {
+     "name": "GetOfficeFilterDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetOfficeList",
+     "nocli": false
+    },
+    {
+     "name": "GetRegionsList",
+     "nocli": false
+    },
+    {
+     "name": "GetToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Order management",
    "methods": [
-    "CreateBarcode",
-    "CreateCustomerRefund",
-    "CreateOrder",
-    "CreatePrealert",
-    "CreateReceipt",
-    "CreateRefusal",
-    "DeleteOrder",
-    "GetBarcode",
-    "GetCashboxCheck",
-    "GetOrder",
-    "GetOrderByNumber",
-    "GetOrderDescription",
-    "GetPassportDataStatus",
-    "GetPrealert",
-    "GetReceipt",
-    "UpdateOrder"
+    {
+     "name": "CreateBarcode",
+     "nocli": false
+    },
+    {
+     "name": "CreateCustomerRefund",
+     "nocli": false
+    },
+    {
+     "name": "CreateOrder",
+     "nocli": false
+    },
+    {
+     "name": "CreatePrealert",
+     "nocli": false
+    },
+    {
+     "name": "CreateReceipt",
+     "nocli": false
+    },
+    {
+     "name": "CreateRefusal",
+     "nocli": false
+    },
+    {
+     "name": "DeleteOrder",
+     "nocli": false
+    },
+    {
+     "name": "GetBarcode",
+     "nocli": false
+    },
+    {
+     "name": "GetCashboxCheck",
+     "nocli": false
+    },
+    {
+     "name": "GetOrder",
+     "nocli": false
+    },
+    {
+     "name": "GetOrderByNumber",
+     "nocli": false
+    },
+    {
+     "name": "GetOrderDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetPassportDataStatus",
+     "nocli": false
+    },
+    {
+     "name": "GetPrealert",
+     "nocli": false
+    },
+    {
+     "name": "GetReceipt",
+     "nocli": false
+    },
+    {
+     "name": "UpdateOrder",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Delivery management",
    "methods": [
-    "CreateCourierInvitation",
-    "DeleteCourierInvitation",
-    "GetAppointmentDescription",
-    "GetAvailableDeliveryIntervals",
-    "GetCourierInvitation",
-    "GetCourierInvitationsDescription",
-    "GetDeliveryAppointment",
-    "RegisterDeliveryAppointment"
+    {
+     "name": "CreateCourierInvitation",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCourierInvitation",
+     "nocli": false
+    },
+    {
+     "name": "GetAppointmentDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetAvailableDeliveryIntervals",
+     "nocli": false
+    },
+    {
+     "name": "GetCourierInvitation",
+     "nocli": false
+    },
+    {
+     "name": "GetCourierInvitationsDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetDeliveryAppointment",
+     "nocli": false
+    },
+    {
+     "name": "RegisterDeliveryAppointment",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetToken",
    "id": "GETTOKEN",
    "description": "Gets a token based on account ID and password",
@@ -87,6 +181,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetCashboxChecksByDate",
    "id": "GETCASHBOXCHECKSBYDATE",
    "description": "Gets information about checks for a specified date",
@@ -119,6 +214,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetDeliveryCashRegistry",
    "id": "GETDELIVERYCASHREGISTRY",
    "description": "Receives registers of imposed payments, for which the client was transferred the payment",
@@ -151,6 +247,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetDeliveryCashTransfers",
    "id": "GETDELIVERYCASHTRANSFERS",
    "description": "Gets information about orders for which cash on delivery was transferred to the online store",
@@ -183,6 +280,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetOfficeList",
    "id": "GETOFFICELIST",
    "description": "Gets a list of offices with or without a filter",
@@ -215,6 +313,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetRegionsList",
    "id": "GETREGIONSLIST",
    "description": "Gets the list of available regions",
@@ -263,6 +362,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetOfficeFilterDescription",
    "id": "GETOFFICEFILTERDESCRIPTION",
    "description": "Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function",
@@ -279,6 +379,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "CreateOrder",
    "id": "CREATEORDER",
    "description": "Creates an order based on field descriptions",
@@ -319,6 +420,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "UpdateOrder",
    "id": "UPDATEORDER",
    "description": "Changes the field values of the selected order",
@@ -359,6 +461,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "DeleteOrder",
    "id": "DELETEORDER",
    "description": "Deletes order by UUID",
@@ -391,6 +494,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetOrder",
    "id": "GETORDER",
    "description": "Gets the order by UUID",
@@ -423,6 +527,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetOrderByNumber",
    "id": "GETORDERBYNUMBER",
    "description": "Receives the order by CDEK number or number from customer IB",
@@ -463,6 +568,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "CreateCustomerRefund",
    "id": "CREATECUSTOMERREFUND",
    "description": "Processes customer returns for online store orders",
@@ -503,6 +609,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "CreateRefusal",
    "id": "CREATEREFUSAL",
    "description": "Creates an order refusal to return to the online store",
@@ -535,6 +642,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "CreateReceipt",
    "id": "CREATERECEIPT",
    "description": "Generates pdf receipts for orders",
@@ -583,6 +691,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetReceipt",
    "id": "GETRECEIPT",
    "description": "Gets a receipt for the order",
@@ -623,6 +732,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "CreateBarcode",
    "id": "CREATEBARCODE",
    "description": "Generates a PDF barcode CP for orders",
@@ -679,6 +789,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetBarcode",
    "id": "GETBARCODE",
    "description": "Gets the barcode CP for the order",
@@ -719,6 +830,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "CreatePrealert",
    "id": "CREATEPREALERT",
    "description": "Creates a prealert for the order list",
@@ -767,6 +879,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetPrealert",
    "id": "GETPREALERT",
    "description": "Gets a previously created prealert",
@@ -799,6 +912,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetPassportDataStatus",
    "id": "GETPASSPORTDATASTATUS",
    "description": "Receives information on passport data processing status for international orders",
@@ -831,6 +945,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetCashboxCheck",
    "id": "GETCASHBOXCHECK",
    "description": "Receives check information on an order",
@@ -863,6 +978,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetOrderDescription",
    "id": "GETORDERDESCRIPTION",
    "description": "Gets the layout of order for the CreateOrder function",
@@ -895,6 +1011,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "GetAvailableDeliveryIntervals",
    "id": "GETAVAILABLEDELIVERYINTERVALS",
    "description": "Gets available delivery intervals for order",
@@ -927,6 +1044,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "CreateCourierInvitation",
    "id": "CREATECOURIERINVITATION",
    "description": "Creates a new request to call a courier to pick up a shipment",
@@ -959,6 +1077,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "GetCourierInvitation",
    "id": "GETCOURIERINVITATION",
    "description": "Gets withourier invitation by UUID",
@@ -991,6 +1110,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "DeleteCourierInvitation",
    "id": "DELETECOURIERINVITATION",
    "description": "",
@@ -1023,6 +1143,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "RegisterDeliveryAppointment",
    "id": "REGISTERDELIVERYAPPOINTMENT",
    "description": "Fixes the delivery date, time and address agreed with the customer",
@@ -1055,6 +1176,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "GetDeliveryAppointment",
    "id": "GETDELIVERYAPPOINTMENT",
    "description": "Receives information about the delivery date, time and address agreed with the customer",
@@ -1087,6 +1209,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "GetCourierInvitationsDescription",
    "id": "GETCOURIERINVITATIONSDESCRIPTION",
    "description": "Gets the layout for creating a request for courier call in the CreateCourierInvitation function",
@@ -1111,6 +1234,7 @@
    "region": "Delivery management"
   },
   {
+   "nocli": false,
    "name": "GetAppointmentDescription",
    "id": "GETAPPOINTMENTDESCRIPTION",
    "description": "Gets the layout to create about delivery in the RegisterDeliveryAppointment function",

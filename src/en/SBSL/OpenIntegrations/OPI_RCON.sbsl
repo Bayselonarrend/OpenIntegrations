@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_RCON
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_RCON
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_RCON(Исполнитель)
@@ -18,11 +18,17 @@
     знч КомандаCLI: Строка = "rcon"
     
     @Глобально
-    // Метод ExecuteCommand
-    // Executes the command on the server
-    //
-    // Command    - String: Command text
-    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    метод CreateConnection(ConnectionParams: Объект?, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-p", ConnectionParams)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
     метод ExecuteCommand(Command: Объект?, Connection: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -34,13 +40,6 @@
     ;
 
     @Глобально
-    // Метод FormConnectionParameters
-    // Forms a collection of connection parameters
-    //
-    // URL          - String: Server URL
-    // Password     - String: Password for connection
-    // ReadTimeout  - Number: Response timeout (in seconds) (необяз. по ум. - 30)
-    // WriteTimeout - Number: Request sending timeout (in seconds) (необяз. по ум. - 30)
     метод FormConnectionParameters(URL: Объект?, Password: Объект?, ReadTimeout: Объект? = Неопределено, WriteTimeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,6 +49,40 @@
         Опции.Вставить("-w", WriteTimeout)
         
         возврат Исполнитель.Выполнить(КомандаCLI, "FormConnectionParameters", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsConnector(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsConnector", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(Connection: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
         
     ;
     

@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_Ntfy
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_Ntfy
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_Ntfy(Исполнитель)
@@ -18,10 +18,6 @@
     знч КомандаCLI: Строка = "ntfy"
     
     @Глобально
-    // Метод GetMessageParametersStructure
-    // Get structure of additional parameters for sending notification
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetMessageParametersStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -32,14 +28,6 @@
     ;
 
     @Глобально
-    // Метод SendMessage
-    // Publish notification to the specified topic
-    //
-    // URL        - String: Ntfy server URL. `ntfy.sh`, if not filled
-    // Topic      - String: Topic Name
-    // Message    - String: Notification text
-    // Token      - String: Topic access token, if required (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional parameters. See GetMessageParametersStructure (необяз. по ум. - Empty value)
     метод SendMessage(URL: Объект?, Topic: Объект?, Message: Объект?, Token: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -54,10 +42,6 @@
     ;
 
     @Глобально
-    // Метод GetFilterParametersStructure
-    // Get structure of parameters for getting messages from topic
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetFilterParametersStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -68,13 +52,6 @@
     ;
 
     @Глобально
-    // Метод GetMessages
-    // Get messages from topic in JSON format
-    //
-    // URL    - String: Ntfy server URL. `ntfy.sh`, if not filled
-    // Topic  - String: Topic Name
-    // Token  - String: Topic access token, if required (необяз. по ум. - Empty value)
-    // Filter - Structure Of KeyAndValue: Filter parameters. See GetFilterParametersStructure (необяз. по ум. - Empty value)
     метод GetMessages(URL: Объект?, Topic: Объект?, Token: Объект? = Неопределено, Filter: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -88,13 +65,6 @@
     ;
 
     @Глобально
-    // Метод DeleteMessage
-    // Delete message from topic by ID
-    //
-    // URL       - String: Ntfy server URL. `ntfy.sh`, if not filled
-    // Topic     - String: Topic Name
-    // MessageID - String: ID of message to delete
-    // Token     - String: Topic access token (необяз. по ум. - Empty value)
     метод DeleteMessage(URL: Объект?, Topic: Объект?, MessageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

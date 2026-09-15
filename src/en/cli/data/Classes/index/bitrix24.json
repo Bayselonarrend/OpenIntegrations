@@ -9,285 +9,823 @@
   {
    "name": "Settings and administartion",
    "methods": [
-    "GetAppAuthLink",
-    "GetToken",
-    "RefreshToken",
-    "ServerTime"
+    {
+     "name": "GetAppAuthLink",
+     "nocli": false
+    },
+    {
+     "name": "GetToken",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    },
+    {
+     "name": "ServerTime",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Feed posts management",
    "methods": [
-    "AddPostComment",
-    "AddPostRecipients",
-    "CreatePost",
-    "DeletePost",
-    "GetImportantPostViewers",
-    "GetPosts",
-    "UpdatePost"
+    {
+     "name": "AddPostComment",
+     "nocli": false
+    },
+    {
+     "name": "AddPostRecipients",
+     "nocli": false
+    },
+    {
+     "name": "CreatePost",
+     "nocli": false
+    },
+    {
+     "name": "DeletePost",
+     "nocli": false
+    },
+    {
+     "name": "GetImportantPostViewers",
+     "nocli": false
+    },
+    {
+     "name": "GetPosts",
+     "nocli": false
+    },
+    {
+     "name": "UpdatePost",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Tasks management",
    "methods": [
-    "AddTaskToFavorites",
-    "ApproveTask",
-    "AttachFileToTopic",
-    "CheckTaskAccesses",
-    "CompleteTask",
-    "CreateTask",
-    "CreateTasksDependencies",
-    "DeferTask",
-    "DelegateTask",
-    "DeleteTask",
-    "DeleteTasksDependencies",
-    "DisapproveTask",
-    "GetDailyPlan",
-    "GetTask",
-    "GetTaskFieldsStructure",
-    "GetTaskHistory",
-    "GetTasksFilterStructure",
-    "GetTasksList",
-    "MuteTask",
-    "PauseTask",
-    "RemoveTaskFromFavorites",
-    "RenewTask",
-    "StartTask",
-    "StartWatchingTask",
-    "StopWatchingTask",
-    "UnmuteTask",
-    "UpdateTask"
+    {
+     "name": "AddTaskToFavorites",
+     "nocli": false
+    },
+    {
+     "name": "StopWatchingTask",
+     "nocli": false
+    },
+    {
+     "name": "StartWatchingTask",
+     "nocli": false
+    },
+    {
+     "name": "StartTask",
+     "nocli": false
+    },
+    {
+     "name": "RenewTask",
+     "nocli": false
+    },
+    {
+     "name": "RemoveTaskFromFavorites",
+     "nocli": false
+    },
+    {
+     "name": "PauseTask",
+     "nocli": false
+    },
+    {
+     "name": "MuteTask",
+     "nocli": false
+    },
+    {
+     "name": "GetTasksList",
+     "nocli": false
+    },
+    {
+     "name": "GetTasksFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetTaskHistory",
+     "nocli": false
+    },
+    {
+     "name": "GetTaskFieldsStructure",
+     "nocli": false
+    },
+    {
+     "name": "UnmuteTask",
+     "nocli": false
+    },
+    {
+     "name": "GetTask",
+     "nocli": false
+    },
+    {
+     "name": "DisapproveTask",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTasksDependencies",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTask",
+     "nocli": false
+    },
+    {
+     "name": "DelegateTask",
+     "nocli": false
+    },
+    {
+     "name": "DeferTask",
+     "nocli": false
+    },
+    {
+     "name": "CreateTasksDependencies",
+     "nocli": false
+    },
+    {
+     "name": "CreateTask",
+     "nocli": false
+    },
+    {
+     "name": "CompleteTask",
+     "nocli": false
+    },
+    {
+     "name": "CheckTaskAccesses",
+     "nocli": false
+    },
+    {
+     "name": "AttachFileToTopic",
+     "nocli": false
+    },
+    {
+     "name": "ApproveTask",
+     "nocli": false
+    },
+    {
+     "name": "GetDailyPlan",
+     "nocli": false
+    },
+    {
+     "name": "UpdateTask",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Customs tasks fields management",
    "methods": [
-    "AddCustomTaskField",
-    "DeleteCustomTaskField",
-    "GetCustomTaskField",
-    "GetCustomTaskFieldsList",
-    "UpdateCustomTaskField"
+    {
+     "name": "AddCustomTaskField",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCustomTaskField",
+     "nocli": false
+    },
+    {
+     "name": "GetCustomTaskField",
+     "nocli": false
+    },
+    {
+     "name": "GetCustomTaskFieldsList",
+     "nocli": false
+    },
+    {
+     "name": "UpdateCustomTaskField",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Tasks checklists management",
    "methods": [
-    "AddTasksChecklistElement",
-    "CompleteTasksChecklistElement",
-    "DeleteTasksChecklistElement",
-    "GetTasksChecklist",
-    "GetTasksChecklistElement",
-    "RenewTasksChecklistElement",
-    "UpdateTasksChecklistElement"
+    {
+     "name": "AddTasksChecklistElement",
+     "nocli": false
+    },
+    {
+     "name": "CompleteTasksChecklistElement",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTasksChecklistElement",
+     "nocli": false
+    },
+    {
+     "name": "GetTasksChecklist",
+     "nocli": false
+    },
+    {
+     "name": "GetTasksChecklistElement",
+     "nocli": false
+    },
+    {
+     "name": "RenewTasksChecklistElement",
+     "nocli": false
+    },
+    {
+     "name": "UpdateTasksChecklistElement",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Comments and results management",
    "methods": [
-    "AddTaskComment",
-    "CreateResultFromComment",
-    "DeleteResultFromComment",
-    "DeleteTaskComment",
-    "GetCommentStructure",
-    "GetResultsList",
-    "GetTaskComment",
-    "GetTaskCommentsList",
-    "UpdateTaskComment"
+    {
+     "name": "AddTaskComment",
+     "nocli": false
+    },
+    {
+     "name": "CreateResultFromComment",
+     "nocli": false
+    },
+    {
+     "name": "DeleteResultFromComment",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTaskComment",
+     "nocli": false
+    },
+    {
+     "name": "GetCommentStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetResultsList",
+     "nocli": false
+    },
+    {
+     "name": "GetTaskComment",
+     "nocli": false
+    },
+    {
+     "name": "GetTaskCommentsList",
+     "nocli": false
+    },
+    {
+     "name": "UpdateTaskComment",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Kanban",
    "methods": [
-    "AddKanbanStage",
-    "DeleteKanbanStage",
-    "GetKanbanStages",
-    "MoveTaskToKanbanStage",
-    "UpdateKanbansStage"
+    {
+     "name": "AddKanbanStage",
+     "nocli": false
+    },
+    {
+     "name": "DeleteKanbanStage",
+     "nocli": false
+    },
+    {
+     "name": "GetKanbanStages",
+     "nocli": false
+    },
+    {
+     "name": "MoveTaskToKanbanStage",
+     "nocli": false
+    },
+    {
+     "name": "UpdateKanbansStage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Timekeeping",
    "methods": [
-    "AddTaskTimeAccounting",
-    "DeleteTaskTimeAccounting",
-    "GetTaskTimeAccounting",
-    "GetTaskTimeAccountingList",
-    "GetTimekeepingSettings",
-    "GetTimekeepingStatus",
-    "PauseTimekeeping",
-    "StartTimekeeping",
-    "StopTimekeeping",
-    "UpdateTaskTimeAccounting"
+    {
+     "name": "AddTaskTimeAccounting",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTaskTimeAccounting",
+     "nocli": false
+    },
+    {
+     "name": "GetTaskTimeAccounting",
+     "nocli": false
+    },
+    {
+     "name": "GetTaskTimeAccountingList",
+     "nocli": false
+    },
+    {
+     "name": "GetTimekeepingSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetTimekeepingStatus",
+     "nocli": false
+    },
+    {
+     "name": "PauseTimekeeping",
+     "nocli": false
+    },
+    {
+     "name": "StartTimekeeping",
+     "nocli": false
+    },
+    {
+     "name": "StopTimekeeping",
+     "nocli": false
+    },
+    {
+     "name": "UpdateTaskTimeAccounting",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Storages management",
    "methods": [
-    "CreateStorageFolder",
-    "GetAppStorage",
-    "GetStorage",
-    "GetStorageObjects",
-    "GetStoragesList",
-    "RenameStorage"
+    {
+     "name": "CreateStorageFolder",
+     "nocli": false
+    },
+    {
+     "name": "GetAppStorage",
+     "nocli": false
+    },
+    {
+     "name": "GetStorage",
+     "nocli": false
+    },
+    {
+     "name": "GetStorageObjects",
+     "nocli": false
+    },
+    {
+     "name": "GetStoragesList",
+     "nocli": false
+    },
+    {
+     "name": "RenameStorage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Catalogs management",
    "methods": [
-    "CreateSubfolder",
-    "DeleteFolder",
-    "GetFolderExternalLink",
-    "GetFolderFilterStructure",
-    "GetFolderInformation",
-    "GetFolderItems",
-    "MakeFolderCopy",
-    "MarkFolderAsDeleted",
-    "MoveFolder",
-    "RenameFolder",
-    "RestoreFolder"
+    {
+     "name": "CreateSubfolder",
+     "nocli": false
+    },
+    {
+     "name": "DeleteFolder",
+     "nocli": false
+    },
+    {
+     "name": "GetFolderExternalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetFolderFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetFolderInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetFolderItems",
+     "nocli": false
+    },
+    {
+     "name": "MakeFolderCopy",
+     "nocli": false
+    },
+    {
+     "name": "MarkFolderAsDeleted",
+     "nocli": false
+    },
+    {
+     "name": "MoveFolder",
+     "nocli": false
+    },
+    {
+     "name": "RenameFolder",
+     "nocli": false
+    },
+    {
+     "name": "RestoreFolder",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File management",
    "methods": [
-    "DeleteFile",
-    "GetFileExternalLink",
-    "GetFileInformation",
-    "MakeFileCopy",
-    "MarkFileAsDeleted",
-    "MoveFileToFolder",
-    "RenameFile",
-    "RestoreFile",
-    "UploadFileToFolder",
-    "UploadFileToStorage"
+    {
+     "name": "DeleteFile",
+     "nocli": false
+    },
+    {
+     "name": "GetFileExternalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetFileInformation",
+     "nocli": false
+    },
+    {
+     "name": "MakeFileCopy",
+     "nocli": false
+    },
+    {
+     "name": "MarkFileAsDeleted",
+     "nocli": false
+    },
+    {
+     "name": "MoveFileToFolder",
+     "nocli": false
+    },
+    {
+     "name": "RenameFile",
+     "nocli": false
+    },
+    {
+     "name": "RestoreFile",
+     "nocli": false
+    },
+    {
+     "name": "UploadFileToFolder",
+     "nocli": false
+    },
+    {
+     "name": "UploadFileToStorage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Chats and dialogs management",
    "methods": [
-    "AddUsersToChat",
-    "ChangeChatColor",
-    "ChangeChatOwner",
-    "ChangeChatPicture",
-    "ChangeChatTitle",
-    "CreateChat",
-    "DeleteUserFromChat",
-    "DisableChatNotifications",
-    "EnableChatNotifications",
-    "GetChatFilesFolder",
-    "GetChatMembersList",
-    "GetChatMessagesList",
-    "GetChatStructure",
-    "GetChatUsers",
-    "GetDialog",
-    "GetUsers",
-    "GetUserStatus",
-    "LeaveChat",
-    "ReadAll",
-    "SendWritingNotification",
-    "SetUserStatus"
+    {
+     "name": "AddUsersToChat",
+     "nocli": false
+    },
+    {
+     "name": "ReadAll",
+     "nocli": false
+    },
+    {
+     "name": "LeaveChat",
+     "nocli": false
+    },
+    {
+     "name": "GetUserStatus",
+     "nocli": false
+    },
+    {
+     "name": "GetUsers",
+     "nocli": false
+    },
+    {
+     "name": "GetDialog",
+     "nocli": false
+    },
+    {
+     "name": "GetChatUsers",
+     "nocli": false
+    },
+    {
+     "name": "GetChatStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetChatMessagesList",
+     "nocli": false
+    },
+    {
+     "name": "SendWritingNotification",
+     "nocli": false
+    },
+    {
+     "name": "GetChatMembersList",
+     "nocli": false
+    },
+    {
+     "name": "EnableChatNotifications",
+     "nocli": false
+    },
+    {
+     "name": "DisableChatNotifications",
+     "nocli": false
+    },
+    {
+     "name": "DeleteUserFromChat",
+     "nocli": false
+    },
+    {
+     "name": "CreateChat",
+     "nocli": false
+    },
+    {
+     "name": "ChangeChatTitle",
+     "nocli": false
+    },
+    {
+     "name": "ChangeChatPicture",
+     "nocli": false
+    },
+    {
+     "name": "ChangeChatOwner",
+     "nocli": false
+    },
+    {
+     "name": "ChangeChatColor",
+     "nocli": false
+    },
+    {
+     "name": "GetChatFilesFolder",
+     "nocli": false
+    },
+    {
+     "name": "SetUserStatus",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Message management",
    "methods": [
-    "DeleteMessage",
-    "EditMessage",
-    "GetFileBlock",
-    "GetPictureBlock",
-    "MarkMessageAsReaded",
-    "MarkMessageAsUnreaded",
-    "SendFile",
-    "SendMessage",
-    "SetMessageReaction"
+    {
+     "name": "DeleteMessage",
+     "nocli": false
+    },
+    {
+     "name": "EditMessage",
+     "nocli": false
+    },
+    {
+     "name": "GetFileBlock",
+     "nocli": false
+    },
+    {
+     "name": "GetPictureBlock",
+     "nocli": false
+    },
+    {
+     "name": "MarkMessageAsReaded",
+     "nocli": false
+    },
+    {
+     "name": "MarkMessageAsUnreaded",
+     "nocli": false
+    },
+    {
+     "name": "SendFile",
+     "nocli": false
+    },
+    {
+     "name": "SendMessage",
+     "nocli": false
+    },
+    {
+     "name": "SetMessageReaction",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Notifications management",
    "methods": [
-    "CreatePersonalNotification",
-    "CreateSystemNotification",
-    "DeleteNotification"
+    {
+     "name": "CreatePersonalNotification",
+     "nocli": false
+    },
+    {
+     "name": "CreateSystemNotification",
+     "nocli": false
+    },
+    {
+     "name": "DeleteNotification",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Departments management",
    "methods": [
-    "CreateDepartment",
-    "DeleteDepartment",
-    "GetDepartments",
-    "UpdateDepartment"
+    {
+     "name": "CreateDepartment",
+     "nocli": false
+    },
+    {
+     "name": "DeleteDepartment",
+     "nocli": false
+    },
+    {
+     "name": "GetDepartments",
+     "nocli": false
+    },
+    {
+     "name": "UpdateDepartment",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Users management",
    "methods": [
-    "ChangeUserStatus",
-    "CreateUser",
-    "FindUsers",
-    "GetCurrentUser",
-    "GetUser",
-    "GetUserFieldsStructure",
-    "GetUserFilterStructure",
-    "UpdateUser"
+    {
+     "name": "ChangeUserStatus",
+     "nocli": false
+    },
+    {
+     "name": "CreateUser",
+     "nocli": false
+    },
+    {
+     "name": "FindUsers",
+     "nocli": false
+    },
+    {
+     "name": "GetCurrentUser",
+     "nocli": false
+    },
+    {
+     "name": "GetUser",
+     "nocli": false
+    },
+    {
+     "name": "GetUserFieldsStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetUserFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "UpdateUser",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Leads management",
    "methods": [
-    "CreateLead",
-    "DeleteLead",
-    "GetLead",
-    "GetLeadFilterStructure",
-    "GetLeadsList",
-    "GetLeadStructure",
-    "UpdateLead"
+    {
+     "name": "CreateLead",
+     "nocli": false
+    },
+    {
+     "name": "DeleteLead",
+     "nocli": false
+    },
+    {
+     "name": "GetLead",
+     "nocli": false
+    },
+    {
+     "name": "GetLeadFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetLeadsList",
+     "nocli": false
+    },
+    {
+     "name": "GetLeadStructure",
+     "nocli": false
+    },
+    {
+     "name": "UpdateLead",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Deals management",
    "methods": [
-    "CreateDeal",
-    "DeleteDeal",
-    "GetDeal",
-    "GetDealsFilterStructure",
-    "GetDealsList",
-    "GetDealStructure",
-    "UpdateDeal"
+    {
+     "name": "CreateDeal",
+     "nocli": false
+    },
+    {
+     "name": "DeleteDeal",
+     "nocli": false
+    },
+    {
+     "name": "GetDeal",
+     "nocli": false
+    },
+    {
+     "name": "GetDealsFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetDealsList",
+     "nocli": false
+    },
+    {
+     "name": "GetDealStructure",
+     "nocli": false
+    },
+    {
+     "name": "UpdateDeal",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Calendars management",
    "methods": [
-    "CreateCalendar",
-    "DeleteCalendar",
-    "GetCalednarCustomSettingsStructure",
-    "GetCalendarList",
-    "GetCalendarSettingsStructure",
-    "GetCalendarStructure",
-    "GetCustomCalendarSettings",
-    "GetUserBusy",
-    "SetCustomCalendarSettings",
-    "UpdateCalendar"
+    {
+     "name": "CreateCalendar",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCalendar",
+     "nocli": false
+    },
+    {
+     "name": "GetCalednarCustomSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarList",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetCustomCalendarSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetUserBusy",
+     "nocli": false
+    },
+    {
+     "name": "SetCustomCalendarSettings",
+     "nocli": false
+    },
+    {
+     "name": "UpdateCalendar",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Calendar events management",
    "methods": [
-    "CreateCalendarEvent",
-    "DeleteCalendarEvent",
-    "GetCalendarEvent",
-    "GetCalendarEvents",
-    "GetCalendarEventsFilterStructure",
-    "GetCalendarEventsStructure",
-    "GetUserParticipationStatus",
-    "SetUserParticipationStatus",
-    "UpdateCalendarEvent"
+    {
+     "name": "CreateCalendarEvent",
+     "nocli": false
+    },
+    {
+     "name": "DeleteCalendarEvent",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarEvent",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarEvents",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarEventsFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetCalendarEventsStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetUserParticipationStatus",
+     "nocli": false
+    },
+    {
+     "name": "SetUserParticipationStatus",
+     "nocli": false
+    },
+    {
+     "name": "UpdateCalendarEvent",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetAppAuthLink",
    "id": "GETAPPAUTHLINK",
    "description": "Forms a link for authorization via the browser",
@@ -312,6 +850,7 @@
    "region": "Settings and administartion"
   },
   {
+   "nocli": false,
    "name": "GetToken",
    "id": "GETTOKEN",
    "description": "Get token by auth code",
@@ -344,6 +883,7 @@
    "region": "Settings and administartion"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Update token by refresh token",
@@ -376,6 +916,7 @@
    "region": "Settings and administartion"
   },
   {
+   "nocli": false,
    "name": "ServerTime",
    "id": "SERVERTIME",
    "description": "Get current server time",
@@ -400,6 +941,7 @@
    "region": "Settings and administartion"
   },
   {
+   "nocli": false,
    "name": "CreatePost",
    "id": "CREATEPOST",
    "description": "Create a new post at news feed",
@@ -464,6 +1006,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "UpdatePost",
    "id": "UPDATEPOST",
    "description": "Change post data",
@@ -528,6 +1071,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "DeletePost",
    "id": "DELETEPOST",
    "description": "Remove post from a news feed",
@@ -560,6 +1104,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "GetImportantPostViewers",
    "id": "GETIMPORTANTPOSTVIEWERS",
    "description": "Return list of important post viewers ids",
@@ -592,6 +1137,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "GetPosts",
    "id": "GETPOSTS",
    "description": "Gen post or array of post with ID or rights selection",
@@ -632,6 +1178,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "AddPostComment",
    "id": "ADDPOSTCOMMENT",
    "description": "Adds a comment to the post",
@@ -672,6 +1219,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "AddPostRecipients",
    "id": "ADDPOSTRECIPIENTS",
    "description": "Adds new groups or users to the recipients",
@@ -712,6 +1260,7 @@
    "region": "Feed posts management"
   },
   {
+   "nocli": false,
    "name": "GetTask",
    "id": "GETTASK",
    "description": "Get task by ID",
@@ -744,6 +1293,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "GetTasksList",
    "id": "GETTASKSLIST",
    "description": "Get tasks list (50 at one response max) with or without filtering",
@@ -792,6 +1342,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "CreateTask",
    "id": "CREATETASK",
    "description": "Create new task by fields structure",
@@ -824,6 +1375,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "UpdateTask",
    "id": "UPDATETASK",
    "description": "Update a task",
@@ -864,6 +1416,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "DeleteTask",
    "id": "DELETETASK",
    "description": "Delete task by ID",
@@ -896,6 +1449,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "AttachFileToTopic",
    "id": "ATTACHFILETOTOPIC",
    "description": "Attaches a file to the selected task",
@@ -936,6 +1490,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "ApproveTask",
    "id": "APPROVETASK",
    "description": "Approve task by ID",
@@ -968,6 +1523,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "DisapproveTask",
    "id": "DISAPPROVETASK",
    "description": "Disapprove task by ID",
@@ -1000,6 +1556,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "CompleteTask",
    "id": "COMPLETETASK",
    "description": "Complete task by ID",
@@ -1032,6 +1589,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "RenewTask",
    "id": "RENEWTASK",
    "description": "Returns a task to work by ID",
@@ -1064,6 +1622,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "DeferTask",
    "id": "DEFERTASK",
    "description": "Defer task by ID",
@@ -1096,6 +1655,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "PauseTask",
    "id": "PAUSETASK",
    "description": "Pause a task by ID",
@@ -1128,6 +1688,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "StartTask",
    "id": "STARTTASK",
    "description": "Start a task by ID",
@@ -1160,6 +1721,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "StartWatchingTask",
    "id": "STARTWATCHINGTASK",
    "description": "Start watching a task by ID",
@@ -1192,6 +1754,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "StopWatchingTask",
    "id": "STOPWATCHINGTASK",
    "description": "Stop watching a task by ID",
@@ -1224,6 +1787,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "DelegateTask",
    "id": "DELEGATETASK",
    "description": "Delegate task to another user",
@@ -1264,6 +1828,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "AddTaskToFavorites",
    "id": "ADDTASKTOFAVORITES",
    "description": "Add task to favorites list",
@@ -1296,6 +1861,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "RemoveTaskFromFavorites",
    "id": "REMOVETASKFROMFAVORITES",
    "description": "Delete task from favorites list",
@@ -1328,6 +1894,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "GetTaskHistory",
    "id": "GETTASKHISTORY",
    "description": "Get history of task changing",
@@ -1360,6 +1927,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "CheckTaskAccesses",
    "id": "CHECKTASKACCESSES",
    "description": "Checks the availability of the task for users",
@@ -1400,6 +1968,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "MuteTask",
    "id": "MUTETASK",
    "description": "Mute task by ID",
@@ -1432,6 +2001,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "UnmuteTask",
    "id": "UNMUTETASK",
    "description": "Unmute task by ID",
@@ -1464,6 +2034,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "CreateTasksDependencies",
    "id": "CREATETASKSDEPENDENCIES",
    "description": "Creates the dependency of one task to another",
@@ -1512,6 +2083,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "DeleteTasksDependencies",
    "id": "DELETETASKSDEPENDENCIES",
    "description": "Removes the dependency of one task to another",
@@ -1560,6 +2132,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "GetDailyPlan",
    "id": "GETDAILYPLAN",
    "description": "Gets the task plan for the current users day",
@@ -1584,6 +2157,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "GetTaskFieldsStructure",
    "id": "GETTASKFIELDSSTRUCTURE",
    "description": "Gets a structure with a description of the fields for creating a task",
@@ -1608,6 +2182,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "GetTasksFilterStructure",
    "id": "GETTASKSFILTERSTRUCTURE",
    "description": "Return filter structure for GetTasksList",
@@ -1632,6 +2207,7 @@
    "region": "Tasks management"
   },
   {
+   "nocli": false,
    "name": "GetCustomTaskFieldsList",
    "id": "GETCUSTOMTASKFIELDSLIST",
    "description": "Gets list of custom task fields",
@@ -1656,6 +2232,7 @@
    "region": "Customs tasks fields management"
   },
   {
+   "nocli": false,
    "name": "AddCustomTaskField",
    "id": "ADDCUSTOMTASKFIELD",
    "description": "Adds a new custom field to be added to the task",
@@ -1720,6 +2297,7 @@
    "region": "Customs tasks fields management"
   },
   {
+   "nocli": false,
    "name": "UpdateCustomTaskField",
    "id": "UPDATECUSTOMTASKFIELD",
    "description": "Updates a custom task field data",
@@ -1776,6 +2354,7 @@
    "region": "Customs tasks fields management"
   },
   {
+   "nocli": false,
    "name": "GetCustomTaskField",
    "id": "GETCUSTOMTASKFIELD",
    "description": "Get custom task field data",
@@ -1808,6 +2387,7 @@
    "region": "Customs tasks fields management"
   },
   {
+   "nocli": false,
    "name": "DeleteCustomTaskField",
    "id": "DELETECUSTOMTASKFIELD",
    "description": "Deletes a custom task field",
@@ -1840,6 +2420,7 @@
    "region": "Customs tasks fields management"
   },
   {
+   "nocli": false,
    "name": "AddTasksChecklistElement",
    "id": "ADDTASKSCHECKLISTELEMENT",
    "description": "Adds new element of tasks checklist",
@@ -1888,6 +2469,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "UpdateTasksChecklistElement",
    "id": "UPDATETASKSCHECKLISTELEMENT",
    "description": "Updates text of element of tasks checklist",
@@ -1936,6 +2518,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "DeleteTasksChecklistElement",
    "id": "DELETETASKSCHECKLISTELEMENT",
    "description": "Deletes element from tasks checklist",
@@ -1976,6 +2559,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "GetTasksChecklist",
    "id": "GETTASKSCHECKLIST",
    "description": "Gets the list of elements on the task checklist",
@@ -2008,6 +2592,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "GetTasksChecklistElement",
    "id": "GETTASKSCHECKLISTELEMENT",
    "description": "Gets tasks checklist element by ID",
@@ -2048,6 +2633,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "CompleteTasksChecklistElement",
    "id": "COMPLETETASKSCHECKLISTELEMENT",
    "description": "Mark an element as completed",
@@ -2088,6 +2674,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "RenewTasksChecklistElement",
    "id": "RENEWTASKSCHECKLISTELEMENT",
    "description": "Unmark an element as completed",
@@ -2128,6 +2715,7 @@
    "region": "Tasks checklists management"
   },
   {
+   "nocli": false,
    "name": "GetTaskCommentsList",
    "id": "GETTASKCOMMENTSLIST",
    "description": "Get user comments list for a task",
@@ -2160,6 +2748,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "GetTaskComment",
    "id": "GETTASKCOMMENT",
    "description": "Gets task comment data by ID",
@@ -2200,6 +2789,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "AddTaskComment",
    "id": "ADDTASKCOMMENT",
    "description": "Create new comment to the task",
@@ -2240,6 +2830,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "UpdateTaskComment",
    "id": "UPDATETASKCOMMENT",
    "description": "Changes task comment text",
@@ -2288,6 +2879,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "DeleteTaskComment",
    "id": "DELETETASKCOMMENT",
    "description": "Delete task comment by ID",
@@ -2328,6 +2920,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "GetResultsList",
    "id": "GETRESULTSLIST",
    "description": "Gets results list for task",
@@ -2360,6 +2953,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "CreateResultFromComment",
    "id": "CREATERESULTFROMCOMMENT",
    "description": "Create task result from comment",
@@ -2392,6 +2986,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "DeleteResultFromComment",
    "id": "DELETERESULTFROMCOMMENT",
    "description": "Deletes task result, created from a comment",
@@ -2424,6 +3019,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "GetCommentStructure",
    "id": "GETCOMMENTSTRUCTURE",
    "description": "Get comment fields structure",
@@ -2440,6 +3036,7 @@
    "region": "Comments and results management"
   },
   {
+   "nocli": false,
    "name": "AddKanbanStage",
    "id": "ADDKANBANSTAGE",
    "description": "Add new stage of kanban or My Plan",
@@ -2504,6 +3101,7 @@
    "region": "Kanban"
   },
   {
+   "nocli": false,
    "name": "UpdateKanbansStage",
    "id": "UPDATEKANBANSSTAGE",
    "description": "Changes the properties of the existing kanban or My plan stage",
@@ -2568,6 +3166,7 @@
    "region": "Kanban"
   },
   {
+   "nocli": false,
    "name": "DeleteKanbanStage",
    "id": "DELETEKANBANSTAGE",
    "description": "Removes a kanban (My Plan) stage, provided there are no tasks in it",
@@ -2608,6 +3207,7 @@
    "region": "Kanban"
   },
   {
+   "nocli": false,
    "name": "GetKanbanStages",
    "id": "GETKANBANSTAGES",
    "description": "Get kanban (My Plan) stages info",
@@ -2648,6 +3248,7 @@
    "region": "Kanban"
   },
   {
+   "nocli": false,
    "name": "MoveTaskToKanbanStage",
    "id": "MOVETASKTOKANBANSTAGE",
    "description": "Move task to another kanban stage",
@@ -2704,6 +3305,7 @@
    "region": "Kanban"
   },
   {
+   "nocli": false,
    "name": "AddTaskTimeAccounting",
    "id": "ADDTASKTIMEACCOUNTING",
    "description": "Adds information about the user's time spent to the task",
@@ -2768,6 +3370,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "DeleteTaskTimeAccounting",
    "id": "DELETETASKTIMEACCOUNTING",
    "description": "Deletes record of time accounting",
@@ -2808,6 +3411,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "GetTaskTimeAccountingList",
    "id": "GETTASKTIMEACCOUNTINGLIST",
    "description": "Get list of time accounting records for task",
@@ -2840,6 +3444,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "GetTaskTimeAccounting",
    "id": "GETTASKTIMEACCOUNTING",
    "description": "Get time accounting record data",
@@ -2880,6 +3485,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "UpdateTaskTimeAccounting",
    "id": "UPDATETASKTIMEACCOUNTING",
    "description": "Update time accounting record data",
@@ -2944,6 +3550,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "StartTimekeeping",
    "id": "STARTTIMEKEEPING",
    "description": "Starts user timekeeping",
@@ -2992,6 +3599,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "StopTimekeeping",
    "id": "STOPTIMEKEEPING",
    "description": "Stops user timekeeping",
@@ -3040,6 +3648,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "PauseTimekeeping",
    "id": "PAUSETIMEKEEPING",
    "description": "Pauses user timekeeping",
@@ -3072,6 +3681,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "GetTimekeepingStatus",
    "id": "GETTIMEKEEPINGSTATUS",
    "description": "Gets user timekeeping status",
@@ -3104,6 +3714,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "GetTimekeepingSettings",
    "id": "GETTIMEKEEPINGSETTINGS",
    "description": "Gets user timekeeping settings",
@@ -3136,6 +3747,7 @@
    "region": "Timekeeping"
   },
   {
+   "nocli": false,
    "name": "GetStoragesList",
    "id": "GETSTORAGESLIST",
    "description": "Get list of available files storages",
@@ -3160,6 +3772,7 @@
    "region": "Storages management"
   },
   {
+   "nocli": false,
    "name": "GetAppStorage",
    "id": "GETAPPSTORAGE",
    "description": "Get information about storage with which the application can work to store its data",
@@ -3184,6 +3797,7 @@
    "region": "Storages management"
   },
   {
+   "nocli": false,
    "name": "GetStorage",
    "id": "GETSTORAGE",
    "description": "Get information about storage",
@@ -3216,6 +3830,7 @@
    "region": "Storages management"
   },
   {
+   "nocli": false,
    "name": "RenameStorage",
    "id": "RENAMESTORAGE",
    "description": "Change storage name (for app storage only, see. GetAppStorage)",
@@ -3256,6 +3871,7 @@
    "region": "Storages management"
   },
   {
+   "nocli": false,
    "name": "GetStorageObjects",
    "id": "GETSTORAGEOBJECTS",
    "description": "Get a list of files and folders, located at the root of the storage",
@@ -3288,6 +3904,7 @@
    "region": "Storages management"
   },
   {
+   "nocli": false,
    "name": "CreateStorageFolder",
    "id": "CREATESTORAGEFOLDER",
    "description": "Create new foldera at the storage",
@@ -3328,6 +3945,7 @@
    "region": "Storages management"
   },
   {
+   "nocli": false,
    "name": "GetFolderInformation",
    "id": "GETFOLDERINFORMATION",
    "description": "Get folder information",
@@ -3360,6 +3978,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "CreateSubfolder",
    "id": "CREATESUBFOLDER",
    "description": "Create new folder inside another folder",
@@ -3400,6 +4019,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "MakeFolderCopy",
    "id": "MAKEFOLDERCOPY",
    "description": "Copy one folder to another",
@@ -3440,6 +4060,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "MoveFolder",
    "id": "MOVEFOLDER",
    "description": "Moves one folder inside another",
@@ -3480,6 +4101,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "DeleteFolder",
    "id": "DELETEFOLDER",
    "description": "Remove folder with subfolders",
@@ -3512,6 +4134,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "GetFolderExternalLink",
    "id": "GETFOLDEREXTERNALLINK",
    "description": "Get external link to folder",
@@ -3544,6 +4167,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "GetFolderItems",
    "id": "GETFOLDERITEMS",
    "description": "Get folder child elements",
@@ -3584,6 +4208,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "MarkFolderAsDeleted",
    "id": "MARKFOLDERASDELETED",
    "description": "Move folder to recycle bin",
@@ -3616,6 +4241,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "RestoreFolder",
    "id": "RESTOREFOLDER",
    "description": "Resotre folder form recycle bin",
@@ -3648,6 +4274,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "RenameFolder",
    "id": "RENAMEFOLDER",
    "description": "Change folder name",
@@ -3688,6 +4315,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "GetFolderFilterStructure",
    "id": "GETFOLDERFILTERSTRUCTURE",
    "description": "Returns filter structure for child folder items",
@@ -3720,6 +4348,7 @@
    "region": "Catalogs management"
   },
   {
+   "nocli": false,
    "name": "UploadFileToStorage",
    "id": "UPLOADFILETOSTORAGE",
    "description": "Upload file to storage root",
@@ -3776,6 +4405,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "UploadFileToFolder",
    "id": "UPLOADFILETOFOLDER",
    "description": "Upload local file to the folder",
@@ -3824,6 +4454,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GetFileInformation",
    "id": "GETFILEINFORMATION",
    "description": "Get information about file by ID",
@@ -3856,6 +4487,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "DeleteFile",
    "id": "DELETEFILE",
    "description": "Delete file by ID",
@@ -3888,6 +4520,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GetFileExternalLink",
    "id": "GETFILEEXTERNALLINK",
    "description": "Get external link to file",
@@ -3920,6 +4553,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "MarkFileAsDeleted",
    "id": "MARKFILEASDELETED",
    "description": "Move file to recycle bin",
@@ -3952,6 +4586,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "RestoreFile",
    "id": "RESTOREFILE",
    "description": "Restore file from recycle bin",
@@ -3984,6 +4619,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "MakeFileCopy",
    "id": "MAKEFILECOPY",
    "description": "Copy file from one destination to another",
@@ -4024,6 +4660,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "MoveFileToFolder",
    "id": "MOVEFILETOFOLDER",
    "description": "Move file from one destination to another",
@@ -4064,6 +4701,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "RenameFile",
    "id": "RENAMEFILE",
    "description": "Changes the name of an existing file",
@@ -4104,6 +4742,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "CreateChat",
    "id": "CREATECHAT",
    "description": "Creates a new chat based on the field structure",
@@ -4136,6 +4775,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetChatUsers",
    "id": "GETCHATUSERS",
    "description": "Gets the list of chat users by ID",
@@ -4168,6 +4808,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "LeaveChat",
    "id": "LEAVECHAT",
    "description": "Removes the current user from the chat room",
@@ -4200,6 +4841,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetUsers",
    "id": "GETUSERS",
    "description": "Get users information for dialog",
@@ -4232,6 +4874,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "AddUsersToChat",
    "id": "ADDUSERSTOCHAT",
    "description": "Adds users to the chat by ID array",
@@ -4280,6 +4923,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "DeleteUserFromChat",
    "id": "DELETEUSERFROMCHAT",
    "description": "Deletes user from chat",
@@ -4320,6 +4964,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "ChangeChatTitle",
    "id": "CHANGECHATTITLE",
    "description": "Change text of chat title",
@@ -4360,6 +5005,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "ChangeChatColor",
    "id": "CHANGECHATCOLOR",
    "description": "Chat chat color for mobile app",
@@ -4400,6 +5046,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "ChangeChatPicture",
    "id": "CHANGECHATPICTURE",
    "description": "Setup new chat picture",
@@ -4440,6 +5087,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "ChangeChatOwner",
    "id": "CHANGECHATOWNER",
    "description": "Change chat owner",
@@ -4480,6 +5128,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "DisableChatNotifications",
    "id": "DISABLECHATNOTIFICATIONS",
    "description": "Disable chat notifications",
@@ -4512,6 +5161,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "EnableChatNotifications",
    "id": "ENABLECHATNOTIFICATIONS",
    "description": "Enable chat notifications",
@@ -4544,6 +5194,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetChatMessagesList",
    "id": "GETCHATMESSAGESLIST",
    "description": "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified",
@@ -4592,6 +5243,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetDialog",
    "id": "GETDIALOG",
    "description": "Get chat data by ID",
@@ -4624,6 +5276,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetChatMembersList",
    "id": "GETCHATMEMBERSLIST",
    "description": "Get chat members list",
@@ -4656,6 +5309,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "SendWritingNotification",
    "id": "SENDWRITINGNOTIFICATION",
    "description": "Send Writing... status to dialog...",
@@ -4688,6 +5342,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetUserStatus",
    "id": "GETUSERSTATUS",
    "description": "Gets the status (online) of the current user",
@@ -4712,6 +5367,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "SetUserStatus",
    "id": "SETUSERSTATUS",
    "description": "Sets the status (online) of the current user",
@@ -4744,6 +5400,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "ReadAll",
    "id": "READALL",
    "description": "Mark all message as readed",
@@ -4768,6 +5425,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetChatFilesFolder",
    "id": "GETCHATFILESFOLDER",
    "description": "Get information about folder for chat files",
@@ -4800,6 +5458,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "GetChatStructure",
    "id": "GETCHATSTRUCTURE",
    "description": "Get chat fields structure",
@@ -4816,6 +5475,7 @@
    "region": "Chats and dialogs management"
   },
   {
+   "nocli": false,
    "name": "SendMessage",
    "id": "SENDMESSAGE",
    "description": "Send message to dialog",
@@ -4864,6 +5524,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "EditMessage",
    "id": "EDITMESSAGE",
    "description": "Edit dialog message content",
@@ -4912,6 +5573,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "SetMessageReaction",
    "id": "SETMESSAGEREACTION",
    "description": "Set or remove reaction mark on the message",
@@ -4944,6 +5606,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "DeleteMessage",
    "id": "DELETEMESSAGE",
    "description": "Deletes a dialog message",
@@ -4976,6 +5639,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "SendFile",
    "id": "SENDFILE",
    "description": "Send disk file to chat",
@@ -5024,6 +5688,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "MarkMessageAsReaded",
    "id": "MARKMESSAGEASREADED",
    "description": "Mark current and all previous messages as readed",
@@ -5064,6 +5729,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "MarkMessageAsUnreaded",
    "id": "MARKMESSAGEASUNREADED",
    "description": "Mark current and all messages after as unreaded",
@@ -5104,6 +5770,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "GetPictureBlock",
    "id": "GETPICTUREBLOCK",
    "description": "Make picture block for SendMessage method",
@@ -5128,6 +5795,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "GetFileBlock",
    "id": "GETFILEBLOCK",
    "description": "Make file block for SendMessage method",
@@ -5152,6 +5820,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "CreatePersonalNotification",
    "id": "CREATEPERSONALNOTIFICATION",
    "description": "Creates a personal notification to the user",
@@ -5208,6 +5877,7 @@
    "region": "Notifications management"
   },
   {
+   "nocli": false,
    "name": "CreateSystemNotification",
    "id": "CREATESYSTEMNOTIFICATION",
    "description": "Creates a system notification to the user",
@@ -5264,6 +5934,7 @@
    "region": "Notifications management"
   },
   {
+   "nocli": false,
    "name": "DeleteNotification",
    "id": "DELETENOTIFICATION",
    "description": "Delete notification by ID",
@@ -5296,6 +5967,7 @@
    "region": "Notifications management"
   },
   {
+   "nocli": false,
    "name": "CreateDepartment",
    "id": "CREATEDEPARTMENT",
    "description": "Creates a new department",
@@ -5344,6 +6016,7 @@
    "region": "Departments management"
   },
   {
+   "nocli": false,
    "name": "UpdateDepartment",
    "id": "UPDATEDEPARTMENT",
    "description": "Update an existing department",
@@ -5400,6 +6073,7 @@
    "region": "Departments management"
   },
   {
+   "nocli": false,
    "name": "GetDepartments",
    "id": "GETDEPARTMENTS",
    "description": "Gets a list of departments by ID or filter",
@@ -5456,6 +6130,7 @@
    "region": "Departments management"
   },
   {
+   "nocli": false,
    "name": "DeleteDepartment",
    "id": "DELETEDEPARTMENT",
    "description": "Delets department by ID",
@@ -5488,6 +6163,7 @@
    "region": "Departments management"
   },
   {
+   "nocli": false,
    "name": "GetCurrentUser",
    "id": "GETCURRENTUSER",
    "description": "Get current user data",
@@ -5512,6 +6188,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "GetUser",
    "id": "GETUSER",
    "description": "Gets user information by ID",
@@ -5544,6 +6221,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "CreateUser",
    "id": "CREATEUSER",
    "description": "Create new user by fields structure",
@@ -5576,6 +6254,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "UpdateUser",
    "id": "UPDATEUSER",
    "description": "Updates user data",
@@ -5616,6 +6295,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "ChangeUserStatus",
    "id": "CHANGEUSERSTATUS",
    "description": "Activates or deactivates (fire) the selected user",
@@ -5656,6 +6336,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "FindUsers",
    "id": "FINDUSERS",
    "description": "Gets the list of users according to the specified filter",
@@ -5688,6 +6369,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "GetUserFieldsStructure",
    "id": "GETUSERFIELDSSTRUCTURE",
    "description": "Gets the field structure for creating or modifying user information",
@@ -5712,6 +6394,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "GetUserFilterStructure",
    "id": "GETUSERFILTERSTRUCTURE",
    "description": "Returns the field structure for filtering users in the FindUsers method",
@@ -5728,6 +6411,7 @@
    "region": "Users management"
   },
   {
+   "nocli": false,
    "name": "CreateLead",
    "id": "CREATELEAD",
    "description": "Creates a new lead by fields structure",
@@ -5760,6 +6444,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "DeleteLead",
    "id": "DELETELEAD",
    "description": "Deletes a lead by ID",
@@ -5792,6 +6477,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "GetLead",
    "id": "GETLEAD",
    "description": "Gets a lead by ID",
@@ -5824,6 +6510,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "GetLeadsList",
    "id": "GETLEADSLIST",
    "description": "Gets a list of leads (50 per request max) with or without filtering",
@@ -5864,6 +6551,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "UpdateLead",
    "id": "UPDATELEAD",
    "description": "Modifies an existing lead",
@@ -5904,6 +6592,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "GetLeadStructure",
    "id": "GETLEADSTRUCTURE",
    "description": "Gets a structure with field descriptions for creating a lead",
@@ -5928,6 +6617,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "GetLeadFilterStructure",
    "id": "GETLEADFILTERSTRUCTURE",
    "description": "Returns the field structure for filtering leads in the GetLeadsList method",
@@ -5944,6 +6634,7 @@
    "region": "Leads management"
   },
   {
+   "nocli": false,
    "name": "CreateDeal",
    "id": "CREATEDEAL",
    "description": "Creates a new deal by field structure",
@@ -5976,6 +6667,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "DeleteDeal",
    "id": "DELETEDEAL",
    "description": "Deletes deal by ID",
@@ -6008,6 +6700,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "GetDeal",
    "id": "GETDEAL",
    "description": "Gets deal by ID",
@@ -6040,6 +6733,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "GetDealsList",
    "id": "GETDEALSLIST",
    "description": "Gets the list of deals (50 pcs per query max) with or without filtering",
@@ -6080,6 +6774,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "UpdateDeal",
    "id": "UPDATEDEAL",
    "description": "Modifies an existing deal",
@@ -6120,6 +6815,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "GetDealStructure",
    "id": "GETDEALSTRUCTURE",
    "description": "Gets a structure with field descriptions for creating a deal",
@@ -6144,6 +6840,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "GetDealsFilterStructure",
    "id": "GETDEALSFILTERSTRUCTURE",
    "description": "Returns the field structure for filtering deals in the GetDealsList method",
@@ -6160,6 +6857,7 @@
    "region": "Deals management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarList",
    "id": "GETCALENDARLIST",
    "description": "Gets a list of calendars of the specified owner",
@@ -6200,6 +6898,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "CreateCalendar",
    "id": "CREATECALENDAR",
    "description": "Creates a new calendar",
@@ -6232,6 +6931,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "UpdateCalendar",
    "id": "UPDATECALENDAR",
    "description": "Changes the calendar settings",
@@ -6272,6 +6972,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "DeleteCalendar",
    "id": "DELETECALENDAR",
    "description": "Deletes an existing calendar",
@@ -6320,6 +7021,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "GetUserBusy",
    "id": "GETUSERBUSY",
    "description": "Gets an array of user events in the specified interval",
@@ -6368,6 +7070,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "GetCustomCalendarSettings",
    "id": "GETCUSTOMCALENDARSETTINGS",
    "description": "Gets the current users custom calendar settings",
@@ -6392,6 +7095,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "SetCustomCalendarSettings",
    "id": "SETCUSTOMCALENDARSETTINGS",
    "description": "Sets new custom calendar settings",
@@ -6424,6 +7128,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarSettingsStructure",
    "id": "GETCALENDARSETTINGSSTRUCTURE",
    "description": "Gets the structure of the default calendar settings",
@@ -6448,6 +7153,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "GetCalednarCustomSettingsStructure",
    "id": "GETCALEDNARCUSTOMSETTINGSSTRUCTURE",
    "description": "Gets an empty structure for setting custom calendar settings",
@@ -6464,6 +7170,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarStructure",
    "id": "GETCALENDARSTRUCTURE",
    "description": "Returns the structure of the calendar description fields",
@@ -6480,6 +7187,7 @@
    "region": "Calendars management"
   },
   {
+   "nocli": false,
    "name": "CreateCalendarEvent",
    "id": "CREATECALENDAREVENT",
    "description": "Creates a new calendar event",
@@ -6512,6 +7220,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "UpdateCalendarEvent",
    "id": "UPDATECALENDAREVENT",
    "description": "Modifies calendar event data",
@@ -6552,6 +7261,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarEvent",
    "id": "GETCALENDAREVENT",
    "description": "Gets a calendar event by ID",
@@ -6584,6 +7294,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarEvents",
    "id": "GETCALENDAREVENTS",
    "description": "Gets events of calendars with or without filters",
@@ -6632,6 +7343,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "DeleteCalendarEvent",
    "id": "DELETECALENDAREVENT",
    "description": "Deletes an event from the calendar",
@@ -6664,6 +7376,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "GetUserParticipationStatus",
    "id": "GETUSERPARTICIPATIONSTATUS",
    "description": "Gets the event participation status of the current user",
@@ -6696,6 +7409,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "SetUserParticipationStatus",
    "id": "SETUSERPARTICIPATIONSTATUS",
    "description": "Sets the event participation status for the current user",
@@ -6736,6 +7450,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarEventsStructure",
    "id": "GETCALENDAREVENTSSTRUCTURE",
    "description": "Returns the structure of the calendar event fields",
@@ -6752,6 +7467,7 @@
    "region": "Calendar events management"
   },
   {
+   "nocli": false,
    "name": "GetCalendarEventsFilterStructure",
    "id": "GETCALENDAREVENTSFILTERSTRUCTURE",
    "description": "Gets the filter structure for the function GetCalendarEvents",

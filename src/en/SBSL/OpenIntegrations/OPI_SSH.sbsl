@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_SSH
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_SSH
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_SSH(Исполнитель)
@@ -18,11 +18,18 @@
     знч КомандаCLI: Строка = "ssh"
     
     @Глобально
-    // Метод GetConnectionConfiguration
-    // Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
-    //
-    // SSHSettings - Structure Of KeyAndValue: SSH settings
-    // Proxy       - Structure Of KeyAndValue: Proxy settings, if required. See GetProxySettings (необяз. по ум. - Empty value)
+    метод CreateConnection(SSHSettings: Объект?, Proxy: Объект? = Неопределено, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", SSHSettings)
+        Опции.Вставить("-p", Proxy)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
     метод GetConnectionConfiguration(SSHSettings: Объект?, Proxy: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -34,11 +41,6 @@
     ;
 
     @Глобально
-    // Метод ExecuteCommand
-    // Executes the specified command
-    //
-    // Connection - Arbitrary: Existing connection or connection configuration
-    // Command    - String: Command text
     метод ExecuteCommand(Connection: Объект?, Command: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,13 +52,26 @@
     ;
 
     @Глобально
-    // Метод GetSettingsLoginPassword
-    // password)
-    //
-    // Host     - String: SSH host
-    // Port     - Number: SSH port
-    // Login    - String: SSH username
-    // Password - String: SSH user password (необяз. по ум. - Empty value)
+    метод CloseConnection(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsConnector(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsConnector", Опции)
+        
+    ;
+
+    @Глобально
     метод GetSettingsLoginPassword(Host: Объект?, Port: Объект?, Login: Объект?, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -70,15 +85,6 @@
     ;
 
     @Глобально
-    // Метод GetSettingsPrivateKey
-    // Gets connection settings with private key authentication
-    //
-    // Host     - String: SSH host
-    // Port     - Number: SSH port
-    // Login    - String: SSH username
-    // Private  - String: Path to private key file
-    // Public   - String: Path to public key file (необяз. по ум. - Empty value)
-    // Password - String: Private key password (passphrase) (необяз. по ум. - Empty value)
     метод GetSettingsPrivateKey(Host: Объект?, Port: Объект?, Login: Объект?, Private: Объект?, Public: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -94,12 +100,6 @@
     ;
 
     @Глобально
-    // Метод GetSettingsViaAgent
-    // Gets connection settings with SSH Agent authentication
-    //
-    // Host  - String: SSH host
-    // Port  - Number: SSH port
-    // Login - String: SSH username
     метод GetSettingsViaAgent(Host: Объект?, Port: Объект?, Login: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -112,13 +112,6 @@
     ;
 
     @Глобально
-    // Метод GetSettingsKI
-    // Retrieves connection settings for keyboard-interactive authentication
-    //
-    // Host       - String: SSH host
-    // Port       - Number: SSH port
-    // Login      - String: SSH username
-    // InputOrder - Array Of String: Array of responses to server questions
     метод GetSettingsKI(Host: Объект?, Port: Объект?, Login: Объект?, InputOrder: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -132,14 +125,6 @@
     ;
 
     @Глобально
-    // Метод GetProxySettings
-    // Creates a structure of proxy server settings for the connection
-    //
-    // Address  - String: Proxy address
-    // Port     - Number: Proxy port
-    // View     - String: Proxy type: socks5, socks4, http (необяз. по ум. - socks5)
-    // Login    - String, Undefined: Authorization login, if required (необяз. по ум. - Empty value)
-    // Password - String, Undefined: Authorization password, if required (необяз. по ум. - Empty value)
     метод GetProxySettings(Address: Объект?, Port: Объект?, View: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -150,6 +135,30 @@
         Опции.Вставить("-s", Password)
         
         возврат Исполнитель.Выполнить(КомандаCLI, "GetProxySettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(Connection: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
         
     ;
     

@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_MSSQL
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_MSSQL
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_MSSQL(Исполнитель)
@@ -18,14 +18,38 @@
     знч КомандаCLI: Строка = "mssql"
     
     @Глобально
-    // Метод ExecuteSQLQuery
-    // Executes an arbitrary SQL query
-    //
-    // QueryText   - String: Database query text
-    // Parameters  - Array Of Arbitrary: Array of positional parameters of the request (необяз. по ум. - Empty value)
-    // ForceResult - Boolean: Includes an attempt to retrieve the result, even for nonSELECT queries (необяз. по ум. - false)
-    // Connection  - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls         - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
+    метод CreateConnection(ConnectionString: Объект? = Неопределено, Tls: Объект? = Неопределено, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ConnectionString)
+        Опции.Вставить("-t", Tls)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseConnection(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-d", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsConnector(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsConnector", Опции)
+        
+    ;
+
+    @Глобально
     метод ExecuteSQLQuery(QueryText: Объект?, Parameters: Объект? = Неопределено, ForceResult: Объект? = Неопределено, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -40,15 +64,6 @@
     ;
 
     @Глобально
-    // Метод GenerateConnectionString
-    // Forms a connection string from the passed data
-    //
-    // Address     - String: Database server address and instance
-    // Base        - String: Name of the database to connect (необяз. по ум. - Empty value)
-    // Login       - String: mssql user login (необяз. по ум. - Empty value)
-    // Password    - String: mssql user password (необяз. по ум. - Empty value)
-    // Port        - Number: Server port (необяз. по ум. - Empty value)
-    // WindowsAuth - Boolean: Use Windows authentication. The login and password will be ignored (необяз. по ум. - false)
     метод GenerateConnectionString(Address: Объект?, Base: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено, Port: Объект? = Неопределено, WindowsAuth: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -64,11 +79,6 @@
     ;
 
     @Глобально
-    // Метод GetTlsSettings
-    // Forms settings for using TLS
-    //
-    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
-    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
     метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -80,12 +90,30 @@
     ;
 
     @Глобально
-    // Метод CreateDatabase
-    // Creates a database with the specified name
-    //
-    // Base       - String: Database name
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(Connection: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
+        
+    ;
+
+    @Глобально
     метод CreateDatabase(Base: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -98,12 +126,6 @@
     ;
 
     @Глобально
-    // Метод DeleteDatabase
-    // Deletes the database
-    //
-    // Base       - String: Database name
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод DeleteDatabase(Base: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -116,13 +138,6 @@
     ;
 
     @Глобально
-    // Метод CreateTable
-    // Creates an empty table in the database
-    //
-    // Table          - String: Table name
-    // ColoumnsStruct - Structure Of KeyAndValue: Column structure: Key > Name, Value > Data type
-    // Connection     - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls            - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод CreateTable(Table: Объект?, ColoumnsStruct: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -136,14 +151,6 @@
     ;
 
     @Глобально
-    // Метод AddTableColumn
-    // Adds a new column to an existing table
-    //
-    // Table      - String: Table name
-    // Name       - String: Column name
-    // DataType   - String: Column data type
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод AddTableColumn(Table: Объект?, Name: Объект?, DataType: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -158,13 +165,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTableColumn
-    // Deletes a column from the table
-    //
-    // Table      - String: Table name
-    // Name       - String: Column name
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод DeleteTableColumn(Table: Объект?, Name: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -178,13 +178,6 @@
     ;
 
     @Глобально
-    // Метод EnsureTable
-    // Creates a new table if it does not exist or updates the composition of columns in an existing table
-    //
-    // Table          - String: Table name
-    // ColoumnsStruct - Structure Of KeyAndValue: Column structure: Key > Name, Value > Data type
-    // Connection     - String, Arbitrary: Existing connection or database path (необяз. по ум. - Empty value)
-    // Tls            - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод EnsureTable(Table: Объект?, ColoumnsStruct: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -198,12 +191,6 @@
     ;
 
     @Глобально
-    // Метод ClearTable
-    // Clears the database table
-    //
-    // Table      - String: Table name
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод ClearTable(Table: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -216,12 +203,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTable
-    // Deletes a table from the database
-    //
-    // Table      - String: Table name
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод DeleteTable(Table: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -234,12 +215,6 @@
     ;
 
     @Глобально
-    // Метод GetTableInformation
-    // Gets information about the table
-    //
-    // Table      - String: Table name
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод GetTableInformation(Table: Объект?, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -252,14 +227,6 @@
     ;
 
     @Глобально
-    // Метод AddRecords
-    // Adds new rows to the table
-    //
-    // Table       - String: Table name
-    // DataArray   - Array of Structure: An array of string data structures: Key > field, Value > field value
-    // Transaction - Boolean: True > adding records to transactions with rollback on error (необяз. по ум. - true)
-    // Connection  - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls         - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод AddRecords(Table: Объект?, DataArray: Объект?, Transaction: Объект? = Неопределено, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -274,14 +241,6 @@
     ;
 
     @Глобально
-    // Метод UpdateRecords
-    // Updates the value of records by selected criteria
-    //
-    // Table          - String: Table name
-    // ValueStructure - Structure Of KeyAndValue: Values structure: Key > field, Value > field value
-    // Filters        - Array of Structure: Filters array. See GetRecordsFilterStructure (необяз. по ум. - Empty value)
-    // Connection     - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls            - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод UpdateRecords(Table: Объект?, ValueStructure: Объект?, Filters: Объект? = Неопределено, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -296,15 +255,6 @@
     ;
 
     @Глобально
-    // Метод EnsureRecords
-    // Adds records or updates data of existing ones when key fields match
-    //
-    // Table       - String: Table name
-    // DataArray   - Array of Structure: An array of string data structures: Key > field, Value > field value
-    // KeyFields   - Array Of String: Name or names of key table fields for uniqueness validation (необяз. по ум. - Empty value)
-    // Transaction - Boolean: True > adding records to transactions with rollback on error (необяз. по ум. - true)
-    // Connection  - String, Arbitrary: Existing connection or database path (необяз. по ум. - Empty value)
-    // Tls         - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод EnsureRecords(Table: Объект?, DataArray: Объект?, KeyFields: Объект? = Неопределено, Transaction: Объект? = Неопределено, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -320,16 +270,6 @@
     ;
 
     @Глобально
-    // Метод GetRecords
-    // Gets records from the selected table
-    //
-    // Table      - String: Table name
-    // Fields     - Array Of String: Fields for selection (необяз. по ум. - *)
-    // Filters    - Array of Structure: Filters array. See GetRecordsFilterStructure (необяз. по ум. - Empty value)
-    // Sort       - Structure Of KeyAndValue: Sorting: Key > field name, Value > direction (ASC, DESC) (необяз. по ум. - Empty value)
-    // Count      - Number: Limiting the number of received strings (необяз. по ум. - Empty value)
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод GetRecords(Table: Объект?, Fields: Объект? = Неопределено, Filters: Объект? = Неопределено, Sort: Объект? = Неопределено, Count: Объект? = Неопределено, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -346,13 +286,6 @@
     ;
 
     @Глобально
-    // Метод DeleteRecords
-    // Deletes records from the table
-    //
-    // Table      - String: Table name
-    // Filters    - Array of Structure: Filters array. See GetRecordsFilterStructure (необяз. по ум. - Empty value)
-    // Connection - String, Arbitrary: Connection or connection string (необяз. по ум. - Empty value)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод DeleteRecords(Table: Объект?, Filters: Объект? = Неопределено, Connection: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -366,10 +299,6 @@
     ;
 
     @Глобально
-    // Метод GetRecordsFilterStructure
-    // Gets the template structure for filtering records in ORM queries
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetRecordsFilterStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

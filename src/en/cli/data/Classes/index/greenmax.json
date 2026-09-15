@@ -9,78 +9,205 @@
   {
    "name": "Account",
    "methods": [
-    "CheckAccount",
-    "FormAccessParameters",
-    "GetAccountInformation",
-    "GetAuthorizationCode",
-    "GetChatAvatar",
-    "GetChatList",
-    "GetContactInformation",
-    "GetContactList",
-    "GetInstanceSettings",
-    "GetInstanceSettingsStructure",
-    "GetInstanceStatus",
-    "LogoutInstance",
-    "RebootInstance",
-    "SendAuthorizationCode",
-    "SetInstanceSettings",
-    "SetProfilePicture"
+    {
+     "name": "CheckAccount",
+     "nocli": false
+    },
+    {
+     "name": "FormAccessParameters",
+     "nocli": false
+    },
+    {
+     "name": "GetAccountInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetAuthorizationCode",
+     "nocli": false
+    },
+    {
+     "name": "GetChatAvatar",
+     "nocli": false
+    },
+    {
+     "name": "GetChatList",
+     "nocli": false
+    },
+    {
+     "name": "GetContactInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetContactList",
+     "nocli": false
+    },
+    {
+     "name": "GetInstanceSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetInstanceSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetInstanceStatus",
+     "nocli": false
+    },
+    {
+     "name": "LogoutInstance",
+     "nocli": false
+    },
+    {
+     "name": "RebootInstance",
+     "nocli": false
+    },
+    {
+     "name": "SendAuthorizationCode",
+     "nocli": false
+    },
+    {
+     "name": "SetInstanceSettings",
+     "nocli": false
+    },
+    {
+     "name": "SetProfilePicture",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Group management",
    "methods": [
-    "AddGroupMember",
-    "ChangeGroupSettings",
-    "CreateGroup",
-    "GetGroupInformation",
-    "GetGroupSettingsStructure",
-    "LeaveGroup",
-    "RemoveGroupMember",
-    "RevokeAdminRights",
-    "SetAdminRights",
-    "SetGroupPicture",
-    "UpdateGroupName"
+    {
+     "name": "AddGroupMember",
+     "nocli": false
+    },
+    {
+     "name": "ChangeGroupSettings",
+     "nocli": false
+    },
+    {
+     "name": "CreateGroup",
+     "nocli": false
+    },
+    {
+     "name": "GetGroupInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetGroupSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "LeaveGroup",
+     "nocli": false
+    },
+    {
+     "name": "RemoveGroupMember",
+     "nocli": false
+    },
+    {
+     "name": "RevokeAdminRights",
+     "nocli": false
+    },
+    {
+     "name": "SetAdminRights",
+     "nocli": false
+    },
+    {
+     "name": "SetGroupPicture",
+     "nocli": false
+    },
+    {
+     "name": "UpdateGroupName",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Message sending",
    "methods": [
-    "SendFile",
-    "SendFileByURL",
-    "SendTextMessage"
+    {
+     "name": "SendFile",
+     "nocli": false
+    },
+    {
+     "name": "SendFileByURL",
+     "nocli": false
+    },
+    {
+     "name": "SendTextMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Notifications",
    "methods": [
-    "DeleteNotification",
-    "GetNotification"
+    {
+     "name": "DeleteNotification",
+     "nocli": false
+    },
+    {
+     "name": "GetNotification",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Message history",
    "methods": [
-    "GetChatMessage",
-    "GetChatMessageHistory",
-    "GetIncomingMessageLog",
-    "GetOutgoingMessageLog",
-    "MarkMessagesAsRead"
+    {
+     "name": "GetChatMessage",
+     "nocli": false
+    },
+    {
+     "name": "GetChatMessageHistory",
+     "nocli": false
+    },
+    {
+     "name": "GetIncomingMessageLog",
+     "nocli": false
+    },
+    {
+     "name": "GetOutgoingMessageLog",
+     "nocli": false
+    },
+    {
+     "name": "MarkMessagesAsRead",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Queues",
    "methods": [
-    "ClearIncomingNotificationQueue",
-    "ClearOutgoingMessageQueue",
-    "GetIncomingNotificationCount",
-    "GetOutgoingMessageCount",
-    "GetOutgoingMessageQueue"
+    {
+     "name": "ClearIncomingNotificationQueue",
+     "nocli": false
+    },
+    {
+     "name": "ClearOutgoingMessageQueue",
+     "nocli": false
+    },
+    {
+     "name": "GetIncomingNotificationCount",
+     "nocli": false
+    },
+    {
+     "name": "GetOutgoingMessageCount",
+     "nocli": false
+    },
+    {
+     "name": "GetOutgoingMessageQueue",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "FormAccessParameters",
    "id": "FORMACCESSPARAMETERS",
    "description": "Forms the structure of basic authorization data",
@@ -121,6 +248,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetAccountInformation",
    "id": "GETACCOUNTINFORMATION",
    "description": "Gets account information",
@@ -137,6 +265,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetInstanceSettings",
    "id": "GETINSTANCESETTINGS",
    "description": "Gets the current instance settings",
@@ -153,6 +282,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "SetInstanceSettings",
    "id": "SETINSTANCESETTINGS",
    "description": "Sets the instance settings",
@@ -177,6 +307,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetAuthorizationCode",
    "id": "GETAUTHORIZATIONCODE",
    "description": "Sends an SMS to the specified number to obtain a confirmation code",
@@ -201,6 +332,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "SendAuthorizationCode",
    "id": "SENDAUTHORIZATIONCODE",
    "description": "Authorizes the instance using the access code from SMS",
@@ -225,6 +357,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetInstanceStatus",
    "id": "GETINSTANCESTATUS",
    "description": "Gets instance status",
@@ -241,6 +374,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "SetProfilePicture",
    "id": "SETPROFILEPICTURE",
    "description": "Sets a new profile picture",
@@ -265,6 +399,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "LogoutInstance",
    "id": "LOGOUTINSTANCE",
    "description": "Unlogging the instance",
@@ -281,6 +416,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "RebootInstance",
    "id": "REBOOTINSTANCE",
    "description": "Restarts the instance",
@@ -297,6 +433,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "CheckAccount",
    "id": "CHECKACCOUNT",
    "description": "Checks the existence of a Max account by phone number",
@@ -329,6 +466,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetContactList",
    "id": "GETCONTACTLIST",
    "description": "Gets account contact list",
@@ -353,6 +491,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetContactInformation",
    "id": "GETCONTACTINFORMATION",
    "description": "Gets information about the selected contact",
@@ -377,6 +516,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetChatList",
    "id": "GETCHATLIST",
    "description": "Gets account chat list",
@@ -393,6 +533,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetChatAvatar",
    "id": "GETCHATAVATAR",
    "description": "Gets chat image URL",
@@ -417,6 +558,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "GetInstanceSettingsStructure",
    "id": "GETINSTANCESETTINGSSTRUCTURE",
    "description": "Gets the structure template for instance settings",
@@ -433,6 +575,7 @@
    "region": "Account"
   },
   {
+   "nocli": false,
    "name": "CreateGroup",
    "id": "CREATEGROUP",
    "description": "Creates a new group chat with the specified name",
@@ -465,6 +608,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "GetGroupInformation",
    "id": "GETGROUPINFORMATION",
    "description": "Gets information about the group chat",
@@ -489,6 +633,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "UpdateGroupName",
    "id": "UPDATEGROUPNAME",
    "description": "Change group chat name",
@@ -521,6 +666,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "SetGroupPicture",
    "id": "SETGROUPPICTURE",
    "description": "Sets the image as the group chat avatar",
@@ -553,6 +699,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "ChangeGroupSettings",
    "id": "CHANGEGROUPSETTINGS",
    "description": "Changes selected group chat settings",
@@ -585,6 +732,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "AddGroupMember",
    "id": "ADDGROUPMEMBER",
    "description": "Adds a new member to the selected group chat",
@@ -617,6 +765,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "RemoveGroupMember",
    "id": "REMOVEGROUPMEMBER",
    "description": "Removes a member from the selected group chat",
@@ -649,6 +798,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "SetAdminRights",
    "id": "SETADMINRIGHTS",
    "description": "Assigns administrator rights to the specified group chat member",
@@ -681,6 +831,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "RevokeAdminRights",
    "id": "REVOKEADMINRIGHTS",
    "description": "Revokes administrator rights from the specified group chat member",
@@ -713,6 +864,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "LeaveGroup",
    "id": "LEAVEGROUP",
    "description": "Excludes the current account from the specified group",
@@ -737,6 +889,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "GetGroupSettingsStructure",
    "id": "GETGROUPSETTINGSSTRUCTURE",
    "description": "Returns the structure of group chat settings fields",
@@ -761,6 +914,7 @@
    "region": "Group management"
   },
   {
+   "nocli": false,
    "name": "SendTextMessage",
    "id": "SENDTEXTMESSAGE",
    "description": "Sends a text message to the selected chat room",
@@ -801,6 +955,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendFile",
    "id": "SENDFILE",
    "description": "Sends the file to the selected chat room",
@@ -865,6 +1020,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendFileByURL",
    "id": "SENDFILEBYURL",
    "description": "Sends a file from web to the selected chat room",
@@ -929,6 +1085,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "GetNotification",
    "id": "GETNOTIFICATION",
    "description": "Gets the latest notification from the queue",
@@ -961,6 +1118,7 @@
    "region": "Notifications"
   },
   {
+   "nocli": false,
    "name": "DeleteNotification",
    "id": "DELETENOTIFICATION",
    "description": "Deletes the specified notification from the queue",
@@ -985,6 +1143,7 @@
    "region": "Notifications"
   },
   {
+   "nocli": false,
    "name": "GetChatMessageHistory",
    "id": "GETCHATMESSAGEHISTORY",
    "description": "Gets the latest messages from the chat history",
@@ -1017,6 +1176,7 @@
    "region": "Message history"
   },
   {
+   "nocli": false,
    "name": "GetChatMessage",
    "id": "GETCHATMESSAGE",
    "description": "Gets information about the chat message by ID",
@@ -1049,6 +1209,7 @@
    "region": "Message history"
   },
   {
+   "nocli": false,
    "name": "GetIncomingMessageLog",
    "id": "GETINCOMINGMESSAGELOG",
    "description": "Gets the latest incoming messages of the instance",
@@ -1073,6 +1234,7 @@
    "region": "Message history"
   },
   {
+   "nocli": false,
    "name": "GetOutgoingMessageLog",
    "id": "GETOUTGOINGMESSAGELOG",
    "description": "Gets the latest outgoing messages of the instance",
@@ -1097,6 +1259,7 @@
    "region": "Message history"
   },
   {
+   "nocli": false,
    "name": "MarkMessagesAsRead",
    "id": "MARKMESSAGESASREAD",
    "description": "Marks messages in the chat as read",
@@ -1129,6 +1292,7 @@
    "region": "Message history"
   },
   {
+   "nocli": false,
    "name": "GetOutgoingMessageCount",
    "id": "GETOUTGOINGMESSAGECOUNT",
    "description": "Gets the number of messages in the outgoing queue",
@@ -1145,6 +1309,7 @@
    "region": "Queues"
   },
   {
+   "nocli": false,
    "name": "GetOutgoingMessageQueue",
    "id": "GETOUTGOINGMESSAGEQUEUE",
    "description": "Gets the list of messages to be sent",
@@ -1161,6 +1326,7 @@
    "region": "Queues"
   },
   {
+   "nocli": false,
    "name": "ClearOutgoingMessageQueue",
    "id": "CLEAROUTGOINGMESSAGEQUEUE",
    "description": "Clears the list of messages to be sent",
@@ -1177,6 +1343,7 @@
    "region": "Queues"
   },
   {
+   "nocli": false,
    "name": "GetIncomingNotificationCount",
    "id": "GETINCOMINGNOTIFICATIONCOUNT",
    "description": "Gets the number of notifications in the incoming queue",
@@ -1193,6 +1360,7 @@
    "region": "Queues"
   },
   {
+   "nocli": false,
    "name": "ClearIncomingNotificationQueue",
    "id": "CLEARINCOMINGNOTIFICATIONQUEUE",
    "description": "Clears the incoming notification queue",

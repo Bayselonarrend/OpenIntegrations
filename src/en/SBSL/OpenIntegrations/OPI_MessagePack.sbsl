@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_MessagePack
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_MessagePack
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_MessagePack(Исполнитель)
@@ -18,11 +18,6 @@
     знч КомандаCLI: Строка = "msgpack"
     
     @Глобально
-    // Метод SerializeData
-    // Serializes data into MessagePack format
-    //
-    // Data       - Arbitrary: Collection for serialization
-    // FromSource - Boolean: The data is a JSON string or a file on disk (необяз. по ум. - false)
     метод SerializeData(Data: Объект?, FromSource: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -34,10 +29,6 @@
     ;
 
     @Глобально
-    // Метод DeserializeData
-    // Deserializes data from MessagePack format
-    //
-    // Data - BinaryData: Serialized value
     метод DeserializeData(Data: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

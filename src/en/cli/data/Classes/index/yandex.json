@@ -9,14 +9,24 @@
   {
    "name": "Public",
    "methods": [
-    "ConvertCodeToToken",
-    "GetConfirmationCode",
-    "RefreshToken"
+    {
+     "name": "ConvertCodeToToken",
+     "nocli": false
+    },
+    {
+     "name": "GetConfirmationCode",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetConfirmationCode",
    "id": "GETCONFIRMATIONCODE",
    "description": "Gets the confirmation code and the address of the page where it needs to be entered",
@@ -33,6 +43,7 @@
    "region": "Public"
   },
   {
+   "nocli": false,
    "name": "ConvertCodeToToken",
    "id": "CONVERTCODETOTOKEN",
    "description": "Converts the code to a token after entering the code when executing GetConfirmationCode",
@@ -65,6 +76,7 @@
    "region": "Public"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Updates token by Refresh token",

@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_YandexDisk
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_YandexDisk
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_YandexDisk(Исполнитель)
@@ -18,10 +18,6 @@
     знч КомандаCLI: Строка = "yadisk"
     
     @Глобально
-    // Метод GetConfirmationCode
-    // Gets the confirmation code and the address of the page where it needs to be entered
-    //
-    // ClientId - String: Client id
     метод GetConfirmationCode(ClientId: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -32,12 +28,6 @@
     ;
 
     @Глобально
-    // Метод ConvertCodeToToken
-    // Converts the code to a token after entering the code when executing GetConfirmationCode
-    //
-    // ClientId     - String: Client id
-    // ClientSecret - String: Client secret
-    // DeviceCode   - String: device_code from GetConfirmationCode
     метод ConvertCodeToToken(ClientId: Объект?, ClientSecret: Объект?, DeviceCode: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,12 +40,6 @@
     ;
 
     @Глобально
-    // Метод RefreshToken
-    // Updates token by Refresh token
-    //
-    // ClientId     - String: Client id
-    // ClientSecret - String: Client secret
-    // RefreshToken - String: Refresh token
     метод RefreshToken(ClientId: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -68,10 +52,6 @@
     ;
 
     @Глобально
-    // Метод GetDiskInformation
-    // Gets information about the current disk
-    //
-    // Token - String: Token
     метод GetDiskInformation(Token: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -82,11 +62,6 @@
     ;
 
     @Глобально
-    // Метод CreateFolder
-    // Creates a directory on the disk
-    //
-    // Token - String: Token
-    // Path  - String: Path to the created folder
     метод CreateFolder(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -98,11 +73,6 @@
     ;
 
     @Глобально
-    // Метод GetObject
-    // Gets information about a disk object at the specified path
-    //
-    // Token - String: Token
-    // Path  - String: Path to folder or file
     метод GetObject(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -114,12 +84,6 @@
     ;
 
     @Глобально
-    // Метод DeleteObject
-    // Deletes an object at the specified path
-    //
-    // Token  - String: Token
-    // Path   - String: Path to the folder or file to be deleted
-    // ToCart - Boolean: To cart (необяз. по ум. - true)
     метод DeleteObject(Token: Объект?, Path: Объект?, ToCart: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -132,13 +96,6 @@
     ;
 
     @Глобально
-    // Метод CreateObjectCopy
-    // Creates a copy of the object at the specified path and path to the original
-    //
-    // Token     - String: Token
-    // Original  - String: Path to the original file or directory
-    // Path      - String: Destination path for the copy
-    // Overwrite - Boolean: Overwrite if a file with the same name already exists (необяз. по ум. - false)
     метод CreateObjectCopy(Token: Объект?, Original: Объект?, Path: Объект?, Overwrite: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -152,11 +109,6 @@
     ;
 
     @Глобально
-    // Метод GetDownloadLink
-    // Gets a download link for the file
-    //
-    // Token - String: Token
-    // Path  - String: Path to the file for downloading
     метод GetDownloadLink(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -168,12 +120,6 @@
     ;
 
     @Глобально
-    // Метод GetFileUploadLink
-    // Gets a link for manual file upload to Disk
-    //
-    // Token     - String: Token
-    // Path      - String: Path for saving the file to disk
-    // Overwrite - Boolean: Overwrite if a file with the same name already exists (необяз. по ум. - false)
     метод GetFileUploadLink(Token: Объект?, Path: Объект?, Overwrite: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -186,12 +132,6 @@
     ;
 
     @Глобально
-    // Метод DownloadFile
-    // Downloads a file at the specified path
-    //
-    // Token    - String: Token
-    // Path     - String: Path to the file for downloading
-    // SavePath - String: File save path (необяз. по ум. - Empty value)
     метод DownloadFile(Token: Объект?, Path: Объект?, SavePath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -204,14 +144,6 @@
     ;
 
     @Глобально
-    // Метод GetFilesList
-    // Gets a list of files with or without filtering by type
-    //
-    // Token           - String: Token
-    // Count           - Number, String: Number of returned objects (необяз. по ум. - Empty value)
-    // OffsetFromStart - Number: Offset for getting objects not from the beginning of the list (необяз. по ум. - Empty value)
-    // FilterByType    - String: Filter by file type (необяз. по ум. - Empty value)
-    // SortByDate      - Boolean: True > sort by date, False > alphabetically (необяз. по ум. - false)
     метод GetFilesList(Token: Объект?, Count: Объект? = Неопределено, OffsetFromStart: Объект? = Неопределено, FilterByType: Объект? = Неопределено, SortByDate: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -226,13 +158,6 @@
     ;
 
     @Глобально
-    // Метод MoveObject
-    // Moves the object to the specified path and path to the original
-    //
-    // Token     - String: Token
-    // Original  - String: Path to the original file or folder
-    // Path      - String: Destination path for moving
-    // Overwrite - Boolean: Overwrite if a file with the same name already exists (необяз. по ум. - false)
     метод MoveObject(Token: Объект?, Original: Объект?, Path: Объект?, Overwrite: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -246,13 +171,6 @@
     ;
 
     @Глобально
-    // Метод UploadFile
-    // Uploads a file to disk at the specified path
-    //
-    // Token     - String: Token
-    // Path      - String: Path for saving the file to disk
-    // File      - String, BinaryData: File for upload
-    // Overwrite - Boolean: Overwrite if a file with the same name already exists (необяз. по ум. - false)
     метод UploadFile(Token: Объект?, Path: Объект?, File: Объект?, Overwrite: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -266,14 +184,6 @@
     ;
 
     @Глобально
-    // Метод UploadFileInParts
-    // Uploads a file to disk at the specified path in parts
-    //
-    // Token     - String: Token
-    // Path      - String: Path for saving the file to disk
-    // File      - String, BinaryData: File for upload
-    // ChunkSize - Number: Part size when uploading (необяз. по ум. - 33554432)
-    // Overwrite - Boolean: Overwrite if a file with the same name already exists (необяз. по ум. - false)
     метод UploadFileInParts(Token: Объект?, Path: Объект?, File: Объект?, ChunkSize: Объект? = Неопределено, Overwrite: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -288,12 +198,6 @@
     ;
 
     @Глобально
-    // Метод UploadFileByURL
-    // Downloads a file to disk from the specified URL
-    //
-    // Token   - String: Token
-    // Path    - String: Path to place the downloaded file
-    // Address - String: File URL
     метод UploadFileByURL(Token: Объект?, Path: Объект?, Address: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -306,11 +210,6 @@
     ;
 
     @Глобально
-    // Метод PublishObject
-    // Publishes the disk object for public access
-    //
-    // Token - String: Token
-    // Path  - String: Path to the object to be published
     метод PublishObject(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -322,11 +221,6 @@
     ;
 
     @Глобально
-    // Метод CancelObjectPublication
-    // Unpublishes a previously published object
-    //
-    // Token - String: Token
-    // Path  - String: Path to the previously published object
     метод CancelObjectPublication(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -338,12 +232,6 @@
     ;
 
     @Глобально
-    // Метод GetPublishedObjectsList
-    // Gets a list of published objects
-    //
-    // Token           - String: Token
-    // Count           - Number: Number of returned objects (необяз. по ум. - Empty value)
-    // OffsetFromStart - Number: Offset for getting objects not from the beginning of the list (необяз. по ум. - Empty value)
     метод GetPublishedObjectsList(Token: Объект?, Count: Объект? = Неопределено, OffsetFromStart: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -356,13 +244,6 @@
     ;
 
     @Глобально
-    // Метод GetPublicObject
-    // Gets information about the published object by its URL
-    //
-    // Token           - String: Token
-    // URL             - String: Object address
-    // Count           - Number: Number of returned nested objects (for catalog) (необяз. по ум. - Empty value)
-    // OffsetFromStart - Number: Offset for getting nested objects not from the beginning of the list (необяз. по ум. - Empty value)
     метод GetPublicObject(Token: Объект?, URL: Объект?, Count: Объект? = Неопределено, OffsetFromStart: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -376,12 +257,6 @@
     ;
 
     @Глобально
-    // Метод GetDownloadLinkForPublicObject
-    // Gets a direct link to download the public object
-    //
-    // Token - String: Token
-    // URL   - String: Object address
-    // Path  - String: Path inside the object (необяз. по ум. - Empty value)
     метод GetDownloadLinkForPublicObject(Token: Объект?, URL: Объект?, Path: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -394,13 +269,6 @@
     ;
 
     @Глобально
-    // Метод SavePublicObjectToDisk
-    // Saves the public object to your disk
-    //
-    // Token  - String: Token
-    // URL    - String: Object address
-    // From   - String: Path within public catalog (folders only) (необяз. по ум. - Empty value)
-    // Target - String: File save path (необяз. по ум. - Empty value)
     метод SavePublicObjectToDisk(Token: Объект?, URL: Объект?, From: Объект? = Неопределено, Target: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

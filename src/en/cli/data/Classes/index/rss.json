@@ -9,22 +9,41 @@
   {
    "name": "Rss methods",
    "methods": [
-    "CreateFeedRSS",
-    "GetFeedItemStructureRSS",
-    "ParseFeedRSS"
+    {
+     "name": "CreateFeedRSS",
+     "nocli": false
+    },
+    {
+     "name": "GetFeedItemStructureRSS",
+     "nocli": false
+    },
+    {
+     "name": "ParseFeedRSS",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Atom methods",
    "methods": [
-    "CreateFeedAtom",
-    "GetFeedItemStructureAtom",
-    "ParseFeedAtom"
+    {
+     "name": "CreateFeedAtom",
+     "nocli": false
+    },
+    {
+     "name": "GetFeedItemStructureAtom",
+     "nocli": false
+    },
+    {
+     "name": "ParseFeedAtom",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "CreateFeedRSS",
    "id": "CREATEFEEDRSS",
    "description": "Creates RSS feed text",
@@ -73,6 +92,7 @@
    "region": "Rss methods"
   },
   {
+   "nocli": false,
    "name": "GetFeedItemStructureRSS",
    "id": "GETFEEDITEMSTRUCTURERSS",
    "description": "Gets the structure of parameters for an RSS feed item",
@@ -97,6 +117,7 @@
    "region": "Rss methods"
   },
   {
+   "nocli": false,
    "name": "ParseFeedRSS",
    "id": "PARSEFEEDRSS",
    "description": "Parses the XML of an RSS feed and returns a structure with channel data and items",
@@ -113,6 +134,7 @@
    "region": "Rss methods"
   },
   {
+   "nocli": false,
    "name": "CreateFeedAtom",
    "id": "CREATEFEEDATOM",
    "description": "Creates the text of an Atom feed",
@@ -161,6 +183,7 @@
    "region": "Atom methods"
   },
   {
+   "nocli": false,
    "name": "GetFeedItemStructureAtom",
    "id": "GETFEEDITEMSTRUCTUREATOM",
    "description": "Gets the structure of parameters of an Atom feed item",
@@ -185,6 +208,7 @@
    "region": "Atom methods"
   },
   {
+   "nocli": false,
    "name": "ParseFeedAtom",
    "id": "PARSEFEEDATOM",
    "description": "Parses the XML of an Atom feed and returns a structure with feed data and items",

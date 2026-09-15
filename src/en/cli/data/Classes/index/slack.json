@@ -9,78 +9,190 @@
   {
    "name": "Management and settings",
    "methods": [
-    "GetBotInformation",
-    "GetUserList",
-    "GetWorkspaceList"
+    {
+     "name": "GetBotInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetUserList",
+     "nocli": false
+    },
+    {
+     "name": "GetWorkspaceList",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Message management",
    "methods": [
-    "DeleteMessage",
-    "EditMessage",
-    "GetDelayedMessageList",
-    "GetMessageLink",
-    "GetMessageReplyList",
-    "SendEphemeralMessage",
-    "SendMessage"
+    {
+     "name": "DeleteMessage",
+     "nocli": false
+    },
+    {
+     "name": "EditMessage",
+     "nocli": false
+    },
+    {
+     "name": "GetDelayedMessageList",
+     "nocli": false
+    },
+    {
+     "name": "GetMessageLink",
+     "nocli": false
+    },
+    {
+     "name": "GetMessageReplyList",
+     "nocli": false
+    },
+    {
+     "name": "SendEphemeralMessage",
+     "nocli": false
+    },
+    {
+     "name": "SendMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Channel management",
    "methods": [
-    "ArchiveChannel",
-    "CreateChannel",
-    "GetChannel",
-    "GetChannelHistory",
-    "GetChannelList",
-    "GetChannelUserList",
-    "InviteUsersToChannel",
-    "JoinChannel",
-    "KickUserFromChannel",
-    "LeaveChannel",
-    "RenameChannel",
-    "SetChannelGoal",
-    "SetChannelTopic"
+    {
+     "name": "ArchiveChannel",
+     "nocli": false
+    },
+    {
+     "name": "CreateChannel",
+     "nocli": false
+    },
+    {
+     "name": "GetChannel",
+     "nocli": false
+    },
+    {
+     "name": "GetChannelHistory",
+     "nocli": false
+    },
+    {
+     "name": "GetChannelList",
+     "nocli": false
+    },
+    {
+     "name": "GetChannelUserList",
+     "nocli": false
+    },
+    {
+     "name": "InviteUsersToChannel",
+     "nocli": false
+    },
+    {
+     "name": "JoinChannel",
+     "nocli": false
+    },
+    {
+     "name": "KickUserFromChannel",
+     "nocli": false
+    },
+    {
+     "name": "LeaveChannel",
+     "nocli": false
+    },
+    {
+     "name": "RenameChannel",
+     "nocli": false
+    },
+    {
+     "name": "SetChannelGoal",
+     "nocli": false
+    },
+    {
+     "name": "SetChannelTopic",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Dialog management",
    "methods": [
-    "CloseDialog",
-    "OpenDialog"
+    {
+     "name": "CloseDialog",
+     "nocli": false
+    },
+    {
+     "name": "OpenDialog",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File management",
    "methods": [
-    "DeleteFile",
-    "GetFileData",
-    "GetFilesList",
-    "MakeFilePrivate",
-    "MakeFilePublic",
-    "UploadFile"
+    {
+     "name": "DeleteFile",
+     "nocli": false
+    },
+    {
+     "name": "GetFileData",
+     "nocli": false
+    },
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "MakeFilePrivate",
+     "nocli": false
+    },
+    {
+     "name": "MakeFilePublic",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "External files management",
    "methods": [
-    "AddExternalFile",
-    "DeleteExternalFile",
-    "GetExternalFile",
-    "GetExternalFileList",
-    "SendExternalFile"
+    {
+     "name": "AddExternalFile",
+     "nocli": false
+    },
+    {
+     "name": "DeleteExternalFile",
+     "nocli": false
+    },
+    {
+     "name": "GetExternalFile",
+     "nocli": false
+    },
+    {
+     "name": "GetExternalFileList",
+     "nocli": false
+    },
+    {
+     "name": "SendExternalFile",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Block formation",
    "methods": [
-    "GenerateImageBlock"
+    {
+     "name": "GenerateImageBlock",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetBotInformation",
    "id": "GETBOTINFORMATION",
    "description": "Gets basic information about the bot",
@@ -97,6 +209,7 @@
    "region": "Management and settings"
   },
   {
+   "nocli": false,
    "name": "GetWorkspaceList",
    "id": "GETWORKSPACELIST",
    "description": "Gets a list of workspaces where the bot is connected",
@@ -121,6 +234,7 @@
    "region": "Management and settings"
   },
   {
+   "nocli": false,
    "name": "GetUserList",
    "id": "GETUSERLIST",
    "description": "Gets a list of users in the workspace",
@@ -145,6 +259,7 @@
    "region": "Management and settings"
   },
   {
+   "nocli": false,
    "name": "SendMessage",
    "id": "SENDMESSAGE",
    "description": "Sends a message at a selected hour",
@@ -193,6 +308,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "SendEphemeralMessage",
    "id": "SENDEPHEMERALMESSAGE",
    "description": "Sends a message that arrives in the channel but is visible\n\n only to a specific user",
@@ -241,6 +357,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "EditMessage",
    "id": "EDITMESSAGE",
    "description": "Edits the content of an existing message",
@@ -289,6 +406,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "DeleteMessage",
    "id": "DELETEMESSAGE",
    "description": "Deletes a channel message by timestamp",
@@ -329,6 +447,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "GetDelayedMessageList",
    "id": "GETDELAYEDMESSAGELIST",
    "description": "Gets a list of delayed channel messages",
@@ -361,6 +480,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "GetMessageLink",
    "id": "GETMESSAGELINK",
    "description": "Gets a permanent URL to the channel message",
@@ -393,6 +513,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "GetMessageReplyList",
    "id": "GETMESSAGEREPLYLIST",
    "description": "Gets an array of messages that are replies to the specified",
@@ -433,6 +554,7 @@
    "region": "Message management"
   },
   {
+   "nocli": false,
    "name": "GetChannelList",
    "id": "GETCHANNELLIST",
    "description": "Gets a list of available channels",
@@ -465,6 +587,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "GetChannelUserList",
    "id": "GETCHANNELUSERLIST",
    "description": "Gets a list of users in the specified channel",
@@ -497,6 +620,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "CreateChannel",
    "id": "CREATECHANNEL",
    "description": "Creates a new channel",
@@ -529,6 +653,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "ArchiveChannel",
    "id": "ARCHIVECHANNEL",
    "description": "Archives an active channel",
@@ -553,6 +678,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "GetChannel",
    "id": "GETCHANNEL",
    "description": "Gets information about the channel",
@@ -577,6 +703,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "GetChannelHistory",
    "id": "GETCHANNELHISTORY",
    "description": "Gets information about channel events",
@@ -601,6 +728,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "InviteUsersToChannel",
    "id": "INVITEUSERSTOCHANNEL",
    "description": "Adds specified users to the channel",
@@ -633,6 +761,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "KickUserFromChannel",
    "id": "KICKUSERFROMCHANNEL",
    "description": "Removes specified user from channel",
@@ -665,6 +794,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "JoinChannel",
    "id": "JOINCHANNEL",
    "description": "Adds the current bot to the channel",
@@ -689,6 +819,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "LeaveChannel",
    "id": "LEAVECHANNEL",
    "description": "Removes the current bot from the channel",
@@ -713,6 +844,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "SetChannelTopic",
    "id": "SETCHANNELTOPIC",
    "description": "Sets the channel topic",
@@ -745,6 +877,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "SetChannelGoal",
    "id": "SETCHANNELGOAL",
    "description": "Sets the channel purpose (description)",
@@ -777,6 +910,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "RenameChannel",
    "id": "RENAMECHANNEL",
    "description": "Changes the name of the channel",
@@ -809,6 +943,7 @@
    "region": "Channel management"
   },
   {
+   "nocli": false,
    "name": "OpenDialog",
    "id": "OPENDIALOG",
    "description": "Opens a new dialog with one or more users",
@@ -833,6 +968,7 @@
    "region": "Dialog management"
   },
   {
+   "nocli": false,
    "name": "CloseDialog",
    "id": "CLOSEDIALOG",
    "description": "Closes an existing dialog",
@@ -857,6 +993,7 @@
    "region": "Dialog management"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets a list of files of the bot or channel",
@@ -889,6 +1026,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Uploads a file to Slack servers",
@@ -937,6 +1075,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GetFileData",
    "id": "GETFILEDATA",
    "description": "Gets information about the file",
@@ -961,6 +1100,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "DeleteFile",
    "id": "DELETEFILE",
    "description": "Deletes a file on Slack",
@@ -985,6 +1125,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "MakeFilePublic",
    "id": "MAKEFILEPUBLIC",
    "description": "Creates a public URL for the file. Requires user token",
@@ -1009,6 +1150,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "MakeFilePrivate",
    "id": "MAKEFILEPRIVATE",
    "description": "Removes the public URL from the file. Requires user token",
@@ -1033,6 +1175,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GetExternalFileList",
    "id": "GETEXTERNALFILELIST",
    "description": "Gets a list of external files of a user or channel",
@@ -1065,6 +1208,7 @@
    "region": "External files management"
   },
   {
+   "nocli": false,
    "name": "GetExternalFile",
    "id": "GETEXTERNALFILE",
    "description": "Gets information about the external file",
@@ -1089,6 +1233,7 @@
    "region": "External files management"
   },
   {
+   "nocli": false,
    "name": "AddExternalFile",
    "id": "ADDEXTERNALFILE",
    "description": "Adds a new external file",
@@ -1121,6 +1266,7 @@
    "region": "External files management"
   },
   {
+   "nocli": false,
    "name": "SendExternalFile",
    "id": "SENDEXTERNALFILE",
    "description": "Sends an external file to a list of channels",
@@ -1153,6 +1299,7 @@
    "region": "External files management"
   },
   {
+   "nocli": false,
    "name": "DeleteExternalFile",
    "id": "DELETEEXTERNALFILE",
    "description": "Deletes an external file from Slack",
@@ -1177,6 +1324,7 @@
    "region": "External files management"
   },
   {
+   "nocli": false,
    "name": "GenerateImageBlock",
    "id": "GENERATEIMAGEBLOCK",
    "description": "Generates a block with an image to add to the message block array",

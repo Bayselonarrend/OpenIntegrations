@@ -9,13 +9,20 @@
   {
    "name": "Методы mcp",
    "methods": [
-    "config",
-    "start"
+    {
+     "name": "config",
+     "nocli": false
+    },
+    {
+     "name": "start",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "start",
    "id": "START",
    "description": "Запускает MCP сервер",
@@ -40,6 +47,7 @@
    "region": "Методы mcp"
   },
   {
+   "nocli": false,
    "name": "config",
    "id": "CONFIG",
    "description": "Возвращает шаблон конфигурации с примерами или без",

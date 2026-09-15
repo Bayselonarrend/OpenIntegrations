@@ -11,39 +11,79 @@
   {
    "name": "Authorization",
    "methods": [
-    "FormCodeRetrievalLink",
-    "GetServiceAccountToken",
-    "GetTokenByCode",
-    "RefreshToken"
+    {
+     "name": "FormCodeRetrievalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetServiceAccountToken",
+     "nocli": false
+    },
+    {
+     "name": "GetTokenByCode",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Spreadsheets management",
    "methods": [
-    "CreateSpreadsheet",
-    "EditSpreadsheetTitle",
-    "GetSpreadsheet"
+    {
+     "name": "CreateSpreadsheet",
+     "nocli": false
+    },
+    {
+     "name": "EditSpreadsheetTitle",
+     "nocli": false
+    },
+    {
+     "name": "GetSpreadsheet",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Working with sheets",
    "methods": [
-    "AddSheet",
-    "CopySheet",
-    "DeleteSheet"
+    {
+     "name": "AddSheet",
+     "nocli": false
+    },
+    {
+     "name": "CopySheet",
+     "nocli": false
+    },
+    {
+     "name": "DeleteSheet",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Data management",
    "methods": [
-    "ClearCells",
-    "GetCellValues",
-    "SetCellValues"
+    {
+     "name": "ClearCells",
+     "nocli": false
+    },
+    {
+     "name": "GetCellValues",
+     "nocli": false
+    },
+    {
+     "name": "SetCellValues",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "FormCodeRetrievalLink",
    "id": "FORMCODERETRIEVALLINK",
    "description": "Returns URL for browser authorization",
@@ -84,6 +124,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetTokenByCode",
    "id": "GETTOKENBYCODE",
    "description": "Gets token by code from browser authorization",
@@ -116,6 +157,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Updates token by Refresh token",
@@ -148,6 +190,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetServiceAccountToken",
    "id": "GETSERVICEACCOUNTTOKEN",
    "description": "Gets authorization token by service account data",
@@ -180,6 +223,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "CreateSpreadsheet",
    "id": "CREATESPREADSHEET",
    "description": "Creates a new spreadsheet",
@@ -212,6 +256,7 @@
    "region": "Spreadsheets management"
   },
   {
+   "nocli": false,
    "name": "GetSpreadsheet",
    "id": "GETSPREADSHEET",
    "description": "Gets information about the spreadsheet by ID",
@@ -236,6 +281,7 @@
    "region": "Spreadsheets management"
   },
   {
+   "nocli": false,
    "name": "EditSpreadsheetTitle",
    "id": "EDITSPREADSHEETTITLE",
    "description": "Changes the name of the existing spreadsheet",
@@ -268,6 +314,7 @@
    "region": "Spreadsheets management"
   },
   {
+   "nocli": false,
    "name": "AddSheet",
    "id": "ADDSHEET",
    "description": "Adds a new sheet to the spreadsheet",
@@ -300,6 +347,7 @@
    "region": "Working with sheets"
   },
   {
+   "nocli": false,
    "name": "DeleteSheet",
    "id": "DELETESHEET",
    "description": "Deletes a sheet from the spreadsheet",
@@ -332,6 +380,7 @@
    "region": "Working with sheets"
   },
   {
+   "nocli": false,
    "name": "CopySheet",
    "id": "COPYSHEET",
    "description": "Copies a sheet from one spreadsheet to another",
@@ -372,6 +421,7 @@
    "region": "Working with sheets"
   },
   {
+   "nocli": false,
    "name": "SetCellValues",
    "id": "SETCELLVALUES",
    "description": "Sets sheet cell values",
@@ -420,6 +470,7 @@
    "region": "Data management"
   },
   {
+   "nocli": false,
    "name": "ClearCells",
    "id": "CLEARCELLS",
    "description": "Clears the value in cells",
@@ -460,6 +511,7 @@
    "region": "Data management"
   },
   {
+   "nocli": false,
    "name": "GetCellValues",
    "id": "GETCELLVALUES",
    "description": "Gets cell values of the table",

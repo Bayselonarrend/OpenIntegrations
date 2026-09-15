@@ -9,23 +9,45 @@
   {
    "name": "Data retrieving",
    "methods": [
-    "GetSiteData",
-    "GetToken"
+    {
+     "name": "GetSiteData",
+     "nocli": false
+    },
+    {
+     "name": "GetToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File management",
    "methods": [
-    "DeleteSelectedFiles",
-    "GetFilesList",
-    "SynchronizeFolders",
-    "UploadFile",
-    "UploadFiles"
+    {
+     "name": "DeleteSelectedFiles",
+     "nocli": false
+    },
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "SynchronizeFolders",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    },
+    {
+     "name": "UploadFiles",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetSiteData",
    "id": "GETSITEDATA",
    "description": "Gets information about a site by its name or token",
@@ -50,6 +72,7 @@
    "region": "Data retrieving"
   },
   {
+   "nocli": false,
    "name": "GetToken",
    "id": "GETTOKEN",
    "description": "Receives authorization token by login and password",
@@ -74,6 +97,7 @@
    "region": "Data retrieving"
   },
   {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Upload single file to Neocities",
@@ -106,6 +130,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "UploadFiles",
    "id": "UPLOADFILES",
    "description": "Uploads multiple files to Neocities",
@@ -138,6 +163,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "DeleteSelectedFiles",
    "id": "DELETESELECTEDFILES",
    "description": "Deletes a file or multiple files from Neocities",
@@ -162,6 +188,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets a list of files with or without directory selection",
@@ -186,6 +213,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "SynchronizeFolders",
    "id": "SYNCHRONIZEFOLDERS",
    "description": "Creates a copy of the local directory at the selected path on the Neocities server",

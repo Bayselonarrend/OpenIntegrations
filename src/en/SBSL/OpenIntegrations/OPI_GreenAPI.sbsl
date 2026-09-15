@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_GreenAPI
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_GreenAPI
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_GreenAPI(Исполнитель)
@@ -18,13 +18,6 @@
     знч КомандаCLI: Строка = "greenapi"
     
     @Глобально
-    // Метод FormAccessParameters
-    // Forms the structure of basic authorization data
-    //
-    // ApiUrl           - String: API host link
-    // MediaUrl         - String: Link to host API for sending files
-    // IdInstance       - String: Unique instance number
-    // ApiTokenInstance - String: Instance access key
     метод FormAccessParameters(ApiUrl: Объект?, MediaUrl: Объект?, IdInstance: Объект?, ApiTokenInstance: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -38,10 +31,6 @@
     ;
 
     @Глобально
-    // Метод GetAccountInformation
-    // Gets account information
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод GetAccountInformation(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -52,10 +41,6 @@
     ;
 
     @Глобально
-    // Метод GetInstanceSettings
-    // Gets the current instance settings
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод GetInstanceSettings(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -66,11 +51,6 @@
     ;
 
     @Глобально
-    // Метод SetInstanceSettings
-    // Sets the instance settings
-    //
-    // Settings         - Structure Of KeyAndValue: Instance settings. See GetInstanceSettingsStructure
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод SetInstanceSettings(Settings: Объект?, AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -82,10 +62,6 @@
     ;
 
     @Глобально
-    // Метод GetInstanceStatus
-    // Gets instance status
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод GetInstanceStatus(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -96,10 +72,6 @@
     ;
 
     @Глобально
-    // Метод RebootInstance
-    // Restarts the instance
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод RebootInstance(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -110,10 +82,6 @@
     ;
 
     @Глобально
-    // Метод LogoutInstance
-    // Unlogging the instance
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод LogoutInstance(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -124,10 +92,6 @@
     ;
 
     @Глобально
-    // Метод GetQR
-    // Receives authorization QR code
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод GetQR(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -138,11 +102,6 @@
     ;
 
     @Глобально
-    // Метод GetAuthorizationCode
-    // Receives the authorization code for phone number linking
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // PhoneNumber      - String, Number: Phone number in international format without + and 00
     метод GetAuthorizationCode(AccessParameters: Объект?, PhoneNumber: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -154,11 +113,6 @@
     ;
 
     @Глобально
-    // Метод SetProfilePicture
-    // Sets a new profile picture
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // Image            - BinaryData, String: Profile picture
     метод SetProfilePicture(AccessParameters: Объект?, Image: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -170,11 +124,6 @@
     ;
 
     @Глобально
-    // Метод ArchiveChat
-    // Archives the selected chat
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat ID for archiving
     метод ArchiveChat(AccessParameters: Объект?, ChatID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -186,11 +135,6 @@
     ;
 
     @Глобально
-    // Метод UnarchiveChat
-    // Unarchives the selected chat
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat ID for dearchiving
     метод UnarchiveChat(AccessParameters: Объект?, ChatID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -202,10 +146,6 @@
     ;
 
     @Глобально
-    // Метод GetInstanceSettingsStructure
-    // Gets the structure template for instance settings
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetInstanceSettingsStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -216,11 +156,6 @@
     ;
 
     @Глобально
-    // Метод GetGroupInformation
-    // Gets group chat data
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
     метод GetGroupInformation(AccessParameters: Объект?, GroupID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -232,12 +167,6 @@
     ;
 
     @Глобально
-    // Метод CreateGroup
-    // Creates a new group chat
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // Name             - String: Name of the group chat
-    // Members          - Array Of String: Chat members array (необяз. по ум. - Empty value)
     метод CreateGroup(AccessParameters: Объект?, Name: Объект?, Members: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -250,12 +179,6 @@
     ;
 
     @Глобально
-    // Метод UpdateGroupName
-    // Changes the name of an existing group
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
-    // Name             - String: New group chat name
     метод UpdateGroupName(AccessParameters: Объект?, GroupID: Объект?, Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -268,12 +191,6 @@
     ;
 
     @Глобально
-    // Метод AddGroupMember
-    // Adds a participant to a group chat
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
-    // UserID           - String: User ID to add
     метод AddGroupMember(AccessParameters: Объект?, GroupID: Объект?, UserID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -286,12 +203,6 @@
     ;
 
     @Глобально
-    // Метод ExcludeGroupMember
-    // Excludes a member from the group
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
-    // UserID           - String: User ID to add
     метод ExcludeGroupMember(AccessParameters: Объект?, GroupID: Объект?, UserID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -304,12 +215,6 @@
     ;
 
     @Глобально
-    // Метод SetAdminRights
-    // Assigns the user as the group administrator
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
-    // UserID           - String: User ID to add
     метод SetAdminRights(AccessParameters: Объект?, GroupID: Объект?, UserID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -322,12 +227,6 @@
     ;
 
     @Глобально
-    // Метод RevokeAdminRights
-    // Revokes administrator rights from the user
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
-    // UserID           - String: User ID to add
     метод RevokeAdminRights(AccessParameters: Объект?, GroupID: Объект?, UserID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -340,11 +239,6 @@
     ;
 
     @Глобально
-    // Метод LeaveGroup
-    // Logs the current account out of group chat
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
     метод LeaveGroup(AccessParameters: Объект?, GroupID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -356,12 +250,6 @@
     ;
 
     @Глобально
-    // Метод SetGroupPicture
-    // Sets the group chat picture
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // GroupID          - String: Group chat identifier
-    // Image            - BinaryData, String: Profile picture
     метод SetGroupPicture(AccessParameters: Объект?, GroupID: Объект?, Image: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -374,13 +262,6 @@
     ;
 
     @Глобально
-    // Метод SendTextMessage
-    // Sends a text message to the selected chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // Text             - String: Message text
-    // ReplyID          - String: Replying message id if necessary (необяз. по ум. - Empty value)
     метод SendTextMessage(AccessParameters: Объект?, ChatID: Объект?, Text: Объект?, ReplyID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -394,15 +275,6 @@
     ;
 
     @Глобально
-    // Метод SendFile
-    // Sends the file to the selected chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // File             - String, BinaryData: File data or filepath
-    // FileName         - String: Name of the file with the extension
-    // Description      - String: Message text below the file (необяз. по ум. - Empty value)
-    // ReplyID          - String: Replying message id if necessary (необяз. по ум. - Empty value)
     метод SendFile(AccessParameters: Объект?, ChatID: Объект?, File: Объект?, FileName: Объект?, Description: Объект? = Неопределено, ReplyID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -418,15 +290,6 @@
     ;
 
     @Глобально
-    // Метод SendFileByURL
-    // Sends a file from web to the selected chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // FileURL          - String: File URL
-    // FileName         - String: Name of the file with the extension
-    // Description      - String: Message text below the file (необяз. по ум. - Empty value)
-    // ReplyID          - String: Replying message id if necessary (необяз. по ум. - Empty value)
     метод SendFileByURL(AccessParameters: Объект?, ChatID: Объект?, FileURL: Объект?, FileName: Объект?, Description: Объект? = Неопределено, ReplyID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -442,15 +305,6 @@
     ;
 
     @Глобально
-    // Метод SendPoll
-    // Sends a poll with answer choices to the selected chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // Text             - String: Message text
-    // Variants         - Array Of String: Answer options
-    // MultipleSelect   - Boolean: Allows to select more than one answer choice (необяз. по ум. - false)
-    // ReplyID          - String: Replying message id if necessary (необяз. по ум. - Empty value)
     метод SendPoll(AccessParameters: Объект?, ChatID: Объект?, Text: Объект?, Variants: Объект?, MultipleSelect: Объект? = Неопределено, ReplyID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -466,13 +320,6 @@
     ;
 
     @Глобально
-    // Метод SendLocation
-    // Sends location data to the specified chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // Location         - Structure Of KeyAndValue: Location description. See GetLocationDescription
-    // ReplyID          - String: Replying message id if necessary (необяз. по ум. - Empty value)
     метод SendLocation(AccessParameters: Объект?, ChatID: Объект?, Location: Объект?, ReplyID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -486,13 +333,6 @@
     ;
 
     @Глобально
-    // Метод SendContact
-    // Sends a contact with a phone number to the selected chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // Contact          - Structure Of KeyAndValue: Contact description. See GetContactDescription
-    // ReplyID          - String: Replying message id if necessary (необяз. по ум. - Empty value)
     метод SendContact(AccessParameters: Объект?, ChatID: Объект?, Contact: Объект?, ReplyID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -506,13 +346,6 @@
     ;
 
     @Глобально
-    // Метод ForwardMessages
-    // Sends messages from one chat room to another
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // From             - String: Message source chat ID
-    // Target           - String: Message receiver chat ID
-    // Messages         - String, Array of String: Messages or a single message to be sent
     метод ForwardMessages(AccessParameters: Объект?, From: Объект?, Target: Объект?, Messages: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -526,13 +359,6 @@
     ;
 
     @Глобально
-    // Метод EditMessageText
-    // Changes the text of the message
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // MessageID        - String: Message identifier
-    // Text             - String: New message text
     метод EditMessageText(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект?, Text: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -546,13 +372,6 @@
     ;
 
     @Глобально
-    // Метод DeleteMessage
-    // Deletes a message in the selected chat room
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // MessageID        - String: Message identifier
-    // ForSenderOnly    - Boolean: Delete for sender only (необяз. по ум. - false)
     метод DeleteMessage(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект?, ForSenderOnly: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -566,14 +385,6 @@
     ;
 
     @Глобально
-    // Метод GetContactDescription
-    // Gets the contact description for the SendContact function
-    //
-    // Phone      - Number: Phone number in international format without a plus sign
-    // Name       - String: Contact name (необяз. по ум. - Empty value)
-    // LastName   - String: Contact last name (необяз. по ум. - Empty value)
-    // Patronymic - String: Contacts patronymic or middle name (необяз. по ум. - Empty value)
-    // Company    - String: Name of the contact company (необяз. по ум. - Empty value)
     метод GetContactDescription(Phone: Объект?, Name: Объект? = Неопределено, LastName: Объект? = Неопределено, Patronymic: Объект? = Неопределено, Company: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -588,13 +399,6 @@
     ;
 
     @Глобально
-    // Метод GetLocationDescription
-    // Gets the description of the location to send with SendLocation method
-    //
-    // Latitude  - Number: Geographic latitude
-    // Longitude - Number: Geographic longitude
-    // Address   - String: Location address (необяз. по ум. - Empty value)
-    // Name      - String: Location name (необяз. по ум. - Empty value)
     метод GetLocationDescription(Latitude: Объект?, Longitude: Объект?, Address: Объект? = Неопределено, Name: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -608,11 +412,6 @@
     ;
 
     @Глобально
-    // Метод GetNotification
-    // Receives one notification from the queue
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // Timeout          - Number: Timeout for waiting for new messages when the queue is empty (необяз. по ум. - 5)
     метод GetNotification(AccessParameters: Объект?, Timeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -624,11 +423,6 @@
     ;
 
     @Глобально
-    // Метод DeleteNotificationFromQueue
-    // Deletes the notification from the queue after successful receipt
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ReceiptID        - String, Number: Receipt identifier from the GetNotification method
     метод DeleteNotificationFromQueue(AccessParameters: Объект?, ReceiptID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -640,12 +434,6 @@
     ;
 
     @Глобально
-    // Метод DownloadMessageFile
-    // Gets a link to download a file from an incoming message
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // MessageID        - String: Identifier of the message with the file
     метод DownloadMessageFile(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -658,12 +446,6 @@
     ;
 
     @Глобально
-    // Метод SetReadMark
-    // Sets the Read mark for a message or all chat messages
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // MessageID        - String: Message ID. All messages, if not filled in (необяз. по ум. - Empty value)
     метод SetReadMark(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -676,10 +458,6 @@
     ;
 
     @Глобально
-    // Метод GetMessageQueue
-    // Gets the list of messages in the queue to be sent
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод GetMessageQueue(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -690,10 +468,6 @@
     ;
 
     @Глобально
-    // Метод ClearMessageQueue
-    // Clears the queue of messages to be sent
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
     метод ClearMessageQueue(AccessParameters: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -704,12 +478,6 @@
     ;
 
     @Глобально
-    // Метод GetChatHistory
-    // Retrieves the chat message history
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // Count            - Number: Number of messages to receive (необяз. по ум. - 100)
     метод GetChatHistory(AccessParameters: Объект?, ChatID: Объект?, Count: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -722,12 +490,6 @@
     ;
 
     @Глобально
-    // Метод GetMessage
-    // Gets information about the chat message by ID
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // ChatID           - String: Chat identifier
-    // MessageID        - String: Message identifier
     метод GetMessage(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -740,11 +502,6 @@
     ;
 
     @Глобально
-    // Метод GetIncomingMessageLog
-    // Gets the list of incoming messages of the instance for the specified period
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // Period           - Number: Time in minutes for which messages need to be received (необяз. по ум. - 1440)
     метод GetIncomingMessageLog(AccessParameters: Объект?, Period: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -756,11 +513,6 @@
     ;
 
     @Глобально
-    // Метод GetOutgoingMessageLog
-    // Gets the list of outgoing messages of the instance for the specified period
-    //
-    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
-    // Period           - Number: Time in minutes for which messages need to be received (необяз. по ум. - 1440)
     метод GetOutgoingMessageLog(AccessParameters: Объект?, Period: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

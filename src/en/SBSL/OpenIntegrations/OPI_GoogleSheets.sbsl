@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_GoogleSheets
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_GoogleSheets
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_GoogleSheets(Исполнитель)
@@ -18,13 +18,6 @@
     знч КомандаCLI: Строка = "gsheets"
     
     @Глобально
-    // Метод FormCodeRetrievalLink
-    // Returns URL for browser authorization
-    //
-    // ClientID - String: Client ID
-    // Calendar - Boolean: Calendar methods permission (необяз. по ум. - true)
-    // Drive    - Boolean: Drive methods permission (необяз. по ум. - true)
-    // Sheets   - Boolean: Sheets methods permission (необяз. по ум. - true)
     метод FormCodeRetrievalLink(ClientID: Объект?, Calendar: Объект? = Неопределено, Drive: Объект? = Неопределено, Sheets: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -38,12 +31,6 @@
     ;
 
     @Глобально
-    // Метод GetTokenByCode
-    // Gets token by code from browser authorization
-    //
-    // ClientID     - String: Client ID
-    // ClientSecret - String: Client secret
-    // Code         - String: Code from browser
     метод GetTokenByCode(ClientID: Объект?, ClientSecret: Объект?, Code: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -56,12 +43,6 @@
     ;
 
     @Глобально
-    // Метод RefreshToken
-    // Updates token by Refresh token
-    //
-    // ClientID     - String: Client ID
-    // ClientSecret - String: Client secret
-    // RefreshToken - String: Refresh token
     метод RefreshToken(ClientID: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -74,12 +55,6 @@
     ;
 
     @Глобально
-    // Метод GetServiceAccountToken
-    // Gets authorization token by service account data
-    //
-    // Data   - Arbitrary: JSON authorization data as a file, collection or binary data
-    // Scope  - Array Of String: Scope or array of scopes
-    // Expire - Number: Token lifetime in seconds (необяз. по ум. - 3600)
     метод GetServiceAccountToken(Data: Объект?, Scope: Объект?, Expire: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -92,12 +67,6 @@
     ;
 
     @Глобально
-    // Метод CreateSpreadsheet
-    // Creates a new spreadsheet
-    //
-    // Token             - String: Token
-    // Name              - String: Name
-    // ArrayOfSheetNames - Array of String: Array of names to add new sheets to the spreadsheet
     метод CreateSpreadsheet(Token: Объект?, Name: Объект?, ArrayOfSheetNames: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -110,11 +79,6 @@
     ;
 
     @Глобально
-    // Метод GetSpreadsheet
-    // Gets information about the spreadsheet by ID
-    //
-    // Token      - String: Token
-    // Identifier - String: Spreadsheet identifier
     метод GetSpreadsheet(Token: Объект?, Identifier: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -126,12 +90,6 @@
     ;
 
     @Глобально
-    // Метод EditSpreadsheetTitle
-    // Changes the name of the existing spreadsheet
-    //
-    // Token       - String: Token
-    // Spreadsheet - String: SpreadsheetID
-    // Name        - String: New name
     метод EditSpreadsheetTitle(Token: Объект?, Spreadsheet: Объект?, Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -144,12 +102,6 @@
     ;
 
     @Глобально
-    // Метод AddSheet
-    // Adds a new sheet to the spreadsheet
-    //
-    // Token       - String: Token
-    // Spreadsheet - String: Spreadsheet identifier
-    // Name        - String: NewSheetName
     метод AddSheet(Token: Объект?, Spreadsheet: Объект?, Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -162,12 +114,6 @@
     ;
 
     @Глобально
-    // Метод DeleteSheet
-    // Deletes a sheet from the spreadsheet
-    //
-    // Token       - String: Token
-    // Spreadsheet - String: Spreadsheet identifier
-    // Sheet       - String: IdentifierOfSheetToDelete
     метод DeleteSheet(Token: Объект?, Spreadsheet: Объект?, Sheet: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -180,13 +126,6 @@
     ;
 
     @Глобально
-    // Метод CopySheet
-    // Copies a sheet from one spreadsheet to another
-    //
-    // Token  - String: Token
-    // From   - String: Source spreadsheet ID
-    // Target - String: Destination spreadsheet ID
-    // Sheet  - String: CopiedSheetID
     метод CopySheet(Token: Объект?, From: Объект?, Target: Объект?, Sheet: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -200,14 +139,6 @@
     ;
 
     @Глобально
-    // Метод SetCellValues
-    // Sets sheet cell values
-    //
-    // Token          - String: Token
-    // Spreadsheet    - String: SpreadsheetID
-    // ValueMapping   - Map Of KeyAndValue: Fill data where the key is the cell name like A1
-    // Sheet          - String: Sheet name (first sheet by default) (необяз. по ум. - Empty value)
-    // MajorDimension - String: Main dimension when filling the array range (необяз. по ум. - COLUMNS)
     метод SetCellValues(Token: Объект?, Spreadsheet: Объект?, ValueMapping: Объект?, Sheet: Объект? = Неопределено, MajorDimension: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -222,13 +153,6 @@
     ;
 
     @Глобально
-    // Метод ClearCells
-    // Clears the value in cells
-    //
-    // Token       - String: Token
-    // Spreadsheet - String: SpreadsheetID
-    // CellsArray  - Array of String: Array of cells like A1 to be cleared
-    // Sheet       - String: Sheet name (first sheet by default) (необяз. по ум. - Empty value)
     метод ClearCells(Token: Объект?, Spreadsheet: Объект?, CellsArray: Объект?, Sheet: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -242,13 +166,6 @@
     ;
 
     @Глобально
-    // Метод GetCellValues
-    // Gets cell values of the table
-    //
-    // Token       - String: Token
-    // Spreadsheet - String: SpreadsheetID
-    // CellsArray  - Array of String: Array of A1 type cells to get (whole sheet if not filled) (необяз. по ум. - Empty value)
-    // Sheet       - String: Sheet name (first sheet by default) (необяз. по ум. - Empty value)
     метод GetCellValues(Token: Объект?, Spreadsheet: Объект?, CellsArray: Объект? = Неопределено, Sheet: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

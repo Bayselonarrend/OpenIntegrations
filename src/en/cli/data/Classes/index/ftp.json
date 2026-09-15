@@ -9,40 +9,167 @@
   {
    "name": "Common methods",
    "methods": [
-    "ExecuteArbitraryCommand",
-    "ExecuteCustomCommand",
-    "GetConnectionConfiguration",
-    "GetConnectionSettings",
-    "GetObjectSize",
-    "GetProtocolFeatureList",
-    "GetProxySettings",
-    "GetTlsSettings",
-    "GetWelcomeMessage",
-    "Ping",
-    "UpdatePath"
+    {
+     "name": "ExecuteArbitraryCommand",
+     "nocli": false
+    },
+    {
+     "name": "ExecuteCustomCommand",
+     "nocli": false
+    },
+    {
+     "name": "GetConnectionConfiguration",
+     "nocli": false
+    },
+    {
+     "name": "GetConnectionSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectSize",
+     "nocli": false
+    },
+    {
+     "name": "GetProtocolFeatureList",
+     "nocli": false
+    },
+    {
+     "name": "GetProxySettings",
+     "nocli": false
+    },
+    {
+     "name": "GetTlsSettings",
+     "nocli": false
+    },
+    {
+     "name": "GetWelcomeMessage",
+     "nocli": false
+    },
+    {
+     "name": "Ping",
+     "nocli": false
+    },
+    {
+     "name": "UpdatePath",
+     "nocli": false
+    },
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsConnector",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "Directory management",
    "methods": [
-    "ClearDirectory",
-    "CreateNewDirectory",
-    "DeleteDirectory",
-    "GetCurrentDirectory",
-    "ListObjects"
+    {
+     "name": "ClearDirectory",
+     "nocli": false
+    },
+    {
+     "name": "CreateNewDirectory",
+     "nocli": false
+    },
+    {
+     "name": "DeleteDirectory",
+     "nocli": false
+    },
+    {
+     "name": "GetCurrentDirectory",
+     "nocli": false
+    },
+    {
+     "name": "ListObjects",
+     "nocli": false
+    },
+    {
+     "name": "ChangeCurrentDirectory",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "File management",
    "methods": [
-    "DeleteFile",
-    "SaveFile",
-    "UploadFile"
+    {
+     "name": "DeleteFile",
+     "nocli": false
+    },
+    {
+     "name": "SaveFile",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    },
+    {
+     "name": "GetFileData",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Creates an FTP connection with the specified settings",
+   "params": [
+    {
+     "title": "FTPSettings",
+     "name": "--set",
+     "types": "Structure Of KeyAndValue",
+     "description": "FTP settings. See GetConnectionSettings",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Proxy",
+     "name": "--proxy",
+     "types": "Structure Of KeyAndValue",
+     "description": "Proxy settings, if required. See GetProxySettings",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "title": "Tls",
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetConnectionConfiguration",
    "id": "GETCONNECTIONCONFIGURATION",
    "description": "Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions",
@@ -75,6 +202,24 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Explicitly closes the passed connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetWelcomeMessage",
    "id": "GETWELCOMEMESSAGE",
    "description": "Receives the FTP servers welcome message",
@@ -91,6 +236,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetProtocolFeatureList",
    "id": "GETPROTOCOLFEATURELIST",
    "description": "Gets a list of FTP protocol features supported by the server",
@@ -107,6 +253,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "Ping",
    "id": "PING",
    "description": "Checks the connection activity and resets the timeout until its automatic closure",
@@ -123,6 +270,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "ExecuteCustomCommand",
    "id": "EXECUTECUSTOMCOMMAND",
    "description": "Executes a specific (SITE) server command and returns the response",
@@ -147,6 +295,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "ExecuteArbitraryCommand",
    "id": "EXECUTEARBITRARYCOMMAND",
    "description": "Sends an arbitrary text request to the server for processing",
@@ -171,6 +320,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetObjectSize",
    "id": "GETOBJECTSIZE",
    "description": "Get the size of a file or directory if it exists",
@@ -195,6 +345,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "UpdatePath",
    "id": "UPDATEPATH",
    "description": "Changes the object's path to the specified one",
@@ -227,6 +378,24 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "IsConnector",
+   "id": "ISCONNECTOR",
+   "description": "Checks that the value is an AddIn object for working with FTP",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetConnectionSettings",
    "id": "GETCONNECTIONSETTINGS",
    "description": "Creates a structure of FTP connection settings",
@@ -299,6 +468,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetProxySettings",
    "id": "GETPROXYSETTINGS",
    "description": "Creates a structure of proxy server settings for the connection",
@@ -347,6 +517,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetTlsSettings",
    "id": "GETTLSSETTINGS",
    "description": "Forms settings for using TLS",
@@ -371,6 +542,73 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "ListObjects",
    "id": "LISTOBJECTS",
    "description": "Gets information about the contents of a directory at the specified path",
@@ -403,6 +641,7 @@
    "region": "Directory management"
   },
   {
+   "nocli": false,
    "name": "CreateNewDirectory",
    "id": "CREATENEWDIRECTORY",
    "description": "Creates a directory at the specified path",
@@ -427,6 +666,7 @@
    "region": "Directory management"
   },
   {
+   "nocli": false,
    "name": "DeleteDirectory",
    "id": "DELETEDIRECTORY",
    "description": "Deletes an existing directory",
@@ -451,6 +691,7 @@
    "region": "Directory management"
   },
   {
+   "nocli": false,
    "name": "ClearDirectory",
    "id": "CLEARDIRECTORY",
    "description": "Deletes all objects in the selected directory",
@@ -475,6 +716,7 @@
    "region": "Directory management"
   },
   {
+   "nocli": false,
    "name": "GetCurrentDirectory",
    "id": "GETCURRENTDIRECTORY",
    "description": "Gets the current directory from which relative paths are calculated",
@@ -491,6 +733,32 @@
    "region": "Directory management"
   },
   {
+   "nocli": true,
+   "name": "ChangeCurrentDirectory",
+   "id": "CHANGECURRENTDIRECTORY",
+   "description": "Changes the current directory from which relative paths are calculated",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Existing connection or connection configuration",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Path",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to new directory",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Directory management"
+  },
+  {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Uploads a file from disk or binary data to the FTP server",
@@ -523,6 +791,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "DeleteFile",
    "id": "DELETEFILE",
    "description": "Delete file from server",
@@ -547,6 +816,7 @@
    "region": "File management"
   },
   {
+   "nocli": false,
    "name": "SaveFile",
    "id": "SAVEFILE",
    "description": "Saves the file from the server to the specified path",
@@ -574,6 +844,31 @@
      "description": "Path to save file on disk",
      "default": null,
      "short": "-f"
+    }
+   ],
+   "region": "File management"
+  },
+  {
+   "nocli": true,
+   "name": "GetFileData",
+   "id": "GETFILEDATA",
+   "description": "Gets file from server as binary data",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Existing connection or connection configuration",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Path",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file on server",
+     "default": null,
+     "short": "-p"
     }
    ],
    "region": "File management"

@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_YandexID
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_YandexID
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_YandexID(Исполнитель)
@@ -18,10 +18,6 @@
     знч КомандаCLI: Строка = "yandex"
     
     @Глобально
-    // Метод GetConfirmationCode
-    // Gets the confirmation code and the address of the page where it needs to be entered
-    //
-    // ClientId - String: Client id
     метод GetConfirmationCode(ClientId: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -32,12 +28,6 @@
     ;
 
     @Глобально
-    // Метод ConvertCodeToToken
-    // Converts the code to a token after entering the code when executing GetConfirmationCode
-    //
-    // ClientId     - String: Client id
-    // ClientSecret - String: Client secret
-    // DeviceCode   - String: device_code from GetConfirmationCode()
     метод ConvertCodeToToken(ClientId: Объект?, ClientSecret: Объект?, DeviceCode: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,12 +40,6 @@
     ;
 
     @Глобально
-    // Метод RefreshToken
-    // Updates token by Refresh token
-    //
-    // ClientId     - String: Client id
-    // ClientSecret - String: Client secret
-    // RefreshToken - String: Refresh token
     метод RefreshToken(ClientId: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

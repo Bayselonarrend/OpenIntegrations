@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_Bitrix24
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_Bitrix24
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_Bitrix24(Исполнитель)
@@ -18,11 +18,6 @@
     знч КомандаCLI: Строка = "bitrix24"
     
     @Глобально
-    // Метод GetAppAuthLink
-    // Forms a link for authorization via the browser
-    //
-    // Domain   - String: Current Bitrix URL (like 'portal.bitrix24.com')
-    // ClientID - String: Client ID from app settings
     метод GetAppAuthLink(Domain: Объект?, ClientID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -34,12 +29,6 @@
     ;
 
     @Глобально
-    // Метод GetToken
-    // Get token by auth code
-    //
-    // ClientID     - String: Client ID from app settings
-    // ClientSecret - String: Client secret from app settings
-    // Code         - String: Code from browser auth page
     метод GetToken(ClientID: Объект?, ClientSecret: Объект?, Code: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -52,12 +41,6 @@
     ;
 
     @Глобально
-    // Метод RefreshToken
-    // Update token by refresh token
-    //
-    // ClientID     - String: Client ID from app settings
-    // ClientSecret - String: Client secret from app settings
-    // Refresh      - String: Refresh token
     метод RefreshToken(ClientID: Объект?, ClientSecret: Объект?, Refresh: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -70,11 +53,6 @@
     ;
 
     @Глобально
-    // Метод ServerTime
-    // Get current server time
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ServerTime(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -86,16 +64,6 @@
     ;
 
     @Глобально
-    // Метод CreatePost
-    // Create a new post at news feed
-    //
-    // URL        - String: URL of webhook or a Bitrix24 domain, when token used
-    // Text       - String: Text of post
-    // Visibility - String: Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (необяз. по ум. - UA)
-    // Files      - Map Of KeyAndValue: Key > file name, value > path or binary data (необяз. по ум. - Empty value)
-    // Title      - String: Post title (необяз. по ум. - Empty value)
-    // Important  - Boolean: Mark post as important (необяз. по ум. - false)
-    // Token      - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreatePost(URL: Объект?, Text: Объект?, Visibility: Объект? = Неопределено, Files: Объект? = Неопределено, Title: Объект? = Неопределено, Important: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -112,16 +80,6 @@
     ;
 
     @Глобально
-    // Метод UpdatePost
-    // Change post data
-    //
-    // URL        - String: URL of webhook or a Bitrix24 domain, when token used
-    // PostID     - String, Number: Post ID
-    // Text       - String: Text of post
-    // Visibility - String: Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (необяз. по ум. - UA)
-    // Files      - Map Of KeyAndValue: Key > file name, value > path or binary data (необяз. по ум. - Empty value)
-    // Title      - String: Post title (необяз. по ум. - Empty value)
-    // Token      - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdatePost(URL: Объект?, PostID: Объект?, Text: Объект?, Visibility: Объект? = Неопределено, Files: Объект? = Неопределено, Title: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -138,12 +96,6 @@
     ;
 
     @Глобально
-    // Метод DeletePost
-    // Remove post from a news feed
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // PostID - String, Number: Id of post to remove
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeletePost(URL: Объект?, PostID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -156,12 +108,6 @@
     ;
 
     @Глобально
-    // Метод GetImportantPostViewers
-    // Return list of important post viewers ids
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // PostID - String, Number: Id of important post
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetImportantPostViewers(URL: Объект?, PostID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -174,13 +120,6 @@
     ;
 
     @Глобально
-    // Метод GetPosts
-    // Gen post or array of post with ID or rights selection
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // PostID - String, Number: Id of important post (необяз. по ум. - Empty value)
-    // Filter - String: Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group (необяз. по ум. - UA)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetPosts(URL: Объект?, PostID: Объект? = Неопределено, Filter: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -194,13 +133,6 @@
     ;
 
     @Глобально
-    // Метод AddPostComment
-    // Adds a comment to the post
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // PostID - String, Number: Post ID
-    // Text   - String: Comment text
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddPostComment(URL: Объект?, PostID: Объект?, Text: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -214,13 +146,6 @@
     ;
 
     @Глобально
-    // Метод AddPostRecipients
-    // Adds new groups or users to the recipients
-    //
-    // URL        - String: URL of webhook or a Bitrix24 domain, when token used
-    // PostID     - String, Number: Post ID
-    // Visibility - String: Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group
-    // Token      - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddPostRecipients(URL: Объект?, PostID: Объект?, Visibility: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -234,12 +159,6 @@
     ;
 
     @Глобально
-    // Метод GetTask
-    // Get task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -252,14 +171,6 @@
     ;
 
     @Глобально
-    // Метод GetTasksList
-    // Get tasks list (50 at one response max) with or without filtering
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // Filter - Structure of KeyAndValue: Lead filter structure. See GetLeadFilterStructure (необяз. по ум. - Empty value)
-    // Indent - Number, String: Offset of tasks list (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
-    // Fields - String, Array of String: A list of task fields in the response. All non calculable by default (необяз. по ум. - Empty value)
     метод GetTasksList(URL: Объект?, Filter: Объект? = Неопределено, Indent: Объект? = Неопределено, Token: Объект? = Неопределено, Fields: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -274,12 +185,6 @@
     ;
 
     @Глобально
-    // Метод CreateTask
-    // Create new task by fields structure
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldsStructure - Structure Of KeyAndValue: Task fields structure. See GetTaskFieldsStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateTask(URL: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -292,13 +197,6 @@
     ;
 
     @Глобально
-    // Метод UpdateTask
-    // Update a task
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID          - Number, String: Task ID
-    // FieldsStructure - Structure Of KeyAndValue: Task fields structure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateTask(URL: Объект?, TaskID: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -312,12 +210,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTask
-    // Delete task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -330,13 +222,6 @@
     ;
 
     @Глобально
-    // Метод AttachFileToTopic
-    // Attaches a file to the selected task
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // FileID - Number, String: File ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AttachFileToTopic(URL: Объект?, TaskID: Объект?, FileID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -350,12 +235,6 @@
     ;
 
     @Глобально
-    // Метод ApproveTask
-    // Approve task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ApproveTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -368,12 +247,6 @@
     ;
 
     @Глобально
-    // Метод DisapproveTask
-    // Disapprove task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DisapproveTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -386,12 +259,6 @@
     ;
 
     @Глобально
-    // Метод CompleteTask
-    // Complete task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CompleteTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -404,12 +271,6 @@
     ;
 
     @Глобально
-    // Метод RenewTask
-    // Returns a task to work by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RenewTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -422,12 +283,6 @@
     ;
 
     @Глобально
-    // Метод DeferTask
-    // Defer task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeferTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -440,12 +295,6 @@
     ;
 
     @Глобально
-    // Метод PauseTask
-    // Pause a task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод PauseTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -458,12 +307,6 @@
     ;
 
     @Глобально
-    // Метод StartTask
-    // Start a task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод StartTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -476,12 +319,6 @@
     ;
 
     @Глобально
-    // Метод StartWatchingTask
-    // Start watching a task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод StartWatchingTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -494,12 +331,6 @@
     ;
 
     @Глобально
-    // Метод StopWatchingTask
-    // Stop watching a task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод StopWatchingTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -512,13 +343,6 @@
     ;
 
     @Глобально
-    // Метод DelegateTask
-    // Delegate task to another user
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // UserID - Number, String: ID of responsible user
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DelegateTask(URL: Объект?, TaskID: Объект?, UserID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -532,12 +356,6 @@
     ;
 
     @Глобально
-    // Метод AddTaskToFavorites
-    // Add task to favorites list
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddTaskToFavorites(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -550,12 +368,6 @@
     ;
 
     @Глобально
-    // Метод RemoveTaskFromFavorites
-    // Delete task from favorites list
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RemoveTaskFromFavorites(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -568,12 +380,6 @@
     ;
 
     @Глобально
-    // Метод GetTaskHistory
-    // Get history of task changing
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTaskHistory(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -586,13 +392,6 @@
     ;
 
     @Глобально
-    // Метод CheckTaskAccesses
-    // Checks the availability of the task for users
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Users  - Array of String: User IDs for access checking (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CheckTaskAccesses(URL: Объект?, TaskID: Объект?, Users: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -606,12 +405,6 @@
     ;
 
     @Глобально
-    // Метод MuteTask
-    // Mute task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MuteTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -624,12 +417,6 @@
     ;
 
     @Глобально
-    // Метод UnmuteTask
-    // Unmute task by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UnmuteTask(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -642,14 +429,6 @@
     ;
 
     @Глобально
-    // Метод CreateTasksDependencies
-    // Creates the dependency of one task to another
-    //
-    // URL           - String: URL of webhook or a Bitrix24 domain, when token used
-    // FromID        - String, Number: From task ID
-    // DestinationID - String, Number: To task ID
-    // LinkType      - String, Number: Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish
-    // Token         - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateTasksDependencies(URL: Объект?, FromID: Объект?, DestinationID: Объект?, LinkType: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -664,14 +443,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTasksDependencies
-    // Removes the dependency of one task to another
-    //
-    // URL           - String: URL of webhook or a Bitrix24 domain, when token used
-    // FromID        - String, Number: From task ID
-    // DestinationID - String, Number: To task ID
-    // LinkType      - String, Number: Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish
-    // Token         - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteTasksDependencies(URL: Объект?, FromID: Объект?, DestinationID: Объект?, LinkType: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -686,11 +457,6 @@
     ;
 
     @Глобально
-    // Метод GetDailyPlan
-    // Gets the task plan for the current users day
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetDailyPlan(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -702,11 +468,6 @@
     ;
 
     @Глобально
-    // Метод GetTaskFieldsStructure
-    // Gets a structure with a description of the fields for creating a task
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTaskFieldsStructure(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -718,11 +479,6 @@
     ;
 
     @Глобально
-    // Метод GetTasksFilterStructure
-    // Return filter structure for GetTasksList
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns the filter fields as a map (необяз. по ум. - false)
     метод GetTasksFilterStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -734,11 +490,6 @@
     ;
 
     @Глобально
-    // Метод GetCustomTaskFieldsList
-    // Gets list of custom task fields
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCustomTaskFieldsList(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -750,16 +501,6 @@
     ;
 
     @Глобально
-    // Метод AddCustomTaskField
-    // Adds a new custom field to be added to the task
-    //
-    // URL        - String: URL of webhook or a Bitrix24 domain, when token used
-    // Type       - String: Field type: string, double, date, boolean
-    // Name       - String: Text identifier (name) of the field
-    // ExternalID - String: Text identifier for external integration (необяз. по ум. - Empty value)
-    // Title      - String: Field title (необяз. по ум. - Empty value)
-    // Signature  - Structure Of KeyAndValue: Form label. Key: en or ru, Value: Lable text (необяз. по ум. - Empty value)
-    // Token      - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddCustomTaskField(URL: Объект?, Type: Объект?, Name: Объект?, ExternalID: Объект? = Неопределено, Title: Объект? = Неопределено, Signature: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -776,15 +517,6 @@
     ;
 
     @Глобально
-    // Метод UpdateCustomTaskField
-    // Updates a custom task field data
-    //
-    // URL        - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldID    - String, Number: Field ID for updating
-    // ExternalID - String: Text identifier for external integration (необяз. по ум. - Empty value)
-    // Title      - String: Field title (необяз. по ум. - Empty value)
-    // Signature  - Structure Of KeyAndValue: Form label. Key: en or ru, Value: Lable text (необяз. по ум. - Empty value)
-    // Token      - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateCustomTaskField(URL: Объект?, FieldID: Объект?, ExternalID: Объект? = Неопределено, Title: Объект? = Неопределено, Signature: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -800,12 +532,6 @@
     ;
 
     @Глобально
-    // Метод GetCustomTaskField
-    // Get custom task field data
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldID - String, Number: Field ID for retrieval
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCustomTaskField(URL: Объект?, FieldID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -818,12 +544,6 @@
     ;
 
     @Глобально
-    // Метод DeleteCustomTaskField
-    // Deletes a custom task field
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldID - String, Number: Field ID for deletion
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteCustomTaskField(URL: Объект?, FieldID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -836,14 +556,6 @@
     ;
 
     @Глобально
-    // Метод AddTasksChecklistElement
-    // Adds new element of tasks checklist
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // Text      - String: Text (title) of checklist element
-    // Completed - Boolean: Mark as completed (необяз. по ум. - false)
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddTasksChecklistElement(URL: Объект?, TaskID: Объект?, Text: Объект?, Completed: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -858,14 +570,6 @@
     ;
 
     @Глобально
-    // Метод UpdateTasksChecklistElement
-    // Updates text of element of tasks checklist
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // ElementID - Number, String: Checklist element ID
-    // Text      - String: Text (title) of checklist element
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateTasksChecklistElement(URL: Объект?, TaskID: Объект?, ElementID: Объект?, Text: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -880,13 +584,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTasksChecklistElement
-    // Deletes element from tasks checklist
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // ElementID - Number, String: ID of deleted element
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteTasksChecklistElement(URL: Объект?, TaskID: Объект?, ElementID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -900,12 +597,6 @@
     ;
 
     @Глобально
-    // Метод GetTasksChecklist
-    // Gets the list of elements on the task checklist
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTasksChecklist(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -918,13 +609,6 @@
     ;
 
     @Глобально
-    // Метод GetTasksChecklistElement
-    // Gets tasks checklist element by ID
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // ElementID - Number, String: Element ID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTasksChecklistElement(URL: Объект?, TaskID: Объект?, ElementID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -938,13 +622,6 @@
     ;
 
     @Глобально
-    // Метод CompleteTasksChecklistElement
-    // Mark an element as completed
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // ElementID - Number, String: Element ID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CompleteTasksChecklistElement(URL: Объект?, TaskID: Объект?, ElementID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -958,13 +635,6 @@
     ;
 
     @Глобально
-    // Метод RenewTasksChecklistElement
-    // Unmark an element as completed
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // ElementID - Number, String: Element ID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RenewTasksChecklistElement(URL: Объект?, TaskID: Объект?, ElementID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -978,12 +648,6 @@
     ;
 
     @Глобально
-    // Метод GetTaskCommentsList
-    // Get user comments list for a task
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTaskCommentsList(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -996,13 +660,6 @@
     ;
 
     @Глобально
-    // Метод GetTaskComment
-    // Gets task comment data by ID
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // CommentID - Number, String: CommentID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTaskComment(URL: Объект?, TaskID: Объект?, CommentID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1016,13 +673,6 @@
     ;
 
     @Глобально
-    // Метод AddTaskComment
-    // Create new comment to the task
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Text   - String: Comment text
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddTaskComment(URL: Объект?, TaskID: Объект?, Text: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1036,14 +686,6 @@
     ;
 
     @Глобально
-    // Метод UpdateTaskComment
-    // Changes task comment text
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // CommentID - Number, String: CommentID
-    // Text      - String: Comment text
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateTaskComment(URL: Объект?, TaskID: Объект?, CommentID: Объект?, Text: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1058,13 +700,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTaskComment
-    // Delete task comment by ID
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - Number, String: Task ID
-    // CommentID - Number, String: ID of comment to remove
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteTaskComment(URL: Объект?, TaskID: Объект?, CommentID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1078,12 +713,6 @@
     ;
 
     @Глобально
-    // Метод GetResultsList
-    // Gets results list for task
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - Number, String: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetResultsList(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1096,12 +725,6 @@
     ;
 
     @Глобально
-    // Метод CreateResultFromComment
-    // Create task result from comment
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // CommentID - Number, String: CommentID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateResultFromComment(URL: Объект?, CommentID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1114,12 +737,6 @@
     ;
 
     @Глобально
-    // Метод DeleteResultFromComment
-    // Deletes task result, created from a comment
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // CommentID - Number, String: CommentID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteResultFromComment(URL: Объект?, CommentID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1132,10 +749,6 @@
     ;
 
     @Глобально
-    // Метод GetCommentStructure
-    // Get comment fields structure
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetCommentStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1146,16 +759,6 @@
     ;
 
     @Глобально
-    // Метод AddKanbanStage
-    // Add new stage of kanban or My Plan
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // Name        - String: New stage name
-    // Color       - String: HEX of new stage color (необяз. по ум. - FFD800)
-    // PrevStageID - String, Number: ID of the stage after which a new stage should be inserted (at the beginning by default.) (необяз. по ум. - Empty value)
-    // EntityID    - String, Number: ID of kanban owner (group or user) (необяз. по ум. - Empty value)
-    // AsAdmin     - Boolean: Allows you to add stages without checking permissions (for administrators) (необяз. по ум. - false)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddKanbanStage(URL: Объект?, Name: Объект?, Color: Объект? = Неопределено, PrevStageID: Объект? = Неопределено, EntityID: Объект? = Неопределено, AsAdmin: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1172,16 +775,6 @@
     ;
 
     @Глобально
-    // Метод UpdateKanbansStage
-    // Changes the properties of the existing kanban or My plan stage
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // Name        - String: New stages name
-    // StageID     - String, Number: Stage ID for change
-    // Color       - String: HEX of new stage color (необяз. по ум. - Empty value)
-    // PrevStageID - String, Number: Stage ID, after which the selected stage should be inserted (необяз. по ум. - Empty value)
-    // AsAdmin     - Boolean: Allows you to add stages without checking permissions (for administrators) (необяз. по ум. - false)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateKanbansStage(URL: Объект?, Name: Объект?, StageID: Объект?, Color: Объект? = Неопределено, PrevStageID: Объект? = Неопределено, AsAdmin: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1198,13 +791,6 @@
     ;
 
     @Глобально
-    // Метод DeleteKanbanStage
-    // Removes a kanban (My Plan) stage, provided there are no tasks in it
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // StageID - String, Number: ID of stage to dele
-    // AsAdmin - Boolean: Allows you to add stages without checking permissions (for administrators) (необяз. по ум. - false)
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteKanbanStage(URL: Объект?, StageID: Объект?, AsAdmin: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1218,13 +804,6 @@
     ;
 
     @Глобально
-    // Метод GetKanbanStages
-    // Get kanban (My Plan) stages info
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // EntityID - String, Number: ID of kanban owner (group or user) (необяз. по ум. - Empty value)
-    // AsAdmin  - Boolean: Allows you to get stages without checking permissions (for administrators) (необяз. по ум. - false)
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetKanbanStages(URL: Объект?, EntityID: Объект? = Неопределено, AsAdmin: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1238,15 +817,6 @@
     ;
 
     @Глобально
-    // Метод MoveTaskToKanbanStage
-    // Move task to another kanban stage
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID  - String, Number: ID of task to move
-    // StageID - String, Number: Stage ID
-    // Prev    - String, Number: ID of the task to put the selected one in front of (if After not filled) (необяз. по ум. - Empty value)
-    // After   - String, Number: ID of the task to be followed by the selected (if Prev not filled) (необяз. по ум. - Empty value)
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MoveTaskToKanbanStage(URL: Объект?, TaskID: Объект?, StageID: Объект?, Prev: Объект? = Неопределено, After: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1262,16 +832,6 @@
     ;
 
     @Глобально
-    // Метод AddTaskTimeAccounting
-    // Adds information about the user's time spent to the task
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - String, Number: ID of task for time accounting
-    // Time      - String, Number: Time spent in seconds
-    // UserID    - String, Number: ID of user for time accounting (необяз. по ум. - Empty value)
-    // Text      - String: Comment text (необяз. по ум. - Empty value)
-    // SetupDate - String: Date the record was set (необяз. по ум. - Empty value)
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddTaskTimeAccounting(URL: Объект?, TaskID: Объект?, Time: Объект?, UserID: Объект? = Неопределено, Text: Объект? = Неопределено, SetupDate: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1288,13 +848,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTaskTimeAccounting
-    // Deletes record of time accounting
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID   - String, Number: ID of task for time accounting
-    // RecordID - String, Number: Time record ID
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteTaskTimeAccounting(URL: Объект?, TaskID: Объект?, RecordID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1308,12 +861,6 @@
     ;
 
     @Глобально
-    // Метод GetTaskTimeAccountingList
-    // Get list of time accounting records for task
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID - String, Number: Task ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTaskTimeAccountingList(URL: Объект?, TaskID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1326,13 +873,6 @@
     ;
 
     @Глобально
-    // Метод GetTaskTimeAccounting
-    // Get time accounting record data
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID   - String, Number: Task ID
-    // RecordID - String, Number: Time record ID
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTaskTimeAccounting(URL: Объект?, TaskID: Объект?, RecordID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1346,16 +886,6 @@
     ;
 
     @Глобально
-    // Метод UpdateTaskTimeAccounting
-    // Update time accounting record data
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // TaskID    - String, Number: Task ID
-    // RecordID  - String, Number: Time record ID
-    // Time      - String, Number: Time spent in seconds
-    // Text      - String: Comment text (необяз. по ум. - Empty value)
-    // SetupDate - String: Date the record was set (необяз. по ум. - Empty value)
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateTaskTimeAccounting(URL: Объект?, TaskID: Объект?, RecordID: Объект?, Time: Объект?, Text: Объект? = Неопределено, SetupDate: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1372,14 +902,6 @@
     ;
 
     @Глобально
-    // Метод StartTimekeeping
-    // Starts user timekeeping
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: Users ID. Current by default (необяз. по ум. - Empty value)
-    // Time   - Date: Start time. The date must match the current. Current time by default. (необяз. по ум. - Empty value)
-    // Report - String: Reason for change. Required when Time is specified and free schedule is disabled (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод StartTimekeeping(URL: Объект?, UserID: Объект? = Неопределено, Time: Объект? = Неопределено, Report: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1394,14 +916,6 @@
     ;
 
     @Глобально
-    // Метод StopTimekeeping
-    // Stops user timekeeping
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: Users ID. Current by default (необяз. по ум. - Empty value)
-    // Time   - Date: Stop time. The date must match the current. Current time by default. (необяз. по ум. - Empty value)
-    // Report - String: Reason for change. Required when Time is specified and free schedule is disabled (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод StopTimekeeping(URL: Объект?, UserID: Объект? = Неопределено, Time: Объект? = Неопределено, Report: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1416,12 +930,6 @@
     ;
 
     @Глобально
-    // Метод PauseTimekeeping
-    // Pauses user timekeeping
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: Users ID. Current by default (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод PauseTimekeeping(URL: Объект?, UserID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1434,12 +942,6 @@
     ;
 
     @Глобально
-    // Метод GetTimekeepingStatus
-    // Gets user timekeeping status
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: Users ID. Current by default (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTimekeepingStatus(URL: Объект?, UserID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1452,12 +954,6 @@
     ;
 
     @Глобально
-    // Метод GetTimekeepingSettings
-    // Gets user timekeeping settings
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: Users ID. Current by default (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetTimekeepingSettings(URL: Объект?, UserID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1470,11 +966,6 @@
     ;
 
     @Глобально
-    // Метод GetStoragesList
-    // Get list of available files storages
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetStoragesList(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1486,11 +977,6 @@
     ;
 
     @Глобально
-    // Метод GetAppStorage
-    // Get information about storage with which the application can work to store its data
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetAppStorage(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1502,12 +988,6 @@
     ;
 
     @Глобально
-    // Метод GetStorage
-    // Get information about storage
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // StorageID - String, Number: Storage ID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetStorage(URL: Объект?, StorageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1520,13 +1000,6 @@
     ;
 
     @Глобально
-    // Метод RenameStorage
-    // Change storage name (for app storage only, see. GetAppStorage)
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // StorageID - String, Number: Storage ID
-    // Name      - String: New storage name
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RenameStorage(URL: Объект?, StorageID: Объект?, Name: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1540,12 +1013,6 @@
     ;
 
     @Глобально
-    // Метод GetStorageObjects
-    // Get a list of files and folders, located at the root of the storage
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // StorageID - String, Number: Storage ID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetStorageObjects(URL: Объект?, StorageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1558,13 +1025,6 @@
     ;
 
     @Глобально
-    // Метод CreateStorageFolder
-    // Create new foldera at the storage
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // StorageID - String: Storage ID
-    // Name      - String: Folder name
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateStorageFolder(URL: Объект?, StorageID: Объект?, Name: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1578,12 +1038,6 @@
     ;
 
     @Глобально
-    // Метод GetFolderInformation
-    // Get folder information
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Folder identifier
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetFolderInformation(URL: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1596,13 +1050,6 @@
     ;
 
     @Глобально
-    // Метод CreateSubfolder
-    // Create new folder inside another folder
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Parent folder identifier
-    // Name     - String: Name of new folder
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateSubfolder(URL: Объект?, FolderID: Объект?, Name: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1616,13 +1063,6 @@
     ;
 
     @Глобально
-    // Метод MakeFolderCopy
-    // Copy one folder to another
-    //
-    // URL           - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID      - String, Number: Folder identifier
-    // DestinationID - String, Number: ID of target folder
-    // Token         - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MakeFolderCopy(URL: Объект?, FolderID: Объект?, DestinationID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1636,13 +1076,6 @@
     ;
 
     @Глобально
-    // Метод MoveFolder
-    // Moves one folder inside another
-    //
-    // URL           - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID      - String, Number: Folder identifier
-    // DestinationID - String, Number: ID of target folder
-    // Token         - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MoveFolder(URL: Объект?, FolderID: Объект?, DestinationID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1656,12 +1089,6 @@
     ;
 
     @Глобально
-    // Метод DeleteFolder
-    // Remove folder with subfolders
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: ID of folder to be deleted
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteFolder(URL: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1674,12 +1101,6 @@
     ;
 
     @Глобально
-    // Метод GetFolderExternalLink
-    // Get external link to folder
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Folder identifier
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetFolderExternalLink(URL: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1692,13 +1113,6 @@
     ;
 
     @Глобально
-    // Метод GetFolderItems
-    // Get folder child elements
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Folder identifier
-    // Filter   - Structure of KeyAndValue: Items filter. See GetFolderFilterStructure (необяз. по ум. - Empty value)
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetFolderItems(URL: Объект?, FolderID: Объект?, Filter: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1712,12 +1126,6 @@
     ;
 
     @Глобально
-    // Метод MarkFolderAsDeleted
-    // Move folder to recycle bin
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Folder identifier
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MarkFolderAsDeleted(URL: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1730,12 +1138,6 @@
     ;
 
     @Глобально
-    // Метод RestoreFolder
-    // Resotre folder form recycle bin
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Folder identifier
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RestoreFolder(URL: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1748,13 +1150,6 @@
     ;
 
     @Глобально
-    // Метод RenameFolder
-    // Change folder name
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FolderID - String, Number: Folder identifier
-    // Name     - String: New folders name
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RenameFolder(URL: Объект?, FolderID: Объект?, Name: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1768,12 +1163,6 @@
     ;
 
     @Глобально
-    // Метод GetFolderFilterStructure
-    // Returns filter structure for child folder items
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Clear - Boolean: True > structure with empty values, False > field types at values (необяз. по ум. - false)
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetFolderFilterStructure(URL: Объект?, Clear: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1786,15 +1175,6 @@
     ;
 
     @Глобально
-    // Метод UploadFileToStorage
-    // Upload file to storage root
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // Name      - String: File name with extension
-    // File      - String, BinaryData: File for upload
-    // StorageID - String: Storage id
-    // Rights    - String: Rights array if required (необяз. по ум. - Empty value)
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UploadFileToStorage(URL: Объект?, Name: Объект?, File: Объект?, StorageID: Объект?, Rights: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1810,14 +1190,6 @@
     ;
 
     @Глобально
-    // Метод UploadFileToFolder
-    // Upload local file to the folder
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // Name     - String: File name with extension
-    // File     - String, BinaryData: File for upload
-    // FolderID - String: Folder identifier
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UploadFileToFolder(URL: Объект?, Name: Объект?, File: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1832,12 +1204,6 @@
     ;
 
     @Глобально
-    // Метод GetFileInformation
-    // Get information about file by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID - String, Number: File identifier
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetFileInformation(URL: Объект?, FileID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1850,12 +1216,6 @@
     ;
 
     @Глобально
-    // Метод DeleteFile
-    // Delete file by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID - String, Number: ID of removing file
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteFile(URL: Объект?, FileID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1868,12 +1228,6 @@
     ;
 
     @Глобально
-    // Метод GetFileExternalLink
-    // Get external link to file
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID - String, Number: File identifier
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetFileExternalLink(URL: Объект?, FileID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1886,12 +1240,6 @@
     ;
 
     @Глобально
-    // Метод MarkFileAsDeleted
-    // Move file to recycle bin
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID - String, Number: File identifier
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MarkFileAsDeleted(URL: Объект?, FileID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1904,12 +1252,6 @@
     ;
 
     @Глобально
-    // Метод RestoreFile
-    // Restore file from recycle bin
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID - String, Number: File identifier
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RestoreFile(URL: Объект?, FileID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1922,13 +1264,6 @@
     ;
 
     @Глобально
-    // Метод MakeFileCopy
-    // Copy file from one destination to another
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID   - String, Number: Original file ID
-    // FolderID - String, Number: ID of copy destination folder
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MakeFileCopy(URL: Объект?, FileID: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1942,13 +1277,6 @@
     ;
 
     @Глобально
-    // Метод MoveFileToFolder
-    // Move file from one destination to another
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID   - String, Number: File ID
-    // FolderID - String, Number: ID of new destination folder
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MoveFileToFolder(URL: Объект?, FileID: Объект?, FolderID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1962,13 +1290,6 @@
     ;
 
     @Глобально
-    // Метод RenameFile
-    // Changes the name of an existing file
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // FileID - String, Number: File identifier
-    // Name   - String: New folders name
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод RenameFile(URL: Объект?, FileID: Объект?, Name: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -1982,12 +1303,6 @@
     ;
 
     @Глобально
-    // Метод CreateChat
-    // Creates a new chat based on the field structure
-    //
-    // URL           - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatStructure - Structure Of KeyAndValue: Chat fields structure. See GetChatStructure
-    // Token         - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateChat(URL: Объект?, ChatStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2000,12 +1315,6 @@
     ;
 
     @Глобально
-    // Метод GetChatUsers
-    // Gets the list of chat users by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetChatUsers(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2018,12 +1327,6 @@
     ;
 
     @Глобально
-    // Метод LeaveChat
-    // Removes the current user from the chat room
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод LeaveChat(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2036,12 +1339,6 @@
     ;
 
     @Глобально
-    // Метод GetUsers
-    // Get users information for dialog
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserIDs - Array of String, Number: Usesr ID or array of users IDs
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetUsers(URL: Объект?, UserIDs: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2054,14 +1351,6 @@
     ;
 
     @Глобально
-    // Метод AddUsersToChat
-    // Adds users to the chat by ID array
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID      - String, Number: Chat ID
-    // UserIDs     - Array of string, number: New members IDs
-    // HideHistory - Boolean: Hide old messages from new members (необяз. по ум. - false)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод AddUsersToChat(URL: Объект?, ChatID: Объект?, UserIDs: Объект?, HideHistory: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2076,13 +1365,6 @@
     ;
 
     @Глобально
-    // Метод DeleteUserFromChat
-    // Deletes user from chat
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // UserID - String, Number: User ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteUserFromChat(URL: Объект?, ChatID: Объект?, UserID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2096,13 +1378,6 @@
     ;
 
     @Глобально
-    // Метод ChangeChatTitle
-    // Change text of chat title
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Title  - String: New title
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ChangeChatTitle(URL: Объект?, ChatID: Объект?, Title: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2116,13 +1391,6 @@
     ;
 
     @Глобально
-    // Метод ChangeChatColor
-    // Chat chat color for mobile app
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Color  - String: New chat color
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ChangeChatColor(URL: Объект?, ChatID: Объект?, Color: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2136,13 +1404,6 @@
     ;
 
     @Глобально
-    // Метод ChangeChatPicture
-    // Setup new chat picture
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Image  - String, BinaryData: Picture data
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ChangeChatPicture(URL: Объект?, ChatID: Объект?, Image: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2156,13 +1417,6 @@
     ;
 
     @Глобально
-    // Метод ChangeChatOwner
-    // Change chat owner
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // UserID - String, Number: User ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ChangeChatOwner(URL: Объект?, ChatID: Объект?, UserID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2176,12 +1430,6 @@
     ;
 
     @Глобально
-    // Метод DisableChatNotifications
-    // Disable chat notifications
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DisableChatNotifications(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2194,12 +1442,6 @@
     ;
 
     @Глобально
-    // Метод EnableChatNotifications
-    // Enable chat notifications
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод EnableChatNotifications(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2212,14 +1454,6 @@
     ;
 
     @Глобально
-    // Метод GetChatMessagesList
-    // Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID  - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // LastID  - String, Number: Id of last message (необяз. по ум. - Empty value)
-    // FirstID - String, Number: ID of first message (необяз. по ум. - Empty value)
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetChatMessagesList(URL: Объект?, ChatID: Объект?, LastID: Объект? = Неопределено, FirstID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2234,12 +1468,6 @@
     ;
 
     @Глобально
-    // Метод GetDialog
-    // Get chat data by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetDialog(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2252,12 +1480,6 @@
     ;
 
     @Глобально
-    // Метод GetChatMembersList
-    // Get chat members list
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetChatMembersList(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2270,12 +1492,6 @@
     ;
 
     @Глобально
-    // Метод SendWritingNotification
-    // Send Writing... status to dialog...
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SendWritingNotification(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2288,11 +1504,6 @@
     ;
 
     @Глобально
-    // Метод GetUserStatus
-    // Gets the status (online) of the current user
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetUserStatus(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2304,12 +1515,6 @@
     ;
 
     @Глобально
-    // Метод SetUserStatus
-    // Sets the status (online) of the current user
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // Status - String, Number: Status value: online, dnd, away
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SetUserStatus(URL: Объект?, Status: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2322,11 +1527,6 @@
     ;
 
     @Глобально
-    // Метод ReadAll
-    // Mark all message as readed
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ReadAll(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2338,12 +1538,6 @@
     ;
 
     @Глобально
-    // Метод GetChatFilesFolder
-    // Get information about folder for chat files
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID - String, Number: Chat ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetChatFilesFolder(URL: Объект?, ChatID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2356,10 +1550,6 @@
     ;
 
     @Глобально
-    // Метод GetChatStructure
-    // Get chat fields structure
-    //
-    // Clear - Boolean: True > structure with empty values, False > field types at values (необяз. по ум. - false)
     метод GetChatStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2370,14 +1560,6 @@
     ;
 
     @Глобально
-    // Метод SendMessage
-    // Send message to dialog
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID      - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // Text        - String: Message text
-    // Attachments - Array of Structure: Array of attachments (необяз. по ум. - Empty value)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SendMessage(URL: Объект?, ChatID: Объект?, Text: Объект?, Attachments: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2392,14 +1574,6 @@
     ;
 
     @Глобально
-    // Метод EditMessage
-    // Edit dialog message content
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // MessageID   - String, Number: ID of the message to be edited
-    // Text        - String: New message text (необяз. по ум. - Empty value)
-    // Attachments - Array of Structure: New blocks array (необяз. по ум. - Empty value)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод EditMessage(URL: Объект?, MessageID: Объект?, Text: Объект? = Неопределено, Attachments: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2414,12 +1588,6 @@
     ;
 
     @Глобально
-    // Метод SetMessageReaction
-    // Set or remove reaction mark on the message
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // MessageID - String, Number: Message ID
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SetMessageReaction(URL: Объект?, MessageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2432,12 +1600,6 @@
     ;
 
     @Глобально
-    // Метод DeleteMessage
-    // Deletes a dialog message
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // MessageID - String, Number: ID of the message to be deleted
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteMessage(URL: Объект?, MessageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2450,14 +1612,6 @@
     ;
 
     @Глобально
-    // Метод SendFile
-    // Send disk file to chat
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID      - String, Number: Chat ID
-    // FileID      - String, Number: File ID from UploadFileToFolder method
-    // Description - String: File description (необяз. по ум. - Empty value)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SendFile(URL: Объект?, ChatID: Объект?, FileID: Объект?, Description: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2472,13 +1626,6 @@
     ;
 
     @Глобально
-    // Метод MarkMessageAsReaded
-    // Mark current and all previous messages as readed
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID    - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // MessageID - String, Number: Id of last readed message
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MarkMessageAsReaded(URL: Объект?, ChatID: Объект?, MessageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2492,13 +1639,6 @@
     ;
 
     @Глобально
-    // Метод MarkMessageAsUnreaded
-    // Mark current and all messages after as unreaded
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // ChatID    - String, Number: Chat ID (as chatXXX) or User ID (as XXX)
-    // MessageID - String, Number: ID of last unreaded message
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод MarkMessageAsUnreaded(URL: Объект?, ChatID: Объект?, MessageID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2512,11 +1652,6 @@
     ;
 
     @Глобально
-    // Метод GetPictureBlock
-    // Make picture block for SendMessage method
-    //
-    // Name - String: Picture name
-    // URL  - String: URL of sending picture
     метод GetPictureBlock(Name: Объект?, URL: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2528,11 +1663,6 @@
     ;
 
     @Глобально
-    // Метод GetFileBlock
-    // Make file block for SendMessage method
-    //
-    // Name - String: Picture name
-    // URL  - String: File URL
     метод GetFileBlock(Name: Объект?, URL: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2544,15 +1674,6 @@
     ;
 
     @Глобально
-    // Метод CreatePersonalNotification
-    // Creates a personal notification to the user
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID      - String, Number: User ID for sending the notification
-    // Text        - String: Notification text
-    // Tag         - String: Uniqueness Tag. If already exist, other notif. will be deleted (необяз. по ум. - Empty value)
-    // Attachments - Array of Structure: Array of attachments (необяз. по ум. - Empty value)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreatePersonalNotification(URL: Объект?, UserID: Объект?, Text: Объект?, Tag: Объект? = Неопределено, Attachments: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2568,15 +1689,6 @@
     ;
 
     @Глобально
-    // Метод CreateSystemNotification
-    // Creates a system notification to the user
-    //
-    // URL         - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID      - String, Number: User ID for sending the notification
-    // Text        - String: Notification text
-    // Tag         - String: Uniqueness Tag. If already exist, other notif. will be deleted (необяз. по ум. - Empty value)
-    // Attachments - Array of Structure: Array of attachments (необяз. по ум. - Empty value)
-    // Token       - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateSystemNotification(URL: Объект?, UserID: Объект?, Text: Объект?, Tag: Объект? = Неопределено, Attachments: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2592,12 +1704,6 @@
     ;
 
     @Глобально
-    // Метод DeleteNotification
-    // Delete notification by ID
-    //
-    // URL            - String: URL of webhook or a Bitrix24 domain, when token used
-    // NotificationID - String, Number: Notification ID
-    // Token          - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteNotification(URL: Объект?, NotificationID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2610,14 +1716,6 @@
     ;
 
     @Глобально
-    // Метод CreateDepartment
-    // Creates a new department
-    //
-    // URL      - String: URL of webhook or a Bitrix24 domain, when token used
-    // Name     - String: Department name
-    // ParentID - String, Number: ID of parent department (необяз. по ум. - Empty value)
-    // HeadID   - String, Number: ID of department manager (необяз. по ум. - Empty value)
-    // Token    - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateDepartment(URL: Объект?, Name: Объект?, ParentID: Объект? = Неопределено, HeadID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2632,15 +1730,6 @@
     ;
 
     @Глобально
-    // Метод UpdateDepartment
-    // Update an existing department
-    //
-    // URL          - String: URL of webhook or a Bitrix24 domain, when token used
-    // DepartmentID - String, Number: Department ID
-    // Name         - String: Department name (необяз. по ум. - Empty value)
-    // ParentID     - String, Number: ID of parent department (необяз. по ум. - Empty value)
-    // HeadID       - String, Number: ID of department manager (необяз. по ум. - Empty value)
-    // Token        - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateDepartment(URL: Объект?, DepartmentID: Объект?, Name: Объект? = Неопределено, ParentID: Объект? = Неопределено, HeadID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2656,15 +1745,6 @@
     ;
 
     @Глобально
-    // Метод GetDepartments
-    // Gets a list of departments by ID or filter
-    //
-    // URL          - String: URL of webhook or a Bitrix24 domain, when token used
-    // DepartmentID - String, Number: Selection by department ID (необяз. по ум. - Empty value)
-    // Name         - String: Filter by name (необяз. по ум. - Empty value)
-    // ParentID     - String, Number: Filter by parent ID (необяз. по ум. - Empty value)
-    // HeadID       - String, Number: Filter by manager ID (необяз. по ум. - Empty value)
-    // Token        - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetDepartments(URL: Объект?, DepartmentID: Объект? = Неопределено, Name: Объект? = Неопределено, ParentID: Объект? = Неопределено, HeadID: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2680,12 +1760,6 @@
     ;
 
     @Глобально
-    // Метод DeleteDepartment
-    // Delets department by ID
-    //
-    // URL          - String: URL of webhook or a Bitrix24 domain, when token used
-    // DepartmentID - String, Number: Department ID for deletion
-    // Token        - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteDepartment(URL: Объект?, DepartmentID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2698,11 +1772,6 @@
     ;
 
     @Глобально
-    // Метод GetCurrentUser
-    // Get current user data
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCurrentUser(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2714,12 +1783,6 @@
     ;
 
     @Глобально
-    // Метод GetUser
-    // Gets user information by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: User ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetUser(URL: Объект?, UserID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2732,12 +1795,6 @@
     ;
 
     @Глобально
-    // Метод CreateUser
-    // Create new user by fields structure
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldsStructure - Structure Of KeyAndValue: New user data. See. GetUserFieldsStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateUser(URL: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2750,13 +1807,6 @@
     ;
 
     @Глобально
-    // Метод UpdateUser
-    // Updates user data
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID          - String, Number: User ID
-    // FieldsStructure - Structure Of KeyAndValue: New user data. See. GetUserFieldsStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateUser(URL: Объект?, UserID: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2770,13 +1820,6 @@
     ;
 
     @Глобально
-    // Метод ChangeUserStatus
-    // Activates or deactivates (fire) the selected user
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // UserID - String, Number: User ID
-    // Fire   - Boolean: True > Deactivation, False > Activation (необяз. по ум. - true)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод ChangeUserStatus(URL: Объект?, UserID: Объект?, Fire: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2790,12 +1833,6 @@
     ;
 
     @Глобально
-    // Метод FindUsers
-    // Gets the list of users according to the specified filter
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // FilterStructure - Structure Of KeyAndValue: Filter. See GetUserFilterStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод FindUsers(URL: Объект?, FilterStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2808,11 +1845,6 @@
     ;
 
     @Глобально
-    // Метод GetUserFieldsStructure
-    // Gets the field structure for creating or modifying user information
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetUserFieldsStructure(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2824,10 +1856,6 @@
     ;
 
     @Глобально
-    // Метод GetUserFilterStructure
-    // Returns the field structure for filtering users in the FindUsers method
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetUserFilterStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2838,12 +1866,6 @@
     ;
 
     @Глобально
-    // Метод CreateLead
-    // Creates a new lead by fields structure
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldsStructure - Structure Of KeyAndValue: Lead fields structure. See GetLeadStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateLead(URL: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2856,12 +1878,6 @@
     ;
 
     @Глобально
-    // Метод DeleteLead
-    // Deletes a lead by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // LeadID - Number, String: Lead ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteLead(URL: Объект?, LeadID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2874,12 +1890,6 @@
     ;
 
     @Глобально
-    // Метод GetLead
-    // Gets a lead by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // LeadID - Number, String: Lead ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetLead(URL: Объект?, LeadID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2892,13 +1902,6 @@
     ;
 
     @Глобально
-    // Метод GetLeadsList
-    // Gets a list of leads (50 per request max) with or without filtering
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // Filter - Structure of KeyAndValue: Lead filter structure. See GetLeadFilterStructure (необяз. по ум. - Empty value)
-    // Indent - Number, String: Offset from the beginning of the list to get leads > 50 recursively (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetLeadsList(URL: Объект?, Filter: Объект? = Неопределено, Indent: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2912,13 +1915,6 @@
     ;
 
     @Глобально
-    // Метод UpdateLead
-    // Modifies an existing lead
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // LeadID          - Number, String: Lead ID
-    // FieldsStructure - Structure Of KeyAndValue: Structure of lead fields
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateLead(URL: Объект?, LeadID: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2932,11 +1928,6 @@
     ;
 
     @Глобально
-    // Метод GetLeadStructure
-    // Gets a structure with field descriptions for creating a lead
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetLeadStructure(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2948,10 +1939,6 @@
     ;
 
     @Глобально
-    // Метод GetLeadFilterStructure
-    // Returns the field structure for filtering leads in the GetLeadsList method
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetLeadFilterStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2962,12 +1949,6 @@
     ;
 
     @Глобально
-    // Метод CreateDeal
-    // Creates a new deal by field structure
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldsStructure - Structure Of KeyAndValue: Deal fields structure. See. GetDealStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateDeal(URL: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2980,12 +1961,6 @@
     ;
 
     @Глобально
-    // Метод DeleteDeal
-    // Deletes deal by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // DealID - Number, String: Deal ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteDeal(URL: Объект?, DealID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -2998,12 +1973,6 @@
     ;
 
     @Глобально
-    // Метод GetDeal
-    // Gets deal by ID
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // DealID - Number, String: Deal ID
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetDeal(URL: Объект?, DealID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3016,13 +1985,6 @@
     ;
 
     @Глобально
-    // Метод GetDealsList
-    // Gets the list of deals (50 pcs per query max) with or without filtering
-    //
-    // URL    - String: URL of webhook or a Bitrix24 domain, when token used
-    // Filter - Structure of KeyAndValue: Deals filter structure. See GetDealsFilterStructure (необяз. по ум. - Empty value)
-    // Indent - Number, String: Offset from the beginning of the list to retrieve deals > 50 pcs recursively (необяз. по ум. - Empty value)
-    // Token  - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetDealsList(URL: Объект?, Filter: Объект? = Неопределено, Indent: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3036,13 +1998,6 @@
     ;
 
     @Глобально
-    // Метод UpdateDeal
-    // Modifies an existing deal
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // DealID          - Number, String: Deal ID
-    // FieldsStructure - Structure Of KeyAndValue: Deal fields structure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateDeal(URL: Объект?, DealID: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3056,11 +2011,6 @@
     ;
 
     @Глобально
-    // Метод GetDealStructure
-    // Gets a structure with field descriptions for creating a deal
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetDealStructure(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3072,10 +2022,6 @@
     ;
 
     @Глобально
-    // Метод GetDealsFilterStructure
-    // Returns the field structure for filtering deals in the GetDealsList method
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetDealsFilterStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3086,13 +2032,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarList
-    // Gets a list of calendars of the specified owner
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // OwnerID - String, Number: Calendar owner ID
-    // Type    - String: Calendar type: user, group, company_calendar, location, etc.
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCalendarList(URL: Объект?, OwnerID: Объект?, Type: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3106,12 +2045,6 @@
     ;
 
     @Глобально
-    // Метод CreateCalendar
-    // Creates a new calendar
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // FieldsStructure - Structure Of KeyAndValue: Calendar fields structure. See GetCalendarStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateCalendar(URL: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3124,13 +2057,6 @@
     ;
 
     @Глобально
-    // Метод UpdateCalendar
-    // Changes the calendar settings
-    //
-    // URL             - String: URL of webhook or a Bitrix24 domain, when token used
-    // CalendarID      - String, Number: Calendar ID
-    // FieldsStructure - Structure Of KeyAndValue: Deal fields structure. See. GetDealStructure
-    // Token           - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateCalendar(URL: Объект?, CalendarID: Объект?, FieldsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3144,14 +2070,6 @@
     ;
 
     @Глобально
-    // Метод DeleteCalendar
-    // Deletes an existing calendar
-    //
-    // URL        - String: URL of webhook or a Bitrix24 domain, when token used
-    // CalendarID - String, Number: Calendar ID
-    // OwnerID    - String, Number: Calendar owner ID
-    // Type       - String: Calendar type: user, group
-    // Token      - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteCalendar(URL: Объект?, CalendarID: Объект?, OwnerID: Объект?, Type: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3166,14 +2084,6 @@
     ;
 
     @Глобально
-    // Метод GetUserBusy
-    // Gets an array of user events in the specified interval
-    //
-    // URL       - String: URL of webhook or a Bitrix24 domain, when token used
-    // Users     - Number, Array Of Number: IDs of users or a single user
-    // StartDate - Date: Start date of the period
-    // EndDate   - Date: End date of the period
-    // Token     - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetUserBusy(URL: Объект?, Users: Объект?, StartDate: Объект?, EndDate: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3188,11 +2098,6 @@
     ;
 
     @Глобально
-    // Метод GetCustomCalendarSettings
-    // Gets the current users custom calendar settings
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCustomCalendarSettings(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3204,12 +2109,6 @@
     ;
 
     @Глобально
-    // Метод SetCustomCalendarSettings
-    // Sets new custom calendar settings
-    //
-    // URL               - String: URL of webhook or a Bitrix24 domain, when token used
-    // SettingsStructure - Structure Of KeyAndValue: Settings structure. See GetCalednarCustomSettingsStructure
-    // Token             - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SetCustomCalendarSettings(URL: Объект?, SettingsStructure: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3222,11 +2121,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarSettingsStructure
-    // Gets the structure of the default calendar settings
-    //
-    // URL   - String: URL of webhook or a Bitrix24 domain, when token used
-    // Token - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCalendarSettingsStructure(URL: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3238,10 +2132,6 @@
     ;
 
     @Глобально
-    // Метод GetCalednarCustomSettingsStructure
-    // Gets an empty structure for setting custom calendar settings
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetCalednarCustomSettingsStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3252,10 +2142,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarStructure
-    // Returns the structure of the calendar description fields
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetCalendarStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3266,12 +2152,6 @@
     ;
 
     @Глобально
-    // Метод CreateCalendarEvent
-    // Creates a new calendar event
-    //
-    // URL              - String: URL of webhook or a Bitrix24 domain, when token used
-    // EventDescription - Structure Of KeyAndValue: Event description. See GetCalendarEventsStructure
-    // Token            - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод CreateCalendarEvent(URL: Объект?, EventDescription: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3284,13 +2164,6 @@
     ;
 
     @Глобально
-    // Метод UpdateCalendarEvent
-    // Modifies calendar event data
-    //
-    // URL              - String: URL of webhook or a Bitrix24 domain, when token used
-    // EventID          - Number: Calednar event ID
-    // EventDescription - Structure Of KeyAndValue: Event description. See GetCalendarEventsStructure
-    // Token            - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод UpdateCalendarEvent(URL: Объект?, EventID: Объект?, EventDescription: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3304,12 +2177,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarEvent
-    // Gets a calendar event by ID
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // EventID - Number: Event ID to retrieve
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCalendarEvent(URL: Объект?, EventID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3322,14 +2189,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarEvents
-    // Gets events of calendars with or without filters
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // OwnerID - String, Number: Calendar owner ID
-    // Type    - String: Calendar type: user, group, company_calendar
-    // Filter  - Structure Of KeyAndValue: Events filter. See GetCalendarEventsFilterStructure (необяз. по ум. - Empty value)
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetCalendarEvents(URL: Объект?, OwnerID: Объект?, Type: Объект?, Filter: Объект? = Неопределено, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3344,12 +2203,6 @@
     ;
 
     @Глобально
-    // Метод DeleteCalendarEvent
-    // Deletes an event from the calendar
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // EventID - Number: ID of the event to be deleted
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод DeleteCalendarEvent(URL: Объект?, EventID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3362,12 +2215,6 @@
     ;
 
     @Глобально
-    // Метод GetUserParticipationStatus
-    // Gets the event participation status of the current user
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // EventID - Number: Calednar event ID
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод GetUserParticipationStatus(URL: Объект?, EventID: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3380,13 +2227,6 @@
     ;
 
     @Глобально
-    // Метод SetUserParticipationStatus
-    // Sets the event participation status for the current user
-    //
-    // URL     - String: URL of webhook or a Bitrix24 domain, when token used
-    // EventID - Number: Calednar event ID
-    // Status  - String: Participation status: Y (agreed), N (refused), Q (did not answer)
-    // Token   - String: Access token, when app auth method used (необяз. по ум. - Empty value)
     метод SetUserParticipationStatus(URL: Объект?, EventID: Объект?, Status: Объект?, Token: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3400,10 +2240,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarEventsStructure
-    // Returns the structure of the calendar event fields
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetCalendarEventsStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -3414,10 +2250,6 @@
     ;
 
     @Глобально
-    // Метод GetCalendarEventsFilterStructure
-    // Gets the filter structure for the function GetCalendarEvents
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetCalendarEventsFilterStructure(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

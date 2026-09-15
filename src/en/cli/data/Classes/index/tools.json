@@ -9,13 +9,20 @@
   {
    "name": "Internal",
    "methods": [
-    "ConvertBase64ToBinary",
-    "ParseJSON"
+    {
+     "name": "ConvertBase64ToBinary",
+     "nocli": false
+    },
+    {
+     "name": "ParseJSON",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "ParseJSON",
    "id": "PARSEJSON",
    "description": "Shows values that can be extracted from the provided JSON and returns a specific value when a field name is specified",
@@ -56,6 +63,7 @@
    "region": "Internal"
   },
   {
+   "nocli": false,
    "name": "ConvertBase64ToBinary",
    "id": "CONVERTBASE64TOBINARY",
    "description": "Convert file with Base64 string to binary file",

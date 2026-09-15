@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_GRPC
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_GRPC
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_GRPC(Исполнитель)
@@ -18,15 +18,39 @@
     знч КомандаCLI: Строка = "grpc"
     
     @Глобально
-    // Метод ExecuteMethod
-    // Performs a unary request to the selected service
-    //
-    // Connection - Arbitrary: Existing connection or connection parameters
-    // Service    - String: Service name
-    // Method     - String: Method name
-    // Request    - Structure Of KeyAndValue: Request data (необяз. по ум. - Empty value)
-    // Timeout    - Number: Timeout (in ms) (необяз. по ум. - 10000)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
+    метод CreateConnection(Parameters: Объект?, Tls: Объект? = Неопределено, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-p", Parameters)
+        Опции.Вставить("-t", Tls)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseConnection(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод SetMetadata(Connection: Объект?, Metadata: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-m", Metadata)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetMetadata", Опции)
+        
+    ;
+
+    @Глобально
     метод ExecuteMethod(Connection: Объект?, Service: Объект?, Method: Объект?, Request: Объект? = Неопределено, Timeout: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -42,12 +66,16 @@
     ;
 
     @Глобально
-    // Метод GetConnectionParameters
-    // Forms a structure of parameters for creating a connection
-    //
-    // Address  - String: Connection address (with protocol)
-    // Proto    - Arbitrary: Schema or schema structure: Key > file name (for import), Value > schema as a string or file path (необяз. по ум. - Empty value)
-    // Metadata - Structure Of KeyAndValue: Metadata structure, if necessary (необяз. по ум. - Empty value)
+    метод IsConnector(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsConnector", Опции)
+        
+    ;
+
+    @Глобально
     метод GetConnectionParameters(Address: Объект?, Proto: Объект? = Неопределено, Metadata: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -60,11 +88,6 @@
     ;
 
     @Глобально
-    // Метод GetTlsSettings
-    // Forms settings for using TLS
-    //
-    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
-    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
     метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -76,11 +99,30 @@
     ;
 
     @Глобально
-    // Метод GetServiceList
-    // Gets a list of available services
-    //
-    // Connection - Arbitrary: Existing connection or connection parameters
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(Connection: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
+        
+    ;
+
+    @Глобально
     метод GetServiceList(Connection: Объект?, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -92,12 +134,6 @@
     ;
 
     @Глобально
-    // Метод GetMethodList
-    // Gets a list of available methods for the specified service
-    //
-    // Connection - Arbitrary: Existing connection or connection parameters
-    // Service    - String: Service name
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод GetMethodList(Connection: Объект?, Service: Объект?, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -110,13 +146,6 @@
     ;
 
     @Глобально
-    // Метод GetMethod
-    // Get method information
-    //
-    // Connection - Arbitrary: Existing connection or connection parameters
-    // Service    - String: Service name
-    // Method     - String: Method name
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод GetMethod(Connection: Объект?, Service: Объект?, Method: Объект?, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -130,16 +159,91 @@
     ;
 
     @Глобально
-    // Метод ProcessServerStream
-    // Initializes the server stream and returns an array of received messages
-    //
-    // Connection   - Arbitrary: Existing connection or connection parameters
-    // Service      - String: Service name
-    // Method       - String: Method name
-    // Request      - Structure Of KeyAndValue: First request data
-    // Timeout      - Number: Timeout for individual operation (in ms)) (необяз. по ум. - 10000)
-    // Tls          - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
-    // MessageCount - Number: Maximum messages to retrieve. Unlimited by default (необяз. по ум. - Empty value)
+    метод InitializeServerStream(Connection: Объект?, Service: Объект?, Method: Объект?, Request: Объект?, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", Service)
+        Опции.Вставить("-m", Method)
+        Опции.Вставить("-d", Request)
+        Опции.Вставить("-t", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "InitializeServerStream", Опции)
+        
+    ;
+
+    @Глобально
+    метод InitializeClientStream(Connection: Объект?, Service: Объект?, Method: Объект?, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", Service)
+        Опции.Вставить("-m", Method)
+        Опции.Вставить("-t", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "InitializeClientStream", Опции)
+        
+    ;
+
+    @Глобально
+    метод InitializeBidirectionalStream(Connection: Объект?, Service: Объект?, Method: Объект?, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", Service)
+        Опции.Вставить("-m", Method)
+        Опции.Вставить("-t", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "InitializeBidirectionalStream", Опции)
+        
+    ;
+
+    @Глобально
+    метод SendMessage(Connection: Объект?, StreamID: Объект?, Request: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        Опции.Вставить("-d", Request)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendMessage", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetMessage(Connection: Объект?, StreamID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetMessage", Опции)
+        
+    ;
+
+    @Глобально
+    метод CompleteSend(Connection: Объект?, StreamID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CompleteSend", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseStream(Connection: Объект?, StreamID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseStream", Опции)
+        
+    ;
+
+    @Глобально
     метод ProcessServerStream(Connection: Объект?, Service: Объект?, Method: Объект?, Request: Объект?, Timeout: Объект? = Неопределено, Tls: Объект? = Неопределено, MessageCount: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -156,15 +260,6 @@
     ;
 
     @Глобально
-    // Метод ProcessClientStream
-    // Initializes client thread, passes message array, and receives final response
-    //
-    // Connection - Arbitrary: Existing connection or connection parameters
-    // Service    - String: Service name
-    // Method     - String: Method name
-    // Requests   - Array of Structure: Request data array or single request
-    // Timeout    - Number: Timeout for individual operation (in ms)) (необяз. по ум. - 10000)
-    // Tls        - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
     метод ProcessClientStream(Connection: Объект?, Service: Объект?, Method: Объект?, Requests: Объект?, Timeout: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -180,16 +275,6 @@
     ;
 
     @Глобально
-    // Метод ProcessBidirectionalStream
-    // Initializes a bidirectional stream, then passes and sends messages in the specified order
-    //
-    // Connection        - Arbitrary: Existing connection or connection parameters
-    // Service           - String: Service name
-    // Method            - String: Method name
-    // ExchangeOrder     - Array Of Arbitrary: Array of request data and Undefined where retrieval is needed
-    // Timeout           - Number: Timeout for individual operation (in ms)) (необяз. по ум. - 10000)
-    // Tls               - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
-    // ContinueReceiving - Boolean: Continue receiving after processing the exchange order (необяз. по ум. - true)
     метод ProcessBidirectionalStream(Connection: Объект?, Service: Объект?, Method: Объект?, ExchangeOrder: Объект?, Timeout: Объект? = Неопределено, Tls: Объект? = Неопределено, ContinueReceiving: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

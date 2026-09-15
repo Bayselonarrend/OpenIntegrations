@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_S3
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_S3
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_S3(Исполнитель)
@@ -18,14 +18,6 @@
     знч КомандаCLI: Строка = "s3"
     
     @Глобально
-    // Метод GetBasicDataStructure
-    // Returns the basic data for request in structured form
-    //
-    // URL       - String: URL: domain for common methods or full URL with parameters for direct request sending
-    // AccessKey - String: Access key for authorization
-    // SecretKey - String: Secret key for authorization
-    // Region    - String: Service region
-    // Service   - String: Type of service, if different from s3 (необяз. по ум. - s3)
     метод GetBasicDataStructure(URL: Объект?, AccessKey: Объект?, SecretKey: Объект?, Region: Объект?, Service: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -40,13 +32,6 @@
     ;
 
     @Глобально
-    // Метод SendRequestWithoutBody
-    // Sends a simple http request without a body
-    //
-    // Method         - String: HTTP method
-    // BasicData      - Structure Of KeyAndValue: Basic request data (with full URL). See GetBasicDataStructure
-    // ExpectedBinary - Boolean: Disables an attempt to convert the response to JSON (необяз. по ум. - false)
-    // Headers        - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод SendRequestWithoutBody(Method: Объект?, BasicData: Объект?, ExpectedBinary: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -60,14 +45,6 @@
     ;
 
     @Глобально
-    // Метод SendRequestWithBody
-    // Send http request with body
-    //
-    // Method         - String: HTTP method
-    // BasicData      - Structure Of KeyAndValue: Basic request data (with full URL). See GetBasicDataStructure
-    // Body           - String, BinaryData: Binary data or file of request body data
-    // ExpectedBinary - Boolean: Disables an attempt to convert the response to JSON (необяз. по ум. - false)
-    // Headers        - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод SendRequestWithBody(Method: Объект?, BasicData: Объект?, Body: Объект?, ExpectedBinary: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -82,13 +59,6 @@
     ;
 
     @Глобально
-    // Метод CreateBucket
-    // Creates a new bucket with the specified name
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод CreateBucket(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -102,13 +72,6 @@
     ;
 
     @Глобально
-    // Метод DeleteBucket
-    // Deletes the bucket by name
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод DeleteBucket(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -122,14 +85,6 @@
     ;
 
     @Глобально
-    // Метод HeadBucket
-    // Checks if the bucket is available for the current account or account by ID
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // AccountID - String: Account ID to verify that hes the bucket owner (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод HeadBucket(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, AccountID: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -144,14 +99,6 @@
     ;
 
     @Глобально
-    // Метод PutBucketEncryption
-    // Sets bucket encryption by XML configuration
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // XmlConfig - String: XML string or file of encryption configuration
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод PutBucketEncryption(Name: Объект?, BasicData: Объект?, XmlConfig: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -166,13 +113,6 @@
     ;
 
     @Глобально
-    // Метод GetBucketEncryption
-    // Gets the previously set bucket encryption configuration
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод GetBucketEncryption(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -186,13 +126,6 @@
     ;
 
     @Глобально
-    // Метод DeleteBucketEncryption
-    // Deletes the bucket encryption configuration
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод DeleteBucketEncryption(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -206,14 +139,6 @@
     ;
 
     @Глобально
-    // Метод PutBucketTagging
-    // Sets the tag set for the bucket
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Tags      - Structure Of KeyAndValue: Set of tags (key and value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод PutBucketTagging(Name: Объект?, BasicData: Объект?, Tags: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -228,13 +153,6 @@
     ;
 
     @Глобально
-    // Метод GetBucketTagging
-    // Gets the bucket tag set
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод GetBucketTagging(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -248,13 +166,6 @@
     ;
 
     @Глобально
-    // Метод DeleteBucketTagging
-    // Deletes the bucket tag set
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод DeleteBucketTagging(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -268,15 +179,6 @@
     ;
 
     @Глобально
-    // Метод PutBucketVersioning
-    // Sets the versioning settings for bucket objects
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Status    - Boolean: Enable and disable versioning, if necessary (необяз. по ум. - Empty value)
-    // MFADelete - Boolean: Enable and disable MFA deletion, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод PutBucketVersioning(Name: Объект?, BasicData: Объект?, Status: Объект? = Неопределено, MFADelete: Объект? = Неопределено, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -292,13 +194,6 @@
     ;
 
     @Глобально
-    // Метод GetBucketVersioning
-    // Gets the values of versioning settings of objects in the bucket
-    //
-    // Name      - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод GetBucketVersioning(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -312,14 +207,6 @@
     ;
 
     @Глобально
-    // Метод ListBuckets
-    // Gets a list of buckets. It is possible to use filters if they are provided by your service
-    //
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Prefix    - String: Filtering by prefix, if necessary (необяз. по ум. - Empty value)
-    // Region    - String: Selection by bucket region, if necessary (необяз. по ум. - Empty value)
-    // PageToken - String: Page token if pagination is used (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
     метод ListBuckets(BasicData: Объект?, Prefix: Объект? = Неопределено, Region: Объект? = Неопределено, PageToken: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -334,15 +221,6 @@
     ;
 
     @Глобально
-    // Метод PutObject
-    // Uploads the file to the bucket
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // Entity    - String, BinaryData: File path or binary data of the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод PutObject(Name: Объект?, Bucket: Объект?, Entity: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -358,15 +236,6 @@
     ;
 
     @Глобально
-    // Метод UploadFullObject
-    // Upload object with single request
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // Entity    - String, BinaryData: File path or binary data of the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод UploadFullObject(Name: Объект?, Bucket: Объект?, Entity: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -382,14 +251,6 @@
     ;
 
     @Глобально
-    // Метод InitPartsUpload
-    // Initializes the multipart object uploading
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод InitPartsUpload(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -404,16 +265,6 @@
     ;
 
     @Глобально
-    // Метод UploadObjectPart
-    // Uploads a part of an object for multipart uploading
-    //
-    // Name       - String: Name of the object in the bucket
-    // Bucket     - String: Name of the bucket to put the object
-    // BasicData  - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // UploadID   - String: Upload ID. See InitPartsUpload
-    // PartNumber - Number, String: Number of the object part from 1 to 10000
-    // Data       - BinaryData, String: Part content for uploading
-    // Directory  - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод UploadObjectPart(Name: Объект?, Bucket: Объект?, BasicData: Объект?, UploadID: Объект?, PartNumber: Объект?, Data: Объект?, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -430,16 +281,6 @@
     ;
 
     @Глобально
-    // Метод FinishPartsUpload
-    // Confirms the multipart uploading finish
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // UploadID  - String: Upload ID. See InitPartsUpload
-    // TagsArray - Array Of String: An array of tags (Etag) from the uploads responses of each part
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод FinishPartsUpload(Name: Объект?, Bucket: Объект?, BasicData: Объект?, UploadID: Объект?, TagsArray: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -456,15 +297,6 @@
     ;
 
     @Глобально
-    // Метод AbortMultipartUpload
-    // Aborts the multipart uploading of the object
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // UploadID  - String: Upload ID. See InitPartsUpload
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод AbortMultipartUpload(Name: Объект?, Bucket: Объект?, BasicData: Объект?, UploadID: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -480,15 +312,6 @@
     ;
 
     @Глобально
-    // Метод HeadObject
-    // Receives information about the properties of the object in the baquette
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket in which the object is stored
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Version   - String: Token for receiving a specific version of an object (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод HeadObject(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -504,16 +327,6 @@
     ;
 
     @Глобально
-    // Метод GetObject
-    // Gets the contents of the object from the bucket
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket in which the object is stored
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Version   - String: Token for receiving a specific version of an object (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // SavePath  - String: Path to directly write a file to disk (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод GetObject(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, SavePath: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -530,15 +343,6 @@
     ;
 
     @Глобально
-    // Метод DeleteObject
-    // Removes the object from the bucket
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Version   - String: Token for deleting a specific version of an object (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод DeleteObject(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -554,16 +358,6 @@
     ;
 
     @Глобально
-    // Метод CopyObject
-    // Copies an object from one location to another
-    //
-    // SourcePath        - String: Path (name) in the source bucket
-    // DestinationBucket - String: Source bucket name
-    // DestinationPath   - String: Path (name) in the destination bucket
-    // SourceBucket      - String: Destination bucket name
-    // BasicData         - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Headers           - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory         - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод CopyObject(SourcePath: Объект?, DestinationBucket: Объект?, DestinationPath: Объект?, SourceBucket: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -580,15 +374,6 @@
     ;
 
     @Глобально
-    // Метод PutObjectTagging
-    // Sets the tag set of the object
-    //
-    // Name      - String: Object name
-    // Bucket    - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Tags      - Structure Of KeyAndValue: Set of tags (key and value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод PutObjectTagging(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Tags: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -604,15 +389,6 @@
     ;
 
     @Глобально
-    // Метод GetObjectTagging
-    // Gets the tag set of the object
-    //
-    // Name      - String: Object name
-    // Bucket    - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Version   - String: Token for retrieving data of a specific version of an object (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод GetObjectTagging(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -628,15 +404,6 @@
     ;
 
     @Глобально
-    // Метод DeleteObjectTagging
-    // Deletes an objects tag set
-    //
-    // Name      - String: Object name
-    // Bucket    - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Version   - String: Token for deleting data of a specific version of an object (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод DeleteObjectTagging(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -652,15 +419,6 @@
     ;
 
     @Глобально
-    // Метод ListObjects
-    // Gets the list of objects in the selected bucket
-    //
-    // Bucket    - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Prefix    - String: Filtering by prefix, if necessary (необяз. по ум. - Empty value)
-    // PageToken - String: Page token if pagination is used (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод ListObjects(Bucket: Объект?, BasicData: Объект?, Prefix: Объект? = Неопределено, PageToken: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -676,15 +434,6 @@
     ;
 
     @Глобально
-    // Метод ListObjectVersions
-    // Gets a list of all versions of objects in the selected bucket
-    //
-    // Bucket    - String: Bucket name
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Prefix    - String: Filtering by prefix, if necessary (необяз. по ум. - Empty value)
-    // Version   - String: Version ID for the beginning of the list (необяз. по ум. - Empty value)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод ListObjectVersions(Bucket: Объект?, BasicData: Объект?, Prefix: Объект? = Неопределено, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -700,15 +449,6 @@
     ;
 
     @Глобально
-    // Метод GetObjectDownloadLink
-    // Get presigned link for object retrieving without authorization
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Expire    - String, Number: Link lifetime in seconds. 604800 max. (необяз. по ум. - 3600)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод GetObjectDownloadLink(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Expire: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -724,15 +464,6 @@
     ;
 
     @Глобально
-    // Метод GetObjectUploadLink
-    // Gets a direct link to upload (put) an object without additional authorization
-    //
-    // Name      - String: Name of the object in the bucket
-    // Bucket    - String: Name of the bucket to put the object
-    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
-    // Expire    - String, Number: Link lifetime in seconds. 604800 max. (необяз. по ум. - 3600)
-    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
-    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
     метод GetObjectUploadLink(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Expire: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

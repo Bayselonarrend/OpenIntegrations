@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_ReportPortal
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_ReportPortal
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_ReportPortal(Исполнитель)
@@ -18,12 +18,6 @@
     знч КомандаCLI: Строка = "rportal"
     
     @Глобально
-    // Метод GetTemporaryToken
-    // Gets a temporary token based on login and password
-    //
-    // URL      - String: ReportPortal server URL
-    // Login    - String: Users login
-    // Password - String: Users password
     метод GetTemporaryToken(URL: Объект?, Login: Объект?, Password: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -36,13 +30,6 @@
     ;
 
     @Глобально
-    // Метод GetPermanentToken
-    // Creates a permanent ReportPortal user token
-    //
-    // URL     - String: ReportPortal server URL
-    // Token   - String: Access token
-    // UserID  - String: User ID
-    // KeyName - String: Token name
     метод GetPermanentToken(URL: Объект?, Token: Объект?, UserID: Объект?, KeyName: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -56,13 +43,6 @@
     ;
 
     @Глобально
-    // Метод DeletePermanentToken
-    // Deletes a previously created user token
-    //
-    // URL    - String: ReportPortal server URL
-    // Token  - String: Access token
-    // UserID - String: User ID
-    // KeyID  - String: Token ID
     метод DeletePermanentToken(URL: Объект?, Token: Объект?, UserID: Объект?, KeyID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -76,12 +56,6 @@
     ;
 
     @Глобально
-    // Метод GetUserTokens
-    // Gets the list of user tokens (API keys)
-    //
-    // URL    - String: ReportPortal server URL
-    // Token  - String: Access token
-    // UserID - String: User ID
     метод GetUserTokens(URL: Объект?, Token: Объект?, UserID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -94,12 +68,6 @@
     ;
 
     @Глобально
-    // Метод CreateUser
-    // Creates a new user
-    //
-    // URL           - String: ReportPortal server URL
-    // Token         - String: Access token
-    // UserStructure - Structure Of KeyAndValue: New user data. See. GetUserFieldsStructure
     метод CreateUser(URL: Объект?, Token: Объект?, UserStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -112,12 +80,6 @@
     ;
 
     @Глобально
-    // Метод DeleteUser
-    // Deletes a user by login
-    //
-    // URL    - String: ReportPortal server URL
-    // Token  - String: Access token
-    // UserID - String: User ID
     метод DeleteUser(URL: Объект?, Token: Объект?, UserID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -130,13 +92,6 @@
     ;
 
     @Глобально
-    // Метод UpdateUser
-    // Changes the data of the selected user
-    //
-    // URL           - String: ReportPortal server URL
-    // Token         - String: Access token
-    // Login         - String: Users login
-    // UserStructure - Structure Of KeyAndValue: New user data. See. GetUserFieldsStructure
     метод UpdateUser(URL: Объект?, Token: Объект?, Login: Объект?, UserStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -150,11 +105,6 @@
     ;
 
     @Глобально
-    // Метод GetCurrentUser
-    // Get current user data
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
     метод GetCurrentUser(URL: Объект?, Token: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -166,12 +116,6 @@
     ;
 
     @Глобально
-    // Метод GetUser
-    // Gets user information by login
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
-    // Login - String: Users login
     метод GetUser(URL: Объект?, Token: Объект?, Login: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -184,12 +128,6 @@
     ;
 
     @Глобально
-    // Метод GetUsers
-    // Gets the list of existing users
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
-    // Page  - Number: List page number (необяз. по ум. - 1)
     метод GetUsers(URL: Объект?, Token: Объект?, Page: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -202,12 +140,6 @@
     ;
 
     @Глобально
-    // Метод GetUserProjects
-    // Gets the list of user projects
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
-    // Login - String: Users login
     метод GetUserProjects(URL: Объект?, Token: Объект?, Login: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -220,11 +152,6 @@
     ;
 
     @Глобально
-    // Метод GetUserFieldsStructure
-    // Gets the structure of user description fields
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns the filter fields as a map (необяз. по ум. - false)
     метод GetUserFieldsStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -236,12 +163,6 @@
     ;
 
     @Глобально
-    // Метод CreateProject
-    // Creates a new project with the specified name
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
-    // Name  - String: Project name
     метод CreateProject(URL: Объект?, Token: Объект?, Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -254,12 +175,6 @@
     ;
 
     @Глобально
-    // Метод DeleteProject
-    // Deletes a project by ID
-    //
-    // URL       - String: ReportPortal server URL
-    // Token     - String: Access token
-    // ProjectID - Number: Project ID
     метод DeleteProject(URL: Объект?, Token: Объект?, ProjectID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -272,12 +187,6 @@
     ;
 
     @Глобально
-    // Метод GetProject
-    // Gets information about a project by ID
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
-    // Name  - String: Project name
     метод GetProject(URL: Объект?, Token: Объект?, Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -290,12 +199,6 @@
     ;
 
     @Глобально
-    // Метод GetProjects
-    // Gets a list of existing projects
-    //
-    // URL   - String: ReportPortal server URL
-    // Token - String: Access token
-    // Page  - Number: List page number (необяз. по ум. - 1)
     метод GetProjects(URL: Объект?, Token: Объект?, Page: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -308,13 +211,6 @@
     ;
 
     @Глобально
-    // Метод AddUsersToProject
-    // Adds users to the specified project
-    //
-    // URL         - String: ReportPortal server URL
-    // Token       - String: Access token
-    // ProjectName - String: Project name
-    // UserList    - Map Of KeyAndValue: Users: Key > name, Value > role
     метод AddUsersToProject(URL: Объект?, Token: Объект?, ProjectName: Объект?, UserList: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -328,13 +224,6 @@
     ;
 
     @Глобально
-    // Метод ExcludeUsersFromProject
-    // Excludes users from the specified project
-    //
-    // URL          - String: ReportPortal server URL
-    // Token        - String: Access token
-    // ProjectName  - String: Project name
-    // ArrayOfUsers - Array Of String: Array of usernames
     метод ExcludeUsersFromProject(URL: Объект?, Token: Объект?, ProjectName: Объект?, ArrayOfUsers: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -348,13 +237,6 @@
     ;
 
     @Глобально
-    // Метод CreateLaunch
-    // Starts a new test execution session
-    //
-    // URL             - String: ReportPortal server URL
-    // Token           - String: Access token
-    // Project         - String: Project ID
-    // LaunchStructure - Structure Of KeyAndValue: Launch parameters. See GetLaunchStructure
     метод CreateLaunch(URL: Объект?, Token: Объект?, Project: Объект?, LaunchStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -368,13 +250,6 @@
     ;
 
     @Глобально
-    // Метод GetLaunch
-    // Gets information about a launch by UUID
-    //
-    // URL        - String: ReportPortal server URL
-    // Token      - String: Access token
-    // Project    - String: Project ID
-    // LaunchUUID - String: Launch UUID
     метод GetLaunch(URL: Объект?, Token: Объект?, Project: Объект?, LaunchUUID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -388,14 +263,6 @@
     ;
 
     @Глобально
-    // Метод UpdateLaunch
-    // Updates data of a test session launch
-    //
-    // URL             - String: ReportPortal server URL
-    // Token           - String: Access token
-    // Project         - String: Project ID
-    // LaunchID        - Number: Launch ID
-    // LaunchStructure - Structure Of KeyAndValue: Launch parameters. See GetLaunchStructure
     метод UpdateLaunch(URL: Объект?, Token: Объект?, Project: Объект?, LaunchID: Объект?, LaunchStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -410,14 +277,6 @@
     ;
 
     @Глобально
-    // Метод FinishLaunch
-    // Ends a previously started test execution session
-    //
-    // URL             - String: ReportPortal server URL
-    // Token           - String: Access token
-    // Project         - String: Project ID
-    // LaunchUUID      - String: Launch UUID
-    // FinishStructure - Structure Of KeyAndValue: Completion parameters. See GetLaunchCompletionStructure
     метод FinishLaunch(URL: Объект?, Token: Объект?, Project: Объект?, LaunchUUID: Объект?, FinishStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -432,13 +291,6 @@
     ;
 
     @Глобально
-    // Метод DeleteLaunch
-    // Deletes a test session by ID
-    //
-    // URL      - String: ReportPortal server URL
-    // Token    - String: Access token
-    // Project  - String: Project ID
-    // LaunchID - Number: Launch ID
     метод DeleteLaunch(URL: Объект?, Token: Объект?, Project: Объект?, LaunchID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -452,14 +304,6 @@
     ;
 
     @Глобально
-    // Метод GetLaunchReport
-    // Gets report for the selected test session
-    //
-    // URL      - String: ReportPortal server URL
-    // Token    - String: Access token
-    // Project  - String: Project ID
-    // LaunchID - Number: Launch ID
-    // Format   - String: Report format: pdf, xls, html (необяз. по ум. - pdf)
     метод GetLaunchReport(URL: Объект?, Token: Объект?, Project: Объект?, LaunchID: Объект?, Format: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -474,14 +318,6 @@
     ;
 
     @Глобально
-    // Метод GetLaunchItems
-    // Gets the test items of the selected test session
-    //
-    // URL      - String: ReportPortal server URL
-    // Token    - String: Access token
-    // Project  - String: Project ID
-    // LaunchID - Number: Launch ID
-    // Page     - Number: List page number (необяз. по ум. - 1)
     метод GetLaunchItems(URL: Объект?, Token: Объект?, Project: Объект?, LaunchID: Объект?, Page: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -496,14 +332,6 @@
     ;
 
     @Глобально
-    // Метод CreateItem
-    // Creates a new test item
-    //
-    // URL              - String: ReportPortal server URL
-    // Token            - String: Access token
-    // Project          - String: Project ID
-    // ElementStructure - Structure Of KeyAndValue: Item parameters. See GetItemStructure
-    // Parent           - String: ID of the parent item, if necessary (необяз. по ум. - Empty value)
     метод CreateItem(URL: Объект?, Token: Объект?, Project: Объект?, ElementStructure: Объект?, Parent: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -518,13 +346,6 @@
     ;
 
     @Глобально
-    // Метод GetItem
-    // Gets information about a test item by UUID
-    //
-    // URL      - String: ReportPortal server URL
-    // Token    - String: Access token
-    // Project  - String: Project ID
-    // ItemUUID - String: Test item UUID
     метод GetItem(URL: Объект?, Token: Объект?, Project: Объект?, ItemUUID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -538,14 +359,6 @@
     ;
 
     @Глобально
-    // Метод UpdateItem
-    // Updates data of a test item by ID
-    //
-    // URL              - String: ReportPortal server URL
-    // Token            - String: Access token
-    // Project          - String: Project ID
-    // ElementID        - Number: Test item ID
-    // ElementStructure - Structure Of KeyAndValue: Item parameters. See GetItemStructure
     метод UpdateItem(URL: Объект?, Token: Объект?, Project: Объект?, ElementID: Объект?, ElementStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -560,14 +373,6 @@
     ;
 
     @Глобально
-    // Метод FinishItem
-    // Ends a previously created test item
-    //
-    // URL             - String: ReportPortal server URL
-    // Token           - String: Access token
-    // Project         - String: Project ID
-    // ItemUUID        - String: Test item UUID
-    // FinishStructure - Structure Of KeyAndValue: Completion parameters. See GetItemCompletionStructure
     метод FinishItem(URL: Объект?, Token: Объект?, Project: Объект?, ItemUUID: Объект?, FinishStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -582,13 +387,6 @@
     ;
 
     @Глобально
-    // Метод DeleteItem
-    // Deletes a test item by ID
-    //
-    // URL       - String: ReportPortal server URL
-    // Token     - String: Access token
-    // Project   - String: Project ID
-    // ElementID - Number: Test item ID
     метод DeleteItem(URL: Объект?, Token: Объект?, Project: Объект?, ElementID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -602,11 +400,6 @@
     ;
 
     @Глобально
-    // Метод GetLaunchStructure
-    // Gets the launch parameters structure
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns the filter fields as a map (необяз. по ум. - false)
     метод GetLaunchStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -618,11 +411,6 @@
     ;
 
     @Глобально
-    // Метод GetItemStructure
-    // Gets the test item parameter structure
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns the filter fields as a map (необяз. по ум. - false)
     метод GetItemStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -634,11 +422,6 @@
     ;
 
     @Глобально
-    // Метод GetItemCompletionStructure
-    // Gets the parameter structure for completing the test item execution
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns the filter fields as a map (необяз. по ум. - false)
     метод GetItemCompletionStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -650,13 +433,6 @@
     ;
 
     @Глобально
-    // Метод GetLaunchCompletionStructure
-    // Gets the parameter structure for completing a test session
-    //
-    // Time        - Date: Launch end date and time
-    // Status      - String: Completion status: passed, failed, stopped, skipped, interrupted, cancelled (необяз. по ум. - Empty value)
-    // Description - String: Launch description. Overwrites the one specified during creation (необяз. по ум. - Empty value)
-    // Attributes  - String: Launch attributes. Overwrites the one specified during creation (необяз. по ум. - Empty value)
     метод GetLaunchCompletionStructure(Time: Объект?, Status: Объект? = Неопределено, Description: Объект? = Неопределено, Attributes: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -670,13 +446,6 @@
     ;
 
     @Глобально
-    // Метод WriteLog
-    // Adds execution information for the test item
-    //
-    // URL          - String: ReportPortal server URL
-    // Token        - String: Access token
-    // Project      - String: Project ID
-    // LogStructure - Structure Of KeyAndValue: Execution information. See GetLogStructure
     метод WriteLog(URL: Объект?, Token: Объект?, Project: Объект?, LogStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -690,13 +459,6 @@
     ;
 
     @Глобально
-    // Метод GetLog
-    // Gets information about a log by UUID
-    //
-    // URL     - String: ReportPortal server URL
-    // Token   - String: Access token
-    // Project - String: Project ID
-    // LogUUID - String: Log UUID
     метод GetLog(URL: Объект?, Token: Объект?, Project: Объект?, LogUUID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -710,14 +472,6 @@
     ;
 
     @Глобально
-    // Метод GetItemLogs
-    // Gets the logs of the selected test item
-    //
-    // URL       - String: ReportPortal server URL
-    // Token     - String: Access token
-    // Project   - String: Project ID
-    // ElementID - Number: Test item ID
-    // Page      - Number: List page number (необяз. по ум. - 1)
     метод GetItemLogs(URL: Объект?, Token: Объект?, Project: Объект?, ElementID: Объект?, Page: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -732,13 +486,6 @@
     ;
 
     @Глобально
-    // Метод DeleteLog
-    // Deletes a log item by ID
-    //
-    // URL     - String: ReportPortal server URL
-    // Token   - String: Access token
-    // Project - String: Project ID
-    // LogID   - Number: Log ID
     метод DeleteLog(URL: Объект?, Token: Объект?, Project: Объект?, LogID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -752,14 +499,6 @@
     ;
 
     @Глобально
-    // Метод GetLogStructure
-    // Gets the parameter structure for log entry
-    //
-    // LaunchID  - String: Launch ID to which the test item belongs
-    // ElementID - String: Test item ID
-    // Time      - Date: Log entry date and time
-    // Text      - String: Log text information (необяз. по ум. - Empty value)
-    // Level     - String: Information level: error, warn, info, debug, trace, fatal, unknown (необяз. по ум. - info)
     метод GetLogStructure(LaunchID: Объект?, ElementID: Объект?, Time: Объект?, Text: Объект? = Неопределено, Level: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

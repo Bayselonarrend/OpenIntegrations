@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_Airtable
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_Airtable
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_Airtable(Исполнитель)
@@ -18,11 +18,6 @@
     знч КомандаCLI: Строка = "airtable"
     
     @Глобально
-    // Метод GetListOfBases
-    // Gets the list of available bases
-    //
-    // Token  - String: Token
-    // Indent - String: Next page identifier of the base list from the previous request (необяз. по ум. - Empty value)
     метод GetListOfBases(Token: Объект?, Indent: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -34,11 +29,6 @@
     ;
 
     @Глобально
-    // Метод GetDatabaseTables
-    // Gets the schema of base tables
-    //
-    // Token - String: Token
-    // Base  - String: Base identifier
     метод GetDatabaseTables(Token: Объект?, Base: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,13 +40,6 @@
     ;
 
     @Глобально
-    // Метод CreateDatabase
-    // Creates a new database
-    //
-    // Token           - String: Token
-    // Workspace       - String: Workspace identifier
-    // Name            - String: New base name
-    // TableCollection - Map Of KeyAndValue: Table description: Key > name, Value > array of fields
     метод CreateDatabase(Token: Объект?, Workspace: Объект?, Name: Объект?, TableCollection: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -70,14 +53,6 @@
     ;
 
     @Глобально
-    // Метод CreateTable
-    // Creates a new table in the base
-    //
-    // Token       - String: Token
-    // Base        - String: Base identifier
-    // Name        - String: New table name
-    // FieldArray  - Array of Structure: Array of field descriptions
-    // Description - String: Table description (необяз. по ум. - Empty value)
     метод CreateTable(Token: Объект?, Base: Объект?, Name: Объект?, FieldArray: Объект?, Description: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -92,14 +67,6 @@
     ;
 
     @Глобально
-    // Метод ModifyTable
-    // Changes the name and
-    //
-    // Token       - String: Token
-    // Base        - String: Base identifier
-    // Table       - String: Table identifier
-    // Name        - String: New name (необяз. по ум. - Empty value)
-    // Description - String: New description (необяз. по ум. - Empty value)
     метод ModifyTable(Token: Объект?, Base: Объект?, Table: Объект?, Name: Объект? = Неопределено, Description: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -114,13 +81,6 @@
     ;
 
     @Глобально
-    // Метод CreateField
-    // Creates a new field in the table
-    //
-    // Token          - String: Token
-    // Base           - String: Base identifier
-    // Table          - String: Table identifier
-    // FieldStructure - Structure Of KeyAndValue: Description of the new field
     метод CreateField(Token: Объект?, Base: Объект?, Table: Объект?, FieldStructure: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -134,15 +94,6 @@
     ;
 
     @Глобально
-    // Метод ModifyField
-    // Changes the name and
-    //
-    // Token       - String: Token
-    // Base        - String: Base identifier Base
-    // Table       - String: Table identifier
-    // Field       - String: Field identifier
-    // Name        - String: New name (необяз. по ум. - Empty value)
-    // Description - String: New description (необяз. по ум. - Empty value)
     метод ModifyField(Token: Объект?, Base: Объект?, Table: Объект?, Field: Объект?, Name: Объект? = Неопределено, Description: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -158,10 +109,6 @@
     ;
 
     @Глобально
-    // Метод GetStringField
-    // Gets the description of a string field
-    //
-    // Name - String: New field name
     метод GetStringField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -172,11 +119,6 @@
     ;
 
     @Глобально
-    // Метод GetNumberField
-    // Gets the description of a numeric field
-    //
-    // Name      - String: New field name
-    // Precision - Number, String: Number of decimal places (необяз. по ум. - Empty value)
     метод GetNumberField(Name: Объект?, Precision: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -188,10 +130,6 @@
     ;
 
     @Глобально
-    // Метод GetAttachmentField
-    // Gets the description of a file field
-    //
-    // Name - String: Field name
     метод GetAttachmentField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -202,10 +140,6 @@
     ;
 
     @Глобально
-    // Метод GetCheckboxField
-    // Gets the description of a boolean field
-    //
-    // Name - String: Field name
     метод GetCheckboxField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -216,10 +150,6 @@
     ;
 
     @Глобально
-    // Метод GetDateField
-    // Gets the description of a date field
-    //
-    // Name - String: Field name
     метод GetDateField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -230,10 +160,6 @@
     ;
 
     @Глобально
-    // Метод GetEmailField
-    // Gets the description of an email field
-    //
-    // Name - String: Field name
     метод GetEmailField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -244,10 +170,6 @@
     ;
 
     @Глобально
-    // Метод GetPhoneField
-    // Gets the description of a phone number field
-    //
-    // Name - String: Field name
     метод GetPhoneField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -258,10 +180,6 @@
     ;
 
     @Глобально
-    // Метод GetLinkField
-    // Gets the description of a URL field
-    //
-    // Name - String: Field name
     метод GetLinkField(Name: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -272,13 +190,6 @@
     ;
 
     @Глобально
-    // Метод GetListOfRecords
-    // Gets the list of records of the selected table
-    //
-    // Token  - String: Token
-    // Base   - String: Database identifier
-    // Table  - String: Table identifier
-    // Indent - String: Next page identifier of data from the previous request (необяз. по ум. - Empty value)
     метод GetListOfRecords(Token: Объект?, Base: Объект?, Table: Объект?, Indent: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -292,13 +203,6 @@
     ;
 
     @Глобально
-    // Метод GetRecord
-    // Gets row data of the table by identifier
-    //
-    // Token  - String: Token
-    // Base   - String: Database identifier
-    // Table  - String: Table identifier
-    // Record - String: Record identifier in the table
     метод GetRecord(Token: Объект?, Base: Объект?, Table: Объект?, Record: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -312,13 +216,6 @@
     ;
 
     @Глобально
-    // Метод CreatePosts
-    // Creates one or an array of records by description or an array of field value descriptions
-    //
-    // Token - String: Token
-    // Base  - String: Database identifier
-    // Table - String: Table identifier
-    // Data  - Structure, Array of Structure: Set or array of sets of pairs Key : Value > Field : FieldValue
     метод CreatePosts(Token: Объект?, Base: Объект?, Table: Объект?, Data: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -332,13 +229,6 @@
     ;
 
     @Глобально
-    // Метод DeleteRecords
-    // Deletes one or an array of records by identifiers
-    //
-    // Token   - String: Token
-    // Base    - String: Database identifier
-    // Table   - String: Table identifier
-    // Records - String, Array of String: Identifier or array of record identifiers
     метод DeleteRecords(Token: Объект?, Base: Объект?, Table: Объект?, Records: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -352,14 +242,6 @@
     ;
 
     @Глобально
-    // Метод GetComments
-    // Gets the list of comments for a record in the table
-    //
-    // Token  - String: Token
-    // Base   - String: Database identifier
-    // Table  - String: Table identifier
-    // Record - String: Record identifier in the table
-    // Indent - String: Next page identifier of data from the previous request (необяз. по ум. - Empty value)
     метод GetComments(Token: Объект?, Base: Объект?, Table: Объект?, Record: Объект?, Indent: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -374,14 +256,6 @@
     ;
 
     @Глобально
-    // Метод CreateComment
-    // Creates a comment for a record in the table
-    //
-    // Token  - String: Token
-    // Base   - String: Database identifier
-    // Table  - String: Table identifier
-    // Record - String: Record identifier in the table
-    // Text   - String: Comment text
     метод CreateComment(Token: Объект?, Base: Объект?, Table: Объект?, Record: Объект?, Text: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -396,15 +270,6 @@
     ;
 
     @Глобально
-    // Метод EditComment
-    // Changes the text of an existing comment
-    //
-    // Token   - String: Token
-    // Base    - String: Database identifier
-    // Table   - String: Table identifier
-    // Record  - String: Record identifier in the table
-    // Comment - String: Comment identifier
-    // Text    - String: New comment text
     метод EditComment(Token: Объект?, Base: Объект?, Table: Объект?, Record: Объект?, Comment: Объект?, Text: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -420,14 +285,6 @@
     ;
 
     @Глобально
-    // Метод DeleteComment
-    // Deletes a comment for a table record
-    //
-    // Token   - String: Token
-    // Base    - String: Database identifier
-    // Table   - String: Table identifier
-    // Record  - String: Record identifier in the table
-    // Comment - String: Comment identifier
     метод DeleteComment(Token: Объект?, Base: Объект?, Table: Объект?, Record: Объект?, Comment: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

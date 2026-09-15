@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_TCP
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_TCP
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_TCP(Исполнитель)
@@ -18,14 +18,104 @@
     знч КомандаCLI: Строка = "tcp"
     
     @Глобально
-    // Метод ProcessRequest
-    // Sends a single request to a specified address and receives a response using the default settings
-    //
-    // Address        - String: Address and port
-    // Data           - String, BinaryData: Data or text to be sent (необяз. по ум. - Empty value)
-    // ResponseString - Boolean: An attribute of receiving the response as a string (необяз. по ум. - true)
-    // Tls            - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
-    // Proxy          - Structure Of KeyAndValue: Proxy settings, if required. See GetProxySettings (необяз. по ум. - Empty value)
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(AddInObject: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", AddInObject)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
+        
+    ;
+
+    @Глобально
+    метод CreateConnection(Address: Объект?, Tls: Объект? = Неопределено, Proxy: Объект? = Неопределено, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Address)
+        Опции.Вставить("-t", Tls)
+        Опции.Вставить("-p", Proxy)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseConnection(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод ReadBinaryData(Connection: Объект?, MaxSize: Объект? = Неопределено, Marker: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Connection)
+        Опции.Вставить("-s", MaxSize)
+        Опции.Вставить("-m", Marker)
+        Опции.Вставить("-i", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReadBinaryData", Опции)
+        
+    ;
+
+    @Глобально
+    метод ReadLine(Connection: Объект?, Encoding: Объект? = Неопределено, Marker: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Connection)
+        Опции.Вставить("-e", Encoding)
+        Опции.Вставить("-m", Marker)
+        Опции.Вставить("-i", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReadLine", Опции)
+        
+    ;
+
+    @Глобально
+    метод SendBinaryData(Connection: Объект?, Data: Объект?, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Connection)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-m", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendBinaryData", Опции)
+        
+    ;
+
+    @Глобально
+    метод SendLine(Connection: Объект?, Data: Объект?, Encoding: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Connection)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-e", Encoding)
+        Опции.Вставить("-m", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendLine", Опции)
+        
+    ;
+
+    @Глобально
     метод ProcessRequest(Address: Объект?, Data: Объект? = Неопределено, ResponseString: Объект? = Неопределено, Tls: Объект? = Неопределено, Proxy: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -40,14 +130,16 @@
     ;
 
     @Глобально
-    // Метод GetProxySettings
-    // Creates a structure of proxy server settings for the connection
-    //
-    // Address  - String: Proxy address
-    // Port     - Number: Proxy port
-    // View     - String: Proxy type: socks5, socks4, http (необяз. по ум. - socks5)
-    // Login    - String, Undefined: Authorization login, if required (необяз. по ум. - Empty value)
-    // Password - String, Undefined: Authorization password, if required (необяз. по ум. - Empty value)
+    метод GetLastError(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLastError", Опции)
+        
+    ;
+
+    @Глобально
     метод GetProxySettings(Address: Объект?, Port: Объект?, View: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -62,11 +154,6 @@
     ;
 
     @Глобально
-    // Метод GetTlsSettings
-    // Forms settings for using TLS
-    //
-    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
-    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
     метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -74,6 +161,128 @@
         Опции.Вставить("-c", CertFilepath)
         
         возврат Исполнитель.Выполнить(КомандаCLI, "GetTlsSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsClientObject(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsClientObject", Опции)
+        
+    ;
+
+    @Глобально
+    метод StartServer(Port: Объект?, PoolSize: Объект? = Неопределено, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-s", PoolSize)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "StartServer", Опции)
+        
+    ;
+
+    @Глобально
+    метод StopServer(ServerObject: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "StopServer", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetNextConnectionData(ServerObject: Объект?, Timeout: Объект? = Неопределено, MaxSize: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        Опции.Вставить("-t", Timeout)
+        Опции.Вставить("-m", MaxSize)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetNextConnectionData", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetConnectionData(ServerObject: Объект?, ConnectionID: Объект?, Timeout: Объект? = Неопределено, MaxSize: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        Опции.Вставить("-i", ConnectionID)
+        Опции.Вставить("-t", Timeout)
+        Опции.Вставить("-m", MaxSize)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionData", Опции)
+        
+    ;
+
+    @Глобально
+    метод SendData(ServerObject: Объект?, ConnectionID: Объект?, Data: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        Опции.Вставить("-i", ConnectionID)
+        Опции.Вставить("-d", Data)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendData", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseIncomingConnection(ServerObject: Объект?, ConnectionID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        Опции.Вставить("-i", ConnectionID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseIncomingConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод CompleteSend(ServerObject: Объект?, ConnectionID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        Опции.Вставить("-i", ConnectionID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CompleteSend", Опции)
+        
+    ;
+
+    @Глобально
+    метод FinishReceiving(ServerObject: Объект?, ConnectionID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        Опции.Вставить("-i", ConnectionID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FinishReceiving", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetConnectionList(ServerObject: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ServerObject)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionList", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsServerObject(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsServerObject", Опции)
         
     ;
     

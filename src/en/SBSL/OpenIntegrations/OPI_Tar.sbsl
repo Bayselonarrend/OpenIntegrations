@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_Tar
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_Tar
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_Tar(Исполнитель)
@@ -18,12 +18,6 @@
     знч КомандаCLI: Строка = "tar"
     
     @Глобально
-    // Метод ArchiveDirectory
-    // Pack files from the specified directory into a tar archive
-    //
-    // Directory   - String, Map Of KeyAndValue: Path to directory or description. See GetArchiveDescriptionStructure
-    // ArchivePath - String: Path to save the archive. To binary data if not filled (необяз. по ум. - Empty value)
-    // Settings    - Map Of KeyAndValue: Additional settings. See GetArchivingSettingsStructure (необяз. по ум. - Empty value)
     метод ArchiveDirectory(Directory: Объект?, ArchivePath: Объект? = Неопределено, Settings: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -36,11 +30,6 @@
     ;
 
     @Глобально
-    // Метод UnarchiveDirectory
-    // Extract tar archive to the specified directory
-    //
-    // Archive              - String, BinaryData: Path to the archive on disk or binary data
-    // DestinationDirectory - String: Directory path for unpacking. To binary data if not filled (необяз. по ум. - Empty value)
     метод UnarchiveDirectory(Archive: Объект?, DestinationDirectory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -52,12 +41,6 @@
     ;
 
     @Глобально
-    // Метод UnpackFiles
-    // Extract selected files from the tar archive by the list of paths
-    //
-    // Archive              - String, BinaryData: Path to the archive on disk or binary data
-    // Paths                - Array Of String: Full paths of files inside the archive
-    // DestinationDirectory - String: Directory path for unpacking. To binary data if not filled (необяз. по ум. - Empty value)
     метод UnpackFiles(Archive: Объект?, Paths: Объект?, DestinationDirectory: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -70,13 +53,6 @@
     ;
 
     @Глобально
-    // Метод ModifyArchive
-    // Add, replace and delete files in an existing tar archive
-    //
-    // Archive        - String, BinaryData: Path to the archive on disk or binary data
-    // AddableFiles   - Map Of KeyAndValue: Key: archive path; value: file path or binary data (необяз. по ум. - Empty value)
-    // DeletablePaths - Array Of String: Paths of files in the archive for deletion (необяз. по ум. - Empty value)
-    // Settings       - Map Of KeyAndValue: Change settings. See GetArchiveSettingsStructure (необяз. по ум. - Empty value)
     метод ModifyArchive(Archive: Объект?, AddableFiles: Объект? = Неопределено, DeletablePaths: Объект? = Неопределено, Settings: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -90,11 +66,6 @@
     ;
 
     @Глобально
-    // Метод GetArchivingSettingsStructure
-    // Gets a structure with additional data archiving settings
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns the filter fields as a map (необяз. по ум. - false)
     метод GetArchivingSettingsStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -106,11 +77,6 @@
     ;
 
     @Глобально
-    // Метод GetArchiveDescriptionStructure
-    // Get structure of data description for packing without a directory on disk
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // AsMap - Boolean: True > returns fields as map (необяз. по ум. - false)
     метод GetArchiveDescriptionStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -122,10 +88,6 @@
     ;
 
     @Глобально
-    // Метод GetFilesList
-    // Gets a hierarchical list of files and directories in the archive
-    //
-    // Archive - String, BinaryData: Path to the archive on disk or binary data
     метод GetFilesList(Archive: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -136,10 +98,6 @@
     ;
 
     @Глобально
-    // Метод GetMetadata
-    // Gets metadata and a flat list of archive files
-    //
-    // Archive - String, BinaryData: Path to the archive on disk or binary data
     метод GetMetadata(Archive: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

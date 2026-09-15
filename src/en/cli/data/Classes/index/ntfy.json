@@ -9,26 +9,42 @@
   {
    "name": "Publication",
    "methods": [
-    "GetMessageParametersStructure",
-    "SendMessage"
+    {
+     "name": "GetMessageParametersStructure",
+     "nocli": false
+    },
+    {
+     "name": "SendMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Obtaining",
    "methods": [
-    "GetFilterParametersStructure",
-    "GetMessages"
+    {
+     "name": "GetFilterParametersStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetMessages",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Management",
    "methods": [
-    "DeleteMessage"
+    {
+     "name": "DeleteMessage",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetMessageParametersStructure",
    "id": "GETMESSAGEPARAMETERSSTRUCTURE",
    "description": "Get structure of additional parameters for sending notification",
@@ -45,6 +61,7 @@
    "region": "Publication"
   },
   {
+   "nocli": false,
    "name": "SendMessage",
    "id": "SENDMESSAGE",
    "description": "Publish notification to the specified topic",
@@ -93,6 +110,7 @@
    "region": "Publication"
   },
   {
+   "nocli": false,
    "name": "GetFilterParametersStructure",
    "id": "GETFILTERPARAMETERSSTRUCTURE",
    "description": "Get structure of parameters for getting messages from topic",
@@ -109,6 +127,7 @@
    "region": "Obtaining"
   },
   {
+   "nocli": false,
    "name": "GetMessages",
    "id": "GETMESSAGES",
    "description": "Get messages from topic in JSON format",
@@ -149,6 +168,7 @@
    "region": "Obtaining"
   },
   {
+   "nocli": false,
    "name": "DeleteMessage",
    "id": "DELETEMESSAGE",
    "description": "Delete message from topic by ID",

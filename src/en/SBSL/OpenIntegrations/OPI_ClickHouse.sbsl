@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_ClickHouse
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_ClickHouse
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_ClickHouse(Исполнитель)
@@ -18,12 +18,6 @@
     знч КомандаCLI: Строка = "clickhouse"
     
     @Глобально
-    // Метод ExecuteRequest
-    // Executes a request with the specified parameters
-    //
-    // Connection - Arbitrary: Connection settings or object (for gRPC)
-    // Request    - Structure Of KeyAndValue: Request data. See GetRequestSettings
-    // Session    - Structure Of KeyAndValue: Session settings. See GetSessionSettings (необяз. по ум. - Empty value)
     метод ExecuteRequest(Connection: Объект?, Request: Объект?, Session: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -36,12 +30,6 @@
     ;
 
     @Глобально
-    // Метод GetHTTPConnectionSettings
-    // Gets the settings structure for HTTP connection
-    //
-    // Address           - String: Connection address with protocol and port
-    // Authorization     - String, Structure Of KeyAndValue: Authorization: string for JWT, structure for basic (необяз. по ум. - Empty value)
-    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers (необяз. по ум. - Empty value)
     метод GetHTTPConnectionSettings(Address: Объект?, Authorization: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -54,16 +42,6 @@
     ;
 
     @Глобально
-    // Метод GetRequestSettings
-    // Forms the request description structure
-    //
-    // Text           - String: Request text
-    // Database       - String: Database (необяз. по ум. - Empty value)
-    // RequestID      - String: Unique request ID, if necessary (необяз. по ум. - Empty value)
-    // Data           - Arbitrary: String, file, or binary data of the request (необяз. по ум. - Empty value)
-    // ResponseFormat - String: Response format: JSON, CSV, TSV, etc.. (необяз. по ум. - JSON)
-    // ExternalTables - Array of Structure: External tables data. See GetExternalTableStructure (необяз. по ум. - Empty value)
-    // Settings       - Map Of KeyAndValue: Additional query parameters of the request (необяз. по ум. - Empty value)
     метод GetRequestSettings(Text: Объект?, Database: Объект? = Неопределено, RequestID: Объект? = Неопределено, Data: Объект? = Неопределено, ResponseFormat: Объект? = Неопределено, ExternalTables: Объект? = Неопределено, Settings: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -80,13 +58,6 @@
     ;
 
     @Глобально
-    // Метод GetExternalTableStructure
-    // Gets the description structure of the external table of the request
-    //
-    // Name           - String: Table name
-    // ColoumnsStruct - Structure Of KeyAndValue: Table column structure: Key > name, Value > data type
-    // Data           - Arbitrary: String, file, or binary data of the table (необяз. по ум. - Empty value)
-    // DataFormat     - String: Data format: CVS, TVS, JSON, etc.. (необяз. по ум. - Empty value)
     метод GetExternalTableStructure(Name: Объект?, ColoumnsStruct: Объект?, Data: Объект? = Неопределено, DataFormat: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -100,12 +71,6 @@
     ;
 
     @Глобально
-    // Метод GetSessionSettings
-    // Forms the session settings structure for executing the request
-    //
-    // SessionID    - String: Session ID. A new unique identifier if not specified (a new session will be created) (необяз. по ум. - Empty value)
-    // CheckSession - Boolean: Check for session existence. True when ID is specified and false when not, unless otherwise specified (необяз. по ум. - Empty value)
-    // Timeout      - Number: Session lifetime in seconds (необяз. по ум. - 60)
     метод GetSessionSettings(SessionID: Объект? = Неопределено, CheckSession: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -118,13 +83,6 @@
     ;
 
     @Глобально
-    // Метод GetGRPCConnectionSettings
-    // Gets the settings structure for gRPC connection
-    //
-    // Address       - String: Connection address with protocol and port
-    // Authorization - String, Structure Of KeyAndValue: Authorization: string for JWT, structure for basic (необяз. по ум. - Empty value)
-    // Meta          - Structure Of KeyAndValue: gRPC metadata structure, if necessary (необяз. по ум. - Empty value)
-    // Tls           - Structure Of KeyAndValue: TLS settings. See GetTlsSettings (необяз. по ум. - Empty value)
     метод GetGRPCConnectionSettings(Address: Объект?, Authorization: Объект? = Неопределено, Meta: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -138,14 +96,88 @@
     ;
 
     @Глобально
-    // Метод ProcessGRPCSending
-    // Initializes the stream, sends the request and a set of data in a specified order, receiving one message upon completion
-    //
-    // Connection - Arbitrary: Existing connection or connection parameters
-    // Request    - Structure Of KeyAndValue: Request data. See GetRequestSettings
-    // Data       - Array Of Arbitrary: An array of strings, collections, binary data, or file paths
-    // Session    - Structure Of KeyAndValue: Session settings. See GetSessionSettings (необяз. по ум. - Empty value)
-    // Timeout    - Number: Timeout (in ms) (необяз. по ум. - 10000)
+    метод CreateGRPCConnection(ConnectionSettings: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ConnectionSettings)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateGRPCConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод OpenGRPCStream(Connection: Объект?, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-t", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "OpenGRPCStream", Опции)
+        
+    ;
+
+    @Глобально
+    метод SendGRPCMessage(Connection: Объект?, StreamID: Объект?, Request: Объект?, Session: Объект? = Неопределено, WaitNext: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        Опции.Вставить("-r", Request)
+        Опции.Вставить("-n", Session)
+        Опции.Вставить("-x", WaitNext)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendGRPCMessage", Опции)
+        
+    ;
+
+    @Глобально
+    метод SendGRPCData(Connection: Объект?, StreamID: Объект?, Data: Объект?, WaitNext: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-n", WaitNext)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendGRPCData", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetGRPCMessage(Connection: Объект?, StreamID: Объект?, DefaultFormat: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        Опции.Вставить("-f", DefaultFormat)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetGRPCMessage", Опции)
+        
+    ;
+
+    @Глобально
+    метод CompleteGRPCSending(Connection: Объект?, StreamID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CompleteGRPCSending", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseGRPCStream(Connection: Объект?, StreamID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", StreamID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseGRPCStream", Опции)
+        
+    ;
+
+    @Глобально
     метод ProcessGRPCSending(Connection: Объект?, Request: Объект?, Data: Объект?, Session: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -160,14 +192,6 @@
     ;
 
     @Глобально
-    // Метод ProcessGRPCReceiving
-    // Initializes the stream, sends the request, and receives messages until closure or a set limit is reached
-    //
-    // Connection   - Arbitrary: Existing connection or connection parameters
-    // Request      - Structure Of KeyAndValue: Request data. See GetRequestSettings
-    // MessageCount - Number: Maximum number of messages to receive, if necessary (необяз. по ум. - Empty value)
-    // Session      - Structure Of KeyAndValue: Session settings. See GetSessionSettings (необяз. по ум. - Empty value)
-    // Timeout      - Number: Timeout (in ms) (необяз. по ум. - 10000)
     метод ProcessGRPCReceiving(Connection: Объект?, Request: Объект?, MessageCount: Объект? = Неопределено, Session: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -182,11 +206,6 @@
     ;
 
     @Глобально
-    // Метод GetTlsSettings
-    // Forms settings for using TLS
-    //
-    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
-    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
     метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

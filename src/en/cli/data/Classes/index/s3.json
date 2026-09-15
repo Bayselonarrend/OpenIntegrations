@@ -9,53 +9,150 @@
   {
    "name": "Common methods",
    "methods": [
-    "GetBasicDataStructure",
-    "SendRequestWithBody",
-    "SendRequestWithoutBody"
+    {
+     "name": "GetBasicDataStructure",
+     "nocli": false
+    },
+    {
+     "name": "SendRequestWithBody",
+     "nocli": false
+    },
+    {
+     "name": "SendRequestWithoutBody",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Buckets management",
    "methods": [
-    "CreateBucket",
-    "DeleteBucket",
-    "DeleteBucketEncryption",
-    "DeleteBucketTagging",
-    "GetBucketEncryption",
-    "GetBucketTagging",
-    "GetBucketVersioning",
-    "HeadBucket",
-    "ListBuckets",
-    "PutBucketEncryption",
-    "PutBucketTagging",
-    "PutBucketVersioning"
+    {
+     "name": "CreateBucket",
+     "nocli": false
+    },
+    {
+     "name": "DeleteBucket",
+     "nocli": false
+    },
+    {
+     "name": "DeleteBucketEncryption",
+     "nocli": false
+    },
+    {
+     "name": "DeleteBucketTagging",
+     "nocli": false
+    },
+    {
+     "name": "GetBucketEncryption",
+     "nocli": false
+    },
+    {
+     "name": "GetBucketTagging",
+     "nocli": false
+    },
+    {
+     "name": "GetBucketVersioning",
+     "nocli": false
+    },
+    {
+     "name": "HeadBucket",
+     "nocli": false
+    },
+    {
+     "name": "ListBuckets",
+     "nocli": false
+    },
+    {
+     "name": "PutBucketEncryption",
+     "nocli": false
+    },
+    {
+     "name": "PutBucketTagging",
+     "nocli": false
+    },
+    {
+     "name": "PutBucketVersioning",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Objects management",
    "methods": [
-    "AbortMultipartUpload",
-    "CopyObject",
-    "DeleteObject",
-    "DeleteObjectTagging",
-    "FinishPartsUpload",
-    "GetObject",
-    "GetObjectDownloadLink",
-    "GetObjectTagging",
-    "GetObjectUploadLink",
-    "HeadObject",
-    "InitPartsUpload",
-    "ListObjects",
-    "ListObjectVersions",
-    "PutObject",
-    "PutObjectTagging",
-    "UploadFullObject",
-    "UploadObjectPart"
+    {
+     "name": "AbortMultipartUpload",
+     "nocli": false
+    },
+    {
+     "name": "PutObjectTagging",
+     "nocli": false
+    },
+    {
+     "name": "PutObject",
+     "nocli": false
+    },
+    {
+     "name": "ListObjectVersions",
+     "nocli": false
+    },
+    {
+     "name": "ListObjects",
+     "nocli": false
+    },
+    {
+     "name": "InitPartsUpload",
+     "nocli": false
+    },
+    {
+     "name": "HeadObject",
+     "nocli": false
+    },
+    {
+     "name": "UploadFullObject",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectUploadLink",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectDownloadLink",
+     "nocli": false
+    },
+    {
+     "name": "GetObject",
+     "nocli": false
+    },
+    {
+     "name": "FinishPartsUpload",
+     "nocli": false
+    },
+    {
+     "name": "DeleteObjectTagging",
+     "nocli": false
+    },
+    {
+     "name": "DeleteObject",
+     "nocli": false
+    },
+    {
+     "name": "CopyObject",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectTagging",
+     "nocli": false
+    },
+    {
+     "name": "UploadObjectPart",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetBasicDataStructure",
    "id": "GETBASICDATASTRUCTURE",
    "description": "Returns the basic data for request in structured form",
@@ -104,6 +201,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "SendRequestWithoutBody",
    "id": "SENDREQUESTWITHOUTBODY",
    "description": "Sends a simple http request without a body",
@@ -144,6 +242,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "SendRequestWithBody",
    "id": "SENDREQUESTWITHBODY",
    "description": "Send http request with body",
@@ -192,6 +291,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "CreateBucket",
    "id": "CREATEBUCKET",
    "description": "Creates a new bucket with the specified name",
@@ -232,6 +332,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "DeleteBucket",
    "id": "DELETEBUCKET",
    "description": "Deletes the bucket by name",
@@ -272,6 +373,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "HeadBucket",
    "id": "HEADBUCKET",
    "description": "Checks if the bucket is available for the current account or account by ID",
@@ -320,6 +422,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "PutBucketEncryption",
    "id": "PUTBUCKETENCRYPTION",
    "description": "Sets bucket encryption by XML configuration",
@@ -368,6 +471,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "GetBucketEncryption",
    "id": "GETBUCKETENCRYPTION",
    "description": "Gets the previously set bucket encryption configuration",
@@ -408,6 +512,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "DeleteBucketEncryption",
    "id": "DELETEBUCKETENCRYPTION",
    "description": "Deletes the bucket encryption configuration",
@@ -448,6 +553,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "PutBucketTagging",
    "id": "PUTBUCKETTAGGING",
    "description": "Sets the tag set for the bucket",
@@ -496,6 +602,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "GetBucketTagging",
    "id": "GETBUCKETTAGGING",
    "description": "Gets the bucket tag set",
@@ -536,6 +643,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "DeleteBucketTagging",
    "id": "DELETEBUCKETTAGGING",
    "description": "Deletes the bucket tag set",
@@ -576,6 +684,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "PutBucketVersioning",
    "id": "PUTBUCKETVERSIONING",
    "description": "Sets the versioning settings for bucket objects",
@@ -632,6 +741,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "GetBucketVersioning",
    "id": "GETBUCKETVERSIONING",
    "description": "Gets the values of versioning settings of objects in the bucket",
@@ -672,6 +782,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "ListBuckets",
    "id": "LISTBUCKETS",
    "description": "Gets a list of buckets. It is possible to use filters if they are provided by your service",
@@ -720,6 +831,7 @@
    "region": "Buckets management"
   },
   {
+   "nocli": false,
    "name": "PutObject",
    "id": "PUTOBJECT",
    "description": "Uploads the file to the bucket",
@@ -776,6 +888,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "UploadFullObject",
    "id": "UPLOADFULLOBJECT",
    "description": "Upload object with single request",
@@ -832,6 +945,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "InitPartsUpload",
    "id": "INITPARTSUPLOAD",
    "description": "Initializes the multipart object uploading",
@@ -880,6 +994,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "UploadObjectPart",
    "id": "UPLOADOBJECTPART",
    "description": "Uploads a part of an object for multipart uploading",
@@ -944,6 +1059,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "FinishPartsUpload",
    "id": "FINISHPARTSUPLOAD",
    "description": "Confirms the multipart uploading finish",
@@ -1008,6 +1124,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "AbortMultipartUpload",
    "id": "ABORTMULTIPARTUPLOAD",
    "description": "Aborts the multipart uploading of the object",
@@ -1064,6 +1181,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "HeadObject",
    "id": "HEADOBJECT",
    "description": "Receives information about the properties of the object in the baquette",
@@ -1120,6 +1238,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "GetObject",
    "id": "GETOBJECT",
    "description": "Gets the contents of the object from the bucket",
@@ -1184,6 +1303,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "DeleteObject",
    "id": "DELETEOBJECT",
    "description": "Removes the object from the bucket",
@@ -1240,6 +1360,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "CopyObject",
    "id": "COPYOBJECT",
    "description": "Copies an object from one location to another",
@@ -1304,6 +1425,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "PutObjectTagging",
    "id": "PUTOBJECTTAGGING",
    "description": "Sets the tag set of the object",
@@ -1360,6 +1482,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "GetObjectTagging",
    "id": "GETOBJECTTAGGING",
    "description": "Gets the tag set of the object",
@@ -1416,6 +1539,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "DeleteObjectTagging",
    "id": "DELETEOBJECTTAGGING",
    "description": "Deletes an objects tag set",
@@ -1472,6 +1596,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "ListObjects",
    "id": "LISTOBJECTS",
    "description": "Gets the list of objects in the selected bucket",
@@ -1528,6 +1653,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "ListObjectVersions",
    "id": "LISTOBJECTVERSIONS",
    "description": "Gets a list of all versions of objects in the selected bucket",
@@ -1584,6 +1710,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "GetObjectDownloadLink",
    "id": "GETOBJECTDOWNLOADLINK",
    "description": "Get presigned link for object retrieving without authorization",
@@ -1640,6 +1767,7 @@
    "region": "Objects management"
   },
   {
+   "nocli": false,
    "name": "GetObjectUploadLink",
    "id": "GETOBJECTUPLOADLINK",
    "description": "Gets a direct link to upload (put) an object without additional authorization",

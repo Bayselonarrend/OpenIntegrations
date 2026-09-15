@@ -9,25 +9,53 @@
   {
    "name": "Archiving",
    "methods": [
-    "ArchiveDirectory",
-    "GetArchiveDescriptionStructure",
-    "GetArchiveModificationStructure",
-    "GetArchivingSettingsStructure",
-    "ModifyArchive",
-    "UnarchiveDirectory",
-    "UnpackFiles"
+    {
+     "name": "ArchiveDirectory",
+     "nocli": false
+    },
+    {
+     "name": "GetArchiveDescriptionStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetArchiveModificationStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetArchivingSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "ModifyArchive",
+     "nocli": false
+    },
+    {
+     "name": "UnarchiveDirectory",
+     "nocli": false
+    },
+    {
+     "name": "UnpackFiles",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Getting metadata",
    "methods": [
-    "GetFilesList",
-    "GetMetadata"
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "GetMetadata",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "ArchiveDirectory",
    "id": "ARCHIVEDIRECTORY",
    "description": "Packs files from the specified directory into an archive",
@@ -60,6 +88,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "UnarchiveDirectory",
    "id": "UNARCHIVEDIRECTORY",
    "description": "Unpacks 7z archive to the specified directory",
@@ -92,6 +121,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "UnpackFiles",
    "id": "UNPACKFILES",
    "description": "Unpacks selected files from a 7z archive by a list of paths",
@@ -132,6 +162,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "ModifyArchive",
    "id": "MODIFYARCHIVE",
    "description": "Adds, replaces and deletes files in an existing 7z archive",
@@ -172,6 +203,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetArchiveModificationStructure",
    "id": "GETARCHIVEMODIFICATIONSTRUCTURE",
    "description": "Gets the structure of archive modification settings: unpacking and packing passwords and compression parameters",
@@ -196,6 +228,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetArchivingSettingsStructure",
    "id": "GETARCHIVINGSETTINGSSTRUCTURE",
    "description": "Gets a structure with additional data archiving settings",
@@ -220,6 +253,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetArchiveDescriptionStructure",
    "id": "GETARCHIVEDESCRIPTIONSTRUCTURE",
    "description": "Get example structure of data description for packing without a directory on disk",
@@ -244,6 +278,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets a hierarchical list of files and directories in the archive",
@@ -268,6 +303,7 @@
    "region": "Getting metadata"
   },
   {
+   "nocli": false,
    "name": "GetMetadata",
    "id": "GETMETADATA",
    "description": "Gets metadata and a flat list of archive files",

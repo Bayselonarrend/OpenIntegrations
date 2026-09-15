@@ -9,63 +9,179 @@
   {
    "name": "Data retrieval and settings",
    "methods": [
-    "DeleteWebhook",
-    "DownloadFile",
-    "GetBotInformation",
-    "GetUpdates",
-    "SetWebhook"
+    {
+     "name": "DeleteWebhook",
+     "nocli": false
+    },
+    {
+     "name": "DownloadFile",
+     "nocli": false
+    },
+    {
+     "name": "GetBotInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetUpdates",
+     "nocli": false
+    },
+    {
+     "name": "SetWebhook",
+     "nocli": false
+    },
+    {
+     "name": "ProcessTMAData",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "Data sending",
    "methods": [
-    "DeleteMessage",
-    "FormKeyboardFromButtonArray",
-    "ForwardMessage",
-    "ReplaceMessageCaption",
-    "ReplaceMessageKeyboard",
-    "ReplaceMessageText",
-    "SendAudio",
-    "SendContact",
-    "SendDocument",
-    "SendGif",
-    "SendImage",
-    "SendLocation",
-    "SendMediaGroup",
-    "SendPoll",
-    "SendTextMessage",
-    "SendVideo"
+    {
+     "name": "DeleteMessage",
+     "nocli": false
+    },
+    {
+     "name": "FormKeyboardFromButtonArray",
+     "nocli": false
+    },
+    {
+     "name": "ForwardMessage",
+     "nocli": false
+    },
+    {
+     "name": "ReplaceMessageCaption",
+     "nocli": false
+    },
+    {
+     "name": "ReplaceMessageKeyboard",
+     "nocli": false
+    },
+    {
+     "name": "ReplaceMessageText",
+     "nocli": false
+    },
+    {
+     "name": "SendAudio",
+     "nocli": false
+    },
+    {
+     "name": "SendContact",
+     "nocli": false
+    },
+    {
+     "name": "SendDocument",
+     "nocli": false
+    },
+    {
+     "name": "SendGif",
+     "nocli": false
+    },
+    {
+     "name": "SendImage",
+     "nocli": false
+    },
+    {
+     "name": "SendLocation",
+     "nocli": false
+    },
+    {
+     "name": "SendMediaGroup",
+     "nocli": false
+    },
+    {
+     "name": "SendPoll",
+     "nocli": false
+    },
+    {
+     "name": "SendTextMessage",
+     "nocli": false
+    },
+    {
+     "name": "SendVideo",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Administration",
    "methods": [
-    "Ban",
-    "CreateInvitationLink",
-    "GetParticipantCount",
-    "PinMessage",
-    "Unban",
-    "UnpinMessage"
+    {
+     "name": "Ban",
+     "nocli": false
+    },
+    {
+     "name": "CreateInvitationLink",
+     "nocli": false
+    },
+    {
+     "name": "GetParticipantCount",
+     "nocli": false
+    },
+    {
+     "name": "PinMessage",
+     "nocli": false
+    },
+    {
+     "name": "Unban",
+     "nocli": false
+    },
+    {
+     "name": "UnpinMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Forum topic management",
    "methods": [
-    "ClearTopicPinnedMessagesList",
-    "CloseForumTopic",
-    "CreateForumTopic",
-    "DeleteForumTopic",
-    "EditForumTopic",
-    "EditMainForumTopicName",
-    "GetAvatarIconList",
-    "HideMainForumTopic",
-    "OpenForumTopic",
-    "ShowMainForumTopic"
+    {
+     "name": "ClearTopicPinnedMessagesList",
+     "nocli": false
+    },
+    {
+     "name": "CloseForumTopic",
+     "nocli": false
+    },
+    {
+     "name": "CreateForumTopic",
+     "nocli": false
+    },
+    {
+     "name": "DeleteForumTopic",
+     "nocli": false
+    },
+    {
+     "name": "EditForumTopic",
+     "nocli": false
+    },
+    {
+     "name": "EditMainForumTopicName",
+     "nocli": false
+    },
+    {
+     "name": "GetAvatarIconList",
+     "nocli": false
+    },
+    {
+     "name": "HideMainForumTopic",
+     "nocli": false
+    },
+    {
+     "name": "OpenForumTopic",
+     "nocli": false
+    },
+    {
+     "name": "ShowMainForumTopic",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetBotInformation",
    "id": "GETBOTINFORMATION",
    "description": "Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..",
@@ -82,6 +198,7 @@
    "region": "Data retrieval and settings"
   },
   {
+   "nocli": false,
    "name": "GetUpdates",
    "id": "GETUPDATES",
    "description": "Executes a request, returning information about bot events. Used in polling mode",
@@ -114,6 +231,7 @@
    "region": "Data retrieval and settings"
   },
   {
+   "nocli": false,
    "name": "SetWebhook",
    "id": "SETWEBHOOK",
    "description": "Set webhook URL for bot event handling in webhook mode",
@@ -138,6 +256,7 @@
    "region": "Data retrieval and settings"
   },
   {
+   "nocli": false,
    "name": "DeleteWebhook",
    "id": "DELETEWEBHOOK",
    "description": "Deletes the bot event handler URL for webhook operation",
@@ -154,6 +273,7 @@
    "region": "Data retrieval and settings"
   },
   {
+   "nocli": false,
    "name": "DownloadFile",
    "id": "DOWNLOADFILE",
    "description": "Download file from Telegram servers",
@@ -178,6 +298,32 @@
    "region": "Data retrieval and settings"
   },
   {
+   "nocli": true,
+   "name": "ProcessTMAData",
+   "id": "PROCESSTMADATA",
+   "description": "Processes Telegram Mini App data and determines its validity",
+   "params": [
+    {
+     "title": "DataString",
+     "name": "--datastring",
+     "types": "String",
+     "description": "query from Telegram.WebApp.initData",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "Token",
+     "name": "--token",
+     "types": "String",
+     "description": "Bot token",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Data retrieval and settings"
+  },
+  {
+   "nocli": false,
    "name": "SendTextMessage",
    "id": "SENDTEXTMESSAGE",
    "description": "Sends a text message to a chat or channel",
@@ -234,6 +380,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendImage",
    "id": "SENDIMAGE",
    "description": "Sends an image to a chat or channel",
@@ -290,6 +437,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendVideo",
    "id": "SENDVIDEO",
    "description": "Sends a video to a chat or channel",
@@ -346,6 +494,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendAudio",
    "id": "SENDAUDIO",
    "description": "Sends an audio file to a chat or channel",
@@ -402,6 +551,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendDocument",
    "id": "SENDDOCUMENT",
    "description": "Sends a document to a chat or channel",
@@ -466,6 +616,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendGif",
    "id": "SENDGIF",
    "description": "Sends a GIF to a chat or channel",
@@ -522,6 +673,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendMediaGroup",
    "id": "SENDMEDIAGROUP",
    "description": "Sends a set of files to a chat or channel. Media types: audio, document, photo, video",
@@ -578,6 +730,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendLocation",
    "id": "SENDLOCATION",
    "description": "Sends location by geographic latitude and longitude to a chat or channel",
@@ -626,6 +779,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendContact",
    "id": "SENDCONTACT",
    "description": "Sends a contact with name and phone number",
@@ -682,6 +836,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "SendPoll",
    "id": "SENDPOLL",
    "description": "Sends a poll with answer options",
@@ -730,6 +885,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "ForwardMessage",
    "id": "FORWARDMESSAGE",
    "description": "Forwards a message between chats or within a chat",
@@ -770,6 +926,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "DeleteMessage",
    "id": "DELETEMESSAGE",
    "description": "Delete message from chat or channel",
@@ -802,6 +959,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "ReplaceMessageKeyboard",
    "id": "REPLACEMESSAGEKEYBOARD",
    "description": "Replaces the message keyboard with a new one",
@@ -842,6 +1000,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "ReplaceMessageText",
    "id": "REPLACEMESSAGETEXT",
    "description": "Replaces the message text with a new one",
@@ -890,6 +1049,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "ReplaceMessageCaption",
    "id": "REPLACEMESSAGECAPTION",
    "description": "Replaces text in a message with media attachments",
@@ -938,6 +1098,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "FormKeyboardFromButtonArray",
    "id": "FORMKEYBOARDFROMBUTTONARRAY",
    "description": "Generates a simple JSON keyboard from an array of buttons for a message or bottom panel",
@@ -970,6 +1131,7 @@
    "region": "Data sending"
   },
   {
+   "nocli": false,
    "name": "Ban",
    "id": "BAN",
    "description": "Bans a user in the selected chat",
@@ -1002,6 +1164,7 @@
    "region": "Administration"
   },
   {
+   "nocli": false,
    "name": "Unban",
    "id": "UNBAN",
    "description": "Unbans a previously banned user",
@@ -1034,6 +1197,7 @@
    "region": "Administration"
   },
   {
+   "nocli": false,
    "name": "CreateInvitationLink",
    "id": "CREATEINVITATIONLINK",
    "description": "Creates a link for joining a closed chat",
@@ -1082,6 +1246,7 @@
    "region": "Administration"
   },
   {
+   "nocli": false,
    "name": "PinMessage",
    "id": "PINMESSAGE",
    "description": "Pins a message in the chat header",
@@ -1114,6 +1279,7 @@
    "region": "Administration"
   },
   {
+   "nocli": false,
    "name": "UnpinMessage",
    "id": "UNPINMESSAGE",
    "description": "Unpins a message in the chat header",
@@ -1146,6 +1312,7 @@
    "region": "Administration"
   },
   {
+   "nocli": false,
    "name": "GetParticipantCount",
    "id": "GETPARTICIPANTCOUNT",
    "description": "Gets the total number of chat participants",
@@ -1170,6 +1337,7 @@
    "region": "Administration"
   },
   {
+   "nocli": false,
    "name": "GetAvatarIconList",
    "id": "GETAVATARICONLIST",
    "description": "Gets the mapping of Emoji IDs for setting as forum theme icons",
@@ -1186,6 +1354,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "CreateForumTopic",
    "id": "CREATEFORUMTOPIC",
    "description": "Creates a new topic in the group with theme functionality enabled",
@@ -1226,6 +1395,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "EditForumTopic",
    "id": "EDITFORUMTOPIC",
    "description": "Creates a new topic in the group with theme functionality enabled",
@@ -1274,6 +1444,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "CloseForumTopic",
    "id": "CLOSEFORUMTOPIC",
    "description": "Closes the topic for new messages",
@@ -1306,6 +1477,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "OpenForumTopic",
    "id": "OPENFORUMTOPIC",
    "description": "Reopens a previously closed forum topic",
@@ -1338,6 +1510,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "DeleteForumTopic",
    "id": "DELETEFORUMTOPIC",
    "description": "Deletes a forum topic",
@@ -1370,6 +1543,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "HideMainForumTopic",
    "id": "HIDEMAINFORUMTOPIC",
    "description": "Hides the main forum topic",
@@ -1394,6 +1568,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "ShowMainForumTopic",
    "id": "SHOWMAINFORUMTOPIC",
    "description": "Shows a previously hidden main forum topic",
@@ -1418,6 +1593,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "EditMainForumTopicName",
    "id": "EDITMAINFORUMTOPICNAME",
    "description": "Edits the name of the main forum topic",
@@ -1450,6 +1626,7 @@
    "region": "Forum topic management"
   },
   {
+   "nocli": false,
    "name": "ClearTopicPinnedMessagesList",
    "id": "CLEARTOPICPINNEDMESSAGESLIST",
    "description": "Clears the list of pinned messages in the forum topic",

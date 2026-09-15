@@ -9,54 +9,139 @@
   {
    "name": "Account and authorization",
    "methods": [
-    "GetAccountInformation",
-    "GetAuthorizationLink",
-    "GetSpaceUsageData",
-    "GetToken",
-    "RefreshToken"
+    {
+     "name": "GetAccountInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetAuthorizationLink",
+     "nocli": false
+    },
+    {
+     "name": "GetSpaceUsageData",
+     "nocli": false
+    },
+    {
+     "name": "GetToken",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File and directory management",
    "methods": [
-    "CopyObject",
-    "CreateFolder",
-    "DeleteObject",
-    "DownloadFile",
-    "DownloadFolder",
-    "GetListOfFolderFiles",
-    "GetObjectInformation",
-    "GetObjectVersionList",
-    "GetPreview",
-    "GetUploadStatusByURL",
-    "MoveObject",
-    "RestoreObjectToVersion",
-    "UploadFile",
-    "UploadFileByURL"
+    {
+     "name": "CopyObject",
+     "nocli": false
+    },
+    {
+     "name": "CreateFolder",
+     "nocli": false
+    },
+    {
+     "name": "DeleteObject",
+     "nocli": false
+    },
+    {
+     "name": "DownloadFile",
+     "nocli": false
+    },
+    {
+     "name": "DownloadFolder",
+     "nocli": false
+    },
+    {
+     "name": "GetListOfFolderFiles",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectVersionList",
+     "nocli": false
+    },
+    {
+     "name": "GetPreview",
+     "nocli": false
+    },
+    {
+     "name": "GetUploadStatusByURL",
+     "nocli": false
+    },
+    {
+     "name": "MoveObject",
+     "nocli": false
+    },
+    {
+     "name": "RestoreObjectToVersion",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    },
+    {
+     "name": "UploadFileByURL",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Tags management",
    "methods": [
-    "AddTag",
-    "DeleteTag",
-    "GetTagList"
+    {
+     "name": "AddTag",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTag",
+     "nocli": false
+    },
+    {
+     "name": "GetTagList",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Shared access settings",
    "methods": [
-    "AddUsersToFile",
-    "AddUsersToFolder",
-    "CancelFilePublication",
-    "CancelFolderPublication",
-    "GetAsynchronousChangeStatus",
-    "PublishFolder"
+    {
+     "name": "AddUsersToFile",
+     "nocli": false
+    },
+    {
+     "name": "AddUsersToFolder",
+     "nocli": false
+    },
+    {
+     "name": "CancelFilePublication",
+     "nocli": false
+    },
+    {
+     "name": "CancelFolderPublication",
+     "nocli": false
+    },
+    {
+     "name": "GetAsynchronousChangeStatus",
+     "nocli": false
+    },
+    {
+     "name": "PublishFolder",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetAuthorizationLink",
    "id": "GETAUTHORIZATIONLINK",
    "description": "Generates an authorization link for browser transition",
@@ -73,6 +158,7 @@
    "region": "Account and authorization"
   },
   {
+   "nocli": false,
    "name": "GetToken",
    "id": "GETTOKEN",
    "description": "Gets token based on the code from the GetAuthorizationLink page",
@@ -105,6 +191,7 @@
    "region": "Account and authorization"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Gets a new token based on the refresh token",
@@ -137,6 +224,7 @@
    "region": "Account and authorization"
   },
   {
+   "nocli": false,
    "name": "GetAccountInformation",
    "id": "GETACCOUNTINFORMATION",
    "description": "Gets account information",
@@ -161,6 +249,7 @@
    "region": "Account and authorization"
   },
   {
+   "nocli": false,
    "name": "GetSpaceUsageData",
    "id": "GETSPACEUSAGEDATA",
    "description": "Gets information on the amount of used disk space",
@@ -177,6 +266,7 @@
    "region": "Account and authorization"
   },
   {
+   "nocli": false,
    "name": "GetObjectInformation",
    "id": "GETOBJECTINFORMATION",
    "description": "Gets information about a file or directory",
@@ -209,6 +299,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetListOfFolderFiles",
    "id": "GETLISTOFFOLDERFILES",
    "description": "Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified",
@@ -249,6 +340,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetPreview",
    "id": "GETPREVIEW",
    "description": "Gets PDF or HTML preview of the object (for documents only)",
@@ -273,6 +365,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Uploads a file to the cloud drive",
@@ -313,6 +406,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "UploadFileByURL",
    "id": "UPLOADFILEBYURL",
    "description": "Uploads a file to the cloud drive by fetching it from the specified URL",
@@ -345,6 +439,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetUploadStatusByURL",
    "id": "GETUPLOADSTATUSBYURL",
    "description": "Gets the upload status of the file by URL",
@@ -369,6 +464,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "DeleteObject",
    "id": "DELETEOBJECT",
    "description": "Deletes an object from the cloud drive",
@@ -401,6 +497,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "CopyObject",
    "id": "COPYOBJECT",
    "description": "Copies a file or directory to the selected path",
@@ -433,6 +530,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "MoveObject",
    "id": "MOVEOBJECT",
    "description": "Moves an object to the selected path",
@@ -465,6 +563,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "CreateFolder",
    "id": "CREATEFOLDER",
    "description": "Creates an empty directory at the selected path",
@@ -489,6 +588,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "DownloadFile",
    "id": "DOWNLOADFILE",
    "description": "Downloads a file by the specified path or ID",
@@ -513,6 +613,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "DownloadFolder",
    "id": "DOWNLOADFOLDER",
    "description": "Downloads a zip archive with the contents of the specified directory",
@@ -537,6 +638,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetObjectVersionList",
    "id": "GETOBJECTVERSIONLIST",
    "description": "Gets the list of versions (revisions) of the object",
@@ -569,6 +671,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "RestoreObjectToVersion",
    "id": "RESTOREOBJECTTOVERSION",
    "description": "Restores object state to required version (revision)",
@@ -601,6 +704,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetTagList",
    "id": "GETTAGLIST",
    "description": "Gets the list of tags of the selected files",
@@ -625,6 +729,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "AddTag",
    "id": "ADDTAG",
    "description": "Add new tag to file or folder",
@@ -657,6 +762,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "DeleteTag",
    "id": "DELETETAG",
    "description": "Deletes the text tag of a file or directory",
@@ -689,6 +795,7 @@
    "region": "Tags management"
   },
   {
+   "nocli": false,
    "name": "PublishFolder",
    "id": "PUBLISHFOLDER",
    "description": "Sets the directory to public access mode",
@@ -713,6 +820,7 @@
    "region": "Shared access settings"
   },
   {
+   "nocli": false,
    "name": "CancelFolderPublication",
    "id": "CANCELFOLDERPUBLICATION",
    "description": "Cancels the public access mode for the directory",
@@ -737,6 +845,7 @@
    "region": "Shared access settings"
   },
   {
+   "nocli": false,
    "name": "AddUsersToFile",
    "id": "ADDUSERSTOFILE",
    "description": "Defines access to the file for third-party users",
@@ -777,6 +886,7 @@
    "region": "Shared access settings"
   },
   {
+   "nocli": false,
    "name": "AddUsersToFolder",
    "id": "ADDUSERSTOFOLDER",
    "description": "Grants external users access to the directory",
@@ -817,6 +927,7 @@
    "region": "Shared access settings"
   },
   {
+   "nocli": false,
    "name": "GetAsynchronousChangeStatus",
    "id": "GETASYNCHRONOUSCHANGESTATUS",
    "description": "Get async job status for access changes",
@@ -841,6 +952,7 @@
    "region": "Shared access settings"
   },
   {
+   "nocli": false,
    "name": "CancelFilePublication",
    "id": "CANCELFILEPUBLICATION",
    "description": "Prohibits access to the file for external users",

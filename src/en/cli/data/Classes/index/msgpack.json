@@ -9,13 +9,20 @@
   {
    "name": "Common methods",
    "methods": [
-    "DeserializeData",
-    "SerializeData"
+    {
+     "name": "DeserializeData",
+     "nocli": false
+    },
+    {
+     "name": "SerializeData",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "SerializeData",
    "id": "SERIALIZEDATA",
    "description": "Serializes data into MessagePack format",
@@ -40,6 +47,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "DeserializeData",
    "id": "DESERIALIZEDATA",
    "description": "Deserializes data from MessagePack format",

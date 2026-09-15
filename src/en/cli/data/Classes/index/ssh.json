@@ -9,18 +9,93 @@
   {
    "name": "Common methods",
    "methods": [
-    "ExecuteCommand",
-    "GetConnectionConfiguration",
-    "GetProxySettings",
-    "GetSettingsKI",
-    "GetSettingsLoginPassword",
-    "GetSettingsPrivateKey",
-    "GetSettingsViaAgent"
+    {
+     "name": "ExecuteCommand",
+     "nocli": false
+    },
+    {
+     "name": "GetConnectionConfiguration",
+     "nocli": false
+    },
+    {
+     "name": "GetProxySettings",
+     "nocli": false
+    },
+    {
+     "name": "GetSettingsKI",
+     "nocli": false
+    },
+    {
+     "name": "GetSettingsLoginPassword",
+     "nocli": false
+    },
+    {
+     "name": "GetSettingsPrivateKey",
+     "nocli": false
+    },
+    {
+     "name": "GetSettingsViaAgent",
+     "nocli": false
+    },
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsConnector",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Creates a new SSH session",
+   "params": [
+    {
+     "title": "SSHSettings",
+     "name": "--set",
+     "types": "Structure Of KeyAndValue",
+     "description": "Connection settings structure",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Proxy",
+     "name": "--proxy",
+     "types": "Structure Of KeyAndValue",
+     "description": "Proxy settings structure, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetConnectionConfiguration",
    "id": "GETCONNECTIONCONFIGURATION",
    "description": "Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions",
@@ -45,6 +120,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "ExecuteCommand",
    "id": "EXECUTECOMMAND",
    "description": "Executes the specified command",
@@ -69,6 +145,41 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Explicitly closes the passed connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "IsConnector",
+   "id": "ISCONNECTOR",
+   "description": "Checks that the value is an object of an external component for working with SSH",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetSettingsLoginPassword",
    "id": "GETSETTINGSLOGINPASSWORD",
    "description": "password)\n\n Gets connection settings with login and password authentication",
@@ -109,6 +220,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetSettingsPrivateKey",
    "id": "GETSETTINGSPRIVATEKEY",
    "description": "Gets connection settings with private key authentication",
@@ -165,6 +277,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetSettingsViaAgent",
    "id": "GETSETTINGSVIAAGENT",
    "description": "Gets connection settings with SSH Agent authentication",
@@ -197,6 +310,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetSettingsKI",
    "id": "GETSETTINGSKI",
    "description": "Retrieves connection settings for keyboard-interactive authentication",
@@ -237,6 +351,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetProxySettings",
    "id": "GETPROXYSETTINGS",
    "description": "Creates a structure of proxy server settings for the connection",
@@ -280,6 +395,72 @@
      "description": "Authorization password, if required",
      "default": "Empty value",
      "short": "-s"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
     }
    ],
    "region": "Common methods"

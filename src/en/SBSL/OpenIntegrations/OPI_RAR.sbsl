@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_RAR
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_RAR
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_RAR(Исполнитель)
@@ -18,12 +18,6 @@
     знч КомандаCLI: Строка = "rar"
     
     @Глобально
-    // Метод UnarchiveDirectory
-    // Extracts RAR archive to the specified directory
-    //
-    // Archive              - String, BinaryData: Path to the archive on disk or binary data
-    // DestinationDirectory - String: Directory path for unpacking. To binary data if not filled (необяз. по ум. - Empty value)
-    // Password             - String: archive password, if required (необяз. по ум. - Empty value)
     метод UnarchiveDirectory(Archive: Объект?, DestinationDirectory: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -36,13 +30,6 @@
     ;
 
     @Глобально
-    // Метод UnpackFiles
-    // Extracts selected files from the RAR archive by the list of paths
-    //
-    // Archive              - String, BinaryData: Path to the archive on disk or binary data
-    // Paths                - Array Of String: Full paths of files inside the archive
-    // DestinationDirectory - String: Directory path for unpacking. To binary data if not filled (необяз. по ум. - Empty value)
-    // Password             - String: archive password, if required (необяз. по ум. - Empty value)
     метод UnpackFiles(Archive: Объект?, Paths: Объект?, DestinationDirectory: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -56,11 +43,6 @@
     ;
 
     @Глобально
-    // Метод GetFilesList
-    // Gets a hierarchical list of files and directories in the archive
-    //
-    // Archive  - String, BinaryData: Path to the archive on disk or binary data
-    // Password - String: archive password, if required (необяз. по ум. - Empty value)
     метод GetFilesList(Archive: Объект?, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -72,11 +54,6 @@
     ;
 
     @Глобально
-    // Метод GetMetadata
-    // Gets metadata and a flat list of archive files
-    //
-    // Archive  - String, BinaryData: Path to the archive on disk or binary data
-    // Password - String: archive password, if required (необяз. по ум. - Empty value)
     метод GetMetadata(Archive: Объект?, Password: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

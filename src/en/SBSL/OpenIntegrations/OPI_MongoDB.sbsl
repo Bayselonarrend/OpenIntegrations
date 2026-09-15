@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_MongoDB
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_MongoDB
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_MongoDB(Исполнитель)
@@ -18,14 +18,37 @@
     знч КомандаCLI: Строка = "mongodb"
     
     @Глобально
-    // Метод GenerateConnectionString
-    // Forms a MongoDB connection string
-    //
-    // Address    - String: Host IP address with port or URL
-    // Base       - String: Database, if necessary (необяз. по ум. - Empty value)
-    // Login      - String: Username for authorization (необяз. по ум. - Empty value)
-    // Password   - String: Password for authorization (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue, Undefined: Additional connection parameters (необяз. по ум. - Empty value)
+    метод CreateConnection(ConnectionString: Объект?, Logging: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", ConnectionString)
+        Опции.Вставить("-l", Logging)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод CloseConnection(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-d", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseConnection", Опции)
+        
+    ;
+
+    @Глобально
+    метод IsConnector(Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "IsConnector", Опции)
+        
+    ;
+
+    @Глобально
     метод GenerateConnectionString(Address: Объект?, Base: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -40,14 +63,6 @@
     ;
 
     @Глобально
-    // Метод ExecuteCommand
-    // Executes the command according to its description
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Command    - String: Command name to execute
-    // Argument   - Arbitrary: Command argument (необяз. по ум. - 1)
-    // Base       - String: Database in which the operation needs to be performed (необяз. по ум. - Empty value)
-    // Data       - Structure Of KeyAndValue: Main data fields for performing the operation (необяз. по ум. - Empty value)
     метод ExecuteCommand(Connection: Объект?, Command: Объект?, Argument: Объект? = Неопределено, Base: Объект? = Неопределено, Data: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -62,10 +77,30 @@
     ;
 
     @Глобально
-    // Метод GetListOfBases
-    // Gets the list of databases
-    //
-    // Connection - String, Arbitrary: Connection or connection string
+    метод GetLoggingSettings(WriteToMemory: Объект? = Неопределено, MaxEvents: Объект? = Неопределено, FilePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", WriteToMemory)
+        Опции.Вставить("-c", MaxEvents)
+        Опции.Вставить("-p", FilePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLoggingSettings", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetLog(Connection: Объект?, AsString: Объект? = Неопределено, EventCount: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-s", AsString)
+        Опции.Вставить("-n", EventCount)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetLog", Опции)
+        
+    ;
+
+    @Глобально
     метод GetListOfBases(Connection: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -76,11 +111,6 @@
     ;
 
     @Глобально
-    // Метод GetDatabase
-    // Gets information about the database
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
     метод GetDatabase(Connection: Объект?, Base: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -92,11 +122,6 @@
     ;
 
     @Глобально
-    // Метод DeleteDatabase
-    // Deletes the database
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
     метод DeleteDatabase(Connection: Объект?, Base: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -108,11 +133,6 @@
     ;
 
     @Глобально
-    // Метод GetCollectionList
-    // Gets a list of database collections
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
     метод GetCollectionList(Connection: Объект?, Base: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -124,13 +144,6 @@
     ;
 
     @Глобально
-    // Метод CreateCollection
-    // Creates a new collection with the specified parameters
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Name       - String: Collection name
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional creation parameters (необяз. по ум. - Empty value)
     метод CreateCollection(Connection: Объект?, Name: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -144,12 +157,6 @@
     ;
 
     @Глобально
-    // Метод DeleteCollection
-    // Deletes the selected database collection
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Collection - String: Collection name
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
     метод DeleteCollection(Connection: Объект?, Collection: Объект?, Base: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -162,14 +169,6 @@
     ;
 
     @Глобально
-    // Метод InsertDocuments
-    // Inserts new documents into the collection
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Collection - String: Collection name
-    // Values     - Array Of Arbitrary: Array of docs objects
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional insert options (необяз. по ум. - Empty value)
     метод InsertDocuments(Connection: Объект?, Collection: Объект?, Values: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -184,14 +183,6 @@
     ;
 
     @Глобально
-    // Метод UpdateDocuments
-    // Updates document data in the collection
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Collection - String: Collection name
-    // Updates    - Array of Structure: Update array. See GetDocumentUpdateStructure
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional insert options (необяз. по ум. - Empty value)
     метод UpdateDocuments(Connection: Объект?, Collection: Объект?, Updates: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -206,15 +197,6 @@
     ;
 
     @Глобально
-    // Метод GetDocuments
-    // Gets collection documents
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Collection - String: Collection name
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Filter     - Structure Of KeyAndValue: Document filter (необяз. по ум. - Empty value)
-    // Sort       - Structure Of KeyAndValue: Selection sorting (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional retrieval parameters (необяз. по ум. - Empty value)
     метод GetDocuments(Connection: Объект?, Collection: Объект?, Base: Объект? = Неопределено, Filter: Объект? = Неопределено, Sort: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -230,14 +212,6 @@
     ;
 
     @Глобально
-    // Метод DeleteDocuments
-    // Deletes collection documents
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Collection - String: Collection name
-    // Deletions  - Array of Structure: Deletion array. See GetDocumentDeletionStructure
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional insert options (необяз. по ум. - Empty value)
     метод DeleteDocuments(Connection: Объект?, Collection: Объект?, Deletions: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -252,14 +226,36 @@
     ;
 
     @Глобально
-    // Метод GetDocumentUpdateStructure
-    // Forms data structure for updating documents
-    //
-    // Filter    - Structure Of KeyAndValue: Document filter
-    // Data      - Structure Of KeyAndValue: New document data for update
-    // UpdateAll - Boolean: True > updates all documents by filter, False > only one (необяз. по ум. - true)
-    // Insert    - Boolean: Insert a new document if no document was found (необяз. по ум. - false)
-    // Collation - Structure Of KeyAndValue: Special field comparison rules (необяз. по ум. - Empty value)
+    метод GetCursor(Connection: Объект?, Collection: Объект?, Base: Объект? = Неопределено, Filter: Объект? = Неопределено, Sort: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-d", Connection)
+        Опции.Вставить("-c", Collection)
+        Опции.Вставить("-b", Base)
+        Опции.Вставить("-q", Filter)
+        Опции.Вставить("-s", Sort)
+        Опции.Вставить("-p", Parameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCursor", Опции)
+        
+    ;
+
+    @Глобально
+    метод GetDocumentBatch(Connection: Объект?, Collection: Объект?, CursorID: Объект?, Base: Объект? = Неопределено, BatchSize: Объект? = Неопределено, Waiting: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-d", Connection)
+        Опции.Вставить("-c", Collection)
+        Опции.Вставить("-r", CursorID)
+        Опции.Вставить("-b", Base)
+        Опции.Вставить("-l", BatchSize)
+        Опции.Вставить("-t", Waiting)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetDocumentBatch", Опции)
+        
+    ;
+
+    @Глобально
     метод GetDocumentUpdateStructure(Filter: Объект?, Data: Объект?, UpdateAll: Объект? = Неопределено, Insert: Объект? = Неопределено, Collation: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -274,12 +270,6 @@
     ;
 
     @Глобально
-    // Метод GetDocumentDeletionStructure
-    // Forms data structure for update
-    //
-    // Filter    - Structure Of KeyAndValue: Document filter
-    // Count     - Number: Deletion limit: 1 > first document, 0 > all documents (необяз. по ум. - Empty value)
-    // Collation - Structure Of KeyAndValue: Special field comparison rules (необяз. по ум. - Empty value)
     метод GetDocumentDeletionStructure(Filter: Объект?, Count: Объект? = Неопределено, Collation: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -292,15 +282,6 @@
     ;
 
     @Глобально
-    // Метод CreateUser
-    // Creates a new user
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Name       - String: Users name
-    // UserRoles  - Array Of Arbitrary: Array of roles as strings or structures specifying the DB
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Password   - String: Users password (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional creation parameters (необяз. по ум. - Empty value)
     метод CreateUser(Connection: Объект?, Name: Объект?, UserRoles: Объект?, Base: Объект? = Неопределено, Password: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -316,15 +297,6 @@
     ;
 
     @Глобально
-    // Метод UpdateUser
-    // Modifies existing user data
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Name       - String: Users name
-    // UserRoles  - Array Of Arbitrary: Array of roles as strings or structures specifying the DB (необяз. по ум. - Empty value)
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Password   - String: Users password (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional parameters (необяз. по ум. - Empty value)
     метод UpdateUser(Connection: Объект?, Name: Объект?, UserRoles: Объект? = Неопределено, Base: Объект? = Неопределено, Password: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -340,14 +312,6 @@
     ;
 
     @Глобально
-    // Метод GetUsers
-    // Gets data of one or more users
-    //
-    // Connection    - String, Arbitrary: Connection or connection string
-    // Users         - Arbitrary: Username, structure, or array of user structures
-    // Base          - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // GetPassword   - Boolean: Adds user password hash to the returned data (необяз. по ум. - false)
-    // GetPrivileges - Boolean: Adds a list of user privileges to the returned data (необяз. по ум. - false)
     метод GetUsers(Connection: Объект?, Users: Объект?, Base: Объект? = Неопределено, GetPassword: Объект? = Неопределено, GetPrivileges: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -362,13 +326,6 @@
     ;
 
     @Глобально
-    // Метод GetDatabaseUsers
-    // Gets information about all database users
-    //
-    // Connection    - String, Arbitrary: Connection or connection string
-    // Base          - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // GetPassword   - Boolean: Adds user password hash to the returned data (необяз. по ум. - false)
-    // GetPrivileges - Boolean: Adds a list of user privileges to the returned data (необяз. по ум. - false)
     метод GetDatabaseUsers(Connection: Объект?, Base: Объект? = Неопределено, GetPassword: Объект? = Неопределено, GetPrivileges: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -382,13 +339,6 @@
     ;
 
     @Глобально
-    // Метод DeleteUser
-    // Deletes user by name
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Name       - String: Users name
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional deletion parameters (необяз. по ум. - Empty value)
     метод DeleteUser(Connection: Объект?, Name: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -402,15 +352,6 @@
     ;
 
     @Глобально
-    // Метод CreateRole
-    // Creates a new role
-    //
-    // Connection      - String, Arbitrary: Connection or connection string
-    // Name            - String: Role name
-    // Base            - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // PrivilegesArray - Array of Structure: Array of privileges. See GetRolePrivilegeStructure (необяз. по ум. - Empty value)
-    // RoleArray       - Array Of Arbitrary: Array of roles based on strings or structures specifying the database (необяз. по ум. - Empty value)
-    // Parameters      - Structure Of KeyAndValue: Additional deletion parameters (необяз. по ум. - Empty value)
     метод CreateRole(Connection: Объект?, Name: Объект?, Base: Объект? = Неопределено, PrivilegesArray: Объект? = Неопределено, RoleArray: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -426,15 +367,6 @@
     ;
 
     @Глобально
-    // Метод UpdateRole
-    // Modifies the data of an existing role
-    //
-    // Connection      - String, Arbitrary: Connection or connection string
-    // Name            - String: Role name
-    // Base            - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // PrivilegesArray - Array of Structure: Array of privileges. See GetRolePrivilegeStructure (необяз. по ум. - Empty value)
-    // RoleArray       - Array Of Arbitrary: Array of roles based on strings or structures specifying the database (необяз. по ум. - Empty value)
-    // Parameters      - Structure Of KeyAndValue: Additional deletion parameters (необяз. по ум. - Empty value)
     метод UpdateRole(Connection: Объект?, Name: Объект?, Base: Объект? = Неопределено, PrivilegesArray: Объект? = Неопределено, RoleArray: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -450,13 +382,6 @@
     ;
 
     @Глобально
-    // Метод GetRoles
-    // Gets information about the specified fields
-    //
-    // Connection    - String, Arbitrary: Connection or connection string
-    // RoleArray     - Arbitrary: Role or list of roles
-    // Base          - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // GetPrivileges - Boolean: Adds a list of role privileges to the returned data (необяз. по ум. - false)
     метод GetRoles(Connection: Объект?, RoleArray: Объект?, Base: Объект? = Неопределено, GetPrivileges: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -470,13 +395,6 @@
     ;
 
     @Глобально
-    // Метод DeleteRole
-    // Deletes an existing role
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // Name       - String: Role name
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional deletion parameters (необяз. по ум. - Empty value)
     метод DeleteRole(Connection: Объект?, Name: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -490,14 +408,6 @@
     ;
 
     @Глобально
-    // Метод GrantRoles
-    // Grants selected roles to a user
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // User       - String: Users name
-    // RoleArray  - Array Of Arbitrary: Role or role array
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional deletion parameters (необяз. по ум. - Empty value)
     метод GrantRoles(Connection: Объект?, User: Объект?, RoleArray: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -512,14 +422,6 @@
     ;
 
     @Глобально
-    // Метод RevokeRoles
-    // Revokes selected roles from a user
-    //
-    // Connection - String, Arbitrary: Connection or connection string
-    // User       - String: Users name
-    // RoleArray  - Array Of Arbitrary: Role or role array
-    // Base       - String: Database name. Current database if not specified (необяз. по ум. - Empty value)
-    // Parameters - Structure Of KeyAndValue: Additional deletion parameters (необяз. по ум. - Empty value)
     метод RevokeRoles(Connection: Объект?, User: Объект?, RoleArray: Объект?, Base: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -534,11 +436,6 @@
     ;
 
     @Глобально
-    // Метод GetRolePrivilegeStructure
-    // Forms the privilege information structure for use when working with roles
-    //
-    // Resource     - Structure Of KeyAndValue: Privilege resource
-    // ActionsArray - Array Of String: Array of available privilege actions
     метод GetRolePrivilegeStructure(Resource: Объект?, ActionsArray: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

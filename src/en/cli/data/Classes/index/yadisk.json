@@ -11,43 +11,110 @@
   {
    "name": "Authorization",
    "methods": [
-    "ConvertCodeToToken",
-    "GetConfirmationCode",
-    "RefreshToken"
+    {
+     "name": "ConvertCodeToToken",
+     "nocli": false
+    },
+    {
+     "name": "GetConfirmationCode",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File and folder management",
    "methods": [
-    "CreateFolder",
-    "CreateObjectCopy",
-    "DeleteObject",
-    "DownloadFile",
-    "GetDiskInformation",
-    "GetDownloadLink",
-    "GetFilesList",
-    "GetFileUploadLink",
-    "GetObject",
-    "MoveObject",
-    "UploadFile",
-    "UploadFileByURL",
-    "UploadFileInParts"
+    {
+     "name": "CreateFolder",
+     "nocli": false
+    },
+    {
+     "name": "CreateObjectCopy",
+     "nocli": false
+    },
+    {
+     "name": "DeleteObject",
+     "nocli": false
+    },
+    {
+     "name": "DownloadFile",
+     "nocli": false
+    },
+    {
+     "name": "GetDiskInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetDownloadLink",
+     "nocli": false
+    },
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "GetFileUploadLink",
+     "nocli": false
+    },
+    {
+     "name": "GetObject",
+     "nocli": false
+    },
+    {
+     "name": "MoveObject",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    },
+    {
+     "name": "UploadFileByURL",
+     "nocli": false
+    },
+    {
+     "name": "UploadFileInParts",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Manage public access",
    "methods": [
-    "CancelObjectPublication",
-    "GetDownloadLinkForPublicObject",
-    "GetPublicObject",
-    "GetPublishedObjectsList",
-    "PublishObject",
-    "SavePublicObjectToDisk"
+    {
+     "name": "CancelObjectPublication",
+     "nocli": false
+    },
+    {
+     "name": "GetDownloadLinkForPublicObject",
+     "nocli": false
+    },
+    {
+     "name": "GetPublicObject",
+     "nocli": false
+    },
+    {
+     "name": "GetPublishedObjectsList",
+     "nocli": false
+    },
+    {
+     "name": "PublishObject",
+     "nocli": false
+    },
+    {
+     "name": "SavePublicObjectToDisk",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetConfirmationCode",
    "id": "GETCONFIRMATIONCODE",
    "description": "Gets the confirmation code and the address of the page where it needs to be entered",
@@ -64,6 +131,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "ConvertCodeToToken",
    "id": "CONVERTCODETOTOKEN",
    "description": "Converts the code to a token after entering the code when executing GetConfirmationCode",
@@ -96,6 +164,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Updates token by Refresh token",
@@ -128,6 +197,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetDiskInformation",
    "id": "GETDISKINFORMATION",
    "description": "Gets information about the current disk",
@@ -144,6 +214,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "CreateFolder",
    "id": "CREATEFOLDER",
    "description": "Creates a directory on the disk",
@@ -168,6 +239,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "GetObject",
    "id": "GETOBJECT",
    "description": "Gets information about a disk object at the specified path",
@@ -192,6 +264,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "DeleteObject",
    "id": "DELETEOBJECT",
    "description": "Deletes an object at the specified path",
@@ -224,6 +297,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "CreateObjectCopy",
    "id": "CREATEOBJECTCOPY",
    "description": "Creates a copy of the object at the specified path and path to the original",
@@ -264,6 +338,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "GetDownloadLink",
    "id": "GETDOWNLOADLINK",
    "description": "Gets a download link for the file",
@@ -288,6 +363,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "GetFileUploadLink",
    "id": "GETFILEUPLOADLINK",
    "description": "Gets a link for manual file upload to Disk",
@@ -320,6 +396,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "DownloadFile",
    "id": "DOWNLOADFILE",
    "description": "Downloads a file at the specified path",
@@ -352,6 +429,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets a list of files with or without filtering by type\n\n List of available types: audio, backup, book, compressed, data, development,\n\n diskimage, document, encoded, executable, flash, font,\n\n mage, settings, spreadsheet, text, unknown, video, web",
@@ -400,6 +478,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "MoveObject",
    "id": "MOVEOBJECT",
    "description": "Moves the object to the specified path and path to the original",
@@ -440,6 +519,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Uploads a file to disk at the specified path",
@@ -480,6 +560,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "UploadFileInParts",
    "id": "UPLOADFILEINPARTS",
    "description": "Uploads a file to disk at the specified path in parts",
@@ -528,6 +609,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "UploadFileByURL",
    "id": "UPLOADFILEBYURL",
    "description": "Downloads a file to disk from the specified URL",
@@ -560,6 +642,7 @@
    "region": "File and folder management"
   },
   {
+   "nocli": false,
    "name": "PublishObject",
    "id": "PUBLISHOBJECT",
    "description": "Publishes the disk object for public access",
@@ -584,6 +667,7 @@
    "region": "Manage public access"
   },
   {
+   "nocli": false,
    "name": "CancelObjectPublication",
    "id": "CANCELOBJECTPUBLICATION",
    "description": "Unpublishes a previously published object",
@@ -608,6 +692,7 @@
    "region": "Manage public access"
   },
   {
+   "nocli": false,
    "name": "GetPublishedObjectsList",
    "id": "GETPUBLISHEDOBJECTSLIST",
    "description": "Gets a list of published objects",
@@ -640,6 +725,7 @@
    "region": "Manage public access"
   },
   {
+   "nocli": false,
    "name": "GetPublicObject",
    "id": "GETPUBLICOBJECT",
    "description": "Gets information about the published object by its URL",
@@ -680,6 +766,7 @@
    "region": "Manage public access"
   },
   {
+   "nocli": false,
    "name": "GetDownloadLinkForPublicObject",
    "id": "GETDOWNLOADLINKFORPUBLICOBJECT",
    "description": "Gets a direct link to download the public object",
@@ -712,6 +799,7 @@
    "region": "Manage public access"
   },
   {
+   "nocli": false,
    "name": "SavePublicObjectToDisk",
    "id": "SAVEPUBLICOBJECTTODISK",
    "description": "Saves the public object to your disk",

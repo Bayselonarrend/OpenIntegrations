@@ -9,24 +9,119 @@
   {
    "name": "Common methods",
    "methods": [
-    "FormConnectionParameters",
-    "GetConnectionConfiguration",
-    "GetTlsSettings"
+    {
+     "name": "FormConnectionParameters",
+     "nocli": false
+    },
+    {
+     "name": "GetConnectionConfiguration",
+     "nocli": false
+    },
+    {
+     "name": "GetTlsSettings",
+     "nocli": false
+    },
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsConnector",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "Work with catalog",
    "methods": [
-    "Add",
-    "Change",
-    "Compare",
-    "Delete",
-    "PerformSearch"
+    {
+     "name": "Add",
+     "nocli": false
+    },
+    {
+     "name": "Change",
+     "nocli": false
+    },
+    {
+     "name": "Compare",
+     "nocli": false
+    },
+    {
+     "name": "Delete",
+     "nocli": false
+    },
+    {
+     "name": "PerformSearch",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Open LDAP connection and perform bind",
+   "params": [
+    {
+     "title": "ConnectionParams",
+     "name": "--params",
+     "types": "Structure Of KeyAndValue",
+     "description": "Connection parameters. See FormConnectionParameters",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Tls",
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Explicitly closes the passed connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "FormConnectionParameters",
    "id": "FORMCONNECTIONPARAMETERS",
    "description": "Form LDAP connection parameters collection",
@@ -67,6 +162,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetConnectionConfiguration",
    "id": "GETCONNECTIONCONFIGURATION",
    "description": "Return current connection settings",
@@ -83,6 +179,24 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "IsConnector",
+   "id": "ISCONNECTOR",
+   "description": "Check if value is an object of an external LDAP component",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetTlsSettings",
    "id": "GETTLSSETTINGS",
    "description": "Form TLS connection settings structure for LDAP connection",
@@ -107,6 +221,73 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "PerformSearch",
    "id": "PERFORMSEARCH",
    "description": "Perform LDAP search",
@@ -155,6 +336,7 @@
    "region": "Work with catalog"
   },
   {
+   "nocli": false,
    "name": "Add",
    "id": "ADD",
    "description": "Add record to LDAP directory",
@@ -187,6 +369,7 @@
    "region": "Work with catalog"
   },
   {
+   "nocli": false,
    "name": "Change",
    "id": "CHANGE",
    "description": "Modify record in LDAP directory",
@@ -219,6 +402,7 @@
    "region": "Work with catalog"
   },
   {
+   "nocli": false,
    "name": "Delete",
    "id": "DELETE",
    "description": "Delete record from LDAP directory",
@@ -243,6 +427,7 @@
    "region": "Work with catalog"
   },
   {
+   "nocli": false,
    "name": "Compare",
    "id": "COMPARE",
    "description": "Compare LDAP record attribute value",

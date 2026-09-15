@@ -9,42 +9,106 @@
   {
    "name": "Requests processing",
    "methods": [
-    "GetContextMessageStructure",
-    "GetContextParameterStructure",
-    "GetContextResponse",
-    "GetEmbeddings",
-    "GetEmbeddingsParameterStructure",
-    "GetRequestParameterStructure",
-    "GetResponse",
-    "GetVersion"
+    {
+     "name": "GetContextMessageStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetContextParameterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetContextResponse",
+     "nocli": false
+    },
+    {
+     "name": "GetEmbeddings",
+     "nocli": false
+    },
+    {
+     "name": "GetEmbeddingsParameterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetRequestParameterStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetResponse",
+     "nocli": false
+    },
+    {
+     "name": "GetVersion",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Models management",
    "methods": [
-    "CopyModel",
-    "CreateModel",
-    "DeleteModel",
-    "GetModelInformation",
-    "GetModelList",
-    "GetModelSettingsStructure",
-    "ListRunningModels",
-    "LoadModelToMemory",
-    "PullModel",
-    "PushModel",
-    "UnloadModelFromMemory"
+    {
+     "name": "CopyModel",
+     "nocli": false
+    },
+    {
+     "name": "CreateModel",
+     "nocli": false
+    },
+    {
+     "name": "DeleteModel",
+     "nocli": false
+    },
+    {
+     "name": "GetModelInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetModelList",
+     "nocli": false
+    },
+    {
+     "name": "GetModelSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "ListRunningModels",
+     "nocli": false
+    },
+    {
+     "name": "LoadModelToMemory",
+     "nocli": false
+    },
+    {
+     "name": "PullModel",
+     "nocli": false
+    },
+    {
+     "name": "PushModel",
+     "nocli": false
+    },
+    {
+     "name": "UnloadModelFromMemory",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Working with blob",
    "methods": [
-    "CheckBlob",
-    "PushBlob"
+    {
+     "name": "CheckBlob",
+     "nocli": false
+    },
+    {
+     "name": "PushBlob",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetVersion",
    "id": "GETVERSION",
    "description": "Gets a version of Ollama",
@@ -69,6 +133,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetResponse",
    "id": "GETRESPONSE",
    "description": "Generates a response for a given text query",
@@ -117,6 +182,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetContextResponse",
    "id": "GETCONTEXTRESPONSE",
    "description": "Receives the next response from the model according to the message history",
@@ -165,6 +231,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetEmbeddings",
    "id": "GETEMBEDDINGS",
    "description": "Gets the embeddings for the given entries",
@@ -213,6 +280,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetRequestParameterStructure",
    "id": "GETREQUESTPARAMETERSTRUCTURE",
    "description": "Gets the structure of additional parameters for request processing",
@@ -229,6 +297,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetEmbeddingsParameterStructure",
    "id": "GETEMBEDDINGSPARAMETERSTRUCTURE",
    "description": "Gets the structure of additional parameters for processing embeddings requests",
@@ -245,6 +314,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetContextParameterStructure",
    "id": "GETCONTEXTPARAMETERSTRUCTURE",
    "description": "Gets the structure of additional parameters to process the request in context",
@@ -261,6 +331,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetContextMessageStructure",
    "id": "GETCONTEXTMESSAGESTRUCTURE",
    "description": "Gets the message structure for a list of request messages in context",
@@ -301,6 +372,7 @@
    "region": "Requests processing"
   },
   {
+   "nocli": false,
    "name": "GetModelList",
    "id": "GETMODELLIST",
    "description": "Gets a list of local models",
@@ -325,6 +397,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "ListRunningModels",
    "id": "LISTRUNNINGMODELS",
    "description": "Gets a list of running models",
@@ -349,6 +422,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "GetModelInformation",
    "id": "GETMODELINFORMATION",
    "description": "Gets information about the model",
@@ -389,6 +463,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "CreateModel",
    "id": "CREATEMODEL",
    "description": "Creates a new model with the specified settings",
@@ -429,6 +504,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "CopyModel",
    "id": "COPYMODEL",
    "description": "Copies an existing model",
@@ -469,6 +545,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "DeleteModel",
    "id": "DELETEMODEL",
    "description": "Deletes an existing model",
@@ -501,6 +578,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "LoadModelToMemory",
    "id": "LOADMODELTOMEMORY",
    "description": "Loads the selected model into RAM",
@@ -541,6 +619,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "UnloadModelFromMemory",
    "id": "UNLOADMODELFROMMEMORY",
    "description": "Unloads the selected model from memory",
@@ -573,6 +652,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "PushModel",
    "id": "PUSHMODEL",
    "description": "Uploads the model to the model library",
@@ -613,6 +693,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "PullModel",
    "id": "PULLMODEL",
    "description": "Downloads a model from the library",
@@ -653,6 +734,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "GetModelSettingsStructure",
    "id": "GETMODELSETTINGSSTRUCTURE",
    "description": "Gets the settings structure for creating a new model",
@@ -669,6 +751,7 @@
    "region": "Models management"
   },
   {
+   "nocli": false,
    "name": "PushBlob",
    "id": "PUSHBLOB",
    "description": "Sends binary data to the Ollama server",
@@ -701,6 +784,7 @@
    "region": "Working with blob"
   },
   {
+   "nocli": false,
    "name": "CheckBlob",
    "id": "CHECKBLOB",
    "description": "Checks the existence of a BLOB by its SHA256 digest",

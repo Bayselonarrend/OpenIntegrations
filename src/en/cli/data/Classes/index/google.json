@@ -9,15 +9,28 @@
   {
    "name": "Public",
    "methods": [
-    "FormCodeRetrievalLink",
-    "GetServiceAccountToken",
-    "GetTokenByCode",
-    "RefreshToken"
+    {
+     "name": "FormCodeRetrievalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetServiceAccountToken",
+     "nocli": false
+    },
+    {
+     "name": "GetTokenByCode",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "FormCodeRetrievalLink",
    "id": "FORMCODERETRIEVALLINK",
    "description": "Returns URL for browser authorization",
@@ -58,6 +71,7 @@
    "region": "Public"
   },
   {
+   "nocli": false,
    "name": "GetTokenByCode",
    "id": "GETTOKENBYCODE",
    "description": "Gets token by code from browser authorization",
@@ -90,6 +104,7 @@
    "region": "Public"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Updates token by Refresh token",
@@ -122,6 +137,7 @@
    "region": "Public"
   },
   {
+   "nocli": false,
    "name": "GetServiceAccountToken",
    "id": "GETSERVICEACCOUNTTOKEN",
    "description": "Gets authorization token by service account data",

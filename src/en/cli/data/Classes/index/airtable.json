@@ -9,54 +9,124 @@
   {
    "name": "Working with databases",
    "methods": [
-    "CreateDatabase",
-    "GetDatabaseTables",
-    "GetListOfBases"
+    {
+     "name": "CreateDatabase",
+     "nocli": false
+    },
+    {
+     "name": "GetDatabaseTables",
+     "nocli": false
+    },
+    {
+     "name": "GetListOfBases",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Table management",
    "methods": [
-    "CreateTable",
-    "ModifyTable"
+    {
+     "name": "CreateTable",
+     "nocli": false
+    },
+    {
+     "name": "ModifyTable",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Working with fields",
    "methods": [
-    "CreateField",
-    "GetAttachmentField",
-    "GetCheckboxField",
-    "GetDateField",
-    "GetEmailField",
-    "GetLinkField",
-    "GetNumberField",
-    "GetPhoneField",
-    "GetStringField",
-    "ModifyField"
+    {
+     "name": "CreateField",
+     "nocli": false
+    },
+    {
+     "name": "GetAttachmentField",
+     "nocli": false
+    },
+    {
+     "name": "GetCheckboxField",
+     "nocli": false
+    },
+    {
+     "name": "GetDateField",
+     "nocli": false
+    },
+    {
+     "name": "GetEmailField",
+     "nocli": false
+    },
+    {
+     "name": "GetLinkField",
+     "nocli": false
+    },
+    {
+     "name": "GetNumberField",
+     "nocli": false
+    },
+    {
+     "name": "GetPhoneField",
+     "nocli": false
+    },
+    {
+     "name": "GetStringField",
+     "nocli": false
+    },
+    {
+     "name": "ModifyField",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Record management",
    "methods": [
-    "CreatePosts",
-    "DeleteRecords",
-    "GetListOfRecords",
-    "GetRecord"
+    {
+     "name": "CreatePosts",
+     "nocli": false
+    },
+    {
+     "name": "DeleteRecords",
+     "nocli": false
+    },
+    {
+     "name": "GetListOfRecords",
+     "nocli": false
+    },
+    {
+     "name": "GetRecord",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Comment management",
    "methods": [
-    "CreateComment",
-    "DeleteComment",
-    "EditComment",
-    "GetComments"
+    {
+     "name": "CreateComment",
+     "nocli": false
+    },
+    {
+     "name": "DeleteComment",
+     "nocli": false
+    },
+    {
+     "name": "EditComment",
+     "nocli": false
+    },
+    {
+     "name": "GetComments",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "GetListOfBases",
    "id": "GETLISTOFBASES",
    "description": "Gets the list of available bases",
@@ -81,6 +151,7 @@
    "region": "Working with databases"
   },
   {
+   "nocli": false,
    "name": "GetDatabaseTables",
    "id": "GETDATABASETABLES",
    "description": "Gets the schema of base tables",
@@ -105,6 +176,7 @@
    "region": "Working with databases"
   },
   {
+   "nocli": false,
    "name": "CreateDatabase",
    "id": "CREATEDATABASE",
    "description": "Creates a new database",
@@ -145,6 +217,7 @@
    "region": "Working with databases"
   },
   {
+   "nocli": false,
    "name": "CreateTable",
    "id": "CREATETABLE",
    "description": "Creates a new table in the base",
@@ -193,6 +266,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "ModifyTable",
    "id": "MODIFYTABLE",
    "description": "Changes the name and\nor description of the base",
@@ -241,6 +315,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "CreateField",
    "id": "CREATEFIELD",
    "description": "Creates a new field in the table",
@@ -281,6 +356,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "ModifyField",
    "id": "MODIFYFIELD",
    "description": "Changes the name and\nor description of an existing table field",
@@ -337,6 +413,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetStringField",
    "id": "GETSTRINGFIELD",
    "description": "Gets the description of a string field",
@@ -353,6 +430,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetNumberField",
    "id": "GETNUMBERFIELD",
    "description": "Gets the description of a numeric field",
@@ -377,6 +455,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetAttachmentField",
    "id": "GETATTACHMENTFIELD",
    "description": "Gets the description of a file field",
@@ -393,6 +472,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetCheckboxField",
    "id": "GETCHECKBOXFIELD",
    "description": "Gets the description of a boolean field",
@@ -409,6 +489,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetDateField",
    "id": "GETDATEFIELD",
    "description": "Gets the description of a date field",
@@ -425,6 +506,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetEmailField",
    "id": "GETEMAILFIELD",
    "description": "Gets the description of an email field",
@@ -441,6 +523,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetPhoneField",
    "id": "GETPHONEFIELD",
    "description": "Gets the description of a phone number field",
@@ -457,6 +540,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetLinkField",
    "id": "GETLINKFIELD",
    "description": "Gets the description of a URL field",
@@ -473,6 +557,7 @@
    "region": "Working with fields"
   },
   {
+   "nocli": false,
    "name": "GetListOfRecords",
    "id": "GETLISTOFRECORDS",
    "description": "Gets the list of records of the selected table",
@@ -513,6 +598,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "GetRecord",
    "id": "GETRECORD",
    "description": "Gets row data of the table by identifier",
@@ -553,6 +639,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "CreatePosts",
    "id": "CREATEPOSTS",
    "description": "Creates one or an array of records by description or an array of field value descriptions",
@@ -593,6 +680,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "DeleteRecords",
    "id": "DELETERECORDS",
    "description": "Deletes one or an array of records by identifiers",
@@ -633,6 +721,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "GetComments",
    "id": "GETCOMMENTS",
    "description": "Gets the list of comments for a record in the table",
@@ -681,6 +770,7 @@
    "region": "Comment management"
   },
   {
+   "nocli": false,
    "name": "CreateComment",
    "id": "CREATECOMMENT",
    "description": "Creates a comment for a record in the table",
@@ -729,6 +819,7 @@
    "region": "Comment management"
   },
   {
+   "nocli": false,
    "name": "EditComment",
    "id": "EDITCOMMENT",
    "description": "Changes the text of an existing comment",
@@ -785,6 +876,7 @@
    "region": "Comment management"
   },
   {
+   "nocli": false,
    "name": "DeleteComment",
    "id": "DELETECOMMENT",
    "description": "Deletes a comment for a table record",

@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_CDEK
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_CDEK
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_CDEK(Исполнитель)
@@ -18,12 +18,6 @@
     знч КомандаCLI: Строка = "cdek"
     
     @Глобально
-    // Метод GetToken
-    // Gets a token based on account ID and password
-    //
-    // Account  - String: Client identifier (Account)
-    // Password - String: Secret key (Password)
-    // TestAPI  - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetToken(Account: Объект?, Password: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -36,12 +30,6 @@
     ;
 
     @Глобально
-    // Метод GetCashboxChecksByDate
-    // Gets information about checks for a specified date
-    //
-    // Token         - String: Auth token
-    // ReceivingDate - Date: Date for which data should be retrieved
-    // TestAPI       - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetCashboxChecksByDate(Token: Объект?, ReceivingDate: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -54,12 +42,6 @@
     ;
 
     @Глобально
-    // Метод GetDeliveryCashRegistry
-    // Receives registers of imposed payments, for which the client was transferred the payment
-    //
-    // Token         - String: Auth token
-    // ReceivingDate - Date: Date for which data should be retrieved
-    // TestAPI       - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetDeliveryCashRegistry(Token: Объект?, ReceivingDate: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -72,12 +54,6 @@
     ;
 
     @Глобально
-    // Метод GetDeliveryCashTransfers
-    // Gets information about orders for which cash on delivery was transferred to the online store
-    //
-    // Token         - String: Auth token
-    // ReceivingDate - Date: Date for which data should be retrieved
-    // TestAPI       - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetDeliveryCashTransfers(Token: Объект?, ReceivingDate: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -90,12 +66,6 @@
     ;
 
     @Глобально
-    // Метод GetOfficeList
-    // Gets a list of offices with or without a filter
-    //
-    // Token   - String: Auth token
-    // Filter  - Structure Of KeyAndValue: Office filter. See GetOfficeFilterDescription (необяз. по ум. - Empty value)
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetOfficeList(Token: Объект?, Filter: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -108,14 +78,6 @@
     ;
 
     @Глобально
-    // Метод GetRegionsList
-    // Gets the list of available regions
-    //
-    // Token     - String: Auth token
-    // Countrues - Array Of String: Array of country codes in ISO_31661_alpha2 format for selection (необяз. по ум. - Empty value)
-    // Page      - Number: Result page (необяз. по ум. - Empty value)
-    // Lang      - String: Language: rus, eng, zho (необяз. по ум. - rus)
-    // TestAPI   - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetRegionsList(Token: Объект?, Countrues: Объект? = Неопределено, Page: Объект? = Неопределено, Lang: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -130,10 +92,6 @@
     ;
 
     @Глобально
-    // Метод GetOfficeFilterDescription
-    // Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetOfficeFilterDescription(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -144,13 +102,6 @@
     ;
 
     @Глобально
-    // Метод CreateOrder
-    // Creates an order based on field descriptions
-    //
-    // Token            - String: Auth token
-    // OrderDescription - Structure Of KeyAndValue: Set of order fields. See GetOrderDescription
-    // OnlineStore      - Boolean: Flag of Online store order type (необяз. по ум. - false)
-    // TestAPI          - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreateOrder(Token: Объект?, OrderDescription: Объект?, OnlineStore: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -164,13 +115,6 @@
     ;
 
     @Глобально
-    // Метод UpdateOrder
-    // Changes the field values of the selected order
-    //
-    // Token            - String: Auth token
-    // UUID             - String: Order UUID for updating
-    // OrderDescription - Structure Of KeyAndValue: Set of changing order fields
-    // TestAPI          - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод UpdateOrder(Token: Объект?, UUID: Объект?, OrderDescription: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -184,12 +128,6 @@
     ;
 
     @Глобально
-    // Метод DeleteOrder
-    // Deletes order by UUID
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID for deletion
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод DeleteOrder(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -202,12 +140,6 @@
     ;
 
     @Глобально
-    // Метод GetOrder
-    // Gets the order by UUID
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetOrder(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -220,13 +152,6 @@
     ;
 
     @Глобально
-    // Метод GetOrderByNumber
-    // Receives the order by CDEK number or number from customer IB
-    //
-    // Token       - String: Auth token
-    // OrderNumber - String: Order number
-    // Internal    - Boolean: Type of order number. True > number in the customer base, False > CDEK number (необяз. по ум. - false)
-    // TestAPI     - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetOrderByNumber(Token: Объект?, OrderNumber: Объект?, Internal: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -240,13 +165,6 @@
     ;
 
     @Глобально
-    // Метод CreateCustomerRefund
-    // Processes customer returns for online store orders
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID
-    // Tariff  - Number: Tariff code (from those available under the contract)
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreateCustomerRefund(Token: Объект?, UUID: Объект?, Tariff: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -260,12 +178,6 @@
     ;
 
     @Глобально
-    // Метод CreateRefusal
-    // Creates an order refusal to return to the online store
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreateRefusal(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -278,14 +190,6 @@
     ;
 
     @Глобально
-    // Метод CreateReceipt
-    // Generates pdf receipts for orders
-    //
-    // Token          - String: Auth token
-    // UUIDArray      - String, Array of String: One or an array of order UUIDs
-    // Type           - String: Receipt type (language) (необяз. по ум. - tpl_russia)
-    // CopiesPerSheet - Number: Number of copies of one receipt per sheet (необяз. по ум. - 2)
-    // TestAPI        - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreateReceipt(Token: Объект?, UUIDArray: Объект?, Type: Объект? = Неопределено, CopiesPerSheet: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -300,13 +204,6 @@
     ;
 
     @Глобально
-    // Метод GetReceipt
-    // Gets a receipt for the order
-    //
-    // Token   - String: Auth token
-    // UUID    - String: UUID of the receipt received during its creation
-    // GetFile - Boolean: True > PDF file data will be received, False > receives CDEK server response (необяз. по ум. - false)
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetReceipt(Token: Объект?, UUID: Объект?, GetFile: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -320,15 +217,6 @@
     ;
 
     @Глобально
-    // Метод CreateBarcode
-    // Generates a PDF barcode CP for orders
-    //
-    // Token     - String: Auth token
-    // UUIDArray - String, Array of String: One or an array of order UUIDs
-    // Copies    - Number: Number of copies (необяз. по ум. - 1)
-    // Format    - String: Print format: A4, A5, A6, A7 (необяз. по ум. - A4)
-    // Lang      - String: Barcode language: RUS, ENG (необяз. по ум. - RUS)
-    // TestAPI   - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreateBarcode(Token: Объект?, UUIDArray: Объект?, Copies: Объект? = Неопределено, Format: Объект? = Неопределено, Lang: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -344,13 +232,6 @@
     ;
 
     @Глобально
-    // Метод GetBarcode
-    // Gets the barcode CP for the order
-    //
-    // Token   - String: Auth token
-    // UUID    - String: The UID of the barcode received when the barcode was created
-    // GetFile - Boolean: True > PDF file data will be received, False > receives CDEK server response (необяз. по ум. - false)
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetBarcode(Token: Объект?, UUID: Объект?, GetFile: Объект? = Неопределено, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -364,14 +245,6 @@
     ;
 
     @Глобально
-    // Метод CreatePrealert
-    // Creates a prealert for the order list
-    //
-    // Token        - String: Auth token
-    // UUIDArray    - String, Array of String: One or an array of order UUIDs
-    // TransferDate - Date: Planned date of transfer of orders to CDEK
-    // Point        - String: Code of shipment point to which it is planned to transfer orders
-    // TestAPI      - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreatePrealert(Token: Объект?, UUIDArray: Объект?, TransferDate: Объект?, Point: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -386,12 +259,6 @@
     ;
 
     @Глобально
-    // Метод GetPrealert
-    // Gets a previously created prealert
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Prealert UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetPrealert(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -404,12 +271,6 @@
     ;
 
     @Глобально
-    // Метод GetPassportDataStatus
-    // Receives information on passport data processing status for international orders
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetPassportDataStatus(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -422,12 +283,6 @@
     ;
 
     @Глобально
-    // Метод GetCashboxCheck
-    // Receives check information on an order
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetCashboxCheck(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -440,12 +295,6 @@
     ;
 
     @Глобально
-    // Метод GetOrderDescription
-    // Gets the layout of order for the CreateOrder function
-    //
-    // Clear        - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // RequiredOnly - Boolean: True > only required fields will be in the set (необяз. по ум. - false)
-    // OnlineStore  - Boolean: Flag of including fields in the layout exclusively for online store orders (необяз. по ум. - false)
     метод GetOrderDescription(Clear: Объект? = Неопределено, RequiredOnly: Объект? = Неопределено, OnlineStore: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -458,12 +307,6 @@
     ;
 
     @Глобально
-    // Метод GetAvailableDeliveryIntervals
-    // Gets available delivery intervals for order
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Order UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetAvailableDeliveryIntervals(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -476,12 +319,6 @@
     ;
 
     @Глобально
-    // Метод CreateCourierInvitation
-    // Creates a new request to call a courier to pick up a shipment
-    //
-    // Token                 - String: Auth token
-    // InvitationDescription - Structure Of KeyAndValue: Invitations description. See GetCourierInvitationsDescription
-    // TestAPI               - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод CreateCourierInvitation(Token: Объект?, InvitationDescription: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -494,12 +331,6 @@
     ;
 
     @Глобально
-    // Метод GetCourierInvitation
-    // Gets withourier invitation by UUID
-    //
-    // Token   - String: Auth token
-    // UUID    - String: UUID of the invitation
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetCourierInvitation(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -512,12 +343,6 @@
     ;
 
     @Глобально
-    // Метод DeleteCourierInvitation
-    // 
-    //
-    // Token   - String: Auth token
-    // UUID    - String: UUID of the invitation for deletion
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод DeleteCourierInvitation(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -530,12 +355,6 @@
     ;
 
     @Глобально
-    // Метод RegisterDeliveryAppointment
-    // Fixes the delivery date, time and address agreed with the customer
-    //
-    // Token       - String: Auth token
-    // Appointment - Structure Of KeyAndValue: Appointment description. See GetAppointmentDescription
-    // TestAPI     - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод RegisterDeliveryAppointment(Token: Объект?, Appointment: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -548,12 +367,6 @@
     ;
 
     @Глобально
-    // Метод GetDeliveryAppointment
-    // Receives information about the delivery date, time and address agreed with the customer
-    //
-    // Token   - String: Auth token
-    // UUID    - String: Appointment UUID
-    // TestAPI - Boolean: Flag to use test API for requests (необяз. по ум. - false)
     метод GetDeliveryAppointment(Token: Объект?, UUID: Объект?, TestAPI: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -566,11 +379,6 @@
     ;
 
     @Глобально
-    // Метод GetCourierInvitationsDescription
-    // Gets the layout for creating a request for courier call in the CreateCourierInvitation function
-    //
-    // Clear        - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // RequiredOnly - Boolean: True > only required fields will be in the set (необяз. по ум. - false)
     метод GetCourierInvitationsDescription(Clear: Объект? = Неопределено, RequiredOnly: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -582,11 +390,6 @@
     ;
 
     @Глобально
-    // Метод GetAppointmentDescription
-    // Gets the layout to create about delivery in the RegisterDeliveryAppointment function
-    //
-    // Clear        - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
-    // RequiredOnly - Boolean: True > only required fields will be in the set (необяз. по ум. - false)
     метод GetAppointmentDescription(Clear: Объект? = Неопределено, RequiredOnly: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

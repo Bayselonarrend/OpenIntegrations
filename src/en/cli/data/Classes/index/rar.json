@@ -9,20 +9,33 @@
   {
    "name": "Unarchiving",
    "methods": [
-    "UnarchiveDirectory",
-    "UnpackFiles"
+    {
+     "name": "UnarchiveDirectory",
+     "nocli": false
+    },
+    {
+     "name": "UnpackFiles",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Getting metadata",
    "methods": [
-    "GetFilesList",
-    "GetMetadata"
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "GetMetadata",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "UnarchiveDirectory",
    "id": "UNARCHIVEDIRECTORY",
    "description": "Extracts RAR archive to the specified directory",
@@ -55,6 +68,7 @@
    "region": "Unarchiving"
   },
   {
+   "nocli": false,
    "name": "UnpackFiles",
    "id": "UNPACKFILES",
    "description": "Extracts selected files from the RAR archive by the list of paths",
@@ -95,6 +109,7 @@
    "region": "Unarchiving"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets a hierarchical list of files and directories in the archive",
@@ -119,6 +134,7 @@
    "region": "Getting metadata"
   },
   {
+   "nocli": false,
    "name": "GetMetadata",
    "id": "GETMETADATA",
    "description": "Gets metadata and a flat list of archive files",

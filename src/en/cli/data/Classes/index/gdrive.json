@@ -11,39 +11,94 @@
   {
    "name": "Authorization",
    "methods": [
-    "FormCodeRetrievalLink",
-    "GetServiceAccountToken",
-    "GetTokenByCode",
-    "RefreshToken"
+    {
+     "name": "FormCodeRetrievalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetServiceAccountToken",
+     "nocli": false
+    },
+    {
+     "name": "GetTokenByCode",
+     "nocli": false
+    },
+    {
+     "name": "RefreshToken",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "File and directory management",
    "methods": [
-    "CopyObject",
-    "CreateFolder",
-    "DeleteObject",
-    "DownloadFile",
-    "GetDirectoriesList",
-    "GetFileDescription",
-    "GetFilesList",
-    "GetObjectInformation",
-    "UpdateFile",
-    "UploadFile"
+    {
+     "name": "CopyObject",
+     "nocli": false
+    },
+    {
+     "name": "CreateFolder",
+     "nocli": false
+    },
+    {
+     "name": "DeleteObject",
+     "nocli": false
+    },
+    {
+     "name": "DownloadFile",
+     "nocli": false
+    },
+    {
+     "name": "GetDirectoriesList",
+     "nocli": false
+    },
+    {
+     "name": "GetFileDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "GetObjectInformation",
+     "nocli": false
+    },
+    {
+     "name": "UpdateFile",
+     "nocli": false
+    },
+    {
+     "name": "UploadFile",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Comment management",
    "methods": [
-    "CreateComment",
-    "DeleteComment",
-    "GetComment",
-    "GetCommentList"
+    {
+     "name": "CreateComment",
+     "nocli": false
+    },
+    {
+     "name": "DeleteComment",
+     "nocli": false
+    },
+    {
+     "name": "GetComment",
+     "nocli": false
+    },
+    {
+     "name": "GetCommentList",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "FormCodeRetrievalLink",
    "id": "FORMCODERETRIEVALLINK",
    "description": "Returns URL for browser authorization",
@@ -84,6 +139,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetTokenByCode",
    "id": "GETTOKENBYCODE",
    "description": "Gets token by code from browser authorization",
@@ -116,6 +172,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "RefreshToken",
    "id": "REFRESHTOKEN",
    "description": "Updates token by Refresh token",
@@ -148,6 +205,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetServiceAccountToken",
    "id": "GETSERVICEACCOUNTTOKEN",
    "description": "Gets authorization token by service account data",
@@ -180,6 +238,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetObjectInformation",
    "id": "GETOBJECTINFORMATION",
    "description": "Gets information about a folder or file by ID",
@@ -204,6 +263,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetDirectoriesList",
    "id": "GETDIRECTORIESLIST",
    "description": "Gets the list of drive directories",
@@ -236,6 +296,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets the list of files",
@@ -268,6 +329,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "UploadFile",
    "id": "UPLOADFILE",
    "description": "Uploads a file to the drive",
@@ -300,6 +362,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "CreateFolder",
    "id": "CREATEFOLDER",
    "description": "Creates an empty directory on the drive",
@@ -332,6 +395,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "DownloadFile",
    "id": "DOWNLOADFILE",
    "description": "Gets file by ID",
@@ -364,6 +428,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "CopyObject",
    "id": "COPYOBJECT",
    "description": "Copies file or directory",
@@ -404,6 +469,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "UpdateFile",
    "id": "UPDATEFILE",
    "description": "Updates file binary data",
@@ -444,6 +510,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "DeleteObject",
    "id": "DELETEOBJECT",
    "description": "Deletes file or directory by ID",
@@ -468,6 +535,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "GetFileDescription",
    "id": "GETFILEDESCRIPTION",
    "description": "Gets a blank description template for uploading a file",
@@ -484,6 +552,7 @@
    "region": "File and directory management"
   },
   {
+   "nocli": false,
    "name": "CreateComment",
    "id": "CREATECOMMENT",
    "description": "Creates a comment for a file or directory",
@@ -516,6 +585,7 @@
    "region": "Comment management"
   },
   {
+   "nocli": false,
    "name": "GetComment",
    "id": "GETCOMMENT",
    "description": "Gets comment by ID",
@@ -548,6 +618,7 @@
    "region": "Comment management"
   },
   {
+   "nocli": false,
    "name": "GetCommentList",
    "id": "GETCOMMENTLIST",
    "description": "Gets the list of all comments of the object",
@@ -572,6 +643,7 @@
    "region": "Comment management"
   },
   {
+   "nocli": false,
    "name": "DeleteComment",
    "id": "DELETECOMMENT",
    "description": "Deletes comment by ID",

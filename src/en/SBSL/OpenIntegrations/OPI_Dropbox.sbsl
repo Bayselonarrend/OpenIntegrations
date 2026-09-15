@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_Dropbox
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_Dropbox
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_Dropbox(Исполнитель)
@@ -18,10 +18,6 @@
     знч КомандаCLI: Строка = "dropbox"
     
     @Глобально
-    // Метод GetAuthorizationLink
-    // Generates an authorization link for browser transition
-    //
-    // AppKey - String: Application key
     метод GetAuthorizationLink(AppKey: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -32,12 +28,6 @@
     ;
 
     @Глобально
-    // Метод GetToken
-    // Gets token based on the code from the GetAuthorizationLink page
-    //
-    // AppKey    - String: Application key
-    // AppSecret - String: Application secret
-    // Code      - String: Code from the authorization page
     метод GetToken(AppKey: Объект?, AppSecret: Объект?, Code: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,12 +40,6 @@
     ;
 
     @Глобально
-    // Метод RefreshToken
-    // Gets a new token based on the refresh token
-    //
-    // AppKey       - String: Application key
-    // AppSecret    - String: Application secret
-    // RefreshToken - String: Refresh token
     метод RefreshToken(AppKey: Объект?, AppSecret: Объект?, RefreshToken: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -68,11 +52,6 @@
     ;
 
     @Глобально
-    // Метод GetAccountInformation
-    // Gets account information
-    //
-    // Token   - String: Token
-    // Account - String: Account ID. Current token account if not filled (необяз. по ум. - Empty value)
     метод GetAccountInformation(Token: Объект?, Account: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -84,10 +63,6 @@
     ;
 
     @Глобально
-    // Метод GetSpaceUsageData
-    // Gets information on the amount of used disk space
-    //
-    // Token - String: Token
     метод GetSpaceUsageData(Token: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -98,12 +73,6 @@
     ;
 
     @Глобально
-    // Метод GetObjectInformation
-    // Gets information about a file or directory
-    //
-    // Token    - String: Token
-    // Path     - String: Path to the object
-    // Detailed - Boolean: Add information fields for mediafiles (необяз. по ум. - false)
     метод GetObjectInformation(Token: Объект?, Path: Объект?, Detailed: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -116,13 +85,6 @@
     ;
 
     @Глобально
-    // Метод GetListOfFolderFiles
-    // Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified
-    //
-    // Token    - String: Token
-    // Path     - String: Path to the directory. Optional if the cursor is specified (необяз. по ум. - Empty value)
-    // Detailed - Boolean: Add information fields for mediafiles (необяз. по ум. - false)
-    // Cursor   - String: Cursor from the previous request to get the next set of files (необяз. по ум. - Empty value)
     метод GetListOfFolderFiles(Token: Объект?, Path: Объект? = Неопределено, Detailed: Объект? = Неопределено, Cursor: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -136,11 +98,6 @@
     ;
 
     @Глобально
-    // Метод GetPreview
-    // Gets PDF or HTML preview of the object (for documents only)
-    //
-    // Token - String: Token
-    // Path  - String: Path to the object
     метод GetPreview(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -152,13 +109,6 @@
     ;
 
     @Глобально
-    // Метод UploadFile
-    // Uploads a file to the cloud drive
-    //
-    // Token     - String: Token
-    // File      - String, BinaryData: Data file for upload
-    // Path      - String: Save path on Dropbox
-    // Overwrite - Boolean: Overwrite file in case of path conflicts (необяз. по ум. - false)
     метод UploadFile(Token: Объект?, File: Объект?, Path: Объект?, Overwrite: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -172,12 +122,6 @@
     ;
 
     @Глобально
-    // Метод UploadFileByURL
-    // Uploads a file to the cloud drive by fetching it from the specified URL
-    //
-    // Token   - String: Token
-    // FileURL - String: URL source of the file
-    // Path    - String: Save path on Dropbox
     метод UploadFileByURL(Token: Объект?, FileURL: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -190,11 +134,6 @@
     ;
 
     @Глобально
-    // Метод GetUploadStatusByURL
-    // Gets the upload status of the file by URL
-    //
-    // Token - String: Token
-    // JobID - String: ID of async jsob from UploadFileByURL response
     метод GetUploadStatusByURL(Token: Объект?, JobID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -206,12 +145,6 @@
     ;
 
     @Глобально
-    // Метод DeleteObject
-    // Deletes an object from the cloud drive
-    //
-    // Token         - String: Token
-    // Path          - String: Path to the object to delete
-    // Irrecoverable - String: Delete object without the possibility of recovery (необяз. по ум. - false)
     метод DeleteObject(Token: Объект?, Path: Объект?, Irrecoverable: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -224,12 +157,6 @@
     ;
 
     @Глобально
-    // Метод CopyObject
-    // Copies a file or directory to the selected path
-    //
-    // Token  - String: Token
-    // From   - String: Path to the original object
-    // Target - String: Target path for the new object
     метод CopyObject(Token: Объект?, From: Объект?, Target: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -242,12 +169,6 @@
     ;
 
     @Глобально
-    // Метод MoveObject
-    // Moves an object to the selected path
-    //
-    // Token  - String: Token
-    // From   - String: Path to the original object
-    // Target - String: Target path for the new object
     метод MoveObject(Token: Объект?, From: Объект?, Target: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -260,11 +181,6 @@
     ;
 
     @Глобально
-    // Метод CreateFolder
-    // Creates an empty directory at the selected path
-    //
-    // Token - String: Token
-    // Path  - String: Target path for creating the directory
     метод CreateFolder(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -276,11 +192,6 @@
     ;
 
     @Глобально
-    // Метод DownloadFile
-    // Downloads a file by the specified path or ID
-    //
-    // Token - String: Token
-    // Path  - String: Path or ID of the file
     метод DownloadFile(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -292,11 +203,6 @@
     ;
 
     @Глобально
-    // Метод DownloadFolder
-    // Downloads a zip archive with the contents of the specified directory
-    //
-    // Token - String: Token
-    // Path  - String: Path or ID of the directory
     метод DownloadFolder(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -308,12 +214,6 @@
     ;
 
     @Глобально
-    // Метод GetObjectVersionList
-    // Gets the list of versions (revisions) of the object
-    //
-    // Token - String: Token
-    // Path  - String: Path to the object
-    // Count - String, Number: Number of the latest versions of the object to display (необяз. по ум. - 10)
     метод GetObjectVersionList(Token: Объект?, Path: Объект?, Count: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -326,12 +226,6 @@
     ;
 
     @Глобально
-    // Метод RestoreObjectToVersion
-    // Restores object state to required version (revision)
-    //
-    // Token   - String: Token
-    // Path    - String: Path to the object
-    // Version - String: ID of the version (revision) for restoration
     метод RestoreObjectToVersion(Token: Объект?, Path: Объект?, Version: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -344,11 +238,6 @@
     ;
 
     @Глобально
-    // Метод GetTagList
-    // Gets the list of tags of the selected files
-    //
-    // Token - String: Token
-    // Paths - String, Array of String: Path or set of paths to the files
     метод GetTagList(Token: Объект?, Paths: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -360,12 +249,6 @@
     ;
 
     @Глобально
-    // Метод AddTag
-    // Add new tag to file or folder
-    //
-    // Token - String: Token
-    // Path  - String: Path to the object for which the tag needs to be created
-    // Tag   - String: Tag text
     метод AddTag(Token: Объект?, Path: Объект?, Tag: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -378,12 +261,6 @@
     ;
 
     @Глобально
-    // Метод DeleteTag
-    // Deletes the text tag of a file or directory
-    //
-    // Token - String: Token
-    // Path  - String: Path to the object whose tag needs to be deleted
-    // Tag   - String: Tag text
     метод DeleteTag(Token: Объект?, Path: Объект?, Tag: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -396,11 +273,6 @@
     ;
 
     @Глобально
-    // Метод PublishFolder
-    // Sets the directory to public access mode
-    //
-    // Token - String: Token
-    // Path  - String: Path to the target directory
     метод PublishFolder(Token: Объект?, Path: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -412,11 +284,6 @@
     ;
 
     @Глобально
-    // Метод CancelFolderPublication
-    // Cancels the public access mode for the directory
-    //
-    // Token    - String: Token
-    // FolderID - String: ID of the public catalog (shared folder ID)
     метод CancelFolderPublication(Token: Объект?, FolderID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -428,13 +295,6 @@
     ;
 
     @Глобально
-    // Метод AddUsersToFile
-    // Defines access to the file for third-party users
-    //
-    // Token          - String: Token
-    // FileID         - String: ID of the file to be accessed
-    // EmailAddresses - String, Array of String: List of email addresses of users being added
-    // ViewOnly       - Boolean: Prohibits file editing for the external user (необяз. по ум. - true)
     метод AddUsersToFile(Token: Объект?, FileID: Объект?, EmailAddresses: Объект?, ViewOnly: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -448,13 +308,6 @@
     ;
 
     @Глобально
-    // Метод AddUsersToFolder
-    // Grants external users access to the directory
-    //
-    // Token          - String: Token
-    // FolderID       - String: ID of the public catalog (shared folder ID)
-    // EmailAddresses - String, Array of String: List of email addresses of users being added
-    // ViewOnly       - Boolean: Prohibits file editing for the external user (необяз. по ум. - true)
     метод AddUsersToFolder(Token: Объект?, FolderID: Объект?, EmailAddresses: Объект?, ViewOnly: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -468,11 +321,6 @@
     ;
 
     @Глобально
-    // Метод GetAsynchronousChangeStatus
-    // Get async job status for access changes
-    //
-    // Token - String: Token
-    // JobID - String: AsynchronousJobID
     метод GetAsynchronousChangeStatus(Token: Объект?, JobID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -484,11 +332,6 @@
     ;
 
     @Глобально
-    // Метод CancelFilePublication
-    // Prohibits access to the file for external users
-    //
-    // Token  - String: Token
-    // FileID - String: ID of the file to be accessed
     метод CancelFilePublication(Token: Объект?, FileID: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

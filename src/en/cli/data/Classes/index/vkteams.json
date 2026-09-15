@@ -9,50 +9,138 @@
   {
    "name": "Common methods",
    "methods": [
-    "CheckToken",
-    "GetEvents",
-    "GetFileInformation"
+    {
+     "name": "CheckToken",
+     "nocli": false
+    },
+    {
+     "name": "GetEvents",
+     "nocli": false
+    },
+    {
+     "name": "GetFileInformation",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Message sending",
    "methods": [
-    "AnswerButtonEvent",
-    "DeleteMessage",
-    "EditMessageText",
-    "ForwardMessage",
-    "MakeActionButton",
-    "PinMessage",
-    "ResendFile",
-    "ResendVoice",
-    "SendFile",
-    "SendTextMessage",
-    "SendVoice",
-    "UnpinMessage"
+    {
+     "name": "AnswerButtonEvent",
+     "nocli": false
+    },
+    {
+     "name": "DeleteMessage",
+     "nocli": false
+    },
+    {
+     "name": "EditMessageText",
+     "nocli": false
+    },
+    {
+     "name": "ForwardMessage",
+     "nocli": false
+    },
+    {
+     "name": "MakeActionButton",
+     "nocli": false
+    },
+    {
+     "name": "PinMessage",
+     "nocli": false
+    },
+    {
+     "name": "ResendFile",
+     "nocli": false
+    },
+    {
+     "name": "ResendVoice",
+     "nocli": false
+    },
+    {
+     "name": "SendFile",
+     "nocli": false
+    },
+    {
+     "name": "SendTextMessage",
+     "nocli": false
+    },
+    {
+     "name": "SendVoice",
+     "nocli": false
+    },
+    {
+     "name": "UnpinMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Chat management",
    "methods": [
-    "ApprovePending",
-    "BlockChatUser",
-    "ChangeChatPicture",
-    "DisapprovePending",
-    "GetChatAdmins",
-    "GetChatBlockedUsers",
-    "GetChatInfo",
-    "GetChatJoinRequests",
-    "GetChatMembers",
-    "RemoveChatMembers",
-    "SetChatDescription",
-    "SetChatRules",
-    "SetChatTitle",
-    "UnblockChatUser"
+    {
+     "name": "ApprovePending",
+     "nocli": false
+    },
+    {
+     "name": "BlockChatUser",
+     "nocli": false
+    },
+    {
+     "name": "ChangeChatPicture",
+     "nocli": false
+    },
+    {
+     "name": "DisapprovePending",
+     "nocli": false
+    },
+    {
+     "name": "GetChatAdmins",
+     "nocli": false
+    },
+    {
+     "name": "GetChatBlockedUsers",
+     "nocli": false
+    },
+    {
+     "name": "GetChatInfo",
+     "nocli": false
+    },
+    {
+     "name": "GetChatJoinRequests",
+     "nocli": false
+    },
+    {
+     "name": "GetChatMembers",
+     "nocli": false
+    },
+    {
+     "name": "RemoveChatMembers",
+     "nocli": false
+    },
+    {
+     "name": "SetChatDescription",
+     "nocli": false
+    },
+    {
+     "name": "SetChatRules",
+     "nocli": false
+    },
+    {
+     "name": "SetChatTitle",
+     "nocli": false
+    },
+    {
+     "name": "UnblockChatUser",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "CheckToken",
    "id": "CHECKTOKEN",
    "description": "Checks if the bot token is functional",
@@ -69,6 +157,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetEvents",
    "id": "GETEVENTS",
    "description": "Receives bot events in Polling mode",
@@ -101,6 +190,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetFileInformation",
    "id": "GETFILEINFORMATION",
    "description": "Gets information about a file by ID",
@@ -125,6 +215,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "SendTextMessage",
    "id": "SENDTEXTMESSAGE",
    "description": "Sends a text message to a chat",
@@ -181,6 +272,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendFile",
    "id": "SENDFILE",
    "description": "Sends the file to the chat",
@@ -245,6 +337,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendVoice",
    "id": "SENDVOICE",
    "description": "Sends an audio file as a voice message",
@@ -301,6 +394,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "EditMessageText",
    "id": "EDITMESSAGETEXT",
    "description": "Changes the text of an existing message",
@@ -349,6 +443,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "DeleteMessage",
    "id": "DELETEMESSAGE",
    "description": "Deletes a message by ID",
@@ -381,6 +476,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "ResendFile",
    "id": "RESENDFILE",
    "description": "Sends a previously uploaded file by ID",
@@ -429,6 +525,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "ResendVoice",
    "id": "RESENDVOICE",
    "description": "Sends a previously uploaded voice message by ID",
@@ -461,6 +558,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "ForwardMessage",
    "id": "FORWARDMESSAGE",
    "description": "Forwards an existing message to the current dialog box",
@@ -509,6 +607,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "PinMessage",
    "id": "PINMESSAGE",
    "description": "Pins the selected message in the chat room",
@@ -541,6 +640,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "UnpinMessage",
    "id": "UNPINMESSAGE",
    "description": "Unpins a previously pinned chat message",
@@ -573,6 +673,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "AnswerButtonEvent",
    "id": "ANSWERBUTTONEVENT",
    "description": "Returns a response to the user when a keyboard button is pressed",
@@ -621,6 +722,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "MakeActionButton",
    "id": "MAKEACTIONBUTTON",
    "description": "Forms an action button for the message keyboard",
@@ -661,6 +763,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "RemoveChatMembers",
    "id": "REMOVECHATMEMBERS",
    "description": "Removes users from the chat",
@@ -693,6 +796,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "ChangeChatPicture",
    "id": "CHANGECHATPICTURE",
    "description": "Changes the chat avatar picture",
@@ -725,6 +829,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "GetChatInfo",
    "id": "GETCHATINFO",
    "description": "Gets basic information about the chat",
@@ -749,6 +854,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "GetChatAdmins",
    "id": "GETCHATADMINS",
    "description": "Gets the list of chat administrators",
@@ -773,6 +879,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "GetChatMembers",
    "id": "GETCHATMEMBERS",
    "description": "Gets the list of chat members",
@@ -805,6 +912,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "GetChatBlockedUsers",
    "id": "GETCHATBLOCKEDUSERS",
    "description": "Gets the list of blocked chat users",
@@ -829,6 +937,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "GetChatJoinRequests",
    "id": "GETCHATJOINREQUESTS",
    "description": "Gets a list of requests to join the chat room",
@@ -853,6 +962,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "BlockChatUser",
    "id": "BLOCKCHATUSER",
    "description": "Blocks the selected user in chat",
@@ -893,6 +1003,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "UnblockChatUser",
    "id": "UNBLOCKCHATUSER",
    "description": "Unblocks a previously blocked user in the chat room",
@@ -925,6 +1036,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "ApprovePending",
    "id": "APPROVEPENDING",
    "description": "Confirms the user's request to join a private chat room",
@@ -957,6 +1069,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "DisapprovePending",
    "id": "DISAPPROVEPENDING",
    "description": "Rejects the user's request to join a private chat room",
@@ -989,6 +1102,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "SetChatTitle",
    "id": "SETCHATTITLE",
    "description": "Sets new chat title",
@@ -1021,6 +1135,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "SetChatDescription",
    "id": "SETCHATDESCRIPTION",
    "description": "Sets new chat description",
@@ -1053,6 +1168,7 @@
    "region": "Chat management"
   },
   {
+   "nocli": false,
    "name": "SetChatRules",
    "id": "SETCHATRULES",
    "description": "Sets new chat rules",

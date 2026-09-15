@@ -3,7 +3,7 @@
 #требуется ./internal/Executor.sbsl
 
 @Глобально
-метод Инициализировать(ФайлКонфигурации: Строка): OPI_VK
+метод Инициализировать(Конфигурация: Строка?|Executor.НастройкиИнтеграции): OPI_VK
     
     пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
     возврат новый OPI_VK(Исполнитель)
@@ -18,10 +18,6 @@
     знч КомандаCLI: Строка = "vk"
     
     @Глобально
-    // Метод CreateTokenRetrievalLink
-    // Getting a link for interactive token retrieval (access_token), which is necessary
-    //
-    // app_id - String, Number: app_id from application settings
     метод CreateTokenRetrievalLink(app_id: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -32,12 +28,6 @@
     ;
 
     @Глобально
-    // Метод GetAuthParameters
-    // Gets the structure of authorization parameters
-    //
-    // GroupID   - String, Number: Group ID
-    // AppID     - String, Number: App ID
-    // AuthToken - String: Auth token
     метод GetAuthParameters(GroupID: Объект?, AppID: Объект?, AuthToken: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -50,14 +40,6 @@
     ;
 
     @Глобально
-    // Метод CreatePost
-    // Creates a post with images
-    //
-    // Text          - String: Post text
-    // ImageArray    - Array of String, BinaryData: Array of images
-    // Advertisement - Boolean: Sign ""This is an ad"" (необяз. по ум. - false)
-    // LinkUnderPost - String: Link (URL) under the post (необяз. по ум. - Empty value)
-    // Parameters    - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreatePost(Text: Объект?, ImageArray: Объект?, Advertisement: Объект? = Неопределено, LinkUnderPost: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -72,14 +54,6 @@
     ;
 
     @Глобально
-    // Метод CreateCompositePost
-    // Creates a post based on an array of object identifiers (images, videos, etc..)
-    //
-    // Text          - String: Post text
-    // Objects       - Array of String: Array of identifiers like photo123_123
-    // Advertisement - Boolean: Sign ""This is an ad"" (необяз. по ум. - false)
-    // LinkUnderPost - String: Link (URL) under the post (необяз. по ум. - Empty value)
-    // Parameters    - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateCompositePost(Text: Объект?, Objects: Объект?, Advertisement: Объект? = Неопределено, LinkUnderPost: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -94,11 +68,6 @@
     ;
 
     @Глобально
-    // Метод DeletePost
-    // Deletes a post by ID
-    //
-    // PostID     - String, Number: Post ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeletePost(PostID: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -110,14 +79,6 @@
     ;
 
     @Глобально
-    // Метод CreatePoll
-    // Creates a poll with answer options
-    //
-    // Question     - String: Poll question
-    // AnswersArray - Array of String: Array of answer options
-    // Image        - String, BinaryData: Poll image. Required if there is no text (необяз. по ум. - Empty value)
-    // Text         - String: Post text. Required if there is no picture (необяз. по ум. - Empty value)
-    // Parameters   - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreatePoll(Question: Объект?, AnswersArray: Объект?, Image: Объект? = Неопределено, Text: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -132,12 +93,6 @@
     ;
 
     @Глобально
-    // Метод CreateAlbum
-    // Creates an album to store images
-    //
-    // Name        - String: Album name
-    // Description - String: Album description (необяз. по ум. - Empty value)
-    // Parameters  - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateAlbum(Name: Объект?, Description: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -150,11 +105,6 @@
     ;
 
     @Глобально
-    // Метод DeleteAlbum
-    // Deletes a previously created album
-    //
-    // AlbumID    - String, Number: Album ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeleteAlbum(AlbumID: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -166,12 +116,6 @@
     ;
 
     @Глобально
-    // Метод CreateStory
-    // Creates a story from an image
-    //
-    // Image      - String, BinaryData: Story background
-    // URL        - String: URL for button under the story (необяз. по ум. - Empty value)
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateStory(Image: Объект?, URL: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -184,13 +128,6 @@
     ;
 
     @Глобально
-    // Метод SaveImageToAlbum
-    // Saves an image to the community album
-    //
-    // AlbumID     - String, Number: Album ID
-    // Image       - BinaryData, String: Image file
-    // Description - String: Image description (необяз. по ум. - Empty value)
-    // Parameters  - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод SaveImageToAlbum(AlbumID: Объект?, Image: Объект?, Description: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -204,11 +141,6 @@
     ;
 
     @Глобально
-    // Метод DeleteImage
-    // Deletes an image from the album
-    //
-    // ImageID    - String, Number: Image ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeleteImage(ImageID: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -220,14 +152,6 @@
     ;
 
     @Глобально
-    // Метод UploadVideoToServer
-    // Uploads video to the group for further use
-    //
-    // Video       - String, BinaryData: Video file
-    // Name        - String: Video name
-    // Description - String: Video description (необяз. по ум. - Empty value)
-    // Album       - String: Album ID, if necessary (необяз. по ум. - Empty value)
-    // Parameters  - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод UploadVideoToServer(Video: Объект?, Name: Объект?, Description: Объект? = Неопределено, Album: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -242,12 +166,6 @@
     ;
 
     @Глобально
-    // Метод UploadPhotoToServer
-    // Uploads photo to server for further use
-    //
-    // Image      - String, BinaryData: Image file
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
-    // View       - String: Upload type (Post, Product, Story, Poll, Other) (необяз. по ум. - Post)
     метод UploadPhotoToServer(Image: Объект?, Parameters: Объект? = Неопределено, View: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -260,14 +178,6 @@
     ;
 
     @Глобально
-    // Метод MakeRepost
-    // Reposts the record
-    //
-    // PostID      - String, Number: Post ID
-    // WallID      - String, Number: ID of the wall where the post is located (необяз. по ум. - Empty value)
-    // TargetWall  - String, Number: ID of the target wall or group (необяз. по ум. - Empty value)
-    // Advertising - Boolean: Sign of an advertising post (необяз. по ум. - false)
-    // Parameters  - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод MakeRepost(PostID: Объект?, WallID: Объект? = Неопределено, TargetWall: Объект? = Неопределено, Advertising: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -282,14 +192,6 @@
     ;
 
     @Глобально
-    // Метод WriteMessage
-    // Write a message to a user in the community's dialog
-    //
-    // Text           - String: Message text
-    // UserID         - String: Recipient user ID
-    // Communitytoken - String: Community chat bot token, which can be obtained in the settings
-    // Keyboard       - String: Keyboard JSON. See FormKeyboard (необяз. по ум. - Empty value)
-    // Parameters     - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод WriteMessage(Text: Объект?, UserID: Объект?, Communitytoken: Объект?, Keyboard: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -304,13 +206,6 @@
     ;
 
     @Глобально
-    // Метод WriteComment
-    // Creates a comment under the selected record
-    //
-    // PostID     - String, Number: ID of the target post
-    // WallID     - String, Number: ID of the wall where the post is located
-    // Text       - String: Comment text
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод WriteComment(PostID: Объект?, WallID: Объект?, Text: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -324,11 +219,6 @@
     ;
 
     @Глобально
-    // Метод ShortenLink
-    // Creates a shortened URL from a regular one
-    //
-    // URL        - String: URL for shortening
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод ShortenLink(URL: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -340,12 +230,6 @@
     ;
 
     @Глобально
-    // Метод GetStatistics
-    // Gets the overall community statistics for a period
-    //
-    // StartDate  - Date: Start date of the period
-    // EndDate    - Date: End date of the period
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetStatistics(StartDate: Объект?, EndDate: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -358,11 +242,6 @@
     ;
 
     @Глобально
-    // Метод GetPostStatistics
-    // Gets statistics in terms of posts
-    //
-    // PostIDsArray - Array of string, number: Array of post IDs
-    // Parameters   - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetPostStatistics(PostIDsArray: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -374,12 +253,6 @@
     ;
 
     @Глобально
-    // Метод CreateAdvertisingCampaign
-    // Creates a campaign in the selected advertising account
-    //
-    // AccountID  - String, Number: Advertising account ID
-    // Name       - String: Campaign name
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateAdvertisingCampaign(AccountID: Объект?, Name: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -392,15 +265,6 @@
     ;
 
     @Глобально
-    // Метод CreateAd
-    // Creates an advertising post based on a post
-    //
-    // CampaignNumber - String, Number: Advertising campaign ID
-    // DailyLimit     - String, Number: Daily limit in rubles
-    // CategoryNumber - String, Number: Advertising category number
-    // PostID         - String, Number: ID of the post used for advertising
-    // AccountID      - String, Number: Advertising account ID
-    // Parameters     - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateAd(CampaignNumber: Объект?, DailyLimit: Объект?, CategoryNumber: Объект?, PostID: Объект?, AccountID: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -416,12 +280,6 @@
     ;
 
     @Глобально
-    // Метод PauseAdvertising
-    // Pauses the display of the advertising post
-    //
-    // AccountID  - String, Number: Advertising account ID
-    // AdID       - String, Number: Ad ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод PauseAdvertising(AccountID: Объект?, AdID: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -434,10 +292,6 @@
     ;
 
     @Глобально
-    // Метод GetAdvertisingCategoryList
-    // Gets a list of advertising category IDs for creating an advertising post
-    //
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetAdvertisingCategoryList(Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -448,10 +302,6 @@
     ;
 
     @Глобально
-    // Метод GetProductCategoryList
-    // Gets a list of product category IDs to specify when creating a product
-    //
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetProductCategoryList(Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -462,11 +312,6 @@
     ;
 
     @Глобально
-    // Метод GetProductList
-    // Gets the community's product list
-    //
-    // Selection  - String, Number: Selection ID, if filtering is needed (необяз. по ум. - Empty value)
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetProductList(Selection: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -478,11 +323,6 @@
     ;
 
     @Глобально
-    // Метод GetProductsByID
-    // Gets information about products by array of IDs
-    //
-    // Products   - String, Array of String: Array of product IDs
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetProductsByID(Products: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -494,12 +334,6 @@
     ;
 
     @Глобально
-    // Метод AddProduct
-    // Adds a new product to the community's catalog
-    //
-    // ProductDescription - Map Of KeyAndValue: Product description. See GetProductDescription
-    // Selection          - String: Selection ID for placing the product, if needed (необяз. по ум. - Empty value)
-    // Parameters         - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод AddProduct(ProductDescription: Объект?, Selection: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -512,13 +346,6 @@
     ;
 
     @Глобально
-    // Метод EditProduct
-    // Edits a previously created product
-    //
-    // Product            - Number, String: Identifier of the product being edited
-    // ProductDescription - Map Of KeyAndValue: Product description. See GetProductDescription
-    // Selection          - String: Identifier of the new selection, if needed (необяз. по ум. - Empty value)
-    // Parameters         - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод EditProduct(Product: Объект?, ProductDescription: Объект?, Selection: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -532,11 +359,6 @@
     ;
 
     @Глобально
-    // Метод DeleteProduct
-    // Deletes a previously created product
-    //
-    // Product    - String, Number: Product ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeleteProduct(Product: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -548,12 +370,6 @@
     ;
 
     @Глобально
-    // Метод GroupProducts
-    // Groups products based on similar sets of properties
-    //
-    // ProductsArray - Array Of String: Array of product IDs
-    // ExistingGroup - String: ID of the existing group, if needed (необяз. по ум. - Empty value)
-    // Parameters    - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GroupProducts(ProductsArray: Объект?, ExistingGroup: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -566,10 +382,6 @@
     ;
 
     @Глобально
-    // Метод GetProductDescription
-    // Gets the description template for creating a product
-    //
-    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
     метод GetProductDescription(Clear: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -580,10 +392,6 @@
     ;
 
     @Глобально
-    // Метод GetSelectionList
-    // Gets the list of product selections
-    //
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetSelectionList(Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -594,11 +402,6 @@
     ;
 
     @Глобально
-    // Метод GetSelectionsByID
-    // Gets the list of selections by array of IDs
-    //
-    // Selections - String, Array of String: Selection IDs
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetSelectionsByID(Selections: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -610,14 +413,6 @@
     ;
 
     @Глобально
-    // Метод CreateProductCollection
-    // Creates an empty product selection
-    //
-    // Name       - String: Selection name
-    // Image      - String, BinaryData: Image file
-    // Main       - Boolean: Main (необяз. по ум. - false)
-    // Hidden     - Boolean: Hidden (необяз. по ум. - false)
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateProductCollection(Name: Объект?, Image: Объект?, Main: Объект? = Неопределено, Hidden: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -632,15 +427,6 @@
     ;
 
     @Глобально
-    // Метод EditProductCollection
-    // Edits the properties of a product selection
-    //
-    // Name       - String: New selection name
-    // Selection  - String: Selection ID
-    // Image      - String, BinaryData: New selection image (необяз. по ум. - Empty value)
-    // Main       - Boolean: Main (необяз. по ум. - false)
-    // Hidden     - Boolean: Hidden (необяз. по ум. - false)
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод EditProductCollection(Name: Объект?, Selection: Объект?, Image: Объект? = Неопределено, Main: Объект? = Неопределено, Hidden: Объект? = Неопределено, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -656,12 +442,6 @@
     ;
 
     @Глобально
-    // Метод AddProductToCollection
-    // Adds a product to the selection
-    //
-    // ProductsArray - Array of string, number: Array of products or product
-    // Selection     - String: Selection ID
-    // Parameters    - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод AddProductToCollection(ProductsArray: Объект?, Selection: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -674,12 +454,6 @@
     ;
 
     @Глобально
-    // Метод RemoveProductFromSelection
-    // Removes a previously added product from the selection
-    //
-    // Product    - String: Product ID
-    // Selection  - String: Selection ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод RemoveProductFromSelection(Product: Объект?, Selection: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -692,11 +466,6 @@
     ;
 
     @Глобально
-    // Метод DeleteSelection
-    // Deletes the selection by ID
-    //
-    // Selection  - String: Selection ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeleteSelection(Selection: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -708,10 +477,6 @@
     ;
 
     @Глобально
-    // Метод GetPropertyList
-    // Gets the list of properties of group products
-    //
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetPropertyList(Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -722,11 +487,6 @@
     ;
 
     @Глобально
-    // Метод CreateProductProperty
-    // Creates a new property for use in products
-    //
-    // Name       - String: Property name
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод CreateProductProperty(Name: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -738,12 +498,6 @@
     ;
 
     @Глобально
-    // Метод EditProductProperty
-    // Edits the existing product property
-    //
-    // Name       - String: New name
-    // Property   - String, Number: Property ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод EditProductProperty(Name: Объект?, Property: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -756,11 +510,6 @@
     ;
 
     @Глобально
-    // Метод DeleteProductProperty
-    // Deletes the existing product property
-    //
-    // Property   - String, Number: Property ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeleteProductProperty(Property: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -772,12 +521,6 @@
     ;
 
     @Глобально
-    // Метод AddProductPropertyVariant
-    // Adds a variant for an existing property
-    //
-    // Value      - String: Property value
-    // Property   - String, Number: Property ID where the variant is added
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод AddProductPropertyVariant(Value: Объект?, Property: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -790,13 +533,6 @@
     ;
 
     @Глобально
-    // Метод EditProductPropertyVariant
-    // Edits the value of an existing product property variant
-    //
-    // Value      - String: New property value
-    // Property   - String, Number: Property ID
-    // Option     - String, Number: Variant ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод EditProductPropertyVariant(Value: Объект?, Property: Объект?, Option: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -810,11 +546,6 @@
     ;
 
     @Глобально
-    // Метод DeleteProductPropertyVariant
-    // Deletes the previously created product property variant
-    //
-    // Option     - String, Number: Variant ID
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод DeleteProductPropertyVariant(Option: Объект?, Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -826,10 +557,6 @@
     ;
 
     @Глобально
-    // Метод GetOrderList
-    // Returns the community's order list
-    //
-    // Parameters - Structure Of String: Authorization parameters. See GetAuthParameters (необяз. по ум. - Empty value)
     метод GetOrderList(Parameters: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
@@ -840,10 +567,6 @@
     ;
 
     @Глобально
-    // Метод FormKeyboard
-    // Forms a keyboard from an array of buttons
-    //
-    // ButtonArray - Array of String: Array of button titles
     метод FormKeyboard(ButtonArray: Объект?): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 

@@ -9,103 +9,245 @@
   {
    "name": "Authorization",
    "methods": [
-    "CreateTokenRetrievalLink",
-    "GetAuthParameters"
+    {
+     "name": "CreateTokenRetrievalLink",
+     "nocli": false
+    },
+    {
+     "name": "GetAuthParameters",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Community management",
    "methods": [
-    "CreateAlbum",
-    "CreateCompositePost",
-    "CreatePoll",
-    "CreatePost",
-    "CreateStory",
-    "DeleteAlbum",
-    "DeleteImage",
-    "DeletePost",
-    "SaveImageToAlbum",
-    "UploadPhotoToServer",
-    "UploadVideoToServer"
+    {
+     "name": "CreateAlbum",
+     "nocli": false
+    },
+    {
+     "name": "CreateCompositePost",
+     "nocli": false
+    },
+    {
+     "name": "CreatePoll",
+     "nocli": false
+    },
+    {
+     "name": "CreatePost",
+     "nocli": false
+    },
+    {
+     "name": "CreateStory",
+     "nocli": false
+    },
+    {
+     "name": "DeleteAlbum",
+     "nocli": false
+    },
+    {
+     "name": "DeleteImage",
+     "nocli": false
+    },
+    {
+     "name": "DeletePost",
+     "nocli": false
+    },
+    {
+     "name": "SaveImageToAlbum",
+     "nocli": false
+    },
+    {
+     "name": "UploadPhotoToServer",
+     "nocli": false
+    },
+    {
+     "name": "UploadVideoToServer",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Interactive actions",
    "methods": [
-    "MakeRepost",
-    "ShortenLink",
-    "WriteComment",
-    "WriteMessage"
+    {
+     "name": "MakeRepost",
+     "nocli": false
+    },
+    {
+     "name": "ShortenLink",
+     "nocli": false
+    },
+    {
+     "name": "WriteComment",
+     "nocli": false
+    },
+    {
+     "name": "WriteMessage",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Statistics",
    "methods": [
-    "GetPostStatistics",
-    "GetStatistics"
+    {
+     "name": "GetPostStatistics",
+     "nocli": false
+    },
+    {
+     "name": "GetStatistics",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Ad account management",
    "methods": [
-    "CreateAd",
-    "CreateAdvertisingCampaign",
-    "GetAdvertisingCategoryList",
-    "PauseAdvertising"
+    {
+     "name": "CreateAd",
+     "nocli": false
+    },
+    {
+     "name": "CreateAdvertisingCampaign",
+     "nocli": false
+    },
+    {
+     "name": "GetAdvertisingCategoryList",
+     "nocli": false
+    },
+    {
+     "name": "PauseAdvertising",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Product management",
    "methods": [
-    "AddProduct",
-    "DeleteProduct",
-    "EditProduct",
-    "GetProductCategoryList",
-    "GetProductDescription",
-    "GetProductList",
-    "GetProductsByID",
-    "GroupProducts"
+    {
+     "name": "AddProduct",
+     "nocli": false
+    },
+    {
+     "name": "DeleteProduct",
+     "nocli": false
+    },
+    {
+     "name": "EditProduct",
+     "nocli": false
+    },
+    {
+     "name": "GetProductCategoryList",
+     "nocli": false
+    },
+    {
+     "name": "GetProductDescription",
+     "nocli": false
+    },
+    {
+     "name": "GetProductList",
+     "nocli": false
+    },
+    {
+     "name": "GetProductsByID",
+     "nocli": false
+    },
+    {
+     "name": "GroupProducts",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Product selection management",
    "methods": [
-    "AddProductToCollection",
-    "CreateProductCollection",
-    "DeleteSelection",
-    "EditProductCollection",
-    "GetSelectionList",
-    "GetSelectionsByID",
-    "RemoveProductFromSelection"
+    {
+     "name": "AddProductToCollection",
+     "nocli": false
+    },
+    {
+     "name": "CreateProductCollection",
+     "nocli": false
+    },
+    {
+     "name": "DeleteSelection",
+     "nocli": false
+    },
+    {
+     "name": "EditProductCollection",
+     "nocli": false
+    },
+    {
+     "name": "GetSelectionList",
+     "nocli": false
+    },
+    {
+     "name": "GetSelectionsByID",
+     "nocli": false
+    },
+    {
+     "name": "RemoveProductFromSelection",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Product properties management",
    "methods": [
-    "AddProductPropertyVariant",
-    "CreateProductProperty",
-    "DeleteProductProperty",
-    "DeleteProductPropertyVariant",
-    "EditProductProperty",
-    "EditProductPropertyVariant",
-    "GetPropertyList"
+    {
+     "name": "AddProductPropertyVariant",
+     "nocli": false
+    },
+    {
+     "name": "CreateProductProperty",
+     "nocli": false
+    },
+    {
+     "name": "DeleteProductProperty",
+     "nocli": false
+    },
+    {
+     "name": "DeleteProductPropertyVariant",
+     "nocli": false
+    },
+    {
+     "name": "EditProductProperty",
+     "nocli": false
+    },
+    {
+     "name": "EditProductPropertyVariant",
+     "nocli": false
+    },
+    {
+     "name": "GetPropertyList",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Order management",
    "methods": [
-    "GetOrderList"
+    {
+     "name": "GetOrderList",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Others",
    "methods": [
-    "FormKeyboard"
+    {
+     "name": "FormKeyboard",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "CreateTokenRetrievalLink",
    "id": "CREATETOKENRETRIEVALLINK",
    "description": "Getting a link for interactive token retrieval (access_token), which is necessary\n\n for further actions",
@@ -122,6 +264,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "GetAuthParameters",
    "id": "GETAUTHPARAMETERS",
    "description": "Gets the structure of authorization parameters",
@@ -154,6 +297,7 @@
    "region": "Authorization"
   },
   {
+   "nocli": false,
    "name": "CreatePost",
    "id": "CREATEPOST",
    "description": "Creates a post with images",
@@ -202,6 +346,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "CreateCompositePost",
    "id": "CREATECOMPOSITEPOST",
    "description": "Creates a post based on an array of object identifiers (images, videos, etc..)",
@@ -250,6 +395,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "DeletePost",
    "id": "DELETEPOST",
    "description": "Deletes a post by ID",
@@ -274,6 +420,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "CreatePoll",
    "id": "CREATEPOLL",
    "description": "Creates a poll with answer options",
@@ -322,6 +469,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "CreateAlbum",
    "id": "CREATEALBUM",
    "description": "Creates an album to store images",
@@ -354,6 +502,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "DeleteAlbum",
    "id": "DELETEALBUM",
    "description": "Deletes a previously created album",
@@ -378,6 +527,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "CreateStory",
    "id": "CREATESTORY",
    "description": "Creates a story from an image",
@@ -410,6 +560,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "SaveImageToAlbum",
    "id": "SAVEIMAGETOALBUM",
    "description": "Saves an image to the community album",
@@ -450,6 +601,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "DeleteImage",
    "id": "DELETEIMAGE",
    "description": "Deletes an image from the album",
@@ -474,6 +626,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "UploadVideoToServer",
    "id": "UPLOADVIDEOTOSERVER",
    "description": "Uploads video to the group for further use",
@@ -522,6 +675,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "UploadPhotoToServer",
    "id": "UPLOADPHOTOTOSERVER",
    "description": "Uploads photo to server for further use",
@@ -554,6 +708,7 @@
    "region": "Community management"
   },
   {
+   "nocli": false,
    "name": "MakeRepost",
    "id": "MAKEREPOST",
    "description": "Reposts the record",
@@ -602,6 +757,7 @@
    "region": "Interactive actions"
   },
   {
+   "nocli": false,
    "name": "WriteMessage",
    "id": "WRITEMESSAGE",
    "description": "Write a message to a user in the community's dialog",
@@ -650,6 +806,7 @@
    "region": "Interactive actions"
   },
   {
+   "nocli": false,
    "name": "WriteComment",
    "id": "WRITECOMMENT",
    "description": "Creates a comment under the selected record",
@@ -690,6 +847,7 @@
    "region": "Interactive actions"
   },
   {
+   "nocli": false,
    "name": "ShortenLink",
    "id": "SHORTENLINK",
    "description": "Creates a shortened URL from a regular one",
@@ -714,6 +872,7 @@
    "region": "Interactive actions"
   },
   {
+   "nocli": false,
    "name": "GetStatistics",
    "id": "GETSTATISTICS",
    "description": "Gets the overall community statistics for a period",
@@ -746,6 +905,7 @@
    "region": "Statistics"
   },
   {
+   "nocli": false,
    "name": "GetPostStatistics",
    "id": "GETPOSTSTATISTICS",
    "description": "Gets statistics in terms of posts",
@@ -770,6 +930,7 @@
    "region": "Statistics"
   },
   {
+   "nocli": false,
    "name": "CreateAdvertisingCampaign",
    "id": "CREATEADVERTISINGCAMPAIGN",
    "description": "Creates a campaign in the selected advertising account",
@@ -802,6 +963,7 @@
    "region": "Ad account management"
   },
   {
+   "nocli": false,
    "name": "CreateAd",
    "id": "CREATEAD",
    "description": "Creates an advertising post based on a post",
@@ -858,6 +1020,7 @@
    "region": "Ad account management"
   },
   {
+   "nocli": false,
    "name": "PauseAdvertising",
    "id": "PAUSEADVERTISING",
    "description": "Pauses the display of the advertising post",
@@ -890,6 +1053,7 @@
    "region": "Ad account management"
   },
   {
+   "nocli": false,
    "name": "GetAdvertisingCategoryList",
    "id": "GETADVERTISINGCATEGORYLIST",
    "description": "Gets a list of advertising category IDs for creating an advertising post",
@@ -906,6 +1070,7 @@
    "region": "Ad account management"
   },
   {
+   "nocli": false,
    "name": "GetProductCategoryList",
    "id": "GETPRODUCTCATEGORYLIST",
    "description": "Gets a list of product category IDs to specify when creating a product",
@@ -922,6 +1087,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "GetProductList",
    "id": "GETPRODUCTLIST",
    "description": "Gets the community's product list",
@@ -946,6 +1112,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "GetProductsByID",
    "id": "GETPRODUCTSBYID",
    "description": "Gets information about products by array of IDs",
@@ -970,6 +1137,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "AddProduct",
    "id": "ADDPRODUCT",
    "description": "Adds a new product to the community's catalog",
@@ -1002,6 +1170,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "EditProduct",
    "id": "EDITPRODUCT",
    "description": "Edits a previously created product",
@@ -1042,6 +1211,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "DeleteProduct",
    "id": "DELETEPRODUCT",
    "description": "Deletes a previously created product",
@@ -1066,6 +1236,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "GroupProducts",
    "id": "GROUPPRODUCTS",
    "description": "Groups products based on similar sets of properties",
@@ -1098,6 +1269,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "GetProductDescription",
    "id": "GETPRODUCTDESCRIPTION",
    "description": "Gets the description template for creating a product",
@@ -1114,6 +1286,7 @@
    "region": "Product management"
   },
   {
+   "nocli": false,
    "name": "GetSelectionList",
    "id": "GETSELECTIONLIST",
    "description": "Gets the list of product selections",
@@ -1130,6 +1303,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "GetSelectionsByID",
    "id": "GETSELECTIONSBYID",
    "description": "Gets the list of selections by array of IDs",
@@ -1154,6 +1328,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "CreateProductCollection",
    "id": "CREATEPRODUCTCOLLECTION",
    "description": "Creates an empty product selection",
@@ -1202,6 +1377,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "EditProductCollection",
    "id": "EDITPRODUCTCOLLECTION",
    "description": "Edits the properties of a product selection",
@@ -1258,6 +1434,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "AddProductToCollection",
    "id": "ADDPRODUCTTOCOLLECTION",
    "description": "Adds a product to the selection",
@@ -1290,6 +1467,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "RemoveProductFromSelection",
    "id": "REMOVEPRODUCTFROMSELECTION",
    "description": "Removes a previously added product from the selection",
@@ -1322,6 +1500,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "DeleteSelection",
    "id": "DELETESELECTION",
    "description": "Deletes the selection by ID",
@@ -1346,6 +1525,7 @@
    "region": "Product selection management"
   },
   {
+   "nocli": false,
    "name": "GetPropertyList",
    "id": "GETPROPERTYLIST",
    "description": "Gets the list of properties of group products",
@@ -1362,6 +1542,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "CreateProductProperty",
    "id": "CREATEPRODUCTPROPERTY",
    "description": "Creates a new property for use in products",
@@ -1386,6 +1567,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "EditProductProperty",
    "id": "EDITPRODUCTPROPERTY",
    "description": "Edits the existing product property",
@@ -1418,6 +1600,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "DeleteProductProperty",
    "id": "DELETEPRODUCTPROPERTY",
    "description": "Deletes the existing product property",
@@ -1442,6 +1625,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "AddProductPropertyVariant",
    "id": "ADDPRODUCTPROPERTYVARIANT",
    "description": "Adds a variant for an existing property",
@@ -1474,6 +1658,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "EditProductPropertyVariant",
    "id": "EDITPRODUCTPROPERTYVARIANT",
    "description": "Edits the value of an existing product property variant",
@@ -1514,6 +1699,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "DeleteProductPropertyVariant",
    "id": "DELETEPRODUCTPROPERTYVARIANT",
    "description": "Deletes the previously created product property variant",
@@ -1538,6 +1724,7 @@
    "region": "Product properties management"
   },
   {
+   "nocli": false,
    "name": "GetOrderList",
    "id": "GETORDERLIST",
    "description": "Returns the community's order list",
@@ -1554,6 +1741,7 @@
    "region": "Order management"
   },
   {
+   "nocli": false,
    "name": "FormKeyboard",
    "id": "FORMKEYBOARD",
    "description": "Forms a keyboard from an array of buttons",

@@ -9,30 +9,185 @@
   {
    "name": "Common methods",
    "methods": [
-    "ExecuteMethod",
-    "GetConnectionParameters",
-    "GetTlsSettings"
+    {
+     "name": "ExecuteMethod",
+     "nocli": false
+    },
+    {
+     "name": "GetConnectionParameters",
+     "nocli": false
+    },
+    {
+     "name": "GetTlsSettings",
+     "nocli": false
+    },
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsConnector",
+     "nocli": true
+    },
+    {
+     "name": "SetMetadata",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "Introspection",
    "methods": [
-    "GetMethod",
-    "GetMethodList",
-    "GetServiceList"
+    {
+     "name": "GetMethod",
+     "nocli": false
+    },
+    {
+     "name": "GetMethodList",
+     "nocli": false
+    },
+    {
+     "name": "GetServiceList",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Streaming",
    "methods": [
-    "ProcessBidirectionalStream",
-    "ProcessClientStream",
-    "ProcessServerStream"
+    {
+     "name": "ProcessBidirectionalStream",
+     "nocli": false
+    },
+    {
+     "name": "ProcessClientStream",
+     "nocli": false
+    },
+    {
+     "name": "ProcessServerStream",
+     "nocli": false
+    },
+    {
+     "name": "CloseStream",
+     "nocli": true
+    },
+    {
+     "name": "CompleteSend",
+     "nocli": true
+    },
+    {
+     "name": "GetMessage",
+     "nocli": true
+    },
+    {
+     "name": "InitializeBidirectionalStream",
+     "nocli": true
+    },
+    {
+     "name": "InitializeClientStream",
+     "nocli": true
+    },
+    {
+     "name": "InitializeServerStream",
+     "nocli": true
+    },
+    {
+     "name": "SendMessage",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Opens a gRPC connection",
+   "params": [
+    {
+     "title": "Parameters",
+     "name": "--params",
+     "types": "String",
+     "description": "Connection parameters. See GetConnectionParameters",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Tls",
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Explicitly closes the passed connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "SetMetadata",
+   "id": "SETMETADATA",
+   "description": "Sets new connection metadata",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Existing connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Metadata",
+     "name": "--meta",
+     "types": "Structure Of KeyAndValue",
+     "description": "Metadata list",
+     "default": null,
+     "short": "-m"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "ExecuteMethod",
    "id": "EXECUTEMETHOD",
    "description": "Performs a unary request to the selected service",
@@ -89,6 +244,24 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "IsConnector",
+   "id": "ISCONNECTOR",
+   "description": "Checks that the value is an AddIn object for working with gRPC",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetConnectionParameters",
    "id": "GETCONNECTIONPARAMETERS",
    "description": "Forms a structure of parameters for creating a connection",
@@ -121,6 +294,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetTlsSettings",
    "id": "GETTLSSETTINGS",
    "description": "Forms settings for using TLS",
@@ -145,6 +319,73 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "GetServiceList",
    "id": "GETSERVICELIST",
    "description": "Gets a list of available services",
@@ -169,6 +410,7 @@
    "region": "Introspection"
   },
   {
+   "nocli": false,
    "name": "GetMethodList",
    "id": "GETMETHODLIST",
    "description": "Gets a list of available methods for the specified service",
@@ -201,6 +443,7 @@
    "region": "Introspection"
   },
   {
+   "nocli": false,
    "name": "GetMethod",
    "id": "GETMETHOD",
    "description": "Get method information",
@@ -241,6 +484,246 @@
    "region": "Introspection"
   },
   {
+   "nocli": true,
+   "name": "InitializeServerStream",
+   "id": "INITIALIZESERVERSTREAM",
+   "description": "Initializes a new server stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Service",
+     "name": "--service",
+     "types": "String",
+     "description": "Service name",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Method",
+     "name": "--method",
+     "types": "String",
+     "description": "Method name",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "title": "Request",
+     "name": "--data",
+     "types": "Structure Of KeyAndValue",
+     "description": "Client request data",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number",
+     "description": "Timeout (in ms)",
+     "default": 10000,
+     "short": "-t"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": true,
+   "name": "InitializeClientStream",
+   "id": "INITIALIZECLIENTSTREAM",
+   "description": "Initializes a new client stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Service",
+     "name": "--service",
+     "types": "String",
+     "description": "Service name",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Method",
+     "name": "--method",
+     "types": "String",
+     "description": "Method name",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number",
+     "description": "Timeout (in ms)",
+     "default": 10000,
+     "short": "-t"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": true,
+   "name": "InitializeBidirectionalStream",
+   "id": "INITIALIZEBIDIRECTIONALSTREAM",
+   "description": "Initializes a new bidirectional stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Service",
+     "name": "--service",
+     "types": "String",
+     "description": "Service name",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Method",
+     "name": "--method",
+     "types": "String",
+     "description": "Method name",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number",
+     "description": "Timeout (in ms)",
+     "default": 10000,
+     "short": "-t"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": true,
+   "name": "SendMessage",
+   "id": "SENDMESSAGE",
+   "description": "Sends the next message to the client or bidirectional stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Request",
+     "name": "--data",
+     "types": "Structure Of KeyAndValue",
+     "description": "Request data for sending",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": true,
+   "name": "GetMessage",
+   "id": "GETMESSAGE",
+   "description": "Gets the next message from the stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": true,
+   "name": "CompleteSend",
+   "id": "COMPLETESEND",
+   "description": "Closes the sending channel in a client or bidirectional stream",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": true,
+   "name": "CloseStream",
+   "id": "CLOSESTREAM",
+   "description": "Close stream by ID",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "StreamID",
+     "name": "--stream",
+     "types": "String",
+     "description": "Stream Identifier",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Streaming"
+  },
+  {
+   "nocli": false,
    "name": "ProcessServerStream",
    "id": "PROCESSSERVERSTREAM",
    "description": "Initializes the server stream and returns an array of received messages",
@@ -305,6 +788,7 @@
    "region": "Streaming"
   },
   {
+   "nocli": false,
    "name": "ProcessClientStream",
    "id": "PROCESSCLIENTSTREAM",
    "description": "Initializes client thread, passes message array, and receives final response",
@@ -361,6 +845,7 @@
    "region": "Streaming"
   },
   {
+   "nocli": false,
    "name": "ProcessBidirectionalStream",
    "id": "PROCESSBIDIRECTIONALSTREAM",
    "description": "Initializes a bidirectional stream, then passes and sends messages in the specified order",

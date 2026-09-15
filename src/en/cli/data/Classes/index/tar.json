@@ -9,24 +9,49 @@
   {
    "name": "Archiving",
    "methods": [
-    "ArchiveDirectory",
-    "GetArchiveDescriptionStructure",
-    "GetArchivingSettingsStructure",
-    "ModifyArchive",
-    "UnarchiveDirectory",
-    "UnpackFiles"
+    {
+     "name": "ArchiveDirectory",
+     "nocli": false
+    },
+    {
+     "name": "GetArchiveDescriptionStructure",
+     "nocli": false
+    },
+    {
+     "name": "GetArchivingSettingsStructure",
+     "nocli": false
+    },
+    {
+     "name": "ModifyArchive",
+     "nocli": false
+    },
+    {
+     "name": "UnarchiveDirectory",
+     "nocli": false
+    },
+    {
+     "name": "UnpackFiles",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Getting metadata",
    "methods": [
-    "GetFilesList",
-    "GetMetadata"
+    {
+     "name": "GetFilesList",
+     "nocli": false
+    },
+    {
+     "name": "GetMetadata",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "ArchiveDirectory",
    "id": "ARCHIVEDIRECTORY",
    "description": "Pack files from the specified directory into a tar archive",
@@ -59,6 +84,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "UnarchiveDirectory",
    "id": "UNARCHIVEDIRECTORY",
    "description": "Extract tar archive to the specified directory",
@@ -83,6 +109,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "UnpackFiles",
    "id": "UNPACKFILES",
    "description": "Extract selected files from the tar archive by the list of paths",
@@ -115,6 +142,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "ModifyArchive",
    "id": "MODIFYARCHIVE",
    "description": "Add, replace and delete files in an existing tar archive",
@@ -155,6 +183,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetArchivingSettingsStructure",
    "id": "GETARCHIVINGSETTINGSSTRUCTURE",
    "description": "Gets a structure with additional data archiving settings",
@@ -179,6 +208,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetArchiveDescriptionStructure",
    "id": "GETARCHIVEDESCRIPTIONSTRUCTURE",
    "description": "Get structure of data description for packing without a directory on disk",
@@ -203,6 +233,7 @@
    "region": "Archiving"
   },
   {
+   "nocli": false,
    "name": "GetFilesList",
    "id": "GETFILESLIST",
    "description": "Gets a hierarchical list of files and directories in the archive",
@@ -219,6 +250,7 @@
    "region": "Getting metadata"
   },
   {
+   "nocli": false,
    "name": "GetMetadata",
    "id": "GETMETADATA",
    "description": "Gets metadata and a flat list of archive files",

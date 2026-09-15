@@ -9,45 +9,190 @@
   {
    "name": "Common methods",
    "methods": [
-    "ExecuteSQLQuery",
-    "GenerateConnectionString",
-    "GetTlsSettings"
+    {
+     "name": "ExecuteSQLQuery",
+     "nocli": false
+    },
+    {
+     "name": "GenerateConnectionString",
+     "nocli": false
+    },
+    {
+     "name": "GetTlsSettings",
+     "nocli": false
+    },
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsConnector",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "Database management",
    "methods": [
-    "CreateDatabase",
-    "DeleteDatabase",
-    "DisableAllDatabaseConnections"
+    {
+     "name": "CreateDatabase",
+     "nocli": false
+    },
+    {
+     "name": "DeleteDatabase",
+     "nocli": false
+    },
+    {
+     "name": "DisableAllDatabaseConnections",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Table management",
    "methods": [
-    "AddTableColumn",
-    "ClearTable",
-    "CreateTable",
-    "DeleteTable",
-    "DeleteTableColumn",
-    "EnsureTable",
-    "GetTableInformation"
+    {
+     "name": "AddTableColumn",
+     "nocli": false
+    },
+    {
+     "name": "ClearTable",
+     "nocli": false
+    },
+    {
+     "name": "CreateTable",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTable",
+     "nocli": false
+    },
+    {
+     "name": "DeleteTableColumn",
+     "nocli": false
+    },
+    {
+     "name": "EnsureTable",
+     "nocli": false
+    },
+    {
+     "name": "GetTableInformation",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Record management",
    "methods": [
-    "AddRecords",
-    "DeleteRecords",
-    "EnsureRecords",
-    "GetRecords",
-    "GetRecordsFilterStructure",
-    "UpdateRecords"
+    {
+     "name": "AddRecords",
+     "nocli": false
+    },
+    {
+     "name": "DeleteRecords",
+     "nocli": false
+    },
+    {
+     "name": "EnsureRecords",
+     "nocli": false
+    },
+    {
+     "name": "GetRecords",
+     "nocli": false
+    },
+    {
+     "name": "GetRecordsFilterStructure",
+     "nocli": false
+    },
+    {
+     "name": "UpdateRecords",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Creates a connection to the specified base",
+   "params": [
+    {
+     "title": "ConnectionString",
+     "name": "--string",
+     "types": "String",
+     "description": "Connection string. See GenerateConnectionString",
+     "default": "Empty value",
+     "short": "-s"
+    },
+    {
+     "title": "Tls",
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Explicitly closes the passed connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--dbc",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "IsConnector",
+   "id": "ISCONNECTOR",
+   "description": "Checks that the value is an object of a PostgreSQL AddIn",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "ExecuteSQLQuery",
    "id": "EXECUTESQLQUERY",
    "description": "Executes an arbitrary SQL query",
@@ -96,6 +241,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GenerateConnectionString",
    "id": "GENERATECONNECTIONSTRING",
    "description": "Forms a connection string from the passed data",
@@ -144,6 +290,7 @@
    "region": "Common methods"
   },
   {
+   "nocli": false,
    "name": "GetTlsSettings",
    "id": "GETTLSSETTINGS",
    "description": "Forms settings for using TLS",
@@ -168,6 +315,73 @@
    "region": "Common methods"
   },
   {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "nocli": false,
    "name": "CreateDatabase",
    "id": "CREATEDATABASE",
    "description": "Creates a database with the specified name",
@@ -200,6 +414,7 @@
    "region": "Database management"
   },
   {
+   "nocli": false,
    "name": "DeleteDatabase",
    "id": "DELETEDATABASE",
    "description": "Deletes the database",
@@ -232,6 +447,7 @@
    "region": "Database management"
   },
   {
+   "nocli": false,
    "name": "DisableAllDatabaseConnections",
    "id": "DISABLEALLDATABASECONNECTIONS",
    "description": "Terminates all connections to the database except the current one",
@@ -264,6 +480,7 @@
    "region": "Database management"
   },
   {
+   "nocli": false,
    "name": "GetTableInformation",
    "id": "GETTABLEINFORMATION",
    "description": "Gets information about the table",
@@ -296,6 +513,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "CreateTable",
    "id": "CREATETABLE",
    "description": "Creates an empty table in the database",
@@ -336,6 +554,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "AddTableColumn",
    "id": "ADDTABLECOLUMN",
    "description": "Adds a new column to an existing table",
@@ -384,6 +603,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "DeleteTableColumn",
    "id": "DELETETABLECOLUMN",
    "description": "Deletes a column from the table",
@@ -424,6 +644,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "EnsureTable",
    "id": "ENSURETABLE",
    "description": "Creates a new table if it does not exist or updates the composition of columns in an existing table",
@@ -464,6 +685,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "ClearTable",
    "id": "CLEARTABLE",
    "description": "Clears the database table",
@@ -496,6 +718,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "DeleteTable",
    "id": "DELETETABLE",
    "description": "Deletes a table from the database",
@@ -528,6 +751,7 @@
    "region": "Table management"
   },
   {
+   "nocli": false,
    "name": "AddRecords",
    "id": "ADDRECORDS",
    "description": "Adds new rows to the table",
@@ -576,6 +800,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "UpdateRecords",
    "id": "UPDATERECORDS",
    "description": "Updates the value of records by selected criteria",
@@ -624,6 +849,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "EnsureRecords",
    "id": "ENSURERECORDS",
    "description": "Adds records or updates data of existing ones when key fields match",
@@ -680,6 +906,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "GetRecords",
    "id": "GETRECORDS",
    "description": "Gets records from the selected table",
@@ -744,6 +971,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "DeleteRecords",
    "id": "DELETERECORDS",
    "description": "Deletes records from the table",
@@ -784,6 +1012,7 @@
    "region": "Record management"
   },
   {
+   "nocli": false,
    "name": "GetRecordsFilterStructure",
    "id": "GETRECORDSFILTERSTRUCTURE",
    "description": "Gets the template structure for filtering records in ORM queries",

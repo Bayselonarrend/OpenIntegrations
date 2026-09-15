@@ -7,16 +7,396 @@
  "path": "api/tcp/Modules/OPI_TCP.os",
  "regions": [
   {
+   "name": "Common",
+   "methods": [
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    }
+   ]
+  },
+  {
    "name": "Client methods",
    "methods": [
-    "GetProxySettings",
-    "GetTlsSettings",
-    "ProcessRequest"
+    {
+     "name": "GetProxySettings",
+     "nocli": false
+    },
+    {
+     "name": "GetTlsSettings",
+     "nocli": false
+    },
+    {
+     "name": "ProcessRequest",
+     "nocli": false
+    },
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLastError",
+     "nocli": true
+    },
+    {
+     "name": "IsClientObject",
+     "nocli": true
+    },
+    {
+     "name": "ReadBinaryData",
+     "nocli": true
+    },
+    {
+     "name": "ReadLine",
+     "nocli": true
+    },
+    {
+     "name": "SendBinaryData",
+     "nocli": true
+    },
+    {
+     "name": "SendLine",
+     "nocli": true
+    }
+   ]
+  },
+  {
+   "name": "Server methods",
+   "methods": [
+    {
+     "name": "CloseIncomingConnection",
+     "nocli": true
+    },
+    {
+     "name": "CompleteSend",
+     "nocli": true
+    },
+    {
+     "name": "FinishReceiving",
+     "nocli": true
+    },
+    {
+     "name": "GetConnectionData",
+     "nocli": true
+    },
+    {
+     "name": "GetConnectionList",
+     "nocli": true
+    },
+    {
+     "name": "GetNextConnectionData",
+     "nocli": true
+    },
+    {
+     "name": "IsServerObject",
+     "nocli": true
+    },
+    {
+     "name": "SendData",
+     "nocli": true
+    },
+    {
+     "name": "StartServer",
+     "nocli": true
+    },
+    {
+     "name": "StopServer",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection or starting the server",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves server or client log data (with logging to memory enabled)",
+   "params": [
+    {
+     "title": "AddInObject",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Client or server AddIn object",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
+    }
+   ],
+   "region": "Common"
+  },
+  {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Creates a TCP connection",
+   "params": [
+    {
+     "title": "Address",
+     "name": "--address",
+     "types": "String",
+     "description": "Address and port",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "title": "Tls",
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "title": "Proxy",
+     "name": "--proxy",
+     "types": "Structure Of KeyAndValue",
+     "description": "Proxy settings, if required. See GetProxySettings",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Explicitly closes a previously created connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--tcp",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "ReadBinaryData",
+   "id": "READBINARYDATA",
+   "description": "Reads data from the specified connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--tcp",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "title": "MaxSize",
+     "name": "--size",
+     "types": "Number",
+     "description": "Maximum data size (bytes). 0 > no limit",
+     "default": "Empty value",
+     "short": "-s"
+    },
+    {
+     "title": "Marker",
+     "name": "--marker",
+     "types": "String, BinaryData",
+     "description": "End of message marker. Empty > without marker",
+     "default": "Empty value",
+     "short": "-m"
+    },
+    {
+     "title": "Timeout",
+     "name": "--timeout",
+     "types": "Number",
+     "description": "Data waiting timeout (ms). 0 > no limit",
+     "default": 5000,
+     "short": "-i"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "ReadLine",
+   "id": "READLINE",
+   "description": "Reads data from the specified connection as a string",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--tcp",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "title": "Encoding",
+     "name": "--enc",
+     "types": "String",
+     "description": "Encoding of data conversion to string",
+     "default": "UTF-8",
+     "short": "-e"
+    },
+    {
+     "title": "Marker",
+     "name": "--marker",
+     "types": "String, BinaryData",
+     "description": "End of message marker. Empty > without marker",
+     "default": "Empty value",
+     "short": "-m"
+    },
+    {
+     "title": "Timeout",
+     "name": "--timeout",
+     "types": "Number",
+     "description": "Data waiting timeout (ms). 0 > no limit",
+     "default": 5000,
+     "short": "-i"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "SendBinaryData",
+   "id": "SENDBINARYDATA",
+   "description": "Sends binary data over the specified connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--tcp",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "title": "Data",
+     "name": "--data",
+     "types": "BinaryData, String",
+     "description": "Binary data or file path",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "Timeout",
+     "name": "--timeout",
+     "types": "Number",
+     "description": "Data reading timeout (ms). 0 > no limit",
+     "default": 5000,
+     "short": "-m"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "SendLine",
+   "id": "SENDLINE",
+   "description": "Sends data as a string over the specified connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--tcp",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "title": "Data",
+     "name": "--data",
+     "types": "String",
+     "description": "Data to be sent as a string",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "Encoding",
+     "name": "--enc",
+     "types": "String",
+     "description": "Encoding for writing the outgoing string to the stream",
+     "default": "UTF-8",
+     "short": "-e"
+    },
+    {
+     "title": "Timeout",
+     "name": "--timeout",
+     "types": "Number",
+     "description": "Data reading timeout (ms). 0 > no limit",
+     "default": 5000,
+     "short": "-m"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": false,
    "name": "ProcessRequest",
    "id": "PROCESSREQUEST",
    "description": "Sends a single request to a specified address and receives a response using the default settings",
@@ -65,6 +445,24 @@
    "region": "Client methods"
   },
   {
+   "nocli": true,
+   "name": "GetLastError",
+   "id": "GETLASTERROR",
+   "description": "Gets information about the last error in the connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--tcp",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": false,
    "name": "GetProxySettings",
    "id": "GETPROXYSETTINGS",
    "description": "Creates a structure of proxy server settings for the connection",
@@ -113,6 +511,7 @@
    "region": "Client methods"
   },
   {
+   "nocli": false,
    "name": "GetTlsSettings",
    "id": "GETTLSSETTINGS",
    "description": "Forms settings for using TLS",
@@ -135,6 +534,289 @@
     }
    ],
    "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "IsClientObject",
+   "id": "ISCLIENTOBJECT",
+   "description": "Checks that the value is an object of the TCP client external component",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "nocli": true,
+   "name": "StartServer",
+   "id": "STARTSERVER",
+   "description": "Starts listening for messages on the specified port",
+   "params": [
+    {
+     "title": "Port",
+     "name": "--port",
+     "types": "Number",
+     "description": "Server port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "PoolSize",
+     "name": "--psize",
+     "types": "Number",
+     "description": "Maximum number of simultaneously supported connections",
+     "default": 100,
+     "short": "-s"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "StopServer",
+   "id": "STOPSERVER",
+   "description": "Shuts down the server",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetNextConnectionData",
+   "id": "GETNEXTCONNECTIONDATA",
+   "description": "Gets data from the buffer of the next active connection in the queue where there are incoming data",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number",
+     "description": "Waiting period for new data if the queue is empty (in ms)",
+     "default": 1000,
+     "short": "-t"
+    },
+    {
+     "title": "MaxSize",
+     "name": "--msize",
+     "types": "Number",
+     "description": "Maximum size of data to receive",
+     "default": 8192,
+     "short": "-m"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetConnectionData",
+   "id": "GETCONNECTIONDATA",
+   "description": "Gets data from the buffer of a specific connection by ID",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "ConnectionID",
+     "name": "--id",
+     "types": "String",
+     "description": "Connection identifier",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number",
+     "description": "Waiting period for new data if the queue is empty (in ms)",
+     "default": 1000,
+     "short": "-t"
+    },
+    {
+     "title": "MaxSize",
+     "name": "--msize",
+     "types": "Number",
+     "description": "Maximum size of data to receive",
+     "default": 8192,
+     "short": "-m"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "SendData",
+   "id": "SENDDATA",
+   "description": "Sends data to the specified connection",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "ConnectionID",
+     "name": "--id",
+     "types": "String",
+     "description": "Connection identifier",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "title": "Data",
+     "name": "--data",
+     "types": "String, BinaryData",
+     "description": "Sending data",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "CloseIncomingConnection",
+   "id": "CLOSEINCOMINGCONNECTION",
+   "description": "Closes incoming server connection by ID",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "ConnectionID",
+     "name": "--id",
+     "types": "String",
+     "description": "Connection identifier",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "CompleteSend",
+   "id": "COMPLETESEND",
+   "description": "Sends a signal to finish sending data to the specified connection",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "ConnectionID",
+     "name": "--id",
+     "types": "String",
+     "description": "Connection identifier",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "FinishReceiving",
+   "id": "FINISHRECEIVING",
+   "description": "Closes receiving data for the specified connection",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "title": "ConnectionID",
+     "name": "--id",
+     "types": "String",
+     "description": "Connection identifier",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "GetConnectionList",
+   "id": "GETCONNECTIONLIST",
+   "description": "Gets the list of connections",
+   "params": [
+    {
+     "title": "ServerObject",
+     "name": "--srv",
+     "types": "Arbitrary",
+     "description": "Object of running server component",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": true,
+   "name": "IsServerObject",
+   "id": "ISSERVEROBJECT",
+   "description": "Checks that the value is an object of the TCP server external component",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Server methods"
   }
  ]
 }

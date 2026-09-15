@@ -7,22 +7,318 @@
  "path": "api/lua/Modules/OPI_Lua.os",
  "regions": [
   {
+   "name": "Main",
+   "methods": [
+    {
+     "name": "CallFunction",
+     "nocli": true
+    },
+    {
+     "name": "CreateVM",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsVM",
+     "nocli": true
+    },
+    {
+     "name": "Restart",
+     "nocli": true
+    }
+   ]
+  },
+  {
    "name": "Script management",
    "methods": [
-    "CallScriptFunction"
+    {
+     "name": "CallScriptFunction",
+     "nocli": false
+    },
+    {
+     "name": "ExecuteCodeFromFile",
+     "nocli": true
+    },
+    {
+     "name": "ExecuteCodeFromString",
+     "nocli": true
+    }
    ]
   },
   {
    "name": "Bytecode management",
    "methods": [
-    "CallByteCodeFunction",
-    "CompileCodeFromFile",
-    "CompileCodeFromString"
+    {
+     "name": "CallByteCodeFunction",
+     "nocli": false
+    },
+    {
+     "name": "CompileCodeFromFile",
+     "nocli": false
+    },
+    {
+     "name": "CompileCodeFromString",
+     "nocli": false
+    },
+    {
+     "name": "ExecuteBytecode",
+     "nocli": true
+    },
+    {
+     "name": "ExecuteBytecodeFromFile",
+     "nocli": true
+    }
+   ]
+  },
+  {
+   "name": "Global variables",
+   "methods": [
+    {
+     "name": "GetGlobalVariable",
+     "nocli": true
+    },
+    {
+     "name": "SetGlobalVariable",
+     "nocli": true
+    }
+   ]
+  },
+  {
+   "name": "Package management",
+   "methods": [
+    {
+     "name": "AttachPackageFromFile",
+     "nocli": true
+    },
+    {
+     "name": "AttachPackageFromString",
+     "nocli": true
+    },
+    {
+     "name": "GetPackagesList",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateVM",
+   "id": "CREATEVM",
+   "description": "Initializes LuaVM of the specified version",
+   "params": [
+    {
+     "title": "Version",
+     "name": "--ver",
+     "types": "String",
+     "description": "VM version: Lua54, LuaJIT",
+     "default": null,
+     "short": "-v"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Main"
+  },
+  {
+   "nocli": true,
+   "name": "Restart",
+   "id": "RESTART",
+   "description": "Restarts Lua VM",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    }
+   ],
+   "region": "Main"
+  },
+  {
+   "nocli": true,
+   "name": "CallFunction",
+   "id": "CALLFUNCTION",
+   "description": "Calls a Lua function with the provided parameters",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "FunctionName",
+     "name": "--func",
+     "types": "String",
+     "description": "Function name or path in module.func format",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "title": "Parameters",
+     "name": "--params",
+     "types": "Array Of Arbitrary",
+     "description": "Function parameters",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Main"
+  },
+  {
+   "nocli": true,
+   "name": "IsVM",
+   "id": "ISVM",
+   "description": "Checks that the value is an object of a Lua AddIn",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Main"
+  },
+  {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for starting logging on server startup",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Main"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves log data (with logging to memory enabled)",
+   "params": [
+    {
+     "title": "AddInObject",
+     "name": "--vm",
+     "types": "Arbitrary",
+     "description": "VM AddIn object",
+     "default": null,
+     "short": "-v"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-c"
+    }
+   ],
+   "region": "Main"
+  },
+  {
+   "nocli": true,
+   "name": "ExecuteCodeFromString",
+   "id": "EXECUTECODEFROMSTRING",
+   "description": "Executes Lua code from the passed string",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "Code",
+     "name": "--code",
+     "types": "String",
+     "description": "Code as string",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Script management"
+  },
+  {
+   "nocli": true,
+   "name": "ExecuteCodeFromFile",
+   "id": "EXECUTECODEFROMFILE",
+   "description": "Executes Lua code from a file on disk",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "Path",
+     "name": "--path",
+     "types": "String",
+     "description": "Script file path",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Script management"
+  },
+  {
+   "nocli": false,
    "name": "CallScriptFunction",
    "id": "CALLSCRIPTFUNCTION",
    "description": "Executes Lua code from a string or file and calls the specified function",
@@ -79,6 +375,7 @@
    "region": "Script management"
   },
   {
+   "nocli": false,
    "name": "CompileCodeFromString",
    "id": "COMPILECODEFROMSTRING",
    "description": "Converts source code to Lua bytecode",
@@ -103,6 +400,7 @@
    "region": "Bytecode management"
   },
   {
+   "nocli": false,
    "name": "CompileCodeFromFile",
    "id": "COMPILECODEFROMFILE",
    "description": "Converts a source code file to Lua bytecode",
@@ -127,6 +425,57 @@
    "region": "Bytecode management"
   },
   {
+   "nocli": true,
+   "name": "ExecuteBytecode",
+   "id": "EXECUTEBYTECODE",
+   "description": "Executes previously compiled code",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "Bytecode",
+     "name": "--code",
+     "types": "BinaryData",
+     "description": "Bytecode to execute",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Bytecode management"
+  },
+  {
+   "nocli": true,
+   "name": "ExecuteBytecodeFromFile",
+   "id": "EXECUTEBYTECODEFROMFILE",
+   "description": "Executes bytecode from the specified file",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "Path",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file with bytecode",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Bytecode management"
+  },
+  {
+   "nocli": false,
    "name": "CallByteCodeFunction",
    "id": "CALLBYTECODEFUNCTION",
    "description": "Executes bytecode and calls the specified function",
@@ -181,6 +530,147 @@
     }
    ],
    "region": "Bytecode management"
+  },
+  {
+   "nocli": true,
+   "name": "SetGlobalVariable",
+   "id": "SETGLOBALVARIABLE",
+   "description": "Sets the value of a global variable in the context",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "Name",
+     "name": "--name",
+     "types": "String",
+     "description": "Variable name",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Variable value",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Global variables"
+  },
+  {
+   "nocli": true,
+   "name": "GetGlobalVariable",
+   "id": "GETGLOBALVARIABLE",
+   "description": "Gets the value of a global variable in the context",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "Name",
+     "name": "--name",
+     "types": "String",
+     "description": "Variable name",
+     "default": null,
+     "short": "-n"
+    }
+   ],
+   "region": "Global variables"
+  },
+  {
+   "nocli": true,
+   "name": "AttachPackageFromString",
+   "id": "ATTACHPACKAGEFROMSTRING",
+   "description": "Adds code from a string as a package with the specified name",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "PackageName",
+     "name": "--name",
+     "types": "String",
+     "description": "The name of the package by which it will be available after adding",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "title": "Code",
+     "name": "--code",
+     "types": "String",
+     "description": "Package code",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Package management"
+  },
+  {
+   "nocli": true,
+   "name": "AttachPackageFromFile",
+   "id": "ATTACHPACKAGEFROMFILE",
+   "description": "Adds code from a file as a package with the specified name",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "title": "PackageName",
+     "name": "--name",
+     "types": "String",
+     "description": "The name of the package by which it will be available after adding",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "title": "Path",
+     "name": "--filepath",
+     "types": "String",
+     "description": "Path to code file",
+     "default": null,
+     "short": "-f"
+    }
+   ],
+   "region": "Package management"
+  },
+  {
+   "nocli": true,
+   "name": "GetPackagesList",
+   "id": "GETPACKAGESLIST",
+   "description": "Gets a list of packages added to the environment",
+   "params": [
+    {
+     "title": "Lua",
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    }
+   ],
+   "region": "Package management"
   }
  ]
 }

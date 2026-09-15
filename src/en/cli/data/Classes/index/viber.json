@@ -9,27 +9,61 @@
   {
    "name": "Settings and information",
    "methods": [
-    "GetChannelInformation",
-    "GetOnlineUsers",
-    "GetUserData",
-    "SetWebhook"
+    {
+     "name": "GetChannelInformation",
+     "nocli": false
+    },
+    {
+     "name": "GetOnlineUsers",
+     "nocli": false
+    },
+    {
+     "name": "GetUserData",
+     "nocli": false
+    },
+    {
+     "name": "SetWebhook",
+     "nocli": false
+    }
    ]
   },
   {
    "name": "Message sending",
    "methods": [
-    "CreateKeyboardFromArrayButton",
-    "SendContact",
-    "SendFile",
-    "SendImage",
-    "SendLink",
-    "SendLocation",
-    "SendTextMessage"
+    {
+     "name": "CreateKeyboardFromArrayButton",
+     "nocli": false
+    },
+    {
+     "name": "SendContact",
+     "nocli": false
+    },
+    {
+     "name": "SendFile",
+     "nocli": false
+    },
+    {
+     "name": "SendImage",
+     "nocli": false
+    },
+    {
+     "name": "SendLink",
+     "nocli": false
+    },
+    {
+     "name": "SendLocation",
+     "nocli": false
+    },
+    {
+     "name": "SendTextMessage",
+     "nocli": false
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": false,
    "name": "SetWebhook",
    "id": "SETWEBHOOK",
    "description": "Sets a webhook to receive messages",
@@ -54,6 +88,7 @@
    "region": "Settings and information"
   },
   {
+   "nocli": false,
    "name": "GetChannelInformation",
    "id": "GETCHANNELINFORMATION",
    "description": "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals\n\n The user ID from channel information is not suitable for sending messages through the bot - they are different",
@@ -70,6 +105,7 @@
    "region": "Settings and information"
   },
   {
+   "nocli": false,
    "name": "GetUserData",
    "id": "GETUSERDATA",
    "description": "Gets user information by ID",
@@ -94,6 +130,7 @@
    "region": "Settings and information"
   },
   {
+   "nocli": false,
    "name": "GetOnlineUsers",
    "id": "GETONLINEUSERS",
    "description": "Gets the status of a user or multiple users by ID",
@@ -118,6 +155,7 @@
    "region": "Settings and information"
   },
   {
+   "nocli": false,
    "name": "SendTextMessage",
    "id": "SENDTEXTMESSAGE",
    "description": "Sends a text message to a chat or channel",
@@ -166,6 +204,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendImage",
    "id": "SENDIMAGE",
    "description": "Sends an image to a chat or channel",
@@ -214,6 +253,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendFile",
    "id": "SENDFILE",
    "description": "Sends a file (document) to a chat or channel",
@@ -270,6 +310,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendContact",
    "id": "SENDCONTACT",
    "description": "Sends a contact with a phone number to a chat or channel",
@@ -318,6 +359,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendLocation",
    "id": "SENDLOCATION",
    "description": "Sends geographic coordinates to a chat or channel",
@@ -366,6 +408,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "SendLink",
    "id": "SENDLINK",
    "description": "Sends a URL with a preview to a chat or channel",
@@ -406,6 +449,7 @@
    "region": "Message sending"
   },
   {
+   "nocli": false,
    "name": "CreateKeyboardFromArrayButton",
    "id": "CREATEKEYBOARDFROMARRAYBUTTON",
    "description": "Returns a keyboard structure for messages",

@@ -9,13 +9,61 @@
   {
    "name": "Commands execution",
    "methods": [
-    "ExecuteCommand",
-    "FormConnectionParameters"
+    {
+     "name": "ExecuteCommand",
+     "nocli": false
+    },
+    {
+     "name": "FormConnectionParameters",
+     "nocli": false
+    },
+    {
+     "name": "CreateConnection",
+     "nocli": true
+    },
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    },
+    {
+     "name": "IsConnector",
+     "nocli": true
+    }
    ]
   }
  ],
  "methods": [
   {
+   "nocli": true,
+   "name": "CreateConnection",
+   "id": "CREATECONNECTION",
+   "description": "Opens a new RCON connection",
+   "params": [
+    {
+     "title": "ConnectionParams",
+     "name": "--params",
+     "types": "Structure Of KeyAndValue",
+     "description": "Connection parameters. See FormConnectionParameters",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Commands execution"
+  },
+  {
+   "nocli": false,
    "name": "ExecuteCommand",
    "id": "EXECUTECOMMAND",
    "description": "Executes the command on the server",
@@ -40,6 +88,7 @@
    "region": "Commands execution"
   },
   {
+   "nocli": false,
    "name": "FormConnectionParameters",
    "id": "FORMCONNECTIONPARAMETERS",
    "description": "Forms a collection of connection parameters",
@@ -75,6 +124,89 @@
      "description": "Request sending timeout (in seconds)",
      "default": 30,
      "short": "-w"
+    }
+   ],
+   "region": "Commands execution"
+  },
+  {
+   "nocli": true,
+   "name": "IsConnector",
+   "id": "ISCONNECTOR",
+   "description": "Checks that the value is an object of an RCON AddIn",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Commands execution"
+  },
+  {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when opening a connection",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Commands execution"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
     }
    ],
    "region": "Commands execution"
