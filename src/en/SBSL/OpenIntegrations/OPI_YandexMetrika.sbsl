@@ -1,0 +1,242 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_YandexMetrika
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_YandexMetrika(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_YandexMetrika
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "metrika"
+    
+    @Глобально
+    // Метод CreateTag
+    // Creates a tag with the specified name
+    //
+    // Token - String: Auth token
+    // Name  - String: Tag title
+    метод CreateTag(Token: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateTag", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UpdateTag
+    // Changes the tag name by ID
+    //
+    // Token - String: Auth token
+    // TagID - String: Tag ID to change
+    // Name  - String: New name
+    метод UpdateTag(Token: Объект?, TagID: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", TagID)
+        Опции.Вставить("-i", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UpdateTag", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTag
+    // Gets the tag by ID
+    //
+    // Token - String: Auth token
+    // TagID - String: Tag ID
+    метод GetTag(Token: Объект?, TagID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", TagID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTag", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteTag
+    // Deletes a tag by ID
+    //
+    // Token - String: Auth token
+    // TagID - String: ID of the tag to be deleted
+    метод DeleteTag(Token: Объект?, TagID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", TagID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteTag", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTagsList
+    // Gets a list of the users tags
+    //
+    // Token - String: Auth token
+    метод GetTagsList(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTagsList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateCounter
+    // Creates a counter by field description
+    //
+    // Token            - String: Auth token
+    // CounterStructure - Structure Of KeyAndValue: Counter structure. See GetCounterStructure
+    метод CreateCounter(Token: Объект?, CounterStructure: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", CounterStructure)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateCounter", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UpdateCounter
+    // Changes counter field values by ID
+    //
+    // Token            - String: Auth token
+    // CounterID        - String, Number: Counter ID to change
+    // CounterStructure - Structure Of KeyAndValue: Structure of fields to be changed. See GetCounterStructure
+    метод UpdateCounter(Token: Объект?, CounterID: Объект?, CounterStructure: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", CounterID)
+        Опции.Вставить("-f", CounterStructure)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UpdateCounter", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCounter
+    // Gets information about the counter by ID
+    //
+    // Token     - String: Auth token
+    // CounterID - String, Number: Counter ID
+    метод GetCounter(Token: Объект?, CounterID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", CounterID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCounter", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteCounter
+    // Deletes a counter by ID
+    //
+    // Token     - String: Auth token
+    // CounterID - Number, String: Counter ID for deletion
+    метод DeleteCounter(Token: Объект?, CounterID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", CounterID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteCounter", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RestoreCounter
+    // Restores a previously deleted counter by ID
+    //
+    // Token     - String: Auth token
+    // CounterID - String, Number: Counter ID for restoring
+    метод RestoreCounter(Token: Объект?, CounterID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", CounterID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RestoreCounter", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCountersList
+    // Gets a list of available counters with or without filtering
+    //
+    // Token  - String: Auth token
+    // Filter - Structure Of KeyAndValue: List filter. See GetCounterFilterStructure (необяз. по ум. - Empty value)
+    метод GetCountersList(Token: Объект?, Filter: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", Filter)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCountersList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCounterStructure
+    // Gets the structure of standard fields for counter creation
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetCounterStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCounterStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCounterFilterStructure
+    // Gets the structure of filter fields to get the list of counters
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetCounterFilterStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCounterFilterStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetActionsList
+    // Gets the list of actions of the selected counter
+    //
+    // Token     - String: Auth token
+    // CounterID - String, Number: Counter ID
+    метод GetActionsList(Token: Объект?, CounterID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", CounterID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetActionsList", Опции)
+        
+    ;
+    
+;

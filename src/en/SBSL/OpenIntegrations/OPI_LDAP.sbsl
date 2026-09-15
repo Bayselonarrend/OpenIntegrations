@@ -1,0 +1,164 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_LDAP
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_LDAP(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_LDAP
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "ldap"
+    
+    @Глобально
+    // Метод FormConnectionParameters
+    // Form LDAP connection parameters collection
+    //
+    // URL      - String: Server URL (ldap: or ldaps:)
+    // BindDN   - String: DN for bind (необяз. по ум. - Empty value)
+    // Password - String: Password for bind (необяз. по ум. - Empty value)
+    // Timeout  - Number: Timeout of operations in seconds (необяз. по ум. - 30)
+    метод FormConnectionParameters(URL: Объект?, BindDN: Объект? = Неопределено, Password: Объект? = Неопределено, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-b", BindDN)
+        Опции.Вставить("-p", Password)
+        Опции.Вставить("-t", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormConnectionParameters", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetConnectionConfiguration
+    // Return current connection settings
+    //
+    // Connection - Arbitrary: AddIn object with open connection
+    метод GetConnectionConfiguration(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionConfiguration", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTlsSettings
+    // Form TLS connection settings structure for LDAP connection
+    //
+    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
+    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
+    метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", DisableCertVerification)
+        Опции.Вставить("-c", CertFilepath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTlsSettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PerformSearch
+    // Perform LDAP search
+    //
+    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    // Base       - String: Base search DN
+    // Filter     - String: LDAP (необяз. по ум. - (objectClass=*))
+    // Attributes - Array of String, Undefined: List of attributes for selection (необяз. по ум. - Empty value)
+    // Region     - String: Scope: base, one, subtree (необяз. по ум. - subtree)
+    метод PerformSearch(Connection: Объект?, Base: Объект?, Filter: Объект? = Неопределено, Attributes: Объект? = Неопределено, Region: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-b", Base)
+        Опции.Вставить("-f", Filter)
+        Опции.Вставить("-a", Attributes)
+        Опции.Вставить("-s", Region)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PerformSearch", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Add
+    // Add record to LDAP directory
+    //
+    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    // DN         - String: DN of added record
+    // Attributes - Structure Of KeyAndValue: Record attributes
+    метод Add(Connection: Объект?, DN: Объект?, Attributes: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-d", DN)
+        Опции.Вставить("-a", Attributes)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Add", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Change
+    // Modify record in LDAP directory
+    //
+    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    // DN         - String: DN of modified record
+    // Changes    - Array of Structure: List of attribute changes
+    метод Change(Connection: Объект?, DN: Объект?, Changes: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-d", DN)
+        Опции.Вставить("-h", Changes)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Change", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Delete
+    // Delete record from LDAP directory
+    //
+    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    // DN         - String: DN of deleted record
+    метод Delete(Connection: Объект?, DN: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-d", DN)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Delete", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Compare
+    // Compare LDAP record attribute value
+    //
+    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    // DN         - String: DN record
+    // Attribute  - String: AttributeName
+    // Value      - String: Expected value
+    метод Compare(Connection: Объект?, DN: Объект?, Attribute: Объект?, Value: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-d", DN)
+        Опции.Вставить("-a", Attribute)
+        Опции.Вставить("-v", Value)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Compare", Опции)
+        
+    ;
+    
+;

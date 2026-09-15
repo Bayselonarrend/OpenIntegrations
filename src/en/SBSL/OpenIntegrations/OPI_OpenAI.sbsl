@@ -1,0 +1,456 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_OpenAI
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_OpenAI(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_OpenAI
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "openai"
+    
+    @Глобально
+    // Метод GetResponse
+    // Generates a response for a given text query
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Model                - String: Models name
+    // Messages             - Structure, Array of Structure: Conversation messages. See GetMessageStructure
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetResponse(URL: Объект?, Token: Объект?, Model: Объект?, Messages: Объект?, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-s", Messages)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetResponse", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetImages
+    // Generates images based on the specified description
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // Model             - String: Models name
+    // Description       - Structure Of KeyAndValue: Generation parameters. See GetImageDescriptionStructure
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetImages(URL: Объект?, Token: Объект?, Model: Объект?, Description: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-d", Description)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetImages", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEmbeddings
+    // Gets the embeddings for the given entries
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Model                - String: Models name
+    // Text                 - Array Of String: String or array of request strings
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetEmbeddings(URL: Объект?, Token: Объект?, Model: Объект?, Text: Объект?, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-i", Text)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEmbeddings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetMessageStructure
+    // Gets the structure of an arbitrary message for the request message list
+    //
+    // Role - String: Source of the message: system, user, assistant, etc..
+    // Text - String: Message text
+    // Name - String: Name of participant in conversation (необяз. по ум. - Empty value)
+    метод GetMessageStructure(Role: Объект?, Text: Объект?, Name: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-r", Role)
+        Опции.Вставить("-t", Text)
+        Опции.Вставить("-n", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetMessageStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetUserMessage
+    // Gets the structure of a message from the user for use in a request
+    //
+    // Text - String: Message text
+    // Name - String: Name of participant in conversation (необяз. по ум. - Empty value)
+    метод GetUserMessage(Text: Объект?, Name: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Text)
+        Опции.Вставить("-n", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetUserMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetAssistantMessage
+    // Gets the structure of a message from the assistant for use in a request
+    //
+    // Text - String: Message text
+    метод GetAssistantMessage(Text: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetAssistantMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetSystemMessage
+    // Gets the structure of a system message for use in a request
+    //
+    // Text - String: Message text
+    метод GetSystemMessage(Text: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSystemMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetImageMessageStructure
+    // Gets the message structure based on the image for the request message list
+    //
+    // Role   - String: Message source: system, user, developer
+    // FileID - String: Image file ID. See UploadFile
+    // Text   - String: Input text query for image processing (необяз. по ум. - Empty value)
+    метод GetImageMessageStructure(Role: Объект?, FileID: Объект?, Text: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-r", Role)
+        Опции.Вставить("-f", FileID)
+        Опции.Вставить("-p", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetImageMessageStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetImageDescriptionStructure
+    // Get image description structure for generation
+    //
+    // Prompt               - String: Text description of the image for generation
+    // Count                - Number: Number of images to generate
+    // Background           - String: Generation background option: transparent, opaque, auto (необяз. по ум. - Empty value)
+    // Size                 - String: Size option for generated images (необяз. по ум. - Empty value)
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    метод GetImageDescriptionStructure(Prompt: Объект?, Count: Объект?, Background: Объект? = Неопределено, Size: Объект? = Неопределено, AdditionalParameters: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-p", Prompt)
+        Опции.Вставить("-a", Count)
+        Опции.Вставить("-b", Background)
+        Опции.Вставить("-s", Size)
+        Опции.Вставить("-o", AdditionalParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetImageDescriptionStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetAssistantsList
+    // Retrieves a list of assistants with or without filtering
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Count                - Number: Maximum number of assistants returned (необяз. по ум. - 20)
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetAssistantsList(URL: Объект?, Token: Объект?, Count: Объект? = Неопределено, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Count)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetAssistantsList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateAssistant
+    // Creates an assistant based on the model and instruction
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Model                - String: Models name
+    // Name                 - String: Assistant name (необяз. по ум. - Empty value)
+    // Instruction          - String: System instruction for the assistant (необяз. по ум. - Empty value)
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод CreateAssistant(URL: Объект?, Token: Объект?, Model: Объект?, Name: Объект? = Неопределено, Instruction: Объект? = Неопределено, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-i", Instruction)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateAssistant", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RetrieveAssistant
+    // Retrieves information about an assistant by ID
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // AssistantID       - String: Assistant ID
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод RetrieveAssistant(URL: Объект?, Token: Объект?, AssistantID: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-i", AssistantID)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RetrieveAssistant", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteAssistant
+    // Deletes a previously created assistant
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // AssistantID       - String: Assistant ID
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DeleteAssistant(URL: Объект?, Token: Объект?, AssistantID: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-i", AssistantID)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteAssistant", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFilesList
+    // Get a list of files with or without filtering
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Count                - Number: Maximum number of assistants returned (необяз. по ум. - 10000)
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetFilesList(URL: Объект?, Token: Объект?, Count: Объект? = Неопределено, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Count)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFilesList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFile
+    // Uploads a file for further use in other requests
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // FileName          - String: File name with extension
+    // Data              - String, BinaryData: Path to file or data
+    // Destination       - String: File purpose: assistants, batch, vision, user_data, evals
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод UploadFile(URL: Объект?, Token: Объект?, FileName: Объект?, Data: Объект?, Destination: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-n", FileName)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-p", Destination)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFileInformation
+    // Gets information about the file
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // FileID            - String: File ID
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetFileInformation(URL: Объект?, Token: Объект?, FileID: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-i", FileID)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFileInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DownloadFile
+    // Get file data from the server
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // FileID            - String: File ID
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DownloadFile(URL: Объект?, Token: Объект?, FileID: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-i", FileID)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DownloadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteFile
+    // Deletes a previously uploaded file
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // FileID            - String: File ID
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DeleteFile(URL: Объект?, Token: Объект?, FileID: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-i", FileID)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GenerateSpeech
+    // Generates audio with the specified text for speech synthesis
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Model                - String: Models name
+    // Text                 - String: Text for speech synthesis
+    // Voice                - String: Voice type: alloy, ash, ballad, coral, echo, etc.. (необяз. по ум. - alloy)
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GenerateSpeech(URL: Объект?, Token: Объект?, Model: Объект?, Text: Объект?, Voice: Объект? = Неопределено, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-i", Text)
+        Опции.Вставить("-v", Voice)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GenerateSpeech", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateTranscription
+    // Creates a text transcription for the selected audio file
+    //
+    // URL                  - String: OpenAI server URL
+    // Token                - String: OpenAI authorization token
+    // Model                - String: Models name
+    // Audio                - String, BinaryData: Audio file
+    // MIME                 - String: MIME type of audio file (необяз. по ум. - audio/mpeg)
+    // AdditionalParameters - Structure Of KeyAndValue: Additional request parameters, if necessary (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод CreateTranscription(URL: Объект?, Token: Объект?, Model: Объект?, Audio: Объект?, MIME: Объект? = Неопределено, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-a", Audio)
+        Опции.Вставить("-p", MIME)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateTranscription", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetModelList
+    // Receives a list of available models
+    //
+    // URL               - String: OpenAI server URL
+    // Token             - String: OpenAI authorization token
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetModelList(URL: Объект?, Token: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetModelList", Опции)
+        
+    ;
+    
+;

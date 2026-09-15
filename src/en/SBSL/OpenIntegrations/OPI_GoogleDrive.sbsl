@@ -1,0 +1,340 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_GoogleDrive
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_GoogleDrive(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_GoogleDrive
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "gdrive"
+    
+    @Глобально
+    // Метод FormCodeRetrievalLink
+    // Returns URL for browser authorization
+    //
+    // ClientID - String: Client ID
+    // Calendar - Boolean: Calendar methods permission (необяз. по ум. - true)
+    // Drive    - Boolean: Drive methods permission (необяз. по ум. - true)
+    // Sheets   - Boolean: Sheets methods permission (необяз. по ум. - true)
+    метод FormCodeRetrievalLink(ClientID: Объект?, Calendar: Объект? = Неопределено, Drive: Объект? = Неопределено, Sheets: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-d", Drive)
+        Опции.Вставить("-s", Sheets)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormCodeRetrievalLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTokenByCode
+    // Gets token by code from browser authorization
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // Code         - String: Code from browser
+    метод GetTokenByCode(ClientID: Объект?, ClientSecret: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTokenByCode", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RefreshToken
+    // Updates token by Refresh token
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // RefreshToken - String: Refresh token
+    метод RefreshToken(ClientID: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-r", RefreshToken)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RefreshToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetServiceAccountToken
+    // Gets authorization token by service account data
+    //
+    // Data   - Arbitrary: JSON authorization data as a file, collection or binary data
+    // Scope  - Array Of String: Scope or array of scopes
+    // Expire - Number: Token lifetime in seconds (необяз. по ум. - 3600)
+    метод GetServiceAccountToken(Data: Объект?, Scope: Объект?, Expire: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Data)
+        Опции.Вставить("-s", Scope)
+        Опции.Вставить("-e", Expire)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetServiceAccountToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetObjectInformation
+    // Gets information about a folder or file by ID
+    //
+    // Token      - String: Token
+    // Identifier - String: Identifier of the file or folder
+    метод GetObjectInformation(Token: Объект?, Identifier: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", Identifier)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetObjectInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetDirectoriesList
+    // Gets the list of drive directories
+    //
+    // Token        - String: Token
+    // NameContains - String: Filter by name (необяз. по ум. - Empty value)
+    // Detailed     - Boolean: Adds a list of files to the directory fields (необяз. по ум. - false)
+    метод GetDirectoriesList(Token: Объект?, NameContains: Объект? = Неопределено, Detailed: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-q", NameContains)
+        Опции.Вставить("-d", Detailed)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetDirectoriesList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFilesList
+    // Gets the list of files
+    //
+    // Token        - String: Token
+    // NameContains - String: Filter by name (необяз. по ум. - Empty value)
+    // Directory    - String: Filter by parent directory ID (необяз. по ум. - Empty value)
+    метод GetFilesList(Token: Объект?, NameContains: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-q", NameContains)
+        Опции.Вставить("-c", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFilesList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFile
+    // Uploads a file to the drive
+    //
+    // Token       - String: Token
+    // File        - BinaryData, String: File to be uploaded
+    // Description - Map Of KeyAndValue: See GetFileDescription
+    метод UploadFile(Token: Объект?, File: Объект?, Description: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-p", Description)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateFolder
+    // Creates an empty directory on the drive
+    //
+    // Token  - String: Token
+    // Name   - String: Folder name
+    // Parent - String: Parent (необяз. по ум. - Empty value)
+    метод CreateFolder(Token: Объект?, Name: Объект?, Parent: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Name)
+        Опции.Вставить("-c", Parent)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateFolder", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DownloadFile
+    // Gets file by ID
+    //
+    // Token      - String: Token
+    // Identifier - String: File identifier
+    // SavePath   - String: File save path (необяз. по ум. - Empty value)
+    метод DownloadFile(Token: Объект?, Identifier: Объект?, SavePath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", Identifier)
+        Опции.Вставить("", SavePath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DownloadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CopyObject
+    // Copies file or directory
+    //
+    // Token      - String: Token
+    // Identifier - String: Object identifier
+    // NewName    - String: New object name (необяз. по ум. - Empty value)
+    // NewParent  - String: New parent directory (необяз. по ум. - Empty value)
+    метод CopyObject(Token: Объект?, Identifier: Объект?, NewName: Объект? = Неопределено, NewParent: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", Identifier)
+        Опции.Вставить("-l", NewName)
+        Опции.Вставить("-c", NewParent)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CopyObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UpdateFile
+    // Updates file binary data
+    //
+    // Token      - String: Token
+    // Identifier - String: Identifier of the object to update
+    // File       - BinaryData, String: File source for update
+    // NewName    - String: New file name (if necessary) (необяз. по ум. - Empty value)
+    метод UpdateFile(Token: Объект?, Identifier: Объект?, File: Объект?, NewName: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", Identifier)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-l", NewName)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UpdateFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteObject
+    // Deletes file or directory by ID
+    //
+    // Token      - String: Token
+    // Identifier - String: Identifier of the object to delete
+    метод DeleteObject(Token: Объект?, Identifier: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", Identifier)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFileDescription
+    // Gets a blank description template for uploading a file
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetFileDescription(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFileDescription", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateComment
+    // Creates a comment for a file or directory
+    //
+    // Token      - String: Token
+    // Identifier - String: Identifier of the object that needs a comment
+    // Comment    - String: Comment text
+    метод CreateComment(Token: Объект?, Identifier: Объект?, Comment: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", Identifier)
+        Опции.Вставить("-x", Comment)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateComment", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetComment
+    // Gets comment by ID
+    //
+    // Token     - String: Token
+    // ObjectID  - String: Identifier of the file or directory where the comment is located
+    // CommentID - String: Comment identifier
+    метод GetComment(Token: Объект?, ObjectID: Объект?, CommentID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", ObjectID)
+        Опции.Вставить("-c", CommentID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetComment", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCommentList
+    // Gets the list of all comments of the object
+    //
+    // Token    - String: Token
+    // ObjectID - String: Object identifier
+    метод GetCommentList(Token: Объект?, ObjectID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", ObjectID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCommentList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteComment
+    // Deletes comment by ID
+    //
+    // Token     - String: Token
+    // ObjectID  - String: Identifier of the file or directory where the comment is located
+    // CommentID - String: Comment identifier
+    метод DeleteComment(Token: Объект?, ObjectID: Объект?, CommentID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-o", ObjectID)
+        Опции.Вставить("-c", CommentID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteComment", Опции)
+        
+    ;
+    
+;

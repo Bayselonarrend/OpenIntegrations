@@ -1,0 +1,254 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Notion
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Notion(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Notion
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "notion"
+    
+    @Глобально
+    // Метод CreatePage
+    // Creates a child page above another parent page
+    //
+    // Token  - String: Token
+    // Parent - String: Parent ID
+    // Title  - String: Page title
+    метод CreatePage(Token: Объект?, Parent: Объект?, Title: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Parent)
+        Опции.Вставить("-l", Title)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreatePage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreatePageInDatabase
+    // Creates a page in the parent database
+    //
+    // Token  - String: Token
+    // Parent - String: Parent database ID
+    // Data   - Map Of KeyAndValue: Properties map
+    метод CreatePageInDatabase(Token: Объект?, Parent: Объект?, Data: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-b", Parent)
+        Опции.Вставить("-d", Data)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreatePageInDatabase", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetPage
+    // Gets information about the page by ID
+    //
+    // Token - String: Token
+    // Page  - String: Page ID
+    метод GetPage(Token: Объект?, Page: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Page)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetPage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditPageProperties
+    // Changes the properties of an existing page
+    //
+    // Token    - String: Token
+    // Page     - String: ID of the page being modified
+    // Data     - Map Of KeyAndValue: Map of editable parameters (необяз. по ум. - Empty value)
+    // Icon     - String: URL of the page icon image (необяз. по ум. - Empty value)
+    // Cover    - String: URL of the page cover image (необяз. по ум. - Empty value)
+    // Archived - Boolean: Archive page or not (boolean) (необяз. по ум. - false)
+    метод EditPageProperties(Token: Объект?, Page: Объект?, Data: Объект? = Неопределено, Icon: Объект? = Неопределено, Cover: Объект? = Неопределено, Archived: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Page)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-i", Icon)
+        Опции.Вставить("-c", Cover)
+        Опции.Вставить("-a", Archived)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditPageProperties", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateDatabase
+    // Creates a database
+    //
+    // Token      - String: Token
+    // Parent     - String: Parent page ID
+    // Title      - String: Database title
+    // Properties - Structure Of String: Database properties (необяз. по ум. - Empty value)
+    метод CreateDatabase(Token: Объект?, Parent: Объект?, Title: Объект?, Properties: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Parent)
+        Опции.Вставить("-l", Title)
+        Опции.Вставить("-r", Properties)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateDatabase", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetDatabase
+    // Get database information
+    //
+    // Token - String: Token
+    // Base  - String: Database ID
+    метод GetDatabase(Token: Объект?, Base: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-b", Base)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetDatabase", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditDatabaseProperties
+    // Edits properties of an existing database
+    //
+    // Token       - String: Token
+    // Base        - String: Target database ID
+    // Properties  - Map of KeyAndValue: New or modified database properties (необяз. по ум. - Empty value)
+    // Title       - String: New database title (необяз. по ум. - Empty value)
+    // Description - String: New database description (необяз. по ум. - Empty value)
+    метод EditDatabaseProperties(Token: Объект?, Base: Объект?, Properties: Объект? = Неопределено, Title: Объект? = Неопределено, Description: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-b", Base)
+        Опции.Вставить("-p", Properties)
+        Опции.Вставить("-l", Title)
+        Опции.Вставить("-d", Description)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditDatabaseProperties", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateBlock
+    // Creates a new block based on an existing block
+    //
+    // Token       - String: Token
+    // Parent      - String: Parent block or page ID
+    // Block       - String, Map Of KeyAndValue: Block ID or block sample itself
+    // InsertAfter - String: Block ID after which to insert the new one (необяз. по ум. - Empty value)
+    метод CreateBlock(Token: Объект?, Parent: Объект?, Block: Объект?, InsertAfter: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Parent)
+        Опции.Вставить("-b", Block)
+        Опции.Вставить("-r", InsertAfter)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateBlock", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ReturnBlock
+    // Returns the block structure by ID
+    //
+    // Token    - String: Token
+    // BlockID  - String: Block ID
+    // OnlyBase - Boolean: True > service fields are deleted, only the block itself remains (необяз. по ум. - true)
+    метод ReturnBlock(Token: Объект?, BlockID: Объект?, OnlyBase: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-b", BlockID)
+        Опции.Вставить("-c", OnlyBase)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReturnBlock", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ReturnChildBlocks
+    // Returns list of child blocks of parent block
+    //
+    // Token   - String: Token
+    // BlockID - String: Parent block ID
+    метод ReturnChildBlocks(Token: Объект?, BlockID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-b", BlockID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReturnChildBlocks", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteBlock
+    // Deletes block by ID
+    //
+    // Token   - String: Token
+    // BlockID - String: Block ID
+    метод DeleteBlock(Token: Объект?, BlockID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-b", BlockID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteBlock", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UserList
+    // Returns a list of workspace users
+    //
+    // Token - String: Token
+    метод UserList(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UserList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetUserData
+    // Gets user data by ID
+    //
+    // Token  - String: Token
+    // UserID - String: Target user ID
+    метод GetUserData(Token: Объект?, UserID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetUserData", Опции)
+        
+    ;
+    
+;

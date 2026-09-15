@@ -1,0 +1,94 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_GoogleWorkspace
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_GoogleWorkspace(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_GoogleWorkspace
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "google"
+    
+    @Глобально
+    // Метод FormCodeRetrievalLink
+    // Returns URL for browser authorization
+    //
+    // ClientID - String: Client ID
+    // Calendar - Boolean: Calendar methods permission (необяз. по ум. - true)
+    // Drive    - Boolean: Drive methods permission (необяз. по ум. - true)
+    // Sheets   - Boolean: Sheets methods permission (необяз. по ум. - true)
+    метод FormCodeRetrievalLink(ClientID: Объект?, Calendar: Объект? = Неопределено, Drive: Объект? = Неопределено, Sheets: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-d", Drive)
+        Опции.Вставить("-s", Sheets)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormCodeRetrievalLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTokenByCode
+    // Gets token by code from browser authorization
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // Code         - String: Code from browser
+    метод GetTokenByCode(ClientID: Объект?, ClientSecret: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTokenByCode", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RefreshToken
+    // Updates token by Refresh token
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // RefreshToken - String: Refresh token
+    метод RefreshToken(ClientID: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-r", RefreshToken)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RefreshToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetServiceAccountToken
+    // Gets authorization token by service account data
+    //
+    // Data   - Arbitrary: JSON authorization data as a file, collection or binary data
+    // Scope  - Array Of String: Scope or array of scopes
+    // Expire - Number: Token lifetime in seconds (необяз. по ум. - 3600)
+    метод GetServiceAccountToken(Data: Объект?, Scope: Объект?, Expire: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Data)
+        Опции.Вставить("-s", Scope)
+        Опции.Вставить("-e", Expire)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetServiceAccountToken", Опции)
+        
+    ;
+    
+;

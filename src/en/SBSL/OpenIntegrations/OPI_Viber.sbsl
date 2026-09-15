@@ -1,0 +1,230 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Viber
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Viber(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Viber
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "viber"
+    
+    @Глобально
+    // Метод SetWebhook
+    // Sets a webhook to receive messages
+    //
+    // Token - String: Viber Token
+    // URL   - String: URL for setting up Webhook
+    метод SetWebhook(Token: Объект?, URL: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", URL)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetWebhook", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChannelInformation
+    // Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals
+    //
+    // Token - String: Token
+    метод GetChannelInformation(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChannelInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetUserData
+    // Gets user information by ID
+    //
+    // Token  - String: Token
+    // UserID - String, Number: Viber User ID
+    метод GetUserData(Token: Объект?, UserID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetUserData", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetOnlineUsers
+    // Gets the status of a user or multiple users by ID
+    //
+    // Token   - String: Viber Token
+    // UserIDs - String, Number, Array of String, Number: Viber User(s) ID
+    метод GetOnlineUsers(Token: Объект?, UserIDs: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", UserIDs)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetOnlineUsers", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendTextMessage
+    // Sends a text message to a chat or channel
+    //
+    // Token            - String: Token
+    // Text             - String: Message text
+    // UserID           - String, Number: User ID. For channel > administrator, for bot > recipient
+    // SendingToChannel - Boolean: Sending to channel or bot chat
+    // Keyboard         - Structure Of String: See CreateKeyboardFromArrayButton (необяз. по ум. - Empty value)
+    метод SendTextMessage(Token: Объект?, Text: Объект?, UserID: Объект?, SendingToChannel: Объект?, Keyboard: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-u", UserID)
+        Опции.Вставить("-i", SendingToChannel)
+        Опции.Вставить("-k", Keyboard)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendTextMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendImage
+    // Sends an image to a chat or channel
+    //
+    // Token            - String: Token
+    // URL              - String: Image URL
+    // UserID           - String, Number: User ID. For channel > administrator, for bot > recipient
+    // SendingToChannel - boolean: Sending to channel or bot chat
+    // Description      - String: Image annotation (необяз. по ум. - Empty value)
+    метод SendImage(Token: Объект?, URL: Объект?, UserID: Объект?, SendingToChannel: Объект?, Description: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", URL)
+        Опции.Вставить("-u", UserID)
+        Опции.Вставить("-i", SendingToChannel)
+        Опции.Вставить("-d", Description)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendImage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendFile
+    // Sends a file (document) to a chat or channel
+    //
+    // Token            - String: Token
+    // URL              - String: File URL
+    // UserID           - String, Number: User ID. For channel > administrator, for bot > recipient
+    // SendingToChannel - Boolean: Sending to channel or bot chat
+    // Extension        - String: File extension
+    // Size             - Number: File size. If not filled in > determined automatically by downloading the file (необяз. по ум. - Empty value)
+    метод SendFile(Token: Объект?, URL: Объект?, UserID: Объект?, SendingToChannel: Объект?, Extension: Объект?, Size: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", URL)
+        Опции.Вставить("-u", UserID)
+        Опции.Вставить("-i", SendingToChannel)
+        Опции.Вставить("-e", Extension)
+        Опции.Вставить("-s", Size)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendContact
+    // Sends a contact with a phone number to a chat or channel
+    //
+    // Token            - String: Token
+    // ContactName      - String: Contact name
+    // PhoneNumber      - String: Phone number
+    // UserID           - String, Number: User ID. For channel > administrator, for bot > recipient
+    // SendingToChannel - Boolean: Sending to channel or bot chat
+    метод SendContact(Token: Объект?, ContactName: Объект?, PhoneNumber: Объект?, UserID: Объект?, SendingToChannel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-n", ContactName)
+        Опции.Вставить("-p", PhoneNumber)
+        Опции.Вставить("-u", UserID)
+        Опции.Вставить("-i", SendingToChannel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendContact", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendLocation
+    // Sends geographic coordinates to a chat or channel
+    //
+    // Token            - String: Token
+    // Latitude         - String, Number: Geographic latitude
+    // Longitude        - String, Number: Geographic longitude
+    // UserID           - String, Number: User ID. For channel > administrator, for bot > recipient
+    // SendingToChannel - Boolean: Sending to channel or bot chat
+    метод SendLocation(Token: Объект?, Latitude: Объект?, Longitude: Объект?, UserID: Объект?, SendingToChannel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Latitude)
+        Опции.Вставить("-n", Longitude)
+        Опции.Вставить("-u", UserID)
+        Опции.Вставить("-i", SendingToChannel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendLocation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendLink
+    // Sends a URL with a preview to a chat or channel
+    //
+    // Token            - String: Token
+    // URL              - String: SentLink
+    // UserID           - String, Number: User ID. For channel > administrator, for bot > recipient
+    // SendingToChannel - Boolean: Sending to channel or bot chat
+    метод SendLink(Token: Объект?, URL: Объект?, UserID: Объект?, SendingToChannel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-s", UserID)
+        Опции.Вставить("-i", SendingToChannel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateKeyboardFromArrayButton
+    // Returns a keyboard structure for messages
+    //
+    // ButtonArray - Array of String: Array of buttons
+    // ButtonColor - String: HEX color of buttons with # at the beginning (необяз. по ум. - #2db9b9)
+    метод CreateKeyboardFromArrayButton(ButtonArray: Объект?, ButtonColor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-b", ButtonArray)
+        Опции.Вставить("-c", ButtonColor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateKeyboardFromArrayButton", Опции)
+        
+    ;
+    
+;

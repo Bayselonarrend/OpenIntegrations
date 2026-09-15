@@ -1,0 +1,80 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_TCP
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_TCP(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_TCP
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "tcp"
+    
+    @Глобально
+    // Метод ProcessRequest
+    // Sends a single request to a specified address and receives a response using the default settings
+    //
+    // Address        - String: Address and port
+    // Data           - String, BinaryData: Data or text to be sent (необяз. по ум. - Empty value)
+    // ResponseString - Boolean: An attribute of receiving the response as a string (необяз. по ум. - true)
+    // Tls            - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
+    // Proxy          - Structure Of KeyAndValue: Proxy settings, if required. See GetProxySettings (необяз. по ум. - Empty value)
+    метод ProcessRequest(Address: Объект?, Data: Объект? = Неопределено, ResponseString: Объект? = Неопределено, Tls: Объект? = Неопределено, Proxy: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Address)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-s", ResponseString)
+        Опции.Вставить("-t", Tls)
+        Опции.Вставить("-p", Proxy)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ProcessRequest", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetProxySettings
+    // Creates a structure of proxy server settings for the connection
+    //
+    // Address  - String: Proxy address
+    // Port     - Number: Proxy port
+    // View     - String: Proxy type: socks5, socks4, http (необяз. по ум. - socks5)
+    // Login    - String, Undefined: Authorization login, if required (необяз. по ум. - Empty value)
+    // Password - String, Undefined: Authorization password, if required (необяз. по ум. - Empty value)
+    метод GetProxySettings(Address: Объект?, Port: Объект?, View: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Address)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-t", View)
+        Опции.Вставить("-l", Login)
+        Опции.Вставить("-s", Password)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetProxySettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTlsSettings
+    // Forms settings for using TLS
+    //
+    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
+    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
+    метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", DisableCertVerification)
+        Опции.Вставить("-c", CertFilepath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTlsSettings", Опции)
+        
+    ;
+    
+;

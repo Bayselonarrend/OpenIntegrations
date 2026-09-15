@@ -1,0 +1,138 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Neocities
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Neocities(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Neocities
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "neocities"
+    
+    @Глобально
+    // Метод GetSiteData
+    // Gets information about a site by its name or token
+    //
+    // Token   - String: Auth token
+    // Website - String: Site name (login) for information. Current, if not filled in (необяз. по ум. - Empty value)
+    метод GetSiteData(Token: Объект?, Website: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Website)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSiteData", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetToken
+    // Receives authorization token by login and password
+    //
+    // Login    - String: Users login
+    // Password - String: Users password
+    метод GetToken(Login: Объект?, Password: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Login)
+        Опции.Вставить("-p", Password)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFile
+    // Upload single file to Neocities
+    //
+    // Token - String: Auth token
+    // Path  - String: File path on Neocities
+    // Data  - String, BinaryData: URL, path or file data
+    метод UploadFile(Token: Объект?, Path: Объект?, Data: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Path)
+        Опции.Вставить("-f", Data)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFiles
+    // Uploads multiple files to Neocities
+    //
+    // Token       - String: Auth token
+    // FileMapping - Map Of KeyAndValue: Files: Key > destination path on NC, Value > file
+    // Singly      - Boolean: True > sends files in separate requests (необяз. по ум. - false)
+    метод UploadFiles(Token: Объект?, FileMapping: Объект?, Singly: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileMapping)
+        Опции.Вставить("-s", Singly)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFiles", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteSelectedFiles
+    // Deletes a file or multiple files from Neocities
+    //
+    // Token - String: Auth token
+    // Paths - String, Array of String: Path or multiple paths of the files to be deleted
+    метод DeleteSelectedFiles(Token: Объект?, Paths: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Paths)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteSelectedFiles", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFilesList
+    // Gets a list of files with or without directory selection
+    //
+    // Token - String: Auth token
+    // Path  - String: Selection of files by catalog. All if not filled in (необяз. по ум. - Empty value)
+    метод GetFilesList(Token: Объект?, Path: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFilesList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SynchronizeFolders
+    // Creates a copy of the local directory at the selected path on the Neocities server
+    //
+    // Token        - String: Auth token
+    // LocalFolder  - String: Local source catalog
+    // RemoteFolder - String: Remote receiver catalog. Root by default (необяз. по ум. - Empty value)
+    метод SynchronizeFolders(Token: Объект?, LocalFolder: Объект?, RemoteFolder: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", LocalFolder)
+        Опции.Вставить("-r", RemoteFolder)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SynchronizeFolders", Опции)
+        
+    ;
+    
+;

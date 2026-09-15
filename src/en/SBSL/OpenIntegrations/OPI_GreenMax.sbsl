@@ -1,0 +1,722 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_GreenMax
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_GreenMax(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_GreenMax
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "greenmax"
+    
+    @Глобально
+    // Метод FormAccessParameters
+    // Forms the structure of basic authorization data
+    //
+    // ApiUrl           - String: API host link
+    // MediaUrl         - String: Link to host API for sending files
+    // IdInstance       - String: Unique instance number
+    // ApiTokenInstance - String: Instance access key
+    метод FormAccessParameters(ApiUrl: Объект?, MediaUrl: Объект?, IdInstance: Объект?, ApiTokenInstance: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", ApiUrl)
+        Опции.Вставить("-m", MediaUrl)
+        Опции.Вставить("-i", IdInstance)
+        Опции.Вставить("-t", ApiTokenInstance)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormAccessParameters", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetAccountInformation
+    // Gets account information
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetAccountInformation(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetAccountInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetInstanceSettings
+    // Gets the current instance settings
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetInstanceSettings(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetInstanceSettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetInstanceSettings
+    // Sets the instance settings
+    //
+    // Settings         - Structure Of KeyAndValue: Instance settings. See GetInstanceSettingsStructure
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод SetInstanceSettings(Settings: Объект?, AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", Settings)
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetInstanceSettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetAuthorizationCode
+    // Sends an SMS to the specified number to obtain a confirmation code
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // PhoneNumber      - String, Number: Phone number without +
+    метод GetAuthorizationCode(AccessParameters: Объект?, PhoneNumber: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-p", PhoneNumber)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetAuthorizationCode", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendAuthorizationCode
+    // Authorizes the instance using the access code from SMS
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // AuthCode         - String: Authorization code
+    метод SendAuthorizationCode(AccessParameters: Объект?, AuthCode: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", AuthCode)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendAuthorizationCode", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetInstanceStatus
+    // Gets instance status
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetInstanceStatus(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetInstanceStatus", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetProfilePicture
+    // Sets a new profile picture
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // Image            - BinaryData, String: Profile picture
+    метод SetProfilePicture(AccessParameters: Объект?, Image: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-p", Image)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetProfilePicture", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод LogoutInstance
+    // Unlogging the instance
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод LogoutInstance(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "LogoutInstance", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RebootInstance
+    // Restarts the instance
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод RebootInstance(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RebootInstance", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CheckAccount
+    // Checks the existence of a Max account by phone number
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // PhoneNumber      - String, Number: Phone number for verification without +
+    // IgnoreCache      - Boolean: Ignore cache on repeated verification request (необяз. по ум. - false)
+    метод CheckAccount(AccessParameters: Объект?, PhoneNumber: Объект?, IgnoreCache: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-p", PhoneNumber)
+        Опции.Вставить("-f", IgnoreCache)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CheckAccount", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetContactList
+    // Gets account contact list
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // Count            - Number: Contact count to retrieve. All if not specified (необяз. по ум. - Empty value)
+    метод GetContactList(AccessParameters: Объект?, Count: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", Count)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetContactList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetContactInformation
+    // Gets information about the selected contact
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat identifier
+    метод GetContactInformation(AccessParameters: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetContactInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatList
+    // Gets account chat list
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetChatList(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatAvatar
+    // Gets chat image URL
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat identifier
+    метод GetChatAvatar(AccessParameters: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatAvatar", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetInstanceSettingsStructure
+    // Gets the structure template for instance settings
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetInstanceSettingsStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetInstanceSettingsStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateGroup
+    // Creates a new group chat with the specified name
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // Name             - String: Group name
+    // Members          - Array Of String, String: Array of group member IDs or a single ID
+    метод CreateGroup(AccessParameters: Объект?, Name: Объект?, Members: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-m", Members)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateGroup", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetGroupInformation
+    // Gets information about the group chat
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    метод GetGroupInformation(AccessParameters: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetGroupInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UpdateGroupName
+    // Change group chat name
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // Name             - String: New chat name
+    метод UpdateGroupName(AccessParameters: Объект?, ChatID: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-n", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UpdateGroupName", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetGroupPicture
+    // Sets the image as the group chat avatar
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // Image            - String, BinaryData: Image in jpg format
+    метод SetGroupPicture(AccessParameters: Объект?, ChatID: Объект?, Image: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-p", Image)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetGroupPicture", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ChangeGroupSettings
+    // Changes selected group chat settings
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // Settings         - Structure Of KeyAndValue: Group chat settings. See GetGroupSettingsStructure
+    метод ChangeGroupSettings(AccessParameters: Объект?, ChatID: Объект?, Settings: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-s", Settings)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ChangeGroupSettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод AddGroupMember
+    // Adds a new member to the selected group chat
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // MemberID         - String: Member ID for addition
+    метод AddGroupMember(AccessParameters: Объект?, ChatID: Объект?, MemberID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MemberID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AddGroupMember", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RemoveGroupMember
+    // Removes a member from the selected group chat
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // MemberID         - String: Member ID for removal
+    метод RemoveGroupMember(AccessParameters: Объект?, ChatID: Объект?, MemberID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MemberID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RemoveGroupMember", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetAdminRights
+    // Assigns administrator rights to the specified group chat member
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // MemberID         - String: Member ID
+    метод SetAdminRights(AccessParameters: Объект?, ChatID: Объект?, MemberID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MemberID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetAdminRights", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RevokeAdminRights
+    // Revokes administrator rights from the specified group chat member
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    // MemberID         - String: Member ID
+    метод RevokeAdminRights(AccessParameters: Объект?, ChatID: Объект?, MemberID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MemberID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RevokeAdminRights", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод LeaveGroup
+    // Excludes the current account from the specified group
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Group chat ID
+    метод LeaveGroup(AccessParameters: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "LeaveGroup", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetGroupSettingsStructure
+    // Returns the structure of group chat settings fields
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    // AsMap - Boolean: True > returns settings fields as a mapping (необяз. по ум. - false)
+    метод GetGroupSettingsStructure(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        Опции.Вставить("-m", AsMap)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetGroupSettingsStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendTextMessage
+    // Sends a text message to the selected chat room
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat identifier
+    // Text             - String: Message text
+    // TypingTime       - Number: Time to show the typing indicator before sending (in ms.) (необяз. по ум. - Empty value)
+    метод SendTextMessage(AccessParameters: Объект?, ChatID: Объект?, Text: Объект?, TypingTime: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-t", Text)
+        Опции.Вставить("-p", TypingTime)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendTextMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendFile
+    // Sends the file to the selected chat room
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat identifier
+    // File             - String, BinaryData: File data or filepath
+    // FileName         - String: Name of the file with the extension
+    // Description      - String: Message text below the file (необяз. по ум. - Empty value)
+    // TypingTime       - Number: Time to show typing indicator before sending (in ms.) (необяз. по ум. - Empty value)
+    // TypingType       - String: Typing type: text, recording, video, image, file (необяз. по ум. - file)
+    метод SendFile(AccessParameters: Объект?, ChatID: Объект?, File: Объект?, FileName: Объект?, Description: Объект? = Неопределено, TypingTime: Объект? = Неопределено, TypingType: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-l", FileName)
+        Опции.Вставить("-p", Description)
+        Опции.Вставить("-t", TypingTime)
+        Опции.Вставить("-y", TypingType)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendFileByURL
+    // Sends a file from web to the selected chat room
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat identifier
+    // FileURL          - String: File URL
+    // FileName         - String: Name of the file with the extension
+    // Description      - String: Message text below the file (необяз. по ум. - Empty value)
+    // TypingTime       - Number: Time to show typing indicator before sending (in ms.) (необяз. по ум. - Empty value)
+    // TypingType       - String: Typing type: text, recording, video, image, file (необяз. по ум. - file)
+    метод SendFileByURL(AccessParameters: Объект?, ChatID: Объект?, FileURL: Объект?, FileName: Объект?, Description: Объект? = Неопределено, TypingTime: Объект? = Неопределено, TypingType: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", FileURL)
+        Опции.Вставить("-f", FileName)
+        Опции.Вставить("-p", Description)
+        Опции.Вставить("-t", TypingTime)
+        Опции.Вставить("-y", TypingType)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendFileByURL", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetNotification
+    // Gets the latest notification from the queue
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // Timeout          - Number: Timeout for waiting for a notification if the queue is empty (необяз. по ум. - 5)
+    // Delete           - Boolean: Delete notification from the queue after retrieval (необяз. по ум. - false)
+    метод GetNotification(AccessParameters: Объект?, Timeout: Объект? = Неопределено, Delete: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-t", Timeout)
+        Опции.Вставить("-d", Delete)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetNotification", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteNotification
+    // Deletes the specified notification from the queue
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // NotificationID   - Number: Notification ID
+    метод DeleteNotification(AccessParameters: Объект?, NotificationID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-i", NotificationID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteNotification", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatMessageHistory
+    // Gets the latest messages from the chat history
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat ID
+    // Count            - Number: Number of messages to receive (необяз. по ум. - 100)
+    метод GetChatMessageHistory(AccessParameters: Объект?, ChatID: Объект?, Count: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-n", Count)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatMessageHistory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatMessage
+    // Gets information about the chat message by ID
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat ID
+    // MessageID        - String: Message ID
+    метод GetChatMessage(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetIncomingMessageLog
+    // Gets the latest incoming messages of the instance
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // Period           - Number: Time in minutes for which messages need to be received (необяз. по ум. - 1440)
+    метод GetIncomingMessageLog(AccessParameters: Объект?, Period: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-s", Period)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetIncomingMessageLog", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetOutgoingMessageLog
+    // Gets the latest outgoing messages of the instance
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // Period           - Number: Time in minutes for which messages need to be received (необяз. по ум. - 1440)
+    метод GetOutgoingMessageLog(AccessParameters: Объект?, Period: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-s", Period)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetOutgoingMessageLog", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод MarkMessagesAsRead
+    // Marks messages in the chat as read
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    // ChatID           - String: Chat ID
+    // MessageID        - String: Message ID. All messages, unless specified (необяз. по ум. - Empty value)
+    метод MarkMessagesAsRead(AccessParameters: Объект?, ChatID: Объект?, MessageID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "MarkMessagesAsRead", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetOutgoingMessageCount
+    // Gets the number of messages in the outgoing queue
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetOutgoingMessageCount(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetOutgoingMessageCount", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetOutgoingMessageQueue
+    // Gets the list of messages to be sent
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetOutgoingMessageQueue(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetOutgoingMessageQueue", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ClearOutgoingMessageQueue
+    // Clears the list of messages to be sent
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод ClearOutgoingMessageQueue(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ClearOutgoingMessageQueue", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetIncomingNotificationCount
+    // Gets the number of notifications in the incoming queue
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод GetIncomingNotificationCount(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetIncomingNotificationCount", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ClearIncomingNotificationQueue
+    // Clears the incoming notification queue
+    //
+    // AccessParameters - Structure Of KeyAndValue: Access parameters. See FormAccessParameters
+    метод ClearIncomingNotificationQueue(AccessParameters: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", AccessParameters)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ClearIncomingNotificationQueue", Опции)
+        
+    ;
+    
+;

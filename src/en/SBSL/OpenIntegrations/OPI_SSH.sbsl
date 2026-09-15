@@ -1,0 +1,156 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_SSH
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_SSH(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_SSH
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "ssh"
+    
+    @Глобально
+    // Метод GetConnectionConfiguration
+    // Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
+    //
+    // SSHSettings - Structure Of KeyAndValue: SSH settings
+    // Proxy       - Structure Of KeyAndValue: Proxy settings, if required. See GetProxySettings (необяз. по ум. - Empty value)
+    метод GetConnectionConfiguration(SSHSettings: Объект?, Proxy: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", SSHSettings)
+        Опции.Вставить("-p", Proxy)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionConfiguration", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ExecuteCommand
+    // Executes the specified command
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Command    - String: Command text
+    метод ExecuteCommand(Connection: Объект?, Command: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-m", Command)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteCommand", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetSettingsLoginPassword
+    // password)
+    //
+    // Host     - String: SSH host
+    // Port     - Number: SSH port
+    // Login    - String: SSH username
+    // Password - String: SSH user password (необяз. по ум. - Empty value)
+    метод GetSettingsLoginPassword(Host: Объект?, Port: Объект?, Login: Объект?, Password: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-h", Host)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-u", Login)
+        Опции.Вставить("-s", Password)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSettingsLoginPassword", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetSettingsPrivateKey
+    // Gets connection settings with private key authentication
+    //
+    // Host     - String: SSH host
+    // Port     - Number: SSH port
+    // Login    - String: SSH username
+    // Private  - String: Path to private key file
+    // Public   - String: Path to public key file (необяз. по ум. - Empty value)
+    // Password - String: Private key password (passphrase) (необяз. по ум. - Empty value)
+    метод GetSettingsPrivateKey(Host: Объект?, Port: Объект?, Login: Объект?, Private: Объект?, Public: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-h", Host)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-u", Login)
+        Опции.Вставить("-k", Private)
+        Опции.Вставить("-b", Public)
+        Опции.Вставить("-s", Password)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSettingsPrivateKey", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetSettingsViaAgent
+    // Gets connection settings with SSH Agent authentication
+    //
+    // Host  - String: SSH host
+    // Port  - Number: SSH port
+    // Login - String: SSH username
+    метод GetSettingsViaAgent(Host: Объект?, Port: Объект?, Login: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-h", Host)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-u", Login)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSettingsViaAgent", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetSettingsKI
+    // Retrieves connection settings for keyboard-interactive authentication
+    //
+    // Host       - String: SSH host
+    // Port       - Number: SSH port
+    // Login      - String: SSH username
+    // InputOrder - Array Of String: Array of responses to server questions
+    метод GetSettingsKI(Host: Объект?, Port: Объект?, Login: Объект?, InputOrder: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-h", Host)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-u", Login)
+        Опции.Вставить("-r", InputOrder)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSettingsKI", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetProxySettings
+    // Creates a structure of proxy server settings for the connection
+    //
+    // Address  - String: Proxy address
+    // Port     - Number: Proxy port
+    // View     - String: Proxy type: socks5, socks4, http (необяз. по ум. - socks5)
+    // Login    - String, Undefined: Authorization login, if required (необяз. по ум. - Empty value)
+    // Password - String, Undefined: Authorization password, if required (необяз. по ум. - Empty value)
+    метод GetProxySettings(Address: Объект?, Port: Объект?, View: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Address)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-t", View)
+        Опции.Вставить("-l", Login)
+        Опции.Вставить("-s", Password)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetProxySettings", Опции)
+        
+    ;
+    
+;

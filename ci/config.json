@@ -334,7 +334,7 @@
                             },
                             "sbslModules": {
                                 "description": "SBSL modules path",
-                                "value": "./src/ru/SBSL/OpenIntegrations/"
+                                "value": "./src/en/SBSL/OpenIntegrations/"
                             }
                         }
                     }

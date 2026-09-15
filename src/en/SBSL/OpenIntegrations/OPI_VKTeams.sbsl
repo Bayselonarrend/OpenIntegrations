@@ -1,0 +1,568 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_VKTeams
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_VKTeams(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_VKTeams
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "vkteams"
+    
+    @Глобально
+    // Метод CheckToken
+    // Checks if the bot token is functional
+    //
+    // Token - String: Bot token
+    метод CheckToken(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CheckToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEvents
+    // Receives bot events in Polling mode
+    //
+    // Token   - String: Bot token
+    // LastID  - String, Number: ID of the last event processed before this event
+    // Timeout - String, Number: Connection hold time for Long Polling (необяз. по ум. - Empty value)
+    метод GetEvents(Token: Объект?, LastID: Объект?, Timeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", LastID)
+        Опции.Вставить("-m", Timeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEvents", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFileInformation
+    // Gets information about a file by ID
+    //
+    // Token  - String: Bot token
+    // FileID - String, Number: File ID
+    метод GetFileInformation(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFileInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendTextMessage
+    // Sends a text message to a chat
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Chat ID for message sending
+    // Text     - String: Message text
+    // ReplyID  - String, Number: Replying message id if necessary (необяз. по ум. - Empty value)
+    // Keyboard - Array Of String: Buttons to the message if necessary (необяз. по ум. - Empty value)
+    // Markup   - String: Markup type for message text: MarkdownV2 or HTML (необяз. по ум. - MarkdownV2)
+    метод SendTextMessage(Token: Объект?, ChatID: Объект?, Text: Объект?, ReplyID: Объект? = Неопределено, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-r", ReplyID)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendTextMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendFile
+    // Sends the file to the chat
+    //
+    // Token       - String: Bot token
+    // ChatID      - String, Number: Chat ID for sending
+    // File        - BinaryData, String: File for sending
+    // Text        - String: File caption (необяз. по ум. - Empty value)
+    // FileName    - String: Displayed file name (необяз. по ум. - Empty value)
+    // Markup      - String: Markup type for message text: MarkdownV2 or HTML (необяз. по ум. - MarkdownV2)
+    // ContentType - String: Content type for sending (необяз. по ум. - image/jpeg)
+    метод SendFile(Token: Объект?, ChatID: Объект?, File: Объект?, Text: Объект? = Неопределено, FileName: Объект? = Неопределено, Markup: Объект? = Неопределено, ContentType: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-l", FileName)
+        Опции.Вставить("-p", Markup)
+        Опции.Вставить("-y", ContentType)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendVoice
+    // Sends an audio file as a voice message
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Chat ID for sending
+    // File     - BinaryData, String: File for sending
+    // FileType - String: Audio type: aac, ogg or m4a (необяз. по ум. - m4a)
+    // ReplyID  - String, Number: Replying message id if necessary (необяз. по ум. - Empty value)
+    // Keyboard - Array Of String: Buttons to the message if necessary (необяз. по ум. - Empty value)
+    метод SendVoice(Token: Объект?, ChatID: Объект?, File: Объект?, FileType: Объект? = Неопределено, ReplyID: Объект? = Неопределено, Keyboard: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-p", FileType)
+        Опции.Вставить("-r", ReplyID)
+        Опции.Вставить("-k", Keyboard)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendVoice", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditMessageText
+    // Changes the text of an existing message
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Chat ID for message sending
+    // MessageID - String, Number: Message ID for editing
+    // Text      - String: New message text
+    // Markup    - String: Markup type for message text: MarkdownV2 or HTML (необяз. по ум. - MarkdownV2)
+    метод EditMessageText(Token: Объект?, ChatID: Объект?, MessageID: Объект?, Text: Объект?, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditMessageText", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteMessage
+    // Deletes a message by ID
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Chat ID for message sending
+    // MessageID - String, Number: Message ID for editing
+    метод DeleteMessage(Token: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ResendFile
+    // Sends a previously uploaded file by ID
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID for sending
+    // FileID - String, Number: File ID to send
+    // Text   - String: File caption (необяз. по ум. - Empty value)
+    // Markup - String: Markup type for message text: MarkdownV2 or HTML (необяз. по ум. - MarkdownV2)
+    метод ResendFile(Token: Объект?, ChatID: Объект?, FileID: Объект?, Text: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-f", FileID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ResendFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ResendVoice
+    // Sends a previously uploaded voice message by ID
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID for sending
+    // FileID - String, Number: File ID of voice message
+    метод ResendVoice(Token: Объект?, ChatID: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ResendVoice", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ForwardMessage
+    // Forwards an existing message to the current dialog box
+    //
+    // Token      - String: Bot token
+    // MessageID  - String, Number: Original message ID
+    // FromChatID - String, Number: Source chat ID
+    // ChatID     - String, Number: Chat ID for message sending
+    // Text       - String: Additional message text (необяз. по ум. - Empty value)
+    метод ForwardMessage(Token: Объект?, MessageID: Объект?, FromChatID: Объект?, ChatID: Объект?, Text: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", MessageID)
+        Опции.Вставить("-f", FromChatID)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ForwardMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PinMessage
+    // Pins the selected message in the chat room
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Chat ID
+    // MessageID - String, Number: ID of the message to be pinned
+    метод PinMessage(Token: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PinMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UnpinMessage
+    // Unpins a previously pinned chat message
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Chat ID
+    // MessageID - String, Number: ID of the message to be unpinned
+    метод UnpinMessage(Token: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UnpinMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод AnswerButtonEvent
+    // Returns a response to the user when a keyboard button is pressed
+    //
+    // Token   - String: Bot token
+    // EventID - String: Identifier of the callback query received by the bot
+    // Text    - String: Answer text (необяз. по ум. - Empty value)
+    // URL     - String: URL to be opened by the client application (необяз. по ум. - Empty value)
+    // AsAlert - Boolean: Display the answer as an alert) (необяз. по ум. - false)
+    метод AnswerButtonEvent(Token: Объект?, EventID: Объект?, Text: Объект? = Неопределено, URL: Объект? = Неопределено, AsAlert: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-q", EventID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-s", AsAlert)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AnswerButtonEvent", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод MakeActionButton
+    // Forms an action button for the message keyboard
+    //
+    // Text  - String: Button text
+    // Value - String: The value returned in the event. Only if the URL is not filled (необяз. по ум. - Empty value)
+    // URL   - String: URL to create the page open button. Only if the Value is not filled in (необяз. по ум. - Empty value)
+    // Style - String: Button style: primary, attention or base (необяз. по ум. - base)
+    метод MakeActionButton(Text: Объект?, Value: Объект? = Неопределено, URL: Объект? = Неопределено, Style: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Text)
+        Опции.Вставить("-d", Value)
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-s", Style)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "MakeActionButton", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RemoveChatMembers
+    // Removes users from the chat
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // Users  - String, Number, Array of String, Number: The member or members of the chat room to remove
+    метод RemoveChatMembers(Token: Объект?, ChatID: Объект?, Users: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", Users)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RemoveChatMembers", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ChangeChatPicture
+    // Changes the chat avatar picture
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // File   - BinaryData, String: Image file
+    метод ChangeChatPicture(Token: Объект?, ChatID: Объект?, File: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-f", File)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ChangeChatPicture", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatInfo
+    // Gets basic information about the chat
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    метод GetChatInfo(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatInfo", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatAdmins
+    // Gets the list of chat administrators
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    метод GetChatAdmins(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatAdmins", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatMembers
+    // Gets the list of chat members
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // Cursor - String: Next page marker from the previous request (необяз. по ум. - Empty value)
+    метод GetChatMembers(Token: Объект?, ChatID: Объект?, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-r", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatMembers", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatBlockedUsers
+    // Gets the list of blocked chat users
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    метод GetChatBlockedUsers(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatBlockedUsers", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChatJoinRequests
+    // Gets a list of requests to join the chat room
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    метод GetChatJoinRequests(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChatJoinRequests", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод BlockChatUser
+    // Blocks the selected user in chat
+    //
+    // Token              - String: Bot token
+    // ChatID             - String, Number: Chat ID
+    // UserID             - String, Number: User ID to be blocked
+    // DeleteLastMessages - Boolean: Delete last messages before blocking (необяз. по ум. - false)
+    метод BlockChatUser(Token: Объект?, ChatID: Объект?, UserID: Объект?, DeleteLastMessages: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", UserID)
+        Опции.Вставить("-d", DeleteLastMessages)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "BlockChatUser", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UnblockChatUser
+    // Unblocks a previously blocked user in the chat room
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // UserID - String, Number: User ID
+    метод UnblockChatUser(Token: Объект?, ChatID: Объект?, UserID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UnblockChatUser", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ApprovePending
+    // Confirms the user's request to join a private chat room
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // UserID - String, Number: User ID. For all active requests if not filled in (необяз. по ум. - Empty value)
+    метод ApprovePending(Token: Объект?, ChatID: Объект?, UserID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ApprovePending", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DisapprovePending
+    // Rejects the user's request to join a private chat room
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // UserID - String, Number: User ID. For all active requests if not filled in (необяз. по ум. - Empty value)
+    метод DisapprovePending(Token: Объект?, ChatID: Объект?, UserID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DisapprovePending", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetChatTitle
+    // Sets new chat title
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // Text   - String: Title text
+    метод SetChatTitle(Token: Объект?, ChatID: Объект?, Text: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetChatTitle", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetChatDescription
+    // Sets new chat description
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // Text   - String: Description text
+    метод SetChatDescription(Token: Объект?, ChatID: Объект?, Text: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetChatDescription", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetChatRules
+    // Sets new chat rules
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Chat ID
+    // Text   - String: Rules Text
+    метод SetChatRules(Token: Объект?, ChatID: Объект?, Text: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetChatRules", Опции)
+        
+    ;
+    
+;

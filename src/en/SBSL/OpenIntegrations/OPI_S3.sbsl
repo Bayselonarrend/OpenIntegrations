@@ -1,0 +1,750 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_S3
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_S3(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_S3
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "s3"
+    
+    @Глобально
+    // Метод GetBasicDataStructure
+    // Returns the basic data for request in structured form
+    //
+    // URL       - String: URL: domain for common methods or full URL with parameters for direct request sending
+    // AccessKey - String: Access key for authorization
+    // SecretKey - String: Secret key for authorization
+    // Region    - String: Service region
+    // Service   - String: Type of service, if different from s3 (необяз. по ум. - s3)
+    метод GetBasicDataStructure(URL: Объект?, AccessKey: Объект?, SecretKey: Объект?, Region: Объект?, Service: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-a", AccessKey)
+        Опции.Вставить("-s", SecretKey)
+        Опции.Вставить("-r", Region)
+        Опции.Вставить("-v", Service)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetBasicDataStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendRequestWithoutBody
+    // Sends a simple http request without a body
+    //
+    // Method         - String: HTTP method
+    // BasicData      - Structure Of KeyAndValue: Basic request data (with full URL). See GetBasicDataStructure
+    // ExpectedBinary - Boolean: Disables an attempt to convert the response to JSON (необяз. по ум. - false)
+    // Headers        - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод SendRequestWithoutBody(Method: Объект?, BasicData: Объект?, ExpectedBinary: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", Method)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-n", ExpectedBinary)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendRequestWithoutBody", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendRequestWithBody
+    // Send http request with body
+    //
+    // Method         - String: HTTP method
+    // BasicData      - Structure Of KeyAndValue: Basic request data (with full URL). See GetBasicDataStructure
+    // Body           - String, BinaryData: Binary data or file of request body data
+    // ExpectedBinary - Boolean: Disables an attempt to convert the response to JSON (необяз. по ум. - false)
+    // Headers        - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод SendRequestWithBody(Method: Объект?, BasicData: Объект?, Body: Объект?, ExpectedBinary: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-m", Method)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Body)
+        Опции.Вставить("-n", ExpectedBinary)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendRequestWithBody", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateBucket
+    // Creates a new bucket with the specified name
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод CreateBucket(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateBucket", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteBucket
+    // Deletes the bucket by name
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DeleteBucket(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteBucket", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод HeadBucket
+    // Checks if the bucket is available for the current account or account by ID
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // AccountID - String: Account ID to verify that hes the bucket owner (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод HeadBucket(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, AccountID: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-a", AccountID)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "HeadBucket", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PutBucketEncryption
+    // Sets bucket encryption by XML configuration
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // XmlConfig - String: XML string or file of encryption configuration
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод PutBucketEncryption(Name: Объект?, BasicData: Объект?, XmlConfig: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-c", XmlConfig)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PutBucketEncryption", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetBucketEncryption
+    // Gets the previously set bucket encryption configuration
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetBucketEncryption(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetBucketEncryption", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteBucketEncryption
+    // Deletes the bucket encryption configuration
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DeleteBucketEncryption(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteBucketEncryption", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PutBucketTagging
+    // Sets the tag set for the bucket
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Tags      - Structure Of KeyAndValue: Set of tags (key and value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод PutBucketTagging(Name: Объект?, BasicData: Объект?, Tags: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-t", Tags)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PutBucketTagging", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetBucketTagging
+    // Gets the bucket tag set
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetBucketTagging(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetBucketTagging", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteBucketTagging
+    // Deletes the bucket tag set
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DeleteBucketTagging(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteBucketTagging", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PutBucketVersioning
+    // Sets the versioning settings for bucket objects
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Status    - Boolean: Enable and disable versioning, if necessary (необяз. по ум. - Empty value)
+    // MFADelete - Boolean: Enable and disable MFA deletion, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод PutBucketVersioning(Name: Объект?, BasicData: Объект?, Status: Объект? = Неопределено, MFADelete: Объект? = Неопределено, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-s", Status)
+        Опции.Вставить("-m", MFADelete)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PutBucketVersioning", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetBucketVersioning
+    // Gets the values of versioning settings of objects in the bucket
+    //
+    // Name      - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetBucketVersioning(Name: Объект?, BasicData: Объект?, Directory: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-d", Directory)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetBucketVersioning", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ListBuckets
+    // Gets a list of buckets. It is possible to use filters if they are provided by your service
+    //
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Prefix    - String: Filtering by prefix, if necessary (необяз. по ум. - Empty value)
+    // Region    - String: Selection by bucket region, if necessary (необяз. по ум. - Empty value)
+    // PageToken - String: Page token if pagination is used (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод ListBuckets(BasicData: Объект?, Prefix: Объект? = Неопределено, Region: Объект? = Неопределено, PageToken: Объект? = Неопределено, Headers: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-b", BasicData)
+        Опции.Вставить("-p", Prefix)
+        Опции.Вставить("-r", Region)
+        Опции.Вставить("-c", PageToken)
+        Опции.Вставить("-h", Headers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ListBuckets", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PutObject
+    // Uploads the file to the bucket
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // Entity    - String, BinaryData: File path or binary data of the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод PutObject(Name: Объект?, Bucket: Объект?, Entity: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-d", Entity)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-r", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PutObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFullObject
+    // Upload object with single request
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // Entity    - String, BinaryData: File path or binary data of the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод UploadFullObject(Name: Объект?, Bucket: Объект?, Entity: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-d", Entity)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-r", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFullObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод InitPartsUpload
+    // Initializes the multipart object uploading
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод InitPartsUpload(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "InitPartsUpload", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadObjectPart
+    // Uploads a part of an object for multipart uploading
+    //
+    // Name       - String: Name of the object in the bucket
+    // Bucket     - String: Name of the bucket to put the object
+    // BasicData  - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // UploadID   - String: Upload ID. See InitPartsUpload
+    // PartNumber - Number, String: Number of the object part from 1 to 10000
+    // Data       - BinaryData, String: Part content for uploading
+    // Directory  - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод UploadObjectPart(Name: Объект?, Bucket: Объект?, BasicData: Объект?, UploadID: Объект?, PartNumber: Объект?, Data: Объект?, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-u", UploadID)
+        Опции.Вставить("-p", PartNumber)
+        Опции.Вставить("-c", Data)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadObjectPart", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод FinishPartsUpload
+    // Confirms the multipart uploading finish
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // UploadID  - String: Upload ID. See InitPartsUpload
+    // TagsArray - Array Of String: An array of tags (Etag) from the uploads responses of each part
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод FinishPartsUpload(Name: Объект?, Bucket: Объект?, BasicData: Объект?, UploadID: Объект?, TagsArray: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-u", UploadID)
+        Опции.Вставить("-t", TagsArray)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FinishPartsUpload", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод AbortMultipartUpload
+    // Aborts the multipart uploading of the object
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // UploadID  - String: Upload ID. See InitPartsUpload
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод AbortMultipartUpload(Name: Объект?, Bucket: Объект?, BasicData: Объект?, UploadID: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-u", UploadID)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AbortMultipartUpload", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод HeadObject
+    // Receives information about the properties of the object in the baquette
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket in which the object is stored
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Version   - String: Token for receiving a specific version of an object (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод HeadObject(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "HeadObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetObject
+    // Gets the contents of the object from the bucket
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket in which the object is stored
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Version   - String: Token for receiving a specific version of an object (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // SavePath  - String: Path to directly write a file to disk (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод GetObject(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, SavePath: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("", SavePath)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteObject
+    // Removes the object from the bucket
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Version   - String: Token for deleting a specific version of an object (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод DeleteObject(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CopyObject
+    // Copies an object from one location to another
+    //
+    // SourcePath        - String: Path (name) in the source bucket
+    // DestinationBucket - String: Source bucket name
+    // DestinationPath   - String: Path (name) in the destination bucket
+    // SourceBucket      - String: Destination bucket name
+    // BasicData         - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Headers           - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory         - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод CopyObject(SourcePath: Объект?, DestinationBucket: Объект?, DestinationPath: Объект?, SourceBucket: Объект?, BasicData: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", SourcePath)
+        Опции.Вставить("-b", DestinationBucket)
+        Опции.Вставить("-n", DestinationPath)
+        Опции.Вставить("-c", SourceBucket)
+        Опции.Вставить("-a", BasicData)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CopyObject", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PutObjectTagging
+    // Sets the tag set of the object
+    //
+    // Name      - String: Object name
+    // Bucket    - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Tags      - Structure Of KeyAndValue: Set of tags (key and value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод PutObjectTagging(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Tags: Объект?, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-t", Tags)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PutObjectTagging", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetObjectTagging
+    // Gets the tag set of the object
+    //
+    // Name      - String: Object name
+    // Bucket    - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Version   - String: Token for retrieving data of a specific version of an object (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод GetObjectTagging(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetObjectTagging", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteObjectTagging
+    // Deletes an objects tag set
+    //
+    // Name      - String: Object name
+    // Bucket    - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Version   - String: Token for deleting data of a specific version of an object (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод DeleteObjectTagging(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteObjectTagging", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ListObjects
+    // Gets the list of objects in the selected bucket
+    //
+    // Bucket    - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Prefix    - String: Filtering by prefix, if necessary (необяз. по ум. - Empty value)
+    // PageToken - String: Page token if pagination is used (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод ListObjects(Bucket: Объект?, BasicData: Объект?, Prefix: Объект? = Неопределено, PageToken: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-p", Prefix)
+        Опции.Вставить("-c", PageToken)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ListObjects", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ListObjectVersions
+    // Gets a list of all versions of objects in the selected bucket
+    //
+    // Bucket    - String: Bucket name
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Prefix    - String: Filtering by prefix, if necessary (необяз. по ум. - Empty value)
+    // Version   - String: Version ID for the beginning of the list (необяз. по ум. - Empty value)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод ListObjectVersions(Bucket: Объект?, BasicData: Объект?, Prefix: Объект? = Неопределено, Version: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-p", Prefix)
+        Опции.Вставить("-v", Version)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ListObjectVersions", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetObjectDownloadLink
+    // Get presigned link for object retrieving without authorization
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Expire    - String, Number: Link lifetime in seconds. 604800 max. (необяз. по ум. - 3600)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод GetObjectDownloadLink(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Expire: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-e", Expire)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetObjectDownloadLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetObjectUploadLink
+    // Gets a direct link to upload (put) an object without additional authorization
+    //
+    // Name      - String: Name of the object in the bucket
+    // Bucket    - String: Name of the bucket to put the object
+    // BasicData - Structure Of KeyAndValue: Basic request data. See GetBasicDataStructure
+    // Expire    - String, Number: Link lifetime in seconds. 604800 max. (необяз. по ум. - 3600)
+    // Headers   - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    // Directory - Boolean: True > Path style URL, False > Virtual hosted style URL (необяз. по ум. - false)
+    метод GetObjectUploadLink(Name: Объект?, Bucket: Объект?, BasicData: Объект?, Expire: Объект? = Неопределено, Headers: Объект? = Неопределено, Directory: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-b", Bucket)
+        Опции.Вставить("-s", BasicData)
+        Опции.Вставить("-e", Expire)
+        Опции.Вставить("-h", Headers)
+        Опции.Вставить("-d", Directory)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetObjectUploadLink", Опции)
+        
+    ;
+    
+;

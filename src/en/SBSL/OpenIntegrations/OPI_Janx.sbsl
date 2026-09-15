@@ -1,0 +1,48 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Janx
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Janx(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Janx
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "janx"
+    
+    @Глобально
+    // Метод SerializeData
+    // Serializes data into Janx format
+    //
+    // Data - Arbitrary: Collection for serialization
+    метод SerializeData(Data: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Data)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SerializeData", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeserializeData
+    // Deserializes data from Janx format
+    //
+    // Data - BinaryData: Serialized value
+    метод DeserializeData(Data: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-d", Data)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeserializeData", Опции)
+        
+    ;
+    
+;

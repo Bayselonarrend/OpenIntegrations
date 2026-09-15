@@ -1,0 +1,344 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_FTP
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_FTP(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_FTP
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "ftp"
+    
+    @Глобально
+    // Метод GetConnectionConfiguration
+    // Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
+    //
+    // FTPSettings - Structure Of KeyAndValue: FTP settings. See GetConnectionSettings
+    // Proxy       - Structure Of KeyAndValue: Proxy settings, if required. See GetProxySettings (необяз. по ум. - Empty value)
+    // Tls         - Structure Of KeyAndValue: TLS settings, if necessary. See GetTlsSettings (необяз. по ум. - Empty value)
+    метод GetConnectionConfiguration(FTPSettings: Объект?, Proxy: Объект? = Неопределено, Tls: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-s", FTPSettings)
+        Опции.Вставить("-p", Proxy)
+        Опции.Вставить("-t", Tls)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionConfiguration", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetWelcomeMessage
+    // Receives the FTP servers welcome message
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    метод GetWelcomeMessage(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetWelcomeMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetProtocolFeatureList
+    // Gets a list of FTP protocol features supported by the server
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    метод GetProtocolFeatureList(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetProtocolFeatureList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Ping
+    // Checks the connection activity and resets the timeout until its automatic closure
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    метод Ping(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Ping", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ExecuteCustomCommand
+    // Executes a specific (SITE) server command and returns the response
+    //
+    // Connection  - Arbitrary: Existing connection or connection configuration
+    // CommandText - String: Text of the executed command
+    метод ExecuteCustomCommand(Connection: Объект?, CommandText: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-m", CommandText)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteCustomCommand", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ExecuteArbitraryCommand
+    // Sends an arbitrary text request to the server for processing
+    //
+    // Connection  - Arbitrary: Existing connection or connection configuration
+    // CommandText - String: Text of the executed command
+    метод ExecuteArbitraryCommand(Connection: Объект?, CommandText: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-m", CommandText)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteArbitraryCommand", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetObjectSize
+    // Get the size of a file or directory if it exists
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Path to the object
+    метод GetObjectSize(Connection: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetObjectSize", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UpdatePath
+    // Changes the object's path to the specified one
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Current path to object
+    // NewPath    - String: New path to object
+    метод UpdatePath(Connection: Объект?, Path: Объект?, NewPath: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-o", Path)
+        Опции.Вставить("-n", NewPath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UpdatePath", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetConnectionSettings
+    // Creates a structure of FTP connection settings
+    //
+    // Host         - String: Host address
+    // Port         - Number: Server port (необяз. по ум. - 21)
+    // Login        - String, Undefined: Username for authorization, if required (необяз. по ум. - Empty value)
+    // Password     - String, Undefined: User password for authorization, if required (необяз. по ум. - Empty value)
+    // Passive      - Boolean: Passive connection mode (необяз. по ум. - true)
+    // ReadTimeout  - Number: Read timeout (необяз. по ум. - 120)
+    // WriteTimeout - Number: Write timeout (необяз. по ум. - 120)
+    // IPResolve    - Boolean: Advanced passive mode address resolution (необяз. по ум. - true)
+    метод GetConnectionSettings(Host: Объект?, Port: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено, Passive: Объект? = Неопределено, ReadTimeout: Объект? = Неопределено, WriteTimeout: Объект? = Неопределено, IPResolve: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-h", Host)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-l", Login)
+        Опции.Вставить("-s", Password)
+        Опции.Вставить("-v", Passive)
+        Опции.Вставить("-r", ReadTimeout)
+        Опции.Вставить("-w", WriteTimeout)
+        Опции.Вставить("-i", IPResolve)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionSettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetProxySettings
+    // Creates a structure of proxy server settings for the connection
+    //
+    // Address  - String: Proxy address
+    // Port     - Number: Proxy port
+    // View     - String: Proxy type: socks5, socks4, http (необяз. по ум. - socks5)
+    // Login    - String, Undefined: Authorization login, if required (необяз. по ум. - Empty value)
+    // Password - String, Undefined: Authorization password, if required (необяз. по ум. - Empty value)
+    метод GetProxySettings(Address: Объект?, Port: Объект?, View: Объект? = Неопределено, Login: Объект? = Неопределено, Password: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Address)
+        Опции.Вставить("-p", Port)
+        Опции.Вставить("-t", View)
+        Опции.Вставить("-l", Login)
+        Опции.Вставить("-s", Password)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetProxySettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTlsSettings
+    // Forms settings for using TLS
+    //
+    // DisableCertVerification - Boolean: Allows to work with invalid certificates, including self signed
+    // CertFilepath            - String: Path to the root PEM file of the certificate if it is not in the system repository (необяз. по ум. - Empty value)
+    метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", DisableCertVerification)
+        Опции.Вставить("-c", CertFilepath)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTlsSettings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ListObjects
+    // Gets information about the contents of a directory at the specified path
+    //
+    // Connection  - Arbitrary: Existing connection or connection configuration
+    // Path        - String: Path to search directory (необяз. по ум. - Empty value)
+    // Recursively - Boolean: Get information about objects in nested directories (необяз. по ум. - false)
+    метод ListObjects(Connection: Объект?, Path: Объект? = Неопределено, Recursively: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        Опции.Вставить("-r", Recursively)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ListObjects", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateNewDirectory
+    // Creates a directory at the specified path
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Path to new directory
+    метод CreateNewDirectory(Connection: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateNewDirectory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteDirectory
+    // Deletes an existing directory
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Path to directory to delete
+    метод DeleteDirectory(Connection: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteDirectory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ClearDirectory
+    // Deletes all objects in the selected directory
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Path to the directory to be cleaned
+    метод ClearDirectory(Connection: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ClearDirectory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCurrentDirectory
+    // Gets the current directory from which relative paths are calculated
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    метод GetCurrentDirectory(Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCurrentDirectory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFile
+    // Uploads a file from disk or binary data to the FTP server
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // File       - String, BinaryData: File on disk or file data
+    // Path       - String: Path to save file on server
+    метод UploadFile(Connection: Объект?, File: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteFile
+    // Delete file from server
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Path to file on server
+    метод DeleteFile(Connection: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SaveFile
+    // Saves the file from the server to the specified path
+    //
+    // Connection - Arbitrary: Existing connection or connection configuration
+    // Path       - String: Path to file on server
+    // FileName   - String: Path to save file on disk
+    метод SaveFile(Connection: Объект?, Path: Объект?, FileName: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-c", Connection)
+        Опции.Вставить("-p", Path)
+        Опции.Вставить("-f", FileName)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SaveFile", Опции)
+        
+    ;
+    
+;

@@ -1,0 +1,124 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_RSS
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_RSS(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_RSS
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "rss"
+    
+    @Глобально
+    // Метод CreateFeedRSS
+    // Creates RSS feed text
+    //
+    // ChannelTitle       - String: Channel title
+    // ChannelDescription - String: Channel description
+    // ChannelLink        - String: Channel link
+    // Items              - Array of Structure: Feed items. See GetFeedItemStructureRSS
+    // UpdateDate         - Date, Undefined: Update date. Current if not filled (необяз. по ум. - Empty value)
+    метод CreateFeedRSS(ChannelTitle: Объект?, ChannelDescription: Объект?, ChannelLink: Объект?, Items: Объект?, UpdateDate: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", ChannelTitle)
+        Опции.Вставить("-d", ChannelDescription)
+        Опции.Вставить("-l", ChannelLink)
+        Опции.Вставить("-i", Items)
+        Опции.Вставить("-t", UpdateDate)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateFeedRSS", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFeedItemStructureRSS
+    // Gets the structure of parameters for an RSS feed item
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    // AsMap - Boolean: True > returns fields as map (необяз. по ум. - false)
+    метод GetFeedItemStructureRSS(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        Опции.Вставить("-m", AsMap)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFeedItemStructureRSS", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ParseFeedRSS
+    // Parses the XML of an RSS feed and returns a structure with channel data and items
+    //
+    // XMLText - String: XML content of RSS feed
+    метод ParseFeedRSS(XMLText: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-x", XMLText)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ParseFeedRSS", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateFeedAtom
+    // Creates the text of an Atom feed
+    //
+    // FeedTitle  - String: Feed title
+    // FeedLink   - String: Feed URL
+    // FeedID     - String: Feed unique identifier (usually a URL)
+    // Items      - Array of Structure: Feed items. See GetFeedItemStructureAtom
+    // UpdateDate - Date, Undefined: Update date. Current if not filled (необяз. по ум. - Empty value)
+    метод CreateFeedAtom(FeedTitle: Объект?, FeedLink: Объект?, FeedID: Объект?, Items: Объект?, UpdateDate: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-n", FeedTitle)
+        Опции.Вставить("-l", FeedLink)
+        Опции.Вставить("-i", FeedID)
+        Опции.Вставить("-t", Items)
+        Опции.Вставить("-d", UpdateDate)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateFeedAtom", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFeedItemStructureAtom
+    // Gets the structure of parameters of an Atom feed item
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    // AsMap - Boolean: True > returns fields as map (необяз. по ум. - false)
+    метод GetFeedItemStructureAtom(Clear: Объект? = Неопределено, AsMap: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        Опции.Вставить("-m", AsMap)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFeedItemStructureAtom", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ParseFeedAtom
+    // Parses the XML of an Atom feed and returns a structure with feed data and items
+    //
+    // XMLText - String: XML content of Atom feed
+    метод ParseFeedAtom(XMLText: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-x", XMLText)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ParseFeedAtom", Опции)
+        
+    ;
+    
+;

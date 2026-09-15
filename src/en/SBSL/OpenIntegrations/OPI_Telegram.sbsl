@@ -1,0 +1,744 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Telegram
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Telegram(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Telegram
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "telegram"
+    
+    @Глобально
+    // Метод GetBotInformation
+    // Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..
+    //
+    // Token - String: Bot token
+    метод GetBotInformation(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetBotInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetUpdates
+    // Executes a request, returning information about bot events. Used in polling mode
+    //
+    // Token   - String: Bot token
+    // Timeout - Number: Waiting time for new events (необяз. по ум. - Empty value)
+    // Offset  - Number: Offset in the list of received messages (необяз. по ум. - Empty value)
+    метод GetUpdates(Token: Объект?, Timeout: Объект? = Неопределено, Offset: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", Timeout)
+        Опции.Вставить("-o", Offset)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetUpdates", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetWebhook
+    // Set webhook URL for bot event handling in webhook mode
+    //
+    // Token - String: Bot token
+    // URL   - String: Request handling address from Telegram (with https:)
+    метод SetWebhook(Token: Объект?, URL: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", URL)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetWebhook", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteWebhook
+    // Deletes the bot event handler URL for webhook operation
+    //
+    // Token - String: Bot token
+    метод DeleteWebhook(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteWebhook", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DownloadFile
+    // Download file from Telegram servers
+    //
+    // Token  - String: Token
+    // FileID - String: File ID for downloading
+    метод DownloadFile(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DownloadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendTextMessage
+    // Sends a text message to a chat or channel
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Target chat ID or ChatID*TopicID
+    // Text      - String: Message text
+    // Keyboard  - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup    - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    // RepliedID - String, Number: Reply to message ID (необяз. по ум. - Empty value)
+    метод SendTextMessage(Token: Объект?, ChatID: Объект?, Text: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено, RepliedID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        Опции.Вставить("-r", RepliedID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendTextMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendImage
+    // Sends an image to a chat or channel
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Target chat ID or ChatID*TopicID
+    // Text     - String: Message text
+    // Image    - BinaryData, String: Image file
+    // Keyboard - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup   - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    метод SendImage(Token: Объект?, ChatID: Объект?, Text: Объект?, Image: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-p", Image)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-r", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendImage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendVideo
+    // Sends a video to a chat or channel
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Target chat ID or ChatID*TopicID
+    // Text     - String: Message text
+    // Video    - BinaryData, String: Video file
+    // Keyboard - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup   - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    метод SendVideo(Token: Объект?, ChatID: Объект?, Text: Объект?, Video: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-v", Video)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendVideo", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendAudio
+    // Sends an audio file to a chat or channel
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Target chat ID or ChatID*TopicID
+    // Text     - String: Message text
+    // Audio    - BinaryData, String: Audio file
+    // Keyboard - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup   - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    метод SendAudio(Token: Объект?, ChatID: Объект?, Text: Объект?, Audio: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-a", Audio)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendAudio", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendDocument
+    // Sends a document to a chat or channel
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Target chat ID or ChatID*TopicID
+    // Text     - String: Message text
+    // Document - BinaryData, String: Document file
+    // Keyboard - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup   - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    // FileName - String: Custom displayed file name with extension, if necessary (необяз. по ум. - Empty value)
+    метод SendDocument(Token: Объект?, ChatID: Объект?, Text: Объект?, Document: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено, FileName: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-d", Document)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        Опции.Вставить("-f", FileName)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendDocument", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendGif
+    // Sends a GIF to a chat or channel
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Target chat ID or ChatID*TopicID
+    // Text     - String: Message text
+    // GIF      - BinaryData, String: GIF file
+    // Keyboard - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup   - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    метод SendGif(Token: Объект?, ChatID: Объект?, Text: Объект?, GIF: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-g", GIF)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendGif", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendMediaGroup
+    // Sends a set of files to a chat or channel. Media types: audio, document, photo, video
+    //
+    // Token       - String: Bot token
+    // ChatID      - String, Number: Target chat ID or ChatID*TopicID
+    // Text        - String: Message text
+    // FileMapping - Map of KeyAndValue: File collection: Key > File, Value > Media Type
+    // Keyboard    - String: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    // Markup      - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Markdown)
+    метод SendMediaGroup(Token: Объект?, ChatID: Объект?, Text: Объект?, FileMapping: Объект?, Keyboard: Объект? = Неопределено, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-m", FileMapping)
+        Опции.Вставить("-k", Keyboard)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendMediaGroup", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendLocation
+    // Sends location by geographic latitude and longitude to a chat or channel
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Target chat ID or ChatID*TopicID
+    // Latitude  - String, Number: Geographic latitude
+    // Longitude - String, Number: Geographic longitude
+    // Keyboard  - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    метод SendLocation(Token: Объект?, ChatID: Объект?, Latitude: Объект?, Longitude: Объект?, Keyboard: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-l", Latitude)
+        Опции.Вставить("-n", Longitude)
+        Опции.Вставить("-k", Keyboard)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendLocation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendContact
+    // Sends a contact with name and phone number
+    //
+    // Token    - String: Bot token
+    // ChatID   - String, Number: Target chat ID or ChatID*TopicID
+    // Name     - String: Contact name
+    // LastName - String: Contact last name
+    // Phone    - String: Contact phone number
+    // Keyboard - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray (необяз. по ум. - Empty value)
+    метод SendContact(Token: Объект?, ChatID: Объект?, Name: Объект?, LastName: Объект?, Phone: Объект?, Keyboard: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-s", LastName)
+        Опции.Вставить("-p", Phone)
+        Опции.Вставить("-k", Keyboard)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendContact", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendPoll
+    // Sends a poll with answer options
+    //
+    // Token        - String: Bot token
+    // ChatID       - String, Number: Target chat ID or ChatID*TopicID
+    // Question     - String: Poll question
+    // AnswersArray - Array of String: Array of answer options
+    // Anonymous    - Boolean: Survey anonymity flag (необяз. по ум. - true)
+    метод SendPoll(Token: Объект?, ChatID: Объект?, Question: Объект?, AnswersArray: Объект?, Anonymous: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-q", Question)
+        Опции.Вставить("-o", AnswersArray)
+        Опции.Вставить("-a", Anonymous)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendPoll", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ForwardMessage
+    // Forwards a message between chats or within a chat
+    //
+    // Token      - String: Bot token
+    // OriginalID - String, Number: Original message ID
+    // FromID     - String, Number: Chat ID of the original message
+    // ToID       - String, Number: Target chat ID or ChatID*TopicID
+    метод ForwardMessage(Token: Объект?, OriginalID: Объект?, FromID: Объект?, ToID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-m", OriginalID)
+        Опции.Вставить("-f", FromID)
+        Опции.Вставить("-o", ToID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ForwardMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteMessage
+    // Delete message from chat or channel
+    //
+    // Token     - String: Token
+    // ChatID    - String, Number: Target chat ID
+    // MessageID - String, Number: ID of message to delete
+    метод DeleteMessage(Token: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ReplaceMessageKeyboard
+    // Replaces the message keyboard with a new one
+    //
+    // Token     - String: Token
+    // ChatID    - String, Number: Target chat ID
+    // MessageID - String, Number: ID of message to delete
+    // Keyboard  - String, Structure Of KeyAndValue: Keyboard. See FormKeyboardFromButtonArray
+    метод ReplaceMessageKeyboard(Token: Объект?, ChatID: Объект?, MessageID: Объект?, Keyboard: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        Опции.Вставить("-k", Keyboard)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReplaceMessageKeyboard", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ReplaceMessageText
+    // Replaces the message text with a new one
+    //
+    // Token     - String: Token
+    // ChatID    - String, Number: Target chat ID
+    // MessageID - String, Number: ID of message to delete
+    // Text      - String: New message text
+    // Markup    - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Empty value)
+    метод ReplaceMessageText(Token: Объект?, ChatID: Объект?, MessageID: Объект?, Text: Объект?, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-p", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReplaceMessageText", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ReplaceMessageCaption
+    // Replaces text in a message with media attachments
+    //
+    // Token       - String: Token
+    // ChatID      - String, Number: Target chat ID
+    // MessageID   - String, Number: ID of message to delete
+    // Description - String: New message description
+    // Markup      - String: Text processing type (HTML, Markdown, MarkdownV2) (необяз. по ум. - Empty value)
+    метод ReplaceMessageCaption(Token: Объект?, ChatID: Объект?, MessageID: Объект?, Description: Объект?, Markup: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        Опции.Вставить("-p", Description)
+        Опции.Вставить("-r", Markup)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ReplaceMessageCaption", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод FormKeyboardFromButtonArray
+    // Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
+    //
+    // ButtonArray  - Array of String: Array of buttons
+    // UnderMessage - Boolean: Keyboard under the message or on the bottom panel (необяз. по ум. - false)
+    // OneByOne     - Boolean: True > buttons are displayed in a column, False > in a row (необяз. по ум. - true)
+    метод FormKeyboardFromButtonArray(ButtonArray: Объект?, UnderMessage: Объект? = Неопределено, OneByOne: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-b", ButtonArray)
+        Опции.Вставить("-u", UnderMessage)
+        Опции.Вставить("-c", OneByOne)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormKeyboardFromButtonArray", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Ban
+    // Bans a user in the selected chat
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Target chat ID or ChatID*TopicID
+    // UserID - String, Number: Target user ID
+    метод Ban(Token: Объект?, ChatID: Объект?, UserID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Ban", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод Unban
+    // Unbans a previously banned user
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Target chat ID or ChatID*TopicID
+    // UserID - String, Number: Target user ID
+    метод Unban(Token: Объект?, ChatID: Объект?, UserID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-u", UserID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "Unban", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateInvitationLink
+    // Creates a link for joining a closed chat
+    //
+    // Token          - String: Bot token
+    // ChatID         - String, Number: Target chat ID or ChatID*TopicID
+    // Title          - String: Invitation title (необяз. по ум. - Empty value)
+    // ExpirationDate - Date: Link expiration date (permanent if not specified) (необяз. по ум. - Empty value)
+    // UserLimit      - Number: User limit (infinite if not specified) (необяз. по ум. - Empty value)
+    метод CreateInvitationLink(Token: Объект?, ChatID: Объект?, Title: Объект? = Неопределено, ExpirationDate: Объект? = Неопределено, UserLimit: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-l", Title)
+        Опции.Вставить("-e", ExpirationDate)
+        Опции.Вставить("-m", UserLimit)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateInvitationLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PinMessage
+    // Pins a message in the chat header
+    //
+    // Token     - String: Token
+    // ChatID    - String, Number: Target chat ID
+    // MessageID - String, Number: Target message ID
+    метод PinMessage(Token: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PinMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UnpinMessage
+    // Unpins a message in the chat header
+    //
+    // Token     - String: Bot token
+    // ChatID    - String, Number: Target chat ID
+    // MessageID - String, Number: Target message ID
+    метод UnpinMessage(Token: Объект?, ChatID: Объект?, MessageID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        Опции.Вставить("-m", MessageID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UnpinMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetParticipantCount
+    // Gets the total number of chat participants
+    //
+    // Token  - String: Bot token
+    // ChatID - String, Number: Target chat ID
+    метод GetParticipantCount(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetParticipantCount", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetAvatarIconList
+    // Gets the mapping of Emoji IDs for setting as forum theme icons
+    //
+    // Token - String: Token
+    метод GetAvatarIconList(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetAvatarIconList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateForumTopic
+    // Creates a new topic in the group with theme functionality enabled
+    //
+    // Token  - String: Token
+    // ChatID - String, Number: Topic creation chat ID
+    // Title  - String: Topic title
+    // IconID - String: See GetAvatarIconList (необяз. по ум. - Empty value)
+    метод CreateForumTopic(Token: Объект?, ChatID: Объект?, Title: Объект?, IconID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-l", Title)
+        Опции.Вставить("-i", IconID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditForumTopic
+    // Creates a new topic in the group with theme functionality enabled
+    //
+    // Token   - String: Token
+    // ChatID  - String, Number: Topic creation chat ID
+    // TopicID - String, Number: Topic ID
+    // Title   - String: New title (необяз. по ум. - Empty value)
+    // IconID  - String: See GetAvatarIconList (необяз. по ум. - Empty value)
+    метод EditForumTopic(Token: Объект?, ChatID: Объект?, TopicID: Объект?, Title: Объект? = Неопределено, IconID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-p", TopicID)
+        Опции.Вставить("-l", Title)
+        Опции.Вставить("-i", IconID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CloseForumTopic
+    // Closes the topic for new messages
+    //
+    // Token   - String: Token
+    // ChatID  - String, Number: Topic chat ID
+    // TopicID - String, Number: Topic ID (необяз. по ум. - Empty value)
+    метод CloseForumTopic(Token: Объект?, ChatID: Объект?, TopicID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-p", TopicID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод OpenForumTopic
+    // Reopens a previously closed forum topic
+    //
+    // Token   - String: Token
+    // ChatID  - String, Number: Topic chat ID
+    // TopicID - String, Number: Topic ID (необяз. по ум. - Empty value)
+    метод OpenForumTopic(Token: Объект?, ChatID: Объект?, TopicID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-p", TopicID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "OpenForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteForumTopic
+    // Deletes a forum topic
+    //
+    // Token   - String: Token
+    // ChatID  - String, Number: Topic chat ID
+    // TopicID - String, Number: Topic ID
+    метод DeleteForumTopic(Token: Объект?, ChatID: Объект?, TopicID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-p", TopicID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод HideMainForumTopic
+    // Hides the main forum topic
+    //
+    // Token  - String: Token
+    // ChatID - String, Number: Topic chat ID
+    метод HideMainForumTopic(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "HideMainForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ShowMainForumTopic
+    // Shows a previously hidden main forum topic
+    //
+    // Token  - String: Token
+    // ChatID - String, Number: Topic chat ID
+    метод ShowMainForumTopic(Token: Объект?, ChatID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ShowMainForumTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditMainForumTopicName
+    // Edits the name of the main forum topic
+    //
+    // Token  - String: Token
+    // ChatID - String, Number: Topic chat ID
+    // Title  - String: New main topic name
+    метод EditMainForumTopicName(Token: Объект?, ChatID: Объект?, Title: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-l", Title)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditMainForumTopicName", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ClearTopicPinnedMessagesList
+    // Clears the list of pinned messages in the forum topic
+    //
+    // Token   - String: Token
+    // ChatID  - String, Number: Topic chat ID
+    // TopicID - String, Number: Topic ID. Main if not filled (необяз. по ум. - Empty value)
+    метод ClearTopicPinnedMessagesList(Token: Объект?, ChatID: Объект?, TopicID: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", ChatID)
+        Опции.Вставить("-p", TopicID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ClearTopicPinnedMessagesList", Опции)
+        
+    ;
+    
+;

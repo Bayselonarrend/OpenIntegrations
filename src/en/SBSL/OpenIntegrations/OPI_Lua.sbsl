@@ -1,0 +1,100 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Lua
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Lua(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Lua
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "lua"
+    
+    @Глобально
+    // Метод CallScriptFunction
+    // Executes Lua code from a string or file and calls the specified function
+    //
+    // Lua          - Arbitrary: Lua AddIn or Lua version to run
+    // Script       - String: Lua code or file path
+    // FunctionName - String: Function name or path in module.func format
+    // Parameters   - Map Of KeyAndValue: Function parameters, if necessary (необяз. по ум. - Empty value)
+    // Packages     - Map Of KeyAndValue: Packages: key > name, value > code or file path (необяз. по ум. - Empty value)
+    // Variables    - Map Of KeyAndValue: Module global variables, if necessary (необяз. по ум. - Empty value)
+    метод CallScriptFunction(Lua: Объект?, Script: Объект?, FunctionName: Объект?, Parameters: Объект? = Неопределено, Packages: Объект? = Неопределено, Variables: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-s", Script)
+        Опции.Вставить("-f", FunctionName)
+        Опции.Вставить("-p", Parameters)
+        Опции.Вставить("-c", Packages)
+        Опции.Вставить("-g", Variables)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CallScriptFunction", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CompileCodeFromString
+    // Converts source code to Lua bytecode
+    //
+    // Lua  - Arbitrary: Lua AddIn or Lua version to run
+    // Code - String: Source code for compilation
+    метод CompileCodeFromString(Lua: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CompileCodeFromString", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CompileCodeFromFile
+    // Converts a source code file to Lua bytecode
+    //
+    // Lua  - Arbitrary: Lua AddIn or Lua version to run
+    // Path - String: Script file path
+    метод CompileCodeFromFile(Lua: Объект?, Path: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-p", Path)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CompileCodeFromFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CallByteCodeFunction
+    // Executes bytecode and calls the specified function
+    //
+    // Lua          - Arbitrary: Lua AddIn or Lua version to run
+    // Bytecode     - String, BinaryData: Byte code or file path
+    // FunctionName - String: Function name or path in module.func format
+    // Parameters   - Map Of KeyAndValue: Function parameters, if necessary (необяз. по ум. - Empty value)
+    // Packages     - Map Of KeyAndValue: Packages: key > name, value > code or file path (необяз. по ум. - Empty value)
+    // Variables    - Map Of KeyAndValue: Module global variables, if necessary (необяз. по ум. - Empty value)
+    метод CallByteCodeFunction(Lua: Объект?, Bytecode: Объект?, FunctionName: Объект?, Parameters: Объект? = Неопределено, Packages: Объект? = Неопределено, Variables: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-l", Lua)
+        Опции.Вставить("-c", Bytecode)
+        Опции.Вставить("-f", FunctionName)
+        Опции.Вставить("-p", Parameters)
+        Опции.Вставить("-k", Packages)
+        Опции.Вставить("-g", Variables)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CallByteCodeFunction", Опции)
+        
+    ;
+    
+;

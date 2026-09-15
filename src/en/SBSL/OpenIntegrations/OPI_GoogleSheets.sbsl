@@ -1,0 +1,264 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_GoogleSheets
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_GoogleSheets(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_GoogleSheets
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "gsheets"
+    
+    @Глобально
+    // Метод FormCodeRetrievalLink
+    // Returns URL for browser authorization
+    //
+    // ClientID - String: Client ID
+    // Calendar - Boolean: Calendar methods permission (необяз. по ум. - true)
+    // Drive    - Boolean: Drive methods permission (необяз. по ум. - true)
+    // Sheets   - Boolean: Sheets methods permission (необяз. по ум. - true)
+    метод FormCodeRetrievalLink(ClientID: Объект?, Calendar: Объект? = Неопределено, Drive: Объект? = Неопределено, Sheets: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-d", Drive)
+        Опции.Вставить("-s", Sheets)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormCodeRetrievalLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTokenByCode
+    // Gets token by code from browser authorization
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // Code         - String: Code from browser
+    метод GetTokenByCode(ClientID: Объект?, ClientSecret: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTokenByCode", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RefreshToken
+    // Updates token by Refresh token
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // RefreshToken - String: Refresh token
+    метод RefreshToken(ClientID: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-r", RefreshToken)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RefreshToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetServiceAccountToken
+    // Gets authorization token by service account data
+    //
+    // Data   - Arbitrary: JSON authorization data as a file, collection or binary data
+    // Scope  - Array Of String: Scope or array of scopes
+    // Expire - Number: Token lifetime in seconds (необяз. по ум. - 3600)
+    метод GetServiceAccountToken(Data: Объект?, Scope: Объект?, Expire: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Data)
+        Опции.Вставить("-s", Scope)
+        Опции.Вставить("-e", Expire)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetServiceAccountToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateSpreadsheet
+    // Creates a new spreadsheet
+    //
+    // Token             - String: Token
+    // Name              - String: Name
+    // ArrayOfSheetNames - Array of String: Array of names to add new sheets to the spreadsheet
+    метод CreateSpreadsheet(Token: Объект?, Name: Объект?, ArrayOfSheetNames: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Name)
+        Опции.Вставить("-s", ArrayOfSheetNames)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateSpreadsheet", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetSpreadsheet
+    // Gets information about the spreadsheet by ID
+    //
+    // Token      - String: Token
+    // Identifier - String: Spreadsheet identifier
+    метод GetSpreadsheet(Token: Объект?, Identifier: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Identifier)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetSpreadsheet", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditSpreadsheetTitle
+    // Changes the name of the existing spreadsheet
+    //
+    // Token       - String: Token
+    // Spreadsheet - String: SpreadsheetID
+    // Name        - String: New name
+    метод EditSpreadsheetTitle(Token: Объект?, Spreadsheet: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Spreadsheet)
+        Опции.Вставить("-l", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditSpreadsheetTitle", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод AddSheet
+    // Adds a new sheet to the spreadsheet
+    //
+    // Token       - String: Token
+    // Spreadsheet - String: Spreadsheet identifier
+    // Name        - String: NewSheetName
+    метод AddSheet(Token: Объект?, Spreadsheet: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Spreadsheet)
+        Опции.Вставить("-l", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AddSheet", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteSheet
+    // Deletes a sheet from the spreadsheet
+    //
+    // Token       - String: Token
+    // Spreadsheet - String: Spreadsheet identifier
+    // Sheet       - String: IdentifierOfSheetToDelete
+    метод DeleteSheet(Token: Объект?, Spreadsheet: Объект?, Sheet: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Spreadsheet)
+        Опции.Вставить("-h", Sheet)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteSheet", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CopySheet
+    // Copies a sheet from one spreadsheet to another
+    //
+    // Token  - String: Token
+    // From   - String: Source spreadsheet ID
+    // Target - String: Destination spreadsheet ID
+    // Sheet  - String: CopiedSheetID
+    метод CopySheet(Token: Объект?, From: Объект?, Target: Объект?, Sheet: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", From)
+        Опции.Вставить("-o", Target)
+        Опции.Вставить("-s", Sheet)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CopySheet", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetCellValues
+    // Sets sheet cell values
+    //
+    // Token          - String: Token
+    // Spreadsheet    - String: SpreadsheetID
+    // ValueMapping   - Map Of KeyAndValue: Fill data where the key is the cell name like A1
+    // Sheet          - String: Sheet name (first sheet by default) (необяз. по ум. - Empty value)
+    // MajorDimension - String: Main dimension when filling the array range (необяз. по ум. - COLUMNS)
+    метод SetCellValues(Token: Объект?, Spreadsheet: Объект?, ValueMapping: Объект?, Sheet: Объект? = Неопределено, MajorDimension: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Spreadsheet)
+        Опции.Вставить("-d", ValueMapping)
+        Опции.Вставить("-h", Sheet)
+        Опции.Вставить("-m", MajorDimension)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetCellValues", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ClearCells
+    // Clears the value in cells
+    //
+    // Token       - String: Token
+    // Spreadsheet - String: SpreadsheetID
+    // CellsArray  - Array of String: Array of cells like A1 to be cleared
+    // Sheet       - String: Sheet name (first sheet by default) (необяз. по ум. - Empty value)
+    метод ClearCells(Token: Объект?, Spreadsheet: Объект?, CellsArray: Объект?, Sheet: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Spreadsheet)
+        Опции.Вставить("-c", CellsArray)
+        Опции.Вставить("-h", Sheet)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ClearCells", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCellValues
+    // Gets cell values of the table
+    //
+    // Token       - String: Token
+    // Spreadsheet - String: SpreadsheetID
+    // CellsArray  - Array of String: Array of A1 type cells to get (whole sheet if not filled) (необяз. по ум. - Empty value)
+    // Sheet       - String: Sheet name (first sheet by default) (необяз. по ум. - Empty value)
+    метод GetCellValues(Token: Объект?, Spreadsheet: Объект?, CellsArray: Объект? = Неопределено, Sheet: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-s", Spreadsheet)
+        Опции.Вставить("-c", CellsArray)
+        Опции.Вставить("-h", Sheet)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCellValues", Опции)
+        
+    ;
+    
+;

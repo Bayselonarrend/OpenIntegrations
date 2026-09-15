@@ -1,0 +1,56 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_RCON
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_RCON(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_RCON
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "rcon"
+    
+    @Глобально
+    // Метод ExecuteCommand
+    // Executes the command on the server
+    //
+    // Command    - String: Command text
+    // Connection - Arbitrary, Structure Of KeyAndValue: Connection or connection parameters
+    метод ExecuteCommand(Command: Объект?, Connection: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Command)
+        Опции.Вставить("-c", Connection)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ExecuteCommand", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод FormConnectionParameters
+    // Forms a collection of connection parameters
+    //
+    // URL          - String: Server URL
+    // Password     - String: Password for connection
+    // ReadTimeout  - Number: Response timeout (in seconds) (необяз. по ум. - 30)
+    // WriteTimeout - Number: Request sending timeout (in seconds) (необяз. по ум. - 30)
+    метод FormConnectionParameters(URL: Объект?, Password: Объект?, ReadTimeout: Объект? = Неопределено, WriteTimeout: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-p", Password)
+        Опции.Вставить("-r", ReadTimeout)
+        Опции.Вставить("-w", WriteTimeout)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormConnectionParameters", Опции)
+        
+    ;
+    
+;

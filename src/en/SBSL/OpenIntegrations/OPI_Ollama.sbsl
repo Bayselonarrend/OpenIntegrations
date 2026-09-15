@@ -1,0 +1,402 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Ollama
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Ollama(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Ollama
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "ollama"
+    
+    @Глобально
+    // Метод GetVersion
+    // Gets a version of Ollama
+    //
+    // URL               - String: Ollama server URL
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetVersion(URL: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetVersion", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetResponse
+    // Generates a response for a given text query
+    //
+    // URL                  - String: Ollama server URL
+    // Model                - String: Models name
+    // Question             - String: Request text
+    // AdditionalParameters - Structure Of KeyAndValue: Additional parameters. See GetRequestParametersStructure (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetResponse(URL: Объект?, Model: Объект?, Question: Объект?, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-p", Question)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetResponse", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetContextResponse
+    // Receives the next response from the model according to the message history
+    //
+    // URL                  - String: Ollama server URL
+    // Model                - String: Models name
+    // Messages             - Array of Structure: Messages log. See GetContextMessageStructure
+    // AdditionalParameters - Structure Of KeyAndValue: Additional parameters. See GetRequestParametersStructure (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetContextResponse(URL: Объект?, Model: Объект?, Messages: Объект?, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-s", Messages)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetContextResponse", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEmbeddings
+    // Gets the embeddings for the given entries
+    //
+    // URL                  - String: Ollama server URL
+    // Model                - String: Models name
+    // Question             - Array Of String: String or array of request strings
+    // AdditionalParameters - Structure Of KeyAndValue: Additional parameters. See GetEmbeddingsParameterStructure (необяз. по ум. - Empty value)
+    // AdditionalHeaders    - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetEmbeddings(URL: Объект?, Model: Объект?, Question: Объект?, AdditionalParameters: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-i", Question)
+        Опции.Вставить("-o", AdditionalParameters)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEmbeddings", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetRequestParameterStructure
+    // Gets the structure of additional parameters for request processing
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetRequestParameterStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetRequestParameterStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEmbeddingsParameterStructure
+    // Gets the structure of additional parameters for processing embeddings requests
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetEmbeddingsParameterStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEmbeddingsParameterStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetContextParameterStructure
+    // Gets the structure of additional parameters to process the request in context
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetContextParameterStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetContextParameterStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetContextMessageStructure
+    // Gets the message structure for a list of request messages in context
+    //
+    // Role     - String: Message source: system, user, assistant, tool
+    // Text     - String: Message text
+    // Pictures - Array Of String: List of pictures in Base64 format (for multimodal models like llava) (необяз. по ум. - Empty value)
+    // Tools    - Array Of String: List of tools in JSON format that the model should use (необяз. по ум. - Empty value)
+    метод GetContextMessageStructure(Role: Объект?, Text: Объект?, Pictures: Объект? = Неопределено, Tools: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-r", Role)
+        Опции.Вставить("-t", Text)
+        Опции.Вставить("-i", Pictures)
+        Опции.Вставить("-l", Tools)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetContextMessageStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetModelList
+    // Gets a list of local models
+    //
+    // URL               - String: Ollama server URL
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetModelList(URL: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetModelList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ListRunningModels
+    // Gets a list of running models
+    //
+    // URL               - String: Ollama server URL
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод ListRunningModels(URL: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ListRunningModels", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetModelInformation
+    // Gets information about the model
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // Detailed          - Boolean: Return full model information (необяз. по ум. - true)
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод GetModelInformation(URL: Объект?, Model: Объект?, Detailed: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-v", Detailed)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetModelInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateModel
+    // Creates a new model with the specified settings
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // Settings          - Structure Of KeyAndValue: Model settings. See GetModelSettingsStructure
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод CreateModel(URL: Объект?, Model: Объект?, Settings: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-s", Settings)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateModel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CopyModel
+    // Copies an existing model
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Name of existing model
+    // Name              - String: The name of the new model
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод CopyModel(URL: Объект?, Model: Объект?, Name: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-n", Name)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CopyModel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteModel
+    // Deletes an existing model
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод DeleteModel(URL: Объект?, Model: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteModel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод LoadModelToMemory
+    // Loads the selected model into RAM
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // Period            - Number: Model hold time in seconds (необяз. по ум. - 300)
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод LoadModelToMemory(URL: Объект?, Model: Объект?, Period: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-k", Period)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "LoadModelToMemory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UnloadModelFromMemory
+    // Unloads the selected model from memory
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод UnloadModelFromMemory(URL: Объект?, Model: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UnloadModelFromMemory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PushModel
+    // Uploads the model to the model library
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // Insecure          - Boolean: Allows an unsecured connection to the library (необяз. по ум. - false)
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод PushModel(URL: Объект?, Model: Объект?, Insecure: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-i", Insecure)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PushModel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PullModel
+    // Downloads a model from the library
+    //
+    // URL               - String: Ollama server URL
+    // Model             - String: Models name
+    // Insecure          - Boolean: Allows an unsecured connection to the library (необяз. по ум. - false)
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод PullModel(URL: Объект?, Model: Объект?, Insecure: Объект? = Неопределено, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-m", Model)
+        Опции.Вставить("-i", Insecure)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PullModel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetModelSettingsStructure
+    // Gets the settings structure for creating a new model
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetModelSettingsStructure(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetModelSettingsStructure", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод PushBlob
+    // Sends binary data to the Ollama server
+    //
+    // URL               - String: Ollama server URL
+    // Data              - String, BinaryData: File data or filepath
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод PushBlob(URL: Объект?, Data: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-d", Data)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "PushBlob", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CheckBlob
+    // Checks the existence of a BLOB by its SHA256 digest
+    //
+    // URL               - String: Ollama server URL
+    // SHA256            - String: SHA256 BLOB digest
+    // AdditionalHeaders - Map Of KeyAndValue: Additional request headers, if necessary (необяз. по ум. - Empty value)
+    метод CheckBlob(URL: Объект?, SHA256: Объект?, AdditionalHeaders: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-d", SHA256)
+        Опции.Вставить("-h", AdditionalHeaders)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CheckBlob", Опции)
+        
+    ;
+    
+;

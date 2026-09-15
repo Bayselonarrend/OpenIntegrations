@@ -1,0 +1,384 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_GoogleCalendar
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_GoogleCalendar(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_GoogleCalendar
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "gcalendar"
+    
+    @Глобально
+    // Метод FormCodeRetrievalLink
+    // Returns URL for browser authorization
+    //
+    // ClientID - String: Client ID
+    // Calendar - Boolean: Calendar methods permission (необяз. по ум. - true)
+    // Drive    - Boolean: Drive methods permission (необяз. по ум. - true)
+    // Sheets   - Boolean: Sheets methods permission (необяз. по ум. - true)
+    метод FormCodeRetrievalLink(ClientID: Объект?, Calendar: Объект? = Неопределено, Drive: Объект? = Неопределено, Sheets: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-d", Drive)
+        Опции.Вставить("-s", Sheets)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "FormCodeRetrievalLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetTokenByCode
+    // Gets token by code from browser authorization
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // Code         - String: Code from browser
+    метод GetTokenByCode(ClientID: Объект?, ClientSecret: Объект?, Code: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-c", Code)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetTokenByCode", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RefreshToken
+    // Updates token by Refresh token
+    //
+    // ClientID     - String: Client ID
+    // ClientSecret - String: Client secret
+    // RefreshToken - String: Refresh token
+    метод RefreshToken(ClientID: Объект?, ClientSecret: Объект?, RefreshToken: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-i", ClientID)
+        Опции.Вставить("-s", ClientSecret)
+        Опции.Вставить("-r", RefreshToken)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RefreshToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetServiceAccountToken
+    // Gets authorization token by service account data
+    //
+    // Data   - Arbitrary: JSON authorization data as a file, collection or binary data
+    // Scope  - Array Of String: Scope or array of scopes
+    // Expire - Number: Token lifetime in seconds (необяз. по ум. - 3600)
+    метод GetServiceAccountToken(Data: Объект?, Scope: Объект?, Expire: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-a", Data)
+        Опции.Вставить("-s", Scope)
+        Опции.Вставить("-e", Expire)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetServiceAccountToken", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateCalendar
+    // Creates an empty calendar
+    //
+    // Token - String: Token
+    // Name  - String: Name of the created calendar
+    метод CreateCalendar(Token: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateCalendar", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCalendarMetadata
+    // Gets calendar information by ID
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    метод GetCalendarMetadata(Token: Объект?, Calendar: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCalendarMetadata", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditCalendarMetadata
+    // Edits properties of an existing calendar
+    //
+    // Token       - String: Token
+    // Calendar    - String: Calendar ID
+    // Name        - String: New name (необяз. по ум. - Empty value)
+    // Description - String: New calendar description (необяз. по ум. - Empty value)
+    метод EditCalendarMetadata(Token: Объект?, Calendar: Объект?, Name: Объект? = Неопределено, Description: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-l", Name)
+        Опции.Вставить("-d", Description)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditCalendarMetadata", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ClearMainCalendar
+    // Clears the event list of the primary calendar
+    //
+    // Token - String: Token
+    метод ClearMainCalendar(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ClearMainCalendar", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteCalendar
+    // Deletes a calendar by ID
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    метод DeleteCalendar(Token: Объект?, Calendar: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteCalendar", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetCalendarList
+    // Gets an array of account calendars
+    //
+    // Token - String: Token
+    метод GetCalendarList(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetCalendarList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод AddCalendarToList
+    // Adds an existing calendar to the user's list
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    метод AddCalendarToList(Token: Объект?, Calendar: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AddCalendarToList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetListCalendar
+    // Gets a calendar from the user's list by ID
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    метод GetListCalendar(Token: Объект?, Calendar: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetListCalendar", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteCalendarFromList
+    // Removes a calendar from the user's list
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    метод DeleteCalendarFromList(Token: Объект?, Calendar: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteCalendarFromList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditListCalendar
+    // Edits the properties of a calendar from the user's list
+    //
+    // Token          - String: Token
+    // Calendar       - String: Calendar ID
+    // PrimaryColor   - String: HEX primary color (#ffffff)
+    // SecondaryColor - String: HEX secondary color (#ffffff)
+    // Hidden         - Boolean: Hidden calendar (необяз. по ум. - false)
+    метод EditListCalendar(Token: Объект?, Calendar: Объект?, PrimaryColor: Объект?, SecondaryColor: Объект?, Hidden: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-p", PrimaryColor)
+        Опции.Вставить("-s", SecondaryColor)
+        Опции.Вставить("-h", Hidden)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditListCalendar", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEventDescription
+    // Gets an empty layout to create the event
+    //
+    // Clear - Boolean: True > structure with empty valuse, False > field descriptions at values (необяз. по ум. - false)
+    метод GetEventDescription(Clear: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-e", Clear)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEventDescription", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEventList
+    // Gets the list of all calendar events
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    метод GetEventList(Token: Объект?, Calendar: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEventList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetEvent
+    // Gets an event by ID
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    // Event    - String: Event ID
+    метод GetEvent(Token: Объект?, Calendar: Объект?, Event: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-e", Event)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetEvent", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateEvent
+    // Creates a new event
+    //
+    // Token            - String: Token
+    // Calendar         - String: Calendar ID
+    // EventDescription - Map Of KeyAndValue: Event description
+    метод CreateEvent(Token: Объект?, Calendar: Объект?, EventDescription: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-p", EventDescription)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateEvent", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод MoveEvent
+    // Moves an event to another calendar
+    //
+    // Token          - String: Token
+    // SourceCalendar - String: ID of the source calendar
+    // TargetCalendar - String: ID of the target calendar
+    // Event          - String: ID of the source calendar event
+    метод MoveEvent(Token: Объект?, SourceCalendar: Объект?, TargetCalendar: Объект?, Event: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", SourceCalendar)
+        Опции.Вставить("-o", TargetCalendar)
+        Опции.Вставить("-e", Event)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "MoveEvent", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditEvent
+    // Edits an existing event
+    //
+    // Token            - String: Token
+    // Calendar         - String: Calendar ID
+    // EventDescription - String: New event description
+    // Event            - String: Event ID
+    метод EditEvent(Token: Объект?, Calendar: Объект?, EventDescription: Объект?, Event: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-p", EventDescription)
+        Опции.Вставить("-e", Event)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditEvent", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteEvent
+    // Deletes an event by ID
+    //
+    // Token    - String: Token
+    // Calendar - String: Calendar ID
+    // Event    - String: Event ID
+    метод DeleteEvent(Token: Объект?, Calendar: Объект?, Event: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Calendar)
+        Опции.Вставить("-e", Event)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteEvent", Опции)
+        
+    ;
+    
+;

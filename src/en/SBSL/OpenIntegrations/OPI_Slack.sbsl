@@ -1,0 +1,670 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_Slack
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_Slack(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_Slack
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "slack"
+    
+    @Глобально
+    // Метод GetBotInformation
+    // Gets basic information about the bot
+    //
+    // Token - String: Bot token
+    метод GetBotInformation(Token: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetBotInformation", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetWorkspaceList
+    // Gets a list of workspaces where the bot is connected
+    //
+    // Token  - String: Bot token
+    // Cursor - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetWorkspaceList(Token: Объект?, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetWorkspaceList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetUserList
+    // Gets a list of users in the workspace
+    //
+    // Token  - String: Bot token
+    // Cursor - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetUserList(Token: Объект?, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetUserList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendMessage
+    // Sends a message at a selected hour
+    //
+    // Token       - String: Bot token
+    // Channel     - String: Channel ID
+    // Text        - String: Message text (необяз. по ум. - Empty value)
+    // SendingDate - Date: Sending date for delayed message (необяз. по ум. - Empty value)
+    // Blocks      - Array of Structure: Array of block descriptions (необяз. по ум. - Empty value)
+    метод SendMessage(Token: Объект?, Channel: Объект?, Text: Объект? = Неопределено, SendingDate: Объект? = Неопределено, Blocks: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-d", SendingDate)
+        Опции.Вставить("-b", Blocks)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendEphemeralMessage
+    // Sends a message that arrives in the channel but is visible
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // Text    - String: Message text (необяз. по ум. - Empty value)
+    // User    - String: User ID (необяз. по ум. - Empty value)
+    // Blocks  - Array of Structure: Array of block descriptions (необяз. по ум. - Empty value)
+    метод SendEphemeralMessage(Token: Объект?, Channel: Объект?, Text: Объект? = Неопределено, User: Объект? = Неопределено, Blocks: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-u", User)
+        Опции.Вставить("-b", Blocks)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendEphemeralMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод EditMessage
+    // Edits the content of an existing message
+    //
+    // Token      - String: Bot token
+    // Channel    - String: Channel ID
+    // Timestamp  - String: Message timestamp
+    // Text       - String: New message text (необяз. по ум. - Empty value)
+    // BlockArray - Array of Structure: Array of block descriptions (необяз. по ум. - Empty value)
+    метод EditMessage(Token: Объект?, Channel: Объект?, Timestamp: Объект?, Text: Объект? = Неопределено, BlockArray: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-s", Timestamp)
+        Опции.Вставить("-x", Text)
+        Опции.Вставить("-b", BlockArray)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "EditMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteMessage
+    // Deletes a channel message by timestamp
+    //
+    // Token     - String: Bot token
+    // Channel   - String: Channel ID
+    // Timestamp - String: Timestamp or message ID
+    // IsDelayed - Boolean: Indicator of deleting a delayed message (необяз. по ум. - false)
+    метод DeleteMessage(Token: Объект?, Channel: Объект?, Timestamp: Объект?, IsDelayed: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-s", Timestamp)
+        Опции.Вставить("-i", IsDelayed)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteMessage", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetDelayedMessageList
+    // Gets a list of delayed channel messages
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // Cursor  - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetDelayedMessageList(Token: Объект?, Channel: Объект?, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-r", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetDelayedMessageList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetMessageLink
+    // Gets a permanent URL to the channel message
+    //
+    // Token     - String: Bot token
+    // Channel   - String: Channel ID
+    // Timestamp - String: Timestamp or message ID
+    метод GetMessageLink(Token: Объект?, Channel: Объект?, Timestamp: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-s", Timestamp)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetMessageLink", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetMessageReplyList
+    // Gets an array of messages that are replies to the specified
+    //
+    // Token     - String: Bot token
+    // Channel   - String: Channel ID
+    // Timestamp - String: Timestamp or message ID
+    // Cursor    - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetMessageReplyList(Token: Объект?, Channel: Объект?, Timestamp: Объект?, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-s", Timestamp)
+        Опции.Вставить("-r", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetMessageReplyList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChannelList
+    // Gets a list of available channels
+    //
+    // Token           - String: Bot token
+    // ExcludeArchived - Boolean: Indicator of excluding archived channels (необяз. по ум. - false)
+    // Cursor          - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetChannelList(Token: Объект?, ExcludeArchived: Объект? = Неопределено, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-n", ExcludeArchived)
+        Опции.Вставить("-c", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChannelList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChannelUserList
+    // Gets a list of users in the specified channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // Cursor  - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetChannelUserList(Token: Объект?, Channel: Объект?, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-r", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChannelUserList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CreateChannel
+    // Creates a new channel
+    //
+    // Token   - String: Bot token
+    // Name    - String: Channel name
+    // Private - Boolean: Create channel as private (необяз. по ум. - false)
+    метод CreateChannel(Token: Объект?, Name: Объект?, Private: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-l", Name)
+        Опции.Вставить("-p", Private)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CreateChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод ArchiveChannel
+    // Archives an active channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    метод ArchiveChannel(Token: Объект?, Channel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "ArchiveChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChannel
+    // Gets information about the channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    метод GetChannel(Token: Объект?, Channel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetChannelHistory
+    // Gets information about channel events
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    метод GetChannelHistory(Token: Объект?, Channel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetChannelHistory", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод InviteUsersToChannel
+    // Adds specified users to the channel
+    //
+    // Token        - String: Bot token
+    // Channel      - String: Channel ID
+    // ArrayOfUsers - Array Of String: User ID Array
+    метод InviteUsersToChannel(Token: Объект?, Channel: Объект?, ArrayOfUsers: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-u", ArrayOfUsers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "InviteUsersToChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод KickUserFromChannel
+    // Removes specified user from channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // User    - String: User ID
+    метод KickUserFromChannel(Token: Объект?, Channel: Объект?, User: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-u", User)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "KickUserFromChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод JoinChannel
+    // Adds the current bot to the channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    метод JoinChannel(Token: Объект?, Channel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "JoinChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод LeaveChannel
+    // Removes the current bot from the channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    метод LeaveChannel(Token: Объект?, Channel: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "LeaveChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetChannelTopic
+    // Sets the channel topic
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // Topic   - String: Channel topic
+    метод SetChannelTopic(Token: Объект?, Channel: Объект?, Topic: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-h", Topic)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetChannelTopic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SetChannelGoal
+    // Sets the channel purpose (description)
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // Purpose - String: Channel purpose
+    метод SetChannelGoal(Token: Объект?, Channel: Объект?, Purpose: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-p", Purpose)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SetChannelGoal", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод RenameChannel
+    // Changes the name of the channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel ID
+    // Name    - String: New channel name
+    метод RenameChannel(Token: Объект?, Channel: Объект?, Name: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-l", Name)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "RenameChannel", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод OpenDialog
+    // Opens a new dialog with one or more users
+    //
+    // Token        - String: Bot token
+    // ArrayOfUsers - Array of String: User ID Array
+    метод OpenDialog(Token: Объект?, ArrayOfUsers: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", ArrayOfUsers)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "OpenDialog", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод CloseDialog
+    // Closes an existing dialog
+    //
+    // Token  - String: Bot token
+    // Dialog - String: Dialog ID
+    метод CloseDialog(Token: Объект?, Dialog: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Dialog)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "CloseDialog", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFilesList
+    // Gets a list of files of the bot or channel
+    //
+    // Token      - String: Bot token
+    // Channel    - String: Channel for selection (необяз. по ум. - Empty value)
+    // PageNumber - Number, String: Page number (необяз. по ум. - 1)
+    метод GetFilesList(Token: Объект?, Channel: Объект? = Неопределено, PageNumber: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-p", PageNumber)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFilesList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод UploadFile
+    // Uploads a file to Slack servers
+    //
+    // Token    - String: Bot token
+    // File     - String, BinaryData: File for upload
+    // FileName - String: File name with extension
+    // Title    - String: File name in Slack
+    // Channel  - String: Channel ID (необяз. по ум. - Empty value)
+    метод UploadFile(Token: Объект?, File: Объект?, FileName: Объект?, Title: Объект?, Channel: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", File)
+        Опции.Вставить("-l", FileName)
+        Опции.Вставить("-i", Title)
+        Опции.Вставить("-c", Channel)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "UploadFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetFileData
+    // Gets information about the file
+    //
+    // Token  - String: Bot token
+    // FileID - String: File identifier
+    метод GetFileData(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetFileData", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteFile
+    // Deletes a file on Slack
+    //
+    // Token  - String: Bot token
+    // FileID - String: File identifier
+    метод DeleteFile(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод MakeFilePublic
+    // Creates a public URL for the file. Requires user token
+    //
+    // Token  - String: User token
+    // FileID - String: File identifier
+    метод MakeFilePublic(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "MakeFilePublic", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод MakeFilePrivate
+    // Removes the public URL from the file. Requires user token
+    //
+    // Token  - String: User token
+    // FileID - String: File identifier
+    метод MakeFilePrivate(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "MakeFilePrivate", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetExternalFileList
+    // Gets a list of external files of a user or channel
+    //
+    // Token   - String: Bot token
+    // Channel - String: Channel for selection (необяз. по ум. - Empty value)
+    // Cursor  - String: Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Empty value)
+    метод GetExternalFileList(Token: Объект?, Channel: Объект? = Неопределено, Cursor: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-c", Channel)
+        Опции.Вставить("-r", Cursor)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetExternalFileList", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GetExternalFile
+    // Gets information about the external file
+    //
+    // Token  - String: Bot token
+    // FileID - String: File identifier
+    метод GetExternalFile(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GetExternalFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод AddExternalFile
+    // Adds a new external file
+    //
+    // Token - String: Bot token
+    // URL   - String: URL to external file
+    // Title - String: File title for Slack
+    метод AddExternalFile(Token: Объект?, URL: Объект?, Title: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-u", URL)
+        Опции.Вставить("-l", Title)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "AddExternalFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод SendExternalFile
+    // Sends an external file to a list of channels
+    //
+    // Token        - String: Bot token
+    // FileID       - String: File identifier
+    // ChannelArray - Array Of String: Array of channels for sending
+    метод SendExternalFile(Token: Объект?, FileID: Объект?, ChannelArray: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        Опции.Вставить("-c", ChannelArray)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SendExternalFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeleteExternalFile
+    // Deletes an external file from Slack
+    //
+    // Token  - String: Bot token
+    // FileID - String: File identifier
+    метод DeleteExternalFile(Token: Объект?, FileID: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-t", Token)
+        Опции.Вставить("-f", FileID)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeleteExternalFile", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод GenerateImageBlock
+    // Generates a block with an image to add to the message block array
+    //
+    // URL           - String: Image URL
+    // AlternateText - String: Alternate text of the image (необяз. по ум. - Empty value)
+    метод GenerateImageBlock(URL: Объект?, AlternateText: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-p", URL)
+        Опции.Вставить("-a", AlternateText)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "GenerateImageBlock", Опции)
+        
+    ;
+    
+;

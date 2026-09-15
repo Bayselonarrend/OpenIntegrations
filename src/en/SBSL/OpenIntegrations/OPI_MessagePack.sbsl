@@ -1,0 +1,50 @@
+#совместимость 9.0
+
+#требуется ./internal/Executor.sbsl
+
+@Глобально
+метод Инициализировать(ФайлКонфигурации: Строка): OPI_MessagePack
+    
+    пер Исполнитель = Executor.ИсполнительОПИ.Инициализировать(ФайлКонфигурации)
+    возврат новый OPI_MessagePack(Исполнитель)
+    
+;
+
+@Локально
+структура OPI_MessagePack
+    
+    обз знч Исполнитель: Executor.ИсполнительОПИ
+    
+    знч КомандаCLI: Строка = "msgpack"
+    
+    @Глобально
+    // Метод SerializeData
+    // Serializes data into MessagePack format
+    //
+    // Data       - Arbitrary: Collection for serialization
+    // FromSource - Boolean: The data is a JSON string or a file on disk (необяз. по ум. - false)
+    метод SerializeData(Data: Объект?, FromSource: Объект? = Неопределено): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-v", Data)
+        Опции.Вставить("-r", FromSource)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "SerializeData", Опции)
+        
+    ;
+
+    @Глобально
+    // Метод DeserializeData
+    // Deserializes data from MessagePack format
+    //
+    // Data - BinaryData: Serialized value
+    метод DeserializeData(Data: Объект?): Объект?
+        
+        пер Опции = новый Соответствие<Строка, Объект?>() 
+        Опции.Вставить("-d", Data)
+        
+        возврат Исполнитель.Выполнить(КомандаCLI, "DeserializeData", Опции)
+        
+    ;
+    
+;
