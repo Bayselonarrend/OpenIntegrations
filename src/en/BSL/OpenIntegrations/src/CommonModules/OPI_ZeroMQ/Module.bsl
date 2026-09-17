@@ -56,7 +56,7 @@
 
 #Region Common
 
-// Get logging settings !NOCLI
+// Get logging settings
 // Retrieves settings structure for enabling logging when creating a connection or opening a port
 //
 // Parameters:
@@ -197,7 +197,7 @@ Function BindPortPub(Val Port, Val Logging = Undefined) Export
 
 EndFunction
 
-// Bind port (PUSH)
+// Bind port (Push) !NOCLI
 // Bind pipeline port for sending data
 //
 // Parameters:

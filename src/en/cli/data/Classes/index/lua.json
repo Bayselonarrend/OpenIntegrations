@@ -10,6 +10,10 @@
    "name": "Main",
    "methods": [
     {
+     "name": "GetLoggingSettings",
+     "nocli": false
+    },
+    {
      "name": "CallFunction",
      "nocli": true
     },
@@ -19,10 +23,6 @@
     },
     {
      "name": "GetLog",
-     "nocli": true
-    },
-    {
-     "name": "GetLoggingSettings",
      "nocli": true
     },
     {
@@ -202,7 +202,7 @@
    "region": "Main"
   },
   {
-   "nocli": true,
+   "nocli": false,
    "name": "GetLoggingSettings",
    "id": "GETLOGGINGSETTINGS",
    "description": "Retrieves settings structure for starting logging on server startup",

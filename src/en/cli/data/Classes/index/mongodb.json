@@ -18,6 +18,10 @@
      "nocli": false
     },
     {
+     "name": "GetLoggingSettings",
+     "nocli": false
+    },
+    {
      "name": "CloseConnection",
      "nocli": true
     },
@@ -27,10 +31,6 @@
     },
     {
      "name": "GetLog",
-     "nocli": true
-    },
-    {
-     "name": "GetLoggingSettings",
      "nocli": true
     },
     {
@@ -328,7 +328,7 @@
    "region": "Common methods"
   },
   {
-   "nocli": true,
+   "nocli": false,
    "name": "GetLoggingSettings",
    "id": "GETLOGGINGSETTINGS",
    "description": "Retrieves settings structure for enabling logging when opening a connection",

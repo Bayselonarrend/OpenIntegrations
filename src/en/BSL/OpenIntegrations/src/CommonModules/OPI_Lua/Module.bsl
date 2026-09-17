@@ -184,7 +184,7 @@ Function IsVM(Val Value) Export
 
 EndFunction
 
-// Get logging settings !NOCLI
+// Get logging settings
 // Retrieves settings structure for starting logging on server startup
 //
 // Parameters:

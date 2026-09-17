@@ -18,15 +18,15 @@
      "nocli": false
     },
     {
+     "name": "GetLoggingSettings",
+     "nocli": false
+    },
+    {
      "name": "CreateConnection",
      "nocli": true
     },
     {
      "name": "GetLog",
-     "nocli": true
-    },
-    {
-     "name": "GetLoggingSettings",
      "nocli": true
     },
     {
@@ -146,7 +146,7 @@
    "region": "Commands execution"
   },
   {
-   "nocli": true,
+   "nocli": false,
    "name": "GetLoggingSettings",
    "id": "GETLOGGINGSETTINGS",
    "description": "Retrieves settings structure for enabling logging when opening a connection",

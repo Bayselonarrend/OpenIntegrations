@@ -264,7 +264,7 @@ Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "
 
 EndFunction
 
-// Get logging settings !NOCLI
+// Get logging settings
 // Retrieves settings structure for enabling logging when opening a connection
 //
 // Parameters:

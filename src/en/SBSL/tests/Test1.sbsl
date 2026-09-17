@@ -2,7 +2,7 @@
 
 метод Тест1()
 
-    пер Telegram = OPI_Telegram.Инициализировать("R:/Repos/OpenIntegrations/src/ru/SBSL/OpenIntegrations/internal/config.json")    
+    пер Telegram = OPI_Telegram.Инициализировать()    
     пер Результат = Telegram.ОтправитьТекстовоеСообщение("1", "2", "Yo")
     
     Консоль.Записать(Результат)

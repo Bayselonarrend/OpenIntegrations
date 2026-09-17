@@ -81,7 +81,11 @@ Function GetFullComposition() Export
     
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
+Function FormMethodCallString(Val PassedParameters
+    , Val Command
+    , Val Method
+    , Val Dynamically = True
+    , Val Interactive = False) Export
     
     If PackagesDirectory = Undefined Then
         DefinePackagesDirectory();
@@ -100,7 +104,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
         Return New Structure("Error,Result", True, "Method");
     EndIf;
     
-    If MethodData["nocli"] = True Then
+    If MethodData["nocli"] = True And Not Interactive Then
         Return New Structure("Error,Result", True, "NOCLI");    
     EndIf;
     
@@ -124,6 +128,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
       
     For Each RequiredParameter In MethodParameters Do
         
+        ParameterValue = Undefined;
         ParameterName = RequiredParameter["name"];
         ParameterNameTrim = RequiredParameter["short"];
 
@@ -206,6 +211,10 @@ EndProcedure
 
 Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterValue)
     
+    If Not TypeOf(ParameterValue) = Type("String") Then
+        Return False;
+    EndIf;
+    
     ParamFile = New File(ParameterValue);
     ParamValueTrim = TrimAll(ParameterValue);
     
@@ -285,8 +294,8 @@ Function ПолучитьПолныйСостав() Export
     Return GetFullComposition();
 EndFunction
 
-Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val Динамически = True) Export
-    Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически);
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val Динамически = True, Val Интерактивно = False) Export
+    Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически, Интерактивно);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export

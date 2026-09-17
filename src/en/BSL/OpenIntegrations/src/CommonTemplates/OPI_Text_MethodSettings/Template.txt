@@ -1854,6 +1854,9 @@
   },
   "GetTlsSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_GoogleCalendar": {
@@ -2701,6 +2704,9 @@
   },
   "GetTlsSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_GoogleSheets": {
@@ -2813,6 +2819,9 @@
   },
   "GetTlsSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_Lua": {
@@ -2867,6 +2876,9 @@
   },
   "GetPackagesList": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_MongoDB": {
@@ -2970,6 +2982,9 @@
   "GenerateConnectionString": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "GetDocumentUpdateStructure": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
@@ -3054,6 +3069,9 @@
   "GetTlsSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "GetFeatures": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
@@ -3133,6 +3151,9 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "GetTlsSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "GetFeatures": {
@@ -3647,6 +3668,9 @@
   "GetTlsSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "GetFeatures": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
@@ -3663,6 +3687,9 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "FormConnectionParameters": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
@@ -4518,6 +4545,9 @@
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "GetFeatures": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
@@ -4546,6 +4576,9 @@
   },
   "GetProxySettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_TCP": {
@@ -4554,6 +4587,9 @@
   },
   "ProcessRequest": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetLoggingSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "GetProxySettings": {
@@ -5428,6 +5464,9 @@
   "CreateConnection": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "GetProxySettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
@@ -5599,11 +5638,13 @@
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "BindPortPush": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "BindPortPull": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetLoggingSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_7z": {

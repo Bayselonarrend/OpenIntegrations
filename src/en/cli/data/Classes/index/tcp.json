@@ -10,11 +10,11 @@
    "name": "Common",
    "methods": [
     {
-     "name": "GetLog",
-     "nocli": true
+     "name": "GetLoggingSettings",
+     "nocli": false
     },
     {
-     "name": "GetLoggingSettings",
+     "name": "GetLog",
      "nocli": true
     }
    ]
@@ -116,7 +116,7 @@
  ],
  "methods": [
   {
-   "nocli": true,
+   "nocli": false,
    "name": "GetLoggingSettings",
    "id": "GETLOGGINGSETTINGS",
    "description": "Retrieves settings structure for enabling logging when opening a connection or starting the server",

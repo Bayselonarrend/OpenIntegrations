@@ -231,7 +231,7 @@ Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Expo
 
 EndFunction
 
-// Get logging settings !NOCLI
+// Get logging settings
 // Retrieves settings structure for enabling logging when opening a connection
 //
 // Parameters:

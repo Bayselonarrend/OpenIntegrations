@@ -5,8 +5,8 @@
 #Use "../../core/Classes/internal"
 #Use "../../data"
 
-
 Var OPIObject;
+Var SessionVariables;
 
 #Region Public
 
@@ -24,6 +24,8 @@ Var OPIObject;
 // String - empty string
 Function stdio(Val MessageSeparator = "", Val SeparateStart = False, Val StreamsEncoding = "") Export
 	
+	SessionVariables = New Map;
+
 	OPI_TypeConversion.GetLine(StreamsEncoding);
 	OPI_TypeConversion.GetLine(MessageSeparator);
 	OPI_TypeConversion.GetLine(SeparateStart);
@@ -89,7 +91,7 @@ Function ProcessRequest(Val DataString)
 	StringParts = StrSplit(DataString, " ", True);
 	
 	If StringParts.Count() < 2 Then
-		Raise "Missing method or command name!"
+		Return ProcessServiceCommand(StringParts[0]);
 	EndIf;
 	
 	Command = StringParts[0];
@@ -115,6 +117,7 @@ Function ProcessRequest(Val DataString)
 	
 	CurrentOption = Undefined;
 	CurrentSplicing = Undefined;
+	Context = New Map;
 
 	For Each StringPart In StringParts Do
 		
@@ -131,6 +134,7 @@ Function ProcessRequest(Val DataString)
 			If ValueIsFilled(CurrentSplicing) Then
 				
 				CurrentValue = StrConcat(CurrentSplicing, " ");
+				AdditionalContext(Context, CurrentValue);
 				ProcessedOptions.Insert(CurrentOption, CurrentValue);
 				
 			EndIf;
@@ -145,11 +149,12 @@ Function ProcessRequest(Val DataString)
 	If ValueIsFilled(CurrentSplicing) Then
 		
 		CurrentValue = StrConcat(CurrentSplicing, " ");
+		AdditionalContext(Context, CurrentValue);
 		ProcessedOptions.Insert(CurrentOption, CurrentValue);
 		
 	EndIf;
 	
-	CallStructure = OPIObject.FormMethodCallString(ProcessedOptions, Command, Method);
+	CallStructure = OPIObject.FormMethodCallString(ProcessedOptions, Command, Method, , True);
 	
 	If CallStructure["Error"] Then
 		
@@ -162,7 +167,8 @@ Function ProcessRequest(Val DataString)
 	Result = Undefined;
 	
 	Try
-		Executor.ExecuteScript(ExecutionText, Result);
+		Executor.ExecuteScript(ExecutionText, Result, , Context);
+		NormalizeResult(Result);
 	Except
 		Result = DetailErrorDescription(ErrorInfo());
 	EndTry;
@@ -170,5 +176,94 @@ Function ProcessRequest(Val DataString)
 	Return Result;
 
 EndFunction
+
+Function ProcessServiceCommand(Val Command)
+	
+	Command = TrimAll(Command);
+	
+	If Command = "help" Then
+		
+		Return "Service commands:
+		|
+		|exit  - server shutdown
+		|vars  - list process variables
+		|clear - clear process variable list";
+		
+	ElsIf Command = "exit" Then
+		
+		Exit(0);
+		
+	ElsIf Command = "vars" Then
+		
+		If Not ValueIsFilled(SessionVariables) Then
+			Return "";
+		EndIf;
+		
+		VariableTemplate = "%1 %2";
+		OutputArray = New Array;
+
+		For Each Variable In SessionVariables Do
+			OutputArray.Add(StrTemplate(VariableTemplate, Variable.Key, String(TypeOf(Variable.Value))));
+		EndDo;
+		
+		Return StrConcat(OutputArray, Chars.LF);
+		
+	ElsIf Command = "clear" Then
+		
+		SessionVariables.Clear();
+		Return "OK"
+		
+	Else
+		Raise "Missing method or command name!";
+	EndIf;
+
+EndFunction
+
+Function GenerateVariableKey()
+	
+	VariableKey = "";
+	KeyTemplate = "{oint-%1}";
+	
+	While VariableKey = "" Or SessionVariables.Get(VariableKey) <> Undefined Do
+		
+		VariableKey = StrTemplate(KeyTemplate, Left(String(New UUID), 6));
+		
+	EndDo;
+	
+	Return VariableKey;
+	
+EndFunction
+
+Procedure NormalizeResult(Result)
+	
+	ResultType = TypeOf(Result);
+	
+	If ResultType = Type("BinaryData") Then
+
+		Result = GetBase64StringFromBinaryData(Result);
+		
+	ElsIf StrStartsWith(String(ResultType), "AddIn.") Then
+		
+		VariableKey = GenerateVariableKey();
+		SessionVariables.Insert(VariableKey, Result);	
+		Result = VariableKey;
+		
+	Else
+		OPI_TypeConversion.GetLine(Result);
+	EndIf;
+
+EndProcedure
+
+Procedure AdditionalContext(Context, Val CurrentValue)
+	
+	OPI_TypeConversion.GetLine(CurrentValue);
+	
+	VariableValue = SessionVariables.Get(CurrentValue);
+	
+	If VariableValue <> Undefined Then
+		Context.Insert(CurrentValue, VariableValue);
+	EndIf;
+
+EndProcedure
 
 #EndRegion

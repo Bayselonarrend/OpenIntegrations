@@ -49,14 +49,13 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
-
 #If Not WebClient Then // !OPI
 
 #Region Public
 
 #Region Common
 
-// Get logging settings !NOCLI
+// Get logging settings
 // Retrieves settings structure for starting logging on server startup
 //
 // Parameters:
@@ -66,9 +65,7 @@
 //
 // Returns:
 // Structure Of KeyAndValue - Settings structure
-Function GetLoggingSettings(Val WriteToMemory = True
-    , Val MaxEvents = 300
-    , Val FilePath = "") Export
+Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export
 
     //@skip-check constructor-function-return-section
     Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
@@ -109,11 +106,8 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - Client object or map with error information
-Function CreateConnection(Val Address
-    , Val Tls = Undefined
-    , Val Proxy = Undefined
-    , Val Headers = Undefined
-    , Val Logging = Undefined) Export
+Function CreateConnection(Val Address, Val Tls = Undefined, Val Proxy = Undefined,
+    Val Headers = Undefined, Val Logging = Undefined) Export
 
     OPI_TypeConversion.GetLine(Address);
     OPI_Tools.RestoreEscapeSequences(Address);
@@ -399,11 +393,8 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue - Proxy settings structure
-Function GetProxySettings(Val Address
-    , Val Port
-    , Val View = "socks5"
-    , Val Login = Undefined
-    , Val Password = Undefined) Export
+Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined,
+    Val Password = Undefined) Export
 
     //@skip-check constructor-function-return-section
     Return OPI_AddIns.GetProxySettings(Address, Port, View, Login, Password);
@@ -469,10 +460,8 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000) Export
 
-    Return OPI_GenericServer.GetNextConnectionData(OPI_WebSocket
-        , ServerObject
-        , Timeout
-        , Undefined);
+    Return OPI_GenericServer.GetNextConnectionData(OPI_WebSocket, ServerObject, Timeout,
+        Undefined);
 
 EndFunction
 
@@ -486,15 +475,10 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Execution result
-Function GetConnectionData(Val ServerObject
-    , Val ConnectionID
-    , Val Timeout = 1000) Export
+Function GetConnectionData(Val ServerObject, Val ConnectionID, Val Timeout = 1000) Export
 
-    Return OPI_GenericServer.GetConnectionData(OPI_WebSocket
-        , ServerObject
-        , ConnectionID
-        , Timeout
-        , Undefined);
+    Return OPI_GenericServer.GetConnectionData(OPI_WebSocket, ServerObject, ConnectionID, Timeout,
+        Undefined);
 
 EndFunction
 

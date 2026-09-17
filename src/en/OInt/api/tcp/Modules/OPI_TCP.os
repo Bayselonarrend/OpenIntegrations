@@ -54,7 +54,7 @@
 
 #Region Common
 
-// Get logging settings !NOCLI
+// Get logging settings
 // Retrieves settings structure for enabling logging when opening a connection or starting the server
 //
 // Parameters:

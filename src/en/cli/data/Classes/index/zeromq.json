@@ -10,11 +10,11 @@
    "name": "Common",
    "methods": [
     {
-     "name": "GetLog",
-     "nocli": true
+     "name": "GetLoggingSettings",
+     "nocli": false
     },
     {
-     "name": "GetLoggingSettings",
+     "name": "GetLog",
      "nocli": true
     }
    ]
@@ -44,15 +44,15 @@
    "name": "Listening methods",
    "methods": [
     {
-     "name": "BindPortPush",
-     "nocli": false
-    },
-    {
      "name": "BindPortPub",
      "nocli": true
     },
     {
      "name": "BindPortPull",
+     "nocli": true
+    },
+    {
+     "name": "BindPortPush",
      "nocli": true
     },
     {
@@ -93,7 +93,7 @@
  ],
  "methods": [
   {
-   "nocli": true,
+   "nocli": false,
    "name": "GetLoggingSettings",
    "id": "GETLOGGINGSETTINGS",
    "description": "Retrieves settings structure for enabling logging when creating a connection or opening a port",
@@ -309,7 +309,7 @@
    "region": "Listening methods"
   },
   {
-   "nocli": false,
+   "nocli": true,
    "name": "BindPortPush",
    "id": "BINDPORTPUSH",
    "description": "Bind pipeline port for sending data",
