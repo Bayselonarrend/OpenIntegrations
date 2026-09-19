@@ -10,6 +10,10 @@
    "name": "Методы сервера",
    "methods": [
     {
+     "name": "http",
+     "nocli": false
+    },
+    {
      "name": "stdio",
      "nocli": false
     }
@@ -46,6 +50,47 @@
      "description": "Использовать конкретную кодировку вне зависимости от оболочки",
      "default": "Пустое значение",
      "short": "-e"
+    }
+   ],
+   "region": "Методы сервера"
+  },
+  {
+   "nocli": false,
+   "name": "http",
+   "id": "HTTP",
+   "description": "Запускает сервер для обмена через HTTP",
+   "params": [
+    {
+     "title": "Порт",
+     "name": "--port",
+     "types": "Число",
+     "description": "Порт запуска сервера",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Post",
+     "name": "--post",
+     "types": "Булево",
+     "description": "Разрешать обработку POST запросов с телом JSON",
+     "default": "true",
+     "short": "-s"
+    },
+    {
+     "title": "Get",
+     "name": "--get",
+     "types": "Булево",
+     "description": "Разрешать обработку GET запросов",
+     "default": "false",
+     "short": "-g"
+    },
+    {
+     "title": "Авторизация",
+     "name": "--auth",
+     "types": "Строка",
+     "description": "Значение заголовка Authorization, ожидаемое от клиента",
+     "default": "Пустое значение",
+     "short": "-a"
     }
    ],
    "region": "Методы сервера"
