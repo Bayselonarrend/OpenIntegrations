@@ -1,1 +1,2 @@
+#требуется ./internal/OPI.sbsl
 %1
