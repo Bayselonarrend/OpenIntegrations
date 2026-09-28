@@ -1,3 +1,4 @@
+#требуется ./internal/OPI.sbsl
 #требуется OPI_7z.sbsl
 #требуется OPI_Airtable.sbsl
 #требуется OPI_Bitrix24.sbsl

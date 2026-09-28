@@ -1,7 +1,7 @@
 {
  "module": "Server",
  "library": "server",
- "self_depend": false,
+ "self_depend": true,
  "dependencies": null,
  "cli_tool": true,
  "path": "tools/Modules/Server.os",
@@ -9,6 +9,10 @@
   {
    "name": "Server methods",
    "methods": [
+    {
+     "name": "http",
+     "nocli": false
+    },
     {
      "name": "stdio",
      "nocli": false
@@ -46,6 +50,55 @@
      "description": "Use a specific encoding regardless of the shell",
      "default": "Empty value",
      "short": "-e"
+    }
+   ],
+   "region": "Server methods"
+  },
+  {
+   "nocli": false,
+   "name": "http",
+   "id": "HTTP",
+   "description": "Starts a server for exchange via HTTP",
+   "params": [
+    {
+     "title": "Port",
+     "name": "--port",
+     "types": "Number",
+     "description": "Server port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Post",
+     "name": "--post",
+     "types": "Boolean",
+     "description": "Allow processing of POST requests",
+     "default": "true",
+     "short": "-s"
+    },
+    {
+     "title": "Get",
+     "name": "--get",
+     "types": "Boolean",
+     "description": "Allow processing of GET requests",
+     "default": "false",
+     "short": "-g"
+    },
+    {
+     "title": "Janx",
+     "name": "--janx",
+     "types": "Boolean",
+     "description": "Return the response in Janx format. Otherwise JSON",
+     "default": "false",
+     "short": "-j"
+    },
+    {
+     "title": "Authorization",
+     "name": "--auth",
+     "types": "String",
+     "description": "Authorization header value expected from the client",
+     "default": "Empty value",
+     "short": "-a"
     }
    ],
    "region": "Server methods"

@@ -72,7 +72,7 @@
      "title": "Post",
      "name": "--post",
      "types": "Булево",
-     "description": "Разрешать обработку POST запросов с телом JSON",
+     "description": "Разрешать обработку POST запросов",
      "default": "true",
      "short": "-s"
     },
@@ -83,6 +83,14 @@
      "description": "Разрешать обработку GET запросов",
      "default": "false",
      "short": "-g"
+    },
+    {
+     "title": "Janx",
+     "name": "--janx",
+     "types": "Булево",
+     "description": "Возвращать ответ в формате Janx. Иначе JSON",
+     "default": "false",
+     "short": "-j"
     },
     {
      "title": "Авторизация",
