@@ -58,7 +58,6 @@ pipeline {
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
 		booleanParam(name: 'RAR', defaultValue: true, description: 'Run RAR tests')
-		booleanParam(name: 'Ntfy', defaultValue: true, description: 'Run Ntfy tests')
 	}
 	stages {
 
@@ -854,19 +853,6 @@ pipeline {
 					runModuleTests('./src/en/OInt/tests/Modules/OPItc_RAR.os', [
 'RAR_Unarchiving',
 'RAR_GettingMetadata',
-					])
-				}
-			}
-		}
-		stage('Testing-Ntfy') {
-            when {
-                expression { return params['Ntfy'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Ntfy.os', [
-'Ntfy_Publication',
-'Ntfy_ManagementAndRetrieval',
 					])
 				}
 			}

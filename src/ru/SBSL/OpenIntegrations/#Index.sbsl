@@ -23,7 +23,6 @@
 #требуется OPI_MySQL.sbsl
 #требуется OPI_Neocities.sbsl
 #требуется OPI_Notion.sbsl
-#требуется OPI_Ntfy.sbsl
 #требуется OPI_Ollama.sbsl
 #требуется OPI_OpenAI.sbsl
 #требуется OPI_PostgreSQL.sbsl

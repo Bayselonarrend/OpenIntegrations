@@ -18,12 +18,6 @@
                 "description_en": "Directory operations methods (5 functions)"
             },
             {
-                "lib": "Ntfy",
-                "icon": "media/Ntfy.png",
-                "description_ru": "Методы публикации, получения и удаления уведомлений (5 функций)",
-                "description_en": "Notification publish, retrieve and delete methods (5 functions)"
-            },
-            {
                 "lib": "HTTP",
                 "icon": "media/HTTP.png",
                 "description_ru": "Исправлена обработка спецсимволов при расчёте сигнатуры подписи `AWS4` авторизации",

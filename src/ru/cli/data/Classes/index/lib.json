@@ -25,7 +25,6 @@
   "mysql": "OPI_MySQL",
   "neocities": "OPI_Neocities",
   "notion": "OPI_Notion",
-  "ntfy": "OPI_Ntfy",
   "ollama": "OPI_Ollama",
   "openai": "OPI_OpenAI",
   "postgres": "OPI_PostgreSQL",

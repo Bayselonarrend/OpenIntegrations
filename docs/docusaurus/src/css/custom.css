@@ -612,7 +612,6 @@ li > a.menu__link {
 .MySQL a::before,
 .Neocities a::before,
 .Notion a::before,
-.Ntfy a::before,
 .Ollama a::before,
 .OpenAI a::before,
 .PostgreSQL a::before,
@@ -727,9 +726,6 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/Notion.png);
 }
 
-.Ntfy > div > a::before{
-  content: url(../../static/img/APIs/small/Ntfy.png);
-}
 
 .Ollama > div > a::before{
   content: url(../../static/img/APIs/small/Ollama.png);

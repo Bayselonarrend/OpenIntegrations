@@ -1,3 +1,0 @@
-    Result = OPI_Ntfy.GetFilterParametersStructure();
-
-    OPI_TestDataRetrieval.Process(Result, "Ntfy", "GetFilterParametersStructure");

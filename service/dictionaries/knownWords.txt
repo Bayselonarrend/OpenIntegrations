@@ -526,6 +526,5 @@ linejoin
 sess
 Cnonce
 Unarchiving
-ntfy
 ldaps
 самоподписанных
