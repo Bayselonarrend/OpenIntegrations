@@ -3238,9 +3238,14 @@ Function CreateAuthorizationHeader()
 
     AccessKey   = AuthData["AccessKey"];
     CurrentDate = OPI_Tools.GetCurrentUniversalDate();
+    Host        = Connection.Host;
+
+    If Connection.Port <> 80 And Connection.Port <> 443 Then
+        Host = StrTemplate("%1:%2", Host, OPI_Tools.NumberToString(Connection.Port));
+    EndIf;
 
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
-    Request.Headers.Insert("Host"      , Connection.Host);
+    Request.Headers.Insert("Host"      , Host);
 
     MainParts = GetMainSignatureParts(CurrentDate);
 
@@ -3443,6 +3448,8 @@ Function GetParamsString()
         ParameterString = Right(URI, URILength - ParamsStart);
         ProcessRequestParametersString(ParameterString);
 
+        Request.ResourceAddress = Left(URI, ParamsStart) + ParameterString;
+
     EndIf;
 
     Return ParameterString;
@@ -3497,6 +3504,9 @@ Procedure ProcessRequestParametersString(ParameterString)
         LeftPart = ParameterParts[0];
         ParameterParts.Delete(0);
         RightPart = StrConcat(ParameterParts, "=");
+
+        LeftPart  = OPI_ToolsServerCall.GetDecodedString(LeftPart, "URLencoding");
+        RightPart = OPI_ToolsServerCall.GetDecodedString(RightPart, "URLencoding");
 
         ParameterArray[N] = StrTemplate("%1=%2"
             , OPI_ToolsServerCall.GetEncodedString(LeftPart, "URLencoding")

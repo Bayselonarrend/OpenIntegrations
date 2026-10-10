@@ -567,20 +567,18 @@ Function PutObject(Val Name
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    OPI_TypeConversion.GetBinaryData(Entity);
-
-    FileSize    = GetContentSize(Entity);
-    Divider     = 10000;
-    MinPartSize = FileSize / Divider;
-    MinPartSize = Max(MinPartSize, 5242880);
-    Half        = 0.5;
-
     If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
         OPI_TypeConversion.GetNumber(MaxSize);
     Else
         MaxSize = 20971520;
     EndIf;
+
+    FileSize    = OPI_Tools.ConvertDataWithSizeRetrieval(Entity, MaxSize + 1);
+    Divider     = 10000;
+    MinPartSize = FileSize / Divider;
+    MinPartSize = Max(MinPartSize, 5242880);
+    Half        = 0.5;
 
     If MinPartSize > MaxSize Then
         Raise "ChunkSize is too small. It is necessary to increase the chunk size (minimum for this file - "
@@ -883,7 +881,10 @@ Function GetObject(Val Name
         MaxSize = 20971520;
     EndIf;
 
-    If Not OPI_Tools.CollectionFieldExists(ObjectInfo, "headers.Content-Length") Then
+    LastSuccessCode = 299;
+
+    If ObjectInfo["status"] > LastSuccessCode
+        Or Not OPI_Tools.CollectionFieldExists(ObjectInfo, "headers.Content-Length") Then
         Return ObjectInfo;
     EndIf;
 
@@ -1307,10 +1308,15 @@ Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Heade
 
     SplitedURL = OPI_Tools.SplitURL(URL);
 
-    Domain  = SplitedURL["Domain"];
+    Host    = SplitedURL["Domain"];
     Address = SplitedURL["Address"];
+    Port    = SplitedURL["Port"];
 
-    AdditionalHeaders = New Structure("Host", Domain);
+    If Port <> 80 And Port <> 443 Then
+        Host = StrTemplate("%1:%2", Host, OPI_Tools.NumberToString(Port));
+    EndIf;
+
+    AdditionalHeaders = New Structure("Host", Host);
     AddAdditionalHeaders(Headers, AdditionalHeaders);
 
     URLSign = OPI_LibraryFunctionsServerCall.GenerateAWSSignature(DataStructure
@@ -1512,8 +1518,6 @@ Function UploadObjectInParts(Val Name
     , Val Sizes
     , Val Directory = "")
 
-    OPI_TypeConversion.GetBinaryOrStream(Entity);
-
     UploadStart = InitPartsUpload(Name, Bucket, BasicData, Headers, Directory);
     BodyStart   = OPI_AdvancedCall.NormalizeIntermediateResult(UploadStart);
 
@@ -1539,16 +1543,16 @@ Function UploadObjectInParts(Val Name
 
     While BytesRead < TotalSize Do
 
+        Result      = DataReader.Read(ChunkSize);
+        CurrentData = Result.GetBinaryData();
+
+        If CurrentData.Size() = 0 Then
+            Break;
+        EndIf;
+
         For N = 1 To Attempts Do
 
             Try
-
-                Result      = DataReader.Read(ChunkSize);
-                CurrentData = Result.GetBinaryData();
-
-                If CurrentData.Size() = 0 Then
-                    Break;
-                EndIf;
 
                 Response = UploadObjectPart(Name
                     , Bucket
@@ -1584,6 +1588,8 @@ Function UploadObjectInParts(Val Name
 
                 If N = Attempts Then
 
+                    ErrorText = ErrorDescription();
+
                     Message(OPI_Tools.JSONString(Response));
                     Message("Failed to upload part of the file! Abort upload wiht ID:" + UploadID + "...");
 
@@ -1602,16 +1608,23 @@ Function UploadObjectInParts(Val Name
 
         EndDo;
 
+        If Error Then
+            Break;
+        EndIf;
+
         PartNumber = PartNumber + 1;
 
     EndDo;
 
+    DataReader.Close();
+
     If Error Then
-        Response = AbortMultipartUpload(Name, Bucket, BasicData, UploadID, , Directory);
-    Else
-        // !IRPSkip
-        Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray, , Directory);
+        AbortMultipartUpload(Name, Bucket, BasicData, UploadID, , Directory);
+        Raise ErrorText;
     EndIf;
+
+    // !IRPSkip
+    Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray, , Directory);
 
     Return Response;
 
@@ -1729,21 +1742,6 @@ Function FormVersioningStructure(Val Status, Val MFADelete)
     FinalStructure = New Structure("VersioningConfiguration", SettingsStructure);
 
     Return FinalStructure;
-
-EndFunction
-
-Function GetContentSize(Val Entity)
-
-    If TypeOf(Entity) = Type("String") Then
-
-        ContentFile = New File(Entity);
-        Return ContentFile.Size();
-
-    Else
-
-        Return Entity.Size();
-
-    EndIf;
 
 EndFunction
 

@@ -125,6 +125,7 @@ Procedure MainHandler(Context, NextHandler) Export
 				Result = OPI_Janx.SerializeData(Result);
 			Else
 				ContentType = "application/json;charset=utf-8";
+				Result = NormalizeJSON(Result);
 			EndIf;
 
 		ElsIf TypeOf(Result) = Type("String") Then
@@ -146,36 +147,38 @@ Procedure MainHandler(Context, NextHandler) Export
 EndProcedure
 
 Function ProcessRequest(Context, Val HTTPMethod)
-
-	Path = Context.Request.Path;
-	
-	PathParts = StrSplit(Path, "/", False);
-	
-	If PathParts.Count() < 2 Then
-		Return Error(Context, 400, "Missing method and/or command name!");
-	EndIf;
-	
-	Method = PathParts[PathParts.UBound()];
-	Command = PathParts[PathParts.UBound() - 1];
-
-	ExecutionContext = New Map;
-
-	ProcessedOptions = GenerateOptions(Context, ExecutionContext, HTTPMethod);
-	CallStructure = OPIObject.FormMethodCallString(ProcessedOptions, Command, Method, , True);
-	
-	If CallStructure["Error"] Then
-		Return Error(Context, 400, StrTemplate("Check the order and escaping when entering the command! Command: %1, Method: %2", Command, Method));
-	EndIf;
-	
-	ExecutionText = CallStructure["Result"];
-	
-	Result = Undefined;
 	
 	Try
+		
+		Path = Context.Request.Path;
+		
+		PathParts = StrSplit(Path, "/", False);
+		
+		If PathParts.Count() < 2 Then
+			Return Error(Context, 400, "Missing method and/or command name!");
+		EndIf;
+		
+		Method = PathParts[PathParts.UBound()];
+		Command = PathParts[PathParts.UBound() - 1];
+
+		ExecutionContext = New Map;
+
+		ProcessedOptions = GenerateOptions(Context, ExecutionContext, HTTPMethod);
+		CallStructure = OPIObject.FormMethodCallString(ProcessedOptions, Command, Method, , True);
+		
+		If CallStructure["Error"] Then
+			Return Error(Context, 400, StrTemplate("Check the order and escaping when entering the command! Command: %1, Method: %2", Command, Method));
+		EndIf;
+		
+		ExecutionText = CallStructure["Result"];
+		
+		Result = Undefined;
+	
 		Executor.ExecuteScript(ExecutionText, Result, , ExecutionContext);
 		NormalizeResult(Result);
+
 	Except
-		Result = Error(Context, 400, DetailErrorDescription(ErrorInfo()));
+		Result = Error(Context, 400, BriefErrorDescription(ErrorInfo()));
 	EndTry;
 	
 	Return Result;
@@ -264,7 +267,6 @@ Function GenerateJanxOptions(Val Context)
 		
 		Parameters = OPI_Janx.DeserializeData(RequestBody);
 	Except
-		Context.Response.StatusCode = 400;
 		Raise "Request body is not valid Janx!"
 	EndTry;
 	
@@ -329,6 +331,46 @@ Procedure NormalizeResult(Result)
 	EndIf;
 
 EndProcedure
+
+Function NormalizeJSON(Value)
+	
+    If OPI_Tools.ThisIsCollection(Value, True) Then
+
+        ProcessedValue = New(TypeOf(Value));
+
+        For Each CollectionItem In Value Do
+
+            CurrentKey = CollectionItem.Key;
+            CurrentValue = NormalizeJSON(CollectionItem.Value);
+
+            ProcessedValue.Insert(CurrentKey, CurrentValue);
+
+        EndDo;
+
+    ElsIf OPI_Tools.ThisIsCollection(Value) Then
+
+        ProcessedValue = New Array;
+
+        For Each CollectionItem In Value Do
+
+            CurrentValue = NormalizeJSON(CollectionItem);
+            ProcessedValue.Add(CurrentValue);
+
+		EndDo;
+		
+	ElsIf TypeOf(Value) = Type("BinaryData") Then
+
+		ProcessedValue = StrTemplate("oint-base64:%1", Base64String(Value));
+		
+	Else
+
+		ProcessedValue = Value;
+		
+	EndIf;
+	
+	Return ProcessedValue;
+
+EndFunction
 
 Function AdditionalContext(Context, Val CurrentValue)
 	

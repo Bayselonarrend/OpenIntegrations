@@ -250,7 +250,7 @@ Procedure NormalizeResult(Result)
 	
 	If ResultType = Type("BinaryData") Then
 
-		Result = GetBase64StringFromBinaryData(Result);
+		Result = StrTemplate("BASE64:%1", GetBase64StringFromBinaryData(Result));
 		
 	ElsIf StrStartsWith(String(ResultType), "AddIn.") Then
 		

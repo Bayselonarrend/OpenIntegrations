@@ -726,7 +726,6 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/Notion.png);
 }
 
-
 .Ollama > div > a::before{
   content: url(../../static/img/APIs/small/Ollama.png);
 }

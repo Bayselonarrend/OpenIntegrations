@@ -17,6 +17,15 @@
             "request": "attach",
             "scriptFile": "OpenIntegrations/internal/Executor.sbsl",
             "args": []
+        },
+        {
+            "type": "sbsl",
+            "name": "Test1.sbsl#Test2",
+            "stopOnEntry": false,
+            "request": "attach",
+            "scriptFile": "tests/Test1.sbsl",
+            "args": [],
+            "method": "Test2"
         }
     ]
 }
