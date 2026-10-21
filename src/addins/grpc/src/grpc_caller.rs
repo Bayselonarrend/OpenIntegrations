@@ -17,6 +17,8 @@ pub struct CallParams {
     pub method: String,
     pub request: Option<JanxValue>,
     pub timeout_ms: Option<u64>,
+    pub max_decoding_message_size: Option<usize>,
+    pub max_encoding_message_size: Option<usize>,
 }
 
 impl CallParams {
@@ -37,6 +39,12 @@ impl CallParams {
             .get("timeout_ms")
             .and_then(i64::from_janx)
             .map(|n| n as u64);
+        let max_decoding_message_size = map
+            .get("max_decoding_message_size")
+            .and_then(usize::from_janx);
+        let max_encoding_message_size = map
+            .get("max_encoding_message_size")
+            .and_then(usize::from_janx);
         let request = map.get("request").cloned();
 
         Ok(Self {
@@ -115,7 +123,9 @@ pub async fn execute_grpc_call(
         .await
         .map_err(|e| format!("Failed to ready channel: {}", e))?;
 
-    let mut client = tonic::client::Grpc::new(ready_channel);
+    let mut client = tonic::client::Grpc::new(ready_channel)
+        .max_decoding_message_size(params.max_decoding_message_size.unwrap_or(4194304))
+        .max_encoding_message_size(params.max_encoding_message_size.unwrap_or(usize::MAX));
     let response = client
         .unary(grpc_request, path.parse().unwrap(), IdentityCodec)
         .await

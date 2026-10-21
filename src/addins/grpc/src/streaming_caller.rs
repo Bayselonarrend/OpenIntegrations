@@ -113,7 +113,9 @@ pub async fn start_client_stream(
         method_desc.name()
     );
 
-    let mut client = tonic::client::Grpc::new(channel.clone());
+    let mut client = tonic::client::Grpc::new(channel.clone())
+        .max_decoding_message_size(params.max_decoding_message_size.unwrap_or(4194304))
+        .max_encoding_message_size(params.max_encoding_message_size.unwrap_or(usize::MAX))
 
     client
         .ready()
