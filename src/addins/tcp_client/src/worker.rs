@@ -171,14 +171,18 @@ impl Session {
         let total_timeout = Duration::from_millis(timeout_ms.max(0) as u64);
         let start_time = Instant::now();
         let marker_exists = !end_marker.is_empty();
+        let max_size = if max_data_size > 0 {
+            max_data_size as usize
+        } else {
+            usize::MAX
+        };
 
         loop {
             if timeout_ms > 0 && start_time.elapsed() >= total_timeout {
                 break;
             }
 
-            if max_data_size > 0 && result.len() >= max_data_size as usize {
-                result.truncate(max_data_size as usize);
+            if result.len() >= max_size {
                 break;
             }
 
@@ -204,24 +208,27 @@ impl Session {
                 return result;
             }
 
+            // Never read more than the caller allowed: any extra bytes would be
+            // consumed from the socket and silently lost when truncating result.
+            let to_read = BUFFER_SIZE.min(max_size - result.len());
             let read_result = match connection {
-                Connection::Plain(tcp_stream) => tcp_stream.read(&mut buffer),
-                Connection::Tls(tls_stream) => tls_stream.read(&mut buffer),
+                Connection::Plain(tcp_stream) => tcp_stream.read(&mut buffer[..to_read]),
+                Connection::Tls(tls_stream) => tls_stream.read(&mut buffer[..to_read]),
             };
 
             match read_result {
                 Ok(0) => break,
                 Ok(size) => {
+                    let prev_len = result.len();
                     result.extend_from_slice(&buffer[..size]);
 
-                    if max_data_size > 0 && result.len() > max_data_size as usize {
-                        result.truncate(max_data_size as usize);
-                        break;
-                    }
-
                     if marker_exists {
-                        if let Some(pos) = find_subsequence(&result, &end_marker) {
-                            result.truncate(pos + end_marker.len());
+                        // Search only the freshly received chunk with (marker.len() - 1)
+                        // bytes of overlap, instead of rescanning the whole buffer after
+                        // every read (that made large responses O(n^2)).
+                        let search_from = prev_len.saturating_sub(end_marker.len() - 1);
+                        if let Some(pos) = find_subsequence(&result[search_from..], &end_marker) {
+                            result.truncate(search_from + pos + end_marker.len());
                             break;
                         }
                     }
