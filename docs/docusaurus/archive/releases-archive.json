@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-10T12:55:30",
+ "generatedAt": "2026-10-27T08:47:26",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -72,6 +72,30 @@
      "description_en": "Fixed custom encoding specification in `Content-Type`"
     },
     {
+     "lib": "S3",
+     "icon": "media/S3.png",
+     "description_ru": "Исправлена подпись AWS4 для S3 на нестандартном порту (несовпадение `Host` в подписи и в запросе) #105 @Segate-ekb",
+     "description_en": "Fixed AWS4 signature for S3 on non-standard ports (`Host` mismatch between signature and request) #105 @Segate-ekb"
+    },
+    {
+     "lib": "S3",
+     "icon": "media/S3.png",
+     "description_ru": "Исправлена повторная отправка части в `ЗагрузитьОбъект` при загрузке частями: при ошибке повторяются те же байты, при исчерпании попыток multipart-загрузка отменяется #107 @Segate-ekb",
+     "description_en": "Fixed multipart part retry in `UploadObject`: failed parts resend the same bytes; exhausted retries abort the upload #107 @Segate-ekb"
+    },
+    {
+     "lib": "S3",
+     "icon": "media/S3.png",
+     "description_ru": "Исправлено получение отсутствующего объекта в `ПолучитьОбъект` при указании пути сохранения — возвращается ответ сервера, а не ошибка записи #108 @Segate-ekb",
+     "description_en": "Fixed `GetObject` for a missing object with a save path: returns the server response instead of a write error #108 @Segate-ekb"
+    },
+    {
+     "lib": "S3",
+     "icon": "media/S3.png",
+     "description_ru": "Оптимизирована загрузка объекта частями из файла: данные читаются потоком, без загрузки всего файла в память #109 @Segate-ekb",
+     "description_en": "Optimized multipart upload from a file path: reads data in a stream instead of loading the entire file into memory #109 @Segate-ekb"
+    },
+    {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Убрана проверка режима совместимости в расширении для более простого обновления через панель управления в версии для 1С:Предприятие",
@@ -82,6 +106,12 @@
      "icon": "media/logo.png",
      "description_ru": "Полный отказ от режима подключения `Изолированно` при работе с внешними компонентами",
      "description_en": "Full deprecation of `Isolated` connection mode when working with AddIns"
+    },
+    {
+     "lib": "TCP",
+     "icon": "media/TCP.png",
+     "description_ru": "Исправлена потеря данных в `Read` TCP-клиента при ограничении максимального размера ответа; ускорен поиск маркера окончания на больших объёмах #116 @gridgt",
+     "description_en": "Fixed data loss in TCP client `Read` when a maximum response size is set; improved end-marker search on large payloads #116 @gridgt"
     }
    ],
    "artifacts": [
