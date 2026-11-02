@@ -34,19 +34,33 @@ if errorlevel 1 (
 )
 exit /b 0
 
-:require_wsl
+:require_docker
 setlocal EnableDelayedExpansion
-where wsl >nul 2>&1
+where docker >nul 2>&1
 if errorlevel 1 (
-    echo [ERROR] wsl not found in PATH.
+    echo [ERROR] docker not found in PATH. Install Docker Desktop.
     exit /b 1
 )
-wsl -d OracleLinux_9_1 -- echo WSL OK >nul 2>&1
+docker compose version >nul 2>&1
 if errorlevel 1 (
-    echo [ERROR] WSL distro OracleLinux_9_1 is not available.
+    echo [ERROR] docker compose is not available.
     exit /b 1
+)
+docker image inspect opi-addins-zigbuild:ol9 >nul 2>&1
+if errorlevel 1 (
+    echo [INFO] Building opi-addins-zigbuild:ol9...
+    for %%I in ("%~dp0..") do set "ADDINS_ROOT=%%~fI"
+    if "!ADDINS_ROOT:~-1!"=="\" set "ADDINS_ROOT=!ADDINS_ROOT:~0,-1!"
+    for %%I in ("!ADDINS_ROOT!\..\..") do set "REPO_ROOT=%%~fI"
+    set "DOCKER_DIR=!REPO_ROOT!\ci\docker"
+    docker compose -f "!DOCKER_DIR!\docker-compose.yml" --project-directory "!DOCKER_DIR!" build zigbuild
+    if errorlevel 1 exit /b 1
 )
 exit /b 0
+
+:require_wsl
+:: Backward-compatible alias — Linux builds use Docker now
+goto require_docker
 
 :ensure_output_dir
 setlocal EnableDelayedExpansion

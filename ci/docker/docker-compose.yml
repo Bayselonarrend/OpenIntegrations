@@ -1,0 +1,19 @@
+services:
+  zigbuild:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: opi-addins-zigbuild:ol9
+    working_dir: /addins
+    volumes:
+      - ../../src/addins:/addins
+      - opi-cargo-registry:/usr/local/cargo/registry
+      - opi-cargo-git:/usr/local/cargo/git
+    environment:
+      CARGO_HOME: /usr/local/cargo
+      RUSTUP_HOME: /usr/local/rustup
+      OPENSSL_DIR: /usr
+
+volumes:
+  opi-cargo-registry:
+  opi-cargo-git:

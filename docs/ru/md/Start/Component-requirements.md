@@ -141,7 +141,7 @@ GLIBC_2.17
 ## Техническая информация о сборке и разработке 
 
 + Все компоненты - cdylib на Rust, основанные на крейте [addin1c от medigor](https://crates.io/crates/addin1c)
-+ Сборка под Linux происходит при помощи [zigbuild](https://github.com/rust-cross/cargo-zigbuild) на OracleLinux 9.1 (WSL)
++ Сборка под Linux происходит при помощи [zigbuild](https://github.com/rust-cross/cargo-zigbuild) в Docker (Oracle Linux 9; см. `ci/docker/docker-compose.yml`)
 + Profile.release:
 ```toml
 	lto = "fat"

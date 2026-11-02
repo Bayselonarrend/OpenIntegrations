@@ -14,12 +14,16 @@ if "!ARCH!"=="" set "ARCH=both"
 
 set "SCRIPT_DIR=%~dp0"
 for %%I in ("!SCRIPT_DIR!..") do set "ADDINS_DIR=%%~fI"
+if "!ADDINS_DIR:~-1!"=="\" set "ADDINS_DIR=!ADDINS_DIR:~0,-1!"
+for %%I in ("!ADDINS_DIR!\..\..") do set "REPO_ROOT=%%~fI"
+set "DOCKER_DIR=!REPO_ROOT!\ci\docker"
 set "COMPONENT_PATH=!ADDINS_DIR!\!COMPONENT_DIR!"
 set "CARGO_TOML=!COMPONENT_PATH!\Cargo.toml"
+set "COMPOSE_FILE=!DOCKER_DIR!\docker-compose.yml"
 
 call "!SCRIPT_DIR!lib.bat" validate_arch "!ARCH!"
 if errorlevel 1 exit /b !errorlevel!
-call "!SCRIPT_DIR!lib.bat" require_wsl
+call "!SCRIPT_DIR!lib.bat" require_docker
 if errorlevel 1 exit /b 1
 call "!SCRIPT_DIR!lib.bat" require_powershell
 if errorlevel 1 exit /b 1
@@ -85,7 +89,7 @@ exit /b 1
 set "TARGET=x86_64-unknown-linux-gnu.2.17"
 set "SO_SOURCE=target\x86_64-unknown-linux-gnu\release\lib!CARGO_NAME!.so"
 echo Building !LIB_NAME! ^(!COMPONENT_DIR!^) for !TARGET! with vendored OpenSSL...
-wsl -d OracleLinux_9_1 -- bash -lc "cargo zigbuild --locked --release --target !TARGET! --features vendored-openssl"
+docker compose -f "!COMPOSE_FILE!" --project-directory "!DOCKER_DIR!" run --rm --no-deps zigbuild bash -lc "cd /addins/!COMPONENT_DIR! && cargo zigbuild --locked --release --target !TARGET! --features vendored-openssl"
 if errorlevel 1 exit /b 1
 if not exist "!SO_SOURCE!" (
     echo [ERROR] Built .so not found: !SO_SOURCE!
@@ -100,7 +104,7 @@ exit /b 0
 set "TARGET=i686-unknown-linux-gnu.2.17"
 set "SO_SOURCE=target\i686-unknown-linux-gnu\release\lib!CARGO_NAME!.so"
 echo Building !LIB_NAME! ^(!COMPONENT_DIR!^) for !TARGET! with vendored OpenSSL...
-wsl -d OracleLinux_9_1 -- bash -lc "cargo zigbuild --locked --release --target !TARGET! --features vendored-openssl"
+docker compose -f "!COMPOSE_FILE!" --project-directory "!DOCKER_DIR!" run --rm --no-deps zigbuild bash -lc "cd /addins/!COMPONENT_DIR! && cargo zigbuild --locked --release --target !TARGET! --features vendored-openssl"
 if errorlevel 1 exit /b 1
 if not exist "!SO_SOURCE!" (
     echo [ERROR] Built .so not found: !SO_SOURCE!

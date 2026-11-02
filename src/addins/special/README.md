@@ -15,7 +15,7 @@
 
 1. Один раз подготовить окружение:
    - `setup-win7.bat` — nightly Rust, rust-src, MSVC
-   - `setup-static-openssl.bat` — WSL OracleLinux_9_1, cargo-zigbuild
+   - `setup-static-openssl.bat` — Docker `opi-addins-zigbuild:ol9`, cargo-zigbuild
 2. Собрать всё (режим `both` для обеих архитектур):
    - `build_all.bat`
 3. Опубликовать в orphan-ветку `addins-special`:
@@ -64,6 +64,6 @@ build-win7.bat lua lua OPI_LuaJIT both --no-default-features --features luajit
 | `build-static-openssl.bat` | Одна компонента, vendored OpenSSL |
 | `lib.bat` | Общие проверки, манифест, zip |
 | `setup-win7.bat` | Подготовка окружения win7 |
-| `setup-static-openssl.bat` | Подготовка WSL / zigbuild |
+| `setup-static-openssl.bat` | Подготовка Docker / zigbuild |
 | `publish-special-addins.bat` | Публикация в `addins-special` |
 | `sync-special-addins.bat` | Синхронизация с `origin/addins-special` |

@@ -144,7 +144,7 @@ You can produce the same information yourself by unpacking the platform ZIP and 
 ## Technical notes on builds and development
 
 + Every component is a Rust **cdylib** based on the [addin1c](https://crates.io/crates/addin1c) crate by medigor.
-+ Linux binaries are cross-compiled with [cargo-zigbuild](https://github.com/rust-cross/cargo-zigbuild) targeting Oracle Linux 9.1 (via WSL).
++ Linux binaries are cross-compiled with [cargo-zigbuild](https://github.com/rust-cross/cargo-zigbuild) in Docker (Oracle Linux 9; see `ci/docker/docker-compose.yml`).
 + `Profile.release`:
 
 ```toml
