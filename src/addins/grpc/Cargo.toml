@@ -36,6 +36,3 @@ http = "1.0"
 uuid = { version = "1.17.0", features = ["v4"] }
 futures = "0.3.31"
 bytes = "1.5"
-
-[build-dependencies]
-tonic-build = "0.13.1"

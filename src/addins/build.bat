@@ -86,11 +86,19 @@ docker compose -f "%COMPOSE_FILE%" --project-directory "%DOCKER_DIR%" run --rm -
 powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -Force -DestinationPath '%LIB_NAME%.zip'"
 if errorlevel 1 goto :error
 
+:: OInt/addins может отсутствовать до sync-addins.bat — создаём для локальной сборки
+if not exist "..\..\ru\OInt\addins" mkdir "..\..\ru\OInt\addins"
+if not exist "..\..\en\OInt\addins" mkdir "..\..\en\OInt\addins"
+
 copy /y "%LIB_NAME%.zip" "../../ru/OInt/addins/%LIB_NAME%.zip"
+if errorlevel 1 goto :error
 copy /y "%LIB_NAME%.zip" "../../en/OInt/addins/%LIB_NAME%.zip"
+if errorlevel 1 goto :error
 
 copy /y "%LIB_NAME%.zip" "../../ru/BSL/OpenIntegrations/src/CommonTemplates/%LIB_NAME%/Template.addin"
+if errorlevel 1 goto :error
 copy /y "%LIB_NAME%.zip" "../../en/BSL/OpenIntegrations/src/CommonTemplates/%LIB_NAME%/Template.addin"
+if errorlevel 1 goto :error
 
 if exist "%OUTPUT_DIR%" (
     rmdir /S /Q "%OUTPUT_DIR%"
