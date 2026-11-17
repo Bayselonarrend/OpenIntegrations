@@ -70,6 +70,24 @@
                 "icon": "media/TCP.png",
                 "description_ru": "Исправлена потеря данных в `Read` TCP-клиента при ограничении максимального размера ответа; ускорен поиск маркера окончания на больших объёмах #116 @gridgt",
                 "description_en": "Fixed data loss in TCP client `Read` when a maximum response size is set; improved end-marker search on large payloads #116 @gridgt"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Исправлена загрузка истории: файл отправляется в поле `file` без дополнительных полей формы",
+                "description_en": "Fixed story upload: the file is sent in the `file` field without extra form fields"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Исправлено сохранение фото товара: `upload_response` передаётся закодированной JSON-строкой, чтобы `+` в хеше не превращался в пробел",
+                "description_en": "Fixed product photo save: `upload_response` is sent as a URL-encoded JSON string so `+` in the hash is not turned into a space"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Исправлен обрыв `ПолучитьСписокЗаказов`, если следующая страница `market.getGroupOrders` приходит без `response`",
+                "description_en": "Fixed `GetOrderList` aborting when the next `market.getGroupOrders` page has no `response`"
             }
         ]
     },
