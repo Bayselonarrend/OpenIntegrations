@@ -1,11 +1,11 @@
 ﻿{
  "logs": [
-  "[2026-09-01 20:15:04.642] Starting WebSocket server on port 9893 with config: WebSocketServerConfig { max_connections: 100, routes: [\"/\"] }",
-  "[2026-09-01 20:15:04.644] Adding WebSocket route: /",
-  "[2026-09-01 20:15:04.645] WebSocket server listening on 0.0.0.0:9893",
-  "[2026-09-01 20:15:04.819] Connection added: 9146c25b-41bc-4e8d-82ff-41cd253b177a",
-  "[2026-09-01 20:15:04.820] WebSocket connected: 9146c25b-41bc-4e8d-82ff-41cd253b177a",
-  "[2026-09-01 20:15:04.823] Received 25 bytes from WebSocket 9146c25b-41bc-4e8d-82ff-41cd253b177a"
+  "[2026-11-17 09:46:05.665] Starting WebSocket server on port 9893 with config: WebSocketServerConfig { max_connections: 100, routes: [\"/\"] }",
+  "[2026-11-17 09:46:05.667] Adding WebSocket route: /",
+  "[2026-11-17 09:46:05.667] WebSocket server listening on 0.0.0.0:9893",
+  "[2026-11-17 09:46:05.818] Connection added: 05e0568b-a0fe-4f5d-a5f7-96894210097c",
+  "[2026-11-17 09:46:05.818] WebSocket connected: 05e0568b-a0fe-4f5d-a5f7-96894210097c",
+  "[2026-11-17 09:46:05.821] Received 25 bytes from WebSocket 05e0568b-a0fe-4f5d-a5f7-96894210097c"
  ],
  "result": true,
  "returned": 6,

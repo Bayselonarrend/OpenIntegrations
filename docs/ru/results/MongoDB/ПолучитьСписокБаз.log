@@ -4,7 +4,7 @@
    {
     "empty": false,
     "name": "admin",
-    "sizeOnDisk": 225280
+    "sizeOnDisk": 188416
    },
    {
     "empty": false,
@@ -14,7 +14,7 @@
    {
     "empty": false,
     "name": "local",
-    "sizeOnDisk": 90112
+    "sizeOnDisk": 98304
    },
    {
     "empty": false,
@@ -23,7 +23,7 @@
    }
   ],
   "ok": 1,
-  "totalSize": 450560,
+  "totalSize": 421888,
   "totalSizeMb": 0
  },
  "result": true

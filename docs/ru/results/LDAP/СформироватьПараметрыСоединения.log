@@ -1,0 +1,6 @@
+﻿{
+ "url": "ldap://127.0.0.1:389",
+ "bind_dn": "cn=admin,dc=example,dc=org",
+ "password": "***",
+ "timeout": 30
+}

@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 24561,
+  "message_id": 24610,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -10,12 +10,12 @@
   },
   "chat": {
    "id": 461699897,
-   "first_name": "Anton",
-   "last_name": "Titovets",
+   "first_name": "Антон",
+   "last_name": "Титовец",
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1788282853,
+  "date": 1794897942,
   "video": {
    "duration": 5,
    "width": "***",
@@ -23,21 +23,21 @@
    "file_name": "video",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAl_xapcH5SCUHIHIPhabLb2psxu9VNkAAh2nAAKPXLhIZWMI-_lxeMcBAAdtAAM9BA",
-    "file_unique_id": "AQADHacAAo9cuEhy",
+    "file_id": "AAMCAgADGQMAAmAiavv4FrnjDjP3yAh52xNq5Y1QgwADvasAAnvE4Ev86TEIu7mBjAEAB20AAz0E",
+    "file_unique_id": "AQADvasAAnvE4Ety",
     "file_size": 19807,
     "width": "***",
     "height": 240
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAl_xapcH5SCUHIHIPhabLb2psxu9VNkAAh2nAAKPXLhIZWMI-_lxeMcBAAdtAAM9BA",
-    "file_unique_id": "AQADHacAAo9cuEhy",
+    "file_id": "AAMCAgADGQMAAmAiavv4FrnjDjP3yAh52xNq5Y1QgwADvasAAnvE4Ev86TEIu7mBjAEAB20AAz0E",
+    "file_unique_id": "AQADvasAAnvE4Ety",
     "file_size": 19807,
     "width": "***",
     "height": 240
    },
-   "file_id": "BAACAgIAAxkDAAJf8WqXB-UglByByD4Wmy29qbMbvVTZAAIdpwACj1y4SGVjCPv5cXjHPQQ",
-   "file_unique_id": "AgADHacAAo9cuEg",
+   "file_id": "BAACAgIAAxkDAAJgImr7-Ba54w4z98gIedsTauWNUIMAA72rAAJ7xOBL_OkxCLu5gYw9BA",
+   "file_unique_id": "AgADvasAAnvE4Es",
    "file_size": 1137878
   },
   "caption": "Строковое значение"

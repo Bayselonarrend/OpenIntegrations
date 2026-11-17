@@ -1,10 +1,8 @@
 ﻿{
  "entity": {
-  "uuid": "2b0cd209-6eb6-4a55-a1cc-314bdd1c9b9a",
-  "cdek_number": "1109965613",
-  "order_uuid": "b86f710d-d33a-4b70-b37d-ad6548ae72a1",
-  "intake_date": "2026-09-02",
-  "intake_number": "13313131",
+  "uuid": "0af4a080-4dea-4444-ae4f-f191a6b2016f",
+  "intake_date": "2026-11-18",
+  "intake_number": "13313974",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -16,10 +14,9 @@
   "sender": {
    "company": "Компания",
    "name": "Компания",
-   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "79589441654"
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -38,52 +35,30 @@
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
-  "to_location": {
-   "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "longitude": 37.831928,
-   "latitude": 55.644399,
-   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
-   "postal_code": "140091"
-  },
   "need_call": false,
   "statuses": [
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2026-09-01T20:14:02+03:00"
+    "date_time": "2026-11-17T06:43:56+0000"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-09-01T20:14:02+03:00"
+    "date_time": "2026-11-17T06:43:56+0000"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-09-01T20:14:02+03:00"
-   }
-  ],
-  "packages": [
-   {
-    "package_id": "de8640c7-07bd-421d-b21c-11c4ff5a0237",
-    "weight": 1000,
-    "length": 10,
-    "width": "***",
-    "height": 10
+    "date_time": "2026-11-17T06:43:56+0000"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "0a88050a-aff2-4a52-b748-984814b13c34",
+   "request_uuid": "dc43816e-70bc-4789-8ee7-b8394e07386b",
    "type": "CREATE",
-   "date_time": "2026-09-01T20:13:58+03:00",
+   "date_time": "2026-11-17T06:43:55+0000",
    "state": "SUCCESSFUL"
   }
  ]

@@ -1,0 +1,12 @@
+﻿{
+ "data": {
+  "settings": {
+   "bind_dn": "cn=admin,dc=example,dc=org",
+   "password": "***",
+   "timeout": 30,
+   "url": "ldap://127.0.0.1:389"
+  },
+  "tls": null
+ },
+ "result": true
+}
