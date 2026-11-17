@@ -2912,7 +2912,8 @@ Function SetRange(Val StartPosition, Val EndPosition)
         , OPI_Tools.NumberToString(EndPosition));
 
     AdditionalHeaders = New Map;
-    AdditionalHeaders.Insert("Range", StreamHeader);
+    AdditionalHeaders.Insert("Range"          , StreamHeader);
+    AdditionalHeaders.Insert("Accept-Encoding", "identity");
 
     Return SetHeaders(AdditionalHeaders);
 

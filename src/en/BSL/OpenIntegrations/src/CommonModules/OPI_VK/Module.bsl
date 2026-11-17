@@ -510,6 +510,10 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
         ImageKey     = "image___jpeg";
     EndIf;
 
+    If View      = "Story" Then
+        ImageKey = "file|" + ImageKey;
+    EndIf;
+
     Files.Insert(ImageKey, Image);
 
     Response = OPI_HTTPRequests.Get(Upload, Parameters);
@@ -536,7 +540,9 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
 
         OPI_Tools.Pause(N);
 
-        Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files);
+        SendingParameters = ?(View = "Story", New Structure, Parameters);
+
+        Response = OPI_HTTPRequests.PostMultipart(URL, SendingParameters, Files);
         Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
         If TypeOf(Body) <> Type("Map") Then
@@ -1980,7 +1986,7 @@ Function FillPhotoUploadParameters(Val Method, Val Response, Parameters)
             Return False;
         EndIf;
 
-        Parameters.Insert("upload_response", Response);
+        Parameters.Insert("upload_response", OPI_Tools.JSONString(Response, , False));
 
     Else
 
@@ -2173,15 +2179,30 @@ Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
     MaxInRequest = 50;
     Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.getGroupOrders", Parameters);
     Response     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
-    Orders       = Response[Response_]["items"];
 
-    If Orders.Count() = 0 Then
+    If TypeOf(Response) <> Type("Map") Then
+        Return;
+    EndIf;
+
+    Result = Response[Response_];
+
+    If TypeOf(Result) <> Type("Map") Then
+        Return;
+    EndIf;
+
+    Orders = Result["items"];
+
+    If TypeOf(Orders) <> Type("Array") Or Orders.Count() = 0 Then
         Return;
     EndIf;
 
     For Each Order In Orders Do
         ArrayOfOrders.Add(Order);
     EndDo;
+
+    If Orders.Count() < MaxInRequest Then
+        Return;
+    EndIf;
 
     Shift = Shift + MaxInRequest;
     Parameters.Insert("offset", Shift);

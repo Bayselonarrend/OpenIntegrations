@@ -247,6 +247,7 @@ EndProcedure
 Procedure VKAPI_CreateProductWithProperties() Export
 
     Parameters = GetVKParameters();
+    DeleteExistingProperties(Parameters);
 
     TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_GetProductDescription(TestParameters);
@@ -326,6 +327,40 @@ Function GetVKParameters()
     Return Parameters;
 
 EndFunction
+
+Procedure DeleteExistingProperties(Parameters)
+
+    Properties = OPI_VK.GetPropertyList(Parameters);
+
+    If TypeOf(Properties) <> Type("Array") Then
+        Return;
+    EndIf;
+
+    For Each Property In Properties Do
+
+        Name = Property["title"];
+
+        If Left(Name, 4) <> "Color" Then
+            Continue;
+        EndIf;
+
+        Variants = Property["variants"];
+
+        If TypeOf(Variants) = Type("Array") Then
+
+            For Each Option In Variants Do
+                OPI_VK.DeleteProductPropertyVariant(Option["id"], Parameters);
+                OPI_Tools.Pause(1);
+            EndDo;
+
+        EndIf;
+
+        OPI_VK.DeleteProductProperty(Property["id"], Parameters);
+        OPI_Tools.Pause(1);
+
+    EndDo;
+
+EndProcedure
 
 #Region AtomicTests
 

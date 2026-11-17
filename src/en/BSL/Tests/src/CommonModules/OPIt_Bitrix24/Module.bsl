@@ -2432,17 +2432,10 @@ Procedure Bitrix24_AddTaskTimeAccounting(FunctionParameters)
     Token = FunctionParameters["Bitrix24_Token"];
 
     Text      = "Time spent on work";
-    UserID    = 10;
     Time      = 7200;
     SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
 
-    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
-        , TaskID
-        , Time
-        , UserID
-        , Text
-        , SetupDate
-        , Token);
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time, , Text, SetupDate, Token);
 
     // END
 

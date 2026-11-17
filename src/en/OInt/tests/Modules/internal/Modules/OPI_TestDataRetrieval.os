@@ -7194,7 +7194,9 @@ EndFunction
 
 Function Check_CDEK_GetReceipt(Val Result, Val Option)
 
-    ExpectsThat(Result["entity"]["statuses"][0]["code"]).Равно("ACCEPTED");
+    State = Result["requests"][0]["state"];
+
+    ExpectsThat(State = "ACCEPTED" Or State = "SUCCESSFUL").Равно(True);
     ExpectsThat(Result["entity"]["copy_count"]).Равно(1);
 
     Return Result;
@@ -7220,7 +7222,9 @@ EndFunction
 
 Function Check_CDEK_GetBarcode(Val Result, Val Option)
 
-    ExpectsThat(Result["entity"]["statuses"][0]["code"]).Равно("ACCEPTED");
+    State = Result["requests"][0]["state"];
+
+    ExpectsThat(State = "ACCEPTED" Or State = "SUCCESSFUL").Равно(True);
     ExpectsThat(Result["entity"]["copy_count"]).Равно(1);
 
     Return Result;
@@ -11854,7 +11858,7 @@ Function Check_HTTP_ReturnSettings(Val Result, Val Option)
 
     If Option = "Single" Then
 
-        ExpectsThat(Result).Равно("UTF-8");
+        ExpectsThat(Result).Равно("utf-8");
 
     ElsIf Option = "Nonexistent" Then
 

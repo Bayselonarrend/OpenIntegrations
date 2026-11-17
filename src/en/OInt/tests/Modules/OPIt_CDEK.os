@@ -111,9 +111,7 @@ Procedure CDEKAPI_OrdersManagement() Export
     TestParameters = OPI_TestDataRetrieval.GetTestData();
     CDEK_GetOrderDescription(TestParameters);
     CDEK_CreateOrder(TestParameters);
-
-    OPI_Tools.Pause(25);
-
+    WaitForOrderNumber(TestParameters);
     CDEK_GetOrder(TestParameters);
     CDEK_GetOrderByNumber(TestParameters);
     CDEK_CreateReceipt(TestParameters);
@@ -146,7 +144,7 @@ Procedure CdekAPI_CourierInvitationsManagement() Export
     CDEK_GetCourierInvitation(TestParameters);
     CDEK_DeleteCourierInvitation(TestParameters);
     CDEK_GetAppointmentDescription(TestParameters);
-
+    WaitForOrderNumber(TestParameters);
     CDEK_GetAvailableDeliveryIntervals(TestParameters);
     CDEK_RegisterDeliveryAppointment(TestParameters);
 
@@ -164,6 +162,38 @@ EndProcedure
 #EndRegion // Internal
 
 #Region Private
+
+Procedure WaitForOrderNumber(TestParameters)
+
+    Token    = TestParameters["CDEK_Token"];
+    UUID     = TestParameters["CDEK_OrderUUID"];
+    Attempts = 24;
+
+    For AttemptNumber = 1 To Attempts Do
+
+        Result = OPI_CDEK.GetOrder(Token, UUID, True);
+        Entity = Result["entity"];
+
+        If TypeOf(Entity) <> Type("Map") And TypeOf(Entity) <> Type("Structure") Then
+            OPI_Tools.Pause(5);
+            Continue;
+        EndIf;
+
+        If ValueIsFilled(Entity["cdek_number"]) Then
+            Return;
+        EndIf;
+
+        Requests = Result["requests"];
+
+        If TypeOf(Requests) = Type("Array") And Requests.Count() > 0 And Requests[0]["state"] = "INVALID" Then
+            Return;
+        EndIf;
+
+        OPI_Tools.Pause(5);
+
+    EndDo;
+
+EndProcedure
 
 #Region AtomicTests
 
