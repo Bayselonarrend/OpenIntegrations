@@ -15,7 +15,7 @@
     "parameter_size": "1.1B",
     "quantization_level": "Q4_0"
    },
-   "expires_at": "2026-11-17T09:50:48.5339755+03:00",
+   "expires_at": "2026-11-17T23:11:02.3147075+03:00",
    "size_vram": 0,
    "context_length": 2048
   },
@@ -34,7 +34,7 @@
     "parameter_size": "475.29M",
     "quantization_level": "F16"
    },
-   "expires_at": "2026-11-17T09:50:10.6770055+03:00",
+   "expires_at": "2026-11-17T23:10:46.0966004+03:00",
    "size_vram": 0,
    "context_length": 512
   }

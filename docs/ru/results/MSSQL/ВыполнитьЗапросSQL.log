@@ -3,12 +3,12 @@
   {
    "Age": 20,
    "BirthDate": "2026-11-17",
-   "CreatedAt": "2026-11-17T09:40:40",
+   "CreatedAt": "2026-11-17T22:57:08",
    "Data": "<Двоичные данные>",
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "76d9a649-dd1d-47b8-8879-ac450b58f007",
+   "RowGuid": "b421aa6f-708b-487d-9290-77e72eb22bb9",
    "Salary": 10.3
   }
  ],
