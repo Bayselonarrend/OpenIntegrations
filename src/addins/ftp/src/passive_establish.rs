@@ -6,6 +6,24 @@ use std::vec::IntoIter;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::create_tcp_connection;
 
+pub fn make_passive_direct_stream(
+    ftp_settings: &FtpSettings,
+    addr: SocketAddr,
+) -> Result<TcpStream, FtpError> {
+    let read_timeout = Duration::from_secs(ftp_settings.read_timeout.max(1));
+    let write_timeout = Duration::from_secs(ftp_settings.write_timeout.max(1));
+
+    let stream = TcpStream::connect_timeout(&addr, read_timeout).map_err(FtpError::ConnectionError)?;
+    stream
+        .set_read_timeout(Some(read_timeout))
+        .map_err(FtpError::ConnectionError)?;
+    stream
+        .set_write_timeout(Some(write_timeout))
+        .map_err(FtpError::ConnectionError)?;
+
+    Ok(stream)
+}
+
 pub fn make_passive_proxy_stream(
     ftp_settings: &FtpSettings,
     proxy_settings: &Option<ProxySettings>,

@@ -88,6 +88,12 @@
                 "icon": "media/VK.png",
                 "description_ru": "Исправлен обрыв `ПолучитьСписокЗаказов`, если следующая страница `market.getGroupOrders` приходит без `response`",
                 "description_en": "Fixed `GetOrderList` aborting when the next `market.getGroupOrders` page has no `response`"
+            },
+            {
+                "lib": "FTP",
+                "icon": "media/FTP.png",
+                "description_ru": "Улучшена стабильность FTP: передача данных в пассивном режиме ограничена таймаутом соединения",
+                "description_en": "Improved FTP stability: passive data transfers are limited by the connection timeout"
             }
         ]
     },
