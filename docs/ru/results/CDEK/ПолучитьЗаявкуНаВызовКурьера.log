@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
-  "uuid": "b4af68cf-03d4-487c-a09c-0d2975d2d236",
-  "intake_date": "2026-11-18",
-  "intake_number": "13313983",
+  "uuid": "f05008a2-5815-418d-a632-0a9b4f368a2c",
+  "intake_date": "2026-11-19",
+  "intake_number": "13313984",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -40,25 +40,25 @@
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2026-11-17T20:01:16+0000"
+    "date_time": "2026-11-18T05:51:52+0000"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-11-17T20:01:16+0000"
+    "date_time": "2026-11-18T05:51:52+0000"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-11-17T20:01:16+0000"
+    "date_time": "2026-11-18T05:51:52+0000"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "b2e16aa0-2023-4837-bbec-cb9343935bdb",
+   "request_uuid": "1042ab82-8191-43dc-863a-9593e7ca8576",
    "type": "CREATE",
-   "date_time": "2026-11-17T20:01:15+0000",
+   "date_time": "2026-11-18T05:51:52+0000",
    "state": "SUCCESSFUL"
   }
  ]
