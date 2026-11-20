@@ -1,10 +1,10 @@
 "MAIN ---" 
-	linux-vdso.so.1 (0x00007236f6cf0000)
-	libm.so.6 => /lib64/libm.so.6 (0x00007236f6ac5000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007236f6ac0000)
-	libc.so.6 => /lib64/libc.so.6 (0x00007236f68b6000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x00007236f68b1000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007236f6cf2000)
+	linux-vdso.so.1 (0x000078e6b4887000)
+	libm.so.6 => /lib64/libm.so.6 (0x000078e6b465c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000078e6b4657000)
+	libc.so.6 => /lib64/libc.so.6 (0x000078e6b444d000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000078e6b4448000)
+	/lib64/ld-linux-x86-64.so.2 (0x000078e6b4889000)
 GLIBC_2.2.5
 GLIBC_2.12
 GLIBC_2.3

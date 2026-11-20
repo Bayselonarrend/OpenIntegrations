@@ -9,7 +9,7 @@ use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{janx_error, janx_success};
 
 use crate::client_state::ClientState;
-use crate::connection;
+use crate::connection::{self, ConnectionOptions};
 use crate::grpc_caller::{self, CallParams};
 use crate::introspection;
 use crate::proto_loader;
@@ -18,6 +18,7 @@ pub enum WorkerCommand {
     Connect {
         address: String,
         tls_settings: Option<TlsSettings>,
+        options: ConnectionOptions,
         response: Sender<Result<(), String>>,
     },
     Disconnect {
@@ -121,15 +122,16 @@ pub fn spawn_thread(
 
         while let Ok(cmd) = rx.recv() {
                     match cmd {
-                        WorkerCommand::Connect { address, tls_settings, response } => {
+                        WorkerCommand::Connect { address, tls_settings, options, response } => {
                             session.log(&format!("Connecting to gRPC server {}", address));
                             let result = rt.block_on(async {
-                                match connection::establish_connection(&address, &tls_settings).await {
+                                match connection::establish_connection(&address, &tls_settings, &options).await {
                                     Ok(channel) => {
                                         session.state.connected = true;
                                         session.state.address = address;
                                         session.state.tls_settings = tls_settings;
                                         session.state.channel = Some(channel);
+                                        session.state.connection = options;
                                         Ok(())
                                     }
                                     Err(e) => Err(e),
@@ -157,6 +159,7 @@ pub fn spawn_thread(
                                 }
                             };
                             session.log(&format!("Call {}/{}", params.service, params.method));
+                            let connection = session.state.connection.clone();
                             let result = if !session.state.connected {
                                 Err("Not connected to gRPC server".to_string())
                             } else if let (Some(channel), Some(descriptor_pool)) =
@@ -166,6 +169,7 @@ pub fn spawn_thread(
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
+                                    &connection,
                                     &params,
                                 ))
                             } else {
@@ -270,11 +274,13 @@ pub fn spawn_thread(
                                         continue;
                                     }
                                 };
+                                let connection = session.state.connection.clone();
                                 rt.block_on(streaming_caller::start_server_stream(
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
                                     &session.state.stream_manager,
+                                    &connection,
                                     &params,
                                 ))
                             } else {
@@ -305,11 +311,13 @@ pub fn spawn_thread(
                                         continue;
                                     }
                                 };
+                                let connection = session.state.connection.clone();
                                 rt.block_on(streaming_caller::start_client_stream(
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
                                     &session.state.stream_manager,
+                                    &connection,
                                     &params,
                                 ))
                             } else {
@@ -340,11 +348,13 @@ pub fn spawn_thread(
                                         continue;
                                     }
                                 };
+                                let connection = session.state.connection.clone();
                                 rt.block_on(streaming_caller::start_bidi_stream(
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
                                     &session.state.stream_manager,
+                                    &connection,
                                     &params,
                                 ))
                             } else {

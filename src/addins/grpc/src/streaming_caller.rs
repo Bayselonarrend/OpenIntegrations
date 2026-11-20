@@ -9,7 +9,10 @@ use tonic::transport::Channel;
 use tonic::{Request, Streaming};
 
 use crate::ack_stream::AckStream;
-use crate::grpc_caller::{apply_metadata, create_request_message, CallParams};
+use crate::connection::ConnectionOptions;
+use crate::grpc_caller::{
+    apply_metadata, configure_client, create_request_message, enforce_timeout, CallParams,
+};
 use crate::identity_codec::IdentityCodec;
 use crate::message_converter::{dynamic_message_to_value, value_to_dynamic_message};
 use crate::stream_manager::{StreamInfo, StreamManager, StreamMessage};
@@ -38,6 +41,7 @@ pub async fn start_server_stream(
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
     stream_manager: &StreamManager,
+    options: &ConnectionOptions,
     params: &StreamCallParams,
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
@@ -59,18 +63,22 @@ pub async fn start_server_stream(
         method_desc.name()
     );
 
-    let mut client = tonic::client::Grpc::new(channel.clone());
+    let mut client = configure_client(channel.clone(), options);
 
-    client
-        .ready()
-        .await
-        .map_err(|e| format!("Failed to ready client: {}", e))?;
+    let response = enforce_timeout(params.timeout_ms, async {
+        client
+            .ready()
+            .await
+            .map_err(|e| format!("Failed to ready client: {}", e))?;
 
-    let response: Streaming<Vec<u8>> = client
-        .server_streaming(grpc_request, path.parse().unwrap(), IdentityCodec)
-        .await
-        .map_err(|e| format!("gRPC server stream failed: {}", e))?
-        .into_inner();
+        client
+            .server_streaming(grpc_request, path.parse().unwrap(), IdentityCodec)
+            .await
+            .map_err(|e| format!("gRPC server stream failed: {}", e))
+    })
+    .await?;
+
+    let response: Streaming<Vec<u8>> = response.into_inner();
 
     let (tx, rx) = mpsc::channel(1);
 
@@ -94,6 +102,7 @@ pub async fn start_client_stream(
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
     stream_manager: &StreamManager,
+    options: &ConnectionOptions,
     params: &StreamCallParams,
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
@@ -113,12 +122,15 @@ pub async fn start_client_stream(
         method_desc.name()
     );
 
-    let mut client = tonic::client::Grpc::new(channel.clone());
+    let mut client = configure_client(channel.clone(), options);
 
-    client
-        .ready()
-        .await
-        .map_err(|e| format!("Failed to ready client: {}", e))?;
+    enforce_timeout(params.timeout_ms, async {
+        client
+            .ready()
+            .await
+            .map_err(|e| format!("Failed to ready client: {}", e))
+    })
+    .await?;
 
     let (response_tx, response_rx) = mpsc::channel(1);
     let output_desc = method_desc.output();
@@ -171,6 +183,7 @@ pub async fn start_bidi_stream(
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
     stream_manager: &StreamManager,
+    options: &ConnectionOptions,
     params: &StreamCallParams,
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
@@ -183,6 +196,10 @@ pub async fn start_bidi_stream(
     let mut grpc_request = Request::new(ack_stream);
     apply_metadata(&mut grpc_request, metadata)?;
 
+    if let Some(timeout_ms) = params.timeout_ms {
+        grpc_request.set_timeout(Duration::from_millis(timeout_ms));
+    }
+
     let path_str = format!(
         "/{}/{}",
         method_desc.parent_service().full_name(),
@@ -190,12 +207,15 @@ pub async fn start_bidi_stream(
     );
     let path = path_str.parse().unwrap();
 
-    let mut client = tonic::client::Grpc::new(channel.clone());
+    let mut client = configure_client(channel.clone(), options);
 
-    client
-        .ready()
-        .await
-        .map_err(|e| format!("Failed to ready client: {}", e))?;
+    enforce_timeout(params.timeout_ms, async {
+        client
+            .ready()
+            .await
+            .map_err(|e| format!("Failed to ready client: {}", e))
+    })
+    .await?;
 
     let output_desc = method_desc.output();
 

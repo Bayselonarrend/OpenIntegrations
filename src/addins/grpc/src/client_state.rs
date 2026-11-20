@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use common_tcp::tls_settings::TlsSettings;
 use prost_reflect::DescriptorPool;
 use tonic::transport::Channel;
+use crate::connection::ConnectionOptions;
 use crate::stream_manager::StreamManager;
 
 pub struct ClientState {
@@ -13,6 +14,7 @@ pub struct ClientState {
     pub(crate) descriptor_pool: Option<DescriptorPool>,
     pub(crate) stream_manager: StreamManager,
     pub(crate) proto_files: HashMap<String, String>,
+    pub(crate) connection: ConnectionOptions,
 }
 
 impl ClientState {
@@ -26,6 +28,7 @@ impl ClientState {
             descriptor_pool: None,
             stream_manager: StreamManager::new(),
             proto_files: HashMap::new(),
+            connection: ConnectionOptions::default(),
         }
     }
 
@@ -34,6 +37,7 @@ impl ClientState {
         self.address.clear();
         self.metadata.clear();
         self.channel = None;
+        self.connection = ConnectionOptions::default();
     }
 
     pub(crate) fn set_metadata(&mut self, metadata: HashMap<String, String>) {

@@ -6,6 +6,7 @@ use common_janx::JanxValue;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
 
+use crate::connection::ConnectionOptions;
 use crate::worker::{self, WorkerCommand};
 pub struct GrpcBackend {
     thread: Option<BackendThread<WorkerCommand>>,
@@ -59,6 +60,7 @@ impl GrpcBackend {
         &mut self,
         address: &str,
         tls_settings: &Option<TlsSettings>,
+        options: ConnectionOptions,
     ) -> Result<(), String> {
         if self.is_connected() {
             return Err("Connection already initialized".to_string());
@@ -72,6 +74,7 @@ impl GrpcBackend {
             .call(|response| WorkerCommand::Connect {
                 address: address.to_string(),
                 tls_settings: tls_settings.clone(),
+                options,
                 response,
             })
             .and_then(|result| result)

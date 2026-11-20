@@ -4,10 +4,12 @@ use std::time::Duration;
 use common_janx::{FromJanx, JanxValue};
 use prost::Message;
 use prost_reflect::{DescriptorPool, DynamicMessage};
+use tonic::codec::CompressionEncoding;
 use tonic::metadata::{Ascii, MetadataKey, MetadataValue};
 use tonic::transport::Channel;
 use tonic::Request;
 
+use crate::connection::ConnectionOptions;
 use crate::identity_codec::IdentityCodec;
 use crate::message_converter::{dynamic_message_to_value, value_to_dynamic_message};
 
@@ -74,10 +76,41 @@ pub fn create_request_message(
     }
 }
 
+pub fn configure_client<T>(channel: T, options: &ConnectionOptions) -> tonic::client::Grpc<T> {
+    let mut client = tonic::client::Grpc::new(channel);
+    if options.gzip {
+        client = client
+            .send_compressed(CompressionEncoding::Gzip)
+            .accept_compressed(CompressionEncoding::Gzip);
+    }
+    if let Some(limit) = options.max_decoding_message_size {
+        client = client.max_decoding_message_size(limit);
+    }
+    if let Some(limit) = options.max_encoding_message_size {
+        client = client.max_encoding_message_size(limit);
+    }
+    client
+}
+
+pub async fn enforce_timeout<T, F>(timeout_ms: Option<u64>, fut: F) -> Result<T, String>
+where
+    F: std::future::Future<Output = Result<T, String>>,
+{
+    let Some(ms) = timeout_ms.filter(|ms| *ms > 0) else {
+        return fut.await;
+    };
+
+    match tokio::time::timeout(Duration::from_millis(ms), fut).await {
+        Ok(result) => result,
+        Err(_) => Err(format!("gRPC call timed out after {} ms", ms)),
+    }
+}
+
 pub async fn execute_grpc_call(
     channel: &mut Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
+    options: &ConnectionOptions,
     params: &CallParams,
 ) -> Result<JanxValue, String> {
     let service = descriptor_pool
@@ -110,18 +143,21 @@ pub async fn execute_grpc_call(
     let path = format!("/{}/{}", service.full_name(), method.name());
 
     use tower::ServiceExt;
-    let ready_channel = channel
-        .ready()
-        .await
-        .map_err(|e| format!("Failed to ready channel: {}", e))?;
+    let response_bytes: Vec<u8> = enforce_timeout(params.timeout_ms, async {
+        let ready_channel = channel
+            .ready()
+            .await
+            .map_err(|e| format!("Failed to ready channel: {}", e))?;
 
-    let mut client = tonic::client::Grpc::new(ready_channel);
-    let response = client
-        .unary(grpc_request, path.parse().unwrap(), IdentityCodec)
-        .await
-        .map_err(|e| format!("gRPC call failed: {}", e))?;
+        let mut client = configure_client(ready_channel, options);
+        let response = client
+            .unary(grpc_request, path.parse().unwrap(), IdentityCodec)
+            .await
+            .map_err(|e| format!("gRPC call failed: {}", e))?;
 
-    let response_bytes: Vec<u8> = response.into_inner();
+        Ok(response.into_inner())
+    })
+    .await?;
     let response_message = DynamicMessage::decode(method.output(), response_bytes.as_ref())
         .map_err(|e| format!("Failed to decode response: {}", e))?;
 

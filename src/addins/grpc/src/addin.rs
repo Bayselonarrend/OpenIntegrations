@@ -8,6 +8,7 @@ use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::GrpcBackend;
+use crate::connection;
 
 pub struct StoredSettings {
     pub settings: BTreeMap<String, JanxValue>,
@@ -81,8 +82,15 @@ impl AddIn {
             return janx_error("Connection already initialized!");
         }
 
+        let options = match connection::options_from_settings(
+            &state.stored_settings.settings,
+            &state.stored_settings.metadata,
+        ) {
+            Ok(options) => options,
+            Err(e) => return janx_error(e),
+        };
         let tls = state.tls.clone();
-        match state.client.connect(&self.server_address, &tls) {
+        match state.client.connect(&self.server_address, &tls, options) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
