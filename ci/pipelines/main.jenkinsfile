@@ -2,7 +2,29 @@ pipeline {
 	agent {
 		label 'windows'
 	}
+	parameters {
+		string(name: 'BRANCH', defaultValue: 'main', description: 'Git branch to checkout. The job loads this Jenkinsfile from main, then checks out BRANCH.')
+	}
     stages {
+        stage('Checkout branch') {
+            steps {
+                script {
+                    def branch = (params.BRANCH ?: 'main').toString().trim()
+                    if (!branch) {
+                        branch = 'main'
+                    }
+                    if (branch.contains('..') || branch.startsWith('-') || !(branch ==~ '[A-Za-z0-9._/-]+')) {
+                        error "Invalid BRANCH: ${branch}"
+                    }
+                    env.TARGET_BRANCH = branch
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        bat "git fetch origin ${branch}"
+                        bat "git checkout -f -B ${branch} origin/${branch}"
+                    }
+                    echo "Checked out ${branch}"
+                }
+            }
+        }
 
         stage('Sync add-ins') {
             steps {
@@ -21,15 +43,14 @@ pipeline {
         stage('Update GIT') {
             steps {
                 script {
-                    
                     withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
                         bat "git config user.email vitaly.the.alpaca@gmail.com"
                         bat 'git config user.name "Vitaly the Alpaca (bot)"'
                         bat "git config --global core.ignorecase true"
                         bat "git add ."
                         bat 'git commit -m "Main build (Jenkins)"'
-                        bat "git push origin HEAD:main"
-                    }                       
+                        bat "git push origin HEAD:${env.TARGET_BRANCH ?: 'main'}"
+                    }
                 }
             }
         }

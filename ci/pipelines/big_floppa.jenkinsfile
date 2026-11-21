@@ -1,12 +1,37 @@
+def branchParameter() {
+	return [$class: 'StringParameterValue', name: 'BRANCH', value: (params.BRANCH ?: 'main')]
+}
+
 pipeline {
 	agent {
 		label 'windows'
 	}
 	parameters {
+		string(name: 'BRANCH', defaultValue: 'main', description: 'Git branch to checkout. The job loads this Jenkinsfile from main, then checks out BRANCH.')
 		booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
 	}
 
     stages {
+        stage('Checkout branch') {
+            steps {
+                script {
+                    def branch = (params.BRANCH ?: 'main').toString().trim()
+                    if (!branch) {
+                        branch = 'main'
+                    }
+                    if (branch.contains('..') || branch.startsWith('-') || !(branch ==~ '[A-Za-z0-9._/-]+')) {
+                        error "Invalid BRANCH: ${branch}"
+                    }
+                    env.TARGET_BRANCH = branch
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        bat "git fetch origin ${branch}"
+                        bat "git checkout -f -B ${branch} origin/${branch}"
+                    }
+                    echo "Checked out ${branch}"
+                }
+            }
+        }
+
         stage('Sync add-ins') {
             steps {
                 bat 'call src\\addins\\sync-addins.bat'
@@ -15,17 +40,20 @@ pipeline {
 
         stage('OpenIntegrations - Build') {
             steps {
-                build job: 'OpiBuild/OpiMain', wait: true
+                build job: 'OpiBuild/OpiMain', wait: true,
+                    parameters: [branchParameter()]
             }
         }
         stage('OpenIntegrations - CLI check') {
             steps {
-                build job: 'OpiBuild/OpiCliCheck', wait: false
+                build job: 'OpiBuild/OpiCliCheck', wait: false,
+                    parameters: [branchParameter()]
             }
         }
         stage('OpenIntegrations - 1C DB Update') {
             steps {
-                build job: 'OpiBuild/OpiBaseUpdate', wait: true
+                build job: 'OpiBuild/OpiBaseUpdate', wait: true,
+                    parameters: [branchParameter()]
             }
         }
         stage('OpenIntegrations - Release') {
@@ -33,6 +61,7 @@ pipeline {
                 echo 'Release (OpenIntegrations)'
                 build job: 'OpiBuild/OpiRelease', wait: true,
                     parameters: [
+                        branchParameter(),
                         [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: params.UPLOAD_ARTIFACTS]
                     ]
             }
@@ -40,8 +69,10 @@ pipeline {
 
         stage('Docs - Test update') {
             steps {
-                build job: 'OpiDocs/OpiDocsTestRu', wait: true
-                build job: 'OpiDocs/OpiDocsTestEn', wait: true
+                build job: 'OpiDocs/OpiDocsTestRu', wait: true,
+                    parameters: [branchParameter()]
+                build job: 'OpiDocs/OpiDocsTestEn', wait: true,
+                    parameters: [branchParameter()]
             }
         }
     }

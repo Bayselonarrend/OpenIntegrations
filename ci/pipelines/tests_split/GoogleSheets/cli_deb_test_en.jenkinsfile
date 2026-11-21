@@ -11,10 +11,36 @@ pipeline {
         label 'Deb-Agent'  // Имя или метка агента
     }
 	parameters {
+		string(name: 'BRANCH', defaultValue: 'main', description: 'Git branch to checkout. The job loads this Jenkinsfile from main, then checks out BRANCH.')
 		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
 		booleanParam(name: 'GoogleSheets', defaultValue: true, description: 'Run GoogleSheets tests')
 	}
 	stages {
+
+        stage('Checkout branch') {
+        	steps {
+        		script {
+        			def branch = (params.BRANCH ?: 'main').toString().trim()
+        			if (!branch) {
+        				branch = 'main'
+        			}
+        			if (branch.contains('..') || branch.startsWith('-') || !(branch ==~ '[A-Za-z0-9._/-]+')) {
+        				error "Invalid BRANCH: ${branch}"
+        			}
+        			env.TARGET_BRANCH = branch
+        			withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+        				if (isUnix()) {
+        					sh "git fetch origin ${branch}"
+        					sh "git checkout -f -B ${branch} origin/${branch}"
+        				} else {
+        					bat "git fetch origin ${branch}"
+        					bat "git checkout -f -B ${branch} origin/${branch}"
+        				}
+        			}
+        			echo "Checked out ${branch}"
+        		}
+        	}
+        }
 
         stage('Sync add-ins') {
             steps {
@@ -109,7 +135,7 @@ pipeline {
 					sh "git config --global core.ignorecase true"
 					sh "git add ."
 					sh 'git commit -m "Test data update (Jenkins)"'
-					sh "git push origin HEAD:main"
+					sh "git push origin HEAD:${env.TARGET_BRANCH ?: 'main'}"
 				}
 			}
 		}
