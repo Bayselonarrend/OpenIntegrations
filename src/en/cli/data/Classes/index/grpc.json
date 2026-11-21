@@ -289,6 +289,46 @@
      "description": "Metadata structure, if necessary",
      "default": "Empty value",
      "short": "-m"
+    },
+    {
+     "title": "UserAgent",
+     "name": "--ua",
+     "types": "String",
+     "description": "User Agent of the channel. An empty string leaves the default value",
+     "default": "Empty value",
+     "short": "-u"
+    },
+    {
+     "title": "Compression",
+     "name": "--compress",
+     "types": "String",
+     "description": "Compression of requests and responses: gzip or empty string",
+     "default": "Empty value",
+     "short": "-c"
+    },
+    {
+     "title": "MaxResponseSize",
+     "name": "--maxresp",
+     "types": "Number",
+     "description": "Maximum size of incoming message in bytes. 0 leaves the default limit",
+     "default": "Empty value",
+     "short": "-x"
+    },
+    {
+     "title": "MaxRequestSize",
+     "name": "--maxreq",
+     "types": "Number",
+     "description": "Maximum size of outgoing message in bytes. 0 leaves the default limit",
+     "default": "Empty value",
+     "short": "-r"
+    },
+    {
+     "title": "ConnectionTimeout",
+     "name": "--ctout",
+     "types": "Number",
+     "description": "Connection timeout in milliseconds. 0 removes the restriction",
+     "default": 10000,
+     "short": "-t"
     }
    ],
    "region": "Common methods"

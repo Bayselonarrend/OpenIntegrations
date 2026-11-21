@@ -90,12 +90,17 @@
     ;
 
     @Глобально
-    метод GetConnectionParameters(Address: Объект?, Proto: Объект? = Неопределено, Metadata: Объект? = Неопределено): Объект?
+    метод GetConnectionParameters(Address: Объект?, Proto: Объект? = Неопределено, Metadata: Объект? = Неопределено, UserAgent: Объект? = Неопределено, Compression: Объект? = Неопределено, MaxResponseSize: Объект? = Неопределено, MaxRequestSize: Объект? = Неопределено, ConnectionTimeout: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
         Опции.Вставить("-a", Address)
         Опции.Вставить("-p", Proto)
         Опции.Вставить("-m", Metadata)
+        Опции.Вставить("-u", UserAgent)
+        Опции.Вставить("-c", Compression)
+        Опции.Вставить("-x", MaxResponseSize)
+        Опции.Вставить("-r", MaxRequestSize)
+        Опции.Вставить("-t", ConnectionTimeout)
         
         возврат Исполнитель.Выполнить(КомандаCLI, "GetConnectionParameters", Опции)
         

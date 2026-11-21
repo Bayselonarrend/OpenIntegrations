@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T23:17:51",
+ "generatedAt": "2026-11-21T14:48:57",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -130,6 +130,42 @@
      "icon": "media/VK.png",
      "description_ru": "Исправлен обрыв `ПолучитьСписокЗаказов`, если следующая страница `market.getGroupOrders` приходит без `response`",
      "description_en": "Fixed `GetOrderList` aborting when the next `market.getGroupOrders` page has no `response`"
+    },
+    {
+     "lib": "FTP",
+     "icon": "media/FTP.png",
+     "description_ru": "Улучшена стабильность FTP: передача данных в пассивном режиме ограничена таймаутом соединения",
+     "description_en": "Improved FTP stability: passive data transfers are limited by the connection timeout"
+    },
+    {
+     "lib": "FTP",
+     "icon": "media/FTP.png",
+     "description_ru": "FTPS снова передаёт данные на серверах с обязательным повторным использованием TLS-сессии",
+     "description_en": "FTPS data transfer works again on servers that require TLS session reuse"
+    },
+    {
+     "lib": "GRPC",
+     "icon": "media/GRPC.png",
+     "description_ru": "В параметрах соединения можно задать User-Agent канала",
+     "description_en": "Connection parameters can set the channel User-Agent"
+    },
+    {
+     "lib": "GRPC",
+     "icon": "media/GRPC.png",
+     "description_ru": "Добавлена поддержка gzip-сжатия запросов и ответов gRPC",
+     "description_en": "Added gzip compression for gRPC requests and responses"
+    },
+    {
+     "lib": "GRPC",
+     "icon": "media/GRPC.png",
+     "description_ru": "В параметрах соединения можно ограничить размер сообщений gRPC",
+     "description_en": "Connection parameters can limit the gRPC message size"
+    },
+    {
+     "lib": "GRPC",
+     "icon": "media/GRPC.png",
+     "description_ru": "Подключение и вызов метода ограничены таймаутом: ожидание готовности канала входит в таймаут вызова",
+     "description_en": "Connection and method calls are limited by a timeout: channel readiness is included in the call timeout"
     }
    ],
    "artifacts": [
