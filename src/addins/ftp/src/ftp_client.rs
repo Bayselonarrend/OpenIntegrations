@@ -428,7 +428,7 @@ pub fn configure_ftp_client(
     if tls_settings.is_some_and(|s| s.use_tls) {
 
         let tls = tls_settings.unwrap();
-        let config = tls.get_rustls_config_tls12().map_err(|e| e.to_string())?;
+        let config = tls.get_rustls_config().map_err(|e| e.to_string())?;
 
         let tls_connector = RustlsConnector::from(Arc::new(config));
 
@@ -449,12 +449,6 @@ pub fn configure_ftp_client(
             secure_stream = secure_stream.passive_stream_builder(move |addr: SocketAddr| {
                 passive_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
             });
-        } else {
-            let ftp_settings_clone = ftp_settings.clone();
-
-            secure_stream = secure_stream.passive_stream_builder(move |addr: SocketAddr| {
-                passive_establish::make_passive_direct_stream(&ftp_settings_clone, addr)
-            });
         }
 
         Ok(FtpClient::Secure(secure_stream))
@@ -472,12 +466,6 @@ pub fn configure_ftp_client(
 
             ftp_stream = ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
                 passive_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
-            });
-        } else {
-            let ftp_settings_clone = ftp_settings.clone();
-
-            ftp_stream = ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
-                passive_establish::make_passive_direct_stream(&ftp_settings_clone, addr)
             });
         }
 

@@ -16,20 +16,6 @@ pub struct NoCertificateVerification;
 #[cfg(feature = "rustls")]
 impl TlsSettings {
     pub fn get_rustls_config(&self) -> Result<ClientConfig, String> {
-        self.build_rustls_config(rustls::ALL_VERSIONS)
-    }
-
-    /// FTPS data connections have to resume the control session. Servers
-    /// enforce that with OpenSSL SSL_session_reused(), which is set for a
-    /// resumed TLS 1.2 session and stays clear for TLS 1.3.
-    pub fn get_rustls_config_tls12(&self) -> Result<ClientConfig, String> {
-        self.build_rustls_config(&[&rustls::version::TLS12])
-    }
-
-    fn build_rustls_config(
-        &self,
-        versions: &[&'static rustls::SupportedProtocolVersion],
-    ) -> Result<ClientConfig, String> {
         use std::sync::Arc;
 
         let _ = ring::default_provider().install_default();
@@ -61,8 +47,7 @@ impl TlsSettings {
             }
         }
 
-        let config_builder =
-            ClientConfig::builder_with_protocol_versions(versions).with_root_certificates(root_store);
+        let config_builder = ClientConfig::builder().with_root_certificates(root_store);
 
         let mut config = config_builder.with_no_client_auth();
 

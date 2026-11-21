@@ -90,18 +90,6 @@
                 "description_en": "Fixed `GetOrderList` aborting when the next `market.getGroupOrders` page has no `response`"
             },
             {
-                "lib": "FTP",
-                "icon": "media/FTP.png",
-                "description_ru": "Улучшена стабильность FTP: передача данных в пассивном режиме ограничена таймаутом соединения",
-                "description_en": "Improved FTP stability: passive data transfers are limited by the connection timeout"
-            },
-            {
-                "lib": "FTP",
-                "icon": "media/FTP.png",
-                "description_ru": "FTPS снова передаёт данные на серверах с обязательным повторным использованием TLS-сессии",
-                "description_en": "FTPS data transfer works again on servers that require TLS session reuse"
-            },
-            {
                 "lib": "GRPC",
                 "icon": "media/GRPC.png",
                 "description_ru": "В параметрах соединения можно задать User-Agent канала",
