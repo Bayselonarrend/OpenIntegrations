@@ -96,6 +96,12 @@
                 "description_en": "Improved FTP stability: passive data transfers are limited by the connection timeout"
             },
             {
+                "lib": "FTP",
+                "icon": "media/FTP.png",
+                "description_ru": "Исправлена передача данных по FTPS: канал данных повторно использует TLS-сессию управляющего соединения",
+                "description_en": "Fixed FTPS data transfer: the data connection reuses the control connection TLS session"
+            },
+            {
                 "lib": "GRPC",
                 "icon": "media/GRPC.png",
                 "description_ru": "В параметрах соединения можно задать User-Agent канала",

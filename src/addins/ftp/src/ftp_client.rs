@@ -428,7 +428,7 @@ pub fn configure_ftp_client(
     if tls_settings.is_some_and(|s| s.use_tls) {
 
         let tls = tls_settings.unwrap();
-        let config = tls.get_rustls_config().map_err(|e| e.to_string())?;
+        let config = tls.get_rustls_config_tls12().map_err(|e| e.to_string())?;
 
         let tls_connector = RustlsConnector::from(Arc::new(config));
 
