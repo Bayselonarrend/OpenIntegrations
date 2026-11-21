@@ -1,8 +1,8 @@
 ﻿{
  "logs": [
-  "[2026-11-18 08:49:03.359] Connecting to LDAP server ldap://127.0.0.1:389",
-  "[2026-11-18 08:49:03.365] Connected to LDAP server",
-  "[2026-11-18 08:49:03.367] Search base='dc=example,dc=org' filter='(objectClass=*)'"
+  "[2026-11-21 10:49:25.526] Connecting to LDAP server ldap://127.0.0.1:389",
+  "[2026-11-21 10:49:25.533] Connected to LDAP server",
+  "[2026-11-21 10:49:25.534] Search base='dc=example,dc=org' filter='(objectClass=*)'"
  ],
  "result": true,
  "returned": 3,

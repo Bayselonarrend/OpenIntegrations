@@ -7,7 +7,7 @@
    "bytea_field": "<Двоичные данные>",
    "char_field": "A",
    "charn_field": "AAA",
-   "date_field": "2026-11-18",
+   "date_field": "2026-11-21",
    "dp_field": 1.0002,
    "int_field": 100,
    "ip_field": "127.0.0.1",
@@ -28,10 +28,10 @@
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "08:49:59",
-   "ts_field": "2026-11-18T08:49:59",
-   "tswtz_field": "2026-11-18T03:49:59+00:00",
-   "uuid_field": "434ba003-4372-4ff9-97bf-3f4f0c8ad9e3",
+   "time_field": "10:51:05",
+   "ts_field": "2026-11-21T10:51:05",
+   "tswtz_field": "2026-11-21T05:51:05+00:00",
+   "uuid_field": "317ba02a-9ad2-4531-b3c6-811a0daf14dd",
    "varchar_field": "Some varchar"
   }
  ],

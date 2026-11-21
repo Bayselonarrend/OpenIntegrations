@@ -1,1 +1,1 @@
-﻿"JSON ser 39 ms, des 27 ms | MessagePack ser 472 ms, des 555 ms | JSON 83363 chars, MP 50572 bytes"
+﻿"JSON ser 36 ms, des 36 ms | MessagePack ser 421 ms, des 465 ms | JSON 83363 chars, MP 50572 bytes"

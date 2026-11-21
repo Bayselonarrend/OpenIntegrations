@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "41c82aa7-fc4e-81ae-9c0d-ec2e943030a0",
- "created_time": "2026-11-18T05:46:00.000Z",
- "last_edited_time": "2026-11-18T05:47:00.000Z",
+ "id": "41f82aa7-fc4e-8131-a582-e4b466caf1c7",
+ "created_time": "2026-11-21T07:47:00.000Z",
+ "last_edited_time": "2026-11-21T07:47:00.000Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -55,8 +55,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/41c82aa7fc4e81ae9c0dec2e943030a0",
+ "url": "https://app.notion.com/p/41f82aa7fc4e8131a582e4b466caf1c7",
  "public_url": null,
  "archived": false,
- "request_id": "9eb31c7e-c199-4c81-8f01-5276f7c9052a"
+ "request_id": "947f4108-43a7-4eb4-af4f-1ac7467f5ab2"
 }
