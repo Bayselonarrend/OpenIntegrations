@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T14:48:57",
+ "generatedAt": "2026-11-22T02:05:17",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -130,18 +130,6 @@
      "icon": "media/VK.png",
      "description_ru": "Исправлен обрыв `ПолучитьСписокЗаказов`, если следующая страница `market.getGroupOrders` приходит без `response`",
      "description_en": "Fixed `GetOrderList` aborting when the next `market.getGroupOrders` page has no `response`"
-    },
-    {
-     "lib": "FTP",
-     "icon": "media/FTP.png",
-     "description_ru": "Улучшена стабильность FTP: передача данных в пассивном режиме ограничена таймаутом соединения",
-     "description_en": "Improved FTP stability: passive data transfers are limited by the connection timeout"
-    },
-    {
-     "lib": "FTP",
-     "icon": "media/FTP.png",
-     "description_ru": "FTPS снова передаёт данные на серверах с обязательным повторным использованием TLS-сессии",
-     "description_en": "FTPS data transfer works again on servers that require TLS session reuse"
     },
     {
      "lib": "GRPC",
