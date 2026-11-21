@@ -19,9 +19,9 @@ impl TlsSettings {
         self.build_rustls_config(rustls::ALL_VERSIONS)
     }
 
-    /// FTPS data connections on vsftpd must resume the control TLS session.
-    /// TLS 1.2 session ids satisfy `require_ssl_reuse`; a fresh TLS 1.3
-    /// connection is rejected with 522.
+    /// FTPS data connections have to resume the control session. Servers
+    /// enforce that with OpenSSL SSL_session_reused(), which is set for a
+    /// resumed TLS 1.2 session and stays clear for TLS 1.3.
     pub fn get_rustls_config_tls12(&self) -> Result<ClientConfig, String> {
         self.build_rustls_config(&[&rustls::version::TLS12])
     }

@@ -98,8 +98,8 @@
             {
                 "lib": "FTP",
                 "icon": "media/FTP.png",
-                "description_ru": "Исправлена передача данных по FTPS: канал данных повторно использует TLS-сессию управляющего соединения",
-                "description_en": "Fixed FTPS data transfer: the data connection reuses the control connection TLS session"
+                "description_ru": "FTPS снова передаёт данные на серверах с обязательным повторным использованием TLS-сессии",
+                "description_en": "FTPS data transfer works again on servers that require TLS session reuse"
             },
             {
                 "lib": "GRPC",
