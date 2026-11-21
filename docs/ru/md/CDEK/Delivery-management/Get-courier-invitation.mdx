@@ -89,9 +89,11 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "f05008a2-5815-418d-a632-0a9b4f368a2c",
-  "intake_date": "2026-11-19",
-  "intake_number": "13313984",
+  "uuid": "9e27695c-e767-45be-9d97-e7f7aebe508a",
+  "cdek_number": "1110259617",
+  "order_uuid": "2b4af3b5-f41a-484f-8935-d21b851aa59f",
+  "intake_date": "2026-11-22",
+  "intake_number": "13314076",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -103,9 +105,10 @@ import Admonition from '@theme/Admonition';
   "sender": {
    "company": "Компания",
    "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "+79589441654"
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -124,30 +127,52 @@ import Admonition from '@theme/Admonition';
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.501681,
+   "latitude": 55.641193,
+   "address": "Россия, Москва, Москва, ул. Островитянова, 11",
+   "postal_code": "117437"
+  },
   "need_call": false,
   "statuses": [
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2026-11-18T05:51:52+0000"
+    "date_time": "2026-11-21T07:52:16+0000"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-11-18T05:51:52+0000"
+    "date_time": "2026-11-21T07:52:15+0000"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-11-18T05:51:52+0000"
+    "date_time": "2026-11-21T07:52:15+0000"
+   }
+  ],
+  "packages": [
+   {
+    "package_id": "8054bb23-bb61-4ef2-a359-e9e9e22d2cfa",
+    "weight": 1000,
+    "length": 10,
+    "width": "***",
+    "height": 10
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "1042ab82-8191-43dc-863a-9593e7ca8576",
+   "request_uuid": "35ff7ecf-7735-4e50-84ee-c0246882d76b",
    "type": "CREATE",
-   "date_time": "2026-11-18T05:51:52+0000",
+   "date_time": "2026-11-21T07:52:15+0000",
    "state": "SUCCESSFUL"
   }
  ]

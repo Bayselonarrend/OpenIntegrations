@@ -125,6 +125,12 @@ Procedure GR_ExtendedCheck() Export
     GRPC_Extended_Reconnection(TestParameters);
     GRPC_Extended_GetLogOnConnection(TestParameters);
     GRPC_Extended_CallMethodMultipleBinaryFields(TestParameters);
+    GRPC_Advanced_ConnectionParameters(TestParameters);
+    GRPC_Advanced_UserAgent(TestParameters);
+    GRPC_Advanced_Compression(TestParameters);
+    GRPC_Advanced_MaxMessageSize(TestParameters);
+    GRPC_Advanced_ConnectionTimeout(TestParameters);
+    GRPC_Advanced_CallTimeout(TestParameters);
 
 EndProcedure
 
@@ -577,6 +583,165 @@ Procedure GRPC_Extended_CallMethodMultipleBinaryFields(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "GRPC", "Extended_CallMethodMultipleBinaryFields", , Data);
+
+EndProcedure
+
+Procedure GRPC_Advanced_ConnectionParameters(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Result = OPI_GRPC.GetConnectionParameters(Address
+        , Scheme
+        , Undefined
+        , "OpenIntegrations"
+        , "gzip"
+        , 1048576
+        , 2097152
+        , 2500);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_ConnectionParameters");
+
+    Tls = OPI_GRPC.GetTlsSettings(True);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, , , "br");
+    Result     = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_ConnectionParameters", "Compression");
+
+    InvalidUserAgent = "bad" + Chars.LF + "agent";
+    Parameters       = OPI_GRPC.GetConnectionParameters(Address, Scheme, , InvalidUserAgent);
+    Result           = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_ConnectionParameters", "UserAgent");
+
+EndProcedure
+
+Procedure GRPC_Advanced_UserAgent(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, , "OpenIntegrationsTest");
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Result = OPI_GRPC.ExecuteMethod(Parameters, "grpcbin.GRPCBin", "HeadersUnary", , , Tls);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_UserAgent", , "OpenIntegrationsTest");
+
+    Metadata = New Map;
+    Metadata.Insert("user-agent", "FromMetadataToken");
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, Metadata);
+    Result     = OPI_GRPC.ExecuteMethod(Parameters, "grpcbin.GRPCBin", "HeadersUnary", , , Tls);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_UserAgent", "Metadata", "FromMetadataToken");
+
+EndProcedure
+
+Procedure GRPC_Advanced_Compression(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, , , "gzip");
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Result = OPI_GRPC.ExecuteMethod(Parameters, "grpcbin.GRPCBin", "HeadersUnary", , , Tls);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_Compression");
+
+EndProcedure
+
+Procedure GRPC_Advanced_MaxMessageSize(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Tls = OPI_GRPC.GetTlsSettings(True);
+
+    Data = New Structure("f_string", "size-limit-payload");
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, , , , 1);
+    Result     = OPI_GRPC.ExecuteMethod(Parameters, "grpcbin.GRPCBin", "DummyUnary", Data, , Tls);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_MaxMessageSize");
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, , , , , 1);
+    Result     = OPI_GRPC.ExecuteMethod(Parameters, "grpcbin.GRPCBin", "DummyUnary", Data, , Tls);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_MaxMessageSize", "Request");
+
+EndProcedure
+
+Procedure GRPC_Advanced_ConnectionTimeout(FunctionParameters)
+
+    Parameters = OPI_GRPC.GetConnectionParameters("http://192.0.2.1:81", , , , , , , 1000);
+    Result     = OPI_GRPC.CreateConnection(Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_ConnectionTimeout");
+
+EndProcedure
+
+Procedure GRPC_Advanced_CallTimeout(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_GRPC.ExecuteMethod(Connection, "grpcbin.GRPCBin", "DummyUnary", , 1);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Advanced_CallTimeout");
+    OPI_GRPC.CloseConnection(Connection);
 
 EndProcedure
 

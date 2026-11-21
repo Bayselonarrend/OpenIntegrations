@@ -276,16 +276,33 @@ EndFunction
 // It does not have to be a real file path.^^
 // Proto files that are not involved in the import of other Protos can have arbitrary file names
 // If the Proto value is not an object (a key value collection), it will be interpreted as^^
-// `{"main.proto": passed value}`
+// `{"main.proto": passed value}`^^
+// User-Agent of the channel is taken from the UserAgent parameter, and if it is not filled - from the `user-agent` metadata of this set.^^
+// The version tonic is appended to it. The metadata set after opening the connection, User-Agent of the channel does not change.^^
+// Compression takes the value `gzip` or an empty string. Message sizes are set in bytes.^^
+// Connection timeout limits the setup of TCP and TLS. A value of 0 removes the restriction, with a default of 10000 ms.^^
+// CallTimeout includes waiting for the channel to be ready
 //
 // Parameters:
-// Address  - String                   - Connection address (with protocol)                                                                - addr
-// Proto    - Arbitrary                - Schema or schema structure: Key > file name (for import), Value > schema as a string or file path - proto
-// Metadata - Structure Of KeyAndValue - Metadata structure, if necessary                                                                  - meta
+// Address           - String                   - Connection address (with protocol)                                                                - addr
+// Proto             - Arbitrary                - Schema or schema structure: Key > file name (for import), Value > schema as a string or file path - proto
+// Metadata          - Structure Of KeyAndValue - Metadata structure, if necessary                                                                  - meta
+// UserAgent         - String                   - User Agent of the channel. An empty string leaves the default value                               - ua
+// Compression       - String                   - Compression of requests and responses: gzip or empty string                                       - compress
+// MaxResponseSize   - Number                   - Maximum size of incoming message in bytes. 0 leaves the default limit                             - maxresp
+// MaxRequestSize    - Number                   - Maximum size of outgoing message in bytes. 0 leaves the default limit                             - maxreq
+// ConnectionTimeout - Number                   - Connection timeout in milliseconds. 0 removes the restriction                                     - ctout
 //
 // Returns:
 // Structure Of KeyAndValue - Connection parameters
-Function GetConnectionParameters(Val Address, Val Proto = Undefined, Val Metadata = Undefined) Export
+Function GetConnectionParameters(Val Address
+    , Val Proto = Undefined
+    , Val Metadata = Undefined
+    , Val UserAgent = ""
+    , Val Compression = ""
+    , Val MaxResponseSize = 0
+    , Val MaxRequestSize = 0
+    , Val ConnectionTimeout = 10000) Export
 
     ConnectionParams = New Structure;
     OPI_Tools.AddField("address", Address, "String", ConnectionParams);
@@ -294,6 +311,31 @@ Function GetConnectionParameters(Val Address, Val Proto = Undefined, Val Metadat
         OPI_TypeConversion.GetKeyValueCollection(Metadata);
         ConnectionParams.Insert("metadata", Metadata);
     EndIf;
+
+    If ValueIsFilled(UserAgent) Then
+        OPI_Tools.AddField("user_agent", UserAgent, "String", ConnectionParams);
+    EndIf;
+
+    If ValueIsFilled(Compression) Then
+        OPI_Tools.AddField("compression", Compression, "String", ConnectionParams);
+    EndIf;
+
+    If ValueIsFilled(MaxResponseSize) Then
+        OPI_TypeConversion.GetNumber(MaxResponseSize);
+        OPI_Tools.AddField("max_decoding_message_size", MaxResponseSize, "Number", ConnectionParams);
+    EndIf;
+
+    If ValueIsFilled(MaxRequestSize) Then
+        OPI_TypeConversion.GetNumber(MaxRequestSize);
+        OPI_Tools.AddField("max_encoding_message_size", MaxRequestSize, "Number", ConnectionParams);
+    EndIf;
+
+    If ConnectionTimeout  = Undefined Then
+        ConnectionTimeout = 10000;
+    EndIf;
+
+    OPI_TypeConversion.GetNumber(ConnectionTimeout);
+    ConnectionParams.Insert("connect_timeout_ms", ConnectionTimeout);
 
     If ValueIsFilled(Proto) Then
 

@@ -15222,6 +15222,92 @@ Function Check_GRPC_Extended_CallMethodMultipleBinaryFields(Val Result, Val Opti
 
 EndFunction
 
+Function Check_GRPC_Advanced_ConnectionParameters(Val Result, Val Option)
+
+    If Option = "Compression" Then
+
+        ExpectsThat(Result["result"]).Равно(False);
+        ExpectsThat(StrFind(Lower(Result["error"]), "compression") > 0).Равно(True);
+
+    ElsIf Option = "UserAgent" Then
+
+        ExpectsThat(Result["result"]).Равно(False);
+        ExpectsThat(StrFind(Lower(Result["error"]), "user agent") > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["user_agent"]).Равно("OpenIntegrations");
+        ExpectsThat(Result["compression"]).Равно("gzip");
+        ExpectsThat(Result["max_decoding_message_size"]).Равно(1048576);
+        ExpectsThat(Result["max_encoding_message_size"]).Равно(2097152);
+        ExpectsThat(Result["connect_timeout_ms"]).Равно(2500);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Advanced_UserAgent(Val Result, Val Option, ExpectedToken = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    ReplyText = Lower(OPI_Tools.JSONString(Result));
+    ExpectsThat(StrFind(ReplyText, Lower(ExpectedToken)) > 0).Равно(True);
+    ExpectsThat(StrFind(ReplyText, "tonic/") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Advanced_Compression(Val Result, Val Option)
+
+    ReplyText = Lower(OPI_Tools.JSONString(Result));
+    ExpectsThat(StrFind(ReplyText, "gzip") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Advanced_MaxMessageSize(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "limit") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Advanced_ConnectionTimeout(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+
+    ErrorText = Lower(Result["error"]);
+    IsTimeout = StrFind(ErrorText, "time") > 0
+        Or StrFind(ErrorText, "deadline") > 0
+        Or StrFind(ErrorText, "elapsed") > 0;
+
+    ExpectsThat(IsTimeout).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Advanced_CallTimeout(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+
+    ErrorText = Lower(Result["error"]);
+    IsTimeout = StrFind(ErrorText, "time") > 0
+        Or StrFind(ErrorText, "deadline") > 0
+        Or StrFind(ErrorText, "elapsed") > 0;
+
+    ExpectsThat(IsTimeout).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_GRPC_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
 
     ExpectsThat(Result["result"]).Равно(True);
@@ -15270,6 +15356,10 @@ EndFunction
 Function Check_GRPC_GetConnectionParameters(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["connect_timeout_ms"]).Равно(10000);
+    EndIf;
 
     Return Result;
 
@@ -18308,8 +18398,13 @@ Function LoadTestDataFromFile()
             For Each String In Result["data"] Do
 
                 CurrentKey = String["key"];
-                Value      = String["value"];
-                ValeType   = String["type"];
+
+                If Not ValueIsFilled(CurrentKey) Then
+                    Continue;
+                EndIf;
+
+                Value    = String["value"];
+                ValeType = String["type"];
 
                 Value = ?(ValeType = "Number", Number(Value), String(Value));
 
@@ -19053,6 +19148,10 @@ Procedure NewTest(ArrayOfTests, TestModule, Val Method, Val Synonym, Val Section
 EndProcedure
 
 Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
+
+    If Not ValueIsFilled(Parameter) Then
+        Return;
+    EndIf;
 
     Attempts = 20;
 
