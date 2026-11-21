@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "41b82aa7-fc4e-816a-ad46-c177506bdf3f",
- "created_time": "2026-11-17T19:57:00.000Z",
- "last_edited_time": "2026-11-17T19:57:00.000Z",
+ "id": "41f82aa7-fc4e-8173-82f7-dcdbe98b8f6b",
+ "created_time": "2026-11-21T07:48:00.000Z",
+ "last_edited_time": "2026-11-21T07:48:00.000Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,83 +15,52 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "41b82aa7-fc4e-81ce-abbd-f3529c7b41fa"
+  "database_id": "41f82aa7-fc4e-812d-afd2-e8237719da6d"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Описание": {
-   "id": "%3Avl_",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "Наш первый клиент",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "Наш первый клиент",
-     "href": null
-    }
-   ]
-  },
-  "Картинка": {
-   "id": "AVv_",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
-  "Пользователь": {
-   "id": "JgUV",
-   "type": "people",
-   "people": []
-  },
-  "Телефон": {
-   "id": "VOKI",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Статус": {
-   "id": "Xgln",
-   "type": "select",
-   "select": {
-    "id": "a160ad37-ea18-4f08-8e1f-0ce4c8f7ae1f",
-    "name": "Новый",
-    "color": "green"
-   }
+  "Номер": {
+   "id": "%3FYyr",
+   "type": "number",
+   "number": 1
   },
   "Дата создания": {
-   "id": "Xq%5DT",
+   "id": "%5Df%7Df",
    "type": "date",
    "date": {
-    "start": "2026-11-17T10:57:00.000+00:00",
+    "start": "2026-11-21T10:48:00.000+00:00",
     "end": null,
     "time_zone": null
    }
   },
-  "Номер": {
-   "id": "jhTS",
-   "type": "number",
-   "number": 1
+  "Статус": {
+   "id": "%5EYlB",
+   "type": "select",
+   "select": {
+    "id": "cc386dec-7669-4c3a-a673-c46ea2f18f9d",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Телефон": {
+   "id": "_EyF",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Активен": {
+   "id": "kAyb",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Пользователь": {
+   "id": "ryBJ",
+   "type": "people",
+   "people": []
   },
   "Почта": {
-   "id": "qwe%3E",
+   "id": "tCGh",
    "type": "rich_text",
    "rich_text": [
     {
@@ -113,10 +82,41 @@
     }
    ]
   },
-  "Активен": {
-   "id": "~m%5CX",
-   "type": "checkbox",
-   "checkbox": true
+  "Картинка": {
+   "id": "ug%7D_",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Описание": {
+   "id": "%7BeX%3D",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Наш первый клиент",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Наш первый клиент",
+     "href": null
+    }
+   ]
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/41b82aa7fc4e816aad46c177506bdf3f",
+ "url": "https://app.notion.com/p/41f82aa7fc4e817382f7dcdbe98b8f6b",
  "public_url": null,
  "archived": false,
- "request_id": "492b28c6-0dc7-48a9-957d-3ad3526957e1"
+ "request_id": "0af005a4-9a90-44e8-b532-8adeaec2ebcb"
 }
