@@ -50,12 +50,12 @@ function Append-Thread($sb, $heading, $items, $prop) {
 }
 
 $promptPath = Join-Path $PSScriptRoot "prompts\$Mode.md"
-$issueRaw = & gh --no-pager issue view $issue --repo $script:Repo --json number,title,body,comments
+$issueRaw = & gh issue view $issue --repo $script:Repo --json number,title,body,comments
 if ($LASTEXITCODE -ne 0) { throw "gh issue view failed with $LASTEXITCODE" }
 $issueObj = $issueRaw | ConvertFrom-Json
 $prObj = $null
 if ($pr -match '^[0-9]+$') {
-    $prRaw = & gh --no-pager pr view $pr --repo $script:Repo --json comments,reviews
+    $prRaw = & gh pr view $pr --repo $script:Repo --json comments,reviews
     if ($LASTEXITCODE -ne 0) { throw "gh pr view failed with $LASTEXITCODE" }
     $prObj = $prRaw | ConvertFrom-Json
 }

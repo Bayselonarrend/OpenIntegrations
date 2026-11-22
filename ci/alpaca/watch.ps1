@@ -16,7 +16,7 @@ function Test-AlpacaWorkBusy {
     try {
         $job = Invoke-RestMethod -Uri "$root/job/AlpacaWork/api/json?tree=$tree" -TimeoutSec 120
     } catch {
-        Write-Host "AlpacaWork status check failed: $($_.Exception.Message)"
+        Write-Host "AlpacaWork status check skipped: $($_.Exception.Message)"
         return $false
     }
     if ($job.inQueue) { return $true }
@@ -56,7 +56,7 @@ if (Test-AlpacaWorkBusy) {
     exit 0
 }
 
-$rawIssues = & gh --no-pager issue list --repo $script:Repo --assignee VitalyTheAlpaca --state open --limit 1 --json number,title,state
+$rawIssues = & gh issue list --repo $script:Repo --assignee VitalyTheAlpaca --state open --limit 1 --json number,title,state
 if ($LASTEXITCODE -ne 0) { throw "gh issue list failed with $LASTEXITCODE" }
 if (-not $rawIssues -or $rawIssues.Trim() -eq '[]') {
     Write-Output 'No open issue assigned to VitalyTheAlpaca'
@@ -69,7 +69,7 @@ if ($issue.state -ne 'OPEN') {
 }
 $branch = "alpaca/$($issue.number)"
 
-$rawPrs = & gh --no-pager pr list --repo $script:Repo --head $branch --state open --json number
+$rawPrs = & gh pr list --repo $script:Repo --head $branch --state open --json number
 if ($LASTEXITCODE -ne 0) { throw "gh pr list failed with $LASTEXITCODE" }
 $prNumber = $null
 if ($rawPrs -and $rawPrs.Trim() -ne '[]') {
@@ -77,7 +77,7 @@ if ($rawPrs -and $rawPrs.Trim() -ne '[]') {
 }
 
 if (-not $prNumber) {
-    $issueOnly = & gh --no-pager issue view $issue.number --repo $script:Repo --json comments
+    $issueOnly = & gh issue view $issue.number --repo $script:Repo --json comments
     if ($LASTEXITCODE -ne 0) { throw "gh issue view failed with $LASTEXITCODE" }
     $stamps = New-Object System.Collections.Generic.List[object]
     Add-Stamps $stamps ($issueOnly | ConvertFrom-Json).comments 'createdAt'
@@ -97,9 +97,9 @@ if (-not $prNumber) {
     exit 0
 }
 
-$issueView = & gh --no-pager issue view $issue.number --repo $script:Repo --json comments
+$issueView = & gh issue view $issue.number --repo $script:Repo --json comments
 if ($LASTEXITCODE -ne 0) { throw "gh issue view failed with $LASTEXITCODE" }
-$prView = & gh --no-pager pr view $prNumber --repo $script:Repo --json comments,reviews
+$prView = & gh pr view $prNumber --repo $script:Repo --json comments,reviews
 if ($LASTEXITCODE -ne 0) { throw "gh pr view failed with $LASTEXITCODE" }
 $issueObj = $issueView | ConvertFrom-Json
 $prObj = $prView | ConvertFrom-Json

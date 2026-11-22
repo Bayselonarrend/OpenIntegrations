@@ -27,5 +27,5 @@ if ($text.Length -gt 60000) {
 }
 $post = Join-Path $PSScriptRoot 'out\comment-post.md'
 Write-Utf8File $post $text
-& gh --no-pager @targetArgs --repo $script:Repo --body-file $post
+& gh @targetArgs --repo $script:Repo --body-file $post
 exit $LASTEXITCODE

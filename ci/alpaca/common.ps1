@@ -1,6 +1,7 @@
 $script:Repo = 'Bayselonarrend/OpenIntegrations'
 $script:Utf8 = New-Object System.Text.UTF8Encoding $false
 $env:GH_PROMPT_DISABLED = '1'
+$env:GH_PAGER = ''
 $env:GIT_TERMINAL_PROMPT = '0'
 try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $OutputEncoding = [System.Text.Encoding]::UTF8
@@ -19,7 +20,7 @@ function Read-Utf8File([string]$Path) {
 
 function Invoke-Gh {
     param([Parameter(ValueFromRemainingArguments = $true)][string[]]$GhArgs)
-    & gh --no-pager @GhArgs
+    & gh @GhArgs
     if ($LASTEXITCODE -ne 0) {
         throw "gh $($GhArgs -join ' ') failed with $LASTEXITCODE"
     }
