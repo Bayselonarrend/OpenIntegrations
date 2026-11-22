@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('edit', 'explain-build', 'pick-tests', 'judge-tests')]
+    [ValidateSet('edit', 'write-tests', 'explain-build', 'pick-tests', 'judge-tests')]
     [string]$Mode
 )
 
@@ -78,6 +78,16 @@ if ($prObj) {
 [void]$sb.AppendLine('## Diff against origin/main')
 [void]$sb.AppendLine((Limit-Text ($stat | Out-String) 150))
 [void]$sb.AppendLine((Limit-Text ($names | Out-String) 200))
+
+if ($Mode -eq 'write-tests') {
+    $pendingStatus = & git status --porcelain
+    $pendingDiff = & git diff HEAD -- src/ru/BSL/OpenIntegrations
+    [void]$sb.AppendLine('')
+    [void]$sb.AppendLine('## Uncommitted changes')
+    [void]$sb.AppendLine((Limit-Text ($pendingStatus | Out-String) 200))
+    [void]$sb.AppendLine('## Uncommitted public BSL diff')
+    [void]$sb.AppendLine((Limit-Text ($pendingDiff | Out-String) 800))
+}
 
 if ($Mode -eq 'explain-build') {
     [void]$sb.AppendLine('')

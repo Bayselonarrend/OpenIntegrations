@@ -1,5 +1,5 @@
 // Job name: AlpacaWatch
-// Pipeline from SCM, branch */main, credentials gitmain.
+// Pipeline from SCM, branch */main, credentials gitalpaca.
 // Script path: ci/pipelines/alpaca_watch.jenkinsfile
 // Agent label: windows. The windows agent needs gh authenticated for this repo.
 
@@ -13,7 +13,7 @@ pipeline {
     }
 
     triggers {
-        cron('H/10 * * * *')
+        cron('H * * * *')
     }
 
     stages {

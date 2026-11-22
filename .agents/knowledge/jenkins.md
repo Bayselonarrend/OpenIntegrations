@@ -70,4 +70,4 @@ Jenkinsfile лежат в `ci/pipelines` (`paths.jenkinsSrc` в `ci/config.json`
 
 ### Alpaca
 
-Два задания корня: `AlpacaWatch` (`ci/pipelines/alpaca_watch.jenkinsfile`) и `AlpacaWork` (`ci/pipelines/alpaca_work.jenkinsfile`). Watcher примерно раз в десять минут смотрит issue с меткой `alpaca` и при необходимости запускает Work, не дожидаясь его. Work правит ветку `alpaca/<номер>` через Cursor CLI, коммитит сам, публикует компоненты и вызывает `BigFloppa` с `UPLOAD_ARTIFACTS=false` и `SKIP_DB_UPDATE=true`. Подробности: `.agents/knowledge/alpaca.md`.
+Два задания корня: `AlpacaWatch` (`ci/pipelines/alpaca_watch.jenkinsfile`) и `AlpacaWork` (`ci/pipelines/alpaca_work.jenkinsfile`). Watcher раз в час смотрит issue с меткой `alpaca` и при необходимости запускает Work, не дожидаясь его. Work правит ветку `alpaca/<номер>` через Cursor CLI, коммитит сам, публикует компоненты и вызывает `BigFloppa` с `UPLOAD_ARTIFACTS=false` и `SKIP_DB_UPDATE=true`. Подробности: `.agents/knowledge/alpaca.md`.
