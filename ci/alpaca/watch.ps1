@@ -14,9 +14,9 @@ function Test-AlpacaWorkBusy {
     $root = $Matches[1]
     $tree = [uri]::EscapeDataString('inQueue,builds[building]{0,5}')
     try {
-        $job = Invoke-RestMethod -Uri "$root/job/AlpacaWork/api/json?tree=$tree" -TimeoutSec 20
+        $job = Invoke-RestMethod -Uri "$root/job/AlpacaWork/api/json?tree=$tree" -TimeoutSec 120
     } catch {
-        Write-Output "AlpacaWork status check failed: $($_.Exception.Message)"
+        Write-Host "AlpacaWork status check failed: $($_.Exception.Message)"
         return $false
     }
     if ($job.inQueue) { return $true }
@@ -44,13 +44,17 @@ if (Test-AlpacaWorkBusy) {
     exit 0
 }
 
-$rawIssues = & gh --no-pager issue list --repo $script:Repo --label alpaca --state open --limit 1 --json number,title
+$rawIssues = & gh --no-pager issue list --repo $script:Repo --assignee VitalyTheAlpaca --state open --limit 1 --json number,title,state
 if ($LASTEXITCODE -ne 0) { throw "gh issue list failed with $LASTEXITCODE" }
 if (-not $rawIssues -or $rawIssues.Trim() -eq '[]') {
-    Write-Output 'No open alpaca issue'
+    Write-Output 'No open issue assigned to VitalyTheAlpaca'
     exit 0
 }
 $issue = @($rawIssues | ConvertFrom-Json)[0]
+if ($issue.state -ne 'OPEN') {
+    Write-Output "issue=$($issue.number) is $($issue.state)"
+    exit 0
+}
 $branch = "alpaca/$($issue.number)"
 
 $rawPrs = & gh --no-pager pr list --repo $script:Repo --head $branch --state open --json number

@@ -82,7 +82,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'ISSUE', defaultValue: '', description: 'GitHub issue number with the alpaca label')
+        string(name: 'ISSUE', defaultValue: '', description: 'Open GitHub issue assigned to VitalyTheAlpaca')
         string(name: 'REASON', defaultValue: 'new', description: 'new, comments, build or tests')
         string(name: 'CYCLE', defaultValue: '1', description: 'Loop counter')
         string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Last cycle that may start another run')
@@ -125,14 +125,25 @@ pipeline {
                     env.ALPACA_BRANCH = "alpaca/${issue}"
                     env.ALPACA_COMMITTED = 'false'
                     env.ALPACA_BUILD_OK = 'false'
-                    withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\checkout.ps1'
+                    env.ALPACA_SKIP = 'false'
+                    def issueState = bat(script: 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\issue-open.ps1', returnStatus: true)
+                    if (issueState == 3) {
+                        echo "Issue #${issue} is closed"
+                        currentBuild.description = "issue #${issue} closed"
+                        env.ALPACA_SKIP = 'true'
+                    } else if (issueState != 0) {
+                        error "Could not read issue state: ${issueState}"
+                    } else {
+                        withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
+                            bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\checkout.ps1'
+                        }
                     }
                 }
             }
         }
 
         stage('Pull request') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
                     bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1 -LookupOnly'
@@ -145,6 +156,7 @@ pipeline {
         }
 
         stage('Code') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
                     def edited = alpacaCursor('edit')

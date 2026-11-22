@@ -56,7 +56,7 @@ OpenIntegrations — библиотека для разных серверов �
 
 ## Alpaca
 
-Цикл по issue с меткой `alpaca` делают два задания Jenkins, не чат. Описание: `.agents/knowledge/alpaca.md`.
+Цикл по открытому issue, назначенному на `VitalyTheAlpaca`, делают два задания Jenkins, не чат. Описание: `.agents/knowledge/alpaca.md`.
 
 В сеансе, который запущен `AlpacaWork`, Cursor только меняет код:
 
