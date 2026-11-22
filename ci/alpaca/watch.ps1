@@ -26,6 +26,10 @@ function Test-AlpacaWorkBusy {
     return $false
 }
 
+function Test-Owner([string]$Login) {
+    return [string]::Equals($Login, 'bayselonarrend', [StringComparison]::OrdinalIgnoreCase)
+}
+
 function Add-Stamps($bag, $items, $prop) {
     foreach ($item in @($items)) {
         if (-not $item -or -not $item.body) { continue }
@@ -35,8 +39,16 @@ function Add-Stamps($bag, $items, $prop) {
         $kind = 'human'
         if ($item.body -like '*<!-- alpaca-start -->*') { $kind = 'start' }
         elseif ($item.body -like '*<!-- alpaca -->*') { $kind = 'job' }
-        $bag.Add([pscustomobject]@{ At = $stamp; Kind = $kind }) | Out-Null
+        $login = ''
+        if ($item.author -and $item.author.login) { $login = [string]$item.author.login }
+        elseif ($item.user -and $item.user.login) { $login = [string]$item.user.login }
+        $bag.Add([pscustomobject]@{ At = $stamp; Kind = $kind; Login = $login }) | Out-Null
     }
+}
+
+function Test-OwnerAfter($stamps, $latestStart) {
+    $hit = @($stamps | Where-Object { $_.Kind -eq 'human' -and $_.At -gt $latestStart -and (Test-Owner $_.Login) })
+    return $hit.Count -gt 0
 }
 
 if (Test-AlpacaWorkBusy) {
@@ -76,13 +88,12 @@ if (-not $prNumber) {
         exit 0
     }
     $latestStart = ($starts | Sort-Object At | Select-Object -Last 1).At
-    $humanAfter = @($stamps | Where-Object { $_.Kind -eq 'human' -and $_.At -gt $latestStart })
-    if ($humanAfter.Count -gt 0) {
+    if (Test-OwnerAfter $stamps $latestStart) {
         Write-Utf8File $trigger "issue=$($issue.number)`r`nreason=comments`r`n"
         Write-Output "trigger issue=$($issue.number) reason=comments"
         exit 0
     }
-    Write-Output "issue=$($issue.number) has no PR and no new comments"
+    Write-Output "issue=$($issue.number) has no PR and no new owner comments"
     exit 0
 }
 
@@ -97,6 +108,7 @@ $stamps = New-Object System.Collections.Generic.List[object]
 Add-Stamps $stamps $issueObj.comments 'createdAt'
 Add-Stamps $stamps $prObj.comments 'createdAt'
 Add-Stamps $stamps $prObj.reviews 'submittedAt'
+Add-Stamps $stamps (Get-PullReviewComments $prNumber) 'created_at'
 
 $starts = @($stamps | Where-Object { $_.Kind -eq 'start' })
 if ($starts.Count -eq 0) {
@@ -106,12 +118,11 @@ if ($starts.Count -eq 0) {
 }
 
 $latestStart = ($starts | Sort-Object At | Select-Object -Last 1).At
-$humanAfter = @($stamps | Where-Object { $_.Kind -eq 'human' -and $_.At -gt $latestStart })
-if ($humanAfter.Count -gt 0) {
+if (Test-OwnerAfter $stamps $latestStart) {
     Write-Utf8File $trigger "issue=$($issue.number)`r`nreason=comments`r`n"
     Write-Output "trigger issue=$($issue.number) reason=comments"
     exit 0
 }
 
-Write-Output "issue=$($issue.number) has no new comments"
+Write-Output "issue=$($issue.number) has no new owner comments"
 exit 0

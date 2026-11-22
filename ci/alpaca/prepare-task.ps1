@@ -20,6 +20,18 @@ function Limit-Text([string]$Text, [int]$MaxLines) {
     return (($lines | Select-Object -First $MaxLines) -join "`n") + "`n..."
 }
 
+function Get-Login($item) {
+    if ($item.author -and $item.author.login) { return [string]$item.author.login }
+    if ($item.user -and $item.user.login) { return [string]$item.user.login }
+    return 'unknown'
+}
+
+function Get-Role($item, [string]$Login) {
+    if ($item.body -like '*<!-- alpaca -->*' -or $item.body -like '*<!-- alpaca-start -->*') { return 'alpaca' }
+    if ([string]::Equals($Login, 'bayselonarrend', [StringComparison]::OrdinalIgnoreCase)) { return 'owner' }
+    return 'context'
+}
+
 function Append-Thread($sb, $heading, $items, $prop) {
     [void]$sb.AppendLine("## $heading")
     $rows = @($items | Where-Object { $_ -and $_.body })
@@ -29,11 +41,9 @@ function Append-Thread($sb, $heading, $items, $prop) {
         return
     }
     foreach ($item in ($rows | Sort-Object { $_.$prop })) {
-        $who = 'unknown'
-        if ($item.author -and $item.author.login) { $who = [string]$item.author.login }
-        $kind = 'user'
-        if ($item.body -like '*<!-- alpaca -->*') { $kind = 'alpaca' }
-        [void]$sb.AppendLine("### $who ($kind) $($item.$prop)")
+        $who = Get-Login $item
+        $role = Get-Role $item $who
+        [void]$sb.AppendLine("### $who ($role) $($item.$prop)")
         [void]$sb.AppendLine($item.body.Trim())
         [void]$sb.AppendLine('')
     }
@@ -58,7 +68,10 @@ if (-not $diffOk -or $LASTEXITCODE -ne 0) {
     $names = ''
 }
 
+$authorityPath = Join-Path $PSScriptRoot 'prompts\authority.md'
 $sb = New-Object System.Text.StringBuilder
+[void]$sb.AppendLine((Read-Utf8File $authorityPath).TrimEnd())
+[void]$sb.AppendLine('')
 [void]$sb.AppendLine((Read-Utf8File $promptPath).TrimEnd())
 [void]$sb.AppendLine('')
 [void]$sb.AppendLine("Reason: $($env:ALPACA_REASON)")
@@ -74,6 +87,7 @@ Append-Thread $sb 'Issue comments' $issueObj.comments 'createdAt'
 if ($prObj) {
     Append-Thread $sb 'PR comments' $prObj.comments 'createdAt'
     Append-Thread $sb 'PR reviews' $prObj.reviews 'submittedAt'
+    Append-Thread $sb 'PR line comments' (Get-PullReviewComments $pr) 'created_at'
 }
 [void]$sb.AppendLine('## Diff against origin/main')
 [void]$sb.AppendLine((Limit-Text ($stat | Out-String) 150))

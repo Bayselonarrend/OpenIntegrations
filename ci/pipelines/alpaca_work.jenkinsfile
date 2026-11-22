@@ -12,6 +12,13 @@ def alpacaLog(run, int count) {
     }
 }
 
+def alpacaNoChanges() {
+    def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Агент не менял код. Сборка, тесты и публикация не запускались. Новый цикл не запущен.\n"
+    alpacaPost()
+    currentBuild.description = 'no code changes'
+}
+
 def alpacaPost() {
     def pr = 'pending'
     if (fileExists('ci/alpaca/out/pr.txt')) {
@@ -167,26 +174,34 @@ pipeline {
                         error "Cursor CLI failed: ${edited}"
                     }
                     def pending = bat(script: 'powershell -NoProfile -Command "if ([string]::IsNullOrWhiteSpace((git status --porcelain | Out-String))) { exit 2 } else { exit 0 }"', returnStatus: true)
-                    if (pending == 0) {
-                        def tested = alpacaCursor('write-tests')
-                        if (tested != 0) {
-                            def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
-                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Шаг тестов публичного API завершился с кодом ${tested}. Коммит не сделан. Новый цикл не запущен.\n"
-                            alpacaPost()
-                            error "Cursor test step failed: ${tested}"
-                        }
-                    } else if (pending != 2) {
+                    if (pending == 2) {
+                        alpacaNoChanges()
+                        return
+                    }
+                    if (pending != 0) {
                         error "git status failed: ${pending}"
+                    }
+                    def tested = alpacaCursor('write-tests')
+                    if (tested != 0) {
+                        def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Шаг тестов публичного API завершился с кодом ${tested}. Коммит не сделан. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        error "Cursor test step failed: ${tested}"
+                    }
+                    def pendingAfter = bat(script: 'powershell -NoProfile -Command "if ([string]::IsNullOrWhiteSpace((git status --porcelain | Out-String))) { exit 2 } else { exit 0 }"', returnStatus: true)
+                    if (pendingAfter == 2) {
+                        alpacaNoChanges()
+                        return
+                    }
+                    if (pendingAfter != 0) {
+                        error "git status failed: ${pendingAfter}"
                     }
                     def committed = 1
                     withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
                         committed = bat(script: 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\commit-push.ps1', returnStatus: true)
                     }
                     if (committed == 2) {
-                        def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
-                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Cursor не изменил файлы. Новый цикл не запущен.\n"
-                        alpacaPost()
-                        currentBuild.description = 'no code changes'
+                        alpacaNoChanges()
                         return
                     }
                     if (committed != 0) {

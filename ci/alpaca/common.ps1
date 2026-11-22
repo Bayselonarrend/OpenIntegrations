@@ -24,3 +24,11 @@ function Invoke-Gh {
         throw "gh $($GhArgs -join ' ') failed with $LASTEXITCODE"
     }
 }
+
+function Get-PullReviewComments([string]$Number) {
+    if ($Number -notmatch '^[0-9]+$') { throw "Bad pull number: $Number" }
+    $raw = & gh api --paginate "repos/$script:Repo/pulls/$Number/comments"
+    if ($LASTEXITCODE -ne 0) { throw "gh api pull comments failed with $LASTEXITCODE" }
+    if (-not $raw -or -not $raw.Trim() -or $raw.Trim() -eq '[]') { return @() }
+    return @($raw | ConvertFrom-Json)
+}
