@@ -54,6 +54,30 @@ if (-not $exe) {
 
 $fullTask = (Resolve-Path $TaskFile).Path
 $prompt = "Read and follow $fullTask. git, gh and publish-addins.bat are forbidden, including by full path. Jenkins runs them."
+$workspace = (Get-Location).Path
+
+# Jenkins keeps stdin open. The CLI then waits for more input and prints nothing.
+$parts = @('--print', '--force', '--trust', '--workspace', $workspace, $prompt)
+$fileName = $exe
+if ($exe -like '*.ps1') {
+    $fileName = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
+    $parts = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $exe) + $parts
+}
+$quoted = foreach ($part in $parts) {
+    if ($part -match '[\s"]') { '"' + ($part -replace '"', '\"') + '"' } else { $part }
+}
+$start = New-Object System.Diagnostics.ProcessStartInfo
+$start.FileName = $fileName
+$start.Arguments = ($quoted -join ' ')
+$start.WorkingDirectory = $workspace
+$start.UseShellExecute = $false
+$start.RedirectStandardInput = $true
+$proc = New-Object System.Diagnostics.Process
+$proc.StartInfo = $start
+if (-not $proc.Start()) { throw 'Cursor CLI did not start' }
+$proc.StandardInput.Close()
 Write-Output "Cursor CLI: $exe"
-& $exe --print --force --trust --workspace (Get-Location).Path $prompt
-exit $LASTEXITCODE
+Write-Output 'Cursor CLI stdin closed'
+$proc.WaitForExit()
+Write-Output "Cursor CLI exit: $($proc.ExitCode)"
+exit $proc.ExitCode
