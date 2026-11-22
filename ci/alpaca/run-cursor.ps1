@@ -56,7 +56,9 @@ $fullTask = (Resolve-Path $TaskFile).Path
 $prompt = "Read and follow $fullTask. git, gh and publish-addins.bat are forbidden, including by full path. Jenkins runs them."
 $workspace = (Get-Location).Path
 Write-Output "Cursor CLI: $exe"
-& $exe --print --force --trust --workspace $workspace $prompt
+# Jenkins keeps stdin open. After the edits the CLI waits for another message and never exits.
+$launch = "call `"$exe`" --print --force --trust --workspace `"$workspace`" `"$prompt`" < NUL"
+& cmd.exe /d /c $launch
 $code = $LASTEXITCODE
 Write-Output "Cursor CLI exit: $code"
 exit $code
