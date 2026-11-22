@@ -213,7 +213,10 @@ pipeline {
                         error "git status failed: ${pendingAfter}"
                     }
                     def committed = 1
-                    withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
+                    withCredentials([
+                        gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default'),
+                        usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')
+                    ]) {
                         committed = bat(script: 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\commit-push.ps1', returnStatus: true)
                     }
                     if (committed == 2) {

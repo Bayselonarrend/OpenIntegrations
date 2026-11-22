@@ -48,6 +48,7 @@ src/addins/sqlite/OPI_SQLite.zip
 private.key
 /cfe2cf
 src/addins/special/output/
+src/addins/**/artifacts/
 
 # Native add-in binaries (tracked on branch addins, not main/stable)
 src/ru/OInt/addins/*.zip
