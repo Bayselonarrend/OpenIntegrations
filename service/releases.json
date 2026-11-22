@@ -72,6 +72,12 @@
                 "description_en": "Fixed data loss in TCP client `Read` when a maximum response size is set; improved end-marker search on large payloads #116 @gridgt"
             },
             {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Добавлена поддержка устаревшего алгоритма host key `ssh-rsa` для совместимости со старыми SSH/SFTP-серверами #119",
+                "description_en": "Added support for the legacy `ssh-rsa` host key algorithm for compatibility with older SSH/SFTP servers #119"
+            },
+            {
                 "lib": "VK",
                 "icon": "media/VK.png",
                 "description_ru": "Исправлена загрузка истории: файл отправляется в поле `file` без дополнительных полей формы",
