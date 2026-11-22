@@ -55,3 +55,4 @@ src/en/OInt/addins/*.zip
 **/CommonTemplates/*/Template.addin
 
 /ignore
+/ci/alpaca/out/

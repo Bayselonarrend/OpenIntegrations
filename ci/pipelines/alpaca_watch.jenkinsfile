@@ -1,0 +1,60 @@
+// Job name: AlpacaWatch
+// Pipeline from SCM, branch */main, credentials gitmain.
+// Script path: ci/pipelines/alpaca_watch.jenkinsfile
+// Agent label: windows. The windows agent needs gh authenticated for this repo.
+
+pipeline {
+    agent { label 'windows' }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 15, unit: 'MINUTES')
+        timestamps()
+    }
+
+    triggers {
+        cron('H/10 * * * *')
+    }
+
+    stages {
+        stage('Watch') {
+            steps {
+                script {
+                    bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\watch.ps1'
+                    if (!fileExists('ci/alpaca/out/trigger.properties')) {
+                        echo 'Nothing to run'
+                        return
+                    }
+                    def issue = ''
+                    def reason = ''
+                    readFile('ci/alpaca/out/trigger.properties').split(/\r?\n/).each { line ->
+                        def parts = line.split('=', 2)
+                        if (parts.length != 2) {
+                            return
+                        }
+                        if (parts[0].trim() == 'issue') {
+                            issue = parts[1].trim()
+                        }
+                        if (parts[0].trim() == 'reason') {
+                            reason = parts[1].trim()
+                        }
+                    }
+                    if (!(issue ==~ /[0-9]+/)) {
+                        echo 'No issue in trigger file'
+                        return
+                    }
+                    if (!(reason in ['new', 'comments'])) {
+                        error "Invalid trigger reason: ${reason}"
+                    }
+                    build job: 'AlpacaWork', wait: false, parameters: [
+                        [$class: 'StringParameterValue', name: 'ISSUE', value: issue],
+                        [$class: 'StringParameterValue', name: 'REASON', value: reason],
+                        [$class: 'StringParameterValue', name: 'CYCLE', value: '1'],
+                        [$class: 'StringParameterValue', name: 'MAX_CYCLE', value: '8']
+                    ]
+                    currentBuild.description = "started ${reason} for #${issue}"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,348 @@
+// Job name: AlpacaWork
+// Pipeline from SCM, branch */main, credentials gitmain.
+// Script path: ci/pipelines/alpaca_work.jenkinsfile
+// Agent label: windows. The windows agent needs gh and the Cursor CLI (agent or cursor-agent).
+
+@NonCPS
+def alpacaLog(run, int count) {
+    try {
+        return run.getRawBuild().getLog(count).join('\n')
+    } catch (Throwable err) {
+        return "log unavailable: ${err}"
+    }
+}
+
+def alpacaPost() {
+    def pr = 'pending'
+    if (fileExists('ci/alpaca/out/pr.txt')) {
+        pr = readFile('ci/alpaca/out/pr.txt').trim()
+    }
+    def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
+    def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}", returnStatus: true)
+    if (status != 0) {
+        echo "Comment failed with ${status}"
+    }
+}
+
+def alpacaMarkStarted() {
+    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n<!-- alpaca-start -->\n\nЦикл ${env.ALPACA_CYCLE} (${env.ALPACA_REASON}) начат.\n"
+    def pr = readFile('ci/alpaca/out/pr.txt').trim()
+    def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
+    def posted = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}", returnStatus: true)
+    if (posted != 0) {
+        error "Could not post the cycle marker: ${posted}"
+    }
+    writeFile file: 'ci/alpaca/out/started.txt', text: '1'
+}
+
+def alpacaRetrigger(String reason) {
+    def cycle = Integer.valueOf(env.ALPACA_CYCLE ?: '1')
+    def maxCycle = Integer.valueOf(env.ALPACA_MAX ?: '8')
+    if (!fileExists('ci/alpaca/out/comment.md')) {
+        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\n${reason}\n"
+    }
+    if (cycle >= maxCycle) {
+        def existing = readFile('ci/alpaca/out/comment.md')
+        writeFile file: 'ci/alpaca/out/comment.md', text: existing + "\n\nДостигнут предел циклов (${maxCycle}). Новый цикл не запущен.\n"
+        alpacaPost()
+        currentBuild.description = "cycle limit after ${reason}"
+        return
+    }
+    alpacaPost()
+    def next = (cycle + 1).toString()
+    build job: 'AlpacaWork', wait: false, parameters: [
+        [$class: 'StringParameterValue', name: 'ISSUE', value: env.ALPACA_ISSUE],
+        [$class: 'StringParameterValue', name: 'REASON', value: reason],
+        [$class: 'StringParameterValue', name: 'CYCLE', value: next],
+        [$class: 'StringParameterValue', name: 'MAX_CYCLE', value: env.ALPACA_MAX]
+    ]
+    currentBuild.description = "${reason}: started cycle ${next}"
+}
+
+def alpacaCursor(String mode) {
+    if (mode != 'edit') {
+        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\clear-outputs.ps1'
+    }
+    bat "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\prepare-task.ps1 -Mode ${mode}"
+    def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\run-cursor.ps1 -TaskFile ci\\alpaca\\out\\task.md", returnStatus: true)
+    if (mode != 'edit') {
+        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\restore-tree.ps1'
+    }
+    return status
+}
+
+pipeline {
+    agent { label 'windows' }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 240, unit: 'MINUTES')
+        timestamps()
+    }
+
+    parameters {
+        string(name: 'ISSUE', defaultValue: '', description: 'GitHub issue number with the alpaca label')
+        string(name: 'REASON', defaultValue: 'new', description: 'new, comments, build or tests')
+        string(name: 'CYCLE', defaultValue: '1', description: 'Loop counter')
+        string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Last cycle that may start another run')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    def issue = (params.ISSUE ?: '').trim()
+                    def reason = (params.REASON ?: 'new').trim()
+                    if (!(issue ==~ /[0-9]+/)) {
+                        error "Invalid ISSUE: ${issue}"
+                    }
+                    if (!(reason in ['new', 'comments', 'build', 'tests'])) {
+                        error "Invalid REASON: ${reason}"
+                    }
+                    def cycle = 1
+                    def maxCycle = 8
+                    try {
+                        cycle = Integer.valueOf((params.CYCLE ?: '1').trim())
+                    } catch (err) {
+                        cycle = 1
+                    }
+                    try {
+                        maxCycle = Integer.valueOf((params.MAX_CYCLE ?: '8').trim())
+                    } catch (err) {
+                        maxCycle = 8
+                    }
+                    if (cycle < 1) {
+                        cycle = 1
+                    }
+                    if (maxCycle < 1) {
+                        maxCycle = 8
+                    }
+                    env.ALPACA_ISSUE = issue
+                    env.ALPACA_REASON = reason
+                    env.ALPACA_CYCLE = cycle.toString()
+                    env.ALPACA_MAX = maxCycle.toString()
+                    env.ALPACA_BRANCH = "alpaca/${issue}"
+                    env.ALPACA_COMMITTED = 'false'
+                    env.ALPACA_BUILD_OK = 'false'
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\checkout.ps1'
+                    }
+                }
+            }
+        }
+
+        stage('Pull request') {
+            steps {
+                script {
+                    bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1 -LookupOnly'
+                    def pr = readFile('ci/alpaca/out/pr.txt').trim()
+                    if (pr ==~ /[0-9]+/) {
+                        alpacaMarkStarted()
+                    }
+                }
+            }
+        }
+
+        stage('Code') {
+            steps {
+                script {
+                    def edited = alpacaCursor('edit')
+                    if (edited != 0) {
+                        def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Cursor CLI завершился с кодом ${edited}. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        error "Cursor CLI failed: ${edited}"
+                    }
+                    def committed = 1
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        committed = bat(script: 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\commit-push.ps1', returnStatus: true)
+                    }
+                    if (committed == 2) {
+                        def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Cursor не изменил файлы. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        currentBuild.description = 'no code changes'
+                        return
+                    }
+                    if (committed != 0) {
+                        error "git commit failed: ${committed}"
+                    }
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1'
+                    }
+                    if (!fileExists('ci/alpaca/out/started.txt')) {
+                        alpacaMarkStarted()
+                    }
+                    env.ALPACA_COMMITTED = 'true'
+                }
+            }
+        }
+
+        stage('Publish addins') {
+            when { expression { return env.ALPACA_COMMITTED == 'true' } }
+            steps {
+                script {
+                    def published = 1
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        published = bat(script: 'call src\\addins\\publish-addins.bat', returnStatus: true)
+                    }
+                    if (published != 0) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПубликация компонент не прошла. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        error "publish-addins failed: ${published}"
+                    }
+                }
+            }
+        }
+
+        stage('BigFloppa') {
+            when { expression { return env.ALPACA_COMMITTED == 'true' } }
+            steps {
+                script {
+                    def downstream
+                    try {
+                        downstream = build job: 'BigFloppa', wait: true, propagate: false, parameters: [
+                            [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH],
+                            [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: false],
+                            [$class: 'BooleanParameterValue', name: 'SKIP_DB_UPDATE', value: true]
+                        ]
+                    } catch (err) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nBigFloppa не стартовал.\n\n${err}\n\nПараметр SKIP_DB_UPDATE появляется после первого прогона BigFloppa с этим Jenkinsfile на main. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        currentBuild.description = 'BigFloppa did not start'
+                        return
+                    }
+                    env.DOWNSTREAM_RESULT = downstream.result ?: 'UNKNOWN'
+                    env.DOWNSTREAM_URL = downstream.absoluteUrl ?: ''
+                    if (env.DOWNSTREAM_RESULT == 'SUCCESS') {
+                        env.ALPACA_BUILD_OK = 'true'
+                        return
+                    }
+                    writeFile file: 'ci/alpaca/out/build-log.txt', text: alpacaLog(downstream, 500)
+                    try {
+                        alpacaCursor('explain-build')
+                    } catch (err) {
+                        echo "Build explanation failed: ${err}"
+                    }
+                    if (!fileExists('ci/alpaca/out/comment.md')) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nСборка не прошла: ${env.DOWNSTREAM_RESULT}\n${env.DOWNSTREAM_URL}\n"
+                    }
+                    alpacaRetrigger('build')
+                }
+            }
+        }
+
+        stage('Tests') {
+            when {
+                allOf {
+                    expression { return env.ALPACA_COMMITTED == 'true' }
+                    expression { return env.ALPACA_BUILD_OK == 'true' }
+                }
+            }
+            steps {
+                script {
+                    def picked = 1
+                    try {
+                        picked = alpacaCursor('pick-tests')
+                    } catch (err) {
+                        echo "Test pick failed: ${err}"
+                        picked = 1
+                    }
+                    if (picked != 0 || !fileExists('ci/alpaca/out/test-job.txt')) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nНе удалось выбрать тестовое задание. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        currentBuild.description = 'no test job'
+                        return
+                    }
+                    def jobs = readFile('ci/alpaca/out/test-job.txt')
+                        .replace('\uFEFF', '')
+                        .split(/\r?\n/)
+                        .collect { it.trim() }
+                        .findAll { it && !it.startsWith('#') }
+                    if (jobs.size() == 1 && jobs[0].equalsIgnoreCase('none')) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nИзменения не требуют прогона тестов библиотеки. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        currentBuild.description = 'tests not required'
+                        return
+                    }
+                    def summaryFile = 'ci/alpaca/out/tests-summary.md'
+                    writeFile file: summaryFile, text: ''
+                    def anyFailed = false
+                    def blocked = false
+                    for (int i = 0; i < jobs.size(); i++) {
+                        def jobName = jobs[i].replace('\uFEFF', '').trim()
+                        if (!(jobName ==~ /^OPITest\/Opi(FullTest|SplitTests)\/[A-Za-z0-9_.\/]+$/)) {
+                            blocked = true
+                            def invalid = readFile(summaryFile) + "invalid: ${jobName}\n"
+                            writeFile file: summaryFile, text: invalid
+                            break
+                        }
+                        try {
+                            def testRun = build job: jobName, wait: true, propagate: false, parameters: [
+                                [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH]
+                            ]
+                            def result = testRun.result ?: 'UNKNOWN'
+                            def chunk = "${jobName} ${result} ${testRun.absoluteUrl}\n"
+                            if (result != 'SUCCESS') {
+                                anyFailed = true
+                                chunk += alpacaLog(testRun, 2500) + "\n"
+                            }
+                            def current = readFile(summaryFile) + chunk
+                            if (current.length() > 150000) {
+                                current = current.substring(0, 150000) + "\n...\n"
+                            }
+                            writeFile file: summaryFile, text: current
+                        } catch (err) {
+                            blocked = true
+                            def current = readFile(summaryFile) + "${jobName} did not start: ${err}\n"
+                            writeFile file: summaryFile, text: current
+                            break
+                        }
+                    }
+                    if (blocked) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nТестовое задание не запустилось. Новый цикл не запущен.\n\n" + readFile(summaryFile)
+                        alpacaPost()
+                        currentBuild.description = 'tests did not start'
+                        return
+                    }
+                    def judged = 1
+                    try {
+                        judged = alpacaCursor('judge-tests')
+                    } catch (err) {
+                        echo "Test judge failed: ${err}"
+                        judged = 1
+                    }
+                    def verdict = 'stop'
+                    if (fileExists('ci/alpaca/out/verdict.txt')) {
+                        def line = readFile('ci/alpaca/out/verdict.txt').replace('\uFEFF', '').split(/\r?\n/).find { it.trim() }
+                        if (line) {
+                            verdict = line.trim().toLowerCase()
+                        }
+                    }
+                    if (verdict != 'retrigger') {
+                        verdict = 'stop'
+                    }
+                    def askedRetrigger = verdict == 'retrigger'
+                    if (!anyFailed) {
+                        verdict = 'stop'
+                    }
+                    if (!fileExists('ci/alpaca/out/comment.md')) {
+                        def fallback = anyFailed
+                            ? "Тесты завершились с ошибкой, связь с изменёнными методами не подтверждена. Новый цикл не запущен."
+                            : "Выбранные тесты прошли. Новый цикл не запущен."
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\n${fallback}\n"
+                    } else if (!anyFailed && askedRetrigger) {
+                        def existing = readFile('ci/alpaca/out/comment.md')
+                        writeFile file: 'ci/alpaca/out/comment.md', text: existing + "\n\nВыбранные задания завершились успешно. Новый цикл не запущен.\n"
+                    }
+                    if (verdict == 'retrigger') {
+                        alpacaRetrigger('tests')
+                        return
+                    }
+                    alpacaPost()
+                    currentBuild.description = anyFailed ? 'tests not related' : 'tests passed'
+                }
+            }
+        }
+    }
+}
