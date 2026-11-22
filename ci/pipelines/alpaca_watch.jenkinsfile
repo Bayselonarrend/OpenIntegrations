@@ -1,7 +1,7 @@
 // Job name: AlpacaWatch
 // Pipeline from SCM, branch */main, credentials gitalpaca.
 // Script path: ci/pipelines/alpaca_watch.jenkinsfile
-// Agent label: windows. The windows agent needs gh authenticated for this repo.
+// Agent label: windows. The windows agent needs gh. Issue and PR calls use GH_TOKEN from gitalpaca.
 
 pipeline {
     agent { label 'windows' }
@@ -20,7 +20,9 @@ pipeline {
         stage('Watch') {
             steps {
                 script {
-                    bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\watch.ps1'
+                    withCredentials([usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\watch.ps1'
+                    }
                     if (!fileExists('ci/alpaca/out/trigger.properties')) {
                         echo 'Nothing to run'
                         return

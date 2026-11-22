@@ -15,7 +15,7 @@
 
 Jenkins читает Jenkinsfile из `main`. Пока эти файлы не на `main`, задания их не увидят. Расписание `H * * * *` (раз в час) появляется после первого запуска этого Jenkinsfile. Кнопка ручного запуска есть сразу: у задания нет параметров.
 
-На windows-агенте должны быть `gh`, уже авторизованный в `Bayselonarrend/OpenIntegrations`, и Cursor CLI: команда `agent` или `cursor-agent` в `PATH`.
+На windows-агенте должны быть `gh` и Cursor CLI: команда `agent` или `cursor-agent` в `PATH`. Вызовы `gh` получают `GH_TOKEN` из пароля credentials `gitalpaca`, поэтому комментарии и PR создаются от `VitalyTheAlpaca`, а не от учётки, под которой `gh` залогинен на агенте. У этого токена должны быть права писать issues и pull requests.
 
 ## Что делает watcher
 

@@ -2,6 +2,7 @@
 // Pipeline from SCM, branch */main, credentials gitalpaca.
 // Script path: ci/pipelines/alpaca_work.jenkinsfile
 // Agent label: windows. The windows agent needs gh and the Cursor CLI (agent or cursor-agent).
+// gh calls use GH_TOKEN from the gitalpaca credential, so comments are authored by VitalyTheAlpaca.
 
 @NonCPS
 def alpacaLog(run, int count) {
@@ -9,6 +10,21 @@ def alpacaLog(run, int count) {
         return run.getRawBuild().getLog(count).join('\n')
     } catch (Throwable err) {
         return "log unavailable: ${err}"
+    }
+}
+
+def alpacaGhStatus(String script) {
+    def status = 1
+    withCredentials([usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+        status = bat(script: script, returnStatus: true)
+    }
+    return status
+}
+
+def alpacaGh(String script) {
+    def status = alpacaGhStatus(script)
+    if (status != 0) {
+        error "gh step failed: ${status}"
     }
 }
 
@@ -25,7 +41,7 @@ def alpacaPost() {
         pr = readFile('ci/alpaca/out/pr.txt').trim()
     }
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
-    def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}", returnStatus: true)
+    def status = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
     if (status != 0) {
         echo "Comment failed with ${status}"
     }
@@ -35,7 +51,7 @@ def alpacaMarkStarted() {
     writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n<!-- alpaca-start -->\n\nЦикл ${env.ALPACA_CYCLE} (${env.ALPACA_REASON}) начат.\n"
     def pr = readFile('ci/alpaca/out/pr.txt').trim()
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
-    def posted = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}", returnStatus: true)
+    def posted = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
     if (posted != 0) {
         error "Could not post the cycle marker: ${posted}"
     }
@@ -71,7 +87,7 @@ def alpacaCursor(String mode) {
     if (!keepTree) {
         bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\clear-outputs.ps1'
     }
-    bat "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\prepare-task.ps1 -Mode ${mode}"
+    alpacaGh("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\prepare-task.ps1 -Mode ${mode}")
     def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\run-cursor.ps1 -TaskFile ci\\alpaca\\out\\task.md", returnStatus: true)
     if (!keepTree) {
         bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\restore-tree.ps1'
@@ -133,7 +149,7 @@ pipeline {
                     env.ALPACA_COMMITTED = 'false'
                     env.ALPACA_BUILD_OK = 'false'
                     env.ALPACA_SKIP = 'false'
-                    def issueState = bat(script: 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\issue-open.ps1', returnStatus: true)
+                    def issueState = alpacaGhStatus('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\issue-open.ps1')
                     if (issueState == 3) {
                         echo "Issue #${issue} is closed"
                         currentBuild.description = "issue #${issue} closed"
@@ -153,7 +169,7 @@ pipeline {
             when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
-                    bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1 -LookupOnly'
+                    alpacaGh('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1 -LookupOnly')
                     def pr = readFile('ci/alpaca/out/pr.txt').trim()
                     if (pr ==~ /[0-9]+/) {
                         alpacaMarkStarted()
@@ -208,7 +224,7 @@ pipeline {
                         error "git commit failed: ${committed}"
                     }
                     withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1'
+                        alpacaGh('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1')
                     }
                     if (!fileExists('ci/alpaca/out/started.txt')) {
                         alpacaMarkStarted()
