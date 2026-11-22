@@ -1,0 +1,34 @@
+# Copyright (C) The libssh2 project and its contributors.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+# This file describes the licensing and copyright situation for files that
+# cannot be annotated directly, for example because of being uncommentable.
+# Unless this is the case, a file should be annotated directly.
+#
+# This follows the REUSE specification: https://reuse.software/spec-3.2/#reusetoml
+
+version = 1
+SPDX-PackageName = "libssh2"
+SPDX-PackageDownloadLocation = "https://libssh2.org/"
+
+[[annotations]]
+path = [
+  ".github/ISSUE_TEMPLATE/bug_report.md",
+  ".github/pull_request_template.md",
+  "NEWS",
+  "README",
+  "RELEASE-NOTES",
+  "docs/AUTHORS",
+  "os400/README400",
+  "tests/keys/*",
+  "tests/openssh_server/authorized_keys",
+  "tests/openssh_server/ca_*",
+  "tests/openssh_server/ssh_*",
+  "tests/test_read_algos.txt",
+  "vms/readme.vms",
+]
+SPDX-FileCopyrightText = "The libssh2 project and its contributors."
+SPDX-License-Identifier = "BSD-3-Clause"
+# If there is licensing/copyright information in or next to these files, prefer that
+precedence = "closest"

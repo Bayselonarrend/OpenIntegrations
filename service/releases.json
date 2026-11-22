@@ -66,6 +66,18 @@
                 "description_en": "Full deprecation of `Isolated` connection mode when working with AddIns"
             },
             {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Добавлена поддержка устаревшего алгоритма ключа хоста `ssh-rsa` для соединения с серверами, которые больше не отдают современные ключи #119",
+                "description_en": "Added support for the legacy `ssh-rsa` host key algorithm for servers that no longer offer modern host keys #119"
+            },
+            {
+                "lib": "SFTP",
+                "icon": "media/SFTP.png",
+                "description_ru": "Добавлена поддержка устаревшего алгоритма ключа хоста `ssh-rsa` для соединения с серверами, которые больше не отдают современные ключи #119",
+                "description_en": "Added support for the legacy `ssh-rsa` host key algorithm for servers that no longer offer modern host keys #119"
+            },
+            {
                 "lib": "TCP",
                 "icon": "media/TCP.png",
                 "description_ru": "Исправлена потеря данных в `Read` TCP-клиента при ограничении максимального размера ответа; ускорен поиск маркера окончания на больших объёмах #116 @gridgt",

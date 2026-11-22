@@ -37,3 +37,7 @@ features = ["vendored-openssl", "openssl-on-win32"]
 
 [target.'cfg(not(all(windows, target_env = "msvc")))'.dependencies.ssh2]
 version = "0.9.5"
+
+# Vendored libssh2-sys with LIBSSH2_RSA_SHA1_ENABLE (legacy ssh-rsa host keys).
+[patch.crates-io]
+libssh2-sys = { path = "libssh2-sys" }
