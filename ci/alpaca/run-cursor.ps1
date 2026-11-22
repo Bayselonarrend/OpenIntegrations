@@ -7,6 +7,8 @@ if (-not (Test-Path $TaskFile)) { throw "Task file not found: $TaskFile" }
 
 $deny = Join-Path $PSScriptRoot 'deny'
 $env:PATH = "$deny;$env:PATH"
+# The bundled Node trusts Mozilla roots only. A proxy CA installed in Windows is invisible until this is set.
+$env:NODE_USE_SYSTEM_CA = '1'
 $configDir = Join-Path $PSScriptRoot 'out\cursor-config'
 New-Item -ItemType Directory -Force -Path $configDir | Out-Null
 $env:CURSOR_CONFIG_DIR = $configDir
