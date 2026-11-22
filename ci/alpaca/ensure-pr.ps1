@@ -27,12 +27,14 @@ $pr = Get-OpenPr
 if (-not $pr -and -not $LookupOnly) {
     $titleRaw = & gh issue view $issue --repo $script:Repo --json title --jq .title
     if ($LASTEXITCODE -ne 0) { throw "gh issue view failed with $LASTEXITCODE" }
-    $title = if ($titleRaw) { $titleRaw.Trim() } else { "alpaca #$issue" }
-    $titleFile = Join-Path $outDir 'pr-title.txt'
-    $bodyFile = Join-Path $outDir 'pr-body.md'
-    Write-Utf8File $titleFile $title
-    Write-Utf8File $bodyFile "Alpaca-Issue: $issue`r`n`r`nRefs #$issue`r`n"
-    & gh pr create --repo $script:Repo --base main --head $branch --title-file $titleFile --body-file $bodyFile
+    $title = if ($titleRaw) { ($titleRaw -replace '[\r\n]+', ' ').Trim() } else { "alpaca #$issue" }
+    if (-not $title) { $title = "alpaca #$issue" }
+    $body = "Alpaca-Issue: $issue`n`nRefs #$issue`n"
+    $payloadFile = Join-Path $outDir 'pr-create.json'
+    # This gh has --body-file but not --title-file. The JSON file keeps a non-ASCII title intact.
+    $payload = @{ title = $title; head = $branch; base = 'main'; body = $body } | ConvertTo-Json -Compress
+    Write-Utf8File $payloadFile $payload
+    & gh api --method POST "repos/$script:Repo/pulls" --input $payloadFile
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     $pr = Get-OpenPr
 }

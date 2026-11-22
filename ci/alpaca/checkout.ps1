@@ -20,6 +20,18 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 & git clean -fd -e ci/alpaca/out
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+# Pipeline scripts stay on main. The issue branch keeps the copy from the day it was cut.
+& git checkout origin/main -- ci/alpaca
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& git reset -q HEAD -- ci/alpaca
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+foreach ($file in @(& git ls-files -- ci/alpaca)) {
+    if (-not $file) { continue }
+    & git update-index --skip-worktree -- $file
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+
 $outDir = Join-Path $PSScriptRoot 'out'
 if (Test-Path $outDir) { Remove-Item $outDir -Recurse -Force }
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
