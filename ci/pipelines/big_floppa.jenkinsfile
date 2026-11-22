@@ -9,6 +9,7 @@ pipeline {
 	parameters {
 		string(name: 'BRANCH', defaultValue: 'main', description: 'Git branch to checkout. The job loads this Jenkinsfile from main, then checks out BRANCH.')
 		booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
+		booleanParam(name: 'SKIP_DB_UPDATE', defaultValue: false, description: 'Skip OpiBuild/OpiBaseUpdate. Alpaca passes true.')
 	}
 
     stages {
@@ -51,6 +52,9 @@ pipeline {
             }
         }
         stage('OpenIntegrations - 1C DB Update') {
+            when {
+                expression { return params.SKIP_DB_UPDATE.toString() != 'true' }
+            }
             steps {
                 build job: 'OpiBuild/OpiBaseUpdate', wait: true,
                     parameters: [branchParameter()]
