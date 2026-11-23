@@ -37,6 +37,23 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, JanxValue) {
     sess.set_tcp_stream(tcp);
     sess.trace(ssh2::TraceFlags::AUTH | ssh2::TraceFlags::CONN | ssh2::TraceFlags::ERROR);
 
+    // Modern host keys first; keep legacy ssh-rsa last for servers that only
+    // offer it (e.g. Cerberus FTP). Requires LIBSSH2_RSA_SHA1_ENABLE in libssh2.
+    const HOSTKEY_PREFS: &str = concat!(
+        "ssh-ed25519,",
+        "ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,",
+        "rsa-sha2-512,rsa-sha2-256,",
+        "ssh-rsa"
+    );
+    if let Err(e) = sess.method_pref(MethodType::HostKey, HOSTKEY_PREFS) {
+        return (
+            None,
+            ConnectionResponse::new(false)
+                .with_error(format!("HostKey prefs error: {}", e))
+                .to_value(),
+        );
+    }
+
     if let Err(e) = sess.handshake() {
         return (
             None,

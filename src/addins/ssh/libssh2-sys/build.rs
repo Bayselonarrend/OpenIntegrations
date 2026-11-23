@@ -10,38 +10,12 @@ use std::process::Command;
  or cause a denial of service condition on the client system when a user connects to the server.
 */
 
-const MIN_LIBSSH2_VERSION: semver::Version = semver::Version::new(1, 10, 0);
 const CRATE_VERSION: &str = "0.3.4";
 
 fn main() {
-    let zlib_ng_compat = env::var("CARGO_FEATURE_ZLIB_NG_COMPAT").is_ok();
-
     // Always build from source so LIBSSH2_RSA_SHA1_ENABLE is applied.
-    // Upstream may use vcpkg/pkg-config, which would skip our define.
-
-    // The system copy of libssh2 is not used by default because it
-    // can lead to having two copies of libssl loaded at once.
-    // See https://github.com/alexcrichton/ssh2-rs/pull/88
-    println!("cargo:rerun-if-env-changed=LIBSSH2_SYS_USE_PKG_CONFIG");
-    if env::var("LIBSSH2_SYS_USE_PKG_CONFIG").is_ok() {
-        if zlib_ng_compat {
-            panic!(
-                "LIBSSH2_SYS_USE_PKG_CONFIG set, but cannot use zlib-ng-compat with system libssh2"
-            );
-        }
-        if let Ok(lib) = pkg_config::find_library("libssh2") {
-            if semver::Version::parse(&lib.version).unwrap() < MIN_LIBSSH2_VERSION {
-                println!(
-                    "cargo:warning=libssh2 {} is older than the recommended minimum {}",
-                    lib.version, MIN_LIBSSH2_VERSION
-                );
-            }
-            for path in &lib.include_paths {
-                println!("cargo:include={}", path.display());
-            }
-            return;
-        }
-    }
+    // System libssh2 via pkg-config/vcpkg would skip our define and break
+    // servers that only offer legacy ssh-rsa host keys (issue #119).
 
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
     if !manifest_dir.join("libssh2/include/libssh2.h").exists() {

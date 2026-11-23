@@ -146,7 +146,7 @@
 			.Инициализировать(СтрШаблон("https://api.github.com/repos/bayselonarrend/OpenIntegrations/releases/%1", IDРелиза))
 			.ДобавитьBearerАвторизацию(Токен)
 			.УстановитьJsonТело(СтруктураЗапроса)
-			.ОбработатьЗапрос("PATCH")
+			.ОбработатьЗапрос("PATCH");
 
 	Иначе
 
@@ -257,7 +257,7 @@
 			.Инициализировать(СтрШаблон("https://api.sourcecraft.tech/releases/id:%1", IDРелиза))
 			.ДобавитьBearerАвторизацию(Токен)
 			.УстановитьJsonТело(СтруктураЗапроса)
-			.ОбработатьЗапрос("PATCH")
+			.ОбработатьЗапрос("PATCH");
 
 	Иначе
 
@@ -271,7 +271,7 @@
 			.Инициализировать("https://api.sourcecraft.tech/repos/bayselonarrend/openintegrations/releases")
 			.ДобавитьBearerАвторизацию(Токен)
 			.УстановитьJsonТело(СтруктураЗапроса)
-			.ОбработатьЗапрос("POST")
+			.ОбработатьЗапрос("POST");
 
 	КонецЕсли;
 
