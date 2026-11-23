@@ -87,17 +87,18 @@ powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -Force -Destination
 if errorlevel 1 goto :error
 
 :: OInt/addins может отсутствовать до sync-addins.bat — создаём для локальной сборки
-if not exist "..\..\ru\OInt\addins" mkdir "..\..\ru\OInt\addins"
-if not exist "..\..\en\OInt\addins" mkdir "..\..\en\OInt\addins"
+:: Пути через REPO_ROOT: ADDIN_DIR может быть коротким junction (OpenSSL/Jenkins)
+if not exist "%REPO_ROOT%\src\ru\OInt\addins" mkdir "%REPO_ROOT%\src\ru\OInt\addins"
+if not exist "%REPO_ROOT%\src\en\OInt\addins" mkdir "%REPO_ROOT%\src\en\OInt\addins"
 
-copy /y "%LIB_NAME%.zip" "../../ru/OInt/addins/%LIB_NAME%.zip"
+copy /y "%LIB_NAME%.zip" "%REPO_ROOT%\src\ru\OInt\addins\%LIB_NAME%.zip"
 if errorlevel 1 goto :error
-copy /y "%LIB_NAME%.zip" "../../en/OInt/addins/%LIB_NAME%.zip"
+copy /y "%LIB_NAME%.zip" "%REPO_ROOT%\src\en\OInt\addins\%LIB_NAME%.zip"
 if errorlevel 1 goto :error
 
-copy /y "%LIB_NAME%.zip" "../../ru/BSL/OpenIntegrations/src/CommonTemplates/%LIB_NAME%/Template.addin"
+copy /y "%LIB_NAME%.zip" "%REPO_ROOT%\src\ru\BSL\OpenIntegrations\src\CommonTemplates\%LIB_NAME%\Template.addin"
 if errorlevel 1 goto :error
-copy /y "%LIB_NAME%.zip" "../../en/BSL/OpenIntegrations/src/CommonTemplates/%LIB_NAME%/Template.addin"
+copy /y "%LIB_NAME%.zip" "%REPO_ROOT%\src\en\BSL\OpenIntegrations\src\CommonTemplates\%LIB_NAME%\Template.addin"
 if errorlevel 1 goto :error
 
 if exist "%OUTPUT_DIR%" (

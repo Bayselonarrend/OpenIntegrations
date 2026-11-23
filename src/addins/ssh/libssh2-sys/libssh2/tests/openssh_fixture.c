@@ -1,0 +1,517 @@
+/* Copyright (C) Alexander Lamaison
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#include "session_fixture.h"
+#include "openssh_fixture.h"
+
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_ARPA_INET_H
+#include <arpa/inet.h>
+#endif
+#ifdef HAVE_NETINET_IN_H
+#include <netinet/in.h>
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>  /* for atoi() */
+#include <stdarg.h>
+#include <ctype.h>
+
+#ifdef _WIN64
+#define LIBSSH2_SOCKET_MASK "llu"
+#elif defined(_WIN32)
+#define LIBSSH2_SOCKET_MASK "u"
+#else
+#define LIBSSH2_SOCKET_MASK "d"
+#endif
+
+#ifdef LIBSSH2_WINDOWS_UWP
+#define popen(x, y) NULL
+#define pclose(x) (-1)
+#elif defined(_WIN32)
+#define popen _popen
+#define pclose _pclose
+#endif
+
+static const char *container_cmd = NULL;
+
+int openssh_fixture_have_container(void)
+{
+    return !!container_cmd;
+}
+
+static int run_command_varg(char **output, const char *command, va_list args)
+    SSH2_PRINTF(2, 0);
+
+static int run_command_varg(char **output, const char *command, va_list args)
+{
+    static const char redirect_stderr[] = "%s 2>&1";
+
+    FILE *pipe;
+    char command_buf[8192];
+    char buf[64 * 1024]; /* sizeof(command_buf + " 2>&1") or larger */
+    int ret;
+    size_t buf_len;
+
+    if(output)
+        *output = NULL;
+
+    /* Format the command string */
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+#endif
+    ret = vsnprintf(command_buf, sizeof(command_buf), command, args);
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
+    if(ret < 0 || (size_t)ret >= sizeof(command_buf)) {
+        fprintf(stderr, "Unable to format command (%s)\n", command);
+        return -1;
+    }
+
+    ret = snprintf(buf, sizeof(buf), redirect_stderr, command_buf);
+    if(ret < 0 || (size_t)ret >= sizeof(buf)) {
+        fprintf(stderr, "Unable to rewrite command (%s)\n", command);
+        return -1;
+    }
+
+#if 0
+    fprintf(stderr, "Command: %s\n", command_buf);
+#endif
+    fprintf(stdout, "Command: %s\n", command_buf);
+    pipe = popen(buf, "r");
+    if(!pipe) {
+        fprintf(stderr, "Unable to execute command '%s'\n", command);
+        return -1;
+    }
+    buf[0] = '\0';
+    buf_len = 0;
+    while(buf_len < (sizeof(buf) - 1) &&
+          fgets(&buf[buf_len], (int)(sizeof(buf) - buf_len), pipe))
+        buf_len = strlen(buf);
+
+    ret = pclose(pipe);
+    if(ret)
+        fprintf(stderr, "Error running command '%s' (exit %d): %s\n",
+                command, ret, buf);
+
+    if(output) {
+        /* command output may contain a trailing newline, so we trim
+         * whitespace here */
+        size_t end = strlen(buf);
+        while(end > 0 && isspace((int)buf[end - 1])) {
+            buf[end - 1] = '\0';
+            --end;
+        }
+
+        *output = libssh2_strdup(buf);
+    }
+    return ret;
+}
+
+static int run_command(char **output, const char *command, ...)
+    SSH2_PRINTF(2, 3);
+
+static int run_command(char **output, const char *command, ...)
+{
+    va_list args;
+    int ret;
+
+    va_start(args, command);
+    ret = run_command_varg(output, command, args);
+    va_end(args);
+
+    return ret;
+}
+
+static const char *openssh_server_image(void)
+{
+    return getenv("OPENSSH_SERVER_IMAGE");
+}
+
+static int build_openssh_server_container_image(void)
+{
+    if(container_cmd) {
+        const char *container_image_name = openssh_server_image();
+        if(container_image_name) {
+            int ret = run_command(NULL, "%s image pull %s%s", container_cmd,
+                                  /* Requires Apple container 0.7.0+ */
+                                  strstr(container_cmd, "container") ?
+                                      "--progress none " : "",
+                                  container_image_name);
+            if(!ret) {
+                ret = run_command(NULL, "%s image tag %s "
+                                  "libssh2/openssh_server", container_cmd,
+                                  container_image_name);
+                if(!ret)
+                    return ret;
+            }
+        }
+        return run_command(NULL,
+                           "%s build --quiet -t libssh2/openssh_server %s",
+                           container_cmd, srcdir_path("openssh_server"));
+    }
+    else
+        return 0;
+}
+
+static const char *openssh_server_port(void)
+{
+    return getenv("OPENSSH_SERVER_PORT");
+}
+
+static int start_openssh_server(char **container_id_out)
+{
+    if(container_cmd) {
+        const char *container_host_port = openssh_server_port();
+        if(strstr(container_cmd, "container") && !container_host_port) {
+            fprintf(stderr, "OPENSSH_SERVER_PORT must be set\n");
+            return 1;
+        }
+        if(container_host_port)
+            return run_command(container_id_out, "%s run %s"
+                               "--rm -d -p %s:22 libssh2/openssh_server",
+                               container_cmd,
+                               /* Requires Apple container 0.7.0+ */
+                               strstr(container_cmd, "container") ?
+                                   "--progress none " : "",
+                               container_host_port);
+        return run_command(container_id_out, "%s run --rm -d -p 22 "
+                           "libssh2/openssh_server", container_cmd);
+    }
+    else {
+        *container_id_out = libssh2_strdup("");
+        return 0;
+    }
+}
+
+static void openssh_server_dump_logs(char *container_id)
+{
+    if(container_cmd) {
+        char *logs = NULL;
+        int ret;
+        ret = run_command(&logs, "%s logs %s", container_cmd, container_id);
+        if(ret)
+            fprintf(stderr, "Failed to query server logs: %d\n", ret);
+        else
+            fprintf(stderr,
+                    "---- sshd log ----\n%s\n"
+                    "------------------\n", logs);
+        free(logs);
+    }
+}
+
+static int stop_openssh_server(char *container_id)
+{
+    if(container_cmd)
+        return run_command(NULL, "%s stop %s", container_cmd, container_id);
+    else
+        return 0;
+}
+
+static int is_running_inside_a_container(void)
+{
+    int found = 0;
+#ifndef _WIN32
+    const char *env = getenv("container");
+    /* Value may be 'podman', 'oci' */
+    if(env && *env)
+        found = 1;
+    else {
+        FILE *fp = fopen("/proc/self/cgroup", "r");
+        if(fp) {
+            char line[256];
+            while(fgets(line, sizeof(line), fp)) {
+                if(strstr(line, "docker")) {
+                    found = 1;
+                    break;
+                }
+            }
+            fclose(fp);
+        }
+    }
+#endif
+    return found;
+}
+
+static void portable_sleep(unsigned int seconds)
+{
+#ifdef _WIN32
+    Sleep(seconds * 1000);
+#else
+    sleep(seconds);
+#endif
+}
+
+static int ip_address_from_container(char *container_id, char **ip_address_out)
+{
+    if(is_running_inside_a_container())
+        return run_command(ip_address_out, "%s inspect --format "
+                           "\"{{ .NetworkSettings.IPAddress }}\""
+                           " %s", container_cmd, container_id);
+    else if(strstr(container_cmd, "container")) {
+        /* Requires jq and Apple container 0.8.0+ */
+        int ret = run_command(ip_address_out, "%s inspect %s | "
+                              "jq --raw-output "
+                              "'.[0].status.networks[0].ipv4Gateway'",
+                              container_cmd, container_id);
+        if(!ret && *ip_address_out &&
+           (!*ip_address_out[0] || !strcmp(*ip_address_out, "null"))) {
+            free(*ip_address_out);
+            *ip_address_out = NULL;
+            ret = 1;
+        }
+        return ret;
+    }
+    else {
+        /* Requires podman 6.1.0+
+           https://github.com/podman-container-tools/podman/issues/29164 */
+        int ret = run_command(ip_address_out, "%s inspect --format "
+                              "\"{{ (index (index .NetworkSettings.Ports "
+                              "\\\"22/tcp\\\") 0).HostIp }}\" %s",
+                              container_cmd, container_id);
+        if(ret && strstr(container_cmd, "podman")) {
+            free(*ip_address_out);
+            /* Also works with 'docker'. */
+            ret = run_command(ip_address_out, "%s port %s \"22/tcp\"",
+                              container_cmd, container_id);
+            if(!ret) {
+                char *hit;
+                hit = strchr(*ip_address_out, '\r');  /* ignore CR */
+                if(hit)
+                    *hit = '\0';
+                hit = strchr(*ip_address_out, '\n');  /* pick first line */
+                if(hit)
+                    *hit = '\0';
+                hit = strrchr(*ip_address_out, ':');  /* pick port part */
+                if(hit)
+                    *hit = '\0';
+            }
+        }
+        return ret;
+    }
+}
+
+static int port_from_container(char *container_id, char **port_out)
+{
+    if(is_running_inside_a_container()) {
+        *port_out = libssh2_strdup("22");
+        return 0;
+    }
+    else if(openssh_server_port()) {
+        *port_out = libssh2_strdup(openssh_server_port());
+        return 0;
+    }
+    else
+        return run_command(port_out, "%s inspect --format "
+                           "\"{{ (index (index .NetworkSettings.Ports "
+                           "\\\"22/tcp\\\") 0).HostPort }}\" %s",
+                           container_cmd, container_id);
+}
+
+static void close_socket_to_container(libssh2_socket_t sock)
+{
+    if(sock != LIBSSH2_INVALID_SOCKET) {
+        shutdown(sock, 2 /* SHUT_RDWR */);
+        LIBSSH2_SOCKET_CLOSE(sock);
+    }
+}
+
+static libssh2_socket_t open_socket_to_container(char *container_id)
+{
+    char *ip_address = NULL;
+    char *port_string = NULL;
+    uint32_t hostaddr;
+    libssh2_socket_t sock;
+    struct sockaddr_in sin;
+    unsigned int counter;
+    libssh2_socket_t ret = LIBSSH2_INVALID_SOCKET;
+
+    if(container_cmd) {
+        int res;
+        res = ip_address_from_container(container_id, &ip_address);
+        if(res) {
+            fprintf(stderr, "Failed to get IP address for container %s\n",
+                    container_id);
+            goto cleanup;
+        }
+
+        res = port_from_container(container_id, &port_string);
+        if(res) {
+            fprintf(stderr, "Failed to get port for container %s\n",
+                    container_id);
+            goto cleanup;
+        }
+    }
+    else {
+        const char *env;
+        env = getenv("OPENSSH_SERVER_HOST");
+        if(!env)
+            env = "127.0.0.1";
+        ip_address = libssh2_strdup(env);
+        env = openssh_server_port();
+        if(!env)
+            env = "4711";
+        port_string = libssh2_strdup(env);
+    }
+
+    /* 0.0.0.0 is returned by Docker for Windows, because the container
+       is reachable from anywhere. We cannot connect to 0.0.0.0,
+       instead we assume localhost and try to connect to 127.0.0.1. */
+    if(ip_address && !strcmp(ip_address, "0.0.0.0")) {
+        free(ip_address);
+        ip_address = libssh2_strdup("127.0.0.1");
+    }
+
+    hostaddr = inet_addr(ip_address);
+    if(hostaddr == (uint32_t)(-1)) {
+        fprintf(stderr, "Failed to convert %s host address\n", ip_address);
+        goto cleanup;
+    }
+
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    if(sock == LIBSSH2_INVALID_SOCKET) {
+        fprintf(stderr,
+                "Failed to open socket (%" LIBSSH2_SOCKET_MASK ")\n", sock);
+        goto cleanup;
+    }
+
+    sin.sin_family = AF_INET;
+    sin.sin_port = htons((unsigned short)atoi(port_string));
+    sin.sin_addr.s_addr = hostaddr;
+
+    for(counter = 0; counter < 3; ++counter) {
+        if(connect(sock, (struct sockaddr *)(&sin),
+                   sizeof(struct sockaddr_in))) {
+            fprintf(stderr,
+                    "Connection to %s:%s attempt #%u failed: retrying...\n",
+                    ip_address, port_string, counter);
+            portable_sleep(1 + 2 * counter);
+        }
+        else {
+            ret = sock;
+            break;
+        }
+    }
+    if(ret == LIBSSH2_INVALID_SOCKET) {
+        close_socket_to_container(sock);
+        fprintf(stderr, "Failed to connect to %s:%s\n",
+                ip_address, port_string);
+        goto cleanup;
+    }
+
+cleanup:
+    free(ip_address);
+    free(port_string);
+
+    return ret;
+}
+
+static char *running_container_id = NULL;
+
+int start_openssh_fixture(void)
+{
+    int ret;
+#ifdef _WIN32
+    WSADATA wsadata;
+
+    ret = WSAStartup(MAKEWORD(2, 0), &wsadata);
+    if(ret) {
+        fprintf(stderr, "WSAStartup failed with error: %d\n", ret);
+        return 1;
+    }
+#endif
+
+    if(!getenv("OPENSSH_NO_DOCKER")) {  /* for compatibility */
+        container_cmd = getenv("FIXTURE_CONTAINER_CMD");
+        if(!container_cmd)
+            container_cmd = "docker";
+        else if(!*container_cmd)
+            container_cmd = NULL;
+    }
+
+    ret = build_openssh_server_container_image();
+    if(!ret)
+        return start_openssh_server(&running_container_id);
+    else {
+        fprintf(stderr, "Failed to build container image\n");
+        return ret;
+    }
+}
+
+void stop_openssh_fixture(int exit_code)
+{
+    if(running_container_id) {
+        if(exit_code)
+            openssh_server_dump_logs(running_container_id);
+        stop_openssh_server(running_container_id);
+        free(running_container_id);
+        running_container_id = NULL;
+    }
+    else if(container_cmd)
+        fprintf(stderr, "Cannot stop container - none started\n");
+
+#ifdef _WIN32
+    WSACleanup();
+#endif
+}
+
+libssh2_socket_t open_socket_to_openssh_server(void)
+{
+    return open_socket_to_container(running_container_id);
+}
+
+void close_socket_to_openssh_server(libssh2_socket_t sock)
+{
+    close_socket_to_container(sock);
+}
+
+char *libssh2_strdup(const char *str)
+{
+    size_t len;
+    char *newstr;
+
+    if(!str)
+        return (char *)NULL;
+
+    len = strlen(str) + 1;
+
+    newstr = malloc(len);
+    if(!newstr)
+        return (char *)NULL;
+
+    memcpy(newstr, str, len);
+    return newstr;
+}

@@ -1,0 +1,558 @@
+/* Copyright (C) Alexander Lamaison
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#include "session_fixture.h"
+#include "openssh_fixture.h"
+
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>  /* for getenv() */
+#include <assert.h>
+
+static LIBSSH2_SESSION *connected_session = NULL;
+static libssh2_socket_t connected_socket = LIBSSH2_INVALID_SOCKET;
+
+static int connect_to_server(void)
+{
+    int rc;
+    connected_socket = open_socket_to_openssh_server();
+    if(connected_socket == LIBSSH2_INVALID_SOCKET)
+        return LIBSSH2_ERROR_SOCKET_NONE;
+
+    rc = libssh2_session_handshake(connected_session, connected_socket);
+    if(rc) {
+        print_last_session_error("libssh2_session_handshake");
+        return libssh2_session_last_errno(connected_session);
+    }
+
+    return LIBSSH2_ERROR_NONE;
+}
+
+/* List of crypto algorithms for which tests are skipped */
+static char const *skip_crypt[] = {
+#if !LIBSSH2_3DES
+    "3des-cbc",
+#endif
+#if !LIBSSH2_AES_CTR
+    "aes128-ctr",
+    "aes192-ctr",
+    "aes256-ctr",
+#endif
+#if !LIBSSH2_AES_CBC
+    "aes128-cbc",
+    "aes192-cbc",
+    "aes256-cbc",
+#endif
+#if !LIBSSH2_AES_GCM
+    /* Support for AES-GCM hasn't been added to these back-ends yet */
+    "aes128-gcm@openssh.com",
+    "aes256-gcm@openssh.com",
+#endif
+    NULL
+};
+
+/* List of MAC algorithms for which tests are skipped */
+static char const *skip_mac[] = {
+#ifndef LIBSSH2_HMAC_SHA1_ENABLE
+    "hmac-sha1",
+    "hmac-sha1-etm@openssh.com",
+    "hmac-sha1-96",
+#endif
+#if !LIBSSH2_MD5
+    "hmac-md5",
+    "hmac-md5-96",
+#endif
+    NULL
+};
+
+/* List of host key algorithms for which tests are skipped */
+static char const *skip_hostkey[] = {
+#if !LIBSSH2_ECDSA
+    "ecdsa-sha2-nistp256-cert-v01@openssh.com",
+#endif
+#if !LIBSSH2_RSA_SHA2
+    "rsa-sha2-256-cert-v01@openssh.com",
+    "rsa-sha2-512-cert-v01@openssh.com",
+#endif
+#if !LIBSSH2_RSA_SHA1
+    "ssh-rsa-cert-v01@openssh.com",
+#endif
+#if !LIBSSH2_ED25519
+    "ssh-ed25519-cert-v01@openssh.com",
+#endif
+    NULL
+};
+
+LIBSSH2_SESSION *start_session_fixture(int *skipped, int *err)
+{
+    int rc;
+
+    const char *crypt = getenv("FIXTURE_TEST_CRYPT");
+    const char *mac = getenv("FIXTURE_TEST_MAC");
+    const char *hostkey = getenv("FIXTURE_TEST_HOSTKEY");
+
+    *skipped = 0;
+    *err = LIBSSH2_ERROR_NONE;
+
+    if(crypt) {
+        char const * const *sk;
+        for(sk = skip_crypt; *sk; ++sk) {
+            if(!strcmp(*sk, crypt)) {
+                fprintf(stderr, "unsupported crypt algorithm (%s) skipped.\n",
+                                crypt);
+                *skipped = 1;
+                return NULL;
+            }
+        }
+    }
+
+    if(mac) {
+        char const * const *sk;
+        for(sk = skip_mac; *sk; ++sk) {
+            if(!strcmp(*sk, mac)) {
+                fprintf(stderr, "unsupported MAC algorithm (%s) skipped.\n",
+                                mac);
+                *skipped = 1;
+                return NULL;
+            }
+        }
+    }
+
+    if(hostkey) {
+        char const * const *sk;
+        for(sk = skip_hostkey; *sk; ++sk) {
+            if(!strcmp(*sk, hostkey)) {
+                fprintf(stderr,
+                        "unsupported host key algorithm (%s) skipped.\n",
+                        hostkey);
+                *skipped = 1;
+                return NULL;
+            }
+        }
+    }
+
+    rc = start_openssh_fixture();
+    if(rc)
+        return NULL;
+
+    rc = libssh2_init(0);
+    if(rc) {
+        fprintf(stderr, "libssh2_init failed (%d)\n", rc);
+        return NULL;
+    }
+
+    connected_session = libssh2_session_init_ex(NULL, NULL, NULL, NULL);
+    if(!connected_session) {
+        fprintf(stderr, "libssh2_session_init_ex failed\n");
+        return NULL;
+    }
+
+    if(getenv("FIXTURE_TRACE_ALL_CONNECT")) {
+        libssh2_trace(connected_session,
+            ~(getenv("FIXTURE_TRACE_NO_DEBUGDUMP") ? LIBSSH2_TRACE_TRANS : 0));
+        fprintf(stdout, "Trace all enabled for connect_to_server.\n");
+    }
+    else if(getenv("FIXTURE_TRACE_ALL")) {
+        libssh2_trace(connected_session,
+            ~(getenv("FIXTURE_TRACE_NO_DEBUGDUMP") ? LIBSSH2_TRACE_TRANS : 0));
+        fprintf(stdout, "Trace all enabled.\n");
+    }
+
+    /* Override crypt algorithm for the test */
+    if(crypt &&
+       (libssh2_session_method_pref(connected_session,
+                                    LIBSSH2_METHOD_CRYPT_CS, crypt) ||
+        libssh2_session_method_pref(connected_session,
+                                    LIBSSH2_METHOD_CRYPT_SC, crypt))) {
+        fprintf(stderr, "libssh2_session_method_pref CRYPT failed "
+                        "(probably disabled in the build): '%s'\n", crypt);
+        return NULL;
+    }
+
+    /* Override mac algorithm for the test */
+    if(mac &&
+       (libssh2_session_method_pref(connected_session,
+                                    LIBSSH2_METHOD_MAC_CS, mac) ||
+        libssh2_session_method_pref(connected_session,
+                                    LIBSSH2_METHOD_MAC_SC, mac))) {
+        fprintf(stderr, "libssh2_session_method_pref MAC failed "
+                        "(probably disabled in the build): '%s'\n", mac);
+        return NULL;
+    }
+
+    /* Without an explicit override, limit accepted host key types to those
+       tested (or potentially tested) in test_hostkey.c and
+       test_hostkey_hash.c. */
+    if(!hostkey)
+        hostkey =
+            "ssh-ed25519,"
+            "ecdsa-sha2-nistp521,"
+            "ecdsa-sha2-nistp384,"
+            "ecdsa-sha2-nistp256,"
+            "rsa-sha2-256,"
+            "rsa-sha2-512,"
+            "ssh-rsa";
+
+    if(libssh2_session_method_pref(connected_session,
+                                   LIBSSH2_METHOD_HOSTKEY, hostkey)) {
+        fprintf(stderr, "libssh2_session_method_pref() host key failed "
+                        "(probably disabled in the build): '%s'\n", hostkey);
+        return NULL;
+    }
+
+    libssh2_session_set_blocking(connected_session, 1);
+
+    rc = connect_to_server();
+    if(rc != LIBSSH2_ERROR_NONE) {
+        *err = rc;
+        return NULL;
+    }
+
+    if(getenv("FIXTURE_TRACE_ALL_CONNECT"))
+        libssh2_trace(connected_session, 0);
+
+    return connected_session;
+}
+
+void print_last_session_error(const char *function)
+{
+    if(connected_session) {
+        char *message;
+        int rc =
+            libssh2_session_last_error(connected_session, &message, NULL, 0);
+        fprintf(stderr, "%s failed (%d): %s\n", function, rc, message);
+    }
+    else
+        fprintf(stderr, "No session\n");
+}
+
+void stop_session_fixture(int exit_code)
+{
+    if(connected_session) {
+        libssh2_session_disconnect(connected_session, "test ended");
+        libssh2_session_free(connected_session);
+        connected_session = NULL;
+    }
+    else
+        fprintf(stderr, "Cannot stop session - none started\n");
+
+    close_socket_to_openssh_server(connected_socket);
+    connected_socket = LIBSSH2_INVALID_SOCKET;
+
+    libssh2_exit();
+
+    stop_openssh_fixture(exit_code);
+}
+
+/* If 'srcdir' env is set, return '$srcdir/<file>' in a static buffer
+   (to avoid dynamic memory allocations), otherwise return the input pointer
+   unchanged. */
+const char *srcdir_path(const char *file)
+{
+    static char filepath[32][256];
+    static size_t curpath;
+
+    const char *srcdir = getenv("srcdir");
+    int len;
+
+    if(!srcdir || !*srcdir)
+        return file;
+    if(!file)
+        return NULL;
+
+    if(curpath >= SSH2_ARRAYSIZE(filepath)) {
+        fprintf(stderr, "srcdir_path: ran out of filepath slots.\n");
+        abort();
+    }
+
+    len = snprintf(filepath[curpath], sizeof(filepath[0]), "%s/%s",
+                   srcdir, file);
+    if(len < 0 || (size_t)len >= sizeof(filepath[0])) {
+        fprintf(stderr, "srcdir_path: path too long. srcdir='%s', fn='%s'\n",
+                srcdir, file);
+        abort();
+    }
+
+    return filepath[curpath++];
+}
+
+static const char *kbd_password;
+
+static void kbd_callback(const char *name, int name_len,
+                         const char *instruct, int instruct_len,
+                         int num_prompts,
+                         const LIBSSH2_USERAUTH_KBDINT_PROMPT *prompts,
+                         LIBSSH2_USERAUTH_KBDINT_RESPONSE *responses,
+                         void **abstract)
+{
+    int i;
+    (void)abstract;
+
+    fprintf(stdout, "Kb-int name: %.*s\n", name_len, name);
+    fprintf(stdout, "Kb-int instruction: %.*s\n", instruct_len, instruct);
+    for(i = 0; i < num_prompts; ++i)
+        fprintf(stdout, "Kb-int prompt %d: %.*s\n", i,
+                (int)prompts[i].length, prompts[i].text);
+
+    if(num_prompts == 1) {
+        responses[0].text = libssh2_strdup(kbd_password);
+        responses[0].length = (unsigned int)strlen(kbd_password);
+    }
+}
+
+int test_auth_keyboard(LIBSSH2_SESSION *session, int flags,
+                       const char *username,
+                       const char *password)
+{
+    int rc;
+
+    const char *userauth_list =
+        libssh2_userauth_list(session, username,
+                              (unsigned int)strlen(username));
+    if(!userauth_list) {
+        print_last_session_error("libssh2_userauth_list");
+        return 1;
+    }
+
+    if(!strstr(userauth_list, "keyboard-interactive")) {
+        fprintf(stderr,
+                "'keyboard-interactive' was expected in userauth list: %s\n",
+                userauth_list);
+        return 1;
+    }
+
+    kbd_password = password;
+
+    rc = libssh2_userauth_keyboard_interactive_ex(session, username,
+                                                (unsigned int)strlen(username),
+                                                  kbd_callback);
+
+    kbd_password = NULL;
+
+    if((flags & TEST_AUTH_SHOULDFAIL) != 0) {
+        if(rc == 0) {
+            fprintf(stderr, "Keyboard-interactive auth succeeded "
+                            "with wrong response\n");
+            return 1;
+        }
+    }
+    else {
+        if(rc) {
+            print_last_session_error(
+                "libssh2_userauth_keyboard_interactive_ex");
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+int test_auth_password(LIBSSH2_SESSION *session, int flags,
+                       const char *username,
+                       const char *password)
+{
+    int rc;
+
+    const char *userauth_list =
+        libssh2_userauth_list(session, username,
+                              (unsigned int)strlen(username));
+    if(!userauth_list) {
+        print_last_session_error("libssh2_userauth_list");
+        return 1;
+    }
+
+    if(!strstr(userauth_list, "password")) {
+        fprintf(stderr, "'password' was expected in userauth list: %s\n",
+                userauth_list);
+        return 1;
+    }
+
+    rc = libssh2_userauth_password_ex(session, username,
+                                      (unsigned int)strlen(username),
+                                      password,
+                                      (unsigned int)strlen(password),
+                                      NULL);
+
+    if((flags & TEST_AUTH_SHOULDFAIL) != 0) {
+        if(rc == 0) {
+            fprintf(stderr, "Password auth succeeded with wrong password\n");
+            return 1;
+        }
+    }
+    else {
+        if(rc) {
+            print_last_session_error("libssh2_userauth_password_ex");
+            return 1;
+        }
+
+        if(libssh2_userauth_authenticated(session) == 0) {
+            fprintf(stderr, "Password auth appeared to succeed but "
+                            "libssh2_userauth_authenticated returned 0\n");
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+static int read_file(const char *path, char **out_buffer, size_t *out_len)
+{
+    FILE *fp;
+    char *buffer;
+    ssize_t len;
+
+    if(!out_buffer || !out_len || !path) {
+        fprintf(stderr, "invalid params.\n");
+        return 1;
+    }
+
+    *out_buffer = NULL;
+    *out_len = 0;
+
+    fp = fopen(path, "r");
+
+    if(!fp) {
+        fprintf(stderr, "File could not be read: %s\n", path);
+        return 1;
+    }
+
+    fseek(fp, 0L, SEEK_END);
+    len = ftell(fp);
+    if(len < 0) {
+        fclose(fp);
+        fprintf(stderr, "Could not determine input size of: %s\n", path);
+        return 1;
+    }
+    fseek(fp, 0L, SEEK_SET);
+
+    buffer = calloc(1, (size_t)len + 1);
+    if(!buffer) {
+        fclose(fp);
+        fprintf(stderr, "Could not alloc memory.\n");
+        return 1;
+    }
+
+    if(fread(buffer, (size_t)len, 1, fp) != 1) {
+        fclose(fp);
+        free(buffer);
+        fprintf(stderr, "Could not read file into memory.\n");
+        return 1;
+    }
+
+    fclose(fp);
+
+    *out_buffer = buffer;
+    *out_len = (size_t)len;
+
+    return 0;
+}
+
+int test_auth_pubkey(LIBSSH2_SESSION *session, int flags,
+                     const char *username,
+                     const char *password,
+                     const char *fn_pub,
+                     const char *fn_priv)
+{
+    int rc;
+    const char *userauth_list;
+
+    /* Ignore our hard-wired Dockerfile user when not using a container */
+    if(!openssh_fixture_have_container() && !strcmp(username, "libssh2")) {
+        username = getenv("USER");
+        if(!username)
+#ifdef _WIN32
+            username = getenv("USERNAME");
+#else
+            username = getenv("LOGNAME");
+#endif
+    }
+
+    if(!username) {
+        fprintf(stderr, "username not set\n");
+        return 1;
+    }
+
+    userauth_list = libssh2_userauth_list(session, username,
+                                          (unsigned int)strlen(username));
+    if(!userauth_list) {
+        print_last_session_error("libssh2_userauth_list");
+        return 1;
+    }
+
+    if(!strstr(userauth_list, "publickey")) {
+        fprintf(stderr, "'publickey' was expected in userauth list: %s\n",
+                userauth_list);
+        return 1;
+    }
+
+    if((flags & TEST_AUTH_FROMMEM) != 0) {
+        char *buffer = NULL;
+        size_t len = 0;
+
+        if(read_file(srcdir_path(fn_priv), &buffer, &len)) {
+            fprintf(stderr, "Reading key file failed.\n");
+            return 1;
+        }
+
+        rc = libssh2_userauth_publickey_frommemory(session,
+                                                   username, strlen(username),
+                                                   NULL, 0,
+                                                   buffer, len,
+                                                   NULL);
+
+        free(buffer);
+    }
+    else
+        rc = libssh2_userauth_publickey_fromfile_ex(session, username,
+                                                (unsigned int)strlen(username),
+                                                    srcdir_path(fn_pub),
+                                                    srcdir_path(fn_priv),
+                                                    password);
+
+    if((flags & TEST_AUTH_SHOULDFAIL) != 0) {
+        if(rc == 0) {
+            fprintf(stderr, "Public-key auth succeeded with wrong key\n");
+            return 1;
+        }
+    }
+    else {
+        if(rc) {
+            print_last_session_error("libssh2_userauth_publickey_fromfile_ex");
+            return 1;
+        }
+    }
+
+    return 0;
+}

@@ -90,6 +90,12 @@
                 "description_en": "Fixed `GetOrderList` aborting when the next `market.getGroupOrders` page has no `response`"
             },
             {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Восстановлена поддержка устаревшего алгоритма ключа хоста `ssh-rsa` для совместимости со старыми SFTP/SSH-серверами #119",
+                "description_en": "Restored support for the legacy `ssh-rsa` host key algorithm for compatibility with older SFTP/SSH servers #119"
+            },
+            {
                 "lib": "FTP",
                 "icon": "media/FTP.png",
                 "description_ru": "Улучшена стабильность FTP: передача данных в пассивном режиме ограничена таймаутом соединения",

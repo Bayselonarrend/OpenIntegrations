@@ -1,0 +1,21 @@
+# Copyright (C) The libssh2 project and its contributors.
+# SPDX-License-Identifier: BSD-3-Clause
+
+AUTOMAKE_OPTIONS = foreign no-dependencies
+
+if BUILD_DOCS
+# Get man_MANS variable
+include Makefile.inc
+
+MAN_PAGES = $(man_MANS:.3=.md)
+CLEANFILES = $(man_MANS)
+SUFFIXES = .3 .md
+
+.md.3:
+	$(top_srcdir)/scripts/cd2nroff $< >$@
+
+endif
+
+EXTRA_DIST = $(MAN_PAGES) template.md AUTHORS BINDINGS.md DEPENDENCIES.md \
+  HACKING.md INSTALL-AUTOTOOLS.md INSTALL-CMAKE.md SECURITY.md TODO.md \
+  CMakeLists.txt

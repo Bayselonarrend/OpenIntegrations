@@ -1,0 +1,13 @@
+# Copyright (C) The libssh2 project and its contributors.
+# SPDX-License-Identifier: BSD-3-Clause
+
+allowfunc accept
+allowfunc atoi
+allowfunc fopen
+allowfunc fprintf
+allowfunc fstat
+allowfunc printf
+allowfunc recv
+allowfunc send
+allowfunc snprintf
+allowfunc strdup

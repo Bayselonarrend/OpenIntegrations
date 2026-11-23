@@ -1,0 +1,97 @@
+/* Copyright (C) Simon Josefsson
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#include "libssh2_priv.h"
+#include "transport.h" /* ssh2_transport_write() */
+
+/* Keep-alive stuff. */
+
+void libssh2_keepalive_config(LIBSSH2_SESSION *session,
+                              int want_reply,
+                              unsigned int interval_s)
+{
+    if(!session)
+        return;
+
+    if(interval_s == 1)
+        session->keepalive_interval = ssh2_sec_to_timediff(2);
+    else
+        session->keepalive_interval = ssh2_sec_to_timediff(interval_s);
+    session->keepalive_want_reply = want_reply ? 1 : 0;
+}
+
+int libssh2_keepalive_send(LIBSSH2_SESSION *session, int *seconds_to_next)
+{
+    ssh2_time_t now;
+
+    if(!session)
+        return LIBSSH2_ERROR_BAD_USE;
+
+    if(!session->keepalive_interval) {
+        if(seconds_to_next)
+            *seconds_to_next = 0;
+        return LIBSSH2_ERROR_NONE;
+    }
+
+    now = ssh2_now();
+
+    if(now >= session->keepalive_last_sent + session->keepalive_interval) {
+        /* Format is
+           "SSH_MSG_GLOBAL_REQUEST || 4-byte len || str || want-reply". */
+        unsigned char keepalive_data[] =
+            "\x50\x00\x00\x00\x15keepalive@libssh2.orgW";
+        size_t len = sizeof(keepalive_data) - 1;
+        int rc;
+
+        keepalive_data[len - 1] = (unsigned char)session->keepalive_want_reply;
+
+        rc = ssh2_transport_send(session, keepalive_data, len, NULL, 0);
+        /* Silently ignore PACKET_EAGAIN here: if the write buffer is
+           already full, sending another keepalive is not useful. */
+        if(rc && rc != LIBSSH2_ERROR_EAGAIN) {
+            ssh2_err(session, LIBSSH2_ERROR_SOCKET_SEND,
+                     "Unable to send keepalive message");
+            return rc;
+        }
+
+        session->keepalive_last_sent = now;
+    }
+
+    if(seconds_to_next) {
+        ssh2_timediff_t to_next = ssh2_timediff_to_sec(
+            session->keepalive_interval +
+            (session->keepalive_last_sent - now));
+        *seconds_to_next = (int)SSH2_MIN(to_next, INT_MAX);
+    }
+
+    return LIBSSH2_ERROR_NONE;
+}

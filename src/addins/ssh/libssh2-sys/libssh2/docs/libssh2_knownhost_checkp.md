@@ -1,0 +1,85 @@
+---
+c: Copyright (C) Daniel Stenberg
+SPDX-License-Identifier: BSD-3-Clause
+Title: libssh2_knownhost_checkp
+Section: 3
+Source: libssh2
+See-also:
+  - libssh2_knownhost_add(3)
+  - libssh2_knownhost_free(3)
+  - libssh2_knownhost_init(3)
+---
+
+# NAME
+
+libssh2_knownhost_checkp - check a host+key against the list of known hosts
+
+# SYNOPSIS
+
+~~~c
+#include <libssh2.h>
+
+int libssh2_knownhost_checkp(LIBSSH2_KNOWNHOSTS *hosts,
+                             const char *host, int port,
+                             const char *key, size_t keylen,
+                             int typemask,
+                             struct libssh2_knownhost **knownhost);
+~~~
+
+# DESCRIPTION
+
+Checks a host and its associated key against the collection of known hosts,
+and returns info back about the (partially) matched entry.
+
+*host* is a pointer the hostname in plain text. The hostname can be the
+IP numerical address of the host or the full name.
+
+For LIBSSH2_KNOWNHOST_TYPE_PLAIN, valid IPv6 literals are compared by their
+binary address, so equivalent compressed and expanded representations match.
+No DNS lookup is performed. Hostnames, custom names and hashed known-host
+entries retain their existing matching behavior.
+
+*port* is the port number used by the host (or a negative number
+to check the generic host). If the port number is given, libssh2
+checks the key for the specific host + port number combination in
+addition to the plain hostname only check.
+
+*key* is a pointer to the key for the given host.
+
+*keylen* is the total size in bytes of the key pointed to by the *key*
+argument
+
+*typemask* is a bitmask that specifies format and info about the data
+passed to this function. Specifically, it details what format the hostname is,
+what format the key is and what key type it is.
+
+The hostname is given as one of the following types:
+LIBSSH2_KNOWNHOST_TYPE_PLAIN or LIBSSH2_KNOWNHOST_TYPE_CUSTOM.
+
+The key is encoded using one of the following encodings:
+LIBSSH2_KNOWNHOST_KEYENC_RAW or LIBSSH2_KNOWNHOST_KEYENC_BASE64.
+
+*knownhost* if set to non-NULL, it must be a pointer to a 'struct
+libssh2_knownhost' pointer that gets filled in to point to info about a known
+host that matches or partially matches.
+
+# RETURN VALUE
+
+*libssh2_knownhost_check(3)* returns info about how well the provided
+host + key pair matched one of the entries in the list of known hosts.
+
+LIBSSH2_KNOWNHOST_CHECK_FAILURE - something prevented the check to be made
+
+LIBSSH2_KNOWNHOST_CHECK_NOTFOUND - no host match was found
+
+LIBSSH2_KNOWNHOST_CHECK_MATCH - hosts and keys match.
+
+LIBSSH2_KNOWNHOST_CHECK_MISMATCH - host was found, but the keys did not match!
+
+# AVAILABILITY
+
+Added in libssh2 1.2.6
+
+# EXAMPLE
+
+See the ssh2_exec.c example as provided in the tarball.

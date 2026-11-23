@@ -1,0 +1,100 @@
+# Copyright (C) Marc Hoersken
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice, this
+#   list of conditions and the following disclaimer.
+#
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+name: 'OpenSSH Server Container Image'
+
+'on':
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.sha }}
+  cancel-in-progress: true
+
+permissions: {}
+cache-mode: none
+
+env:
+  DO_NOT_TRACK: '1'
+
+jobs:
+  build-and-push:
+    name: 'Image build and push'
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: read   # To comply with https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images
+      packages: write  # To create/update container
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - shell: bash
+        id: hash
+        run: echo "hash=$(git rev-parse --short=20 HEAD:tests/openssh_server)" >> "$GITHUB_OUTPUT"
+
+      - shell: bash
+        id: poll
+        continue-on-error: true
+        env:
+          HASH: '${{ steps.hash.outputs.hash }}'
+        run: docker manifest inspect "ghcr.io/${GITHUB_REPOSITORY_OWNER}/ci_tests_openssh_server:${HASH}"
+
+      - name: 'install prereqs'
+        if: ${{ steps.poll.outcome == 'failure' }}
+        run: |
+          sudo find /etc/apt/sources.list.d -type f -not -name 'ubuntu.sources' -delete -print
+          sudo apt-get -o Dpkg::Use-Pty=0 update
+          sudo apt-get -o Dpkg::Use-Pty=0 install \
+            qemu-user
+
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        if: ${{ steps.poll.outcome == 'failure' }}
+        id: meta
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/ci_tests_openssh_server
+          tags: |
+            type=raw,value=${{ steps.hash.outputs.hash }}
+
+      - name: 'docker login (ghcr.io)'
+        if: ${{ steps.poll.outcome == 'failure' }}
+        env:
+          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        run: echo "${GH_TOKEN}" | docker login -u "${GITHUB_REPOSITORY_OWNER}" --password-stdin ghcr.io
+
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        if: ${{ steps.poll.outcome == 'failure' }}
+        with:
+          platforms: linux/amd64,linux/arm64
+          context: ./tests/openssh_server
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: 'docker logout (ghcr.io)'
+        if: ${{ always() && steps.poll.outcome == 'failure' }}
+        run: docker logout ghcr.io

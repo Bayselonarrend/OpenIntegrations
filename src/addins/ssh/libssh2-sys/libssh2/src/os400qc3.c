@@ -1,0 +1,2481 @@
+/*
+ * Copyright (C) Patrick Monnerat <patrick@monnerat.net>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#include "libssh2_priv.h"
+
+#ifdef LIBSSH2_OS400QC3
+
+#include <stdlib.h>
+
+#include <stdarg.h>
+#include <alloca.h>
+#include <sys/uio.h>
+
+#include <arpa/inet.h>
+
+#ifdef OS400_DEBUG
+/* In debug mode, all system library errors cause an exception. */
+#define set_EC_length(ec, len) ((ec).Bytes_Provided = (ec).Bytes_Available = 0)
+#else
+#define set_EC_length(ec, len) ((ec).Bytes_Provided = (len))
+#endif
+
+/* Ensure va_list operations are not on an array. */
+struct valiststr {
+    va_list list;
+};
+
+typedef int (*loadkeyproc)(LIBSSH2_SESSION *session,
+                           const unsigned char *data, unsigned int datalen,
+                           const char *passphrase, void *loadkeydata);
+
+/* Public key extraction data. */
+struct loadpubkeydata {
+    const char *method;
+    const unsigned char *data;
+    unsigned int length;
+};
+
+/* Support for ASN.1 elements. */
+
+struct asn1Element {
+    char *header;                   /* Pointer to header byte. */
+    char *beg;                      /* Pointer to element data. */
+    char *end;                      /* Pointer to 1st byte after element. */
+    unsigned char class;            /* ASN.1 element class. */
+    unsigned char tag;              /* ASN.1 element tag. */
+    unsigned char constructed;      /* Element is constructed. */
+};
+
+#define ASN1_INTEGER        2
+#define ASN1_BIT_STRING     3
+#define ASN1_OCTET_STRING   4
+#define ASN1_NULL           5
+#define ASN1_OBJ_ID         6
+#define ASN1_SEQ            16
+
+#define ASN1_CONSTRUCTED    0x20
+
+/* rsaEncryption OID: 1.2.840.113549.1.1.1 */
+static unsigned char OID_rsaEncryption[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 1, 1, 1
+};
+static int sshrsapubkey(LIBSSH2_SESSION *session, char **sshpubkey,
+                        struct asn1Element *params, struct asn1Element *key,
+                        const char *method);
+
+#if LIBSSH2_DSA
+/* dsaEncryption OID: 1.2.840.10040.4.1 */
+static unsigned char OID_dsaEncryption[] = {
+    7, 40 + 2, 0x86, 0x48, 0xCE, 0x38, 4, 1
+};
+static int sshdsapubkey(LIBSSH2_SESSION *session, char **sshpubkey,
+                        struct asn1Element *params, struct asn1Element *key,
+                        const char *method);
+#endif
+
+static unsigned char OID_dhKeyAgreement[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 1, 3, 1
+};
+
+/* PKCS#5 support. */
+
+struct pkcs5params {
+    int cipher;            /* Encryption cipher. */
+    int blocksize;         /* Cipher block size. */
+    char mode;             /* Block encryption mode. */
+    char padopt;           /* Pad option. */
+    char padchar;          /* Pad character. */
+    int (*kdf)(LIBSSH2_SESSION *session, char **dk,
+               const char *passphrase,
+               struct pkcs5params *pkcs5);
+    int hash;              /* KDF hash algorithm. */
+    size_t hashlen;        /* KDF hash digest length. */
+    char *salt;            /* Salt. */
+    size_t saltlen;        /* Salt length. */
+    char *iv;              /* Initialization vector. */
+    size_t ivlen;          /* Initialization vector length. */
+    int itercount;         /* KDF iteration count. */
+    int dklen;             /* Derived key length (#bytes). */
+    int effkeysize;        /* RC2 effective key size (#bits) or 0. */
+};
+
+struct pkcs5algo {
+    const unsigned char *oid;
+    int (*parse)(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                 struct pkcs5algo *algo, struct asn1Element *param);
+    int cipher;            /* Encryption cipher. */
+    size_t blocksize;      /* Cipher block size. */
+    char mode;             /* Block encryption mode. */
+    char padopt;           /* Pad option. */
+    char padchar;          /* Pad character. */
+    size_t keylen;         /* Key length (#bytes). */
+    int hash;              /* Hash algorithm. */
+    size_t hashlen;        /* Hash digest length. */
+    size_t saltlen;        /* Salt length. */
+    size_t ivlen;          /* Initialisation vector length. */
+    int effkeysize;        /* RC2 effective key size (#bits) or 0. */
+};
+
+/* id-PBES2 OID: 1.2.840.113549.1.5.13 */
+static const unsigned char OID_id_PBES2[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0D
+};
+static int parse_pbes2(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                       struct pkcs5algo *algo, struct asn1Element *param);
+static const struct pkcs5algo PBES2 = {
+    OID_id_PBES2,   parse_pbes2,    0,  0,  '\0',   '\0',   '\0',   0,
+    0,  0,  0,  0,  0
+};
+
+/* id-PBKDF2 OID: 1.2.840.113549.1.5.12 */
+static const unsigned char OID_id_PBKDF2[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C
+};
+static int parse_pbkdf2(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                        struct pkcs5algo *algo, struct asn1Element *param);
+static const struct pkcs5algo PBKDF2 = {
+    OID_id_PBKDF2,  parse_pbkdf2,   0,  0,  '\0',   '\0',   '\0',
+    SSH2_SHA1_DIG_LEN,  Qc3_SHA1,   SSH2_SHA1_DIG_LEN,  8,  8,  0
+};
+
+/* id-hmacWithSHA1 OID: 1.2.840.113549.2.7 */
+static const unsigned char OID_id_hmacWithSHA1[] = {
+    8, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02, 0x07
+};
+static int parse_hmacWithSHA1(LIBSSH2_SESSION *session,
+                              struct pkcs5params *pkcs5,
+                              struct pkcs5algo *algo,
+                              struct asn1Element *param);
+static const struct pkcs5algo hmacWithSHA1 = {
+    OID_id_hmacWithSHA1,    parse_hmacWithSHA1, 0,  0,  '\0',   '\0',   '\0',
+    SSH2_SHA1_DIG_LEN,  Qc3_SHA1,   SSH2_SHA1_DIG_LEN,  8,  8,  0
+};
+
+/* desCBC OID: 1.3.14.3.2.7 */
+static const unsigned char OID_desCBC[] = {
+    5, 40 + 3, 0x0E, 0x03, 0x02, 0x07
+};
+static int parse_iv(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                    struct pkcs5algo *algo, struct asn1Element *param);
+static const struct pkcs5algo desCBC = {
+    OID_desCBC, parse_iv,   Qc3_DES,    8,  Qc3_CBC,    Qc3_Pad_Counter,
+    '\0',   8,   0,  0,  8,  8,  0
+};
+
+/* des-EDE3-CBC OID: 1.2.840.113549.3.7 */
+static const unsigned char OID_des_EDE3_CBC[] = {
+    8, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x03, 0x07
+};
+static const struct pkcs5algo des_EDE3_CBC = {
+    OID_des_EDE3_CBC,   parse_iv,   Qc3_TDES,   8,  Qc3_CBC, Qc3_Pad_Counter,
+    '\0',   24, 0,  0,  8,  8,  0
+};
+
+/* rc2CBC OID: 1.2.840.113549.3.2 */
+static const unsigned char OID_rc2CBC[] = {
+    8, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x03, 0x02
+};
+static int parse_rc2(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                     struct pkcs5algo *algo, struct asn1Element *param);
+static const struct pkcs5algo rc2CBC = {
+    OID_rc2CBC, parse_rc2,  Qc3_RC2,    8,  Qc3_CBC,    Qc3_Pad_Counter,
+    '\0',   0,  0,  0,  8,  0,  32
+};
+
+static int parse_pbes1(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                       struct pkcs5algo *algo, struct asn1Element *param);
+
+#if LIBSSH2_MD5
+/* pbeWithMD5AndDES-CBC OID: 1.2.840.113549.1.5.3 */
+static const unsigned char OID_pbeWithMD5AndDES_CBC[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x03
+};
+static const struct pkcs5algo pbeWithMD5AndDES_CBC = {
+    OID_pbeWithMD5AndDES_CBC,   parse_pbes1,    Qc3_DES,    8,  Qc3_CBC,
+    Qc3_Pad_Counter,    '\0',   8,  Qc3_MD5,    SSH2_MD5_DIG_LEN,  8,  0,  0
+};
+
+/* pbeWithMD5AndRC2-CBC OID: 1.2.840.113549.1.5.6 */
+static const unsigned char OID_pbeWithMD5AndRC2_CBC[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x06
+};
+static const struct pkcs5algo pbeWithMD5AndRC2_CBC = {
+    OID_pbeWithMD5AndRC2_CBC,   parse_pbes1,    Qc3_RC2,    8,  Qc3_CBC,
+    Qc3_Pad_Counter,    '\0',   0,  Qc3_MD5,    SSH2_MD5_DIG_LEN,  8,  0, 64
+};
+#endif
+
+/* pbeWithSHA1AndDES-CBC OID: 1.2.840.113549.1.5.10 */
+static const unsigned char OID_pbeWithSHA1AndDES_CBC[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0A
+};
+static const struct pkcs5algo pbeWithSHA1AndDES_CBC = {
+    OID_pbeWithSHA1AndDES_CBC,   parse_pbes1,    Qc3_DES,    8,  Qc3_CBC,
+    Qc3_Pad_Counter,    '\0',   8,  Qc3_SHA1,   SSH2_SHA1_DIG_LEN,  8,  0,  0
+};
+
+/* pbeWithSHA1AndRC2-CBC OID: 1.2.840.113549.1.5.11 */
+static const unsigned char OID_pbeWithSHA1AndRC2_CBC[] = {
+    9, 40 + 2, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0B
+};
+static const struct pkcs5algo pbeWithSHA1AndRC2_CBC = {
+    OID_pbeWithSHA1AndRC2_CBC,   parse_pbes1,    Qc3_RC2,    8,  Qc3_CBC,
+    Qc3_Pad_Counter,    '\0',   0,  Qc3_SHA1,   SSH2_SHA1_DIG_LEN,  8,  0, 64
+};
+
+/* rc5-CBC-PAD OID: 1.2.840.113549.3.9: RC5 not implemented in Qc3. */
+/* pbeWithMD2AndDES-CBC OID: 1.2.840.113549.1.5.1: MD2 not implemented. */
+/* pbeWithMD2AndRC2-CBC OID: 1.2.840.113549.1.5.4: MD2 not implemented. */
+
+static const struct pkcs5algo *pbestable[] = {
+#if LIBSSH2_MD5
+    &pbeWithMD5AndDES_CBC,
+    &pbeWithMD5AndRC2_CBC,
+#endif
+    &pbeWithSHA1AndDES_CBC,
+    &pbeWithSHA1AndRC2_CBC,
+    &PBES2,
+    NULL
+};
+
+static const struct pkcs5algo *pbkdf2table[] = {
+    &PBKDF2,
+    NULL
+};
+
+static const struct pkcs5algo *pbes2enctable[] = {
+    &desCBC,
+    &des_EDE3_CBC,
+    &rc2CBC,
+    NULL
+};
+
+static const struct pkcs5algo *kdf2prftable[] = {
+    &hmacWithSHA1,
+    NULL
+};
+
+/* Public key extraction support. */
+static struct {
+    unsigned char *oid;
+    int (*sshpubkey)(LIBSSH2_SESSION *session, char **pubkey,
+                     struct asn1Element *params,
+                     struct asn1Element *key, const char *method);
+    const char *method;
+} pka[] = {
+#if LIBSSH2_RSA
+    { OID_rsaEncryption, sshrsapubkey, "ssh-rsa" },
+#endif
+#if LIBSSH2_DSA
+    { OID_dsaEncryption, sshdsapubkey, "ssh-dss" },
+#endif
+    { NULL, NULL, NULL }
+};
+
+/* Define ASCII strings. */
+static const char beginencprivkeyhdr[] = PKCS8_ENCRYPTED_HEADER;
+static const char endencprivkeyhdr[] = PKCS8_ENCRYPTED_FOOTER;
+static const char beginprivkeyhdr[] = PKCS8_HEADER;
+static const char endprivkeyhdr[] = PKCS8_FOOTER;
+static const char beginrsaprivkeyhdr[] = PEM_RSA_HEADER;
+static const char endrsaprivkeyhdr[] = PEM_RSA_FOOTER;
+static const char fopenrbmode[] = "rb";
+
+/* 1's bit count in a byte. */
+static const unsigned char card[] = {
+    0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4,
+    1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
+    1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
+    2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+    1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
+    2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+    2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+    3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+    1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
+    2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+    2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+    3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+    2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+    3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+    3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+    4, 5, 5, 6, 5, 6, 6, 7, 5, 6, 6, 7, 6, 7, 7, 8
+};
+
+/* The rest of character literals in this module are in EBCDIC. */
+#pragma convert(37)
+
+#include <qusec.h>
+#include <qc3prng.h>
+#include <qc3dtaen.h>
+#include <qc3dtade.h>
+#include <qc3ctx.h>
+#include <qc3hash.h>
+#include <qc3hmac.h>
+#include <qc3pbext.h>
+#include <qc3sigvr.h>
+#include <qc3sigcl.h>
+#include <qc3pbext.h>
+#include <qc3dh.h>
+
+static Qc3_Format_KEYD0100_T nulltoken = { "" };
+
+static int zero = 0;
+static int rsaprivate[] = { Qc3_RSA_Private };
+static char anycsp[] = { Qc3_Any_CSP };
+static char binstring[] = { Qc3_Bin_String };
+static char berstring[] = { Qc3_BER_String };
+static char qc3clear[] = { Qc3_Clear };
+
+static const Qus_EC_t ecnull = { 0 };     /* Error causes an exception. */
+
+static struct asn1Element lastbytebitcount = {
+    (char *)&zero, NULL, (char *)&zero + 1
+};
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: big numbers support.
+ *
+ *******************************************************************/
+
+int ssh2_random(unsigned char *buf, size_t len)
+{
+    Qus_EC_t errcode;
+
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3GenPRNs(buf, len, Qc3PRN_TYPE_NORMAL, Qc3PRN_NO_PARITY,
+               (char *)&errcode);
+    return errcode.Bytes_Available ? -1 : 0;
+}
+
+ssh2_bn *ssh2_bn_init(void)
+{
+    ssh2_bn *bignum;
+
+    bignum = malloc(sizeof(*bignum));
+    if(bignum) {
+        bignum->bignum = NULL;
+        bignum->length = 0;
+    }
+
+    return bignum;
+}
+
+void ssh2_bn_free(ssh2_bn *bn)
+{
+    if(bn) {
+        if(bn->bignum) {
+            if(bn->length)
+                ssh2_explicit_zero(bn->bignum, bn->length);
+
+            free(bn->bignum);
+        }
+
+        free((char *)bn);
+    }
+}
+
+static int bn_resize(ssh2_bn *bn, size_t newlen)
+{
+    unsigned char *bignum;
+
+    if(!bn)
+        return -1;
+    if(newlen == bn->length)
+        return 0;
+
+    if(!bn->bignum)
+        bignum = malloc(newlen);
+    else {
+        if(newlen < bn->length)
+            ssh2_explicit_zero(bn->bignum + newlen, bn->length - newlen);
+
+        if(!newlen) {
+            free((char *)bn->bignum);
+            bn->bignum = NULL;
+            bn->length = 0;
+            return 0;
+        }
+        bignum = realloc((char *)bn->bignum, newlen);
+    }
+
+    if(!bignum)
+        return -1;
+
+    if(newlen > bn->length)
+        memset((char *)bignum + bn->length, 0, newlen - bn->length);
+
+    bn->bignum = bignum;
+    bn->length = newlen;
+    return 0;
+}
+
+size_t ssh2_bn_bits(const ssh2_bn *bn)
+{
+    if(bn && bn->bignum) {
+        size_t i;
+        for(i = bn->length; i--;) {
+            unsigned char b = bn->bignum[i];
+            if(b) {
+                i *= 8;
+                do {
+                    i++;
+                } while(b >>= 1);
+                return i;
+            }
+        }
+    }
+
+    return 0;
+}
+
+int ssh2_bn_from_bin(ssh2_bn **bn, const unsigned char *bin, size_t len)
+{
+    size_t i;
+
+    if(!bn || (len && !bin))
+        return -1;
+
+    if(!*bn) {
+        *bn = ssh2_bn_init();
+        if(!*bn)
+            return -1;
+    }
+
+    for(; len && !*bin; len--)
+        bin++;
+
+    if(bn_resize(*bn, len))
+        return -1;
+
+    for(i = len; i--;)
+        (*bn)->bignum[i] = *bin++;
+
+    return 0;
+}
+
+int ssh2_bn_set_word(ssh2_bn *bn, uint32_t word)
+{
+    if(!bn)
+        return -1;
+    word = htonl(word);
+    return ssh2_bn_from_bin(&bn, (unsigned char *)&word, sizeof(word));
+}
+
+int ssh2_bn_to_bin(const ssh2_bn *bn, unsigned char *bin)
+{
+    int i;
+
+    if(!bn || !bin)
+        return -1;
+
+    for(i = bn->length; i--;)
+        *bin++ = bn->bignum[i];
+
+    return 0;
+}
+
+static int ssh2_bn_sub(ssh2_bn *dst, const ssh2_bn *op1, const ssh2_bn *op2)
+{
+    unsigned int acc = 0;
+    size_t i;
+
+    if(ssh2_bn_bits(op1) < ssh2_bn_bits(op2))
+        return -1;
+
+    if(bn_resize(dst, op1->length))
+        return -1;
+
+    for(i = 0; i < op2->length; i++) {
+        acc = op1->bignum[i] - op2->bignum[i] - acc;
+        dst->bignum[i] = acc;
+        acc = acc > 0xFF;
+    }
+
+    for(; i < op1->length; i++) {
+        acc = op1->bignum[i] - acc;
+        dst->bignum[i] = acc;
+        acc = acc > 0xFF;
+    }
+
+    if(acc)
+        return -1;
+
+    return bn_resize(dst, (ssh2_bn_bits(dst) + 7) >> 3) ? -1 : 0;
+}
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: ASN.1 support.
+ *
+ *******************************************************************/
+
+static char *getASN1Element(struct asn1Element *elem, char *beg, char *end)
+{
+    unsigned char b;
+    unsigned long len;
+    struct asn1Element lelem;
+
+    /* Get a single ASN.1 element into `elem', parse ASN.1 string at `beg'
+     * ending at `end'.
+     * Returns a pointer in source string after the parsed element, or NULL
+     * if an error occurs.
+     */
+
+    if(beg >= end || !*beg)
+        return NULL;
+
+    /* Process header byte. */
+    elem->header = beg;
+    b = (unsigned char)*beg++;
+    elem->constructed = (b & 0x20) != 0;
+    elem->class = (b >> 6) & 3;
+    b &= 0x1F;
+    if(b == 0x1F)
+        return NULL;            /* Long tag values not supported here. */
+    elem->tag = b;
+
+    /* Process length. */
+    if(beg >= end)
+        return NULL;
+    b = (unsigned char)*beg++;
+    if(!(b & 0x80))
+        len = b;
+    else if(!(b &= 0x7F)) {
+        /* Unspecified length. Since we have all the data, we can determine the
+         * effective length by skipping element until an EOC element is
+         * found.
+         */
+        if(!elem->constructed)
+            return NULL;
+        elem->beg = beg;
+        while(beg < end && *beg) {
+            beg = getASN1Element(&lelem, beg, end);
+            if(!beg)
+                return NULL;
+        }
+        if(end - beg < 2 || beg[1])     /* EOC must have a zero length. */
+            return NULL;
+        elem->end = beg;                /* Do not include EOC as content. */
+        return beg + 2;                 /* After EOC element. */
+    }
+    else if(beg + b > end)
+        return NULL; /* Does not fit in source. */
+    else {
+        /* Get long length. */
+        len = 0;
+        do {
+            if(len & 0xFF000000L)
+                return NULL; /* Lengths > 32-bit are not supported. */
+            len = (len << 8) | (unsigned char)*beg++;
+        } while(--b);
+    }
+    if((unsigned long)(end - beg) < len)
+        return NULL; /* Element data does not fit in source. */
+    elem->beg = beg;
+    elem->end = beg + len;
+    return elem->end;
+}
+
+static struct asn1Element *asn1_new(unsigned int type, unsigned int length)
+{
+    struct asn1Element *e;
+    unsigned int hdrl = 2;
+    unsigned int i;
+    unsigned char *buf;
+
+    e = malloc(sizeof(*e));
+
+    if(e) {
+        if(length >= 0x80)
+            for(i = length; i; i >>= 8)
+                hdrl++;
+
+        buf = malloc(hdrl + length);
+
+        if(buf) {
+            e->header = buf;
+            e->beg = buf + hdrl;
+            e->end = e->beg + length;
+            e->class = (type >> 6) & 0x03;
+            e->tag = type & 0x1F;
+            e->constructed = (type >> 5) & 0x01;
+            e->header[0] = type;
+
+            if(length < 0x80)
+                e->header[1] = length;
+            else {
+                e->header[1] = (hdrl - 2) | 0x80;
+                do {
+                    e->header[--hdrl] = length;
+                    length >>= 8;
+                } while(length);
+            }
+        }
+        else {
+            free((char *)e);
+            e = NULL;
+        }
+    }
+
+    return e;
+}
+
+static void asn1delete(struct asn1Element *e)
+{
+    if(e) {
+        if(e->header)
+            free((char *)e->header);
+        free((char *)e);
+    }
+}
+
+static struct asn1Element *asn1uint(const ssh2_bn *bn)
+{
+    struct asn1Element *e;
+    int bits;
+    int length;
+    unsigned char *p;
+
+    if(!bn)
+        return NULL;
+
+    bits = ssh2_bn_bits(bn);
+    length = (bits + 8) >> 3;
+    e = asn1_new(ASN1_INTEGER, length);
+
+    if(e) {
+        p = e->beg;
+        if(!(bits & 0x07))
+            *p++ = 0;
+        ssh2_bn_to_bin(bn, p);
+    }
+
+    return e;
+}
+
+static struct asn1Element *asn1containerv(unsigned int type,
+                                          struct valiststr args)
+{
+    struct valiststr va;
+    struct asn1Element *e;
+    struct asn1Element *p;
+    unsigned char *bp;
+    unsigned int length = 0;
+
+    memcpy((char *)&va, (char *)&args, sizeof(args));
+    while((p = va_arg(va.list, struct asn1Element *)))
+        length += p->end - p->header;
+    va_end(va.list);
+    e = asn1_new(type, length);
+    if(e) {
+        bp = e->beg;
+        while((p = va_arg(args.list, struct asn1Element *))) {
+            memcpy(bp, p->header, p->end - p->header);
+            bp += p->end - p->header;
+        }
+    }
+    return e;
+}
+
+/* VARARGS1 */
+static struct asn1Element *asn1container(unsigned int type, ...)
+{
+    struct valiststr va;
+    struct asn1Element *e;
+
+    va_start(va.list, type);
+    e = asn1containerv(type, va);
+    va_end(va.list);
+    return e;
+}
+
+static struct asn1Element *asn1bytes(unsigned int type,
+                                     const unsigned char *bytes,
+                                     unsigned int length)
+{
+    struct asn1Element *e;
+
+    e = asn1_new(type, length);
+    if(e && length)
+        memcpy(e->beg, bytes, length);
+    return e;
+}
+
+static struct asn1Element *rsapublickey(ssh2_bn *e, ssh2_bn *m)
+{
+    struct asn1Element *publicexponent;
+    struct asn1Element *modulus;
+    struct asn1Element *rsapubkey;
+
+    /* Build a PKCS#1 RSAPublicKey. */
+
+    modulus = asn1uint(m);
+    publicexponent = asn1uint(e);
+    rsapubkey = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED,
+                              modulus, publicexponent, NULL);
+    asn1delete(modulus);
+    asn1delete(publicexponent);
+
+    if(!modulus || !publicexponent) {
+        asn1delete(rsapubkey);
+        rsapubkey = NULL;
+    }
+
+    return rsapubkey;
+}
+
+static struct asn1Element *rsaprivatekey(ssh2_bn *e,
+                                         ssh2_bn *m,
+                                         ssh2_bn *d,
+                                         ssh2_bn *p,
+                                         ssh2_bn *q,
+                                         ssh2_bn *exp1,
+                                         ssh2_bn *exp2,
+                                         ssh2_bn *coeff)
+{
+    struct asn1Element *version;
+    struct asn1Element *modulus;
+    struct asn1Element *publicexponent;
+    struct asn1Element *privateexponent;
+    struct asn1Element *prime1;
+    struct asn1Element *prime2;
+    struct asn1Element *exponent1;
+    struct asn1Element *exponent2;
+    struct asn1Element *coefficient;
+    struct asn1Element *rsaprivkey;
+
+    /* Build a PKCS#1 RSAPrivateKey. */
+    version = asn1bytes(ASN1_INTEGER, "\0", 1);
+    modulus = asn1uint(m);
+    publicexponent = asn1uint(e);
+    privateexponent = asn1uint(d);
+    prime1 = asn1uint(p);
+    prime2 = asn1uint(q);
+    exponent1 = asn1uint(exp1);
+    exponent2 = asn1uint(exp2);
+    coefficient = asn1uint(coeff);
+    rsaprivkey = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED, version, modulus,
+                               publicexponent, privateexponent, prime1, prime2,
+                               exponent1, exponent2, coefficient, NULL);
+    asn1delete(version);
+    asn1delete(modulus);
+    asn1delete(publicexponent);
+    asn1delete(privateexponent);
+    asn1delete(prime1);
+    asn1delete(prime2);
+    asn1delete(exponent1);
+    asn1delete(exponent2);
+    asn1delete(coefficient);
+
+    if(!version || !modulus || !publicexponent || !privateexponent ||
+       !prime1 || !prime2 || !exponent1 || !exponent2 || !coefficient) {
+        asn1delete(rsaprivkey);
+        rsaprivkey = NULL;
+    }
+
+    return rsaprivkey;
+}
+
+static struct asn1Element *subjectpublickeyinfo(struct asn1Element *pubkey,
+                                                const unsigned char *algo,
+                                                struct asn1Element *parameters)
+{
+    struct asn1Element *subjpubkey;
+    struct asn1Element *algorithm;
+    struct asn1Element *algorithmid;
+    struct asn1Element *subjpubkeyinfo;
+    unsigned int algosize = *algo++;
+
+    algorithm = asn1bytes(ASN1_OBJ_ID, algo, algosize);
+    algorithmid = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED,
+                                algorithm, parameters, NULL);
+    subjpubkey = asn1container(ASN1_BIT_STRING, &lastbytebitcount,
+                               pubkey, NULL);
+    subjpubkeyinfo = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED,
+                                   algorithmid, subjpubkey, NULL);
+    asn1delete(algorithm);
+    asn1delete(algorithmid);
+    asn1delete(subjpubkey);
+    if(!algorithm || !algorithmid || !subjpubkey) {
+        asn1delete(subjpubkeyinfo);
+        subjpubkeyinfo = NULL;
+    }
+    return subjpubkeyinfo;
+}
+
+static struct asn1Element *rsasubjectpublickeyinfo(struct asn1Element *pubkey)
+{
+    struct asn1Element *parameters;
+    struct asn1Element *subjpubkeyinfo;
+
+    parameters = asn1bytes(ASN1_NULL, NULL, 0);
+    subjpubkeyinfo = subjectpublickeyinfo(pubkey,
+                                          OID_rsaEncryption, parameters);
+    asn1delete(parameters);
+    if(!parameters) {
+        asn1delete(subjpubkeyinfo);
+        subjpubkeyinfo = NULL;
+    }
+    return subjpubkeyinfo;
+}
+
+static struct asn1Element *privatekeyinfo(struct asn1Element *privkey,
+                                          const unsigned char *algo,
+                                          struct asn1Element *parameters)
+{
+    struct asn1Element *version;
+    struct asn1Element *privatekey;
+    struct asn1Element *algorithm;
+    struct asn1Element *privatekeyalgorithm;
+    struct asn1Element *privkeyinfo;
+    unsigned int algosize = *algo++;
+
+    /* Build a PKCS#8 PrivateKeyInfo. */
+    version = asn1bytes(ASN1_INTEGER, "\0", 1);
+    algorithm = asn1bytes(ASN1_OBJ_ID, algo, algosize);
+    privatekeyalgorithm = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED,
+                                        algorithm, parameters, NULL);
+    privatekey = asn1container(ASN1_OCTET_STRING, privkey, NULL);
+    privkeyinfo = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED, version,
+                                privatekeyalgorithm, privatekey, NULL);
+    asn1delete(version);
+    asn1delete(algorithm);
+    asn1delete(privatekeyalgorithm);
+    asn1delete(privatekey);
+    if(!version || !algorithm || !privatekeyalgorithm || !privatekey) {
+        asn1delete(privkeyinfo);
+        privkeyinfo = NULL;
+    }
+    return privkeyinfo;
+}
+
+static struct asn1Element *rsaprivatekeyinfo(struct asn1Element *privkey)
+{
+    struct asn1Element *parameters;
+    struct asn1Element *privkeyinfo;
+
+    parameters = asn1bytes(ASN1_NULL, NULL, 0);
+    privkeyinfo = privatekeyinfo(privkey, OID_rsaEncryption, parameters);
+    asn1delete(parameters);
+    if(!parameters) {
+        asn1delete(privkeyinfo);
+        privkeyinfo = NULL;
+    }
+    return privkeyinfo;
+}
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: crypto context support.
+ *
+ *******************************************************************/
+
+static struct os400qc3_crypto_ctx *init_crypto_ctx(
+    struct os400qc3_crypto_ctx *ctx)
+{
+    if(!ctx)
+        ctx = malloc(sizeof(*ctx));
+
+    if(ctx) {
+        memset((char *)ctx, 0, sizeof(*ctx));
+        ctx->hash.Final_Op_Flag = Qc3_Continue;
+    }
+
+    return ctx;
+}
+
+static int null_token(const char *token)
+{
+    return !memcmp(token, nulltoken.Key_Context_Token,
+                   sizeof(nulltoken.Key_Context_Token));
+}
+
+void ssh2_os400qc3_crypto_dtor(struct os400qc3_crypto_ctx *x)
+{
+    if(!x)
+        return;
+    if(!null_token(x->hash.Alg_Context_Token)) {
+        Qc3DestroyAlgorithmContext(x->hash.Alg_Context_Token, (char *)&ecnull);
+        memset(x->hash.Alg_Context_Token, 0,
+               sizeof(x->hash.Alg_Context_Token));
+    }
+    if(!null_token(x->key.Key_Context_Token)) {
+        Qc3DestroyKeyContext(x->key.Key_Context_Token, (char *)&ecnull);
+        memset(x->key.Key_Context_Token, 0, sizeof(x->key.Key_Context_Token));
+    }
+    if(x->kek) {
+        ssh2_os400qc3_crypto_dtor(x->kek);
+        free((char *)x->kek);
+        x->kek = NULL;
+    }
+}
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: hash algorithms support.
+ *
+ *******************************************************************/
+
+int ssh2_hash_init(ssh2_hash_ctx *ctx, ssh2_hash_alg alg)
+{
+    Qc3_Format_ALGD0500_T algd;
+    Qus_EC_t errcode;
+
+    if(!ctx)
+        return 0;
+
+    memset((char *)ctx, 0, sizeof(*ctx));
+    ctx->Final_Op_Flag = Qc3_Continue;
+    algd.Hash_Alg = alg;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CreateAlgorithmContext((char *)&algd, Qc3_Alg_Hash,
+                              ctx->Alg_Context_Token, &errcode);
+    return errcode.Bytes_Available ? 0 : 1;
+}
+
+int ssh2_hash_update(ssh2_hash_ctx *ctx, const void *input, size_t input_len)
+{
+    char dummy[64];
+    Qus_EC_t errcode;
+    int len = (int)input_len;
+
+    ctx->Final_Op_Flag = Qc3_Continue;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CalculateHash((char *)input, &len, Qc3_Data, (char *)ctx, Qc3_Alg_Token,
+                     anycsp, NULL, dummy, &errcode);
+    return errcode.Bytes_Available ? 0 : 1;
+}
+
+int ssh2_hash_final(ssh2_hash_ctx *ctx, void *digest, size_t digest_len)
+{
+    char data;
+    Qus_EC_t errcode;
+    (void)digest_len;
+
+    ctx->Final_Op_Flag = Qc3_Final;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CalculateHash(&data, &zero, Qc3_Data, (char *)ctx, Qc3_Alg_Token,
+                     anycsp, NULL, (char *)digest, &errcode);
+    Qc3DestroyAlgorithmContext(ctx->Alg_Context_Token, (char *)&ecnull);
+    memset(ctx->Alg_Context_Token, 0, sizeof(ctx->Alg_Context_Token));
+    return errcode.Bytes_Available ? 0 : 1;
+}
+
+int ssh2_hmac_ctx_init(ssh2_hmac_ctx *ctx)
+{
+    memset((char *)ctx, 0, sizeof(ssh2_hmac_ctx));
+    return 1;
+}
+
+static int os400qc3_hmac_init(ssh2_hmac_ctx *ctx, ssh2_hmac_alg alg,
+                              size_t min_key_len, void *key, int key_len)
+{
+    Qus_EC_t errcode;
+    int lalg = alg;
+
+    if(key_len < min_key_len) {
+        char *lkey = alloca(min_key_len);
+
+        /* Pad key with zeroes if too short. */
+        if(!lkey)
+            return 0;
+        memcpy(lkey, (char *)key, key_len);
+        memset(lkey + key_len, 0, min_key_len - key_len);
+        key = (void *)lkey;
+        key_len = min_key_len;
+    }
+    if(!ssh2_hash_init(&ctx->hash, alg))
+        return 0;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CreateKeyContext((char *)key, &key_len, binstring, &lalg, qc3clear,
+                        NULL, NULL, ctx->key.Key_Context_Token,
+                        (char *)&errcode);
+    return errcode.Bytes_Available ? 0 : 1;
+}
+
+int ssh2_hmac_init(ssh2_hmac_ctx *ctx, ssh2_hmac_alg alg,
+                   void *key, size_t key_len)
+{
+    size_t min_key_len;
+    if(alg == SSH2_SHA1_HMAC)
+        min_key_len = SSH2_SHA1_DIG_LEN;
+    else if(alg == SSH2_SHA256_HMAC)
+        min_key_len = SSH2_SHA256_DIG_LEN;
+    else if(alg == SSH2_SHA512_HMAC)
+        min_key_len = SSH2_SHA512_DIG_LEN;
+#if LIBSSH2_MD5
+    else if(alg == SSH2_MD5_HMAC)
+        min_key_len = SSH2_MD5_DIG_LEN;
+#endif
+    else
+        return 0;
+    return os400qc3_hmac_init(ctx, alg, min_key_len, key, key_len);
+}
+
+int ssh2_hmac_update(ssh2_hmac_ctx *ctx, const void *input, size_t input_len)
+{
+    char dummy[64];
+    int len = (int)input_len;
+    Qus_EC_t errcode;
+
+    ctx->hash.Final_Op_Flag = Qc3_Continue;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CalculateHMAC((char *)input, &len, Qc3_Data, (char *)&ctx->hash,
+                     Qc3_Alg_Token, ctx->key.Key_Context_Token, Qc3_Key_Token,
+                     anycsp, NULL, dummy, (char *)&errcode);
+    return errcode.Bytes_Available ? 0 : 1;
+}
+
+int ssh2_hmac_final(ssh2_hmac_ctx *ctx, void *mac, size_t mac_len)
+{
+    char data;
+    Qus_EC_t errcode;
+    (void)mac_len;
+
+    ctx->hash.Final_Op_Flag = Qc3_Final;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CalculateHMAC((char *)data, &zero, Qc3_Data, (char *)&ctx->hash,
+                     Qc3_Alg_Token, ctx->key.Key_Context_Token, Qc3_Key_Token,
+                     anycsp, NULL, (char *)mac, (char *)&errcode);
+    return errcode.Bytes_Available ? 0 : 1;
+}
+
+void ssh2_hmac_cleanup(ssh2_hmac_ctx *ctx)
+{
+    ssh2_os400qc3_crypto_dtor(ctx);
+}
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: cipher algorithms support.
+ *
+ *******************************************************************/
+
+int ssh2_cipher_init(ssh2_cipher_ctx *ctx, SSH2_CIPHER_T(algo),
+                     unsigned char *iv, unsigned char *secret, int encrypt)
+{
+    Qc3_Format_ALGD0200_T algd;
+    Qus_EC_t errcode;
+
+    (void)encrypt;
+
+    if(!ctx)
+        return -1;
+
+    init_crypto_ctx(ctx);
+    algd.Block_Cipher_Alg = algo.algo;
+    algd.Block_Length = algo.size;
+    algd.Mode = algo.mode;
+    algd.Pad_Option = Qc3_No_Pad;
+    algd.Pad_Character = 0;
+    algd.Reserved = 0;
+    algd.MAC_Length = 0;
+    algd.Effective_Key_Size = 0;
+    memset(algd.Init_Vector, 0, sizeof(algd.Init_Vector));
+    if(algo.mode != Qc3_ECB && algo.size)
+        memcpy(algd.Init_Vector, iv, algo.size);
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CreateAlgorithmContext((char *)&algd, algo.fmt,
+                              ctx->hash.Alg_Context_Token, &errcode);
+    if(errcode.Bytes_Available)
+        return -1;
+    Qc3CreateKeyContext((char *)secret, &algo.keylen, binstring,
+                        &algo.algo, qc3clear, NULL, NULL,
+                        ctx->key.Key_Context_Token, (char *)&errcode);
+    if(errcode.Bytes_Available) {
+        ssh2_os400qc3_crypto_dtor(ctx);
+        return -1;
+    }
+
+    return 0;
+}
+
+int ssh2_cipher_crypt(ssh2_cipher_ctx *ctx, SSH2_CIPHER_T(algo),
+                      int encrypt, unsigned char *block, size_t blocksize,
+                      int firstlast)
+{
+    Qus_EC_t errcode;
+    int outlen;
+    int blksize = blocksize;
+
+    (void)algo;
+
+    set_EC_length(errcode, sizeof(errcode));
+    if(encrypt)
+        Qc3EncryptData((char *)block, &blksize, Qc3_Data,
+                       ctx->hash.Alg_Context_Token, Qc3_Alg_Token,
+                       ctx->key.Key_Context_Token, Qc3_Key_Token, anycsp, NULL,
+                       (char *)block, &blksize, &outlen, (char *)&errcode);
+    else
+        Qc3DecryptData((char *)block, &blksize,
+                       ctx->hash.Alg_Context_Token, Qc3_Alg_Token,
+                       ctx->key.Key_Context_Token, Qc3_Key_Token, anycsp, NULL,
+                       (char *)block, &blksize, &outlen, (char *)&errcode);
+
+    return errcode.Bytes_Available ? -1 : 0;
+}
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: RSA support.
+ *
+ *******************************************************************/
+
+#if LIBSSH2_RSA
+int ssh2_rsa_new(ssh2_rsa_ctx **rsa, LIBSSH2_SESSION *session,
+                 const unsigned char *edata, size_t elen,
+                 const unsigned char *ndata, size_t nlen,
+                 const unsigned char *ddata, size_t dlen,
+                 const unsigned char *pdata, size_t plen,
+                 const unsigned char *qdata, size_t qlen,
+                 const unsigned char *e1data, size_t e1len,
+                 const unsigned char *e2data, size_t e2len,
+                 const unsigned char *coeffdata, size_t coefflen)
+{
+    ssh2_rsa_ctx *ctx;
+    ssh2_bn *e = NULL;
+    ssh2_bn *n = NULL;
+    ssh2_bn *d = NULL;
+    ssh2_bn *p = NULL;
+    ssh2_bn *q = NULL;
+    ssh2_bn *e1 = NULL;
+    ssh2_bn *e2 = NULL;
+    ssh2_bn *coeff = NULL;
+    struct asn1Element *key = NULL;
+    struct asn1Element *structkey = NULL;
+    int keytype;
+    int ret = 0;
+    int i;
+
+    (void)session;
+
+    ctx = init_crypto_ctx(NULL);
+    if(!ctx)
+        ret = -1;
+    if(!ret) {
+        ssh2_bn_from_bin(&e, edata, elen);
+        ssh2_bn_from_bin(&n, ndata, nlen);
+        if(!e || !n)
+            ret = -1;
+    }
+    if(!ret && ddata) {
+        /* Private key. */
+        ssh2_bn_from_bin(&d, ddata, dlen);
+        ssh2_bn_from_bin(&p, pdata, plen);
+        ssh2_bn_from_bin(&q, qdata, qlen);
+        ssh2_bn_from_bin(&e1, e1data, e1len);
+        ssh2_bn_from_bin(&e2, e2data, e2len);
+        ssh2_bn_from_bin(&coeff, coeffdata, coefflen);
+        if(!d || !p || !q || !e1 || !e2 || !coeff)
+            ret = -1;
+
+        if(!ret) {
+            /* Build a PKCS#8 private key. */
+            key = rsaprivatekey(e, n, d, p, q, e1, e2, coeff);
+            structkey = rsaprivatekeyinfo(key);
+        }
+        keytype = Qc3_RSA_Private;
+    }
+    else if(!ret) {
+        key = rsapublickey(e, n);
+        structkey = rsasubjectpublickeyinfo(key);
+        keytype = Qc3_RSA_Public;
+    }
+    if(!key || !structkey)
+        ret = -1;
+
+    /* Create the key context. */
+    if(!ret) {
+        Qus_EC_t errcode;
+
+        set_EC_length(errcode, sizeof(errcode));
+        i = structkey->end - structkey->header;
+        Qc3CreateKeyContext(structkey->header, &i, berstring, &keytype,
+                            qc3clear, NULL, NULL, ctx->key.Key_Context_Token,
+                            (char *)&errcode);
+        if(errcode.Bytes_Available)
+            ret = -1;
+    }
+
+    ssh2_bn_free(e);
+    ssh2_bn_free(n);
+    ssh2_bn_free(d);
+    ssh2_bn_free(p);
+    ssh2_bn_free(q);
+    ssh2_bn_free(e1);
+    ssh2_bn_free(e2);
+    ssh2_bn_free(coeff);
+    asn1delete(key);
+    asn1delete(structkey);
+    if(ret && ctx) {
+        ssh2_rsa_free(ctx, session);
+        ctx = NULL;
+    }
+    *rsa = ctx;
+    return ret;
+}
+#endif /* LIBSSH2_RSA */
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: Diffie-Hellman support.
+ *
+ *******************************************************************/
+
+void ssh2_dh_init(ssh2_dh_ctx *dhctx)
+{
+    memset((char *)dhctx, 0, sizeof(*dhctx));
+}
+
+int ssh2_dh_key_pair(ssh2_dh_ctx *dhctx, ssh2_bn *pub, const ssh2_bn *g,
+                     const ssh2_bn *p, int group_order, ssh2_bn_ctx *bnctx)
+{
+    struct asn1Element *prime;
+    struct asn1Element *base;
+    struct asn1Element *dhparameter;
+    struct asn1Element *dhkeyagreement;
+    struct asn1Element *pkcs3;
+    int pkcs3len;
+    char *pubkey;
+    int pubkeysize;
+    int pubkeylen;
+    Qus_EC_t errcode;
+
+    (void)bnctx;
+
+    if(!pub)
+        return -1;
+    if(group_order <= 0)
+        return -1;
+
+    /* Build the PKCS#3 structure. */
+
+    base = asn1uint(g);
+    prime = asn1uint(p);
+    dhparameter = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED,
+                                prime, base, NULL);
+    asn1delete(base);
+    asn1delete(prime);
+    dhkeyagreement = asn1bytes(ASN1_OBJ_ID,
+                               OID_dhKeyAgreement + 1, OID_dhKeyAgreement[0]);
+    pkcs3 = asn1container(ASN1_SEQ | ASN1_CONSTRUCTED,
+                          dhkeyagreement, dhparameter, NULL);
+    asn1delete(dhkeyagreement);
+    asn1delete(dhparameter);
+    if(!base || !prime || !dhparameter || !dhkeyagreement || !pkcs3) {
+        asn1delete(pkcs3);
+        return -1;
+    }
+    pkcs3len = pkcs3->end - pkcs3->header;
+    pubkeysize = (ssh2_bn_bits(p) + 7) >> 3;
+    pubkey = alloca(pubkeysize);
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3GenDHKeyPair((char *)pkcs3->header, &pkcs3len, anycsp, NULL,
+                    dhctx->token, pubkey, &pubkeysize, &pubkeylen, &errcode);
+    asn1delete(pkcs3);
+    if(errcode.Bytes_Available)
+        return -1;
+    return ssh2_bn_from_bin(&pub, (unsigned char *)pubkey, pubkeylen);
+}
+
+int ssh2_dh_validate(const ssh2_bn *f, const ssh2_bn *p)
+{
+    ssh2_bn *t1 = ssh2_bn_init();
+    ssh2_bn *t2 = ssh2_bn_init();
+    int result = -1;
+    size_t i;
+    int nbits = 0;
+
+    for(i = f->length; i--;)
+        nbits += card[f->bignum[i]];
+
+    if(nbits >= 4 && t1 && t2 && !ssh2_bn_set_word(t2, 2) &&
+       !ssh2_bn_sub(t1, f, t2) &&
+       !ssh2_bn_sub(t1, p, t2) &&
+       !ssh2_bn_sub(t2, t1, f))
+        result = 0;
+
+    ssh2_bn_free(t1);
+    ssh2_bn_free(t2);
+    return result;
+}
+
+int ssh2_dh_secret(ssh2_dh_ctx *dhctx, ssh2_bn *secret,
+                   const ssh2_bn *f, const ssh2_bn *p, ssh2_bn_ctx *bnctx)
+{
+    char *pubkey;
+    int pubkeysize;
+    char *secretbuf;
+    int secretbufsize;
+    int secretbuflen;
+    Qus_EC_t errcode;
+
+    (void)bnctx;
+
+    if(!secret)
+        return -1;
+    if(ssh2_dh_validate(f, p))
+        return -1;
+
+    pubkeysize = (ssh2_bn_bits(f) + 7) >> 3;
+    pubkey = alloca(pubkeysize);
+    ssh2_bn_to_bin(f, pubkey);
+    secretbufsize = (ssh2_bn_bits(p) + 7) >> 3;
+    secretbuf = alloca(secretbufsize);
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CalculateDHSecretKey(dhctx->token, pubkey, &pubkeysize, secretbuf,
+                            &secretbufsize, &secretbuflen, &errcode);
+    if(errcode.Bytes_Available)
+        return -1;
+    return ssh2_bn_from_bin(&secret, (unsigned char *)secretbuf, secretbuflen);
+}
+
+void ssh2_dh_dtor(ssh2_dh_ctx *dhctx)
+{
+    if(!null_token(dhctx->token)) {
+        Qc3DestroyAlgorithmContext(dhctx->token, (char *)&ecnull);
+        memset((char *)dhctx, 0, sizeof(*dhctx));
+    }
+}
+
+/*******************************************************************
+ *
+ * OS/400 QC3 crypto-library backend: PKCS#5 supplement.
+ *
+ *******************************************************************/
+
+static int oidcmp(const struct asn1Element *e, const unsigned char *oid)
+{
+    int i = e->end - e->beg - *oid++;
+
+    if(*e->header != ASN1_OBJ_ID)
+        return -2;
+    if(!i)
+        i = memcmp(e->beg, oid, oid[-1]);
+    return i;
+}
+
+static int asn1getword(struct asn1Element *e, unsigned long *v)
+{
+    unsigned long a;
+    const unsigned char *cp;
+
+    if(*e->header != ASN1_INTEGER)
+        return -1;
+    for(cp = e->beg; cp < e->end && !*cp; cp++)
+        ;
+    if(e->end - cp > sizeof(a))
+        return -1;
+    for(a = 0; cp < e->end; cp++)
+        a = (a << 8) | *cp;
+    *v = a;
+    return 0;
+}
+
+static int pbkdf1(LIBSSH2_SESSION *session, char **dk,
+                  const char *passphrase, struct pkcs5params *pkcs5)
+{
+    int i;
+    Qc3_Format_ALGD0100_T hctx;
+    int len = pkcs5->saltlen;
+    char *data = (char *)pkcs5->salt;
+    Qus_EC_t errcode;
+
+    *dk = NULL;
+    if(pkcs5->dklen > pkcs5->hashlen)
+        return -1;
+
+    /* Allocate the derived key buffer. */
+    *dk = SSH2_ALLOC(session, pkcs5->hashlen);
+    if(!*dk)
+        return -1;
+
+    set_EC_length(errcode, sizeof(errcode));
+    errcode.Bytes_Available = 1; /* Defaults to error flagging. */
+
+    /* Initial hash. */
+    if(ssh2_hash_init(&hctx, pkcs5->hash)) {
+        if(ssh2_hash_update(&hctx, passphrase, strlen(passphrase))) {
+            hctx.Final_Op_Flag = Qc3_Final;
+            Qc3CalculateHash((char *)pkcs5->salt, &len, Qc3_Data,
+                             (char *)&hctx, Qc3_Alg_Token, anycsp, NULL, *dk,
+                             (char *)&errcode);
+
+            /* Iterate. */
+            len = pkcs5->hashlen;
+            for(i = 1; !errcode.Bytes_Available && i < pkcs5->itercount; i++)
+                Qc3CalculateHash((char *)*dk, &len, Qc3_Data, (char *)&hctx,
+                                 Qc3_Alg_Token, anycsp, NULL, *dk,
+                                 (char *)&errcode);
+        }
+
+        Qc3DestroyAlgorithmContext(hctx.Alg_Context_Token, (char *)&ecnull);
+    }
+
+    if(errcode.Bytes_Available) {
+        SSH2_SAFEFREE(session, *dk);
+        return -1;
+    }
+
+    /* Special stuff for PBES1: split derived key into 8-byte key and 8-byte
+       initialization vector. */
+    pkcs5->dklen = 8;
+    pkcs5->ivlen = 8;
+    pkcs5->iv = *dk + 8;
+
+    return 0;
+}
+
+static int pbkdf2(LIBSSH2_SESSION *session, char **dk,
+                  const char *passphrase, struct pkcs5params *pkcs5)
+{
+    size_t i;
+    size_t k;
+    int j;
+    int l;
+    uint32_t ni;
+    unsigned long long t;
+    char *mac;
+    char *buf;
+    struct os400qc3_crypto_ctx hctx;
+
+    *dk = NULL;
+    t = ((unsigned long long)pkcs5->dklen + pkcs5->hashlen - 1) /
+        pkcs5->hashlen;
+    if(t > 0xFFFFFFFF)
+        return -1;
+    mac = alloca(pkcs5->hashlen);
+    if(!mac)
+        return -1;
+
+    /* Create an HMAC context for our computations. */
+    if(!os400qc3_hmac_init(&hctx, pkcs5->hash, pkcs5->hashlen,
+                           (void *)passphrase, strlen(passphrase)))
+        return -1;
+
+    /* Allocate the derived key buffer. */
+    l = t;
+    buf = SSH2_ALLOC(session, l * pkcs5->hashlen);
+    if(!buf)
+        return -1;
+    *dk = buf;
+
+    /* Process each hLen-size blocks. */
+    for(i = 1; i <= l; i++) {
+        ni = htonl(i);
+        if(!ssh2_hmac_update(&hctx, pkcs5->salt, pkcs5->saltlen) ||
+           !ssh2_hmac_update(&hctx, &ni, sizeof(ni)) ||
+           !ssh2_hmac_final(&hctx, mac, pkcs5->hashlen)) {
+            SSH2_SAFEFREE(session, *dk);
+            ssh2_os400qc3_crypto_dtor(&hctx);
+            return -1;
+        }
+        memcpy(buf, mac, pkcs5->hashlen);
+        for(j = 1; j < pkcs5->itercount; j++) {
+            if(!ssh2_hmac_update(&hctx, mac, pkcs5->hashlen) ||
+               !ssh2_hmac_final(&hctx, mac, pkcs5->hashlen)) {
+                SSH2_FREE(session, *dk);
+                ssh2_os400qc3_crypto_dtor(&hctx);
+                return -1;
+            }
+            for(k = 0; k < pkcs5->hashlen; k++)
+                buf[k] ^= mac[k];
+        }
+        buf += pkcs5->hashlen;
+    }
+
+    /* Computation done. Release HMAC context. */
+    ssh2_os400qc3_crypto_dtor(&hctx);
+    return 0;
+}
+
+static int parse_pkcs5_algorithm(LIBSSH2_SESSION *session,
+                                 struct pkcs5params *pkcs5,
+                                 struct asn1Element *algid,
+                                 struct pkcs5algo **algotable)
+{
+    struct asn1Element oid;
+    struct asn1Element param;
+    char *cp;
+
+    cp = getASN1Element(&oid, algid->beg, algid->end);
+    if(!cp || *oid.header != ASN1_OBJ_ID)
+        return -1;
+    param.header = NULL;
+    if(cp < algid->end)
+        cp = getASN1Element(&param, cp, algid->end);
+    if(cp != algid->end)
+        return -1;
+    for(; *algotable; algotable++)
+        if(!oidcmp(&oid, (*algotable)->oid))
+            return (*(*algotable)->parse)(session, pkcs5, *algotable,
+                                          param.header ? &param : NULL);
+    return -1;
+}
+
+static int parse_pbes2(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                       struct pkcs5algo *algo, struct asn1Element *param)
+{
+    struct asn1Element keyDerivationFunc;
+    struct asn1Element encryptionScheme;
+    char *cp;
+
+    if(!param || *param->header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    cp = getASN1Element(&keyDerivationFunc, param->beg, param->end);
+    if(!cp || *keyDerivationFunc.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    if(getASN1Element(&encryptionScheme, cp, param->end) != param->end ||
+       *encryptionScheme.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    if(parse_pkcs5_algorithm(session, pkcs5, &encryptionScheme, pbes2enctable))
+        return -1;
+    if(parse_pkcs5_algorithm(session, pkcs5, &keyDerivationFunc, pbkdf2table))
+        return -1;
+    return 0;
+}
+
+static int parse_pbkdf2(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                        struct pkcs5algo *algo, struct asn1Element *param)
+{
+    struct asn1Element salt;
+    struct asn1Element iterationCount;
+    struct asn1Element keyLength;
+    struct asn1Element prf;
+    unsigned long itercount;
+    char *cp;
+
+    if(!param || *param->header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    cp = getASN1Element(&salt, param->beg, param->end);
+    /* otherSource not supported. */
+    if(!cp || *salt.header != ASN1_OCTET_STRING)
+        return -1;
+    cp = getASN1Element(&iterationCount, cp, param->end);
+    if(!cp || *iterationCount.header != ASN1_INTEGER)
+        return -1;
+    keyLength.header = prf.header = NULL;
+    if(cp < param->end) {
+        cp = getASN1Element(&prf, cp, param->end);
+        if(!cp)
+            return -1;
+        if(*prf.header == ASN1_INTEGER) {
+            keyLength = prf;
+            prf.header = NULL;
+            if(cp < param->end)
+                cp = getASN1Element(&prf, cp, param->end);
+        }
+        if(cp != param->end)
+            return -1;
+    }
+    pkcs5->hash = algo->hash;
+    pkcs5->hashlen = algo->hashlen;
+    if(prf.header) {
+        if(*prf.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+            return -1;
+        if(parse_pkcs5_algorithm(session, pkcs5, &prf, kdf2prftable))
+            return -1;
+    }
+    pkcs5->saltlen = salt.end - salt.beg;
+    pkcs5->salt = salt.beg;
+    if(asn1getword(&iterationCount, &itercount) ||
+       !itercount || itercount > 100000)
+        return -1;
+    pkcs5->itercount = itercount;
+    pkcs5->kdf = pbkdf2;
+    return 0;
+}
+
+static int parse_hmacWithSHA1(LIBSSH2_SESSION *session,
+                              struct pkcs5params *pkcs5,
+                              struct pkcs5algo *algo,
+                              struct asn1Element *param)
+{
+    if(!param || *param->header != ASN1_NULL)
+        return -1;
+    pkcs5->hash = algo->hash;
+    pkcs5->hashlen = algo->hashlen;
+    return 0;
+}
+
+static int parse_iv(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                    struct pkcs5algo *algo, struct asn1Element *param)
+{
+    if(!param || *param->header != ASN1_OCTET_STRING ||
+       param->end - param->beg != algo->ivlen)
+        return -1;
+    pkcs5->cipher = algo->cipher;
+    pkcs5->blocksize = algo->blocksize;
+    pkcs5->mode = algo->mode;
+    pkcs5->padopt = algo->padopt;
+    pkcs5->padchar = algo->padchar;
+    pkcs5->dklen = algo->keylen;
+    pkcs5->ivlen = algo->ivlen;
+    pkcs5->iv = param->beg;
+    return 0;
+}
+
+static int parse_rc2(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                     struct pkcs5algo *algo, struct asn1Element *param)
+{
+    struct asn1Element iv;
+    unsigned long effkeysize;
+    char *cp;
+
+    if(!param || *param->header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    cp = getASN1Element(&iv, param->beg, param->end);
+    if(!cp)
+        return -1;
+    effkeysize = algo->effkeysize;
+    if(*iv.header == ASN1_INTEGER) {
+        if(asn1getword(&iv, &effkeysize) || effkeysize > 1024)
+            return -1;
+
+        cp = getASN1Element(&iv, cp, param->end);
+        if(effkeysize < 256)
+            switch(effkeysize) {
+            case 160:
+                effkeysize = 40;
+                break;
+            case 120:
+                effkeysize = 64;
+                break;
+            case 58:
+                effkeysize = 128;
+                break;
+            default:
+                return -1;
+            }
+    }
+    if(effkeysize > 1024 || cp != param->end ||
+       *iv.header != ASN1_OCTET_STRING || iv.end - iv.beg != algo->ivlen)
+        return -1;
+    pkcs5->cipher = algo->cipher;
+    pkcs5->blocksize = algo->blocksize;
+    pkcs5->mode = algo->mode;
+    pkcs5->padopt = algo->padopt;
+    pkcs5->padchar = algo->padchar;
+    pkcs5->ivlen = algo->ivlen;
+    pkcs5->iv = iv.beg;
+    pkcs5->effkeysize = effkeysize;
+    pkcs5->dklen = (effkeysize + 8 - 1) / 8;
+    return 0;
+}
+
+static int parse_pbes1(LIBSSH2_SESSION *session, struct pkcs5params *pkcs5,
+                       struct pkcs5algo *algo, struct asn1Element *param)
+{
+    struct asn1Element salt;
+    struct asn1Element iterationCount;
+    unsigned long itercount;
+    char *cp;
+
+    if(!param || *param->header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+
+    cp = getASN1Element(&salt, param->beg, param->end);
+    if(!cp || *salt.header != ASN1_OCTET_STRING ||
+       salt.end - salt.beg != algo->saltlen)
+        return -1;
+    if(getASN1Element(&iterationCount, cp, param->end) != param->end ||
+       *iterationCount.header != ASN1_INTEGER)
+        return -1;
+    if(asn1getword(&iterationCount, &itercount) ||
+       !itercount || itercount > 100000)
+        return -1;
+    pkcs5->cipher = algo->cipher;
+    pkcs5->blocksize = algo->blocksize;
+    pkcs5->mode = algo->mode;
+    pkcs5->padopt = algo->padopt;
+    pkcs5->padchar = algo->padchar;
+    pkcs5->hash = algo->hash;
+    pkcs5->hashlen = algo->hashlen;
+    pkcs5->dklen = 16;
+    pkcs5->saltlen = algo->saltlen;
+    pkcs5->effkeysize = algo->effkeysize;
+    pkcs5->salt = salt.beg;
+    pkcs5->kdf = pbkdf1;
+    pkcs5->itercount = itercount;
+    return 0;
+}
+
+static int pkcs8kek(LIBSSH2_SESSION *session, struct os400qc3_crypto_ctx **ctx,
+                    const unsigned char *data, unsigned int datalen,
+                    const char *passphrase,
+                    struct asn1Element *privkeyinfo)
+{
+    struct asn1Element encprivkeyinfo;
+    struct asn1Element pkcs5alg;
+    struct pkcs5params pkcs5;
+    size_t pplen;
+    char *cp;
+    unsigned long t;
+    int i;
+    char *dk = NULL;
+    Qc3_Format_ALGD0200_T algd;
+    Qus_EC_t errcode;
+
+    /* Determine if the PKCS#8 data is encrypted and, if so, setup a
+       key encryption key and algorithm in context.
+       Return 1 if encrypted, 0, if not, -1 if error. */
+
+    *ctx = NULL;
+    privkeyinfo->beg = (char *)data;
+    privkeyinfo->end = privkeyinfo->beg + datalen;
+
+    /* If no passphrase is given, it cannot be an encrypted key. */
+    if(!passphrase || !*passphrase)
+        return 0;
+
+    /* Parse PKCS#8 data, checking if ASN.1 format is PrivateKeyInfo or
+       EncryptedPrivateKeyInfo. */
+    if(getASN1Element(&encprivkeyinfo, privkeyinfo->beg, privkeyinfo->end) !=
+           (char *)data + datalen ||
+       *encprivkeyinfo.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    cp = getASN1Element(&pkcs5alg, encprivkeyinfo.beg, encprivkeyinfo.end);
+    if(!cp)
+        return -1;
+
+    switch(*pkcs5alg.header) {
+    case ASN1_INTEGER: /* Version. */
+        return 0; /* This is a PrivateKeyInfo --> not encrypted. */
+    case ASN1_SEQ | ASN1_CONSTRUCTED: /* AlgorithmIdentifier. */
+        break; /* This is an EncryptedPrivateKeyInfo --> encrypted. */
+    default:
+        return -1; /* Unrecognized: error. */
+    }
+
+    /* Get the encrypted key data. */
+    if(getASN1Element(privkeyinfo, cp, encprivkeyinfo.end) !=
+       encprivkeyinfo.end || *privkeyinfo->header != ASN1_OCTET_STRING)
+        return -1;
+
+    /* PKCS#5: parse the PBES AlgorithmIdentifier and recursively get all
+       encryption parameters. */
+    memset((char *)&pkcs5, 0, sizeof(pkcs5));
+    if(parse_pkcs5_algorithm(session, &pkcs5, &pkcs5alg, pbestable))
+        return -1;
+
+    /* Compute the derived key. */
+    if((*pkcs5.kdf)(session, &dk, passphrase, &pkcs5))
+        return -1;
+
+    /* Prepare the algorithm descriptor. */
+    memset((char *)&algd, 0, sizeof(algd));
+    algd.Block_Cipher_Alg = pkcs5.cipher;
+    algd.Block_Length = pkcs5.blocksize;
+    algd.Mode = pkcs5.mode;
+    algd.Pad_Option = pkcs5.padopt;
+    algd.Pad_Character = pkcs5.padchar;
+    algd.Effective_Key_Size = pkcs5.effkeysize;
+    memcpy(algd.Init_Vector, pkcs5.iv, pkcs5.ivlen);
+
+    /* Create the key and algorithm context tokens. */
+    *ctx = init_crypto_ctx(NULL);
+    if(!*ctx) {
+        SSH2_FREE(session, dk);
+        return -1;
+    }
+    init_crypto_ctx(*ctx);
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CreateKeyContext(dk, &pkcs5.dklen, binstring, &algd.Block_Cipher_Alg,
+                        qc3clear, NULL, NULL, (*ctx)->key.Key_Context_Token,
+                        (char *)&errcode);
+    SSH2_FREE(session, dk);
+    if(errcode.Bytes_Available) {
+        free((char *)*ctx);
+        *ctx = NULL;
+        return -1;
+    }
+
+    Qc3CreateAlgorithmContext((char *)&algd, Qc3_Alg_Block_Cipher,
+                              (*ctx)->hash.Alg_Context_Token, &errcode);
+    if(errcode.Bytes_Available) {
+        Qc3DestroyKeyContext((*ctx)->key.Key_Context_Token, (char *)&ecnull);
+        free((char *)*ctx);
+        *ctx = NULL;
+        return -1;
+    }
+    return 1; /* Tell it is encrypted. */
+}
+
+static int rsapkcs8privkey(LIBSSH2_SESSION *session,
+                           const unsigned char *data, unsigned int datalen,
+                           const char *passphrase, void *loadkeydata)
+{
+    ssh2_rsa_ctx *ctx = (ssh2_rsa_ctx *)loadkeydata;
+    char keyform = Qc3_Clear;
+    char *kek = NULL;
+    char *kea = NULL;
+    struct os400qc3_crypto_ctx *kekctx;
+    struct asn1Element pki;
+    int pkilen;
+    Qus_EC_t errcode;
+
+    switch(pkcs8kek(session, &kekctx, data, datalen, passphrase, &pki)) {
+    case 1:
+        keyform = Qc3_Encrypted;
+        kek = kekctx->key.Key_Context_Token;
+        kea = kekctx->hash.Alg_Context_Token;
+    case 0:
+        break;
+    default:
+        return -1;
+    }
+
+    set_EC_length(errcode, sizeof(errcode));
+    pkilen = pki.end - pki.beg;
+    Qc3CreateKeyContext((unsigned char *)pki.beg, &pkilen, berstring,
+                        rsaprivate, &keyform, kek, kea,
+                        ctx->key.Key_Context_Token, (char *)&errcode);
+    if(errcode.Bytes_Available) {
+        if(kekctx)
+            ssh2_os400qc3_crypto_dtor(kekctx);
+        return -1;
+    }
+    ctx->kek = kekctx;
+    return 0;
+}
+
+static char *storewithlength(char *p, const char *data, int length)
+{
+    ssh2_htonu32(p, length);
+    if(length)
+        memcpy(p + 4, data, length);
+    return p + 4 + length;
+}
+
+static int sshrsapubkey(LIBSSH2_SESSION *session, char **sshpubkey,
+                        struct asn1Element *params, struct asn1Element *key,
+                        const char *method)
+{
+    int methlen = strlen(method);
+    struct asn1Element keyseq;
+    struct asn1Element m;
+    struct asn1Element e;
+    int len;
+    char *cp;
+
+    if(getASN1Element(&keyseq, key->beg + 1, key->end) != key->end ||
+       *keyseq.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    if(!getASN1Element(&m, keyseq.beg, keyseq.end) ||
+       *m.header != ASN1_INTEGER)
+        return -1;
+    if(getASN1Element(&e, m.end, keyseq.end) != keyseq.end ||
+       *e.header != ASN1_INTEGER)
+        return -1;
+    len = 4 + methlen + 4 + (e.end - e.beg) + 4 + (m.end - m.beg);
+    cp = SSH2_ALLOC(session, len);
+    if(!cp)
+        return -1;
+    *sshpubkey = cp;
+    cp = storewithlength(cp, method, methlen);
+    cp = storewithlength(cp, e.beg, e.end - e.beg);
+    cp = storewithlength(cp, m.beg, m.end - m.beg);
+    return len;
+}
+
+static int rsapkcs8pubkey(LIBSSH2_SESSION *session,
+                          const unsigned char *data, unsigned int datalen,
+                          const char *passphrase, void *loadkeydata)
+{
+    struct loadpubkeydata *p = (struct loadpubkeydata *)loadkeydata;
+    char *buf;
+    int len;
+    char *cp;
+    int i;
+    char keyform = Qc3_Clear;
+    char *kek = NULL;
+    char *kea = NULL;
+    struct os400qc3_crypto_ctx *kekctx;
+    struct asn1Element subjpubkeyinfo;
+    struct asn1Element algorithmid;
+    struct asn1Element algorithm;
+    struct asn1Element subjpubkey;
+    struct asn1Element parameters;
+    struct asn1Element pki;
+    int pkilen;
+    Qus_EC_t errcode;
+
+    buf = alloca(datalen);
+    if(!buf)
+        return -1;
+
+    switch(pkcs8kek(session, &kekctx, data, datalen, passphrase, &pki)) {
+    case 1:
+        keyform = Qc3_Encrypted;
+        kek = kekctx->key.Key_Context_Token;
+        kea = kekctx->hash.Alg_Context_Token;
+    case 0:
+        break;
+    default:
+        return -1;
+    }
+
+    set_EC_length(errcode, sizeof(errcode));
+    pkilen = pki.end - pki.beg;
+    Qc3ExtractPublicKey(pki.beg, &pkilen, berstring, &keyform,
+                        kek, kea, buf, (int *)&datalen, &len, &errcode);
+    ssh2_os400qc3_crypto_dtor(kekctx);
+    if(errcode.Bytes_Available)
+        return -1;
+    /* Get the algorithm OID and key data from SubjectPublicKeyInfo. */
+    if(getASN1Element(&subjpubkeyinfo, buf, buf + len) != buf + len ||
+       *subjpubkeyinfo.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    cp = getASN1Element(&algorithmid, subjpubkeyinfo.beg, subjpubkeyinfo.end);
+    if(!cp || *algorithmid.header != (ASN1_SEQ | ASN1_CONSTRUCTED))
+        return -1;
+    if(!getASN1Element(&algorithm, algorithmid.beg, algorithmid.end) ||
+       *algorithm.header != ASN1_OBJ_ID)
+        return -1;
+    if(getASN1Element(&subjpubkey, cp, subjpubkeyinfo.end) !=
+       subjpubkeyinfo.end || *subjpubkey.header != ASN1_BIT_STRING)
+        return -1;
+    /* Check for supported algorithm. */
+    for(i = 0; pka[i].oid; i++)
+        if(!oidcmp(&algorithm, pka[i].oid)) {
+            len = (*pka[i].sshpubkey)(session, &p->data, &algorithmid,
+                                      &subjpubkey, pka[i].method);
+            if(len < 0)
+                return -1;
+            p->length = len;
+            p->method = pka[i].method;
+            return 0;
+        }
+    return -1; /* Algorithm not supported. */
+}
+
+static int pkcs1topkcs8(LIBSSH2_SESSION *session,
+                        const unsigned char **data8, unsigned int *datalen8,
+                        const unsigned char *data1, unsigned int datalen1)
+{
+    struct asn1Element prvk;
+    struct asn1Element *pkcs8;
+    unsigned char *data;
+
+    *data8 = NULL;
+    *datalen8 = 0;
+
+    /* Reject unbounded key element for the following reasons:
+       - supported by BER format, but not DER,
+       - not used for an RSA key in the real world (even OpenSSL rejects it),
+       - known to introduce vulnerabilities,
+       - signature/HMAC on it is likely to fail, due to the variant notation,
+       - adds an extra-level of container generation handling complexity.
+     */
+    if(datalen1 < 2 || data1[1] == 0x80)
+        return -1;
+
+    data = (unsigned char *)getASN1Element(&prvk, (char *)data1,
+                                           (char *)data1 + datalen1);
+    if(data != (unsigned char *)data1 + datalen1)
+        return -1;
+
+    pkcs8 = rsaprivatekeyinfo(&prvk);
+    if(!pkcs8)
+        return -1;
+    data = SSH2_ALLOC(session, pkcs8->end - pkcs8->header);
+    if(!data) {
+        asn1delete(pkcs8);
+        return -1;
+    }
+    *data8 = data;
+    *datalen8 = pkcs8->end - pkcs8->header;
+    memcpy((char *)data, (char *)pkcs8->header, *datalen8);
+    asn1delete(pkcs8);
+    return 0;
+}
+
+static int rsapkcs1privkey(LIBSSH2_SESSION *session,
+                           const unsigned char *data, unsigned int datalen,
+                           const char *passphrase, void *loadkeydata)
+{
+    const unsigned char *data8;
+    unsigned int datalen8;
+    int ret;
+
+    if(pkcs1topkcs8(session, &data8, &datalen8, data, datalen))
+        return -1;
+    ret = rsapkcs8privkey(session, data8, datalen8, passphrase, loadkeydata);
+    SSH2_FREE(session, SSH2_UNCONST(data8));
+    return ret;
+}
+
+static int rsapkcs1pubkey(LIBSSH2_SESSION *session,
+                          const unsigned char *data, unsigned int datalen,
+                          const char *passphrase, void *loadkeydata)
+{
+    const unsigned char *data8;
+    unsigned int datalen8;
+    int ret;
+
+    if(pkcs1topkcs8(session, &data8, &datalen8, data, datalen))
+        return -1;
+    ret = rsapkcs8pubkey(session, data8, datalen8, passphrase, loadkeydata);
+    SSH2_FREE(session, SSH2_UNCONST(data8));
+    return ret;
+}
+
+static int try_pem_load(LIBSSH2_SESSION *session,
+                        const char *header, const char *trailer,
+                        const char *blob, size_t blob_len,
+                        const char *passphrase,
+                        loadkeyproc proc, void *loadkeydata)
+{
+    unsigned char *data = NULL;
+    size_t datalen = 0;
+    size_t blob_offset = 0;
+    const char *blob_pos = blob;
+    size_t blob_left = blob_len;
+    int ret;
+
+    while(blob_left > 0) {
+        ret = ssh2_pem_parse(session, header, trailer,
+                             NULL, blob_pos, blob_left,
+                             passphrase,
+                             &data, &datalen, &blob_offset);
+        if(!ret) {
+            ret = (*proc)(session, data, datalen, passphrase, loadkeydata);
+            if(!ret) {
+                ssh2_zero_free(session, data, datalen);
+                return 0; /* success */
+            }
+        }
+
+        blob_pos += blob_offset;
+        blob_left -= blob_offset;
+
+        ssh2_zero_free(session, data, datalen);
+        data = NULL;
+    }
+
+    return -1;
+}
+
+static int load_rsa_private_file(LIBSSH2_SESSION *session,
+                                 const char *filename,
+                                 const char *passphrase,
+                                 loadkeyproc proc1, loadkeyproc proc8,
+                                 void *loadkeydata)
+{
+    int ret;
+    char *blob = NULL;
+    size_t blob_len = 0;
+
+    if(ssh2_file_to_blob(session, filename, &blob, &blob_len))
+        return -1;
+
+    /* Try with "ENCRYPTED PRIVATE KEY" PEM armor.
+       --> PKCS#8 EncryptedPrivateKeyInfo */
+    ret = try_pem_load(session, beginencprivkeyhdr, endencprivkeyhdr,
+                       blob, blob_len, passphrase,
+                       proc8, loadkeydata);
+
+    /* Try with "PRIVATE KEY" PEM armor.
+       --> PKCS#8 PrivateKeyInfo or EncryptedPrivateKeyInfo */
+    if(ret)
+        ret = try_pem_load(session, beginprivkeyhdr, endprivkeyhdr,
+                           blob, blob_len, passphrase,
+                           proc8, loadkeydata);
+
+    /* Try with "RSA PRIVATE KEY" PEM armor.
+       --> PKCS#1 RSAPrivateKey */
+    if(ret)
+        ret = try_pem_load(session, beginrsaprivkeyhdr, endrsaprivkeyhdr,
+                           blob, blob_len, passphrase,
+                           proc1, loadkeydata);
+
+    /* Try DER encoding. */
+    if(ret) {
+        /* Try as PKCS#8 DER data.
+           --> PKCS#8 PrivateKeyInfo or EncryptedPrivateKeyInfo */
+        ret = (*proc8)(session, (const unsigned char *)blob, blob_len,
+                       passphrase, loadkeydata);
+
+        /* Try as PKCS#1 DER data.
+           --> PKCS#1 RSAPrivateKey */
+        if(ret)
+            ret = (*proc1)(session, (const unsigned char *)blob, blob_len,
+                           passphrase, loadkeydata);
+    }
+
+    if(blob) {
+        ssh2_explicit_zero(blob, blob_len + 1);
+        SSH2_FREE(session, blob);
+    }
+
+    return ret;
+}
+
+static int os400_pub_privkey_file(LIBSSH2_SESSION *session, char **method,
+                                  unsigned char **pubkeydata,
+                                  size_t *pubkeydata_len,
+                                  const char *privkeyfile,
+                                  const char *passphrase)
+{
+    struct loadpubkeydata p = { 0 };
+    int ret;
+
+    *method = NULL;
+    *pubkeydata = NULL;
+    *pubkeydata_len = 0;
+
+    ret = load_rsa_private_file(session, privkeyfile, passphrase,
+                                rsapkcs1pubkey, rsapkcs8pubkey, (void *)&p);
+    if(!ret) {
+        size_t method_len = strlen(p.method);
+        *method = SSH2_ALLOC(session, method_len + 1);
+        if(*method)
+            memcpy(*method, p.method, method_len + 1);
+        else
+            ret = -1;
+    }
+
+    if(ret) {
+        if(*method)
+            SSH2_SAFEFREE(session, *method);
+        if(p.data)
+            SSH2_FREE(session, (void *)p.data);
+    }
+    else {
+        *pubkeydata = (unsigned char *)p.data;
+        *pubkeydata_len = p.length;
+    }
+
+    return ret;
+}
+
+static int os400_pub_privkey_blob(LIBSSH2_SESSION *session, char **method,
+                                  unsigned char **pubkeydata,
+                                  size_t *pubkeydata_len,
+                                  const char *privkeyblob,
+                                  size_t privkeyblob_len,
+                                  const char *passphrase)
+{
+    struct loadpubkeydata p = { 0 };
+    unsigned char *data = NULL;
+    size_t datalen = 0;
+    int ret;
+
+    *method = NULL;
+    *pubkeydata = NULL;
+    *pubkeydata_len = 0;
+
+    /* Try with "ENCRYPTED PRIVATE KEY" PEM armor.
+       --> PKCS#8 EncryptedPrivateKeyInfo */
+    ret = ssh2_pem_parse(session, beginencprivkeyhdr, endencprivkeyhdr,
+                         NULL, privkeyblob, privkeyblob_len,
+                         passphrase,
+                         &data, &datalen, NULL);
+
+    /* Try with "PRIVATE KEY" PEM armor.
+       --> PKCS#8 PrivateKeyInfo or EncryptedPrivateKeyInfo */
+    if(ret)
+        ret = ssh2_pem_parse(session, beginprivkeyhdr, endprivkeyhdr,
+                             NULL, privkeyblob, privkeyblob_len,
+                             passphrase,
+                             &data, &datalen, NULL);
+
+    if(!ret) {
+        /* Process PKCS#8. */
+        ret = rsapkcs8pubkey(session, data, datalen, passphrase, (void *)&p);
+    }
+    else {
+        /* Try with "RSA PRIVATE KEY" PEM armor.
+           --> PKCS#1 RSAPrivateKey */
+        ret = ssh2_pem_parse(session, beginrsaprivkeyhdr, endrsaprivkeyhdr,
+                             NULL, privkeyblob, privkeyblob_len,
+                             passphrase,
+                             &data, &datalen, NULL);
+        if(!ret)
+            ret = rsapkcs1pubkey(session,
+                                 data, datalen, passphrase, (void *)&p);
+    }
+
+    if(ret) {
+        /* Try as PKCS#8 DER data.
+           --> PKCS#8 PrivateKeyInfo or EncryptedPrivateKeyInfo */
+        ret = rsapkcs8pubkey(session, privkeyblob, privkeyblob_len,
+                             passphrase, (void *)&p);
+
+        /* Try as PKCS#1 DER data.
+           --> PKCS#1 RSAPrivateKey */
+        if(ret)
+            ret = rsapkcs1pubkey(session, privkeyblob, privkeyblob_len,
+                                 passphrase, (void *)&p);
+    }
+
+    if(data)
+        SSH2_FREE(session, data);
+
+    if(!ret) {
+        size_t method_len = strlen(p.method);
+        *method = SSH2_ALLOC(session, method_len + 1);
+        if(*method)
+            memcpy(*method, p.method, method_len + 1);
+        else
+            ret = -1;
+    }
+    if(ret) {
+        if(*method)
+            SSH2_SAFEFREE(session, *method);
+        if(p.data)
+            SSH2_FREE(session, (void *)p.data);
+    }
+    else {
+        *pubkeydata = (unsigned char *)p.data;
+        *pubkeydata_len = p.length;
+    }
+
+    return ret;
+}
+
+/* TODO: merge the two callees into one. */
+int ssh2_pub_privkey(LIBSSH2_SESSION *session, char **method,
+                     unsigned char **pubkeydata, size_t *pubkeydata_len,
+                     const char *privkeyfile,
+                     const char *privkeyblob, size_t privkeyblob_len,
+                     const char *passphrase)
+{
+    if(privkeyfile)
+        return os400_pub_privkey_file(session, method,
+                                      pubkeydata, pubkeydata_len,
+                                      privkeyfile,
+                                      passphrase);
+    else
+        return os400_pub_privkey_blob(session, method,
+                                      pubkeydata, pubkeydata_len,
+                                      privkeyblob,  privkeyblob_len,
+                                      passphrase);
+}
+
+#if LIBSSH2_RSA
+static int os400_rsa_new_priv_from_file(ssh2_rsa_ctx **rsa,
+                                        LIBSSH2_SESSION *session,
+                                        const char *filename,
+                                        const char *passphrase)
+{
+    ssh2_rsa_ctx *ctx = init_crypto_ctx(NULL);
+    int ret;
+
+    if(!ctx)
+        return -1;
+    ret = load_rsa_private_file(session, filename, passphrase,
+                                rsapkcs1privkey, rsapkcs8privkey,
+                                (void *)ctx);
+    if(ret) {
+        ssh2_os400qc3_crypto_dtor(ctx);
+        ctx = NULL;
+    }
+    *rsa = ctx;
+    return ret;
+}
+
+static int os400_rsa_new_priv_from_blob(ssh2_rsa_ctx **rsa,
+                                        LIBSSH2_SESSION *session,
+                                        const char *blob, size_t blob_len,
+                                        const char *passphrase)
+{
+    ssh2_rsa_ctx *ctx = init_crypto_ctx(NULL);
+    unsigned char *data = NULL;
+    size_t datalen = 0;
+    int ret;
+
+    if(!ctx)
+        return -1;
+
+    /* Try with "ENCRYPTED PRIVATE KEY" PEM armor.
+       --> PKCS#8 EncryptedPrivateKeyInfo */
+    ret = ssh2_pem_parse(session, beginencprivkeyhdr, endencprivkeyhdr,
+                         NULL, blob, blob_len,
+                         passphrase,
+                         &data, &datalen, NULL);
+
+    /* Try with "PRIVATE KEY" PEM armor.
+       --> PKCS#8 PrivateKeyInfo or EncryptedPrivateKeyInfo */
+    if(ret)
+        ret = ssh2_pem_parse(session, beginprivkeyhdr, endprivkeyhdr,
+                             NULL, blob, blob_len,
+                             passphrase,
+                             &data, &datalen, NULL);
+
+    if(!ret) {
+        /* Process PKCS#8. */
+        ret = rsapkcs8privkey(session,
+                              data, datalen, passphrase, (void *)&ctx);
+    }
+    else {
+        /* Try with "RSA PRIVATE KEY" PEM armor.
+           --> PKCS#1 RSAPrivateKey */
+        ret = ssh2_pem_parse(session, beginrsaprivkeyhdr, endrsaprivkeyhdr,
+                             NULL, blob, blob_len,
+                             passphrase,
+                             &data, &datalen, NULL);
+        if(!ret)
+            ret = rsapkcs1privkey(session,
+                                  data, datalen, passphrase, (void *)&ctx);
+    }
+
+    if(ret) {
+        /* Try as PKCS#8 DER data.
+           --> PKCS#8 PrivateKeyInfo or EncryptedPrivateKeyInfo */
+        ret = rsapkcs8privkey(session, blob, blob_len,
+                              passphrase, (void *)&ctx);
+
+        /* Try as PKCS#1 DER data.
+           --> PKCS#1 RSAPrivateKey */
+        if(ret)
+            ret = rsapkcs1privkey(session, blob, blob_len,
+                                  passphrase, (void *)&ctx);
+    }
+
+    if(data)
+        SSH2_FREE(session, data);
+
+    if(ret) {
+        ssh2_os400qc3_crypto_dtor(ctx);
+        ctx = NULL;
+    }
+
+    *rsa = ctx;
+    return ret;
+}
+
+/* TODO: merge the two callees into one. */
+int ssh2_rsa_new_priv(ssh2_rsa_ctx **rsa,
+                      LIBSSH2_SESSION *session,
+                      const char *filename,
+                      const char *blob, size_t blob_len,
+                      const char *passphrase)
+{
+    if(filename)
+        return os400_rsa_new_priv_from_file(rsa, session,
+                                            filename, passphrase);
+    else
+        return os400_rsa_new_priv_from_blob(rsa, session,
+                                            blob, blob_len, passphrase);
+}
+
+#if LIBSSH2_RSA
+int ssh2_rsa_sha2_verify(ssh2_rsa_ctx *rsa, LIBSSH2_SESSION *session,
+                         size_t hash_len,
+                         const unsigned char *sig, size_t sig_len,
+                         const unsigned char *m, size_t m_len)
+{
+    Qus_EC_t errcode;
+    Qc3_Format_ALGD0400_T algd;
+    int slen = (int)sig_len;
+    int mlen = (int)m_len;
+
+    (void)session;
+
+    memset(&algd, 0, sizeof(algd));
+    algd.Public_Key_Alg = Qc3_RSA;
+    algd.PKA_Block_Format = Qc3_PKCS1_01;
+    switch(hash_len) {
+#if LIBSSH2_RSA_SHA1
+    case SSH2_SHA1_DIG_LEN:
+        algd.Signing_Hash_Alg = Qc3_SHA1;
+        break;
+#endif
+    case SSH2_SHA256_DIG_LEN:
+        algd.Signing_Hash_Alg = Qc3_SHA256;
+        break;
+    case SSH2_SHA512_DIG_LEN:
+        algd.Signing_Hash_Alg = Qc3_SHA512;
+        break;
+    default:
+        return -1;
+    }
+
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3VerifySignature((char *)sig, &slen, (char *)m, &mlen, Qc3_Data,
+                       (char *)&algd, Qc3_Alg_Public_Key,
+                       (char *)&rsa->key, Qc3_Key_Token, anycsp,
+                       NULL, (char *)&errcode);
+    return errcode.Bytes_Available ? -1 : 0;
+}
+#endif
+#if LIBSSH2_RSA_SHA1
+int ssh2_rsa_sha1_verify(ssh2_rsa_ctx *rsa, LIBSSH2_SESSION *session,
+                         const unsigned char *sig, size_t sig_len,
+                         const unsigned char *m, size_t m_len)
+{
+    return ssh2_rsa_sha2_verify(rsa, session, SSH2_SHA1_DIG_LEN,
+                                sig, sig_len, m, m_len);
+}
+#endif
+
+int ssh2_os400qc3_rsa_signv(ssh2_rsa_ctx *rsa, LIBSSH2_SESSION *session,
+                            int algo,
+                            unsigned char **signature, size_t *signature_len,
+                            int veccount, const struct iovec vector[])
+{
+    Qus_EC_t errcode;
+    Qc3_Format_ALGD0400_T algd;
+    int siglen;
+    unsigned char *sig;
+    char sigbuf[8192];
+    int sigbufsize = sizeof(sigbuf);
+
+    algd.Public_Key_Alg = Qc3_RSA;
+    algd.PKA_Block_Format = Qc3_PKCS1_01;
+    memset(algd.Reserved, 0, sizeof(algd.Reserved));
+    algd.Signing_Hash_Alg = algo;
+    set_EC_length(errcode, sizeof(errcode));
+    Qc3CalculateSignature((char *)vector, &veccount, Qc3_Array,
+                          (char *)&algd, Qc3_Alg_Public_Key,
+                          (char *)&rsa->key, Qc3_Key_Token,
+                          anycsp, NULL, sigbuf, &sigbufsize, &siglen,
+                          (char *)&errcode);
+    if(errcode.Bytes_Available)
+        return -1;
+    sig = SSH2_ALLOC(session, siglen);
+    if(!sig)
+        return -1;
+    memcpy((char *)sig, sigbuf, siglen);
+    *signature = sig;
+    *signature_len = siglen;
+    return 0;
+}
+#endif /* LIBSSH2_RSA */
+
+#endif /* LIBSSH2_OS400QC3 */
+
+/* vim: set expandtab ts=4 sw=4: */
