@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 
 $branch = $env:ALPACA_BRANCH
 if ($branch -notmatch '^alpaca/([0-9]+)$') { throw "Bad ALPACA_BRANCH: $branch" }
-$addinsBranch = "addins-alpaca-$($Matches[1])" }
+$addinsBranch = "addins-alpaca-$($Matches[1])"
 
 & git fetch origin main
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
