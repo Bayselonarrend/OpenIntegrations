@@ -27,7 +27,7 @@ description: >-
 
 | Режим | Что записать |
 | --- | --- |
-| правка кода | реализация, без модулей `OPIt_*` и `OPI_ПолучениеДанныхТестов`, и `ci/alpaca/out/commit-msg.txt` |
+| правка кода | реализация, без модулей `OPIt_*` и `OPI_ПолучениеДанныхТестов`, и `ci/alpaca/out/commit-msg.txt`. Если указание — вопрос и код менять не нужно, только `ci/alpaca/out/answer.md` |
 | тесты публичного API | только тесты по правилам `AGENTS.md`, реализацию не менять |
 | перевод словаря | только пустые значения в `service/dictionaries/en.json`, по `.agents/skills/dictionaries/SKILL.md` |
 | падение сборки | только `ci/alpaca/out/comment.md` |

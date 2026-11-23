@@ -37,7 +37,26 @@ def alpacaGh(String script) {
     }
 }
 
+def alpacaPostedAnswer() {
+    def answerFile = 'ci/alpaca/out/answer.md'
+    if (!fileExists(answerFile)) {
+        return false
+    }
+    def text = readFile(answerFile).replace('\uFEFF', '').trim()
+    if (!text) {
+        return false
+    }
+    def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}${text}\n"
+    alpacaPost()
+    currentBuild.description = 'answered'
+    return true
+}
+
 def alpacaNoChanges() {
+    if (alpacaPostedAnswer()) {
+        return
+    }
     def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
     writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Агент не менял код. Сборка, тесты и публикация не запускались. Новый цикл не запущен.\n"
     alpacaPost()
@@ -226,6 +245,7 @@ pipeline {
             when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
+                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md"'
                     def edited = alpacaCursor('edit')
                     if (edited != 0) {
                         def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
@@ -241,6 +261,7 @@ pipeline {
                     if (pending != 0) {
                         error "git status failed: ${pending}"
                     }
+                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md"'
                     def tested = alpacaCursor('write-tests')
                     if (tested != 0) {
                         def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
