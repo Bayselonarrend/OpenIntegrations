@@ -4,6 +4,10 @@
 // Agent label: windows. The windows agent needs gh and the Cursor CLI (agent or cursor-agent).
 // gh calls use GH_TOKEN from the gitalpaca credential, so comments are authored by VitalyTheAlpaca.
 
+def alpacaClearSkip() {
+    bat '''powershell -NoProfile -Command "if (Test-Path .git) { git ls-files -v | ForEach-Object { if ($_ -like 'S *') { git update-index --no-skip-worktree -- $_.Substring(2) } } }; exit 0"'''
+}
+
 def alpacaLog(String jobName, int number, int count) {
     def out = 'ci/alpaca/out/downstream-log.txt'
     def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\read-log.ps1 -Job \"${jobName}\" -Number ${number} -Lines ${count} -OutFile ${out}", returnStatus: true)
@@ -162,6 +166,7 @@ pipeline {
     agent { label 'windows' }
 
     options {
+        skipDefaultCheckout()
         disableConcurrentBuilds()
         timeout(time: 240, unit: 'MINUTES')
         timestamps()
@@ -178,6 +183,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
+                    alpacaClearSkip()
+                    checkout scm
                     def issue = (params.ISSUE ?: '').trim()
                     def reason = (params.REASON ?: 'new').trim()
                     if (!(issue ==~ /[0-9]+/)) {
@@ -508,6 +515,13 @@ pipeline {
                     currentBuild.description = anyFailed ? 'tests not related' : 'tests passed'
                     alpacaPost()
                 }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                alpacaClearSkip()
             }
         }
     }
