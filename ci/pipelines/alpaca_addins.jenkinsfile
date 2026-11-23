@@ -1,0 +1,28 @@
+// Job name: AlpacaAddins
+// Pipeline from SCM, branch */main, credentials gitalpaca.
+// Script path: ci/pipelines/alpaca_addins.jenkinsfile
+// Agent label: windows. Create the job once. The daily cron is registered when this file is on main and the job has run.
+
+pipeline {
+    agent { label 'windows' }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+    }
+
+    triggers {
+        cron('H H * * *')
+    }
+
+    stages {
+        stage('Prune add-in branches') {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
+                    bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\gc-addins.ps1'
+                }
+            }
+        }
+    }
+}

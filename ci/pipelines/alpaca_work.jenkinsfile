@@ -47,8 +47,22 @@ def alpacaPost() {
     }
 }
 
+def alpacaReasonText(String reason) {
+    if (reason == 'comments') {
+        return 'Вижу комментарий, начинаю обработку.'
+    }
+    if (reason == 'build') {
+        return 'Начинаю сборку.'
+    }
+    if (reason == 'tests') {
+        return 'Начинаю прогон тестов.'
+    }
+    return 'Начинаю обработку нового issue.'
+}
+
 def alpacaMarkStarted() {
-    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n<!-- alpaca-start -->\n\nЦикл ${env.ALPACA_CYCLE} (${env.ALPACA_REASON}) начат.\n"
+    def text = alpacaReasonText((env.ALPACA_REASON ?: 'new').toString())
+    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n<!-- alpaca-start -->\n\n${text}\n"
     def pr = readFile('ci/alpaca/out/pr.txt').trim()
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
     def posted = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
@@ -62,7 +76,7 @@ def alpacaRetrigger(String reason) {
     def cycle = Integer.valueOf(env.ALPACA_CYCLE ?: '1')
     def maxCycle = Integer.valueOf(env.ALPACA_MAX ?: '8')
     if (!fileExists('ci/alpaca/out/comment.md')) {
-        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\n${reason}\n"
+        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\n${alpacaReasonText(reason)}\n"
     }
     if (cycle >= maxCycle) {
         def existing = readFile('ci/alpaca/out/comment.md')
@@ -243,7 +257,7 @@ pipeline {
                 script {
                     def published = 1
                     withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                        published = bat(script: 'call src\\addins\\publish-addins.bat', returnStatus: true)
+                        published = bat(script: "call src\\addins\\publish-addins.bat addins/${env.ALPACA_BRANCH}", returnStatus: true)
                     }
                     if (published != 0) {
                         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПубликация компонент не прошла. Новый цикл не запущен.\n"
@@ -262,6 +276,7 @@ pipeline {
                     try {
                         downstream = build job: 'BigFloppa', wait: true, propagate: false, parameters: [
                             [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH],
+                            [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: "addins/${env.ALPACA_BRANCH}"],
                             [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: false],
                             [$class: 'BooleanParameterValue', name: 'SKIP_DB_UPDATE', value: true]
                         ]
@@ -338,7 +353,8 @@ pipeline {
                         }
                         try {
                             def testRun = build job: jobName, wait: true, propagate: false, parameters: [
-                                [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH]
+                                [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH],
+                                [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: "addins/${env.ALPACA_BRANCH}"]
                             ]
                             def result = testRun.result ?: 'UNKNOWN'
                             def chunk = "${jobName} ${result} ${testRun.absoluteUrl}\n"

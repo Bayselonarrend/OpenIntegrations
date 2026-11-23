@@ -2,12 +2,21 @@ def branchParameter() {
 	return [$class: 'StringParameterValue', name: 'BRANCH', value: (params.BRANCH ?: 'main')]
 }
 
+def addinsParameter() {
+	def ref = (params.ADDINS_BRANCH ?: 'addins').toString().trim()
+	if (!ref) {
+		ref = 'addins'
+	}
+	return [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: ref]
+}
+
 pipeline {
 	agent {
 		label 'windows'
 	}
 	parameters {
 		string(name: 'BRANCH', defaultValue: 'main', description: 'Git branch to checkout. The job loads this Jenkinsfile from main, then checks out BRANCH.')
+		string(name: 'ADDINS_BRANCH', defaultValue: 'addins', description: 'Branch of published add-in binaries. Default addins is the set built from main.')
 		booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
 		booleanParam(name: 'SKIP_DB_UPDATE', defaultValue: false, description: 'Skip OpiBuild/OpiBaseUpdate. Alpaca passes true.')
 	}
@@ -35,20 +44,20 @@ pipeline {
 
         stage('Sync add-ins') {
             steps {
-                bat 'call src\\addins\\sync-addins.bat'
+                bat 'git fetch origin main --depth=1 && git show origin/main:src/addins/sync-addins.bat > "%TEMP%\\opi-sync-addins.bat" && call "%TEMP%\\opi-sync-addins.bat"'
             }
         }
 
         stage('OpenIntegrations - Build') {
             steps {
                 build job: 'OpiBuild/OpiMain', wait: true,
-                    parameters: [branchParameter()]
+                    parameters: [branchParameter(), addinsParameter()]
             }
         }
         stage('OpenIntegrations - CLI check') {
             steps {
                 build job: 'OpiBuild/OpiCliCheck', wait: false,
-                    parameters: [branchParameter()]
+                    parameters: [branchParameter(), addinsParameter()]
             }
         }
         stage('OpenIntegrations - 1C DB Update') {
@@ -57,7 +66,7 @@ pipeline {
             }
             steps {
                 build job: 'OpiBuild/OpiBaseUpdate', wait: true,
-                    parameters: [branchParameter()]
+                    parameters: [branchParameter(), addinsParameter()]
             }
         }
         stage('OpenIntegrations - Release') {
@@ -66,6 +75,7 @@ pipeline {
                 build job: 'OpiBuild/OpiRelease', wait: true,
                     parameters: [
                         branchParameter(),
+                        addinsParameter(),
                         [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: params.UPLOAD_ARTIFACTS]
                     ]
             }
@@ -74,9 +84,9 @@ pipeline {
         stage('Docs - Test update') {
             steps {
                 build job: 'OpiDocs/OpiDocsTestRu', wait: true,
-                    parameters: [branchParameter()]
+                    parameters: [branchParameter(), addinsParameter()]
                 build job: 'OpiDocs/OpiDocsTestEn', wait: true,
-                    parameters: [branchParameter()]
+                    parameters: [branchParameter(), addinsParameter()]
             }
         }
     }

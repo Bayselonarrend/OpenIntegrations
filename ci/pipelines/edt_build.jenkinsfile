@@ -2,6 +2,7 @@ pipeline {
     agent { label 'windows' }
     parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Git branch to checkout. The job loads this Jenkinsfile from main, then checks out BRANCH.')
+        string(name: 'ADDINS_BRANCH', defaultValue: 'addins', description: 'Branch of published add-in binaries. Default addins is the set built from main.')
     }
     stages {
         stage('Checkout branch') {
@@ -26,7 +27,7 @@ pipeline {
 
         stage('Sync add-ins') {
             steps {
-                bat 'call src\\addins\\sync-addins.bat'
+                bat 'git fetch origin main --depth=1 && git show origin/main:src/addins/sync-addins.bat > "%TEMP%\\opi-sync-addins.bat" && call "%TEMP%\\opi-sync-addins.bat"'
             }
         }
 

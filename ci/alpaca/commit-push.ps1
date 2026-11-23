@@ -44,19 +44,22 @@ if ($LASTEXITCODE -eq 0) {
 }
 if ($LASTEXITCODE -gt 1) { exit $LASTEXITCODE }
 
-$title = ''
-$titleRaw = & gh issue view $issue --repo $script:Repo --json title --jq .title
-if ($LASTEXITCODE -eq 0 -and $titleRaw) {
-    $title = ($titleRaw -replace '[\r\n]+', ' ').Trim()
-}
-if (-not $title) { $title = "Issue $issue" }
-$stat = (& git diff --cached --stat | Out-String).Trim()
-$statLines = @($stat -split "`r?`n")
-if ($statLines.Length -gt 40) {
-    $stat = (($statLines | Select-Object -First 40) -join "`n") + "`n..."
-}
 $msgFile = Join-Path $outDir 'commit-msg.txt'
-Write-Utf8File $msgFile "#${issue}: $title`r`n`r`n$stat`r`n"
+$msg = ''
+if (Test-Path $msgFile) {
+    $msg = (Read-Utf8File $msgFile).Trim()
+    if ($msg.Length -gt 4000) { $msg = $msg.Substring(0, 4000).Trim() }
+}
+if (-not $msg) {
+    $title = ''
+    $titleRaw = & gh issue view $issue --repo $script:Repo --json title --jq .title
+    if ($LASTEXITCODE -eq 0 -and $titleRaw) {
+        $title = ($titleRaw -replace '[\r\n]+', ' ').Trim()
+    }
+    if (-not $title) { $title = "Issue $issue" }
+    $msg = $title
+}
+Write-Utf8File $msgFile ($msg.TrimEnd() + "`r`n")
 $env:GIT_AUTHOR_NAME = 'Vitaly the Alpaca (bot)'
 $env:GIT_AUTHOR_EMAIL = 'vitaly.the.alpaca@gmail.com'
 $env:GIT_COMMITTER_NAME = 'Vitaly the Alpaca (bot)'
