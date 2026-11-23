@@ -245,7 +245,7 @@ pipeline {
             when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
-                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md"'
+                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md; exit 0"'
                     def edited = alpacaCursor('edit')
                     if (edited != 0) {
                         def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
@@ -261,7 +261,7 @@ pipeline {
                     if (pending != 0) {
                         error "git status failed: ${pending}"
                     }
-                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md"'
+                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md; exit 0"'
                     def tested = alpacaCursor('write-tests')
                     if (tested != 0) {
                         def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
