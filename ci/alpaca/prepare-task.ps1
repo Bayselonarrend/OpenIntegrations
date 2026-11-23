@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('edit', 'write-tests', 'explain-build', 'pick-tests', 'judge-tests')]
+    [ValidateSet('edit', 'write-tests', 'translate-dict', 'explain-build', 'pick-tests', 'judge-tests')]
     [string]$Mode
 )
 
@@ -92,6 +92,26 @@ if ($prObj) {
 [void]$sb.AppendLine('## Diff against origin/main')
 [void]$sb.AppendLine((Limit-Text ($stat | Out-String) 150))
 [void]$sb.AppendLine((Limit-Text ($names | Out-String) 200))
+
+if ($Mode -eq 'translate-dict') {
+    $dictPath = Join-Path (Get-Location) 'service\dictionaries\en.json'
+    $dict = Get-Content -Raw -Encoding UTF8 $dictPath | ConvertFrom-Json
+    $empty = New-Object System.Collections.Generic.List[string]
+    foreach ($prop in $dict.PSObject.Properties) {
+        if ([string]::IsNullOrWhiteSpace([string]$prop.Value)) {
+            $empty.Add([string]$prop.Name)
+        }
+    }
+    [void]$sb.AppendLine('')
+    [void]$sb.AppendLine('## Empty dictionary keys')
+    if ($empty.Count -eq 0) {
+        [void]$sb.AppendLine('(none)')
+    } else {
+        $shown = $empty | Select-Object -First 400
+        foreach ($key in $shown) { [void]$sb.AppendLine($key) }
+        if ($empty.Count -gt 400) { [void]$sb.AppendLine('...') }
+    }
+}
 
 if ($Mode -eq 'write-tests') {
     $pendingStatus = & git status --porcelain

@@ -4,19 +4,28 @@
 // Agent label: windows. The windows agent needs gh and the Cursor CLI (agent or cursor-agent).
 // gh calls use GH_TOKEN from the gitalpaca credential, so comments are authored by VitalyTheAlpaca.
 
-@NonCPS
-def alpacaLog(run, int count) {
-    try {
-        return run.getRawBuild().getLog(count).join('\n')
-    } catch (Throwable err) {
-        return "log unavailable: ${err}"
+def alpacaLog(String jobName, int number, int count) {
+    def out = 'ci/alpaca/out/downstream-log.txt'
+    def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\read-log.ps1 -Job \"${jobName}\" -Number ${number} -Lines ${count} -OutFile ${out}", returnStatus: true)
+    if (status != 0 || !fileExists(out)) {
+        return "log unavailable: ${jobName} #${number} (${status})"
     }
+    return readFile(out)
 }
 
 def alpacaGhStatus(String script) {
     def status = 1
-    withCredentials([usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
-        status = bat(script: script, returnStatus: true)
+    for (int attempt = 1; attempt <= 4; attempt++) {
+        withCredentials([usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+            status = bat(script: script, returnStatus: true)
+        }
+        if (status == 0) {
+            return 0
+        }
+        echo "gh attempt ${attempt} failed with ${status}"
+        if (attempt < 4) {
+            sleep(time: 15 * attempt, unit: 'SECONDS')
+        }
     }
     return status
 }
@@ -43,7 +52,7 @@ def alpacaPost() {
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
     def status = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
     if (status != 0) {
-        echo "Comment failed with ${status}"
+        error "Comment failed with ${status}"
     }
 }
 
@@ -52,10 +61,10 @@ def alpacaReasonText(String reason) {
         return 'Вижу комментарий, начинаю обработку.'
     }
     if (reason == 'build') {
-        return 'Начинаю сборку.'
+        return 'Сборка не прошла, возвращаюсь к коду.'
     }
     if (reason == 'tests') {
-        return 'Начинаю прогон тестов.'
+        return 'Тесты не прошли, возвращаюсь к коду.'
     }
     return 'Начинаю обработку нового issue.'
 }
@@ -70,6 +79,12 @@ def alpacaMarkStarted() {
         error "Could not post the cycle marker: ${posted}"
     }
     writeFile file: 'ci/alpaca/out/started.txt', text: '1'
+}
+
+def alpacaSay(String text) {
+    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\n${text}\n"
+    alpacaPost()
+    bat 'del /f /q ci\\alpaca\\out\\comment.md'
 }
 
 def alpacaRetrigger(String reason) {
@@ -97,7 +112,7 @@ def alpacaRetrigger(String reason) {
 }
 
 def alpacaCursor(String mode) {
-    def keepTree = (mode == 'edit' || mode == 'write-tests')
+    def keepTree = (mode == 'edit' || mode == 'write-tests' || mode == 'translate-dict')
     if (!keepTree) {
         bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\clear-outputs.ps1'
     }
@@ -226,6 +241,26 @@ pipeline {
                     if (pendingAfter != 0) {
                         error "git status failed: ${pendingAfter}"
                     }
+                    def dict = bat(script: 'oscript ./ci/os/internal/Classes/DictionariesMethods.os', returnStatus: true)
+                    if (dict == 111) {
+                        def translated = alpacaCursor('translate-dict')
+                        if (translated != 0) {
+                            def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Перевод новых слов словаря завершился с кодом ${translated}. Коммит не сделан. Новый цикл не запущен.\n"
+                            alpacaPost()
+                            error "Dictionary translation failed: ${translated}"
+                        }
+                        dict = bat(script: 'oscript ./ci/os/internal/Classes/DictionariesMethods.os', returnStatus: true)
+                    }
+                    if (dict == 111) {
+                        def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}В словаре остались пустые переводы. Коммит не сделан. Новый цикл не запущен.\n"
+                        alpacaPost()
+                        error 'Dictionary still has empty translations'
+                    }
+                    if (dict != 0) {
+                        error "Dictionary update failed: ${dict}"
+                    }
                     def committed = 1
                     withCredentials([
                         gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default'),
@@ -272,6 +307,7 @@ pipeline {
             when { expression { return env.ALPACA_COMMITTED == 'true' } }
             steps {
                 script {
+                    alpacaSay('Начинаю сборку.')
                     def downstream
                     try {
                         downstream = build job: 'BigFloppa', wait: true, propagate: false, parameters: [
@@ -292,7 +328,7 @@ pipeline {
                         env.ALPACA_BUILD_OK = 'true'
                         return
                     }
-                    writeFile file: 'ci/alpaca/out/build-log.txt', text: alpacaLog(downstream, 500)
+                    writeFile file: 'ci/alpaca/out/build-log.txt', text: alpacaLog('BigFloppa', downstream.number as int, 500)
                     try {
                         alpacaCursor('explain-build')
                     } catch (err) {
@@ -339,6 +375,20 @@ pipeline {
                         currentBuild.description = 'tests not required'
                         return
                     }
+                    def expanded = []
+                    for (int i = 0; i < jobs.size(); i++) {
+                        def jobName = jobs[i]
+                        if (expanded.contains(jobName)) {
+                            continue
+                        }
+                        expanded << jobName
+                        def enJob = jobName.replaceAll(/OpiOsWinRu$/, 'OpiOsWinEn')
+                        if (enJob != jobName && !expanded.contains(enJob)) {
+                            expanded << enJob
+                        }
+                    }
+                    jobs = expanded
+                    alpacaSay('Начинаю прогон тестов, RU и EN.')
                     def summaryFile = 'ci/alpaca/out/tests-summary.md'
                     writeFile file: summaryFile, text: ''
                     def anyFailed = false
@@ -360,7 +410,7 @@ pipeline {
                             def chunk = "${jobName} ${result} ${testRun.absoluteUrl}\n"
                             if (result != 'SUCCESS') {
                                 anyFailed = true
-                                chunk += alpacaLog(testRun, 2500) + "\n"
+                                chunk += alpacaLog(jobName, testRun.number as int, 2500) + "\n"
                             }
                             def current = readFile(summaryFile) + chunk
                             if (current.length() > 150000) {
@@ -387,19 +437,24 @@ pipeline {
                         echo "Test judge failed: ${err}"
                         judged = 1
                     }
-                    def verdict = 'stop'
+                    def rawVerdict = ''
                     if (fileExists('ci/alpaca/out/verdict.txt')) {
                         def line = readFile('ci/alpaca/out/verdict.txt').replace('\uFEFF', '').split(/\r?\n/).find { it.trim() }
                         if (line) {
-                            verdict = line.trim().toLowerCase()
+                            rawVerdict = line.trim().toLowerCase()
                         }
                     }
-                    if (verdict != 'retrigger') {
-                        verdict = 'stop'
-                    }
+                    def verdict = rawVerdict == 'retrigger' ? 'retrigger' : 'stop'
                     def askedRetrigger = verdict == 'retrigger'
                     if (!anyFailed) {
                         verdict = 'stop'
+                    } else if (rawVerdict != 'retrigger' && rawVerdict != 'stop') {
+                        verdict = 'retrigger'
+                        def summary = readFile(summaryFile)
+                        if (summary.length() > 12000) {
+                            summary = summary.substring(summary.length() - 12000)
+                        }
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nВыбранные тесты упали, разбор не завершился. Запускаю следующий цикл.\n\n${summary}\n"
                     }
                     if (!fileExists('ci/alpaca/out/comment.md')) {
                         def fallback = anyFailed
@@ -414,8 +469,8 @@ pipeline {
                         alpacaRetrigger('tests')
                         return
                     }
-                    alpacaPost()
                     currentBuild.description = anyFailed ? 'tests not related' : 'tests passed'
+                    alpacaPost()
                 }
             }
         }

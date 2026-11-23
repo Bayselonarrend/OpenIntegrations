@@ -29,10 +29,11 @@ description: >-
 | --- | --- |
 | правка кода | реализация, без модулей `OPIt_*` и `OPI_ПолучениеДанныхТестов`, и `ci/alpaca/out/commit-msg.txt` |
 | тесты публичного API | только тесты по правилам `AGENTS.md`, реализацию не менять |
+| перевод словаря | только пустые значения в `service/dictionaries/en.json`, по `.agents/skills/dictionaries/SKILL.md` |
 | падение сборки | только `ci/alpaca/out/comment.md` |
 | выбор тестов | только `ci/alpaca/out/test-job.txt` |
 | разбор тестов | `ci/alpaca/out/verdict.txt` (`retrigger` или `stop`) и `ci/alpaca/out/comment.md` |
 
-`retrigger` — только когда упавший тест напрямую проверяет метод, изменённый в ветке. Успех, чужой набор и падение не из этого кода — `stop`.
+`retrigger` — только когда упавший тест напрямую проверяет метод, изменённый в ветке. Если RU прошёл, а парный EN упал, причина в новых переводах `service/dictionaries/en.json` или в коде, который этот перевод уже затронул, тоже `retrigger`. Успех, чужой набор и падение не из этого кода — `stop`.
 
 Как выбрать задание тестов: `.agents/skills/jenkins-verify/SKILL.md`. Схема компоненты: `.agents/knowledge/addins.md`.
