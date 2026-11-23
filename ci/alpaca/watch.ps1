@@ -1,4 +1,5 @@
 . (Join-Path $PSScriptRoot 'common.ps1')
+. (Join-Path $PSScriptRoot 'targets.ps1')
 $ErrorActionPreference = 'Stop'
 
 $outDir = Join-Path $PSScriptRoot 'out'
@@ -30,24 +31,8 @@ function Test-Owner([string]$Login) {
     return [string]::Equals($Login, 'bayselonarrend', [StringComparison]::OrdinalIgnoreCase)
 }
 
-function Add-Stamps($bag, $items, $prop) {
-    foreach ($item in @($items)) {
-        if (-not $item -or -not $item.body) { continue }
-        $raw = $item.$prop
-        if (-not $raw) { continue }
-        $stamp = [datetimeoffset]::Parse([string]$raw)
-        $kind = 'human'
-        if ($item.body -like '*<!-- alpaca-start -->*') { $kind = 'start' }
-        elseif ($item.body -like '*<!-- alpaca -->*') { $kind = 'job' }
-        $login = ''
-        if ($item.author -and $item.author.login) { $login = [string]$item.author.login }
-        elseif ($item.user -and $item.user.login) { $login = [string]$item.user.login }
-        $bag.Add([pscustomobject]@{ At = $stamp; Kind = $kind; Login = $login }) | Out-Null
-    }
-}
-
 function Test-OwnerAfter($stamps, $latestStart) {
-    $hit = @($stamps | Where-Object { $_.Kind -eq 'human' -and $_.At -gt $latestStart -and (Test-Owner $_.Login) })
+    $hit = @($stamps | Where-Object { $_.Kind -eq 'human' -and $_.At -gt $latestStart -and (Test-Owner $_.Login) -and -not $_.Eyes })
     return $hit.Count -gt 0
 }
 
@@ -77,10 +62,7 @@ if ($rawPrs -and $rawPrs.Trim() -ne '[]') {
 }
 
 if (-not $prNumber) {
-    $issueOnly = & gh issue view $issue.number --repo $script:Repo --json comments
-    if ($LASTEXITCODE -ne 0) { throw "gh issue view failed with $LASTEXITCODE" }
-    $stamps = New-Object System.Collections.Generic.List[object]
-    Add-Stamps $stamps ($issueOnly | ConvertFrom-Json).comments 'createdAt'
+    $stamps = @(Get-AlpacaStamps -IssueNumber ([int]$issue.number) -PullNumber 0)
     $starts = @($stamps | Where-Object { $_.Kind -eq 'start' })
     if ($starts.Count -eq 0) {
         Write-Utf8File $trigger "issue=$($issue.number)`r`nreason=new`r`n"
@@ -97,18 +79,7 @@ if (-not $prNumber) {
     exit 0
 }
 
-$issueView = & gh issue view $issue.number --repo $script:Repo --json comments
-if ($LASTEXITCODE -ne 0) { throw "gh issue view failed with $LASTEXITCODE" }
-$prView = & gh pr view $prNumber --repo $script:Repo --json comments,reviews
-if ($LASTEXITCODE -ne 0) { throw "gh pr view failed with $LASTEXITCODE" }
-$issueObj = $issueView | ConvertFrom-Json
-$prObj = $prView | ConvertFrom-Json
-
-$stamps = New-Object System.Collections.Generic.List[object]
-Add-Stamps $stamps $issueObj.comments 'createdAt'
-Add-Stamps $stamps $prObj.comments 'createdAt'
-Add-Stamps $stamps $prObj.reviews 'submittedAt'
-Add-Stamps $stamps (Get-PullReviewComments $prNumber) 'created_at'
+$stamps = @(Get-AlpacaStamps -IssueNumber ([int]$issue.number) -PullNumber ([int]$prNumber))
 
 $starts = @($stamps | Where-Object { $_.Kind -eq 'start' })
 if ($starts.Count -eq 0) {

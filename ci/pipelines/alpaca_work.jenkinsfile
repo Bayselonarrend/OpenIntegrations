@@ -57,21 +57,36 @@ def alpacaPost() {
 }
 
 def alpacaReasonText(String reason) {
-    if (reason == 'comments') {
-        return 'Вижу комментарий, начинаю обработку.'
-    }
     if (reason == 'build') {
         return 'Сборка не прошла, возвращаюсь к коду.'
     }
     if (reason == 'tests') {
         return 'Тесты не прошли, возвращаюсь к коду.'
     }
+    if (reason == 'comments') {
+        return ''
+    }
     return 'Начинаю обработку нового issue.'
 }
 
 def alpacaMarkStarted() {
-    def text = alpacaReasonText((env.ALPACA_REASON ?: 'new').toString())
-    writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n<!-- alpaca-start -->\n\n${text}\n"
+    def reason = (env.ALPACA_REASON ?: 'new').toString()
+    if (reason == 'comments') {
+        def reacted = alpacaGhStatus('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\react-eyes.ps1')
+        if (reacted == 0) {
+            writeFile file: 'ci/alpaca/out/started.txt', text: '1'
+            return
+        }
+        if (reacted != 2) {
+            error "Could not react to the comment: ${reacted}"
+        }
+    }
+    def text = alpacaReasonText(reason)
+    def body = "<!-- alpaca -->\n<!-- alpaca-start -->\n"
+    if (text) {
+        body += "\n${text}\n"
+    }
+    writeFile file: 'ci/alpaca/out/comment.md', text: body
     def pr = readFile('ci/alpaca/out/pr.txt').trim()
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
     def posted = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
