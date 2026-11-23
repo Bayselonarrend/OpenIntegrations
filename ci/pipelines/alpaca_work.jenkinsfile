@@ -216,6 +216,7 @@ pipeline {
                     env.ALPACA_CYCLE = cycle.toString()
                     env.ALPACA_MAX = maxCycle.toString()
                     env.ALPACA_BRANCH = "alpaca/${issue}"
+                    env.ALPACA_ADDINS = "addins-alpaca-${issue}"
                     env.ALPACA_COMMITTED = 'false'
                     env.ALPACA_BUILD_OK = 'false'
                     env.ALPACA_SKIP = 'false'
@@ -335,7 +336,7 @@ pipeline {
                 script {
                     def published = 1
                     withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                        published = bat(script: "call src\\addins\\publish-addins.bat addins/${env.ALPACA_BRANCH}", returnStatus: true)
+                        published = bat(script: "call src\\addins\\publish-addins.bat ${env.ALPACA_ADDINS}", returnStatus: true)
                     }
                     if (published != 0) {
                         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПубликация компонент не прошла. Новый цикл не запущен.\n"
@@ -355,7 +356,7 @@ pipeline {
                     try {
                         downstream = build job: 'BigFloppa', wait: true, propagate: false, parameters: [
                             [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH],
-                            [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: "addins/${env.ALPACA_BRANCH}"],
+                            [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: env.ALPACA_ADDINS],
                             [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: false],
                             [$class: 'BooleanParameterValue', name: 'SKIP_DB_UPDATE', value: true]
                         ]
@@ -447,7 +448,7 @@ pipeline {
                         try {
                             def testRun = build job: jobName, wait: true, propagate: false, parameters: [
                                 [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH],
-                                [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: "addins/${env.ALPACA_BRANCH}"]
+                                [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: env.ALPACA_ADDINS]
                             ]
                             def result = testRun.result ?: 'UNKNOWN'
                             def chunk = "${jobName} ${result} ${testRun.absoluteUrl}\n"

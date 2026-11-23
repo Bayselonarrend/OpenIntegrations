@@ -16,7 +16,7 @@ description: >-
 
 `release.bat` кросс-компилирует бинарники и кладёт zip в `src/ru/OInt/addins`, `src/en/OInt/addins` и `Template.addin` в ru/en `CommonTemplates`. `Template.addin` в git не коммитится.
 
-После сборки Jenkins увидит бинарники только когда они попадут в ветку компонент. Для main это `origin/addins`, её и обновляет `src/addins/publish-addins.bat` без аргумента. Аргумент или переменная `ADDINS_BRANCH` публикует в другую ветку: Alpaca использует `addins/alpaca/<номер>`.
+После сборки Jenkins увидит бинарники только когда они попадут в ветку компонент. Для main это `origin/addins`, её и обновляет `src/addins/publish-addins.bat` без аргумента. Аргумент или переменная `ADDINS_BRANCH` публикует в другую ветку: Alpaca использует `addins-alpaca-<номер>`.
 
 ## publish-addins затирает незакоммиченные правки
 

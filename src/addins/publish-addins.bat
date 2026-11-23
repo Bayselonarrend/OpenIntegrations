@@ -8,7 +8,7 @@ if "!ADDINS_REF!"=="" set "ADDINS_REF=addins"
 
 set "OK="
 if /i "!ADDINS_REF!"=="addins" set "OK=1"
-echo !ADDINS_REF!| findstr /r /i "^addins/alpaca/[0-9][0-9]*$" >nul && set "OK=1"
+echo !ADDINS_REF!| findstr /r /i "^addins-alpaca-[0-9][0-9]*$" >nul && set "OK=1"
 if not defined OK (
     echo Invalid add-ins branch: !ADDINS_REF!
     exit /b 1

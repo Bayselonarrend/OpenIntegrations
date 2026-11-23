@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
 ref="${1:-${ADDINS_BRANCH:-addins}}"
-if [[ "$ref" != "addins" && ! "$ref" =~ ^addins/alpaca/[0-9]+$ ]]; then
+if [[ "$ref" != "addins" && ! "$ref" =~ ^addins-alpaca-[0-9]+$ ]]; then
     echo "Invalid add-ins branch: $ref" >&2
     exit 1
 fi

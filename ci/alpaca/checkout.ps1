@@ -2,7 +2,8 @@
 $ErrorActionPreference = 'Stop'
 
 $branch = $env:ALPACA_BRANCH
-if ($branch -notmatch '^alpaca/[0-9]+$') { throw "Bad ALPACA_BRANCH: $branch" }
+if ($branch -notmatch '^alpaca/([0-9]+)$') { throw "Bad ALPACA_BRANCH: $branch" }
+$addinsBranch = "addins-alpaca-$($Matches[1])" }
 
 & git fetch origin main
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
@@ -50,7 +51,7 @@ $outDir = Join-Path $PSScriptRoot 'out'
 if (Test-Path $outDir) { Remove-Item $outDir -Recurse -Force }
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
-$env:ADDINS_BRANCH = "addins/$branch"
+$env:ADDINS_BRANCH = $addinsBranch
 & cmd /c 'call src\addins\sync-addins.bat'
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 Write-Output "Checked out $branch"
