@@ -1,0 +1,184 @@
+#ifndef LIBSSH2_MISC_H
+#define LIBSSH2_MISC_H
+/* Copyright (C) Daniel Stenberg
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#include <errno.h>
+#include <stdarg.h>
+
+#ifdef _WIN32
+FILE *ssh2_fopen(const char *filename, const char *mode);
+#else
+#define ssh2_fopen fopen
+#endif
+
+/* Use local implementation with <VS2015 */
+#if defined(_MSC_VER) && _MSC_VER < 1900
+int ssh2_vsnprintf(char *buf, size_t buf_len, const char *fmt, va_list args)
+    SSH2_PRINTF(3, 0);
+int ssh2_snprintf(char *buf, size_t buf_len, const char *fmt, ...)
+    SSH2_PRINTF(3, 4);
+#else
+#define ssh2_vsnprintf  vsnprintf
+#define ssh2_snprintf   snprintf
+#endif
+
+#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__OpenBSD__) || \
+    defined(__NetBSD__)
+#include <sys/param.h>  /* for __FreeBSD_version, __DragonFly_version, OpenBSD,
+                           __NetBSD_Version__ */
+#endif
+
+#ifndef _LIBSSH2_LOCAL_MEMZERO /* to be removed after a couple of releases */
+#ifdef _WIN32
+#if defined(_MSC_VER) && defined(NTDDI_VERSION) && \
+    (NTDDI_VERSION >= 0x0A000010) /* MS SDK 10.0.26100.0+ */
+#pragma comment(lib, "volatileaccessu.lib")
+#define ssh2_explicit_zero(buf, size)  SecureZeroMemory2(buf, size)
+#else
+#define ssh2_explicit_zero(buf, size)  SecureZeroMemory(buf, size)
+#endif
+#elif defined(HAVE_MEMSET_S)
+#define ssh2_explicit_zero(buf, size)  (void)memset_s(buf, size, 0, size)
+#elif defined(HAVE_MEMSET_EXPLICIT)
+#define ssh2_explicit_zero(buf, size)  (void)memset_explicit(buf, 0, size)
+#elif defined(__CYGWIN__) || \
+    (defined(__NEWLIB__) && !defined(__CLIB2__)) || \
+    (defined(__GLIBC__) && \
+        (__GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 25))) || \
+    (defined(__DragonFly__) && __DragonFly_version >= 500600 /* 5.6+ */) || \
+    (defined(__FreeBSD__) && __FreeBSD_version >= 1100037 /* 11.0+ */) || \
+    (defined(__OpenBSD__) && OpenBSD >= 201405 /* 5.5+ */)
+#define ssh2_explicit_zero(buf, size)  explicit_bzero(buf, size)
+#elif defined(__NetBSD__) && __NetBSD_Version__ >= 702000000 /* 7.2+ */
+#define ssh2_explicit_zero(buf, size)  (void)explicit_memset(buf, 0, size)
+#endif
+#endif /* !_LIBSSH2_LOCAL_MEMZERO */
+
+#ifndef ssh2_explicit_zero
+#define LIBSSH2_MEMZERO
+void ssh2_explicit_zero(void *buf, size_t size);
+#endif
+
+void ssh2_zero_free(LIBSSH2_SESSION *session, void *buf, size_t len);
+
+#if !defined(_WIN32) || defined(__MINGW32__)
+#include <sys/time.h>  /* for timeval, gettimeofday() */
+#endif
+
+struct list_head {
+    struct list_node *last;
+    struct list_node *first;
+};
+
+struct list_node {
+    struct list_node *next;
+    struct list_node *prev;
+    struct list_head *head;
+};
+
+struct string_buf {
+    unsigned char *data;
+    unsigned char *dataptr;
+    size_t len;
+};
+
+int ssh2_err_flags(LIBSSH2_SESSION *session, int errcode,
+                   const char *errmsg, int errflags);
+int ssh2_err(LIBSSH2_SESSION *session, int errcode, const char *errmsg);
+
+#ifdef _WIN32
+/* Convert Win32 WSAGetLastError to errno equivalent */
+int ssh2_wsa2errno(void);
+#define SSH2_ERRNO() ssh2_wsa2errno()
+#else
+#define SSH2_ERRNO() errno
+#endif
+
+void ssh2_list_init(struct list_head *head);
+
+/* add a node last in the list */
+void ssh2_list_add(struct list_head *head, struct list_node *entry);
+
+/* return the "first" node in the list this head points to */
+void *ssh2_list_first(struct list_head *head);
+
+/* return the next node in the list */
+void *ssh2_list_next(struct list_node *node);
+
+/* return the prev node in the list */
+void *ssh2_list_prev(struct list_node *node);
+
+/* remove this node from the list */
+void ssh2_list_remove(struct list_node *entry);
+
+int ssh2_base64_decode(LIBSSH2_SESSION *session, char **data, size_t *datalen,
+                       const char *src, size_t src_len);
+size_t ssh2_base64_encode(LIBSSH2_SESSION *session,
+                          const char *inp, size_t insize, char **outptr);
+
+void ssh2_swap_bytes(unsigned char *buf, size_t len);
+uint32_t ssh2_ntohu32(const unsigned char *buf);
+libssh2_uint64_t ssh2_ntohu64(const unsigned char *buf);
+void ssh2_htonu32(unsigned char *buf, uint32_t value);
+void ssh2_store_u32(unsigned char **buf, uint32_t value);
+void ssh2_store_u64(unsigned char **buf, libssh2_uint64_t value);
+int ssh2_store_str(unsigned char **buf, const void *str, size_t len);
+int ssh2_store_hybrid_str(unsigned char **buf, const void *str_1,
+                          size_t len_1, const void *str_2, size_t len_2);
+int ssh2_store_bignum_bytes(unsigned char **buf,
+                            const unsigned char *bytes, size_t len);
+void *ssh2_calloc(LIBSSH2_SESSION *session, size_t size);
+
+struct string_buf *ssh2_string_buf_new(LIBSSH2_SESSION *session);
+void ssh2_string_buf_free(LIBSSH2_SESSION *session, struct string_buf *buf);
+int ssh2_get_boolean(struct string_buf *buf, unsigned char *out);
+int ssh2_get_byte(struct string_buf *buf, unsigned char *out);
+int ssh2_get_u32(struct string_buf *buf, uint32_t *out);
+int ssh2_get_u64(struct string_buf *buf, libssh2_uint64_t *out);
+int ssh2_match_string(struct string_buf *buf, const char *match);
+int ssh2_get_chars(struct string_buf *buf, char **outbuf, size_t *outlen);
+int ssh2_get_string(struct string_buf *buf, unsigned char **outbuf,
+                    size_t *outlen);
+int ssh2_copy_string(LIBSSH2_SESSION *session, struct string_buf *buf,
+                     unsigned char **outbuf, size_t *outlen);
+int ssh2_get_bignum_bytes(struct string_buf *buf, unsigned char **outbuf,
+                          size_t *outlen);
+int ssh2_check_length(struct string_buf *buf, size_t requested_len);
+int ssh2_eob(struct string_buf *buf);
+
+int ssh2_timingsafe_bcmp(const void *b1, const void *b2, size_t n);
+int ssh2_str_number(const char **linep,
+                    libssh2_int64_t *nump, libssh2_int64_t max,
+                    int base);
+
+#endif /* LIBSSH2_MISC_H */

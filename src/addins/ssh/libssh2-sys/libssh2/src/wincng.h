@@ -1,0 +1,301 @@
+#ifndef LIBSSH2_WINCNG_H
+#define LIBSSH2_WINCNG_H
+/*
+ * Copyright (C) Marc Hoersken <info@marc-hoersken.de>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#define SSH2_CRYPTO_ENGINE libssh2_wincng
+#define SSH2_CRYPTO_ENGINE_NAME "WinCNG"
+
+/* required for cross-compilation against the w64 mingw-runtime package */
+#if defined(_WIN32_WINNT) && _WIN32_WINNT < 0x0600
+#undef _WIN32_WINNT
+#endif
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600
+#endif
+
+#include <windows.h>
+#include <bcrypt.h>
+
+#define LIBSSH2_MD5 1
+
+#define LIBSSH2_HMAC_RIPEMD 0
+#define LIBSSH2_HMAC_SHA256 1
+#define LIBSSH2_HMAC_SHA512 1
+
+#define LIBSSH2_AES_CBC 1
+#define LIBSSH2_AES_CTR 1
+#define LIBSSH2_AES_GCM 0
+#define LIBSSH2_BLOWFISH 0
+#define LIBSSH2_RC4 1
+#define LIBSSH2_CAST 0
+#define LIBSSH2_3DES 1
+
+#define LIBSSH2_RSA 1
+#define LIBSSH2_RSA_SHA1 1
+#define LIBSSH2_RSA_SHA2 1
+#define LIBSSH2_DSA 1
+#define LIBSSH2_ED25519 0
+#define LIBSSH2_MLKEM 0
+
+/*
+ * Conditionally enable ECDSA support.
+ *
+ * ECDSA support requires the use of
+ *
+ *   BCryptDeriveKey(..., BCRYPT_KDF_RAW_SECRET, ... )
+ *
+ * This functionality is only available as of Windows 10. To maintain
+ * backward compatibility, ECDSA support is therefore disabled
+ * by default and needs to be explicitly enabled using a build
+ * flag.
+ */
+#ifdef LIBSSH2_ECDSA_WINCNG
+#define LIBSSH2_ECDSA 1
+#else
+#define LIBSSH2_ECDSA 0
+#endif
+
+#include "crypto_config.h"
+
+/*******************************************************************/
+/*
+ * Windows CNG backend: Global context handles
+ */
+
+struct wcng_ctx {
+    BCRYPT_ALG_HANDLE hAlgRNG;
+    BCRYPT_ALG_HANDLE hAlgHashMD5;
+    BCRYPT_ALG_HANDLE hAlgHashSHA1;
+    BCRYPT_ALG_HANDLE hAlgHashSHA256;
+    BCRYPT_ALG_HANDLE hAlgHashSHA384;
+    BCRYPT_ALG_HANDLE hAlgHashSHA512;
+    BCRYPT_ALG_HANDLE hAlgHmacMD5;
+    BCRYPT_ALG_HANDLE hAlgHmacSHA1;
+    BCRYPT_ALG_HANDLE hAlgHmacSHA256;
+    BCRYPT_ALG_HANDLE hAlgHmacSHA384;
+    BCRYPT_ALG_HANDLE hAlgHmacSHA512;
+    BCRYPT_ALG_HANDLE hAlgRSA;
+#if LIBSSH2_DSA
+    BCRYPT_ALG_HANDLE hAlgDSA;
+#endif
+    BCRYPT_ALG_HANDLE hAlgAES_CBC;
+    BCRYPT_ALG_HANDLE hAlgAES_ECB;
+#if LIBSSH2_RC4
+    BCRYPT_ALG_HANDLE hAlgRC4_NA;
+#endif
+#if LIBSSH2_3DES
+    BCRYPT_ALG_HANDLE hAlg3DES_CBC;
+#endif
+    BCRYPT_ALG_HANDLE hAlgDH;
+#if LIBSSH2_ECDSA
+    BCRYPT_ALG_HANDLE hAlgECDH[3];  /* indexed by ssh2_curve_type */
+    BCRYPT_ALG_HANDLE hAlgECDSA[3]; /* indexed by ssh2_curve_type */
+#endif
+    volatile int hasAlgDHwithKDF; /* -1=no, 0=maybe, 1=yes */
+};
+
+extern struct wcng_ctx ssh2_wcng;
+
+/*******************************************************************/
+/*
+ * Windows CNG backend: Hash structure
+ */
+
+struct wcng_hash_ctx {
+    BCRYPT_HASH_HANDLE hHash;
+    unsigned char *pbHashObject;
+    ULONG dwHashObject;
+    ULONG cbHash;
+};
+
+/*
+ * Windows CNG backend: Hash functions
+ */
+
+#define ssh2_hash_ctx    struct wcng_hash_ctx
+#define ssh2_hash_alg    BCRYPT_ALG_HANDLE
+
+#define SSH2_SHA1_ALG    ssh2_wcng.hAlgHashSHA1
+#define SSH2_SHA256_ALG  ssh2_wcng.hAlgHashSHA256
+#define SSH2_SHA384_ALG  ssh2_wcng.hAlgHashSHA384
+#define SSH2_SHA512_ALG  ssh2_wcng.hAlgHashSHA512
+#if LIBSSH2_MD5 || LIBSSH2_MD5_PEM
+#define SSH2_MD5_ALG     ssh2_wcng.hAlgHashMD5
+#endif
+
+/*
+ * Windows CNG backend: HMAC functions
+ */
+
+#define ssh2_hmac_ctx    struct wcng_hash_ctx
+
+#define SSH2_SHA1_HMAC   ssh2_wcng.hAlgHmacSHA1
+#define SSH2_SHA256_HMAC ssh2_wcng.hAlgHmacSHA256
+#define SSH2_SHA384_HMAC ssh2_wcng.hAlgHmacSHA384
+#define SSH2_SHA512_HMAC ssh2_wcng.hAlgHmacSHA512
+#if LIBSSH2_MD5 || LIBSSH2_MD5_PEM
+#define SSH2_MD5_HMAC    ssh2_wcng.hAlgHmacMD5
+#endif
+
+/*******************************************************************/
+/*
+ * Windows CNG backend: Key Context structure
+ */
+
+struct wcng_key_ctx {
+    BCRYPT_KEY_HANDLE hKey;
+    void *pbKeyObject;
+    DWORD cbKeyObject;
+};
+
+/*
+ * Windows CNG backend: RSA functions
+ */
+
+#define ssh2_rsa_ctx struct wcng_key_ctx
+
+/*
+ * Windows CNG backend: DSA functions
+ */
+
+#if LIBSSH2_DSA
+#define ssh2_dsa_ctx struct wcng_key_ctx
+#endif
+
+/*
+ * Windows CNG backend: ECDSA functions
+ */
+
+#if LIBSSH2_ECDSA
+typedef enum {
+    SSH2_EC_CURVE_NISTP256 = 0,
+    SSH2_EC_CURVE_NISTP384 = 1,
+    SSH2_EC_CURVE_NISTP521 = 2,
+} ssh2_curve_type;
+
+struct wcng_ecdsa_ctx {
+    BCRYPT_KEY_HANDLE handle;
+    ssh2_curve_type curve;
+};
+
+#define ssh2_ecdsa_ctx struct wcng_ecdsa_ctx
+#define ssh2_ec_key    struct wcng_ecdsa_ctx
+#endif
+
+/*******************************************************************/
+/*
+ * Windows CNG backend: Cipher Context structure
+ */
+
+struct wcng_cipher_ctx {
+    BCRYPT_KEY_HANDLE hKey;
+    unsigned char *pbKeyObject;
+    unsigned char *pbIV;
+    unsigned char *pbCtr;
+    ULONG dwKeyObject;
+    ULONG dwIV;
+    ULONG dwBlockLength;
+    ULONG dwCtrLength;
+};
+
+#define ssh2_cipher_ctx struct wcng_cipher_ctx
+
+/*
+ * Windows CNG backend: Cipher Type structure
+ */
+
+struct wcng_cipher_t {
+    BCRYPT_ALG_HANDLE *phAlg;
+    ULONG dwKeyLength;
+    /* TODO: Convert boolean flags to bool when a C89-compatible bool type is
+             defined */
+    int useIV;
+    int ctrMode;
+};
+
+#define SSH2_CIPHER_T(type)   struct wcng_cipher_t type
+
+#define ssh2_cipher_aes256ctr { &ssh2_wcng.hAlgAES_ECB, 32, 0, 1 }
+#define ssh2_cipher_aes192ctr { &ssh2_wcng.hAlgAES_ECB, 24, 0, 1 }
+#define ssh2_cipher_aes128ctr { &ssh2_wcng.hAlgAES_ECB, 16, 0, 1 }
+#define ssh2_cipher_aes256    { &ssh2_wcng.hAlgAES_CBC, 32, 1, 0 }
+#define ssh2_cipher_aes192    { &ssh2_wcng.hAlgAES_CBC, 24, 1, 0 }
+#define ssh2_cipher_aes128    { &ssh2_wcng.hAlgAES_CBC, 16, 1, 0 }
+#if LIBSSH2_RC4
+#define ssh2_cipher_arcfour   { &ssh2_wcng.hAlgRC4_NA, 16, 0, 0 }
+#endif
+#if LIBSSH2_3DES
+#define ssh2_cipher_3des      { &ssh2_wcng.hAlg3DES_CBC, 24, 1, 0 }
+#endif
+#define ssh2_cipher_chacha20  { NULL /* unused */, 24, 1, 0 }
+
+/*******************************************************************/
+/*
+ * Windows CNG backend: BigNumber support
+ */
+
+struct wcng_bn {
+    unsigned char *bignum;
+    size_t length;
+};
+
+#define ssh2_bn                  struct wcng_bn
+#define ssh2_bn_bytes(bn)        ((bn)->length)
+
+/*
+ * Windows CNG backend: Diffie-Hellman support
+ */
+
+struct wcng_dh_ctx {
+    /* holds our private and public key components */
+    BCRYPT_KEY_HANDLE dh_handle;
+    /* records the parsed out modulus and generator
+       parameters that are shared with the peer */
+    BCRYPT_DH_PARAMETER_HEADER *dh_params;
+    /* records the parsed out private key component for
+       fallback if the DH API raw KDF is not supported */
+    struct wcng_bn *dh_privbn;
+};
+
+#define ssh2_dh_ctx              struct wcng_dh_ctx
+
+/* Default generate and safe prime sizes for
+   diffie-hellman-group-exchange-sha1 */
+#define SSH2_DH_GEX_MINGROUP     2048
+#define SSH2_DH_GEX_OPTGROUP     4096
+#define SSH2_DH_GEX_MAXGROUP     4096
+
+#define SSH2_DH_MAX_MODULUS_BITS 16384
+
+#endif /* LIBSSH2_WINCNG_H */

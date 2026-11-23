@@ -37,3 +37,6 @@ features = ["vendored-openssl", "openssl-on-win32"]
 
 [target.'cfg(not(all(windows, target_env = "msvc")))'.dependencies.ssh2]
 version = "0.9.5"
+
+[patch.crates-io]
+libssh2-sys = { path = "libssh2-sys" }

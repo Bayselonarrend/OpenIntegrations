@@ -1,0 +1,85 @@
+#ifndef LIBSSH2_SESSION_H
+#define LIBSSH2_SESSION_H
+/* Copyright (C) Sara Golemon <sarag@libssh2.org>
+ * Copyright (C) Daniel Stenberg
+ * Copyright (C) Simon Josefsson <simon@josefsson.org>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/* Convenience-macros to allow code like this;
+
+   int rc = BLOCK_ADJUST(rc, session, session_startup(session, sock));
+
+   int rc = BLOCK_ADJUST_ERRNO(ptr, session, session_startup(session, sock));
+
+   The point being to make sure that while in non-blocking mode these always
+   return no matter what the return code is, but in blocking mode it blocks
+   if EAGAIN is the reason for the return from the underlying function.
+ */
+#define BLOCK_ADJUST(rc, session, x)                                 \
+    do {                                                             \
+        ssh2_time_t entry_time = ssh2_now();                         \
+        do {                                                         \
+            (rc) = (x);                                              \
+            /* the order of the check below is important to properly \
+               deal with the case when the 'session' is freed */     \
+            if(((rc) != LIBSSH2_ERROR_EAGAIN) || !(session) ||       \
+               !(session)->api_block_mode)                           \
+                break;                                               \
+            (rc) = ssh2_wait_socket(session, entry_time);            \
+        } while(!(rc));                                              \
+    } while(0)
+
+/*
+ * For functions that returns a pointer, we need to check if the API is
+ * non-blocking and return immediately. If the pointer is non-NULL we return
+ * immediately. If the API is blocking and we get a NULL we check the errno
+ * and *only* if that is EAGAIN we loop and wait for socket action.
+ */
+#define BLOCK_ADJUST_ERRNO(ptr, session, x)                                 \
+    do {                                                                    \
+        ssh2_time_t entry_time = ssh2_now();                                \
+        int rc;                                                             \
+        do {                                                                \
+            (ptr) = (x);                                                    \
+            if(!(session) || !(session)->api_block_mode || (ptr) ||         \
+               libssh2_session_last_errno(session) != LIBSSH2_ERROR_EAGAIN) \
+                break;                                                      \
+            (rc) = ssh2_wait_socket(session, entry_time);                   \
+        } while(!(rc));                                                     \
+    } while(0)
+
+int ssh2_wait_socket(LIBSSH2_SESSION *session, ssh2_time_t start_time);
+
+/* this is the lib-internal set blocking function */
+int ssh2_session_set_blocking(LIBSSH2_SESSION *session, int blocking);
+
+#endif /* LIBSSH2_SESSION_H */
