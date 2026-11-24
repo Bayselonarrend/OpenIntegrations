@@ -13,6 +13,68 @@ $outDir = Join-Path $PSScriptRoot 'out'
 $prPath = Join-Path $outDir 'pr.txt'
 $pr = if (Test-Path $prPath) { (Read-Utf8File $prPath).Trim() } else { '' }
 
+function Read-JsonString([string]$Text, [ref]$Index) {
+    $i = $Index.Value
+    if ($Text[$i] -ne '"') { throw "JSON string expected at $i" }
+    $i++
+    $sb = New-Object System.Text.StringBuilder
+    while ($i -lt $Text.Length) {
+        $c = $Text[$i]
+        $i++
+        if ($c -eq '"') {
+            $Index.Value = $i
+            return $sb.ToString()
+        }
+        if ($c -ne '\') {
+            [void]$sb.Append($c)
+            continue
+        }
+        $e = $Text[$i]
+        $i++
+        switch ($e) {
+            'n' { [void]$sb.Append("`n") }
+            'r' { [void]$sb.Append("`r") }
+            't' { [void]$sb.Append("`t") }
+            '"' { [void]$sb.Append('"') }
+            '\' { [void]$sb.Append('\') }
+            '/' { [void]$sb.Append('/') }
+            'u' {
+                [void]$sb.Append([char][Convert]::ToInt32($Text.Substring($i, 4), 16))
+                $i += 4
+            }
+            default { [void]$sb.Append($e) }
+        }
+    }
+    throw 'Unterminated JSON string'
+}
+
+function Read-FlatJsonMap([string]$Text) {
+    $map = New-Object 'System.Collections.Generic.Dictionary[string,string]' ([StringComparer]::Ordinal)
+    $i = 0
+    while ($i -lt $Text.Length -and [char]::IsWhiteSpace($Text[$i])) { $i++ }
+    if ($Text[$i] -ne '{') { throw 'JSON object expected' }
+    $i++
+    while ($true) {
+        while ($i -lt $Text.Length -and [char]::IsWhiteSpace($Text[$i])) { $i++ }
+        if ($Text[$i] -eq '}') { return $map }
+        $index = [ref]$i
+        $key = Read-JsonString $Text $index
+        $i = $index.Value
+        while ($i -lt $Text.Length -and [char]::IsWhiteSpace($Text[$i])) { $i++ }
+        if ($Text[$i] -ne ':') { throw "Colon expected after $key" }
+        $i++
+        while ($i -lt $Text.Length -and [char]::IsWhiteSpace($Text[$i])) { $i++ }
+        $index = [ref]$i
+        $value = Read-JsonString $Text $index
+        $i = $index.Value
+        $map[$key] = $value
+        while ($i -lt $Text.Length -and [char]::IsWhiteSpace($Text[$i])) { $i++ }
+        if ($Text[$i] -eq '}') { return $map }
+        if ($Text[$i] -ne ',') { throw "Comma expected after $key" }
+        $i++
+    }
+}
+
 function Limit-Text([string]$Text, [int]$MaxLines) {
     if (-not $Text) { return '' }
     $lines = @($Text -split "`r?`n")
@@ -95,11 +157,11 @@ if ($prObj) {
 
 if ($Mode -eq 'translate-dict') {
     $dictPath = Join-Path (Get-Location) 'service\dictionaries\en.json'
-    $dict = Get-Content -Raw -Encoding UTF8 $dictPath | ConvertFrom-Json
+    $dict = Read-FlatJsonMap (Read-Utf8File $dictPath)
     $empty = New-Object System.Collections.Generic.List[string]
-    foreach ($prop in $dict.PSObject.Properties) {
-        if ([string]::IsNullOrWhiteSpace([string]$prop.Value)) {
-            $empty.Add([string]$prop.Name)
+    foreach ($key in $dict.Keys) {
+        if ([string]::IsNullOrWhiteSpace($dict[$key])) {
+            $empty.Add($key)
         }
     }
     [void]$sb.AppendLine('')

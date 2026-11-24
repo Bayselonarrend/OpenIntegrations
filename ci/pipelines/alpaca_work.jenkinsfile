@@ -231,6 +231,7 @@ pipeline {
                         withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
                             bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\checkout.ps1'
                         }
+                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\prepare-mcp.ps1'
                     }
                 }
             }

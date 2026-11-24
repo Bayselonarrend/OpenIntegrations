@@ -13,6 +13,7 @@ test.os
 /test_logs
 Поток
 /docs/docusaurus/node_modules
+/docs/mcp-server/node_modules
 full.gif
 fakedata.json
 /build
@@ -57,3 +58,5 @@ src/en/OInt/addins/*.zip
 
 /ignore
 /ci/alpaca/out/
+.agents/mcp/cache/
+.cursor/mcp.json

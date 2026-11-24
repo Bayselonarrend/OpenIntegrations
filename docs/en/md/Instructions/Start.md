@@ -98,7 +98,7 @@ A simple example of using OpenIntegrations is sending a picture to Telegram:
 
 ```
 
-The implementation of OpenIntegrations as a CLI application, repeats the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function matches an option starting with `--` characters, e.g. `--token`. These matches for each specific method can be found in the current documentation, as well as in the 1C/OneScript function comments and the application's built-in help (the method help is displayed when the method is called without parameters, for more details see [Working with CLI app](/docs/Start/CLI-version))
+The implementation of OpenIntegrations as a CLI application, repeats the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function matches an option starting with `--` characters, e.g. `--token`. These matches for each specific method can be found in the current documentation, as well as in the 1C/OneScript function comments and the application's built-in help (the method help is displayed when the method is called without parameters, for more details see [CLI](/docs/Start/CLI-version/cli))
 
 CLI example:
 
@@ -125,6 +125,36 @@ Some features of this documentation that will help you use it more effectively a
 3. **Examples of function results are in JSON format, but in 1C and OS they will be Maps**. If the sample result on the function description page is JSON, in 1C and OneScript it will be a *Map* - i.e. the response will be deserialized. JSON is returned as a string only in the CLI version
 
 4. **Advanced call**. Some methods support extra settings (proxy, timeout, extended HTTP response shape, etc.) that are not part of the normal signature. They are documented on the [Advanced call](/docs/Start/Advanced-call) page and on the second tab of the parameters block on each method page; a “?” link next to the tab title points to that help topic
+
+<hr/>
+
+## Documentation MCP {#docs-mcp}
+
+:::note
+If you wanted the application MCP, which calls library methods, see the [Built-in MCP server](/docs/Start/CLI-version/mcp-server).
+:::
+
+This documentation catalog is available to an agent at `https://en.openintegrations.dev/mcp`. The server only looks up methods and returns their description: parameters, a call example, a sample result, and a link to the page. It does not call Telegram, databases, or any other service.
+
+Cursor connection:
+
+```json
+{
+  "mcpServers": {
+    "openintegrations-docs": {
+      "url": "https://en.openintegrations.dev/mcp"
+    }
+  }
+}
+```
+
+| Tool | Purpose |
+|------------|------------|
+| `list_libraries` | Libraries and the method count of each |
+| `search_methods` | Find a method by name, title, or description |
+| `get_method` | Method card: parameters, example, sample result, and a link to the page |
+
+The Russian documentation serves its own catalog at `https://openintegrations.dev/mcp`.
 
 <hr/>
 

@@ -79,6 +79,27 @@
             "deployModulesSrc": {
                 "description": "Node modules directory",
                 "value": "./docs/docusaurus/node_modules/"
+            },
+            "mcpServerSrc": {
+                "description": "Docs MCP server directory",
+                "value": "./docs/mcp-server/"
+            },
+            "remoteMcpSrc": {
+                "description": "Docs MCP server directory on the hosting",
+                "value": "www/mcp-server"
+            },
+            "testMcpPort": {
+                "description": "Listen port of the docs MCP process restarted by the test documentation job",
+                "value": {
+                    "ru": {
+                        "description": "Russian test documentation",
+                        "value": 8787
+                    },
+                    "en": {
+                        "description": "English test documentation",
+                        "value": 8788
+                    }
+                }
             }
         }
     },

@@ -1,77 +1,73 @@
----
-sidebar_position: 1
----
+# CLI and integration with other systems
 
-# Working with CLI application
+**OInt CLI** is the console application of the Open Integration Package. It runs the same methods as the 1C extension and the OneScript package, and it needs neither the platform nor the interpreter: other programs call it from a terminal, from another process, and from an AI agent.
 
-**OInt CLI** is a command-line application that allows using Open Integration Package methods independently of 1C and OneScript.
+## What the application can do
 
-## First Launch
+- **Command line.** One call, `oint <library> <method>`, runs a method and exits. This is how bat and sh scripts use the application.
+- **STDIO server.** `oint server stdio` reads requests from standard input and writes responses to standard output. Another program keeps the process open and exchanges messages with it, without parsing command-line arguments.
+- **HTTP server.** `oint server http` accepts requests on a chosen port. The response is JSON or, when configured, Janx. POST, GET, and an expected `Authorization` header can be enabled for the request.
+- **MCP.** `oint mcp start` runs a [Model Context Protocol](https://modelcontextprotocol.io/) server over the standard streams. The agent receives the list of libraries and methods, reads parameters, and runs a call. Values from the configuration file replace variable names, so secrets stay out of the agent context.
 
-To start working with the console application, you need to run the `oint` command from the command line/terminal. When installed from Linux packages or Windows installer (after reboot), this can be done from anywhere without additional configuration. If `oint` is installed as an OPM package, calling from anywhere is available provided that the `bin` subdirectory of the OneScript directory is in the `PATH`.
+Calling methods from the command line is described in [CLI](/docs/Start/CLI-version/cli). The agent server is described in [MCP](/docs/Start/CLI-version/mcp-server).
 
-![demo](../img/1.gif)
+## Installation
 
-## Help
+Files for the current version are in the [latest release](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) and on the [download page](/download). The download page already fills in the same commands for the selected language and mirror.
 
-When launching the application without additional options, the initial `oint` page will be displayed in the terminal window, showing basic information about the application as well as a list of all available commands (libraries). To view the list of available methods for a specific library, you need to call the `oint` command again, passing the library name as the second argument - for example, `oint telegram`. Similarly, you can get detailed information about a specific method: for this, you need to call a command of the form `oint <library> <method>` - for example, `oint telegram SendTextMessage`.
+### Windows
 
->**Important:** Library names are case-sensitive and are written in lowercase. Method names are not case-sensitive.
+Run the installer `oint_x.x.x_installer_lang.exe`. It creates the program directory and adds it to `PATH`. After a reboot, `oint` is available from any directory.
 
-![demo](../img/2.gif)
+### Debian and Ubuntu
 
-## Using Methods
-Like most other programs aimed at use in bat/sh scripts, each separate action in Oint CLI is performed by calling a full command string of the following form:
+The package does not pull extra dependencies from the network:
 
-```powershell
-    oint <library> <method> --param1 "Value" --param2 "Value"...
+```bash
+wget <link to oint_x.x.x_all_en.deb>
+sudo apt install -y ./oint_x.x.x_all_en.deb
 ```
 
-Parameters in the call string can be of one of the following types:
+### Fedora, RHEL, and CentOS
 
-  + String - passed as a string in quotes or without them
-  + Number - passed as a string without quotes, consisting of digits and (if necessary) a decimal separator. The decimal separator is `.`
-  + Date - passed as a string in ISO 8601 format
-  + Array - passed as a string in JSON array format. For example, `"['Value1','Value2','Value3']"`
-  + JSON object (structure) - passed as a file path or string in JSON format
+The package offers to install `libicu`, the ICU library the application engine needs to start:
 
-After executing the requested action, the program outputs the result and terminates. By default, output goes to the console, but there is an option to redirect it for writing to a file - both by the standard method `>` and using the application's general parameter `--out`. The difference between these two methods is the encoding of the saved file: when using `>` it will be the shell encoding, while when using `--out` it will be UTF-8 (used internally by OInt). Also, using `--out` is mandatory for methods that return binary data in the response (such as downloading files from cloud storage).
-
-![demo](../img/3.gif)
-
-## Binary data representation
-
-In addition to a file path, the `--out` parameter accepts special values for printing the result to the console as a text representation. Names are lowercase and wrapped with `_` on both sides:
-
-| `--out` value | Description |
-|---------------|-------------|
-| `_hex_` | hexadecimal string (HEX) |
-| `_base64_` | Base64 string |
-| `_utf8_` | UTF-8 text |
-
-Representation mode applies to binary data returned by a method. If a method returns a string, it is first converted to an internal binary form and then printed in the selected format.
-
-```powershell
-oint msgpack SerializeData --value "{'a': 'b'}" --raw true --out _hex_
-oint hashsum --out _utf8_
+```bash
+wget <link to oint-x.x.x-1.noarch_en.rpm>
+sudo rpm -i ./oint-x.x.x-1.noarch_en.rpm
 ```
 
-When a file path is specified (for example, `--out result.bin`), data is written to the file in its original binary form. Special values `_hex_`, `_base64_`, and `_utf8_` are intended for console output only and do not create a file with that name.
+### AppImage
 
+A single Linux executable. Nothing is installed into the system:
 
+```bash
+wget <link to oint-x.x.x_en-x86_64.AppImage>
+chmod +x ./oint-x.x.x_en-x86_64.AppImage
+./oint-x.x.x_en-x86_64.AppImage
+```
 
-## Control Sequences
+### OneScript package
 
-The use of standard control sequences is allowed in passed parameters: `\n`, `\r`, `\v`, and `\f`. They are converted to line feed, carriage return, vertical tab, and form feed characters respectively, in all arguments except:
+The `oint-cli` package is installed with OPM. OneScript `2.0.0` or newer is required, and so is the `oint` library package of the same version: the console application depends on it. The OneScript `bin` directory must be on `PATH`, otherwise `oint` is not found from an arbitrary directory.
 
-+ Array parameters and parameters in JSON format (i.e., starting with `{` or `[`)
-+ File paths, if the file at that path exists
-+ The standard parameter `--out`
+From the package hub, Russian package:
 
-To avoid control sequence conversion where it shouldn't occur, you need to escape them with a second `\` character (for example, `\\n`).
+```bash
+opm install oint-cli
+```
 
-<hr/>
+From a downloaded `oint-cli-x.x.x_lang.ospx` file:
 
-The built-in **MCP server** (Model Context Protocol) that lets AI agents call OInt CLI methods over stdio is described on the [CLI MCP server](./mcp-server) page.
+```bash
+opm install -f "./oint-cli-x.x.x_en.ospx"
+```
 
-All further information you may need for work can be found in other sections of this documentation, as well as in the built-in help of OInt CLI
+What each file contains and how the variants differ is described in [About release variants](/docs/Start/Release-variants).
+
+## Subsections
+
+Each way of working is described on its own page:
+
+- [CLI](/docs/Start/CLI-version/cli) — calling methods from the command line, help, parameters, and the result output
+- [MCP](/docs/Start/CLI-version/mcp-server) — the server for an AI agent, the configuration file, and connecting it in Cursor, Kiro, and Cline

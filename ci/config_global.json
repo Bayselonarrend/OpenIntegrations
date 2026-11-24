@@ -83,6 +83,14 @@
     "description": "NPM executable",
     "value": "C:/Program Files/nodejs/npm.cmd"
    },
+   "docsMcpTestBind": {
+    "description": "Address the test docs MCP listens on. 0.0.0.0 is reachable from other machines, 127.0.0.1 is this machine only",
+    "value": "0.0.0.0"
+   },
+   "docsMcpTestAllowedHosts": {
+    "description": "Host header names accepted by the test docs MCP",
+    "value": "127.0.0.1,localhost,100.74.74.9"
+   },
    "releaseWorkspace": {
     "description": "Artifacts root folder",
     "value": "C:/Users/bayselonarrend/AppData/Local/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease"
@@ -195,6 +203,21 @@
    "textModel": {
     "description": "AI model for text-based operations",
     "value": "claude-sonnet-4.5"
+   },
+   "mcp": {
+    "description": "MCP servers for the Cursor agent",
+    "value": {
+     "serversFile": {
+      "description": "Path to the mcpServers JSON file",
+      "value": "./.agents/mcp/mcp.json"
+     },
+     "downloads": {
+      "description": "URLs downloaded into the workspace before the agent starts",
+      "value": [
+       "https://github.com/alkoleft/mcp-bsl-platform-context/releases/download/v0.3.2/mcp-bsl-context-0.3.2.jar"
+      ]
+     }
+    }
    }
   }
  },

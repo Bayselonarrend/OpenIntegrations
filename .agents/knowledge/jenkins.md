@@ -39,8 +39,8 @@ Jenkinsfile лежат в `ci/pipelines` (`paths.jenkinsSrc` в `ci/config.json`
 |----------|-------------|-----------|
 | `OpiDocs/OpiDocsRu` | `docs_ru.jenkinsfile` | `release ru` |
 | `OpiDocs/OpiDocsEn` | `docs_en.jenkinsfile` | `release en` |
-| `OpiDocs/OpiDocsTestRu` | `docs_test_ru.jenkinsfile` | `test ru` |
-| `OpiDocs/OpiDocsTestEn` | `docs_test_en.jenkinsfile` | `test en` |
+| `OpiDocs/OpiDocsTestRu` | `docs_test_ru.jenkinsfile` | `test ru`. После сборки перезапускает MCP справочника на порту `docs.testMcpPort.ru` |
+| `OpiDocs/OpiDocsTestEn` | `docs_test_en.jenkinsfile` | `test en`. То же для `docs.testMcpPort.en` |
 
 ### Оркестраторы (корень сервера)
 

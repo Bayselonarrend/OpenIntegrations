@@ -46,6 +46,10 @@ OpenIntegrations — библиотека для разных серверов �
 
 **Ручная правка в RU BSL обязательна** для: `OPI_*`, `OPIt_*`, регистрации в `OPI_ПолучениеДанныхТестов`, записи в `lib.json`, метаданных `.mdo`, `releases.json` (см. `.agents/knowledge/addins.md`).
 
+## Конфигурация CI
+
+`ci/config.json` и `ci/config_global.json`: формат узла, порядок чтения и какой файл за что отвечает. Описание: `.agents/knowledge/config.md`. Прочитать, прежде чем искать путь, версию, адрес сервиса или настройку MCP.
+
 ## Jenkins
 
 Каталог заданий, параметры и чтение логов: `.agents/knowledge/jenkins.md`. Прочитать перед запуском или разбором Jenkins.

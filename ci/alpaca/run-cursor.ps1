@@ -61,7 +61,7 @@ $runner = Join-Path $PSScriptRoot 'out\run-agent.cmd'
 if (Test-Path $log) { Remove-Item $log -Force }
 $runnerBody = @"
 @echo off
-call "$exe" --print --force --trust --output-format stream-json --workspace "$workspace" "$prompt" < NUL > "$log" 2>&1
+call "$exe" --print --force --trust --approve-mcps --output-format stream-json --workspace "$workspace" "$prompt" < NUL > "$log" 2>&1
 exit /b %ERRORLEVEL%
 "@
 Write-Utf8File $runner ($runnerBody.Trim() + "`r`n")
