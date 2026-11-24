@@ -192,16 +192,18 @@
 	CommonTools.СообщитьПроцесс("Installing docs MCP dependencies...");
 	CommonTools.ЗапуститьВнешнееПриложение(СтрШаблон("""%1"" install --ignore-scripts", NPM), КаталогСервера.ПолноеИмя);
 
+	// Пути с пробелами передаём через env: аргументы -File ломают кавычки у NodePath.
+	УстановитьПеременнуюСреды("OPI_DOCS_MCP_INDEX", ФайлИндекса.ПолноеИмя);
+	УстановитьПеременнуюСреды("OPI_DOCS_MCP_PORT", XMLСтрока(Порт));
+	УстановитьПеременнуюСреды("OPI_DOCS_MCP_SERVER_DIR", КаталогСервера.ПолноеИмя);
+	УстановитьПеременнуюСреды("OPI_DOCS_MCP_NODE", ПутьNode);
+	УстановитьПеременнуюСреды("OPI_DOCS_MCP_BIND", Строка(Адрес));
+	УстановитьПеременнуюСреды("OPI_DOCS_MCP_ALLOWED_HOSTS", Строка(РазрешенныеХосты));
+
 	CommonTools.СообщитьПроцесс(СтрШаблон("Restarting test docs MCP on port %1...", Порт));
 	CommonTools.ЗапуститьВнешнееПриложение(СтрШаблон(
-		"powershell -NoProfile -ExecutionPolicy Bypass -File ""%1"" -IndexPath ""%2"" -Port %3 -ServerDir ""%4"" -NodePath ""%5"" -Bind ""%6"" -AllowedHosts ""%7"""
-		, Скрипт.ПолноеИмя
-		, ФайлИндекса.ПолноеИмя
-		, Порт
-		, КаталогСервера.ПолноеИмя
-		, ПутьNode
-		, Адрес
-		, РазрешенныеХосты));
+		"powershell -NoProfile -ExecutionPolicy Bypass -File ""%1"""
+		, Скрипт.ПолноеИмя));
 
 КонецПроцедуры
 
