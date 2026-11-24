@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-22T01:09:13",
+ "generatedAt": "2026-11-24T21:05:18",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -47,6 +47,12 @@
    "summary_en": "Methods of working with LDAP",
    "cover": "media/Covers/LDAP.png",
    "changes": [
+    {
+     "lib": "SSH",
+     "icon": "media/SSH.png",
+     "description_ru": "Восстановлена поддержка устаревшего алгоритма хост-ключа `ssh-rsa` для совместимости со старыми SFTP/SSH-серверами #119",
+     "description_en": "Restored support for the legacy `ssh-rsa` host key algorithm for compatibility with older SFTP/SSH servers #119"
+    },
     {
      "lib": "LDAP",
      "icon": "media/LDAP.png",

@@ -90,8 +90,9 @@ EndFunction
 Procedure CheckIBToLastBuildCompliance() Export
 
     BuildSum = OPI_Tools.GetLastBuildHashSum();
+    Branch   = OPI_BuildHash.GetBranch();
 
-    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_hash.txt";
+    URL = StrTemplate("https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/%1/service/last_build_hash.txt", Branch);
 
     LastSum = OPI_HTTPRequests
         .NewRequest()
