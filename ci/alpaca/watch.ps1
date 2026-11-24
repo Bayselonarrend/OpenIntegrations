@@ -9,22 +9,68 @@ if (Test-Path $outDir) {
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 $trigger = Join-Path $outDir 'trigger.properties'
 
-function Test-AlpacaWorkBusy {
-    if (-not $env:BUILD_URL) { return $false }
-    if ($env:BUILD_URL -notmatch '^(https?://[^/]+)') { return $false }
-    $root = $Matches[1]
-    $tree = [uri]::EscapeDataString('inQueue,builds[building]{0,5}')
-    try {
-        $job = Invoke-RestMethod -Uri "$root/job/AlpacaWork/api/json?tree=$tree" -TimeoutSec 120
-    } catch {
-        Write-Host "AlpacaWork status check skipped: $($_.Exception.Message)"
-        return $false
+function Resolve-LongPath([string]$Path) {
+    return (Get-Item -LiteralPath $Path).FullName
+}
+
+function Get-JenkinsHome {
+    $candidate = $null
+    if ($env:JENKINS_HOME -and (Test-Path -LiteralPath $env:JENKINS_HOME)) {
+        $candidate = $env:JENKINS_HOME
+    } elseif ($env:WORKSPACE) {
+        $parent = Split-Path (Split-Path $env:WORKSPACE -Parent) -Parent
+        if ($parent -and (Test-Path -LiteralPath (Join-Path $parent 'jobs'))) {
+            $candidate = $parent
+        }
     }
-    if ($job.inQueue) { return $true }
-    foreach ($build in @($job.builds)) {
-        if ($build.building) { return $true }
+    if (-not $candidate) {
+        $local = Join-Path $env:LOCALAPPDATA 'Jenkins\.jenkins'
+        if (Test-Path -LiteralPath $local) { $candidate = $local }
     }
-    return $false
+    if (-not $candidate) { return $null }
+    return (Resolve-LongPath $candidate)
+}
+
+function Add-JenkinsJobDirs([string]$Dir, $Bag) {
+    $jobsDir = Join-Path $Dir 'jobs'
+    if (-not (Test-Path -LiteralPath $jobsDir)) { return }
+    foreach ($child in @(Get-ChildItem -LiteralPath $jobsDir -Directory)) {
+        if (Test-Path -LiteralPath (Join-Path $child.FullName 'builds')) {
+            [void]$Bag.Add($child.FullName)
+        }
+        Add-JenkinsJobDirs $child.FullName $Bag
+    }
+}
+
+function Get-JobFullName([string]$RootDir, [string]$JobDir) {
+    $rel = $JobDir.Substring($RootDir.Length).TrimStart('\', '/')
+    $parts = @($rel -split '[\\/]' | Where-Object { $_ -and $_ -ne 'jobs' })
+    return ($parts -join '/')
+}
+
+function Get-OtherRunningJobs {
+    $rootDir = Get-JenkinsHome
+    if (-not $rootDir) { throw 'Jenkins home not found' }
+    $dirs = New-Object System.Collections.Generic.List[string]
+    Add-JenkinsJobDirs $rootDir $dirs
+    $selfName = [string]$env:JOB_NAME
+    $selfNumber = [string]$env:BUILD_NUMBER
+    $found = New-Object System.Collections.Generic.List[string]
+    foreach ($dir in $dirs) {
+        $permalinks = Join-Path $dir 'builds\permalinks'
+        if (-not (Test-Path -LiteralPath $permalinks)) { continue }
+        $lastBuild = 0
+        $lastCompleted = 0
+        foreach ($line in [System.IO.File]::ReadAllLines($permalinks)) {
+            if ($line -match '^lastBuild\s+(\d+)\s*$') { $lastBuild = [int]$Matches[1] }
+            if ($line -match '^lastCompletedBuild\s+(-?\d+)\s*$') { $lastCompleted = [int]$Matches[1] }
+        }
+        if ($lastBuild -lt 1 -or $lastBuild -eq $lastCompleted) { continue }
+        $name = Get-JobFullName $rootDir (Resolve-LongPath $dir)
+        if ($name -eq $selfName -and [string]$lastBuild -eq $selfNumber) { continue }
+        [void]$found.Add("$name #$lastBuild")
+    }
+    return @($found)
 }
 
 function Test-Owner([string]$Login) {
@@ -36,8 +82,14 @@ function Test-OwnerAfter($stamps, $latestStart) {
     return $hit.Count -gt 0
 }
 
-if (Test-AlpacaWorkBusy) {
-    Write-Output 'AlpacaWork is running or queued'
+try {
+    $otherJobs = @(Get-OtherRunningJobs)
+} catch {
+    Write-Output "Cannot see running Jenkins jobs, cycle not started: $($_.Exception.Message)"
+    exit 0
+}
+if ($otherJobs.Count -gt 0) {
+    Write-Output ("Another job is running, AlpacaWatch will not start a cycle: " + ($otherJobs -join ', '))
     exit 0
 }
 
