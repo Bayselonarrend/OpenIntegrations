@@ -6,6 +6,12 @@
         "image": "media/Covers/LDAP.png",
         "changes": [
             {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Восстановлена поддержка устаревшего алгоритма хост-ключа `ssh-rsa` для совместимости со старыми SFTP/SSH-серверами #119",
+                "description_en": "Restored support for the legacy `ssh-rsa` host key algorithm for compatibility with older SFTP/SSH servers #119"
+            },
+            {
                 "lib": "LDAP",
                 "icon": "media/LDAP.png",
                 "description_ru": "Основные методы LDAP (8 функций)",
