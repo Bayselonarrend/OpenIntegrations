@@ -38,3 +38,11 @@ Function GetHashSum() Export
     Return LastBuildHash;
 
 EndFunction
+
+Function GetBranch() Export
+
+    LastBuildBranch = "main";
+
+    Return LastBuildBranch;
+
+EndFunction
