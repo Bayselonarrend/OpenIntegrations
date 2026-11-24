@@ -1,0 +1,95 @@
+/* Copyright (C) Viktor Szakats
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#ifndef LIBSSH2_SETUP_H
+#define LIBSSH2_SETUP_H
+
+/* Header for platform/compiler-specific initialization.
+   Used by 'src', 'example', 'tests' */
+
+/* Define mingw-w64 version macros, eg __MINGW{32,64}_{MINOR,MAJOR}_VERSION */
+#ifdef __MINGW32__
+#include <_mingw.h>
+#endif
+
+/* Configuration provided by build tools (autotools and CMake),
+   and via platform-specific directories for os400 and vms */
+#if defined(HAVE_CONFIG_H) || defined(__OS400__) || defined(__VMS)
+
+#include "libssh2_config.h"
+
+/* Hand-crafted configuration for platforms which lack config tool.
+   Keep this synced with root CMakeLists.txt */
+#elif defined(_WIN32)
+
+#ifdef __MINGW32__
+#  define HAVE_UNISTD_H
+#  define HAVE_INTTYPES_H
+#elif defined(_MSC_VER) && _MSC_VER >= 1800
+#  define HAVE_INTTYPES_H
+#endif
+
+#endif /* HAVE_CONFIG_H */
+
+/* Below applies to both auto-detected and hand-crafted configs */
+
+#ifdef _WIN32
+
+#if defined(__MINGW32__) && \
+    (!defined(__MINGW64_VERSION_MAJOR) || (__MINGW64_VERSION_MAJOR < 3))
+#error "mingw-w64 3.0 or greater required"
+#endif
+
+#if defined(UNICODE) && !defined(_UNICODE)
+#  error "UNICODE is defined but _UNICODE is not defined"
+#endif
+#if defined(_UNICODE) && !defined(UNICODE)
+#  error "_UNICODE is defined but UNICODE is not defined"
+#endif
+
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOGDI
+#define NOGDI
+#endif
+
+#if defined(__clang__) && __clang_major__ >= 13
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-macro-identifier"
+#endif
+
+#ifdef __MINGW32__
+#  undef _FILE_OFFSET_BITS
+#  define _FILE_OFFSET_BITS 64
+#elif defined(_MSC_VER)
+#  if !defined(LIBSSH2_LIBRARY) || defined(LIBSSH2_TESTS)
+     /* apply to examples and tests only */
+#    ifndef _CRT_SECURE_NO_WARNINGS
+#    define _CRT_SECURE_NO_WARNINGS  /* for fopen(), getenv(),
+                                        in tests: vsnprintf() */
+#    endif
+#    ifndef _WINSOCK_DEPRECATED_NO_WARNINGS
+#    define _WINSOCK_DEPRECATED_NO_WARNINGS  /* for inet_addr() */
+#    endif
+     /* we cannot access our internal snprintf() implementation in examples and
+        tests when linking to a shared libssh2. */
+#    if _MSC_VER < 1900
+#      define snprintf _snprintf
+#    endif
+#  endif
+#  if _MSC_VER < 1900
+/* Silence bogus warning C4127: conditional expression is constant */
+#  pragma warning(disable:4127)
+#  endif
+#endif
+
+#if defined(__clang__) && __clang_major__ >= 13
+#pragma clang diagnostic pop
+#endif
+
+#endif /* _WIN32 */
+
+#endif /* LIBSSH2_SETUP_H */

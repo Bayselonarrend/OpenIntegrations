@@ -1,0 +1,362 @@
+#ifndef LIBSSH2_OPENSSL_H
+#define LIBSSH2_OPENSSL_H
+/* Copyright (C) Simon Josefsson
+ * Copyright (C) The Written Word, Inc.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#define SSH2_CRYPTO_ENGINE libssh2_openssl
+
+#ifdef LIBSSH2_WOLFSSL
+
+#include <wolfssl/options.h>
+#include <wolfssl/openssl/ecdh.h>
+
+#if defined(NO_DSA) || defined(HAVE_FIPS)
+#define OPENSSL_NO_DSA
+#endif
+
+#if defined(NO_MD5) || defined(HAVE_FIPS)
+#define OPENSSL_NO_MD5
+#endif
+
+#if !defined(WOLFSSL_RIPEMD) || defined(HAVE_FIPS)
+#define OPENSSL_NO_RIPEMD
+#endif
+
+#if defined(NO_RC4) || defined(HAVE_FIPS)
+#define OPENSSL_NO_RC4
+#endif
+
+#ifdef NO_DES3
+#define OPENSSL_NO_DES
+#endif
+
+/* wolfSSL does not support Blowfish or CAST. */
+#define OPENSSL_NO_BF
+#define OPENSSL_NO_CAST
+
+#include <wolfssl/openssl/opensslconf.h>
+#include <wolfssl/openssl/sha.h>
+#include <wolfssl/openssl/rsa.h>
+#ifndef OPENSSL_NO_DSA
+#include <wolfssl/openssl/dsa.h>
+#endif
+#ifndef OPENSSL_NO_MD5
+#include <wolfssl/openssl/md5.h>
+#endif
+#include <wolfssl/openssl/err.h>
+#include <wolfssl/openssl/evp.h>
+#include <wolfssl/openssl/hmac.h>
+#include <wolfssl/openssl/bn.h>
+#include <wolfssl/openssl/pem.h>
+#include <wolfssl/openssl/rand.h>
+
+#else /* !LIBSSH2_WOLFSSL */
+
+#include <openssl/opensslv.h>
+#include <openssl/opensslconf.h>
+#include <openssl/sha.h>
+#include <openssl/rsa.h>
+#ifndef OPENSSL_NO_DSA
+#include <openssl/dsa.h>
+#endif
+#ifndef OPENSSL_NO_MD5
+#include <openssl/md5.h>
+#endif
+#include <openssl/err.h>
+#include <openssl/evp.h>
+#include <openssl/hmac.h>
+#include <openssl/bn.h>
+#include <openssl/pem.h>
+#include <openssl/rand.h>
+
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+#define USE_OPENSSL_3 1
+#include <openssl/core_names.h>
+#endif
+
+#endif /* LIBSSH2_WOLFSSL */
+
+#ifdef LIBSSH2_WOLFSSL
+#  define SSH2_CRYPTO_ENGINE_NAME "wolfSSL"
+#  if LIBWOLFSSL_VERSION_HEX < 0x05004000
+#    error "wolfSSL 5.4.0 or greater required"
+#  endif
+#  ifndef HAVE_ECC
+#    error "wolfSSL ECC support is required"
+#  endif
+#elif defined(LIBRESSL_VERSION_NUMBER)
+#  define SSH2_CRYPTO_ENGINE_NAME "LibreSSL"
+#  if LIBRESSL_VERSION_NUMBER < 0x3070000fL
+#    error "LibreSSL 3.7.0 or greater required"
+#  endif
+#else /* AWS-LC/BoringSSL advertise themselves as 0x1010107f */
+#  if OPENSSL_VERSION_NUMBER < 0x10101000L
+#    error "OpenSSL 1.1.1 or greater required"
+#  elif defined(OPENSSL_IS_AWSLC)
+#    define SSH2_CRYPTO_ENGINE_NAME "AWS-LC"
+#  elif defined(OPENSSL_IS_BORINGSSL)
+#    define SSH2_CRYPTO_ENGINE_NAME "BoringSSL"
+#  elif !defined(USE_OPENSSL_3)
+#    define SSH2_CRYPTO_ENGINE_NAME "OpenSSL/1.1.1"
+#    define USE_OPENSSL111
+#  else
+#    define SSH2_CRYPTO_ENGINE_NAME "OpenSSL"
+#  endif
+#endif
+#if !defined(LIBSSH2_WOLFSSL) && \
+    (defined(OPENSSL_NO_EC) || defined(OPENSSL_NO_ECDSA))
+#  error "OpenSSL ECC support is required"
+#endif
+
+#ifdef OPENSSL_NO_RSA
+# define LIBSSH2_RSA 0
+# define LIBSSH2_RSA_SHA1 0
+# define LIBSSH2_RSA_SHA2 0
+#else
+# define LIBSSH2_RSA 1
+# define LIBSSH2_RSA_SHA1 1
+# define LIBSSH2_RSA_SHA2 1
+#endif
+
+#ifdef OPENSSL_NO_DSA
+# define LIBSSH2_DSA 0
+#else
+# define LIBSSH2_DSA 1
+#endif
+
+#define LIBSSH2_ECDSA 1
+
+#ifdef LIBSSH2_WOLFSSL
+# define LIBSSH2_ED25519 0
+#else
+# define LIBSSH2_ED25519 1
+#endif
+
+#if !defined(LIBSSH2_WOLFSSL) && \
+    OPENSSL_VERSION_NUMBER >= 0x30500000L && \
+    !defined(LIBRESSL_VERSION_NUMBER)
+# define LIBSSH2_MLKEM 1
+#else
+# define LIBSSH2_MLKEM 0
+#endif
+
+#ifdef OPENSSL_NO_MD5
+# define LIBSSH2_MD5 0
+#else
+# define LIBSSH2_MD5 1
+#endif
+
+#if defined(OPENSSL_NO_RIPEMD) || defined(OPENSSL_NO_RMD160)
+# define LIBSSH2_HMAC_RIPEMD 0
+#else
+# define LIBSSH2_HMAC_RIPEMD 1
+#endif
+
+#define LIBSSH2_HMAC_SHA256 1
+#define LIBSSH2_HMAC_SHA512 1
+
+#if (!defined(OPENSSL_NO_AES) && !defined(LIBSSH2_WOLFSSL)) || \
+    (defined(LIBSSH2_WOLFSSL) && defined(WOLFSSL_AES_COUNTER))
+# define LIBSSH2_AES_CTR 1
+# define LIBSSH2_AES_CBC 1
+#else
+# define LIBSSH2_AES_CTR 0
+# define LIBSSH2_AES_CBC 0
+#endif
+
+#if defined(OPENSSL_NO_AES) || (defined(LIBSSH2_WOLFSSL) && \
+    (!defined(HAVE_AESGCM) || !defined(WOLFSSL_AESGCM_STREAM)))
+# define LIBSSH2_AES_GCM 0
+#else
+# define LIBSSH2_AES_GCM 1
+#endif
+
+#ifdef OPENSSL_NO_BF
+# define LIBSSH2_BLOWFISH 0
+#else
+# define LIBSSH2_BLOWFISH 1
+#endif
+
+#ifdef OPENSSL_NO_RC4
+# define LIBSSH2_RC4 0
+#else
+# define LIBSSH2_RC4 1
+#endif
+
+#ifdef OPENSSL_NO_CAST
+# define LIBSSH2_CAST 0
+#else
+# define LIBSSH2_CAST 1
+#endif
+
+#ifdef OPENSSL_NO_DES
+# define LIBSSH2_3DES 0
+#else
+# define LIBSSH2_3DES 1
+#endif
+
+#define LIBSSH2_KEY_SK  /* implements ssh2_sk_pubkey() */
+
+#include "crypto_config.h"
+
+#define ssh2_crypto_exit()           do {} while(0)
+
+#define ssh2_hash_ctx                EVP_MD_CTX *
+#define ssh2_hash_alg                const EVP_MD *
+#define ssh2_hash_update(ctx, d, l)  EVP_DigestUpdate(*(ctx), d, l)
+
+#define SSH2_SHA1_ALG                EVP_sha1()
+#define SSH2_SHA256_ALG              EVP_sha256()
+#define SSH2_SHA384_ALG              EVP_sha384()
+#define SSH2_SHA512_ALG              EVP_sha512()
+#if LIBSSH2_MD5 || LIBSSH2_MD5_PEM
+#define SSH2_MD5_ALG                 EVP_md5()
+#endif
+
+#ifdef USE_OPENSSL_3
+#define ssh2_hmac_ctx                EVP_MAC_CTX *
+#define ssh2_hmac_alg                const char *
+#define ssh2_hmac_update(ctx, d, l) \
+    EVP_MAC_update(*(ctx), (const unsigned char *)(d), l)
+#define SSH2_SHA1_HMAC               OSSL_DIGEST_NAME_SHA1
+#define SSH2_SHA256_HMAC             OSSL_DIGEST_NAME_SHA2_256
+#define SSH2_SHA512_HMAC             OSSL_DIGEST_NAME_SHA2_512
+#if LIBSSH2_MD5 || LIBSSH2_MD5_PEM
+#define SSH2_MD5_HMAC                OSSL_DIGEST_NAME_MD5
+#endif
+#if LIBSSH2_HMAC_RIPEMD
+#define SSH2_RIPEMD160_HMAC          OSSL_DIGEST_NAME_RIPEMD160
+#endif
+#else
+#define ssh2_hmac_ctx                HMAC_CTX *
+#ifdef LIBSSH2_WOLFSSL /* In wolfSSL length is int, not size_t */
+#define ssh2_hmac_update(ctx, d, l) \
+    HMAC_Update(*(ctx), (const unsigned char *)(d), (int)(l))
+#else
+#define ssh2_hmac_update(ctx, d, l) \
+    HMAC_Update(*(ctx), (const unsigned char *)(d), l)
+#endif
+#if LIBSSH2_HMAC_RIPEMD
+#define SSH2_RIPEMD160_HMAC          EVP_ripemd160()
+#endif
+#endif /* USE_OPENSSL_3 */
+
+#if LIBSSH2_RSA
+#ifdef USE_OPENSSL_3
+#define ssh2_rsa_ctx                 EVP_PKEY
+#define ssh2_rsa_free(rsa, session)  (EVP_PKEY_free(rsa), (void)(session))
+#else
+#define ssh2_rsa_ctx                 RSA
+#define ssh2_rsa_free(rsa, session)  (RSA_free(rsa), (void)(session))
+#endif
+#endif /* LIBSSH2_RSA */
+
+#if LIBSSH2_DSA
+#ifdef USE_OPENSSL_3
+#define ssh2_dsa_ctx                 EVP_PKEY
+#define ssh2_dsa_free(dsa, session)  (EVP_PKEY_free(dsa), (void)(session))
+#else
+#define ssh2_dsa_ctx                 DSA
+#define ssh2_dsa_free(dsa, session)  (DSA_free(dsa), (void)(session))
+#endif
+#endif /* LIBSSH2_DSA */
+
+#if LIBSSH2_ECDSA
+#ifdef USE_OPENSSL_3
+#define ssh2_ecdsa_ctx               EVP_PKEY
+#define ssh2_ecdsa_free(ec_ctx, session) \
+    (EVP_PKEY_free(ec_ctx), (void)(session))
+#define ssh2_ec_key                  EVP_PKEY
+#else
+#define ssh2_ecdsa_ctx               EC_KEY
+#define ssh2_ecdsa_free(ec_ctx, session) \
+    (EC_KEY_free(ec_ctx), (void)(session))
+#define ssh2_ec_key                  EC_KEY
+#endif
+
+typedef enum {
+    SSH2_EC_CURVE_NISTP256 = NID_X9_62_prime256v1,
+    SSH2_EC_CURVE_NISTP384 = NID_secp384r1,
+    SSH2_EC_CURVE_NISTP521 = NID_secp521r1
+} ssh2_curve_type;
+#endif /* LIBSSH2_ECDSA */
+
+#if LIBSSH2_ED25519
+#define ssh2_ed25519_ctx             EVP_PKEY
+#define ssh2_ed25519_free(ed_ctx, session) \
+    (EVP_PKEY_free(ed_ctx), (void)(session))
+#endif /* LIBSSH2_ED25519 */
+
+#define SSH2_CIPHER_T(name)          const EVP_CIPHER *(*(name))(void)
+
+#define ssh2_cipher_ctx              EVP_CIPHER_CTX *
+
+#define ssh2_cipher_aes256           EVP_aes_256_cbc
+#define ssh2_cipher_aes192           EVP_aes_192_cbc
+#define ssh2_cipher_aes128           EVP_aes_128_cbc
+#define ssh2_cipher_aes128ctr        EVP_aes_128_ctr
+#define ssh2_cipher_aes192ctr        EVP_aes_192_ctr
+#define ssh2_cipher_aes256ctr        EVP_aes_256_ctr
+#define ssh2_cipher_aes256gcm        EVP_aes_256_gcm
+#define ssh2_cipher_aes128gcm        EVP_aes_128_gcm
+#define ssh2_cipher_blowfish         EVP_bf_cbc
+#define ssh2_cipher_arcfour          EVP_rc4
+#define ssh2_cipher_cast5            EVP_cast5_cbc
+#define ssh2_cipher_3des             EVP_des_ede3_cbc
+#define ssh2_cipher_chacha20         NULL
+
+#define ssh2_cipher_dtor(ctx)        EVP_CIPHER_CTX_free(*(ctx))
+
+#define ssh2_bn_ctx                  BN_CTX
+#define ssh2_bn_ctx_new()            BN_CTX_new()
+#define ssh2_bn_ctx_free(bnctx)      BN_CTX_free(bnctx)
+
+#define ssh2_bn                      BIGNUM
+#define ssh2_bn_init()               BN_new()
+#define ssh2_bn_set_word(bn, word)   !BN_set_word(bn, word)
+#define ssh2_bn_to_bin(bn, bin)      (BN_bn2bin(bn, bin) <= 0)
+#define ssh2_bn_bytes(bn)            ((size_t)BN_num_bytes(bn))
+#define ssh2_bn_bits(bn)             ((size_t)BN_num_bits(bn))
+#define ssh2_bn_free(bn)             BN_clear_free(bn)
+
+#define ssh2_dh_ctx                  BIGNUM *
+
+/* Default generate and safe prime sizes for
+   diffie-hellman-group-exchange-sha1 */
+#define SSH2_DH_GEX_MINGROUP     2048
+#define SSH2_DH_GEX_OPTGROUP     4096
+#define SSH2_DH_GEX_MAXGROUP     8192
+
+#define SSH2_DH_MAX_MODULUS_BITS 16384
+
+#endif /* LIBSSH2_OPENSSL_H */

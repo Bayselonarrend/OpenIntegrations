@@ -1,0 +1,139 @@
+#ifndef LIBSSH2_LIBGCRYPT_H
+#define LIBSSH2_LIBGCRYPT_H
+/*
+ * Copyright (C) Simon Josefsson
+ * Copyright (C) The Written Word, Inc.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#define SSH2_CRYPTO_ENGINE libssh2_gcrypt
+#define SSH2_CRYPTO_ENGINE_NAME "Libgcrypt"
+
+#include <gcrypt.h>
+
+#define LIBSSH2_MD5 1
+
+#define LIBSSH2_HMAC_RIPEMD 1
+#define LIBSSH2_HMAC_SHA256 1
+#define LIBSSH2_HMAC_SHA512 1
+
+#define LIBSSH2_AES_CBC 1
+#define LIBSSH2_AES_CTR 1
+#define LIBSSH2_AES_GCM 0
+#define LIBSSH2_BLOWFISH 1
+#define LIBSSH2_RC4 1
+#define LIBSSH2_CAST 1
+#define LIBSSH2_3DES 1
+
+#define LIBSSH2_RSA 1
+#define LIBSSH2_RSA_SHA1 1
+#define LIBSSH2_RSA_SHA2 1
+#define LIBSSH2_DSA 1
+#define LIBSSH2_ECDSA 0
+#define LIBSSH2_ED25519 0
+#define LIBSSH2_MLKEM 0
+
+#include "crypto_config.h"
+
+#define ssh2_crypto_init()    gcry_control(GCRYCTL_DISABLE_SECMEM)
+#define ssh2_crypto_exit()    do {} while(0)
+
+#define ssh2_random(buf, len) (gcry_randomize(buf, len, GCRY_STRONG_RANDOM), 0)
+
+#define ssh2_hash_ctx         gcry_md_hd_t
+#define ssh2_hash_alg         int
+
+#define SSH2_SHA1_ALG         GCRY_MD_SHA1
+#define SSH2_SHA256_ALG       GCRY_MD_SHA256
+#define SSH2_SHA384_ALG       GCRY_MD_SHA384
+#define SSH2_SHA512_ALG       GCRY_MD_SHA512
+#if LIBSSH2_MD5 || LIBSSH2_MD5_PEM
+#define SSH2_MD5_ALG          GCRY_MD_MD5
+#endif
+
+#define ssh2_hmac_ctx         gcry_md_hd_t
+
+#if LIBSSH2_HMAC_RIPEMD
+#define SSH2_RIPEMD160_HMAC   GCRY_MD_RMD160
+#endif
+
+#define ssh2_rsa_ctx          struct gcry_sexp
+#define ssh2_rsa_free(rsa, session) \
+    (gcry_sexp_release(rsa), (void)(session))
+
+#define ssh2_dsa_ctx          struct gcry_sexp
+#define ssh2_dsa_free(dsa, session) \
+    (gcry_sexp_release(dsa), (void)(session))
+
+#define SSH2_CIPHER_T(name)   int name
+#define ssh2_cipher_ctx       gcry_cipher_hd_t
+
+#define CM(c, m)              (((c) << 8) | (m)) /* ciphermode */
+#define LGCR_CIPHER(c)        ((c) >> 8)
+#define LGCR_MODE(m)          ((m) & 0xFF)
+
+#define ssh2_cipher_aes256ctr CM(GCRY_CIPHER_AES256  , GCRY_CIPHER_MODE_CTR)
+#define ssh2_cipher_aes192ctr CM(GCRY_CIPHER_AES192  , GCRY_CIPHER_MODE_CTR)
+#define ssh2_cipher_aes128ctr CM(GCRY_CIPHER_AES128  , GCRY_CIPHER_MODE_CTR)
+#define ssh2_cipher_aes256    CM(GCRY_CIPHER_AES256  , GCRY_CIPHER_MODE_CBC)
+#define ssh2_cipher_aes192    CM(GCRY_CIPHER_AES192  , GCRY_CIPHER_MODE_CBC)
+#define ssh2_cipher_aes128    CM(GCRY_CIPHER_AES128  , GCRY_CIPHER_MODE_CBC)
+#define ssh2_cipher_blowfish  CM(GCRY_CIPHER_BLOWFISH, GCRY_CIPHER_MODE_CBC)
+#define ssh2_cipher_arcfour   CM(GCRY_CIPHER_ARCFOUR , GCRY_CIPHER_MODE_STREAM)
+#define ssh2_cipher_cast5     CM(GCRY_CIPHER_CAST5   , GCRY_CIPHER_MODE_CBC)
+#define ssh2_cipher_3des      CM(GCRY_CIPHER_3DES    , GCRY_CIPHER_MODE_CBC)
+#define ssh2_cipher_chacha20  CM(GCRY_CIPHER_CHACHA20, GCRY_CIPHER_MODE_STREAM)
+
+#define ssh2_cipher_dtor(ctx) gcry_cipher_close(*(ctx))
+
+#define ssh2_bn                        struct gcry_mpi
+#define ssh2_bn_init()                 gcry_mpi_new(0)
+#define ssh2_bn_set_word(bn, word)     (gcry_mpi_set_ui(bn, word) ? 0 : 1)
+#define ssh2_bn_from_bin(bn, bin, len) \
+    gcry_mpi_scan(bn, GCRYMPI_FMT_USG, bin, len, NULL)
+#define ssh2_bn_to_bin(bn, bin) \
+    gcry_mpi_print(GCRYMPI_FMT_USG, bin, ssh2_bn_bytes(bn), NULL, bn)
+#define ssh2_bn_bytes(bn) \
+    (gcry_mpi_get_nbits(bn) / 8 + ((gcry_mpi_get_nbits(bn) % 8 == 0) ? 0 : 1))
+#define ssh2_bn_bits(bn)               gcry_mpi_get_nbits(bn)
+#define ssh2_bn_free(bn)               gcry_mpi_release(bn)
+
+#define ssh2_dh_ctx                    struct gcry_mpi *
+
+/* Default generate and safe prime sizes for
+   diffie-hellman-group-exchange-sha1 */
+#define SSH2_DH_GEX_MINGROUP     2048
+#define SSH2_DH_GEX_OPTGROUP     4096
+#define SSH2_DH_GEX_MAXGROUP     8192
+
+#define SSH2_DH_MAX_MODULUS_BITS 16384
+
+#endif /* LIBSSH2_LIBGCRYPT_H */

@@ -124,6 +124,12 @@
                 "icon": "media/GRPC.png",
                 "description_ru": "Подключение и вызов метода ограничены таймаутом: ожидание готовности канала входит в таймаут вызова",
                 "description_en": "Connection and method calls are limited by a timeout: channel readiness is included in the call timeout"
+            },
+            {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Восстановлена поддержка устаревшего алгоритма хост-ключа `ssh-rsa` для SSH/SFTP-серверов, которые больше не отдают современные ключи #119",
+                "description_en": "Restored support for the legacy `ssh-rsa` host key algorithm for SSH/SFTP servers that no longer offer modern host keys #119"
             }
         ]
     },

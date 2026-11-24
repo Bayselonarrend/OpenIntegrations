@@ -1,0 +1,457 @@
+/* Copyright (C) Sara Golemon <sarag@libssh2.org>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#include "libssh2_priv.h"
+#include "mac.h"
+
+#if defined(LIBSSH2DEBUG) && defined(LIBSSH2_MAC_NONE_INSECURE)
+/*
+ * Minimalist MAC: No MAC. DO NOT USE.
+ *
+ * The SSH2 Transport allows implementations to forego a message
+ * authentication code.  While this is less of a security risk than using
+ * a "none" cipher, it is still not recommended as disabling MAC hashes
+ * removes a layer of security.
+ *
+ * Enabling this option allows for "none" as a negotiable method,
+ * however it still requires that the method be advertised by the remote
+ * end and that no more-preferable methods are available.
+ */
+static int mac_none_MAC(LIBSSH2_SESSION *session,
+                        unsigned char *buf, uint32_t seqno,
+                        const unsigned char *packet,
+                        size_t packet_len,
+                        const unsigned char *addtl,
+                        size_t addtl_len, void **abstract)
+{
+    return 0;
+}
+
+static const struct mac_method mac_method_none = {
+    "none",
+    0,
+    0,
+    NULL,
+    mac_none_MAC,
+    NULL,
+    0
+};
+#endif /* LIBSSH2DEBUG && LIBSSH2_MAC_NONE_INSECURE */
+
+/*
+ * Initialize simple mac methods
+ */
+static int mac_method_common_init(LIBSSH2_SESSION *session, unsigned char *key,
+                                  int *free_key, void **abstract)
+{
+    *abstract = key;
+    *free_key = 0;
+    (void)session;
+
+    return 0;
+}
+
+/*
+ * Cleanup simple mac methods
+ */
+static int mac_method_common_dtor(LIBSSH2_SESSION *session, void **abstract)
+{
+    if(*abstract)
+        SSH2_FREE(session, *abstract);
+    *abstract = NULL;
+
+    return 0;
+}
+
+/*
+ * Calculate hash
+ */
+static int mac_method_hmac(LIBSSH2_SESSION *session,
+                           ssh2_hmac_alg alg, size_t digest_len,
+                           unsigned char *buf, uint32_t seqno,
+                           const unsigned char *packet, size_t packet_len,
+                           const unsigned char *addtl, size_t addtl_len,
+                           void **abstract)
+{
+    ssh2_hmac_ctx ctx;
+    unsigned char seqno_buf[4];
+    int res;
+    (void)session;
+
+    ssh2_htonu32(seqno_buf, seqno);
+
+    if(!ssh2_hmac_ctx_init(&ctx))
+        return 1;
+    res = ssh2_hmac_init(&ctx, alg, *abstract, digest_len) &&
+          ssh2_hmac_update(&ctx, seqno_buf, 4) &&
+          ssh2_hmac_update(&ctx, packet, packet_len);
+    if(res && addtl && addtl_len)
+        res = ssh2_hmac_update(&ctx, addtl, addtl_len);
+    if(res)
+        res = ssh2_hmac_final(&ctx, buf, digest_len);
+    ssh2_hmac_cleanup(&ctx);
+
+    return !res;
+}
+
+#if LIBSSH2_HMAC_SHA512
+/*
+ * Calculate hash using full sha512 value
+ */
+static int mac_method_hmac_sha2_512_hash(LIBSSH2_SESSION *session,
+                                         unsigned char *buf, uint32_t seqno,
+                                         const unsigned char *packet,
+                                         size_t packet_len,
+                                         const unsigned char *addtl,
+                                         size_t addtl_len, void **abstract)
+{
+    return mac_method_hmac(session, SSH2_SHA512_HMAC, SSH2_SHA512_DIG_LEN,
+                           buf, seqno, packet, packet_len, addtl, addtl_len,
+                           abstract);
+}
+
+static const struct mac_method mac_method_hmac_sha2_512 = {
+    "hmac-sha2-512",
+    64,
+    SSH2_SHA512_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha2_512_hash,
+    mac_method_common_dtor,
+    0
+};
+
+static const struct mac_method mac_method_hmac_sha2_512_etm = {
+    "hmac-sha2-512-etm@openssh.com",
+    64,
+    SSH2_SHA512_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha2_512_hash,
+    mac_method_common_dtor,
+    1
+};
+#endif
+
+#if LIBSSH2_HMAC_SHA256
+/*
+ * Calculate hash using full sha256 value
+ */
+static int mac_method_hmac_sha2_256_hash(LIBSSH2_SESSION *session,
+                                         unsigned char *buf, uint32_t seqno,
+                                         const unsigned char *packet,
+                                         size_t packet_len,
+                                         const unsigned char *addtl,
+                                         size_t addtl_len, void **abstract)
+{
+    return mac_method_hmac(session, SSH2_SHA256_HMAC, SSH2_SHA256_DIG_LEN,
+                           buf, seqno, packet, packet_len, addtl, addtl_len,
+                           abstract);
+}
+
+static const struct mac_method mac_method_hmac_sha2_256 = {
+    "hmac-sha2-256",
+    32,
+    SSH2_SHA256_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha2_256_hash,
+    mac_method_common_dtor,
+    0
+};
+
+static const struct mac_method mac_method_hmac_sha2_256_etm = {
+    "hmac-sha2-256-etm@openssh.com",
+    32,
+    SSH2_SHA256_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha2_256_hash,
+    mac_method_common_dtor,
+    1
+};
+#endif
+
+#ifdef LIBSSH2_HMAC_SHA1_ENABLE
+/*
+ * Calculate hash using full sha1 value
+ */
+static int mac_method_hmac_sha1_hash(LIBSSH2_SESSION *session,
+                                     unsigned char *buf, uint32_t seqno,
+                                     const unsigned char *packet,
+                                     size_t packet_len,
+                                     const unsigned char *addtl,
+                                     size_t addtl_len, void **abstract)
+{
+    return mac_method_hmac(session, SSH2_SHA1_HMAC, SSH2_SHA1_DIG_LEN,
+                           buf, seqno, packet, packet_len, addtl, addtl_len,
+                           abstract);
+}
+
+static const struct mac_method mac_method_hmac_sha1 = {
+    "hmac-sha1",
+    20,
+    SSH2_SHA1_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha1_hash,
+    mac_method_common_dtor,
+    0
+};
+
+static const struct mac_method mac_method_hmac_sha1_etm = {
+    "hmac-sha1-etm@openssh.com",
+    20,
+    SSH2_SHA1_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha1_hash,
+    mac_method_common_dtor,
+    1
+};
+
+/*
+ * Calculate hash using first 96 bits of sha1 value
+ */
+static int mac_method_hmac_sha1_96_hash(LIBSSH2_SESSION *session,
+                                        unsigned char *buf, uint32_t seqno,
+                                        const unsigned char *packet,
+                                        size_t packet_len,
+                                        const unsigned char *addtl,
+                                        size_t addtl_len, void **abstract)
+{
+    unsigned char temp[SSH2_SHA1_DIG_LEN];
+
+    if(mac_method_hmac(session, SSH2_SHA1_HMAC, SSH2_SHA1_DIG_LEN, temp, seqno,
+                       packet, packet_len, addtl, addtl_len, abstract))
+        return 1;
+
+    memcpy(buf, (char *)temp, 96 / 8 /* 12 */);
+    return 0;
+}
+
+static const struct mac_method mac_method_hmac_sha1_96 = {
+    "hmac-sha1-96",
+    12,
+    SSH2_SHA1_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_sha1_96_hash,
+    mac_method_common_dtor,
+    0
+};
+#endif /* LIBSSH2_HMAC_SHA1_ENABLE */
+
+#if LIBSSH2_MD5
+/*
+ * Calculate hash using full md5 value
+ */
+static int mac_method_hmac_md5_hash(LIBSSH2_SESSION *session,
+                                    unsigned char *buf, uint32_t seqno,
+                                    const unsigned char *packet,
+                                    size_t packet_len,
+                                    const unsigned char *addtl,
+                                    size_t addtl_len, void **abstract)
+{
+    return mac_method_hmac(session, SSH2_MD5_HMAC, SSH2_MD5_DIG_LEN,
+                           buf, seqno, packet, packet_len, addtl, addtl_len,
+                           abstract);
+}
+
+static const struct mac_method mac_method_hmac_md5 = {
+    "hmac-md5",
+    16,
+    SSH2_MD5_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_md5_hash,
+    mac_method_common_dtor,
+    0
+};
+
+/*
+ * Calculate hash using first 96 bits of md5 value
+ */
+static int mac_method_hmac_md5_96_hash(LIBSSH2_SESSION *session,
+                                       unsigned char *buf, uint32_t seqno,
+                                       const unsigned char *packet,
+                                       size_t packet_len,
+                                       const unsigned char *addtl,
+                                       size_t addtl_len, void **abstract)
+{
+    unsigned char temp[SSH2_MD5_DIG_LEN];
+
+    if(mac_method_hmac(session, SSH2_MD5_HMAC, SSH2_MD5_DIG_LEN, temp, seqno,
+                       packet, packet_len, addtl, addtl_len, abstract))
+        return 1;
+
+    memcpy(buf, (char *)temp, 96 / 8 /* 12 */);
+    return 0;
+}
+
+static const struct mac_method mac_method_hmac_md5_96 = {
+    "hmac-md5-96",
+    12,
+    SSH2_MD5_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_md5_96_hash,
+    mac_method_common_dtor,
+    0
+};
+#endif /* LIBSSH2_MD5 */
+
+#if LIBSSH2_HMAC_RIPEMD
+/*
+ * Calculate hash using ripemd160 value
+ */
+static int mac_method_hmac_ripemd160_hash(LIBSSH2_SESSION *session,
+                                          unsigned char *buf, uint32_t seqno,
+                                          const unsigned char *packet,
+                                          size_t packet_len,
+                                          const unsigned char *addtl,
+                                          size_t addtl_len, void **abstract)
+{
+    return mac_method_hmac(session,
+                           SSH2_RIPEMD160_HMAC, SSH2_RIPEMD160_DIG_LEN,
+                           buf, seqno, packet, packet_len, addtl, addtl_len,
+                           abstract);
+}
+
+static const struct mac_method mac_method_hmac_ripemd160 = {
+    "hmac-ripemd160",
+    20,
+    SSH2_RIPEMD160_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_ripemd160_hash,
+    mac_method_common_dtor,
+    0
+};
+
+static const struct mac_method mac_method_hmac_ripemd160_openssh_com = {
+    "hmac-ripemd160@openssh.com",
+    20,
+    SSH2_RIPEMD160_DIG_LEN,
+    mac_method_common_init,
+    mac_method_hmac_ripemd160_hash,
+    mac_method_common_dtor,
+    0
+};
+#endif /* LIBSSH2_HMAC_RIPEMD */
+
+static const struct mac_method *mac_methods[] = {
+#if LIBSSH2_HMAC_SHA256
+    &mac_method_hmac_sha2_256,
+    &mac_method_hmac_sha2_256_etm,
+#endif
+#if LIBSSH2_HMAC_SHA512
+    &mac_method_hmac_sha2_512,
+    &mac_method_hmac_sha2_512_etm,
+#endif
+#ifdef LIBSSH2_HMAC_SHA1_ENABLE
+    &mac_method_hmac_sha1,
+    &mac_method_hmac_sha1_etm,
+    &mac_method_hmac_sha1_96,
+#endif
+#if LIBSSH2_MD5
+    &mac_method_hmac_md5,
+    &mac_method_hmac_md5_96,
+#endif
+#if LIBSSH2_HMAC_RIPEMD
+    &mac_method_hmac_ripemd160,
+    &mac_method_hmac_ripemd160_openssh_com,
+#endif /* LIBSSH2_HMAC_RIPEMD */
+#if defined(LIBSSH2DEBUG) && defined(LIBSSH2_MAC_NONE_INSECURE)
+    &mac_method_none,
+#endif
+    NULL
+};
+
+const struct mac_method **ssh2_mac_methods(void)
+{
+    return mac_methods;
+}
+
+#if LIBSSH2_AES_GCM
+static int mac_method_none_init(LIBSSH2_SESSION *session, unsigned char *key,
+                                int *free_key, void **abstract)
+{
+    *free_key = 1;
+    (void)session;
+    (void)key;
+    (void)abstract;
+    return 0;
+}
+
+static int mac_method_hmac_none_hash(LIBSSH2_SESSION *session,
+                                     unsigned char *buf, uint32_t seqno,
+                                     const unsigned char *packet,
+                                     size_t packet_len,
+                                     const unsigned char *addtl,
+                                     size_t addtl_len, void **abstract)
+{
+    (void)session;
+    (void)buf;
+    (void)seqno;
+    (void)packet;
+    (void)packet_len;
+    (void)addtl;
+    (void)addtl_len;
+    (void)abstract;
+    return 0;
+}
+
+static int mac_method_none_dtor(LIBSSH2_SESSION *session, void **abstract)
+{
+    (void)session;
+    (void)abstract;
+    return 0;
+}
+
+/* Stub for aes256-gcm@openssh.com crypto type, which has an integrated
+   HMAC method. This must not be added to mac_methods[] since it cannot be
+   negotiated separately. */
+static const struct mac_method mac_method_hmac_aesgcm = {
+    "INTEGRATED-AES-GCM",  /* made up name for display only */
+    16,
+    16,
+    mac_method_none_init,
+    mac_method_hmac_none_hash,
+    mac_method_none_dtor,
+    0
+};
+#endif /* LIBSSH2_AES_GCM */
+
+/* See if the negotiated crypto method has its own authentication scheme that
+ * obviates the need for a separate negotiated hmac method */
+const struct mac_method *ssh2_mac_override(const struct crypt_method *crypt)
+{
+#if LIBSSH2_AES_GCM
+    if(!strcmp(crypt->name, "aes256-gcm@openssh.com") ||
+       !strcmp(crypt->name, "aes128-gcm@openssh.com"))
+        return &mac_method_hmac_aesgcm;
+#else
+    (void)crypt;
+#endif /* LIBSSH2_AES_GCM */
+    return NULL;
+}
