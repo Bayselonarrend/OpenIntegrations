@@ -1,9 +1,4 @@
 extern crate cc;
-extern crate pkg_config;
-extern crate semver;
-
-#[cfg(target_env = "msvc")]
-extern crate vcpkg;
 
 use std::env;
 use std::fs;
@@ -17,42 +12,13 @@ use std::process::Command;
  or cause a denial of service condition on the client system when a user connects to the server.
 */
 
-const MIN_LIBSSH2_VERSION: semver::Version = semver::Version::new(1, 10, 0);
 const CRATE_VERSION: &str = "0.3.4";
 const CRATE_URL: &str =
     "https://static.crates.io/crates/libssh2-sys/libssh2-sys-0.3.4.crate";
 
 fn main() {
-    let zlib_ng_compat = env::var("CARGO_FEATURE_ZLIB_NG_COMPAT").is_ok();
-
-    if !zlib_ng_compat && try_vcpkg() {
-        return;
-    }
-
-    // The system copy of libssh2 is not used by default because it
-    // can lead to having two copies of libssl loaded at once.
-    // See https://github.com/alexcrichton/ssh2-rs/pull/88
-    println!("cargo:rerun-if-env-changed=LIBSSH2_SYS_USE_PKG_CONFIG");
-    if env::var("LIBSSH2_SYS_USE_PKG_CONFIG").is_ok() {
-        if zlib_ng_compat {
-            panic!(
-                "LIBSSH2_SYS_USE_PKG_CONFIG set, but cannot use zlib-ng-compat with system libssh2"
-            );
-        }
-        if let Ok(lib) = pkg_config::find_library("libssh2") {
-            if semver::Version::parse(&lib.version).unwrap() < MIN_LIBSSH2_VERSION {
-                println!(
-                    "cargo:warning=libssh2 {} is older than the recommended minimum {}",
-                    lib.version, MIN_LIBSSH2_VERSION
-                );
-            }
-            for path in &lib.include_paths {
-                println!("cargo:include={}", path.display());
-            }
-            return;
-        }
-    }
-
+    // OPI: always build vendored libssh2 so LIBSSH2_RSA_SHA1_ENABLE is applied.
+    // System/vcpkg copies disable ssh-rsa host keys by default and break legacy servers.
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
     ensure_libssh2_sources(&manifest_dir).expect("failed to prepare libssh2 sources");
 
@@ -334,45 +300,3 @@ fn copy_dir_all(from: &Path, to: &Path) -> Result<(), String> {
     Ok(())
 }
 
-#[cfg(not(target_env = "msvc"))]
-fn try_vcpkg() -> bool {
-    false
-}
-
-#[cfg(target_env = "msvc")]
-fn try_vcpkg() -> bool {
-    vcpkg::Config::new()
-        .emit_includes(true)
-        .probe("libssh2")
-        .map(|_| {
-            // found libssh2 which depends on openssl and zlib
-            vcpkg::Config::new()
-                .lib_name("libssl")
-                .lib_name("libcrypto")
-                .probe("openssl")
-                .or_else(|_| {
-                    // openssl 1.1 was not found, try openssl 1.0
-                    vcpkg::Config::new()
-                        .lib_name("libeay32")
-                        .lib_name("ssleay32")
-                        .probe("openssl")
-                })
-                .expect(
-                    "configured libssh2 from vcpkg but could not \
-                     find openssl libraries that it depends on",
-                );
-
-            vcpkg::Config::new()
-                .lib_names("zlib", "zlib1")
-                .probe("zlib")
-                .expect(
-                    "configured libssh2 from vcpkg but could not \
-                     find the zlib library that it depends on",
-                );
-
-            println!("cargo:rustc-link-lib=crypt32");
-            println!("cargo:rustc-link-lib=gdi32");
-            println!("cargo:rustc-link-lib=user32");
-        })
-        .is_ok()
-}
