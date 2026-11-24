@@ -33,8 +33,16 @@
 
 Function GetHashSum() Export
 
-    LastBuildHash  = "C82F3A6EBF43FEE30B88B221F6D0E31FD3F23DC9943D21CB7D2707DE54A0B663";
+    LastBuildHash  = "C9763B651854242EB6D5DA499CCA5771CD426E79B8C07AD3F5CD7917F32AD6D5";
 
-    Return LastBuildHash;
+    LastBuildHash  = "C9763B651854242EB6D5DA499CCA5771CD426E79B8C07AD3F5CD7917F32AD6D5";
+
+EndFunction
+
+Function GetBranch() Export
+
+    LastBuildBranch = "alpaca/119";
+
+    LastBuildBranch = "alpaca/119";
 
 EndFunction
