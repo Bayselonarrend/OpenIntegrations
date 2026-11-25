@@ -1,14 +1,18 @@
 extern crate cc;
+extern crate flate2;
 extern crate pkg_config;
 extern crate semver;
+extern crate tar;
 
 #[cfg(target_env = "msvc")]
 extern crate vcpkg;
 
+use flate2::read::GzDecoder;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use tar::Archive;
 
 /*
  In libssh2 v1.9.0 and earlier versions, the SSH_MSG_DISCONNECT logic in packet.c has an integer
@@ -18,6 +22,9 @@ use std::process::Command;
 */
 
 const MIN_LIBSSH2_VERSION: semver::Version = semver::Version::new(1, 10, 0);
+const CRATE_VERSION: &str = "0.3.4";
+const CRATE_URL: &str =
+    "https://static.crates.io/crates/libssh2-sys/libssh2-sys-0.3.4.crate";
 
 fn main() {
     let zlib_ng_compat = env::var("CARGO_FEATURE_ZLIB_NG_COMPAT").is_ok();
@@ -50,10 +57,12 @@ fn main() {
         }
     }
 
-    if !Path::new("libssh2/.git").exists() {
-        let _ = Command::new("git")
-            .args(&["submodule", "update", "--init"])
-            .status();
+    let manifest_dir =
+        PathBuf::from(env::var("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR"));
+    let libssh2_dir = manifest_dir.join("libssh2");
+
+    if !libssh2_dir.join("include/libssh2.h").exists() {
+        ensure_libssh2_sources(&manifest_dir).expect("failed to prepare libssh2 sources");
     }
 
     let target = env::var("TARGET").unwrap();
@@ -69,51 +78,51 @@ fn main() {
     fs::create_dir_all(&build).unwrap();
     fs::create_dir_all(&include).unwrap();
 
-    fs::copy("libssh2/include/libssh2.h", include.join("libssh2.h")).unwrap();
+    fs::copy(libssh2_dir.join("include/libssh2.h"), include.join("libssh2.h")).unwrap();
     fs::copy(
-        "libssh2/include/libssh2_publickey.h",
+        libssh2_dir.join("include/libssh2_publickey.h"),
         include.join("libssh2_publickey.h"),
     )
     .unwrap();
     fs::copy(
-        "libssh2/include/libssh2_sftp.h",
+        libssh2_dir.join("include/libssh2_sftp.h"),
         include.join("libssh2_sftp.h"),
     )
     .unwrap();
 
-    cfg.file("libssh2/src/agent.c")
-        .file("libssh2/src/bcrypt_pbkdf.c")
-        .file("libssh2/src/blowfish.c")
-        .file("libssh2/src/chacha.c")
-        .file("libssh2/src/channel.c")
-        .file("libssh2/src/cipher-chachapoly.c")
-        .file("libssh2/src/comp.c")
-        .file("libssh2/src/crypt.c")
-        .file("libssh2/src/global.c")
-        .file("libssh2/src/hostkey.c")
-        .file("libssh2/src/keepalive.c")
-        .file("libssh2/src/kex.c")
-        .file("libssh2/src/knownhost.c")
-        .file("libssh2/src/libgcrypt.c")
-        .file("libssh2/src/mac.c")
-        .file("libssh2/src/mbedtls.c")
-        .file("libssh2/src/misc.c")
-        .file("libssh2/src/openssl.c")
-        .file("libssh2/src/os400qc3.c")
-        .file("libssh2/src/packet.c")
-        .file("libssh2/src/pem.c")
-        .file("libssh2/src/poly1305.c")
-        .file("libssh2/src/publickey.c")
-        .file("libssh2/src/scp.c")
-        .file("libssh2/src/session.c")
-        .file("libssh2/src/sftp.c")
-        .file("libssh2/src/transport.c")
-        .file("libssh2/src/userauth.c")
-        .file("libssh2/src/userauth_kbd_packet.c")
-        .file("libssh2/src/version.c")
-        .file("libssh2/src/wincng.c")
+    cfg.file(libssh2_dir.join("src/agent.c"))
+        .file(libssh2_dir.join("src/bcrypt_pbkdf.c"))
+        .file(libssh2_dir.join("src/blowfish.c"))
+        .file(libssh2_dir.join("src/chacha.c"))
+        .file(libssh2_dir.join("src/channel.c"))
+        .file(libssh2_dir.join("src/cipher-chachapoly.c"))
+        .file(libssh2_dir.join("src/comp.c"))
+        .file(libssh2_dir.join("src/crypt.c"))
+        .file(libssh2_dir.join("src/global.c"))
+        .file(libssh2_dir.join("src/hostkey.c"))
+        .file(libssh2_dir.join("src/keepalive.c"))
+        .file(libssh2_dir.join("src/kex.c"))
+        .file(libssh2_dir.join("src/knownhost.c"))
+        .file(libssh2_dir.join("src/libgcrypt.c"))
+        .file(libssh2_dir.join("src/mac.c"))
+        .file(libssh2_dir.join("src/mbedtls.c"))
+        .file(libssh2_dir.join("src/misc.c"))
+        .file(libssh2_dir.join("src/openssl.c"))
+        .file(libssh2_dir.join("src/os400qc3.c"))
+        .file(libssh2_dir.join("src/packet.c"))
+        .file(libssh2_dir.join("src/pem.c"))
+        .file(libssh2_dir.join("src/poly1305.c"))
+        .file(libssh2_dir.join("src/publickey.c"))
+        .file(libssh2_dir.join("src/scp.c"))
+        .file(libssh2_dir.join("src/session.c"))
+        .file(libssh2_dir.join("src/sftp.c"))
+        .file(libssh2_dir.join("src/transport.c"))
+        .file(libssh2_dir.join("src/userauth.c"))
+        .file(libssh2_dir.join("src/userauth_kbd_packet.c"))
+        .file(libssh2_dir.join("src/version.c"))
+        .file(libssh2_dir.join("src/wincng.c"))
         .include(&include)
-        .include("libssh2/src");
+        .include(libssh2_dir.join("src"));
 
     cfg.define("HAVE_LONGLONG", None);
 
@@ -153,7 +162,7 @@ fn main() {
         cfg.define("HAVE_GETTIMEOFDAY", None);
 
         // Create `libssh2_config.h`
-        let config = fs::read_to_string("libssh2/src/libssh2_config_cmake.h.in").unwrap();
+        let config = fs::read_to_string(libssh2_dir.join("src/libssh2_config_cmake.h.in")).unwrap();
         let config = config
             .lines()
             .filter(|l| !l.contains("#cmakedefine"))
@@ -192,7 +201,7 @@ fn main() {
         }
     }
 
-    let libssh2h = fs::read_to_string("libssh2/include/libssh2.h").unwrap();
+    let libssh2h = fs::read_to_string(libssh2_dir.join("include/libssh2.h")).unwrap();
     let version_line = libssh2h
         .lines()
         .find(|l| l.contains("LIBSSH2_VERSION"))
@@ -203,7 +212,7 @@ fn main() {
     fs::create_dir_all(&pkgconfig).unwrap();
     fs::write(
         pkgconfig.join("libssh2.pc"),
-        fs::read_to_string("libssh2/libssh2.pc.in")
+        fs::read_to_string(libssh2_dir.join("libssh2.pc.in"))
             .unwrap()
             .replace("@prefix@", "${pcfiledir}/../..")
             .replace("@exec_prefix@", "")
@@ -226,6 +235,106 @@ fn main() {
         println!("cargo:rustc-link-lib=user32");
         println!("cargo:rustc-link-lib=ntdll");
     }
+}
+
+fn ensure_libssh2_sources(manifest_dir: &Path) -> Result<(), String> {
+    if copy_libssh2_from_registry(manifest_dir).is_ok() {
+        return Ok(());
+    }
+
+    download_and_extract_libssh2(manifest_dir)
+}
+
+fn copy_libssh2_from_registry(manifest_dir: &Path) -> Result<(), String> {
+    let registry = cargo_home()?.join("registry/src");
+    let entries = fs::read_dir(&registry).map_err(|error| error.to_string())?;
+
+    for entry in entries.flatten() {
+        let candidate = entry
+            .path()
+            .join(format!("libssh2-sys-{CRATE_VERSION}/libssh2"));
+        if candidate.join("include/libssh2.h").exists() {
+            copy_dir_all(&candidate, &manifest_dir.join("libssh2"))?;
+            return Ok(());
+        }
+    }
+
+    Err("libssh2-sys crate sources not found in cargo registry".to_string())
+}
+
+fn download_and_extract_libssh2(manifest_dir: &Path) -> Result<(), String> {
+    let build_dir = manifest_dir.join(".build");
+    fs::create_dir_all(&build_dir).map_err(|error| error.to_string())?;
+
+    let crate_path = build_dir.join(format!("libssh2-sys-{CRATE_VERSION}.crate"));
+    if !crate_path.exists() {
+        let status = Command::new("curl")
+            .args(["-fsSL", CRATE_URL, "-o"])
+            .arg(&crate_path)
+            .status()
+            .map_err(|error| format!("failed to run curl: {error}"))?;
+        if !status.success() {
+            return Err(format!("failed to download {CRATE_URL}"));
+        }
+    }
+
+    let prefix = format!("libssh2-sys-{CRATE_VERSION}/libssh2/");
+    let decoder = GzDecoder::new(fs::File::open(&crate_path).map_err(|error| error.to_string())?);
+    let mut archive = Archive::new(decoder);
+
+    for entry in archive.entries().map_err(|error| error.to_string())? {
+        let mut entry = entry.map_err(|error| error.to_string())?;
+        let path = entry.path().map_err(|error| error.to_string())?;
+        let Some(rel) = path.strip_prefix(&prefix).ok() else {
+            continue;
+        };
+
+        let out = manifest_dir.join("libssh2").join(rel);
+        if entry.header().entry_type().is_dir() {
+            fs::create_dir_all(&out).map_err(|error| error.to_string())?;
+        } else {
+            if let Some(parent) = out.parent() {
+                fs::create_dir_all(parent).map_err(|error| error.to_string())?;
+            }
+            entry.unpack(&out).map_err(|error| error.to_string())?;
+        }
+    }
+
+    if !manifest_dir.join("libssh2/include/libssh2.h").exists() {
+        return Err("libssh2 sources were not found in downloaded crate".to_string());
+    }
+
+    Ok(())
+}
+
+fn cargo_home() -> Result<PathBuf, String> {
+    if let Ok(path) = env::var("CARGO_HOME") {
+        return Ok(PathBuf::from(path));
+    }
+
+    let home = env::var("HOME")
+        .or_else(|_| env::var("USERPROFILE"))
+        .map_err(|_| "HOME/USERPROFILE is not set".to_string())?;
+
+    Ok(PathBuf::from(home).join(".cargo"))
+}
+
+fn copy_dir_all(from: &Path, to: &Path) -> Result<(), String> {
+    fs::create_dir_all(to).map_err(|error| error.to_string())?;
+
+    for entry in fs::read_dir(from).map_err(|error| error.to_string())? {
+        let entry = entry.map_err(|error| error.to_string())?;
+        let file_type = entry.file_type().map_err(|error| error.to_string())?;
+        let target = to.join(entry.file_name());
+
+        if file_type.is_dir() {
+            copy_dir_all(&entry.path(), &target)?;
+        } else {
+            fs::copy(entry.path(), &target).map_err(|error| error.to_string())?;
+        }
+    }
+
+    Ok(())
 }
 
 #[cfg(not(target_env = "msvc"))]
