@@ -34,15 +34,13 @@
 Function GetHashSum() Export
 
     LastBuildHash  = "5ED7B9DA23B856869AC8417913CBAA5CD6702C98CA2A180402A32536F5F15E87";
-
-    LastBuildHash  = "5ED7B9DA23B856869AC8417913CBAA5CD6702C98CA2A180402A32536F5F15E87";
+    Return LastBuildHash;
 
 EndFunction
 
 Function GetBranch() Export
 
     LastBuildBranch = "alpaca/119";
-
-    LastBuildBranch = "alpaca/119";
+    Return LastBuildBranch;
 
 EndFunction
