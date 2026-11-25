@@ -896,8 +896,8 @@ pipeline {
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
-					sh "git config user.email vitaly.the.alpaca@gmail.com"
-					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config user.email vitaly.alpaca@openintegrations.dev"
+					sh 'git config user.name "Альпака Виталий"'
 					sh "git config --global core.ignorecase true"
 					sh "git add ."
 					sh 'git commit -m "Test data update (Jenkins)"'
@@ -923,7 +923,9 @@ def runModuleTests(String modulePath, List methods, boolean fatal = false) {
 def runLibraryTest(String configPath, String libraryName) {
     try {
         echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
-        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        timeout(time: 25, unit: 'MINUTES') {
+            runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        }
         echo "Test ${libraryName} completed successfully"
     } catch (Exception e) {
         echo "ERROR in test ${libraryName}: ${e.getMessage()}"

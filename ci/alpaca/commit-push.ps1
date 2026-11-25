@@ -60,10 +60,10 @@ if (-not $msg) {
     $msg = $title
 }
 Write-Utf8File $msgFile ($msg.TrimEnd() + "`r`n")
-$env:GIT_AUTHOR_NAME = 'Vitaly the Alpaca (bot)'
-$env:GIT_AUTHOR_EMAIL = 'vitaly.the.alpaca@gmail.com'
-$env:GIT_COMMITTER_NAME = 'Vitaly the Alpaca (bot)'
-$env:GIT_COMMITTER_EMAIL = 'vitaly.the.alpaca@gmail.com'
+$env:GIT_AUTHOR_NAME = 'Альпака Виталий'
+$env:GIT_AUTHOR_EMAIL = 'vitaly.alpaca@openintegrations.dev'
+$env:GIT_COMMITTER_NAME = 'Альпака Виталий'
+$env:GIT_COMMITTER_EMAIL = 'vitaly.alpaca@openintegrations.dev'
 & git commit -F $msgFile
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & git push origin "HEAD:${branch}"

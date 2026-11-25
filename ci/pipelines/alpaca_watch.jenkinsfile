@@ -3,17 +3,39 @@
 // Script path: ci/pipelines/alpaca_watch.jenkinsfile
 // Agent label: windows. The windows agent needs gh. Issue and PR calls use GH_TOKEN from gitalpaca.
 
+@NonCPS
+void enqueueQuietWatchDeletion(String jobName, int number) {
+    def left = new java.util.concurrent.atomic.AtomicInteger(4)
+    def task = null
+    task = {
+        def job = jenkins.model.Jenkins.instance.getItemByFullName(jobName)
+        def finished = job == null ? null : job.getBuildByNumber(number)
+        if (finished == null) {
+            return
+        }
+        if (finished.isBuilding() && left.decrementAndGet() > 0) {
+            jenkins.util.Timer.get().schedule(task, 20, java.util.concurrent.TimeUnit.SECONDS)
+            return
+        }
+        if (!finished.isBuilding()) {
+            finished.delete()
+        }
+    } as Runnable
+    jenkins.util.Timer.get().schedule(task, 20, java.util.concurrent.TimeUnit.SECONDS)
+}
+
 pipeline {
     agent { label 'windows' }
 
     options {
         disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '40'))
         timeout(time: 30, unit: 'MINUTES')
         timestamps()
     }
 
     triggers {
-        cron('H * * * *')
+        cron('H/5 * * * *')
     }
 
     stages {
@@ -55,6 +77,21 @@ pipeline {
                         [$class: 'StringParameterValue', name: 'MAX_CYCLE', value: '8']
                     ]
                     currentBuild.description = "started ${reason} for #${issue}"
+                }
+            }
+        }
+    }
+
+    post {
+        cleanup {
+            script {
+                def note = currentBuild.description ?: ''
+                if (currentBuild.currentResult == 'SUCCESS' && !note.trim()) {
+                    try {
+                        enqueueQuietWatchDeletion(env.JOB_NAME, env.BUILD_NUMBER as int)
+                    } catch (err) {
+                        echo "Quiet build kept: ${err}"
+                    }
                 }
             }
         }

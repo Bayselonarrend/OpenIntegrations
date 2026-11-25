@@ -72,10 +72,12 @@ def runLibraryTest(String libraryName, String configPath) {
                     echo "${libraryName}: launch attempt 1/${maxLaunchAttempts}"
                 }
 
-                exitCode = bat(
-                    script: "chcp 65001 >nul\r\n${vrunnerCmd} > \"${logFile}\" 2>&1",
-                    returnStatus: true
-                )
+                exitCode = timeout(time: 25, unit: 'MINUTES') {
+                    bat(
+                        script: "chcp 65001 >nul\r\n${vrunnerCmd} > \"${logFile}\" 2>&1",
+                        returnStatus: true
+                    )
+                }
 
                 noteVrunnerLog(libraryName, logFile)
 
