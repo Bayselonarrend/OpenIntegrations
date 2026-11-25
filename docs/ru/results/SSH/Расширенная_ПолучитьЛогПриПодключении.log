@@ -1,8 +1,8 @@
 ﻿{
  "logs": [
-  "[2026-11-25 10:22:34.678] Connecting to SSH server",
-  "[2026-11-25 10:22:34.707] Connected to SSH server",
-  "[2026-11-25 10:22:34.708] Execute command: whoami"
+  "[2026-11-25 14:16:57.763] Connecting to SSH server",
+  "[2026-11-25 14:16:57.795] Connected to SSH server",
+  "[2026-11-25 14:16:57.796] Execute command: whoami"
  ],
  "result": true,
  "returned": 3,
