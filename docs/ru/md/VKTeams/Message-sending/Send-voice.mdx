@@ -66,10 +66,8 @@ import Admonition from '@theme/Admonition';
     IDЧата        = "689203963@chat.agent";
     IDЦитируемого = "7567354422724936211";
 
-    Файл     = "https://releases.openintegrations.dev/test_data/song.m4a";        // URL
-    ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
-
-    КопироватьФайл(Файл, ФайлПуть);
+    Файл     = "https://releases.openintegrations.dev/test_data/song.m4a"; // URL
+    ФайлПуть = OPI_ПолучениеДанныхТестов.ПолучитьФайлИзИнтернета(Файл, "m4a"); // Путь
 
     ФайлДД = Новый ДвоичныеДанные(ФайлПуть);      // Двоичные
 

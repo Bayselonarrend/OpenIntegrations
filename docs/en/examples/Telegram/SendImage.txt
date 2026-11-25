@@ -4,8 +4,7 @@
     Text      = "Строковое значение";
     Image     = "https://releases.openintegrations.dev/test_data/picture.jpg";
 
-    ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    ImagePath = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
 
     ImageDD = New BinaryData(ImagePath);
 

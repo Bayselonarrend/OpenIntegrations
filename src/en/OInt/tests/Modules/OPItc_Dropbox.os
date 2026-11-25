@@ -288,8 +288,7 @@ Procedure Dropbox_UploadFile(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Image = FunctionParameters["Picture"];
 
-    ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    ImagePath = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
 
     Options = New Structure;
     Options.Insert("token", Token);

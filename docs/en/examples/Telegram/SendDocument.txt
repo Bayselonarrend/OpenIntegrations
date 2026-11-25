@@ -4,8 +4,7 @@
     Text      = "Строковое значение";
     Document  = "https://releases.openintegrations.dev/test_data/document.docx";
 
-    DocumentPath = GetTempFileName("docx");
-    CopyFile(Document, DocumentPath);
+    DocumentPath = OPI_TestDataRetrieval.GetFileFromInternet(Document, "docx");
 
     DocumentDD = New BinaryData(DocumentPath);
 

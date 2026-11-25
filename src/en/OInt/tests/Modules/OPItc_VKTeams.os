@@ -289,9 +289,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
     Text   = "File caption";
 
     File     = FunctionParameters["Document"]; // URL
-    FilePath = GetTempFileName("docx"); // Path
-
-    CopyFile(File, FilePath);
+    FilePath = OPI_TestDataRetrieval.GetFileFromInternet(File, "docx"); // Path
 
     FileBD = New BinaryData(FilePath); // Binary
 
@@ -430,9 +428,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
     ReplyID = FunctionParameters["VKTeams_MessageID"];
 
     File     = FunctionParameters["Audio2"]; // URL
-    FilePath = GetTempFileName("m4a"); // Path
-
-    CopyFile(File, FilePath);
+    FilePath = OPI_TestDataRetrieval.GetFileFromInternet(File, "m4a"); // Path
 
     FileBD = New BinaryData(FilePath); // Binary
 
@@ -514,9 +510,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
     ChatID = FunctionParameters["VKTeams_ChatID"];
 
     File     = FunctionParameters["Picture3"]; // URL
-    FilePath = GetTempFileName("png"); // Path
-
-    CopyFile(File, FilePath);
+    FilePath = OPI_TestDataRetrieval.GetFileFromInternet(File, "png"); // Path
 
     FileBD = New BinaryData(FilePath); // Binary
 

@@ -471,8 +471,7 @@ Procedure Telegram_SendImage(FunctionParameters)
     Text      = FunctionParameters["String"];
     Image     = FunctionParameters["Picture"];
 
-    ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    ImagePath = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
 
     ImageDD = New BinaryData(ImagePath);
 
@@ -593,8 +592,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
     Text      = FunctionParameters["String"];
     Video     = FunctionParameters["Video"];
 
-    VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    VideoPath = OPI_TestDataRetrieval.GetFileFromInternet(Video, "mp4");
 
     VideoDD = New BinaryData(VideoPath);
 
@@ -646,8 +644,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
     Text      = FunctionParameters["String"];
     Audio     = FunctionParameters["Audio"];
 
-    AudioPath = GetTempFileName("mp3");
-    CopyFile(Audio, AudioPath);
+    AudioPath = OPI_TestDataRetrieval.GetFileFromInternet(Audio, "mp3");
 
     AudioDD = New BinaryData(AudioPath);
 
@@ -699,8 +696,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
     Text      = FunctionParameters["String"];
     Document  = FunctionParameters["Document"];
 
-    DocumentPath = GetTempFileName("docx");
-    CopyFile(Document, DocumentPath);
+    DocumentPath = OPI_TestDataRetrieval.GetFileFromInternet(Document, "docx");
 
     DocumentDD = New BinaryData(DocumentPath);
 
@@ -765,8 +761,7 @@ Procedure Telegram_SendGif(FunctionParameters)
     Text      = FunctionParameters["String"];
     GIF       = FunctionParameters["GIF"];
 
-    GifPath = GetTempFileName("gif");
-    CopyFile(GIF, GifPath);
+    GifPath = OPI_TestDataRetrieval.GetFileFromInternet(GIF, "gif");
 
     GifDD = New BinaryData(GifPath);
 
@@ -818,11 +813,9 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     Image  = FunctionParameters["Picture"];
     Video  = FunctionParameters["Video"];
 
-    ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    ImagePath = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
 
-    VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    VideoPath = OPI_TestDataRetrieval.GetFileFromInternet(Video, "mp4");
 
     VideoDD = New BinaryData(VideoPath);
 
@@ -843,10 +836,8 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendMediaGroup");
 
     DocumentURL  = FunctionParameters["Document"];
-    DocumentPath = GetTempFileName("docx");
+    DocumentPath = OPI_TestDataRetrieval.GetFileFromInternet(DocumentURL, "docx");
     ChannelID    = FunctionParameters["Telegram_ChannelID"];
-
-    CopyFile(DocumentURL, DocumentPath);
 
     MediaGroup = New Map;
     MediaGroup.Insert(DocumentURL , "document");

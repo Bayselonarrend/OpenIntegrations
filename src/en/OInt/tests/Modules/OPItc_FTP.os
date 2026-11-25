@@ -816,13 +816,10 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    ImagePath = "C:\pic.png";
+    Image = "C:\pic.png";
 
     Image = FunctionParameters["Picture"]; // SKIP
-
-    TFN   = GetTempFileName("png"); // SKIP
-    CopyFile(Image, TFN); // SKIP
-    Image = TFN; // SKIP
+    Image = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png"); // SKIP
 
     ImageDD = New BinaryData(Image);
 
@@ -937,7 +934,7 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     EndDo;
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
+    OPI_Tools.RemoveFileWithTry(Image, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 

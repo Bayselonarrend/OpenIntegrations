@@ -400,8 +400,7 @@ Procedure VK_CreatePost(FunctionParameters)
     Image  = FunctionParameters["Picture"]; // URL, Path or Binary data
     Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary data
 
-    TFN = GetTempFileName("png");
-    FileCopy(Image2, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Image2, "png");
 
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -453,8 +452,7 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary data
     Video = FunctionParameters["Video"]; // URL, Path or Binary data
 
-    TFN = GetTempFileName("png");
-    FileCopy(Image, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
 
     ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
     VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo", , , Parameters);
@@ -571,8 +569,7 @@ Procedure VK_CreateStory(FunctionParameters)
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary data
-    TFN   = GetTempFileName("png");
-    FileCopy(Image, TFN);
+    TFN   = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
     Image = New BinaryData(TFN);
 
     Result = OPI_VK.CreateStory(Image, URL, Parameters);
