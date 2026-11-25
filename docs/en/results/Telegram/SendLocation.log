@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 24366,
+  "message_id": 24725,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -10,12 +10,12 @@
   },
   "chat": {
    "id": 461699897,
-   "first_name": "Anton",
-   "last_name": "Titovets",
+   "first_name": "Антон",
+   "last_name": "Титовец",
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1784481074,
+  "date": 1795612419,
   "location": {
    "latitude": 48.873739,
    "longitude": 48.873733

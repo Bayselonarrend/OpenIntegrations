@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 24352,
+  "message_id": 24711,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -10,13 +10,13 @@
   },
   "chat": {
    "id": 461699897,
-   "first_name": "Anton",
-   "last_name": "Titovets",
+   "first_name": "Антон",
+   "last_name": "Титовец",
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1784480826,
-  "edit_date": 1784480845,
+  "date": 1795612054,
+  "edit_date": 1795612062,
   "text": "Строковое значение",
   "reply_markup": {
    "inline_keyboard": [

@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 24367,
+  "message_id": 24727,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -10,14 +10,14 @@
   },
   "chat": {
    "id": 461699897,
-   "first_name": "Anton",
-   "last_name": "Titovets",
+   "first_name": "Антон",
+   "last_name": "Титовец",
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1784481089,
+  "date": 1795612461,
   "poll": {
-   "id": "5398040692909939743",
+   "id": "5204153370813668013",
    "question": "What's your favorite color??",
    "options": [
     {
