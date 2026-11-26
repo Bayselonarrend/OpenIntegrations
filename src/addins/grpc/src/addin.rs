@@ -178,6 +178,18 @@ impl AddIn {
                     "ca_cert_path".to_string(),
                     JanxValue::String(tls.ca_cert_path.clone()),
                 );
+                if !tls.client_key_path.is_empty() {
+                    map.insert(
+                        "client_key_path".to_string(),
+                        JanxValue::String(tls.client_key_path.clone()),
+                    );
+                }
+                if !tls.client_cert_path.is_empty() {
+                    map.insert(
+                        "client_cert_path".to_string(),
+                        JanxValue::String(tls.client_cert_path.clone()),
+                    );
+                }
                 JanxValue::Object(map)
             }
             None => JanxValue::Object(BTreeMap::new()),
@@ -208,6 +220,38 @@ impl AddIn {
         }
 
         state.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, ca_cert_path));
+        janx_success(None, None)
+    }
+
+    pub fn set_client_auth(
+        &mut self,
+        client_key: Vec<u8>,
+        client_cert_chain: Vec<u8>,
+        client_key_path: &str,
+        client_cert_path: &str,
+    ) -> JanxValue {
+        let mut state = self.lock_state();
+        if state.client.is_connected() {
+            return janx_error(
+                "TLS settings can only be set before the connection is established",
+            );
+        }
+
+        let key_empty = client_key.is_empty();
+        let chain_empty = client_cert_chain.is_empty();
+        if key_empty != chain_empty {
+            return janx_error(
+                "Client certificate chain and private key must both be provided for mTLS",
+            );
+        }
+
+        let tls = state
+            .tls
+            .get_or_insert_with(|| TlsSettings::new(true, false, ""));
+        tls.client_key = client_key;
+        tls.client_cert_chain = client_cert_chain;
+        tls.client_key_path = client_key_path.to_string();
+        tls.client_cert_path = client_cert_path.to_string();
         janx_success(None, None)
     }
 

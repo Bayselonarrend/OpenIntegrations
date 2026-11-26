@@ -42,6 +42,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetLogger"),
     name!("GetLogs"),
     name!("GetTLSSettings"),
+    name!("SetClientAuth"),
     name!("Version"),
 ];
 
@@ -71,7 +72,8 @@ pub fn get_params_amount(num: usize) -> usize {
         19 => 1, // SetLogger
         20 => 1, // GetLogs
         21 => 0, // GetTLSSettings
-        22 => 0, // Version
+        22 => 4, // SetClientAuth
+        23 => 0, // Version
         _ => 0,
     }
 }
@@ -143,7 +145,19 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.get_logs(count))
         }
         21 => Box::new(obj.get_tls_settings()),
-        22 => Box::new(version()),
+        22 => {
+            let client_key = params[0].get_blob().unwrap_or_default().to_vec();
+            let client_cert_chain = params[1].get_blob().unwrap_or_default().to_vec();
+            let client_key_path = params[2].get_string().unwrap_or_default();
+            let client_cert_path = params[3].get_string().unwrap_or_default();
+            Box::new(obj.set_client_auth(
+                client_key,
+                client_cert_chain,
+                &client_key_path,
+                &client_cert_path,
+            ))
+        }
+        23 => Box::new(version()),
         _ => Box::new(false),
     }
 }

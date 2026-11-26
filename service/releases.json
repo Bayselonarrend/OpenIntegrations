@@ -126,6 +126,12 @@
                 "description_en": "Connection and method calls are limited by a timeout: channel readiness is included in the call timeout"
             },
             {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "`ПолучитьНастройкиTls` принимает клиентский ключ и цепочку сертификатов для mTLS: при каждом соединении они передаются двоичными данными",
+                "description_en": "`GetTlsSettings` accepts a client key and certificate chain for mTLS; both are sent as binary data on every connection"
+            },
+            {
                 "lib": "SSH",
                 "icon": "media/SSH.png",
                 "description_ru": "Восстановлена поддержка устаревшего алгоритма хост-ключа `ssh-rsa` для SSH/SFTP-серверов, которые больше не отдают современные ключи #119",
