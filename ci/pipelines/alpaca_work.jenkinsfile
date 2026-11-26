@@ -288,14 +288,20 @@ pipeline {
                 script {
                     alpacaGh('ci/alpaca/ensure-pr.lua', '--lookup')
                     def pr = readFile('ci/alpaca/out/pr.txt').trim()
-                    if (pr ==~ /[0-9]+/) {
-                        alpacaMarkStarted()
-                    } else if (env.ALPACA_REASON == 'comments') {
+                    if (env.ALPACA_REASON == 'comments') {
                         def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
-                        if (reacted != 0 && reacted != 2) {
+                        if (reacted == 2) {
+                            echo "Mention is already taken"
+                            currentBuild.description = 'mention already taken'
+                            env.ALPACA_SKIP = 'true'
+                            return
+                        }
+                        if (reacted != 0) {
                             error "Could not react to the comment: ${reacted}"
                         }
                         writeFile file: 'ci/alpaca/out/started.txt', text: '1'
+                    } else if (pr ==~ /[0-9]+/) {
+                        alpacaMarkStarted()
                     }
                     alpacaGh('ci/alpaca/began.lua')
                 }

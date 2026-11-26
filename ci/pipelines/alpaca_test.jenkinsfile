@@ -119,7 +119,13 @@ pipeline {
                 script {
                     alpacaGh('ci/alpaca/ensure-pr.lua', '--lookup')
                     def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
-                    if (reacted != 0 && reacted != 2) {
+                    if (reacted == 2) {
+                        echo "Mention is already taken"
+                        currentBuild.description = 'mention already taken'
+                        env.ALPACA_SKIP = 'true'
+                        return
+                    }
+                    if (reacted != 0) {
                         error "Could not react to the mention: ${reacted}"
                     }
                     alpacaGh('ci/alpaca/began.lua')

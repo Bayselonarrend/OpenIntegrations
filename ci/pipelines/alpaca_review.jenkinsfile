@@ -116,7 +116,13 @@ pipeline {
                     def pr = readFile('ci/alpaca/out/pr.txt').trim()
                     if (!(pr ==~ /[0-9]+/)) {
                         def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
-                        if (reacted != 0 && reacted != 2) {
+                        if (reacted == 2) {
+                            echo "Mention is already taken"
+                            currentBuild.description = 'mention already taken'
+                            env.ALPACA_SKIP = 'true'
+                            return
+                        }
+                        if (reacted != 0) {
                             error "Could not react to the mention: ${reacted}"
                         }
                         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nPR ещё нет, ревью не с чего начать. Когда pull request появится, позовите ещё раз.\n"
@@ -126,7 +132,13 @@ pipeline {
                         return
                     }
                     def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
-                    if (reacted != 0 && reacted != 2) {
+                    if (reacted == 2) {
+                        echo "Mention is already taken"
+                        currentBuild.description = 'mention already taken'
+                        env.ALPACA_SKIP = 'true'
+                        return
+                    }
+                    if (reacted != 0) {
                         error "Could not react to the mention: ${reacted}"
                     }
                     alpacaGh('ci/alpaca/began.lua')
