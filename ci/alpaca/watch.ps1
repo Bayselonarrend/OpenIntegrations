@@ -82,6 +82,13 @@ function Test-OwnerAfter($stamps, $latestStart) {
     return $hit.Count -gt 0
 }
 
+function Get-HeadPr([string]$Branch, [string]$State) {
+    $raw = & gh pr list --repo $script:Repo --head $Branch --state $State --limit 1 --json number,mergedAt
+    if ($LASTEXITCODE -ne 0) { throw "gh pr list failed with $LASTEXITCODE" }
+    if (-not $raw -or $raw.Trim() -eq '[]') { return $null }
+    return @($raw | ConvertFrom-Json)[0]
+}
+
 try {
     $otherJobs = @(Get-OtherRunningJobs)
 } catch {
@@ -114,6 +121,23 @@ if ($rawPrs -and $rawPrs.Trim() -ne '[]') {
 }
 
 if (-not $prNumber) {
+    $merged = Get-HeadPr $branch 'merged'
+    if ($merged) {
+        $stamps = @(Get-AlpacaStamps -IssueNumber ([int]$issue.number) -PullNumber ([int]$merged.number))
+        $starts = @($stamps | Where-Object { $_.Kind -eq 'start' })
+        if ($starts.Count -gt 0) {
+            $latestStart = ($starts | Sort-Object At | Select-Object -Last 1).At
+        } else {
+            $latestStart = [datetimeoffset]::Parse([string]$merged.mergedAt)
+        }
+        if (Test-OwnerAfter $stamps $latestStart) {
+            Write-Utf8File $trigger "issue=$($issue.number)`r`nreason=comments`r`n"
+            Write-Output "trigger issue=$($issue.number) reason=comments"
+            exit 0
+        }
+        Write-Output "issue=$($issue.number) PR #$($merged.number) is merged, no new owner comments"
+        exit 0
+    }
     $stamps = @(Get-AlpacaStamps -IssueNumber ([int]$issue.number) -PullNumber 0)
     $starts = @($stamps | Where-Object { $_.Kind -eq 'start' })
     if ($starts.Count -eq 0) {
