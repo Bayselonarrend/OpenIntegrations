@@ -1,0 +1,177 @@
+def lua(Map opts = [:], String scriptPath) {
+    def args = (opts.args ?: '').toString().trim()
+    def returnStatus = opts.returnStatus == true
+    def command = args ? "lua \"${scriptPath}\" ${args}" : "lua \"${scriptPath}\""
+    if (isUnix()) {
+        return sh(script: command, returnStatus: returnStatus)
+    }
+    return bat(script: command, returnStatus: returnStatus)
+}
+// Job name: Alpaca/Polina/AlpacaTest
+// Folder display name: Alpaca | Полина. Jenkins rejects "|" in an item name.
+// Pipeline from SCM, branch */main, credentials gitpolina.
+// gh and git inside the build use credential gitpolina.
+// Script path: ci/pipelines/alpaca_test.jenkinsfile
+// Agent label: windows. gh and git use ci/alpaca/agents/polina/agent.json.
+
+def alpacaClearSkip() {
+    lua('ci/alpaca/clear-skip.lua')
+}
+
+def alpacaGhStatus(String scriptPath, String args = '') {
+    def status = 1
+    for (int attempt = 1; attempt <= 4; attempt++) {
+        withCredentials([usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+            status = lua(args: args, returnStatus: true, scriptPath)
+        }
+        if (status == 0 || status == 2) {
+            return status
+        }
+        echo "gh attempt ${attempt} failed with ${status}"
+        if (attempt < 4) {
+            sleep(time: 15 * attempt, unit: 'SECONDS')
+        }
+    }
+    return status
+}
+
+def alpacaGh(String scriptPath, String args = '') {
+    def status = alpacaGhStatus(scriptPath, args)
+    if (status != 0) {
+        error "gh step failed: ${status}"
+    }
+}
+
+def alpacaPost() {
+    def pr = 'pending'
+    if (fileExists('ci/alpaca/out/pr.txt')) {
+        pr = readFile('ci/alpaca/out/pr.txt').trim()
+    }
+    def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
+    def status = alpacaGhStatus('ci/alpaca/comment-pr.lua', "ci/alpaca/out/comment.md ${target}")
+    if (status != 0) {
+        error "Comment failed with ${status}"
+    }
+}
+
+pipeline {
+    agent { label 'windows' }
+
+    options {
+        skipDefaultCheckout()
+        disableConcurrentBuilds()
+        timeout(time: 120, unit: 'MINUTES')
+        timestamps()
+    }
+
+    parameters {
+        string(name: 'ISSUE', defaultValue: '', description: 'Issue or alpaca pull request where PolinaTheAlpaca was mentioned')
+        string(name: 'REASON', defaultValue: 'comments', description: 'comments')
+        string(name: 'CYCLE', defaultValue: '1', description: 'Unused, accepted so Watch can pass the same parameters')
+        string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Unused, accepted so Watch can pass the same parameters')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    env.ALPACA_AGENT = 'polina'
+                    env.ALPACA_CREDENTIAL = 'gitpolina'
+                    env.ALPACA_JOB = 'Alpaca/Polina/AlpacaTest'
+                    alpacaClearSkip()
+                    checkout scm
+                    def issue = (params.ISSUE ?: '').trim()
+                    def reason = (params.REASON ?: '').trim()
+                    if (!(issue ==~ /[0-9]+/)) {
+                        error "Invalid ISSUE: ${issue}"
+                    }
+                    if (reason != 'comments') {
+                        error "Invalid REASON: ${reason}"
+                    }
+                    env.ALPACA_ISSUE = issue
+                    env.ALPACA_REASON = reason
+                    env.ALPACA_CYCLE = '1'
+                    env.ALPACA_MAX = '1'
+                    env.ALPACA_BRANCH = "alpaca/${issue}"
+                    env.ALPACA_SKIP = 'false'
+                    def issueState = alpacaGhStatus('ci/alpaca/issue-open.lua')
+                    if (issueState == 3) {
+                        echo "Issue #${issue} is closed"
+                        currentBuild.description = "issue #${issue} closed"
+                        env.ALPACA_SKIP = 'true'
+                    } else if (issueState != 0) {
+                        error "Could not read issue state: ${issueState}"
+                    } else {
+                        withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+                            lua('ci/alpaca/checkout.lua')
+                        }
+                        lua('ci/alpaca/prepare-mcp.lua')
+                    }
+                }
+            }
+        }
+
+        stage('Pull request') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    alpacaGh('ci/alpaca/ensure-pr.lua', '--lookup')
+                    def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
+                    if (reacted != 0 && reacted != 2) {
+                        error "Could not react to the mention: ${reacted}"
+                    }
+                    alpacaGh('ci/alpaca/began.lua')
+                }
+            }
+        }
+
+        stage('Tests') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    alpacaGh('ci/alpaca/prepare-task.lua', 'confirm')
+                    def tested = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
+                    if (tested != 0) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПроверка не записалась, Cursor CLI завершился с кодом ${tested}.\n"
+                        alpacaPost()
+                        error "Cursor CLI failed: ${tested}"
+                    }
+                    def pending = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
+                    if (pending == 0) {
+                        def committed = 1
+                        withCredentials([
+                            gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default'),
+                            usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')
+                        ]) {
+                            committed = lua(returnStatus: true, 'ci/alpaca/commit-push.lua')
+                        }
+                        if (committed != 0 && committed != 2) {
+                            error "git commit failed: ${committed}"
+                        }
+                    } else if (pending != 2) {
+                        error "git status failed: ${pending}"
+                    }
+                    if (!fileExists('ci/alpaca/out/comment.md')) {
+                        error 'Comment is missing'
+                    }
+                    def newer = alpacaGhStatus('ci/alpaca/newer-mention.lua')
+                    if (newer == 0) {
+                        lua('ci/alpaca/strip-mentions.lua')
+                    } else if (newer != 2) {
+                        error "Could not read mentions: ${newer}"
+                    }
+                    alpacaPost()
+                    currentBuild.description = 'answered'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                alpacaClearSkip()
+            }
+        }
+    }
+}

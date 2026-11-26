@@ -19,7 +19,7 @@
 2. Собрать всё (режим `both` для обеих архитектур):
    - `build_all.bat`
 3. Опубликовать в orphan-ветку `addins-special`:
-   - `publish-special-addins.bat`
+   - `publish-special-addins.lua`
 
 После клонирования `main` подтянуть уже опубликованные zip:
 
@@ -53,7 +53,7 @@ build-win7.bat lua lua OPI_LuaJIT both --no-default-features --features luajit
 
 ## Публикация
 
-`publish-special-addins.bat` создаёт orphan-ветку `addins-special` с содержимым `output/*.zip` и делает `git push --force origin addins-special`. Стандартная ветка `addins` не затрагивается.
+`publish-special-addins.lua` создаёт orphan-ветку `addins-special` с содержимым `output/*.zip` и делает `git push --force origin addins-special`. Стандартная ветка `addins` не затрагивается.
 
 ## Скрипты
 
@@ -65,5 +65,5 @@ build-win7.bat lua lua OPI_LuaJIT both --no-default-features --features luajit
 | `lib.bat` | Общие проверки, манифест, zip |
 | `setup-win7.bat` | Подготовка окружения win7 |
 | `setup-static-openssl.bat` | Подготовка Docker / zigbuild |
-| `publish-special-addins.bat` | Публикация в `addins-special` |
+| `publish-special-addins.lua` | Публикация в `addins-special` |
 | `sync-special-addins.bat` | Синхронизация с `origin/addins-special` |

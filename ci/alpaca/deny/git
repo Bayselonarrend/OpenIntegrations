@@ -1,0 +1,3 @@
+#!/bin/sh
+here=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+exec lua "$here/git.lua" "$@"

@@ -1,30 +1,40 @@
-// Job name: AlpacaWork
+def lua(Map opts = [:], String scriptPath) {
+    def args = (opts.args ?: '').toString().trim()
+    def returnStatus = opts.returnStatus == true
+    def command = args ? "lua \"${scriptPath}\" ${args}" : "lua \"${scriptPath}\""
+    if (isUnix()) {
+        return sh(script: command, returnStatus: returnStatus)
+    }
+    return bat(script: command, returnStatus: returnStatus)
+}
+// Job name: Alpaca/Vitaly/AlpacaWork
+// Folder display name: Alpaca | Виталий. Jenkins rejects "|" in an item name.
 // Pipeline from SCM, branch */main, credentials gitalpaca.
 // Script path: ci/pipelines/alpaca_work.jenkinsfile
 // Agent label: windows. The windows agent needs gh and the Cursor CLI (agent or cursor-agent).
-// gh calls use GH_TOKEN from the gitalpaca credential, so comments are authored by VitalyTheAlpaca.
+// gh and git use the credential from ci/alpaca/agents/vitaly/agent.json.
 
 def alpacaClearSkip() {
-    bat '''powershell -NoProfile -Command "if (Test-Path .git) { git ls-files -v | ForEach-Object { if ($_ -like 'S *') { git update-index --no-skip-worktree -- $_.Substring(2) } } }; exit 0"'''
+    lua('ci/alpaca/clear-skip.lua')
 }
 
 def alpacaLog(String jobName, int number, int count) {
     def out = 'ci/alpaca/out/downstream-log.txt'
-    def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\read-log.ps1 -Job \"${jobName}\" -Number ${number} -Lines ${count} -OutFile ${out}", returnStatus: true)
+    def status = lua(args: "\"${jobName}\" ${number} ${count} ${out}", returnStatus: true, 'ci/alpaca/read-log.lua')
     if (status != 0 || !fileExists(out)) {
         return "log unavailable: ${jobName} #${number} (${status})"
     }
     return readFile(out)
 }
 
-def alpacaGhStatus(String script) {
+def alpacaGhStatus(String scriptPath, String args = '') {
     def status = 1
     for (int attempt = 1; attempt <= 4; attempt++) {
-        withCredentials([usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
-            status = bat(script: script, returnStatus: true)
+        withCredentials([usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+            status = lua(args: args, returnStatus: true, scriptPath)
         }
-        if (status == 0) {
-            return 0
+        if (status == 0 || status == 2) {
+            return status
         }
         echo "gh attempt ${attempt} failed with ${status}"
         if (attempt < 4) {
@@ -34,8 +44,8 @@ def alpacaGhStatus(String script) {
     return status
 }
 
-def alpacaGh(String script) {
-    def status = alpacaGhStatus(script)
+def alpacaGh(String scriptPath, String args = '') {
+    def status = alpacaGhStatus(scriptPath, args)
     if (status != 0) {
         error "gh step failed: ${status}"
     }
@@ -67,13 +77,31 @@ def alpacaNoChanges() {
     currentBuild.description = 'no code changes'
 }
 
+def alpacaAskPolina(String outcome) {
+    def newer = alpacaGhStatus('ci/alpaca/newer-mention.lua')
+    if (newer == 0) {
+        echo "A newer mention arrived, Polina is not called"
+        return
+    }
+    if (newer != 2) {
+        error "Could not read mentions: ${newer}"
+    }
+    def status = alpacaGhStatus('ci/alpaca/ask-polina.lua', outcome)
+    if (status == 2) {
+        return
+    }
+    if (status != 0) {
+        error "Could not ask Polina: ${status}"
+    }
+}
+
 def alpacaPost() {
     def pr = 'pending'
     if (fileExists('ci/alpaca/out/pr.txt')) {
         pr = readFile('ci/alpaca/out/pr.txt').trim()
     }
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
-    def status = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
+    def status = alpacaGhStatus('ci/alpaca/comment-pr.lua', "ci/alpaca/out/comment.md ${target}")
     if (status != 0) {
         error "Comment failed with ${status}"
     }
@@ -95,7 +123,7 @@ def alpacaReasonText(String reason) {
 def alpacaMarkStarted() {
     def reason = (env.ALPACA_REASON ?: 'new').toString()
     if (reason == 'comments') {
-        def reacted = alpacaGhStatus('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\react-eyes.ps1')
+        def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
         if (reacted == 0) {
             writeFile file: 'ci/alpaca/out/started.txt', text: '1'
             return
@@ -112,7 +140,7 @@ def alpacaMarkStarted() {
     writeFile file: 'ci/alpaca/out/comment.md', text: body
     def pr = readFile('ci/alpaca/out/pr.txt').trim()
     def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
-    def posted = alpacaGhStatus("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\comment-pr.ps1 -BodyFile ci\\alpaca\\out\\comment.md -Target ${target}")
+    def posted = alpacaGhStatus('ci/alpaca/comment-pr.lua', "ci/alpaca/out/comment.md ${target}")
     if (posted != 0) {
         error "Could not post the cycle marker: ${posted}"
     }
@@ -128,6 +156,18 @@ def alpacaSay(String text) {
 def alpacaRetrigger(String reason) {
     def cycle = Integer.valueOf(env.ALPACA_CYCLE ?: '1')
     def maxCycle = Integer.valueOf(env.ALPACA_MAX ?: '8')
+    def newer = alpacaGhStatus('ci/alpaca/newer-mention.lua')
+    if (newer == 0) {
+        if (fileExists('ci/alpaca/out/comment.md')) {
+            lua('ci/alpaca/strip-mentions.lua')
+            alpacaPost()
+        }
+        currentBuild.description = "held after ${reason}, newer mention"
+        return
+    }
+    if (newer != 2) {
+        error "Could not read mentions: ${newer}"
+    }
     if (!fileExists('ci/alpaca/out/comment.md')) {
         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\n${alpacaReasonText(reason)}\n"
     }
@@ -140,7 +180,7 @@ def alpacaRetrigger(String reason) {
     }
     alpacaPost()
     def next = (cycle + 1).toString()
-    build job: 'AlpacaWork', wait: false, parameters: [
+    build job: env.ALPACA_JOB, wait: false, parameters: [
         [$class: 'StringParameterValue', name: 'ISSUE', value: env.ALPACA_ISSUE],
         [$class: 'StringParameterValue', name: 'REASON', value: reason],
         [$class: 'StringParameterValue', name: 'CYCLE', value: next],
@@ -152,12 +192,12 @@ def alpacaRetrigger(String reason) {
 def alpacaCursor(String mode) {
     def keepTree = (mode == 'edit' || mode == 'write-tests' || mode == 'translate-dict')
     if (!keepTree) {
-        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\clear-outputs.ps1'
+        lua('ci/alpaca/clear-outputs.lua')
     }
-    alpacaGh("powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\prepare-task.ps1 -Mode ${mode}")
-    def status = bat(script: "powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\run-cursor.ps1 -TaskFile ci\\alpaca\\out\\task.md", returnStatus: true)
+    alpacaGh('ci/alpaca/prepare-task.lua', "${mode}")
+    def status = lua(args: "ci/alpaca/out/task.md", returnStatus: true, 'ci/alpaca/run-cursor.lua')
     if (!keepTree) {
-        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\restore-tree.ps1'
+        lua('ci/alpaca/restore-tree.lua')
     }
     return status
 }
@@ -173,7 +213,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'ISSUE', defaultValue: '', description: 'Open GitHub issue assigned to VitalyTheAlpaca')
+        string(name: 'ISSUE', defaultValue: '', description: 'GitHub issue or alpaca pull request where VitalyTheAlpaca was mentioned')
         string(name: 'REASON', defaultValue: 'new', description: 'new, comments, build or tests')
         string(name: 'CYCLE', defaultValue: '1', description: 'Loop counter')
         string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Last cycle that may start another run')
@@ -183,6 +223,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
+                    env.ALPACA_AGENT = 'vitaly'
+                    env.ALPACA_CREDENTIAL = 'gitalpaca'
+                    env.ALPACA_JOB = 'Alpaca/Vitaly/AlpacaWork'
                     alpacaClearSkip()
                     checkout scm
                     def issue = (params.ISSUE ?: '').trim()
@@ -220,7 +263,7 @@ pipeline {
                     env.ALPACA_COMMITTED = 'false'
                     env.ALPACA_BUILD_OK = 'false'
                     env.ALPACA_SKIP = 'false'
-                    def issueState = alpacaGhStatus('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\issue-open.ps1')
+                    def issueState = alpacaGhStatus('ci/alpaca/issue-open.lua')
                     if (issueState == 3) {
                         echo "Issue #${issue} is closed"
                         currentBuild.description = "issue #${issue} closed"
@@ -228,10 +271,10 @@ pipeline {
                     } else if (issueState != 0) {
                         error "Could not read issue state: ${issueState}"
                     } else {
-                        withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                            bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\checkout.ps1'
+                        withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+                            lua('ci/alpaca/checkout.lua')
                         }
-                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\prepare-mcp.ps1'
+                        lua('ci/alpaca/prepare-mcp.lua')
                     }
                 }
             }
@@ -241,10 +284,32 @@ pipeline {
             when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
-                    alpacaGh('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1 -LookupOnly')
+                    alpacaGh('ci/alpaca/ensure-pr.lua', '--lookup')
                     def pr = readFile('ci/alpaca/out/pr.txt').trim()
                     if (pr ==~ /[0-9]+/) {
                         alpacaMarkStarted()
+                    } else if (env.ALPACA_REASON == 'comments') {
+                        def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
+                        if (reacted != 0 && reacted != 2) {
+                            error "Could not react to the comment: ${reacted}"
+                        }
+                        writeFile file: 'ci/alpaca/out/started.txt', text: '1'
+                    }
+                    alpacaGh('ci/alpaca/began.lua')
+                }
+            }
+        }
+
+        stage('Ready') {
+            when { expression { return env.ALPACA_SKIP != 'true' && env.ALPACA_REASON == 'comments' } }
+            steps {
+                script {
+                    def ready = alpacaGhStatus('ci/alpaca/mark-ready.lua')
+                    if (ready == 0) {
+                        env.ALPACA_SKIP = 'true'
+                        currentBuild.description = 'pr ready'
+                    } else if (ready != 2) {
+                        error "Could not update the draft: ${ready}"
                     }
                 }
             }
@@ -254,7 +319,7 @@ pipeline {
             when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
-                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md; exit 0"'
+                    lua('ci/alpaca/remove-answer.lua')
                     def edited = alpacaCursor('edit')
                     if (edited != 0) {
                         def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
@@ -262,7 +327,7 @@ pipeline {
                         alpacaPost()
                         error "Cursor CLI failed: ${edited}"
                     }
-                    def pending = bat(script: 'powershell -NoProfile -Command "if ([string]::IsNullOrWhiteSpace((git status --porcelain | Out-String))) { exit 2 } else { exit 0 }"', returnStatus: true)
+                    def pending = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
                     if (pending == 2) {
                         alpacaNoChanges()
                         return
@@ -270,7 +335,7 @@ pipeline {
                     if (pending != 0) {
                         error "git status failed: ${pending}"
                     }
-                    bat 'powershell -NoProfile -Command "Remove-Item -Force -ErrorAction SilentlyContinue ci\\alpaca\\out\\answer.md; exit 0"'
+                    lua('ci/alpaca/remove-answer.lua')
                     def tested = alpacaCursor('write-tests')
                     if (tested != 0) {
                         def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
@@ -278,7 +343,7 @@ pipeline {
                         alpacaPost()
                         error "Cursor test step failed: ${tested}"
                     }
-                    def pendingAfter = bat(script: 'powershell -NoProfile -Command "if ([string]::IsNullOrWhiteSpace((git status --porcelain | Out-String))) { exit 2 } else { exit 0 }"', returnStatus: true)
+                    def pendingAfter = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
                     if (pendingAfter == 2) {
                         alpacaNoChanges()
                         return
@@ -308,10 +373,10 @@ pipeline {
                     }
                     def committed = 1
                     withCredentials([
-                        gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default'),
-                        usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')
+                        gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default'),
+                        usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')
                     ]) {
-                        committed = bat(script: 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\commit-push.ps1', returnStatus: true)
+                        committed = lua(returnStatus: true, 'ci/alpaca/commit-push.lua')
                     }
                     if (committed == 2) {
                         alpacaNoChanges()
@@ -320,13 +385,28 @@ pipeline {
                     if (committed != 0) {
                         error "git commit failed: ${committed}"
                     }
-                    withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                        alpacaGh('powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\ensure-pr.ps1')
-                    }
                     if (!fileExists('ci/alpaca/out/started.txt')) {
                         alpacaMarkStarted()
                     }
                     env.ALPACA_COMMITTED = 'true'
+                }
+            }
+        }
+
+        stage('Open pull request') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    def requested = lua(returnStatus: true, 'ci/alpaca/want-pr.lua')
+                    if (requested == 2) {
+                        return
+                    }
+                    if (requested != 0) {
+                        error "Could not read the pull request request: ${requested}"
+                    }
+                    withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+                        alpacaGh('ci/alpaca/ensure-pr.lua')
+                    }
                 }
             }
         }
@@ -337,7 +417,7 @@ pipeline {
                 script {
                     def published = 1
                     withCredentials([gitUsernamePassword(credentialsId: 'gitalpaca', gitToolName: 'Default')]) {
-                        published = bat(script: "call src\\addins\\publish-addins.bat ${env.ALPACA_ADDINS}", returnStatus: true)
+                        published = lua(args: env.ALPACA_ADDINS, returnStatus: true, 'src/addins/publish-addins.lua')
                     }
                     if (published != 0) {
                         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПубликация компонент не прошла. Новый цикл не запущен.\n"
@@ -417,6 +497,7 @@ pipeline {
                     if (jobs.size() == 1 && jobs[0].equalsIgnoreCase('none')) {
                         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nИзменения не требуют прогона тестов библиотеки. Новый цикл не запущен.\n"
                         alpacaPost()
+                        alpacaAskPolina('pass')
                         currentBuild.description = 'tests not required'
                         return
                     }
@@ -499,7 +580,7 @@ pipeline {
                         if (summary.length() > 12000) {
                             summary = summary.substring(summary.length() - 12000)
                         }
-                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nВыбранные тесты упали, разбор не завершился. Запускаю следующий цикл.\n\n${summary}\n"
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nВыбранные тесты упали, разбор не завершился.\n\n${summary}\n"
                     }
                     if (!fileExists('ci/alpaca/out/comment.md')) {
                         def fallback = anyFailed
@@ -510,12 +591,10 @@ pipeline {
                         def existing = readFile('ci/alpaca/out/comment.md')
                         writeFile file: 'ci/alpaca/out/comment.md', text: existing + "\n\nВыбранные задания завершились успешно. Новый цикл не запущен.\n"
                     }
-                    if (verdict == 'retrigger') {
-                        alpacaRetrigger('tests')
-                        return
-                    }
-                    currentBuild.description = anyFailed ? 'tests not related' : 'tests passed'
+                    currentBuild.description = anyFailed ? 'tests failed' : 'tests passed'
+                    lua(args: 'quiet', 'ci/alpaca/strip-mentions.lua')
                     alpacaPost()
+                    alpacaAskPolina(anyFailed ? 'fail' : 'pass')
                 }
             }
         }

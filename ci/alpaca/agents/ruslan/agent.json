@@ -1,0 +1,11 @@
+{
+  "id": "ruslan",
+  "login": "RuslanTheAlpaca",
+  "name": "Альпака Руслан",
+  "email": "ruslan.alpaca@openintegrations.dev",
+  "credential": "gitruslan",
+  "model": "claude-sonnet-4.5",
+  "role": "reviewer",
+  "job": "Alpaca/Ruslan/AlpacaReview",
+  "reactTo": ["bayselonarrend", "VitalyTheAlpaca", "PolinaTheAlpaca"]
+}

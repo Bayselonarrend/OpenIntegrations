@@ -1,0 +1,198 @@
+def lua(Map opts = [:], String scriptPath) {
+    def args = (opts.args ?: '').toString().trim()
+    def returnStatus = opts.returnStatus == true
+    def command = args ? "lua \"${scriptPath}\" ${args}" : "lua \"${scriptPath}\""
+    if (isUnix()) {
+        return sh(script: command, returnStatus: returnStatus)
+    }
+    return bat(script: command, returnStatus: returnStatus)
+}
+// Job name: Alpaca/Ruslan/AlpacaReview
+// Folder display name: Alpaca | Руслан. Jenkins rejects "|" in an item name.
+// Pipeline from SCM, branch */main, credentials gitalpaca.
+// gh and git inside the build use credential gitruslan.
+// Script path: ci/pipelines/alpaca_review.jenkinsfile
+// Agent label: windows. gh and git use ci/alpaca/agents/ruslan/agent.json.
+
+def alpacaClearSkip() {
+    lua('ci/alpaca/clear-skip.lua')
+}
+
+def alpacaGhStatus(String scriptPath, String args = '') {
+    def status = 1
+    for (int attempt = 1; attempt <= 4; attempt++) {
+        withCredentials([usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+            status = lua(args: args, returnStatus: true, scriptPath)
+        }
+        if (status == 0 || status == 2) {
+            return status
+        }
+        echo "gh attempt ${attempt} failed with ${status}"
+        if (attempt < 4) {
+            sleep(time: 15 * attempt, unit: 'SECONDS')
+        }
+    }
+    return status
+}
+
+def alpacaGh(String scriptPath, String args = '') {
+    def status = alpacaGhStatus(scriptPath, args)
+    if (status != 0) {
+        error "gh step failed: ${status}"
+    }
+}
+
+def alpacaPost(String target) {
+    def status = alpacaGhStatus('ci/alpaca/comment-pr.lua', "ci/alpaca/out/comment.md ${target}")
+    if (status != 0) {
+        error "Comment failed with ${status}"
+    }
+}
+
+pipeline {
+    agent { label 'windows' }
+
+    options {
+        skipDefaultCheckout()
+        disableConcurrentBuilds()
+        timeout(time: 90, unit: 'MINUTES')
+        timestamps()
+    }
+
+    parameters {
+        string(name: 'ISSUE', defaultValue: '', description: 'Issue whose alpaca branch is under review')
+        string(name: 'REASON', defaultValue: 'review', description: 'review')
+        string(name: 'CYCLE', defaultValue: '1', description: 'Unused, accepted so Watch can pass the same parameters')
+        string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Unused, accepted so Watch can pass the same parameters')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    env.ALPACA_AGENT = 'ruslan'
+                    env.ALPACA_CREDENTIAL = 'gitruslan'
+                    env.ALPACA_JOB = 'Alpaca/Ruslan/AlpacaReview'
+                    alpacaClearSkip()
+                    checkout scm
+                    def issue = (params.ISSUE ?: '').trim()
+                    def reason = (params.REASON ?: '').trim()
+                    if (!(issue ==~ /[0-9]+/)) {
+                        error "Invalid ISSUE: ${issue}"
+                    }
+                    if (reason != 'review') {
+                        error "Invalid REASON: ${reason}"
+                    }
+                    env.ALPACA_ISSUE = issue
+                    env.ALPACA_REASON = reason
+                    env.ALPACA_CYCLE = '1'
+                    env.ALPACA_MAX = '1'
+                    env.ALPACA_BRANCH = "alpaca/${issue}"
+                    env.ALPACA_SKIP = 'false'
+                    def issueState = alpacaGhStatus('ci/alpaca/issue-open.lua')
+                    if (issueState == 3) {
+                        echo "Issue #${issue} is closed"
+                        currentBuild.description = "issue #${issue} closed"
+                        env.ALPACA_SKIP = 'true'
+                    } else if (issueState != 0) {
+                        error "Could not read issue state: ${issueState}"
+                    } else {
+                        withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+                            lua('ci/alpaca/checkout.lua')
+                        }
+                        lua('ci/alpaca/prepare-mcp.lua')
+                    }
+                }
+            }
+        }
+
+        stage('Pull request') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    alpacaGh('ci/alpaca/ensure-pr.lua', '--lookup')
+                    def pr = readFile('ci/alpaca/out/pr.txt').trim()
+                    if (!(pr ==~ /[0-9]+/)) {
+                        def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
+                        if (reacted != 0 && reacted != 2) {
+                            error "Could not react to the mention: ${reacted}"
+                        }
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nPR ещё нет, ревью не с чего начать. Когда pull request появится, позовите ещё раз.\n"
+                        alpacaPost('issue')
+                        currentBuild.description = 'no pull request'
+                        env.ALPACA_SKIP = 'true'
+                        return
+                    }
+                    def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
+                    if (reacted != 0 && reacted != 2) {
+                        error "Could not react to the mention: ${reacted}"
+                    }
+                    alpacaGh('ci/alpaca/began.lua')
+                }
+            }
+        }
+
+        stage('Review') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    lua('ci/alpaca/clear-outputs.lua')
+                    alpacaGh('ci/alpaca/prepare-task.lua', 'review')
+                    def reviewed = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
+                    lua('ci/alpaca/restore-tree.lua')
+                    if (reviewed != 0) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nРевью не записалось, Cursor CLI завершился с кодом ${reviewed}.\n"
+                        alpacaPost('pr')
+                        error "Cursor CLI failed: ${reviewed}"
+                    }
+                    def verdict = ''
+                    if (fileExists('ci/alpaca/out/verdict.txt')) {
+                        def line = readFile('ci/alpaca/out/verdict.txt').replace('\uFEFF', '').split(/\r?\n/).find { it.trim() }
+                        if (line) {
+                            verdict = line.trim().toLowerCase()
+                        }
+                    }
+                    def newer = alpacaGhStatus('ci/alpaca/newer-mention.lua')
+                    if (newer == 0) {
+                        if (!fileExists('ci/alpaca/out/comment.md')) {
+                            error 'Review comment is missing'
+                        }
+                        lua('ci/alpaca/strip-mentions.lua')
+                        alpacaPost('pr')
+                        currentBuild.description = 'held for a newer mention'
+                        return
+                    }
+                    if (newer != 2) {
+                        error "Could not read mentions: ${newer}"
+                    }
+                    if (!(verdict in ['approve', 'changes'])) {
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nРевью не записало verdict.txt со строкой approve или changes.\n"
+                        alpacaPost('pr')
+                        error 'Review verdict is missing'
+                    }
+                    if (!fileExists('ci/alpaca/out/comment.md')) {
+                        error 'Review comment is missing'
+                    }
+                    if (verdict == 'approve') {
+                        def approved = alpacaGhStatus('ci/alpaca/approve-pr.lua')
+                        if (approved != 0) {
+                            error "Approve failed: ${approved}"
+                        }
+                        currentBuild.description = 'approved'
+                        return
+                    }
+                    alpacaPost('pr')
+                    currentBuild.description = 'changes requested'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                alpacaClearSkip()
+            }
+        }
+    }
+}

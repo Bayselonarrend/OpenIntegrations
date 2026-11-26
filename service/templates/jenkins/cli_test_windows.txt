@@ -5,6 +5,16 @@ def runCommand(String command) {
         bat(script: command)
     }
 }
+def lua(Map opts = [:], String scriptPath) {
+    def args = (opts.args ?: '').toString().trim()
+    def returnStatus = opts.returnStatus == true
+    def command = args ? "lua \"${scriptPath}\" ${args}" : "lua \"${scriptPath}\""
+    if (isUnix()) {
+        return sh(script: command, returnStatus: returnStatus)
+    }
+    return bat(script: command, returnStatus: returnStatus)
+}
+
 
 pipeline {
 	agent {

@@ -1,4 +1,14 @@
-// Job name: AlpacaWatch
+def lua(Map opts = [:], String scriptPath) {
+    def args = (opts.args ?: '').toString().trim()
+    def returnStatus = opts.returnStatus == true
+    def command = args ? "lua \"${scriptPath}\" ${args}" : "lua \"${scriptPath}\""
+    if (isUnix()) {
+        return sh(script: command, returnStatus: returnStatus)
+    }
+    return bat(script: command, returnStatus: returnStatus)
+}
+// Job name: Alpaca/AlpacaWatch
+// Folder display name: Alpaca | Агентская разработка. Jenkins rejects "|" in an item name.
 // Pipeline from SCM, branch */main, credentials gitalpaca.
 // Script path: ci/pipelines/alpaca_watch.jenkinsfile
 // Agent label: windows. The windows agent needs gh. Issue and PR calls use GH_TOKEN from gitalpaca.
@@ -43,40 +53,56 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'gitalpaca', usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
-                        bat 'powershell -NoProfile -ExecutionPolicy Bypass -File ci\\alpaca\\watch.ps1'
+                        lua('ci/alpaca/watch.lua')
                     }
-                    if (!fileExists('ci/alpaca/out/trigger.properties')) {
+                    if (!fileExists('ci/alpaca/out/triggers.txt')) {
                         echo 'Nothing to run'
                         return
                     }
-                    def issue = ''
-                    def reason = ''
-                    readFile('ci/alpaca/out/trigger.properties').split(/\r?\n/).each { line ->
-                        def parts = line.split('=', 2)
-                        if (parts.length != 2) {
+                    def started = []
+                    readFile('ci/alpaca/out/triggers.txt').split(/\r?\n/).each { agentId ->
+                        def id = agentId.trim()
+                        if (!id) {
                             return
                         }
-                        if (parts[0].trim() == 'issue') {
-                            issue = parts[1].trim()
+                        def issue = ''
+                        def reason = ''
+                        def job = ''
+                        readFile("ci/alpaca/out/trigger-${id}.properties").split(/\r?\n/).each { line ->
+                            def parts = line.split('=', 2)
+                            if (parts.length != 2) {
+                                return
+                            }
+                            if (parts[0].trim() == 'issue') {
+                                issue = parts[1].trim()
+                            }
+                            if (parts[0].trim() == 'reason') {
+                                reason = parts[1].trim()
+                            }
+                            if (parts[0].trim() == 'job') {
+                                job = parts[1].trim()
+                            }
                         }
-                        if (parts[0].trim() == 'reason') {
-                            reason = parts[1].trim()
+                        if (!(issue ==~ /[0-9]+/)) {
+                            error "No issue in trigger for ${id}"
                         }
+                        if (!(reason in ['new', 'comments', 'review'])) {
+                            error "Invalid trigger reason: ${reason}"
+                        }
+                        if (!job) {
+                            error "No job in trigger for ${id}"
+                        }
+                        build job: job, wait: false, parameters: [
+                            [$class: 'StringParameterValue', name: 'ISSUE', value: issue],
+                            [$class: 'StringParameterValue', name: 'REASON', value: reason],
+                            [$class: 'StringParameterValue', name: 'CYCLE', value: '1'],
+                            [$class: 'StringParameterValue', name: 'MAX_CYCLE', value: '8']
+                        ]
+                        started << "${id} ${reason} #${issue}"
                     }
-                    if (!(issue ==~ /[0-9]+/)) {
-                        echo 'No issue in trigger file'
-                        return
+                    if (started) {
+                        currentBuild.description = 'started ' + started.join(', ')
                     }
-                    if (!(reason in ['new', 'comments'])) {
-                        error "Invalid trigger reason: ${reason}"
-                    }
-                    build job: 'AlpacaWork', wait: false, parameters: [
-                        [$class: 'StringParameterValue', name: 'ISSUE', value: issue],
-                        [$class: 'StringParameterValue', name: 'REASON', value: reason],
-                        [$class: 'StringParameterValue', name: 'CYCLE', value: '1'],
-                        [$class: 'StringParameterValue', name: 'MAX_CYCLE', value: '8']
-                    ]
-                    currentBuild.description = "started ${reason} for #${issue}"
                 }
             }
         }

@@ -1,0 +1,11 @@
+{
+  "id": "polina",
+  "login": "PolinaTheAlpaca",
+  "name": "Альпака Полина",
+  "email": "polina.alpaca@openintegrations.dev",
+  "credential": "gitpolina",
+  "model": "grok-4.7",
+  "role": "tester",
+  "job": "Alpaca/Polina/AlpacaTest",
+  "reactTo": ["bayselonarrend", "VitalyTheAlpaca", "RuslanTheAlpaca"]
+}

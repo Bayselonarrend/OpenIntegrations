@@ -42,6 +42,29 @@ function findMethod(index, library, method) {
     return (index.methods || []).find((item) => normalize(item.library) === lib && normalize(item.method) === name);
 }
 
+function libraryMethods(index, library) {
+    const lib = normalize(library);
+    const found = [];
+    let name = "";
+    for (const item of index.methods || []) {
+        if (normalize(item.library) !== lib) {
+            continue;
+        }
+        if (!name) {
+            name = item.library;
+        }
+        found.push({
+            section: item.section,
+            method: item.method,
+            title: item.title,
+            description: item.description,
+            path: item.path,
+            url: item.url
+        });
+    }
+    return { name, found };
+}
+
 function searchMethods(index, query, limit) {
     const needle = normalize(query);
     const scored = [];
@@ -94,6 +117,23 @@ function createDocsServer() {
             }
             const libraries = (index.libraries || []).map((name) => ({ name, methods: counts.get(name) || 0 }));
             return textResult({ language: index.language, url: index.url, libraries });
+        }
+    );
+
+    server.registerTool(
+        "list_library_methods",
+        {
+            description: "List documented methods of one library, in the documentation order",
+            inputSchema: z.object({
+                library: z.string().describe("Library name, for example Telegram")
+            })
+        },
+        async ({ library }) => {
+            const listed = libraryMethods(loadIndex(), library);
+            if (!listed.name) {
+                return textResult(`Library not found: ${library}`);
+            }
+            return textResult({ library: listed.name, methods: listed.found });
         }
     );
 

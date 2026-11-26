@@ -1,6 +1,6 @@
 # Комментарий к сборке
 
-Код не менять. Git, gh и publish-addins.bat не вызывать. Jenkins не запускать.
+Код не менять. Git, gh и publish-addins.lua не вызывать. Jenkins не запускать.
 
 Единственный файл, который можно записать: `ci/alpaca/out/comment.md`.
 

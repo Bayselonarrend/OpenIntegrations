@@ -25,6 +25,9 @@ docs/** linguist-vendored
 *.pdn binary
 *.luac binary
 *.sh text eol=lf
+ci/alpaca/deny/git text eol=lf
+ci/alpaca/deny/gh text eol=lf
+ci/alpaca/deny/publish-addins text eol=lf
 *.bash text eol=lf
 *.desktop text eol=lf
 *.bat text eol=crlf

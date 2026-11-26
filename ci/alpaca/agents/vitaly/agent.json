@@ -1,0 +1,13 @@
+{
+  "id": "vitaly",
+  "login": "VitalyTheAlpaca",
+  "name": "Альпака Виталий",
+  "email": "vitaly.alpaca@openintegrations.dev",
+  "credential": "gitalpaca",
+  "model": "grok-4.7",
+  "role": "author",
+  "job": "Alpaca/Vitaly/AlpacaWork",
+  "reactTo": ["bayselonarrend", "RuslanTheAlpaca", "PolinaTheAlpaca"],
+  "reviewer": "RuslanTheAlpaca",
+  "tester": "PolinaTheAlpaca"
+}
