@@ -132,7 +132,9 @@ for _, agent in ipairs(A.agents()) do
     else
         local hits = A.json_out({
             "gh", "search", "issues",
-            "repo:" .. A.repo .. " mentions:" .. agent.login .. " is:open",
+            "repo:" .. A.repo,
+            "mentions:" .. agent.login,
+            "is:open",
             "--limit", "10", "--json", "number",
         }, "gh search issues")
         if type(hits) ~= "table" or hits[1] == nil then
