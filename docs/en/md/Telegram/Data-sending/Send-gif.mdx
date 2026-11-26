@@ -66,8 +66,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Text      = "Строковое значение";
     GIF       = "https://releases.openintegrations.dev/test_data/animation.gif";
 
-    GifPath = GetTempFileName("gif");
-    CopyFile(GIF, GifPath);
+    GifPath = OPI_TestDataRetrieval.GetFileFromInternet(GIF, "gif");
 
     GifDD = New BinaryData(GifPath);
 

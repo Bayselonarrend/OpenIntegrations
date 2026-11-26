@@ -66,9 +66,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Text   = "File caption";
 
     File     = "https://releases.openintegrations.dev/test_data/document.docx"; // URL
-    FilePath = GetTempFileName("docx"); // Path
-
-    CopyFile(File, FilePath);
+    FilePath = OPI_TestDataRetrieval.GetFileFromInternet(File, "docx"); // Path
 
     FileBD = New BinaryData(FilePath); // Binary
 

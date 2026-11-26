@@ -4,8 +4,7 @@
     Text      = "Строковое значение";
     Video     = "https://releases.openintegrations.dev/test_data/video.mp4";
 
-    VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    VideoPath = OPI_TestDataRetrieval.GetFileFromInternet(Video, "mp4");
 
     VideoDD = New BinaryData(VideoPath);
 

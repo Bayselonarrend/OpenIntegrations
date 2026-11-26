@@ -4,8 +4,7 @@
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Image = "https://releases.openintegrations.dev/test_data/picture.jpg"; // URL
 
-    TFN = GetTempFileName("png"); // Path
-    CopyFile(Image, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png"); // Path
 
     Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
 

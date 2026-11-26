@@ -64,8 +64,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Image  = "https://releases.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary data
     Image2 = "https://releases.openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary data
 
-    TFN = GetTempFileName("png");
-    CopyFile(Image2, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Image2, "png");
 
     ImageArray = New Array;
     ImageArray.Add(Image);

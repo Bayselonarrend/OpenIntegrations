@@ -4,8 +4,7 @@
     Text      = "Строковое значение";
     Audio     = "https://releases.openintegrations.dev/test_data/song.mp3";
 
-    AudioPath = GetTempFileName("mp3");
-    CopyFile(Audio, AudioPath);
+    AudioPath = OPI_TestDataRetrieval.GetFileFromInternet(Audio, "mp3");
 
     AudioDD = New BinaryData(AudioPath);
 

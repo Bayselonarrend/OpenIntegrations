@@ -372,8 +372,7 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Image = FunctionParameters["Picture"]; // URL
 
-    TFN = GetTempFileName("png"); // Path
-    FileCopy(Image, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png"); // Path
 
     Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
 

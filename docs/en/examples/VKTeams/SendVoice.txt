@@ -3,9 +3,7 @@
     ReplyID = "7567354422724936211";
 
     File     = "https://releases.openintegrations.dev/test_data/song.m4a"; // URL
-    FilePath = GetTempFileName("m4a"); // Path
-
-    CopyFile(File, FilePath);
+    FilePath = OPI_TestDataRetrieval.GetFileFromInternet(File, "m4a"); // Path
 
     FileBD = New BinaryData(FilePath); // Binary
 

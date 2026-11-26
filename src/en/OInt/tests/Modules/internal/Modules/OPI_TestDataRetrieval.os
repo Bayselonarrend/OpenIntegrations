@@ -519,10 +519,8 @@ Function GetFilePath(Val Path) Export
 
     If StrFind(Path, "http") > 0 Or StrFind(Path, "www") > 0 Then
 
-        TFN    = GetTempFileName();
-        CopyFile(Path, TFN);
-        Path   = TFN;
-        Binary = New BinaryData(Path);
+        TFN    = GetFileFromInternet(Path);
+        Binary = New BinaryData(TFN);
 
         OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
@@ -533,6 +531,60 @@ Function GetFilePath(Val Path) Export
     EndIf;
 
     Return Binary;
+
+EndFunction
+
+// Get file from the internet
+// Downloads a file by URL via OPI_HTTP with retries and saves it to a temporary file
+//
+// Parameters:
+// URL - String - File address
+// Extension - String - Temporary file extension without a dot
+//
+// Returns:
+// String - Path to temporary file
+Function GetFileFromInternet(Val URL, Val Extension = "") Export
+
+    OPI_TypeConversion.GetLine(URL);
+
+    If ValueIsFilled(Extension) Then
+        TFN = GetTempFileName(Extension);
+    Else
+        TFN = GetTempFileName();
+    EndIf;
+
+    Attempts  = 5;
+    LastError = "";
+
+    For AttemptNumber = 1 To Attempts Do
+
+        Try
+
+            HttpClient = OPI_HTTPRequests.NewRequest()
+                .Initialize(URL)
+                .SetResponseFile(TFN)
+                .MaxAttempts(1)
+                .ProcessRequest("GET");
+
+            If HttpClient.Error Then
+                Raise HttpClient.GetLog(True);
+            EndIf;
+
+            Return TFN;
+
+        Except
+
+            LastError = ErrorDescription();
+
+            If AttemptNumber < Attempts Then
+                OPI_Tools.Pause(AttemptNumber);
+            EndIf;
+
+        EndTry;
+
+    EndDo;
+
+    Raise StrTemplate("Failed to download file from the internet (%1): %2", URL, LastError);
 
 EndFunction
 
@@ -19534,6 +19586,10 @@ EndFunction
 
 Function ПолучитьФайлПути(Val Путь) Export
     Return GetFilePath(Путь);
+EndFunction
+
+Function ПолучитьФайлИзИнтернета(Val URL, Val Расширение = "") Export
+    Return GetFileFromInternet(URL, Расширение);
 EndFunction
 
 Function ПолучитьLocalhost() Export

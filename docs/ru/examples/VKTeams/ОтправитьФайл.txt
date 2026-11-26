@@ -2,10 +2,8 @@
     IDЧата = "AoLI0egLWBSLR1Ngn2w";
     Текст  = "Подпись к файлу";
 
-    Файл     = "https://releases.openintegrations.dev/test_data/document.docx";        // URL
-    ФайлПуть = ПолучитьИмяВременногоФайла("docx");  // Путь
-
-    КопироватьФайл(Файл, ФайлПуть);
+    Файл     = "https://releases.openintegrations.dev/test_data/document.docx"; // URL
+    ФайлПуть = OPI_ПолучениеДанныхТестов.ПолучитьФайлИзИнтернета(Файл, "docx"); // Путь
 
     ФайлДД = Новый ДвоичныеДанные(ФайлПуть);      // Двоичные
 

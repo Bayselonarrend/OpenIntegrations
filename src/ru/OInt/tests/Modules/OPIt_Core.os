@@ -90,8 +90,9 @@
 Процедура ПроверитьСоответствиеИБПоследнейСборке() Экспорт
 
     СуммаСборки = OPI_Инструменты.ПолучитьХешСуммуПоследнейСборки();
+    Ветка       = OPI_BuildHash.GetBranch();
 
-    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_hash.txt";
+    URL = СтрШаблон("https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/%1/service/last_build_hash.txt", Ветка);
 
     СуммаПоследний = OPI_ЗапросыHTTP
         .НовыйЗапрос()

@@ -4,11 +4,9 @@
     Image  = "https://releases.openintegrations.dev/test_data/picture.jpg";
     Video  = "https://releases.openintegrations.dev/test_data/video.mp4";
 
-    ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    ImagePath = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png");
 
-    VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    VideoPath = OPI_TestDataRetrieval.GetFileFromInternet(Video, "mp4");
 
     VideoDD = New BinaryData(VideoPath);
 

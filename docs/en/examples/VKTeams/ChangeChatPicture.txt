@@ -2,9 +2,7 @@
     ChatID = "AoLI0egLWBSLR1Ngn2w";
 
     File     = "https://releases.openintegrations.dev/test_data/spy2.png"; // URL
-    FilePath = GetTempFileName("png"); // Path
-
-    CopyFile(File, FilePath);
+    FilePath = OPI_TestDataRetrieval.GetFileFromInternet(File, "png"); // Path
 
     FileBD = New BinaryData(FilePath); // Binary
 

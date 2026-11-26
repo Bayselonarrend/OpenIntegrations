@@ -709,8 +709,7 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
 
     OPI_TestDataRetrieval.Process(Result, "SQLite", "ConnectExtension");
 
-    TFN = GetTempFileName("dll");
-    FileCopy(Extension, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Extension, "dll");
 
     Result = OPI_SQLite.ConnectExtension(TFN, EntryPoint, Connection);
 

@@ -4,8 +4,7 @@
     Text      = "Строковое значение";
     GIF       = "https://releases.openintegrations.dev/test_data/animation.gif";
 
-    GifPath = GetTempFileName("gif");
-    CopyFile(GIF, GifPath);
+    GifPath = OPI_TestDataRetrieval.GetFileFromInternet(GIF, "gif");
 
     GifDD = New BinaryData(GifPath);
 

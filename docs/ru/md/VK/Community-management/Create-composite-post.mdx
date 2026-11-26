@@ -60,8 +60,7 @@ import Admonition from '@theme/Admonition';
     Картинка = "https://releases.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
     Видео    = "https://releases.openintegrations.dev/test_data/video.mp4";   // URL, Путь или Двоичные данные
 
-    ИВФ = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, ИВФ);
+    ИВФ = OPI_ПолучениеДанныхТестов.ПолучитьФайлИзИнтернета(Картинка, "png");
 
     ЗагрузкаКартинки = OPI_VK.ЗагрузитьФотоНаСервер(ИВФ, Параметры)["response"][0];
     ЗагрузкаВидео    = OPI_VK.ЗагрузитьВидеоНаСервер(Видео, "Новое видео", , , Параметры);

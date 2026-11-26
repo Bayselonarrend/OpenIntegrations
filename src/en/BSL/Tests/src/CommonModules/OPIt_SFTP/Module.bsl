@@ -580,9 +580,7 @@ Procedure SFTP_UploadFile(FunctionParameters)
     Image = "C:\pic.png";
 
     Image = FunctionParameters["Picture"]; // SKIP
-    TFN   = GetTempFileName("png"); // SKIP
-    FileCopy(Image, TFN); // SKIP
-    Image = TFN; // SKIP
+    Image = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png"); // SKIP
 
     ImageDD = New BinaryData(Image);
 
@@ -688,7 +686,7 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     EndDo;
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
+    OPI_Tools.RemoveFileWithTry(Image, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 

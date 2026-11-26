@@ -407,8 +407,7 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Image = FunctionParameters["Picture"]; // URL
 
-    TFN = GetTempFileName("png"); // Path
-    FileCopy(Image, TFN);
+    TFN = OPI_TestDataRetrieval.GetFileFromInternet(Image, "png"); // Path
 
     Options = New Structure;
     Options.Insert("token", Token);
