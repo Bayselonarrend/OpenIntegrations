@@ -15,7 +15,9 @@ def lua(Map opts = [:], String scriptPath) {
 // gh and git use the credential from ci/alpaca/agents/vitaly/agent.json.
 
 def alpacaClearSkip() {
-    lua('ci/alpaca/clear-skip.lua')
+    if (fileExists('ci/alpaca/clear-skip.lua')) {
+        lua('ci/alpaca/clear-skip.lua')
+    }
 }
 
 def alpacaLog(String jobName, int number, int count) {

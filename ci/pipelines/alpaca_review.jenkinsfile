@@ -15,7 +15,9 @@ def lua(Map opts = [:], String scriptPath) {
 // Agent label: windows. gh and git use ci/alpaca/agents/ruslan/agent.json.
 
 def alpacaClearSkip() {
-    lua('ci/alpaca/clear-skip.lua')
+    if (fileExists('ci/alpaca/clear-skip.lua')) {
+        lua('ci/alpaca/clear-skip.lua')
+    }
 }
 
 def alpacaGhStatus(String scriptPath, String args = '') {
