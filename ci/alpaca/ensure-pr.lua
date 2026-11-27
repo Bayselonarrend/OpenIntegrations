@@ -21,12 +21,19 @@ end
 
 local function request_reviewer(pull, login)
     if not login or login == "" then return end
-    local view = A.json_out({
-        "gh", "pr", "view", pull, "--repo", A.repo, "--json", "reviewRequests",
-    }, "gh pr view")
-    if type(view.reviewRequests) == "table" then
-        for _, req in ipairs(view.reviewRequests) do
-            if type(req) == "table" and req.login and A.ieq(req.login, login) then
+    local text, code = A.capture({
+        "gh", "api",
+        "repos/" .. A.repo .. "/pulls/" .. pull .. "/requested_reviewers",
+    })
+    if code ~= 0 then
+        print("could not read reviewers for PR " .. pull)
+        return
+    end
+    local ok, view = pcall(A.json.decode, text)
+    local users = ok and type(view) == "table" and view.users or nil
+    if type(users) == "table" then
+        for _, user in ipairs(users) do
+            if type(user) == "table" and user.login and A.ieq(user.login, login) then
                 print("reviewer " .. login .. " already requested")
                 return
             end
@@ -34,12 +41,15 @@ local function request_reviewer(pull, login)
     end
     local payload = A.out .. "/reviewer.json"
     A.write(payload, A.json.encode({ reviewers = { login } }))
-    local code = A.run({
+    code = A.run({
         "gh", "api", "--method", "POST",
         "repos/" .. A.repo .. "/pulls/" .. pull .. "/requested_reviewers",
         "--input", payload,
     })
-    if code ~= 0 then A.die("could not request reviewer " .. login) end
+    if code ~= 0 then
+        print("could not request reviewer " .. login)
+        return
+    end
     print("requested reviewer " .. login)
 end
 
@@ -72,11 +82,11 @@ if not pr and not lookup then
 end
 
 if pr then
+    A.write(A.out .. "/pr.txt", pr)
     if not lookup then
         local agent = A.agent(A.env("ALPACA_AGENT"))
         request_reviewer(pr, tostring(agent.reviewer or ""))
     end
-    A.write(A.out .. "/pr.txt", pr)
     print("PR " .. pr)
     os.exit(0)
 end

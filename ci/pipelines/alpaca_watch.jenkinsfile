@@ -39,13 +39,13 @@ pipeline {
 
     options {
         disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr: '40'))
+        buildDiscarder(logRotator(numToKeepStr: '1'))
         timeout(time: 30, unit: 'MINUTES')
         timestamps()
     }
 
     triggers {
-        cron('H/5 * * * *')
+        cron('H/7 * * * *')
     }
 
     stages {
