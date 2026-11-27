@@ -37,7 +37,7 @@ description: >-
 | Режим | Что записать |
 | --- | --- |
 | правка кода | реализация, без модулей `OPIt_*` и `OPI_ПолучениеДанныхТестов`, и `ci/alpaca/out/commit-msg.txt`. Если указание — вопрос и код менять не нужно, только `ci/alpaca/out/answer.md` |
-| тесты публичного API | только тесты по правилам `AGENTS.md`, реализацию не менять. Секреты тестов — `data.sqlite.gpg` через `.agents/skills/secret-data/SKILL.md` |
+| тесты публичного API | только тесты по правилам `AGENTS.md`, реализацию не менять. Секреты тестов — `data.sqlite.gpg` через `.agents/skills/secret-data/SKILL.md`. Адрес стенда — `ПолучитьLocalhost()`: Windows `127.0.0.1`, Linux в Docker `host.docker.internal` |
 | перевод словаря | только пустые значения в `service/dictionaries/en.json`, по `.agents/skills/dictionaries/SKILL.md` |
 | падение сборки | только `ci/alpaca/out/comment.md` |
 | выбор тестов | только `ci/alpaca/out/test-job.txt` |
