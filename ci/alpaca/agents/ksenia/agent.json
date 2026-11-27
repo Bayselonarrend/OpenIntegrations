@@ -1,0 +1,13 @@
+{
+  "id": "ksenia",
+  "login": "KseniaTheAlpaca",
+  "name": "Альпака Ксения",
+  "gender": "female",
+  "email": "ksenia.alpaca@openintegrations.dev",
+  "credential": "gitksenia",
+  "model": "grok-4.7",
+  "role": "analyst",
+  "job": "Alpaca/Ksenia/AlpacaAnalyze",
+  "reactTo": ["bayselonarrend", "VitalyTheAlpaca", "PolinaTheAlpaca", "RuslanTheAlpaca"],
+  "reviewer": "RuslanTheAlpaca"
+}
