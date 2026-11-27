@@ -14459,6 +14459,7 @@
 "Открыть каталог внешних компонент (ExtCompT) при помощи кнопки «Открыть каталог кэша» или вручную": "Open the external components folder (ExtCompT) using the «Open cache folder» button or manually",
 "ПодключитьВнешнююКомпоненту(ИмяМакета, ИмяКомпоненты, ТипВнешнейКомпоненты.Native, ТипПодключения": "AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType",
 "При использовании транспорта `http` нельзя одновременно использовать `Данные` и `Внешние таблицы`": "When using the `http` transport, you cannot use `Data` and `External Tables` simultaneously",
+"Пустые двоичные данные в OneScript проходят ЗначениеЗаполнено, поэтому пустоту смотрим по размеру": "Empty binary data in OneScript pass ValueIsFilled, so we check emptiness by size",
 "Получите ID этой страинцы. Это можно сделать нажав Share -> Copy link или просто скопировав из URL": "Get the ID of this page. You can do this by clicking Share -> Copy link or simply by copying it from the URL",
 "При передаче параметров соединения новое соединение будет создано и закрыто в рамках одного вызова": "When passing connection parameters, a new connection will be created and closed within one call",
 "Схема или структура схем: Ключ > имя файла (для import), Значение > схема строкой или путь к файлу": "Schema or schema structure: Key > file name (for import), Value > schema as a string or file path",
