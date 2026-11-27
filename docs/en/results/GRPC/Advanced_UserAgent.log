@@ -1,0 +1,22 @@
+﻿{
+ "data": {
+  "Metadata": {
+   "String(\":authority\")": {
+    "values": [
+     "127.0.0.1:9001"
+    ]
+   },
+   "String(\"content-type\")": {
+    "values": [
+     "application/grpc"
+    ]
+   },
+   "String(\"user-agent\")": {
+    "values": [
+     "OpenIntegrationsTest tonic/0.13.1"
+    ]
+   }
+  }
+ },
+ "result": true
+}

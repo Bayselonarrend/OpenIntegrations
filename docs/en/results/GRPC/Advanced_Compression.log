@@ -1,0 +1,4 @@
+﻿{
+ "error": "gRPC call failed: status: Unimplemented, message: \"grpc: Decompressor is not installed for grpc-encoding \\\"gzip\\\"\", details: [], metadata: MetadataMap { headers: {\"content-type\": \"application/grpc\"} }",
+ "result": false
+}
