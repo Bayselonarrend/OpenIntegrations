@@ -151,7 +151,10 @@ pipeline {
             steps {
                 script {
                     alpacaGh('ci/alpaca/prepare-task.lua', 'confirm')
-                    def tested = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
+                    def tested = 1
+                    withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+                        tested = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
+                    }
                     if (tested != 0) {
                         writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПроверка не записалась, Cursor CLI завершился с кодом ${tested}.\n"
                         alpacaPost()

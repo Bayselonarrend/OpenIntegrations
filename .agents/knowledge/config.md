@@ -6,7 +6,7 @@
 
 Узел везде один и тот же: `description` и `value`. В `value` строка, массив или снова такие же узлы. В dotted-имени нет ни `description`, ни `value`.
 
-Секретов в этих файлах нет. Файл учётных данных — `paths.secretDataSrc` (`./data.sqlite`), рядом лежит `data.sqlite.gpg`. В JSON только имена полей (`ai.tokenField`, `sonar.tokenField` и остальные `*tokenField`).
+Секретов в этих файлах нет. Файл учётных данных — `paths.secretDataSrc` (`./data.sqlite`), рядом лежит `data.sqlite.gpg`. В JSON только имена полей (`ai.tokenField`, `sonar.tokenField` и остальные `*tokenField`). Расшифровка, правка таблицы `test_params` и обратное шифрование — `lua ci/secret-data.lua`, описание в `.agents/skills/secret-data/SKILL.md`.
 
 `config_global.json` описывает этот стенд: абсолютные пути, версии библиотеки, адреса сервисов. Поведение библиотеки под эти пути не подстраивать.
 
