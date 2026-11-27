@@ -96,6 +96,7 @@ EndFunction
 Procedure GR_CommonMethods() Export
 
     TestParameters = OPI_TestDataRetrieval.GetTestData();
+    SubstituteStandAddress(TestParameters);
     GRPC_CreateConnection(TestParameters);
     GRPC_CloseConnection(TestParameters);
     GRPC_IsConnector(TestParameters);
@@ -118,6 +119,7 @@ Procedure GR_ExtendedCheck() Export
     EndIf;
 
     TestParameters = OPI_TestDataRetrieval.GetTestData();
+    SubstituteStandAddress(TestParameters);
     GRPC_Extended_CallMethodWithoutConnection(TestParameters);
     GRPC_Extended_ConnectionWithoutAddress(TestParameters);
     GRPC_Extended_Reconnection(TestParameters);
@@ -136,6 +138,7 @@ EndProcedure
 Procedure GR_Introspection() Export
 
     TestParameters = OPI_TestDataRetrieval.GetTestData();
+    SubstituteStandAddress(TestParameters);
     GRPC_GetServiceList(TestParameters);
     GRPC_GetMethodList(TestParameters);
     GRPC_GetMethod(TestParameters);
@@ -145,6 +148,7 @@ EndProcedure
 Procedure GR_Streaming() Export
 
     TestParameters = OPI_TestDataRetrieval.GetTestData();
+    SubstituteStandAddress(TestParameters);
     GRPC_InitializeServerStream(TestParameters);
     GRPC_InitializeClientStream(TestParameters);
     GRPC_InitializeBidirectionalStream(TestParameters);
@@ -165,6 +169,26 @@ EndProcedure
 #EndRegion // Internal
 
 #Region Private
+
+#Region Preparation
+
+Procedure SubstituteStandAddress(TestParameters)
+
+    Localhost = OPI_TestDataRetrieval.GetLocalhost();
+
+    AddressTls = TestParameters["GRPC_Address"];
+    AddressTls = StrReplace(AddressTls, "grpcb.in" , Localhost);
+    AddressTls = StrReplace(AddressTls, "127.0.0.1", Localhost);
+    TestParameters.Insert("GRPC_Address", AddressTls);
+
+    AddressWithoutTls = TestParameters["GRPC_AddressNoTls"];
+    AddressWithoutTls = StrReplace(AddressWithoutTls, "grpcb.in" , Localhost);
+    AddressWithoutTls = StrReplace(AddressWithoutTls, "127.0.0.1", Localhost);
+    TestParameters.Insert("GRPC_AddressNoTls", AddressWithoutTls);
+
+EndProcedure
+
+#EndRegion // Preparation
 
 #Region AtomicTests
 
