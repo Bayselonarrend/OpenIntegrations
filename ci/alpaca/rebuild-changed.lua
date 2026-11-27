@@ -7,7 +7,7 @@ local ahead = tonumber(A.trim(countText)) or 0
 if ahead == 0 then A.die("Branch is not ahead of main") end
 
 local text, code = A.capture({
-    "git", "diff", "--name-only", "origin/main...HEAD", "--", "src/addins",
+    "git", "diff", "--name-only", "origin/main", "HEAD", "--", "src/addins",
 })
 if code ~= 0 then os.exit(code) end
 
