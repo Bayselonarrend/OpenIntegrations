@@ -31,7 +31,7 @@ if not A.windows then A.die("Add-in release.bat runs on Windows") end
 
 for _, name in ipairs(names) do
     print("Rebuilding " .. name)
-    local built = A.exec("cmd /c " .. A.quote("src\\addins\\" .. name .. "\\release.bat"))
+    local built = A.exec("pushd " .. A.quote("src\\addins\\" .. name) .. " && call release.bat")
     if built ~= 0 then os.exit(built) end
 end
 print("Rebuilt " .. table.concat(names, ", "))
