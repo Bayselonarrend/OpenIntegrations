@@ -216,7 +216,7 @@ pipeline {
 
     parameters {
         string(name: 'ISSUE', defaultValue: '', description: 'GitHub issue or alpaca pull request where VitalyTheAlpaca was mentioned')
-        string(name: 'REASON', defaultValue: 'new', description: 'new, comments, build or tests')
+        string(name: 'REASON', defaultValue: 'new', description: 'new, comments, build, tests or resume')
         string(name: 'CYCLE', defaultValue: '1', description: 'Loop counter')
         string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Last cycle that may start another run')
     }
@@ -235,7 +235,7 @@ pipeline {
                     if (!(issue ==~ /[0-9]+/)) {
                         error "Invalid ISSUE: ${issue}"
                     }
-                    if (!(reason in ['new', 'comments', 'build', 'tests'])) {
+                    if (!(reason in ['new', 'comments', 'build', 'tests', 'resume'])) {
                         error "Invalid REASON: ${reason}"
                     }
                     def cycle = 1
@@ -300,7 +300,7 @@ pipeline {
                             error "Could not react to the comment: ${reacted}"
                         }
                         writeFile file: 'ci/alpaca/out/started.txt', text: '1'
-                    } else if (pr ==~ /[0-9]+/) {
+                    } else if (env.ALPACA_REASON != 'resume' && pr ==~ /[0-9]+/) {
                         alpacaMarkStarted()
                     }
                     alpacaGh('ci/alpaca/began.lua')
@@ -324,7 +324,7 @@ pipeline {
         }
 
         stage('Code') {
-            when { expression { return env.ALPACA_SKIP != 'true' } }
+            when { expression { return env.ALPACA_SKIP != 'true' && env.ALPACA_REASON != 'resume' } }
             steps {
                 script {
                     lua('ci/alpaca/remove-answer.lua')
@@ -401,10 +401,30 @@ pipeline {
             }
         }
 
+        stage('Resume') {
+            when { expression { return env.ALPACA_SKIP != 'true' && env.ALPACA_REASON == 'resume' } }
+            steps {
+                script {
+                    alpacaSay('Продолжаю сборку уже сделанного коммита.')
+                    def rebuilt = lua(returnStatus: true, 'ci/alpaca/rebuild-changed.lua')
+                    if (rebuilt != 0) {
+                        error "Add-in rebuild failed: ${rebuilt}"
+                    }
+                    env.ALPACA_COMMITTED = 'true'
+                }
+            }
+        }
+
         stage('Open pull request') {
             when { expression { return env.ALPACA_SKIP != 'true' } }
             steps {
                 script {
+                    if (env.ALPACA_REASON == 'resume') {
+                        withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+                            alpacaGh('ci/alpaca/ensure-pr.lua')
+                        }
+                        return
+                    }
                     def requested = lua(returnStatus: true, 'ci/alpaca/want-pr.lua')
                     if (requested == 2) {
                         return
