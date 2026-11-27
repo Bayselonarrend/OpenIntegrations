@@ -407,6 +407,10 @@ pipeline {
                 script {
                     alpacaSay('Продолжаю сборку уже сделанного коммита.')
                     def rebuilt = lua(returnStatus: true, 'ci/alpaca/rebuild-changed.lua')
+                    if (rebuilt == 2) {
+                        alpacaRetrigger('build')
+                        return
+                    }
                     if (rebuilt != 0) {
                         error "Add-in rebuild failed: ${rebuilt}"
                     }
