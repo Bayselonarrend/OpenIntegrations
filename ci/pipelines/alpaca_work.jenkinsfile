@@ -335,6 +335,7 @@ pipeline {
                         alpacaPost()
                         error "Cursor CLI failed: ${edited}"
                     }
+                    lua('ci/alpaca/drop-author-tests.lua')
                     def pending = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
                     if (pending == 2) {
                         alpacaNoChanges()
@@ -342,22 +343,6 @@ pipeline {
                     }
                     if (pending != 0) {
                         error "git status failed: ${pending}"
-                    }
-                    lua('ci/alpaca/remove-answer.lua')
-                    def tested = alpacaCursor('write-tests')
-                    if (tested != 0) {
-                        def marker = fileExists('ci/alpaca/out/started.txt') ? '' : "<!-- alpaca-start -->\n\n"
-                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n${marker}Шаг тестов публичного API завершился с кодом ${tested}. Коммит не сделан. Новый цикл не запущен.\n"
-                        alpacaPost()
-                        error "Cursor test step failed: ${tested}"
-                    }
-                    def pendingAfter = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
-                    if (pendingAfter == 2) {
-                        alpacaNoChanges()
-                        return
-                    }
-                    if (pendingAfter != 0) {
-                        error "git status failed: ${pendingAfter}"
                     }
                     def dict = bat(script: 'oscript ./ci/os/internal/Classes/DictionariesMethods.os', returnStatus: true)
                     if (dict == 111) {
