@@ -1272,8 +1272,8 @@ Procedure GRPC_Extended_ClientCertificate(FunctionParameters)
         , "File"
         , MissingPath);
 
-    GetBinaryDataFromString(CipherText, TextEncoding.UTF8, False).Write(KeyPath);
-    GetBinaryDataFromString(ChainText , TextEncoding.UTF8, False).Write(CertificatePath);
+    GetBinaryDataFromString(CipherText , TextEncoding.UTF8, False).Write(KeyPath);
+    GetBinaryDataFromString(ChainText  , TextEncoding.UTF8, False).Write(CertificatePath);
     Options = New Structure;
     Options.Insert("trust", Истина);
     Options.Insert("cert", "");

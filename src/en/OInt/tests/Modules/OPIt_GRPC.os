@@ -894,8 +894,8 @@ Procedure GRPC_Extended_ClientCertificate(FunctionParameters)
         , "File"
         , MissingPath);
 
-    GetBinaryDataFromString(CipherText, TextEncoding.UTF8, False).Write(KeyPath);
-    GetBinaryDataFromString(ChainText , TextEncoding.UTF8, False).Write(CertificatePath);
+    GetBinaryDataFromString(CipherText , TextEncoding.UTF8, False).Write(KeyPath);
+    GetBinaryDataFromString(ChainText  , TextEncoding.UTF8, False).Write(CertificatePath);
     Tls    = OPI_GRPC.GetTlsSettings(True, "", KeyPath, CertificatePath);
     Result = OPI_GRPC.CreateConnection(Parameters, Tls);
 

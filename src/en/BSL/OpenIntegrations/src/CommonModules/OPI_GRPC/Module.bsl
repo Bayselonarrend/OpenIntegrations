@@ -1014,8 +1014,9 @@ Function SetTlsConnection(Connector, Val TLSSettings)
         Return TlsError(Chain.error);
     EndIf;
 
-    EmptyKey   = Not ValueIsFilled(Key.data);
-    EmptyChain = Not ValueIsFilled(Chain.data);
+    // Empty binary data in OneScript pass ValueIsFilled, so we check emptiness by size.
+    EmptyKey = Key.data.Size() = 0;
+    EmptyChain = Chain.data.Size() = 0;
 
     If EmptyKey <> EmptyChain Then
         Return TlsError("Client certificate chain and private key must both be provided for mTLS");
@@ -1062,7 +1063,7 @@ Function ReadClientMaterial(Val TLSSettings, Val DataName, Val PathName)
 
     Data = OPI_Tools.GetOr(TLSSettings, DataName, Undefined);
 
-    If TypeOf(Data)  = Type("BinaryData") And ValueIsFilled(Data) Then
+    If TypeOf(Data)  = Type("BinaryData") And Data.Size() > 0 Then
         Reading.data = Data;
         Return Reading;
     EndIf;
