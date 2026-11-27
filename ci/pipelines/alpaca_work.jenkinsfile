@@ -82,7 +82,20 @@ def alpacaPostedAnswer() {
     return true
 }
 
+def alpacaWantsTests() {
+    def marker = 'ci/alpaca/out/run-tests.txt'
+    if (!fileExists(marker)) {
+        return false
+    }
+    def line = readFile(marker).replace('\uFEFF', '').split(/\r?\n/).find { it.trim() }
+    return line != null && line.trim().equalsIgnoreCase('yes')
+}
+
 def alpacaNoChanges() {
+    if (alpacaWantsTests()) {
+        env.ALPACA_TESTS = 'true'
+        return
+    }
     if (alpacaPostedAnswer()) {
         return
     }
@@ -277,6 +290,7 @@ pipeline {
                     env.ALPACA_ADDINS = "addins-alpaca-${issue}"
                     env.ALPACA_COMMITTED = 'false'
                     env.ALPACA_BUILD_OK = 'false'
+                    env.ALPACA_TESTS = 'false'
                     env.ALPACA_SKIP = 'false'
                     def issueState = alpacaGhStatus('ci/alpaca/issue-open.lua')
                     if (issueState == 3) {
@@ -499,9 +513,12 @@ pipeline {
 
         stage('Tests') {
             when {
-                allOf {
-                    expression { return env.ALPACA_COMMITTED == 'true' }
-                    expression { return env.ALPACA_BUILD_OK == 'true' }
+                anyOf {
+                    allOf {
+                        expression { return env.ALPACA_COMMITTED == 'true' }
+                        expression { return env.ALPACA_BUILD_OK == 'true' }
+                    }
+                    expression { return env.ALPACA_TESTS == 'true' }
                 }
             }
             steps {

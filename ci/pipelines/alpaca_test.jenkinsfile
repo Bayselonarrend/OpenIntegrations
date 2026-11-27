@@ -33,6 +33,23 @@ def alpacaCommitFeelings() {
     }
 }
 
+def alpacaLog(String jobName, int number, int count) {
+    def out = 'ci/alpaca/out/downstream-log.txt'
+    def status = lua(args: "\"${jobName}\" ${number} ${count} ${out}", returnStatus: true, 'ci/alpaca/read-log.lua')
+    if (status != 0 || !fileExists(out)) {
+        return "log unavailable: ${jobName} #${number} (${status})"
+    }
+    return readFile(out)
+}
+
+def alpacaCursor(String mode) {
+    lua('ci/alpaca/clear-outputs.lua')
+    alpacaGh('ci/alpaca/prepare-task.lua', "${mode}")
+    def status = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
+    lua('ci/alpaca/restore-tree.lua')
+    return status
+}
+
 def alpacaGhStatus(String scriptPath, String args = '') {
     def status = 1
     for (int attempt = 1; attempt <= 4; attempt++) {
@@ -75,7 +92,7 @@ pipeline {
     options {
         skipDefaultCheckout()
         disableConcurrentBuilds()
-        timeout(time: 120, unit: 'MINUTES')
+        timeout(time: 240, unit: 'MINUTES')
         timestamps()
     }
 
@@ -108,6 +125,7 @@ pipeline {
                     env.ALPACA_CYCLE = '1'
                     env.ALPACA_MAX = '1'
                     env.ALPACA_BRANCH = "alpaca/${issue}"
+                    env.ALPACA_ADDINS = "addins-alpaca-${issue}"
                     env.ALPACA_SKIP = 'false'
                     def issueState = alpacaGhStatus('ci/alpaca/issue-open.lua')
                     if (issueState == 3) {
@@ -174,6 +192,72 @@ pipeline {
                         }
                     } else if (pending != 2) {
                         error "git status failed: ${pending}"
+                    }
+                    def jobs = []
+                    if (fileExists('ci/alpaca/out/test-job.txt')) {
+                        jobs = readFile('ci/alpaca/out/test-job.txt')
+                            .replace('\uFEFF', '')
+                            .split(/\r?\n/)
+                            .collect { it.trim() }
+                            .findAll { it && !it.startsWith('#') }
+                    }
+                    def skipRun = jobs.isEmpty() || (jobs.size() == 1 && jobs[0].equalsIgnoreCase('none'))
+                    if (!skipRun) {
+                        def expanded = []
+                        for (int i = 0; i < jobs.size(); i++) {
+                            def jobName = jobs[i]
+                            if (expanded.contains(jobName)) {
+                                continue
+                            }
+                            expanded << jobName
+                            def enJob = jobName.replaceAll(/OpiOsWinRu$/, 'OpiOsWinEn')
+                            if (enJob != jobName && !expanded.contains(enJob)) {
+                                expanded << enJob
+                            }
+                        }
+                        def summaryFile = 'ci/alpaca/out/tests-summary.md'
+                        writeFile file: summaryFile, text: ''
+                        def blocked = false
+                        for (int i = 0; i < expanded.size(); i++) {
+                            def jobName = expanded[i].replace('\uFEFF', '').trim()
+                            if (!(jobName ==~ /^OPITest\/Opi(FullTest|SplitTests)\/[A-Za-z0-9_.\/]+$/)) {
+                                blocked = true
+                                writeFile file: summaryFile, text: readFile(summaryFile) + "invalid: ${jobName}\n"
+                                break
+                            }
+                            try {
+                                def testRun = build job: jobName, wait: true, propagate: false, parameters: [
+                                    [$class: 'StringParameterValue', name: 'BRANCH', value: env.ALPACA_BRANCH],
+                                    [$class: 'StringParameterValue', name: 'ADDINS_BRANCH', value: env.ALPACA_ADDINS]
+                                ]
+                                def result = testRun.result ?: 'UNKNOWN'
+                                def chunk = "${jobName} ${result} ${testRun.absoluteUrl}\n"
+                                if (result != 'SUCCESS') {
+                                    chunk += alpacaLog(jobName, testRun.number as int, 2500) + "\n"
+                                }
+                                def current = readFile(summaryFile) + chunk
+                                if (current.length() > 150000) {
+                                    current = current.substring(0, 150000) + "\n...\n"
+                                }
+                                writeFile file: summaryFile, text: current
+                            } catch (err) {
+                                blocked = true
+                                writeFile file: summaryFile, text: readFile(summaryFile) + "${jobName} did not start: ${err}\n"
+                                break
+                            }
+                        }
+                        if (blocked) {
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nТестовое задание не запустилось.\n\n" + readFile(summaryFile)
+                        } else {
+                            def judged = alpacaCursor('judge-tests')
+                            if (judged != 0 || !fileExists('ci/alpaca/out/comment.md')) {
+                                def summary = readFile(summaryFile)
+                                if (summary.length() > 12000) {
+                                    summary = summary.substring(summary.length() - 12000)
+                                }
+                                writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПрогон завершился, разбор не записался.\n\n${summary}\n"
+                            }
+                        }
                     }
                     if (!fileExists('ci/alpaca/out/comment.md')) {
                         error 'Comment is missing'
