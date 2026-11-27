@@ -20,6 +20,19 @@ def alpacaClearSkip() {
     }
 }
 
+def alpacaCommitFeelings() {
+    if (!env.ALPACA_BRANCH || !env.ALPACA_CREDENTIAL || !env.ALPACA_AGENT) {
+        return
+    }
+    def committed = 1
+    withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+        committed = lua(returnStatus: true, 'ci/alpaca/commit-feelings.lua')
+    }
+    if (committed != 0 && committed != 2) {
+        echo "feelings commit failed: ${committed}"
+    }
+}
+
 def alpacaGhStatus(String scriptPath, String args = '') {
     def status = 1
     for (int attempt = 1; attempt <= 4; attempt++) {
@@ -205,6 +218,7 @@ pipeline {
     post {
         always {
             script {
+                alpacaCommitFeelings()
                 alpacaClearSkip()
             }
         }

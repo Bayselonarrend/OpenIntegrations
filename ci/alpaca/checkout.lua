@@ -23,12 +23,20 @@ end
 git({ "git", "clean", "-fd", "-e", "ci/alpaca/out" })
 
 -- Pipeline scripts stay on main. The issue branch keeps the copy from the day it was cut.
+-- feelings.txt stays with the issue branch and is committed with it.
 git({ "git", "checkout", "origin/main", "--", "ci/alpaca" })
 git({ "git", "reset", "-q", "HEAD", "--", "ci/alpaca" })
 local listed, listCode = A.capture({ "git", "ls-files", "--", "ci/alpaca" })
 if listCode ~= 0 then os.exit(listCode) end
 for _, file in ipairs(A.lines(listed)) do
-    if file ~= "" then git({ "git", "update-index", "--skip-worktree", "--", file }) end
+    if file ~= "" then
+        if A.is_feelings(file) then
+            git({ "git", "update-index", "--no-skip-worktree", "--", file })
+            git({ "git", "checkout", "HEAD", "--", file })
+        else
+            git({ "git", "update-index", "--skip-worktree", "--", file })
+        end
+    end
 end
 
 local tooling = {

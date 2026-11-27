@@ -194,9 +194,9 @@ pipeline {
                 catchError() {   
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
-				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
-					bat "git config user.email vitaly.alpaca@openintegrations.dev"
-					bat 'git config user.name "Альпака Виталий"'
+				withCredentials([gitUsernamePassword(credentialsId: 'gitpolina', gitToolName: 'Default')]) {
+					bat "git config user.email polina.alpaca@openintegrations.dev"
+					bat 'git config user.name "Альпака Полина"'
 					bat "git config --global core.ignorecase true"
 					bat "git add ."
 					bat 'git commit -m "Test data update (Jenkins)"'

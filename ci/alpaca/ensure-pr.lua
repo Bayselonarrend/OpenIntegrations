@@ -19,38 +19,50 @@ local function open_pr()
     return tostring(list[1].number)
 end
 
-local function request_reviewer(pull, login)
-    if not login or login == "" then return end
+local function request_reviewers(pull, logins)
     local text, code = A.capture({
         "gh", "api",
         "repos/" .. A.repo .. "/pulls/" .. pull .. "/requested_reviewers",
     })
-    if code ~= 0 then
-        print("could not read reviewers for PR " .. pull)
-        return
-    end
-    local ok, view = pcall(A.json.decode, text)
-    local users = ok and type(view) == "table" and view.users or nil
-    if type(users) == "table" then
-        for _, user in ipairs(users) do
-            if type(user) == "table" and user.login and A.ieq(user.login, login) then
-                print("reviewer " .. login .. " already requested")
-                return
+    local pending = {}
+    if code == 0 then
+        local ok, view = pcall(A.json.decode, text)
+        local users = ok and type(view) == "table" and view.users or nil
+        if type(users) == "table" then
+            for _, user in ipairs(users) do
+                if type(user) == "table" and user.login then
+                    pending[tostring(user.login):lower()] = true
+                end
             end
         end
     end
+    local missing = {}
+    local seen = {}
+    for _, login in ipairs(logins) do
+        login = tostring(login or "")
+        local key = login:lower()
+        if login ~= "" and not seen[key] then
+            seen[key] = true
+            if pending[key] then
+                print("reviewer " .. login .. " already requested")
+            else
+                missing[#missing + 1] = login
+            end
+        end
+    end
+    if #missing == 0 then return end
     local payload = A.out .. "/reviewer.json"
-    A.write(payload, A.json.encode({ reviewers = { login } }))
+    A.write(payload, A.json.encode({ reviewers = missing }))
     code = A.run({
         "gh", "api", "--method", "POST",
         "repos/" .. A.repo .. "/pulls/" .. pull .. "/requested_reviewers",
         "--input", payload,
     })
     if code ~= 0 then
-        print("could not request reviewer " .. login)
+        print("could not request reviewers " .. table.concat(missing, ", "))
         return
     end
-    print("requested reviewer " .. login)
+    print("requested reviewers " .. table.concat(missing, ", "))
 end
 
 if not lookup then
@@ -85,7 +97,14 @@ if pr then
     A.write(A.out .. "/pr.txt", pr)
     if not lookup then
         local agent = A.agent(A.env("ALPACA_AGENT"))
-        request_reviewer(pr, tostring(agent.reviewer or ""))
+        local logins = {}
+        if type(agent.reviewers) == "table" then
+            for _, login in ipairs(agent.reviewers) do
+                logins[#logins + 1] = login
+            end
+        end
+        if #logins == 0 then logins[1] = tostring(agent.reviewer or "") end
+        request_reviewers(pr, logins)
     end
     print("PR " .. pr)
     os.exit(0)

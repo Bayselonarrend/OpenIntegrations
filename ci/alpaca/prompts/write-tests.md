@@ -26,4 +26,4 @@
 
 Реализацию в этом запуске не менять: ни `OPI_*` в `src/ru/BSL/OpenIntegrations`, ни Rust, ни `src/ru/OInt`, ни `src/en`, ни `OPItc_*`, ни `service/dictionaries`, ни `docs`.
 
-Git, gh и publish-addins.lua не вызывать. Jenkins не запускать. Каталог `ci/alpaca` и Jenkinsfile заданий Alpaca не менять. Если тесты всё же изменились, поправь уже записанный `ci/alpaca/out/commit-msg.txt`, чтобы сообщение описывало и их. Если файлы не трогал, сообщение не меняй. Код под тестовый стенд не подстраивать.
+Git, gh и publish-addins.lua не вызывать. Jenkins не запускать. Каталог `ci/alpaca` и Jenkinsfile заданий Alpaca не менять, кроме одной строки в `feelings.txt` своего агента. Если тесты всё же изменились, поправь уже записанный `ci/alpaca/out/commit-msg.txt`, чтобы сообщение описывало и их. Если файлы не трогал, сообщение не меняй. Код под тестовый стенд не подстраивать.

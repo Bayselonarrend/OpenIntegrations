@@ -18,14 +18,6 @@ local function git_show(spec)
     return text
 end
 
-local function collect(value, out)
-    if type(value) == "string" then
-        out[#out + 1] = value
-    elseif type(value) == "table" and value ~= A.json.null then
-        for _, item in pairs(value) do collect(item, out) end
-    end
-end
-
 local function plain_replace(text, key, replacement)
     local out, i = {}, 1
     while true do
@@ -49,11 +41,6 @@ local function resolve(path, root)
     return A.norm(expanded)
 end
 
-local function leaf(item)
-    local text = plain_replace(item, "${workspaceFolder}", ""):gsub("\\", "/")
-    return text:match("([^/]+)$") or ""
-end
-
 local function url_name(url)
     return url:gsub("%?.*$", ""):gsub("#.*$", ""):match("([^/]+)$")
 end
@@ -65,14 +52,7 @@ if A.isfile(configPath) then
     config = A.decode(A.read(configPath), configPath)
 end
 local mcp = mcp_block(config)
-local serversText = nil
-if mcp then
-    local serversRel = tostring(node(node(mcp, "serversFile"), "value") or "")
-    if serversRel == "" then A.die("ai.mcp.serversFile is empty") end
-    local serversPath = resolve(serversRel, root)
-    if not A.isfile(serversPath) then A.die("mcpServers file not found: " .. serversPath) end
-    serversText = A.read(serversPath)
-else
+if not mcp then
     local mainConfig = git_show("origin/main:ci/config_global.json")
     if mainConfig then
         config = A.decode(mainConfig, "origin/main:ci/config_global.json")
@@ -82,26 +62,15 @@ else
         print("MCP settings are absent, skip")
         os.exit(0)
     end
-    local serversRel = tostring(node(node(mcp, "serversFile"), "value") or "")
-    if serversRel == "" then A.die("ai.mcp.serversFile is empty") end
-    local gitPath = serversRel:gsub("^%./", ""):gsub("\\", "/")
-    serversText = git_show("origin/main:" .. gitPath)
-    if not serversText then A.die("mcpServers file not found on origin/main: " .. gitPath) end
     print("MCP settings taken from origin/main")
 end
 
-local servers = A.decode(serversText, "mcpServers")
-local strings = {}
-collect(servers, strings)
-
-local connected = serversText
-if A.env("ALPACA_AGENT") ~= "" then
-    local agent = A.agent(A.env("ALPACA_AGENT"))
-    local agentMcp = A.root .. "/agents/" .. agent.id .. "/mcp.json"
-    if not A.isfile(agentMcp) then A.die("agent mcp.json not found: " .. agentMcp) end
-    connected = A.read(agentMcp)
-    print("MCP config: " .. agent.id)
-end
+if A.env("ALPACA_AGENT") == "" then A.die("ALPACA_AGENT is empty") end
+local agent = A.agent(A.env("ALPACA_AGENT"))
+local agentMcp = A.root .. "/agents/" .. agent.id .. "/mcp.json"
+if not A.isfile(agentMcp) then A.die("agent mcp.json not found: " .. agentMcp) end
+local connected = A.read(agentMcp)
+print("MCP config: " .. agent.id)
 
 A.mkdirs(".cursor")
 A.write(".cursor/mcp.json", connected)
@@ -109,21 +78,16 @@ A.mkdirs(A.out .. "/cursor-config")
 local rootUrl = root:gsub("\\", "/")
 A.write(A.out .. "/cursor-config/mcp.json", plain_replace(connected, "${workspaceFolder}", rootUrl))
 
+local cacheRel = tostring(node(node(mcp, "cachePath"), "value") or "")
+if cacheRel == "" then cacheRel = "./.agents/mcp/cache" end
+local cacheDir = resolve(cacheRel, root):gsub("/+$", "")
 local downloads = node(node(mcp, "downloads"), "value")
 if type(downloads) ~= "table" or downloads == A.json.null then downloads = {} end
 for _, url in ipairs(downloads) do
     if type(url) == "string" and url ~= "" then
         local name = url_name(url)
         if not name or name == "" then A.die("URL has no file name: " .. url) end
-        local match = nil
-        for _, item in ipairs(strings) do
-            if leaf(item) == name then
-                match = item
-                break
-            end
-        end
-        if not match then A.die("mcpServers has no path for " .. name) end
-        local dest = resolve(match, root)
+        local dest = cacheDir .. "/" .. name
         if A.isfile(dest) and (A.filesize(dest) or 0) > 0 then
             print("MCP file present: " .. dest)
         else

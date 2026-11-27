@@ -207,9 +207,9 @@
    "mcp": {
     "description": "MCP servers for the Cursor agent",
     "value": {
-     "serversFile": {
-      "description": "Path to the mcpServers JSON file",
-      "value": "./.agents/mcp/mcp.json"
+     "cachePath": {
+      "description": "Directory for MCP files downloaded before the agent starts",
+      "value": "./.agents/mcp/cache"
      },
      "downloads": {
       "description": "URLs downloaded into the workspace before the agent starts",

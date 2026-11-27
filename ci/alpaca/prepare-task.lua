@@ -10,6 +10,7 @@ local modes = {
     ["judge-tests"] = true,
     review = true,
     confirm = true,
+    analyze = true,
 }
 local mode = arg[1]
 if not modes[mode] then A.die("Bad mode: " .. tostring(mode)) end

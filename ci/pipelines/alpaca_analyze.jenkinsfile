@@ -1,0 +1,233 @@
+def lua(Map opts = [:], String scriptPath) {
+    def args = (opts.args ?: '').toString().trim()
+    def returnStatus = opts.returnStatus == true
+    def command = args ? "lua \"${scriptPath}\" ${args}" : "lua \"${scriptPath}\""
+    if (isUnix()) {
+        return sh(script: command, returnStatus: returnStatus)
+    }
+    return bat(script: command, returnStatus: returnStatus)
+}
+// Job name: Alpaca/Ksenia/AlpacaAnalyze
+// Folder display name: Alpaca | Ксения. Jenkins rejects "|" in an item name.
+// Pipeline from SCM, branch */main, credentials gitalpaca.
+// gh and git inside the build use credential gitksenia.
+// Script path: ci/pipelines/alpaca_analyze.jenkinsfile
+// Agent label: windows. gh and git use ci/alpaca/agents/ksenia/agent.json.
+
+def alpacaClearSkip() {
+    if (fileExists('ci/alpaca/clear-skip.lua')) {
+        lua('ci/alpaca/clear-skip.lua')
+    }
+}
+
+def alpacaCommitFeelings() {
+    if (!env.ALPACA_BRANCH || !env.ALPACA_CREDENTIAL || !env.ALPACA_AGENT) {
+        return
+    }
+    def committed = 1
+    withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+        committed = lua(returnStatus: true, 'ci/alpaca/commit-feelings.lua')
+    }
+    if (committed != 0 && committed != 2) {
+        echo "feelings commit failed: ${committed}"
+    }
+}
+
+def alpacaGhStatus(String scriptPath, String args = '') {
+    def status = 1
+    for (int attempt = 1; attempt <= 4; attempt++) {
+        withCredentials([usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')]) {
+            status = lua(args: args, returnStatus: true, scriptPath)
+        }
+        if (status == 0 || status == 2) {
+            return status
+        }
+        echo "gh attempt ${attempt} failed with ${status}"
+        if (attempt < 4) {
+            sleep(time: 15 * attempt, unit: 'SECONDS')
+        }
+    }
+    return status
+}
+
+def alpacaGh(String scriptPath, String args = '') {
+    def status = alpacaGhStatus(scriptPath, args)
+    if (status != 0) {
+        error "gh step failed: ${status}"
+    }
+}
+
+def alpacaPost() {
+    def pr = 'pending'
+    if (fileExists('ci/alpaca/out/pr.txt')) {
+        pr = readFile('ci/alpaca/out/pr.txt').trim()
+    }
+    def target = (pr ==~ /[0-9]+/) ? 'pr' : 'issue'
+    def status = alpacaGhStatus('ci/alpaca/comment-pr.lua', "ci/alpaca/out/comment.md ${target}")
+    if (status != 0) {
+        error "Comment failed with ${status}"
+    }
+}
+
+pipeline {
+    agent { label 'windows' }
+
+    options {
+        skipDefaultCheckout()
+        disableConcurrentBuilds()
+        timeout(time: 90, unit: 'MINUTES')
+        timestamps()
+    }
+
+    parameters {
+        string(name: 'ISSUE', defaultValue: '', description: 'Issue or alpaca pull request where KseniaTheAlpaca was mentioned')
+        string(name: 'REASON', defaultValue: 'comments', description: 'comments')
+        string(name: 'CYCLE', defaultValue: '1', description: 'Unused, accepted so Watch can pass the same parameters')
+        string(name: 'MAX_CYCLE', defaultValue: '8', description: 'Unused, accepted so Watch can pass the same parameters')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    env.ALPACA_AGENT = 'ksenia'
+                    env.ALPACA_CREDENTIAL = 'gitksenia'
+                    env.ALPACA_JOB = 'Alpaca/Ksenia/AlpacaAnalyze'
+                    alpacaClearSkip()
+                    checkout scm
+                    def issue = (params.ISSUE ?: '').trim()
+                    def reason = (params.REASON ?: '').trim()
+                    if (!(issue ==~ /[0-9]+/)) {
+                        error "Invalid ISSUE: ${issue}"
+                    }
+                    if (reason != 'comments') {
+                        error "Invalid REASON: ${reason}"
+                    }
+                    env.ALPACA_ISSUE = issue
+                    env.ALPACA_REASON = reason
+                    env.ALPACA_CYCLE = '1'
+                    env.ALPACA_MAX = '1'
+                    env.ALPACA_BRANCH = "alpaca/${issue}"
+                    env.ALPACA_SKIP = 'false'
+                    def issueState = alpacaGhStatus('ci/alpaca/issue-open.lua')
+                    if (issueState == 3) {
+                        echo "Issue #${issue} is closed"
+                        currentBuild.description = "issue #${issue} closed"
+                        env.ALPACA_SKIP = 'true'
+                    } else if (issueState != 0) {
+                        error "Could not read issue state: ${issueState}"
+                    } else {
+                        withCredentials([gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default')]) {
+                            lua('ci/alpaca/checkout.lua')
+                        }
+                        lua('ci/alpaca/prepare-mcp.lua')
+                    }
+                }
+            }
+        }
+
+        stage('Pull request') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    alpacaGh('ci/alpaca/ensure-pr.lua', '--lookup')
+                    def reacted = alpacaGhStatus('ci/alpaca/react-eyes.lua')
+                    if (reacted == 2) {
+                        echo "Mention is already taken"
+                        currentBuild.description = 'mention already taken'
+                        env.ALPACA_SKIP = 'true'
+                        return
+                    }
+                    if (reacted != 0) {
+                        error "Could not react to the mention: ${reacted}"
+                    }
+                    alpacaGh('ci/alpaca/began.lua')
+                }
+            }
+        }
+
+        stage('Analyze') {
+            when { expression { return env.ALPACA_SKIP != 'true' } }
+            steps {
+                script {
+                    lua('ci/alpaca/clear-outputs.lua')
+                    alpacaGh('ci/alpaca/prepare-task.lua', 'analyze')
+                    def analyzed = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
+                    if (analyzed != 0) {
+                        lua('ci/alpaca/restore-tree.lua')
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nРазбор не записался, Cursor CLI завершился с кодом ${analyzed}.\n"
+                        alpacaPost()
+                        error "Cursor CLI failed: ${analyzed}"
+                    }
+                    def verdict = ''
+                    if (fileExists('ci/alpaca/out/verdict.txt')) {
+                        def line = readFile('ci/alpaca/out/verdict.txt').replace('\uFEFF', '').split(/\r?\n/).find { it.trim() }
+                        if (line) {
+                            verdict = line.trim().toLowerCase()
+                        }
+                    }
+                    if (!(verdict in ['talk', 'rework', 'accept'])) {
+                        lua('ci/alpaca/restore-tree.lua')
+                        writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nРазбор не записал verdict.txt со строкой talk, rework или accept.\n"
+                        alpacaPost()
+                        error 'Analyze verdict is missing'
+                    }
+                    if (verdict != 'accept') {
+                        lua('ci/alpaca/restore-tree.lua')
+                    } else {
+                        def files = lua(returnStatus: true, 'ci/alpaca/release-files.lua')
+                        if (files != 0) {
+                            lua('ci/alpaca/restore-tree.lua')
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nВ приёмке изменены файлы вне заметок релиза и стартовых страниц. Коммит не сделан.\n"
+                            alpacaPost()
+                            error "Release file check failed: ${files}"
+                        }
+                        def pending = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
+                        if (pending == 0) {
+                            def committed = 1
+                            withCredentials([
+                                gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default'),
+                                usernamePassword(credentialsId: env.ALPACA_CREDENTIAL, usernameVariable: 'ALPACA_GH_USER', passwordVariable: 'GH_TOKEN')
+                            ]) {
+                                committed = lua(returnStatus: true, 'ci/alpaca/commit-push.lua')
+                            }
+                            if (committed != 0 && committed != 2) {
+                                error "git commit failed: ${committed}"
+                            }
+                        } else if (pending != 2) {
+                            error "git status failed: ${pending}"
+                        }
+                    }
+                    if (!fileExists('ci/alpaca/out/comment.md')) {
+                        error 'Comment is missing'
+                    }
+                    def newer = alpacaGhStatus('ci/alpaca/newer-mention.lua')
+                    if (newer == 0) {
+                        lua('ci/alpaca/strip-mentions.lua')
+                    } else if (newer != 2) {
+                        error "Could not read mentions: ${newer}"
+                    }
+                    alpacaPost()
+                    if (verdict == 'accept') {
+                        def ready = alpacaGhStatus('ci/alpaca/mark-ready.lua')
+                        if (ready != 0 && ready != 2) {
+                            error "Could not update the draft: ${ready}"
+                        }
+                        currentBuild.description = ready == 0 ? 'accepted' : 'accepted, draft unchanged'
+                        return
+                    }
+                    currentBuild.description = verdict
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                alpacaCommitFeelings()
+                alpacaClearSkip()
+            }
+        }
+    }
+}

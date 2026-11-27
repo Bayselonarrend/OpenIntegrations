@@ -53,9 +53,9 @@
 
 `ai.mcp` в `config_global.json`:
 
-- `serversFile` — путь к JSON с `mcpServers`. Сейчас `./.agents/mcp/mcp.json`.
-- `downloads` — URL файлов, которые надо положить в workspace перед агентом.
+- `cachePath` — каталог скачанных файлов MCP. Сейчас `./.agents/mcp/cache`.
+- `downloads` — URL файлов, которые надо положить в этот каталог перед агентом. Имя файла берётся из URL.
 
-Куда класть файл, написано в аргументах `mcpServers`: скрипт ищет аргумент с тем же именем файла, что у URL. Каталог загрузки — `.agents/mcp/cache/`, он в `.gitignore`. Туда же не коммитится копия `.cursor/mcp.json`.
+Каталог `cachePath` в `.gitignore`. Копия `.cursor/mcp.json` туда не коммитится. Какой сервер подключать, написано в `ci/alpaca/agents/<id>/mcp.json`: задание копирует его в `.cursor/mcp.json`.
 
-`AlpacaWork` после checkout вызывает `ci/alpaca/prepare-mcp.lua`. Скрипт читает рабочее дерево. Если блока `ai.mcp` в нём нет, берёт `ci/config_global.json` и файл серверов с `origin/main`. Уже скачанный непустой файл повторно не качается. Платформа в `mcp.json` — каталог той же установки, что `local.onecConfig`.
+`AlpacaWork`, ревью, тесты и приёмка после checkout вызывают `ci/alpaca/prepare-mcp.lua`. Скрипт читает рабочее дерево. Если блока `ai.mcp` в нём нет, берёт `ci/config_global.json` с `origin/main`. Уже скачанный непустой файл повторно не качается. Платформа в `mcp.json` агента — каталог той же установки, что `local.onecConfig`.

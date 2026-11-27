@@ -2,12 +2,14 @@
   "id": "vitaly",
   "login": "VitalyTheAlpaca",
   "name": "Альпака Виталий",
+  "gender": "male",
   "email": "vitaly.alpaca@openintegrations.dev",
   "credential": "gitalpaca",
   "model": "grok-4.7",
   "role": "author",
   "job": "Alpaca/Vitaly/AlpacaWork",
-  "reactTo": ["bayselonarrend", "RuslanTheAlpaca", "PolinaTheAlpaca"],
+  "reactTo": ["bayselonarrend", "RuslanTheAlpaca", "PolinaTheAlpaca", "KseniaTheAlpaca"],
   "reviewer": "RuslanTheAlpaca",
+  "reviewers": ["RuslanTheAlpaca", "bayselonarrend"],
   "tester": "PolinaTheAlpaca"
 }

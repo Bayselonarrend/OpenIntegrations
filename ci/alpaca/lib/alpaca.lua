@@ -593,6 +593,30 @@ function A.wakes(agent, stamp, latest, directive)
     return A.mentioned(agent, stamp.body)
 end
 
+function A.is_feelings(path)
+    path = tostring(path or ""):gsub("\\", "/")
+    return path:match("^ci/alpaca/agents/[^/]+/feelings%.txt$") ~= nil
+end
+
+function A.feelings_snapshot()
+    local bag = {}
+    local root = "ci/alpaca/agents"
+    if not A.isdir(root) then return bag end
+    for _, name in ipairs(A.listdirs(root)) do
+        local path = root .. "/" .. name .. "/feelings.txt"
+        local text = A.read(path)
+        if text then bag[path] = text end
+    end
+    return bag
+end
+
+function A.feelings_restore(bag)
+    if type(bag) ~= "table" then return end
+    for path, text in pairs(bag) do
+        A.write(path, text)
+    end
+end
+
 function A.with_identity(agent, fn)
     local path = A.abspath(A.out .. "/identity.config")
     local function git_quote(s)
