@@ -1,3 +1,10 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
 def lua(Map opts = [:], String scriptPath) {
     def args = (opts.args ?: '').toString().trim()
     def returnStatus = opts.returnStatus == true
@@ -7,13 +14,7 @@ def lua(Map opts = [:], String scriptPath) {
     }
     return bat(script: command, returnStatus: returnStatus)
 }
-def runCommand(String command) {
-    if (isUnix()) {
-        sh(script: command)
-    } else {
-        bat(script: command)
-    }
-}
+
 
 pipeline {
     agent {

@@ -112,7 +112,7 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined, Val Logging = Und
 
     EndIf;
 
-    Tls = OPI_AddIns.SetTls(Connector, Tls);
+    Tls = SetTlsConnection(Connector, Tls);
 
     If Not OPI_Tools.GetOr(Tls, "result", False) Then
         Return Tls;
@@ -358,17 +358,31 @@ EndFunction
 //
 // Note:
 // Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
-// or implicit, when passing settings
+// or implicit, when passing settings.
+// The client key and certificate are specified together and enable mTLS. The certificate file is a PEM chain: leaf first, then intermediate certificates.
+// Each time a connection is opened, this chain and key are read again and passed to the add-in as binary data. An encrypted key is not supported
 //
 // Parameters:
 // DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
 // CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
+// ClientKeyPath           - String  - Path to the unencrypted PEM file of the client private key for mTLS                - clientkey
+// ClientCertificatePath   - String  - Path to the PEM file of the client certificate chain: leaf, then intermediates     - clientcert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings
-Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+Function GetTlsSettings(Val DisableCertVerification
+    , Val CertFilepath = ""
+    , Val ClientKeyPath = ""
+    , Val ClientCertificatePath = "") Export
 
-    Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
+    OPI_TypeConversion.GetLine(ClientKeyPath);
+    OPI_TypeConversion.GetLine(ClientCertificatePath);
+
+    CertStructure = OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
+    OPI_Tools.AddField("client_key_path" , ClientKeyPath        , "String", CertStructure);
+    OPI_Tools.AddField("client_cert_path", ClientCertificatePath, "String", CertStructure);
+
+    Return CertStructure;
 
 EndFunction
 
@@ -985,6 +999,110 @@ EndFunction
 
 #Region Private
 
+Function SetTlsConnection(Connector, Val TLSSettings)
+
+    Key   = ReadClientMaterial(TLSSettings, "client_key", "client_key_path");
+    Chain = ReadClientMaterial(TLSSettings, "client_cert_chain", "client_cert_path");
+
+    If ValueIsFilled(Key.error) Then
+        Return TlsError(Key.error);
+    EndIf;
+
+    If ValueIsFilled(Chain.error) Then
+        Return TlsError(Chain.error);
+    EndIf;
+
+    EmptyKey   = Not ValueIsFilled(Key.data);
+    EmptyChain = Not ValueIsFilled(Chain.data);
+
+    If EmptyKey <> EmptyChain Then
+        Return TlsError("Client certificate chain and private key must both be provided for mTLS");
+    EndIf;
+
+    If Not EmptyKey And OPI_Tools.GetOr(TLSSettings, "use_tls", True) = False Then
+        Return TlsError("Client certificate requires TLS");
+    EndIf;
+
+    Result = OPI_AddIns.SetTls(Connector, TLSSettings);
+
+    If EmptyKey Or Not OPI_Tools.GetOr(Result, "result", False) Then
+        Return Result;
+    EndIf;
+
+    KeyPath         = OPI_Tools.GetOr(TLSSettings, "client_key_path", "");
+    CertificatePath = OPI_Tools.GetOr(TLSSettings, "client_cert_path", "");
+
+    If Not ValueIsFilled(KeyPath) Then
+        KeyPath = "";
+    Else
+        OPI_TypeConversion.GetLine(KeyPath);
+    EndIf;
+
+    If Not ValueIsFilled(CertificatePath) Then
+        CertificatePath = "";
+    Else
+        OPI_TypeConversion.GetLine(CertificatePath);
+    EndIf;
+
+    Response = Connector.SetClientAuth(Key.data, Chain.data, KeyPath, CertificatePath);
+
+    Return OPI_AddIns.DesrializeJanx(Response);
+
+EndFunction
+
+Function ReadClientMaterial(Val TLSSettings, Val DataName, Val PathName)
+
+    Reading = New Structure("data,error", GetBinaryDataFromString(""), "");
+
+    If Not ValueIsFilled(TLSSettings) Then
+        Return Reading;
+    EndIf;
+
+    Data = OPI_Tools.GetOr(TLSSettings, DataName, Undefined);
+
+    If TypeOf(Data)  = Type("BinaryData") And ValueIsFilled(Data) Then
+        Reading.data = Data;
+        Return Reading;
+    EndIf;
+
+    Path = OPI_Tools.GetOr(TLSSettings, PathName, "");
+
+    If Not ValueIsFilled(Path) Then
+        Return Reading;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Path);
+
+    File = New File(Path);
+
+    If Not File.Exists() Or Not File.IsFile() Then
+        Reading.error = StrTemplate("Failed to read file: %1", Path);
+        Return Reading;
+    EndIf;
+
+    Try
+        Reading.data  = New BinaryData(Path);
+    Except
+        Reading.error = StrTemplate(
+            "Failed to read file %1: %2",
+            Path,
+            BriefErrorDescription(ErrorInfo()));
+    EndTry;
+
+    Return Reading;
+
+EndFunction
+
+Function TlsError(Val Text)
+
+    Error = New Map;
+    Error.Insert("result", False);
+    Error.Insert("error" , Text);
+
+    Return Error;
+
+EndFunction
+
 Function SetProto(Connector, Val Parameters)
 
     ProtoSet = OPI_Tools.GetOr(Parameters, "proto", Undefined);
@@ -1240,8 +1358,8 @@ Function ПолучитьПараметрыСоединения(Val Адрес, 
     Return GetConnectionParameters(Адрес, Proto, Метаданные, UserAgent, Сжатие, МаксимальныйРазмерОтвета, МаксимальныйРазмерЗапроса, ТаймаутПодключения);
 EndFunction
 
-Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
-    Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "", Val ПутьККлиентскомуКлючу = "", Val ПутьККлиентскомуСертификату = "") Export
+    Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату, ПутьККлиентскомуКлючу, ПутьККлиентскомуСертификату);
 EndFunction
 
 Function ПолучитьНастройкиЛогирования(Val ЗаписьВПамять = True, Val МаксимумСобытий = 300, Val ПутьКФайлу = "") Export

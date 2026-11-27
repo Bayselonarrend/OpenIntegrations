@@ -354,6 +354,22 @@
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",
      "default": "Empty value",
      "short": "-c"
+    },
+    {
+     "title": "ClientKeyPath",
+     "name": "--clientkey",
+     "types": "String",
+     "description": "Path to the unencrypted PEM file of the client private key for mTLS",
+     "default": "Empty value",
+     "short": "-l"
+    },
+    {
+     "title": "ClientCertificatePath",
+     "name": "--clientcert",
+     "types": "String",
+     "description": "Path to the PEM file of the client certificate chain: leaf, then intermediates",
+     "default": "Empty value",
+     "short": "-n"
     }
    ],
    "region": "Common methods"

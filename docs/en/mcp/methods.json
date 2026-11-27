@@ -16004,9 +16004,23 @@
      "types": "String",
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",
      "required": false
+    },
+    {
+     "name": "ClientKeyPath",
+     "cli": "--clientkey",
+     "types": "String",
+     "description": "Path to the unencrypted PEM file of the client private key for mTLS",
+     "required": false
+    },
+    {
+     "name": "ClientCertificatePath",
+     "cli": "--clientcert",
+     "types": "String",
+     "description": "Path to the PEM file of the client certificate chain: leaf, then intermediates",
+     "required": false
     }
    ],
-   "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Result = OPI_GRPC.GetTlsSettings(True);\n```",
+   "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Result = OPI_GRPC.GetTlsSettings(True, \"ca.pem\", \"client.key\", \"client.crt\");\n```",
    "result": "```json title=\"Result\"\n{\n \"use_tls\": true,\n \"accept_invalid_certs\": true\n}\n```"
   },
   {

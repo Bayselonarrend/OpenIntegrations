@@ -15366,6 +15366,53 @@ Function Check_GRPC_Advanced_CallTimeout(Val Result, Val Option)
 
 EndFunction
 
+Function Check_GRPC_Extended_ClientCertificate(Val Result, Val Option, ErrorFragment = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.Main");
+
+        Return Result;
+
+    EndIf;
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(False);
+
+    ErrorText                                           = Lower(Result["error"]);
+    ExpectsThat(StrFind(ErrorText, "connection failed") = 0).Равно(True);
+
+    If Option = "OnlyKey" Or Option = "OnlyCertificate" Then
+
+        ExpectsThat(StrFind(ErrorText, "certificate") > 0).Равно(True);
+        ExpectsThat(StrFind(ErrorText, "key") > 0).Равно(True);
+
+    ElsIf Option = "File" Then
+
+        ExpectsThat(StrFind(ErrorText, Lower(ErrorFragment)) > 0).Равно(True);
+
+    ElsIf Option = "Encrypted" Then
+
+        ExpectsThat(StrFind(ErrorText, "unencrypted") > 0).Равно(True);
+        ExpectsThat(StrFind(ErrorText, "private key") > 0).Равно(True);
+
+    ElsIf Option = "Repeat" Then
+
+        ExpectsThat(StrFind(ErrorText, "pem") > 0).Равно(True);
+        ExpectsThat(StrFind(ErrorText, "leaf") > 0).Равно(True);
+
+    ElsIf Option = "Order" Then
+
+        ExpectsThat(StrFind(ErrorText, "certificate") > 0).Равно(True);
+        ExpectsThat(StrFind(ErrorText, "key") > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_GRPC_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
 
     ExpectsThat(Result["result"]).Равно(True);
@@ -15423,9 +15470,29 @@ Function Check_GRPC_GetConnectionParameters(Val Result, Val Option)
 
 EndFunction
 
-Function Check_GRPC_GetTlsSettings(Val Result, Val Option)
+Function Check_GRPC_GetTlsSettings(Val Result
+    , Val Option
+    , CaPath          = ""
+    , KeyPath         = ""
+    , CertificatePath = "")
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["use_tls"]).Равно(True);
+    ExpectsThat(Result["accept_invalid_certs"]).Равно(True);
+
+    If Option = "WithoutClient" Then
+
+        ExpectsThat(OPI_Tools.GetOr(Result, "ca_cert_path"    , "")).Равно("");
+        ExpectsThat(OPI_Tools.GetOr(Result, "client_key_path" , "")).Равно("");
+        ExpectsThat(OPI_Tools.GetOr(Result, "client_cert_path", "")).Равно("");
+
+    Else
+
+        ExpectsThat(Result["ca_cert_path"]).Равно(CaPath);
+        ExpectsThat(Result["client_key_path"]).Равно(KeyPath);
+        ExpectsThat(Result["client_cert_path"]).Равно(CertificatePath);
+
+    EndIf;
 
     Return Result;
 

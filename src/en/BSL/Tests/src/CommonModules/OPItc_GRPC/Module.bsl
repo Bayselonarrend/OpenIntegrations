@@ -132,6 +132,7 @@ Procedure GR_ExtendedCheck() Export
     GRPC_Advanced_MaxMessageSize(TestParameters);
     GRPC_Advanced_ConnectionTimeout(TestParameters);
     GRPC_Advanced_CallTimeout(TestParameters);
+    GRPC_Extended_ClientCertificate(TestParameters);
 
 EndProcedure
 
@@ -349,12 +350,28 @@ Procedure GRPC_GetTlsSettings(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("trust", Истина);
+    Options.Insert("cert", "ca.pem");
+    Options.Insert("clientkey", "client.key");
+    Options.Insert("clientcert", "client.crt");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
     // END
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetTlsSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result
+        , "GRPC"
+        , "GetTlsSettings"
+        ,
+        "ca.pem"
+        , "client.key"
+        , "client.crt");
+
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetTlsSettings", "WithoutClient");
 
 EndProcedure
 
@@ -1060,6 +1077,220 @@ Procedure GRPC_Advanced_CallTimeout(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Advanced_CallTimeout");
     OPI_GRPC.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure GRPC_Extended_ClientCertificate(FunctionParameters)
+
+    KeyStrings = New Array;
+    KeyStrings.Add("-----BEGIN PRIVATE KEY-----");
+    KeyStrings.Add("MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDFviVmSJmbB+ig");
+    KeyStrings.Add("TZ2d1CWHm9GmPgXVJbghj1/cfP8l5GnYUZnCxj9ZD64nT46rB7xu4Y+pVqjVnjWT");
+    KeyStrings.Add("Rs4qdsVFkfmiWgkPFL/Q4Vo5INNMFSLVI1iCn/lGh/fRa65cOlCJ3Yi8mkJMPBeK");
+    KeyStrings.Add("/l5RFWEFsGKp/w0xCuImviqlJHBukUHhjA2SdZ9bXs+PgAzKd1kF7Byi1P5aGv8r");
+    KeyStrings.Add("ROzBAL24DVsGHaINey8TsTrBVCojjI1js5msbNiMOEN31obiiunBy+QK4yYePIVk");
+    KeyStrings.Add("Id2g2+MMWdOh855I1IC5sByBbftkTpwg1pmL2UENtl7fFqLHRr6HQ+fMR3Y4ggl+");
+    KeyStrings.Add("K5dsna9LAgMBAAECggEAD3trkTO7ob7qRewdxuwubgzTSs6jWpoOmG4R0Cu8jFpz");
+    KeyStrings.Add("C7vugSilcBMsDFQ3Ht6cWxrE9ToIPlrEkL3j9BYtgYdu105w/sxzQjxKpJtp1RSj");
+    KeyStrings.Add("OrMplxHwYfHRA4Vd9vGdOatt18UaI2mMYau4dbpp823pI6yI+18smreb6NHOuGal");
+    KeyStrings.Add("hEXMW4de6CjM3EP7QbT7KxBxr2hkvmTPDect1ccswD2yqTZOHCQJ+LMm0yNMy4dI");
+    KeyStrings.Add("keK4YGF90h6Of1LN1YGoayP4SgB+lt/tch3ZwVmU7AGJUFX7OCi8ZXOugxAXjQEl");
+    KeyStrings.Add("mRFdm2fs1iPsSnaLNeTH8/CrD2C6Zr11wvsA91fWWQKBgQDhnNwqR00tas9CzSyC");
+    KeyStrings.Add("qbz4bfOAo/Xm5xxGuLYSDB9kpKOGE6Bqf76HtT1e+Ih4AsnwH6YWPspEzkhn/zog");
+    KeyStrings.Add("xA4vEeqSaVkugP9dY6rfO2vfMQMOgKmUhPr5ADKYUXDl8ICv0PetqMFqMVYQ6WcJ");
+    KeyStrings.Add("AAaWjx5im0TsBwpvVRzgN4p5QwKBgQDgYFPj7QTAStQZbqzNVqgoGRE5/eLmlUSD");
+    KeyStrings.Add("Nhpr3ftW/i/wIDMQCMLcESxc/PNhGLts0kUP/dxGR8R4meGyvqnNJgUNg6o3o7Lu");
+    KeyStrings.Add("8NNmCyJjL6g59OVySdOQvtmGnJJT3qcz0f9EY4lQIn5eDihSBXLer0ykrcX9wmqU");
+    KeyStrings.Add("m9oob0htWQKBgCFCG16MJj9kuGrzjfUxCm9g3f1/rhc8yHlQb16XtOUENCrmp8Yr");
+    KeyStrings.Add("UK32tLZUUuHGH3irYbNzzCN6eUgDYtFDtYeQz5CHwSLO11YwBBdmTg+XzQiNRPJk");
+    KeyStrings.Add("7A5azhqQHuF2o7HHT0ulTeXWogZaMdssysvVCzikBPP6Ubp5xIj1Bw+7AoGATYrc");
+    KeyStrings.Add("0yNhhfcWT+fAzoIJQTpQisMkPF4PvGzhOrAPoaPc+1aVbxAoD5fbxhMhJUg/1b7h");
+    KeyStrings.Add("YUJxctRwoOFFb9mWozBlhKMhG3N2bj9KP7TPYIni0IzDEvlSpW5fjLbllxiWnkEP");
+    KeyStrings.Add("wBnKJaiWFXk9FAOQDEd27F6l0ynyXYNzJJA47pkCgYARjf3bsQEmdRRpKN/K6M5A");
+    KeyStrings.Add("XujPlWQwIkSoPj7tD6+ZOO4mfZ8VJDEH4+jZm+DhQCTMPMs7xHKwaXZ6PtK5Ix6B");
+    KeyStrings.Add("3PIOR6UE8CNxltgJx2fPS2X6r2hw/YJa3pvScBO0CotjP+A1pIFxWi7W1kAXNSUB");
+    KeyStrings.Add("Qb6miwjiuykVqHAWAUt9fA==");
+    KeyStrings.Add("-----END PRIVATE KEY-----");
+
+    LeafStrings = New Array;
+    LeafStrings.Add("-----BEGIN CERTIFICATE-----");
+    LeafStrings.Add("MIIDETCCAfmgAwIBAgIUKb/KGjlhpEXP0tt0Eo9rWHx1MY0wDQYJKoZIhvcNAQEL");
+    LeafStrings.Add("BQAwGDEWMBQGA1UEAwwNb3BpLW10bHMtbGVhZjAeFw0yNjExMjYyMzEyMDlaFw0z");
+    LeafStrings.Add("NjExMjMyMzEyMDlaMBgxFjAUBgNVBAMMDW9waS1tdGxzLWxlYWYwggEiMA0GCSqG");
+    LeafStrings.Add("SIb3DQEBAQUAA4IBDwAwggEKAoIBAQDFviVmSJmbB+igTZ2d1CWHm9GmPgXVJbgh");
+    LeafStrings.Add("j1/cfP8l5GnYUZnCxj9ZD64nT46rB7xu4Y+pVqjVnjWTRs4qdsVFkfmiWgkPFL/Q");
+    LeafStrings.Add("4Vo5INNMFSLVI1iCn/lGh/fRa65cOlCJ3Yi8mkJMPBeK/l5RFWEFsGKp/w0xCuIm");
+    LeafStrings.Add("viqlJHBukUHhjA2SdZ9bXs+PgAzKd1kF7Byi1P5aGv8rROzBAL24DVsGHaINey8T");
+    LeafStrings.Add("sTrBVCojjI1js5msbNiMOEN31obiiunBy+QK4yYePIVkId2g2+MMWdOh855I1IC5");
+    LeafStrings.Add("sByBbftkTpwg1pmL2UENtl7fFqLHRr6HQ+fMR3Y4ggl+K5dsna9LAgMBAAGjUzBR");
+    LeafStrings.Add("MB0GA1UdDgQWBBQOR5ZL+ZJcMu9KQGcsoU91OnsU+DAfBgNVHSMEGDAWgBQOR5ZL");
+    LeafStrings.Add("+ZJcMu9KQGcsoU91OnsU+DAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUA");
+    LeafStrings.Add("A4IBAQCEPRasDY6K8N6XVnokH0pzevjKAjqWJGXY9txAsA4fPX2t/h2ReGmlOZDF");
+    LeafStrings.Add("+aCjP49KxIUdGt9RiWAWQCOP+E9EQYvz50qG65xu/oCQ1dqbENyC3mfS4W37QRQb");
+    LeafStrings.Add("0zY+CvZtyXijQwkpkiMmIjs56KYqkQjmxGMWuQnxlRunE6k3B5erBNapiyutKI0M");
+    LeafStrings.Add("LaMk+WXTpz1UZFOR142iVV4olWvAT1T2yA9pwWsdNZziilmJJYi5f7qtJZrgKRzg");
+    LeafStrings.Add("uPkid+nv5dmhE7SjCX6D2nusqYtvzsNOCoe69lbfM9TsZtSkKw7WGb4YIAQnT7Qs");
+    LeafStrings.Add("9kDbQ5FemaAIcxW37XBGZW7OOoKU");
+    LeafStrings.Add("-----END CERTIFICATE-----");
+
+    OtherStrings = New Array;
+    OtherStrings.Add("-----BEGIN CERTIFICATE-----");
+    OtherStrings.Add("MIIDEzCCAfugAwIBAgIULj/kN0bH+57cZ4k6F9r4oz2v/gwwDQYJKoZIhvcNAQEL");
+    OtherStrings.Add("BQAwGTEXMBUGA1UEAwwOb3BpLW10bHMtb3RoZXIwHhcNMjYxMTI2MjMxMjA5WhcN");
+    OtherStrings.Add("MzYxMTIzMjMxMjA5WjAZMRcwFQYDVQQDDA5vcGktbXRscy1vdGhlcjCCASIwDQYJ");
+    OtherStrings.Add("KoZIhvcNAQEBBQADggEPADCCAQoCggEBANZqBbQR5WO/+3td1SgQk/G8M01d845X");
+    OtherStrings.Add("7QBAQV/v3WHPjn+olktwg4l2mGcglmVmHMmS6glwgnKjpVA/uqUT7WkL8SvNXanh");
+    OtherStrings.Add("sGFNbN81yDYK+HbbG1qGCGnLcDTDTLLnLw/maOOaDk46X+c12TRFR5x+00TOcpvw");
+    OtherStrings.Add("/PsOeXyFo3RsrCg6Ir/gaDpZ0iIagTy1x8gQJhBL+BLTSrn5YX6KKQKDuRCjleum");
+    OtherStrings.Add("fU0pm+riSVlx/qdXbd9VpZ0b3VsLtoV/zwrnY0beoyuGH3F9ukccihc3a9wJ+iOa");
+    OtherStrings.Add("PombWRUbB/C/UViwHqD9KYnMorHLIdxvaMLh7qcFXnyDdNwjJz9EVykCAwEAAaNT");
+    OtherStrings.Add("MFEwHQYDVR0OBBYEFFXE2vvHrtlDyqDl6VYTHJgAcXHmMB8GA1UdIwQYMBaAFFXE");
+    OtherStrings.Add("2vvHrtlDyqDl6VYTHJgAcXHmMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQEL");
+    OtherStrings.Add("BQADggEBABGcU4DQWu0NMaQPnUpBmaV/q04pPcI/pB7Zn52KrtIjRjQtrNLcK+qn");
+    OtherStrings.Add("5pkvAxL1oSv+j9IFYizUYU9rmvvOMnwwok2Uoik7pON5E2/HlNR8P7FSljoJpdBw");
+    OtherStrings.Add("MFNurAkjRCp4B3I9HjzOpx3/eDWJSs8vsyZC8A+sXfyfrC5nLGO0hSMYBKhbSeVS");
+    OtherStrings.Add("venmkXmDKljExr/SZWNYX4hMaiPxuPiAG6tgSqCK/3fINgXhtoxmuciuzCT6TaqR");
+    OtherStrings.Add("h+gVW2JMtmacQgK7po440qChYYb2EtZ7Lmno0F5Uh2Cv1N9dALPNWMbioIiDlG0w");
+    OtherStrings.Add("1V/aZyEy9+ENlDl3bCkPZUxTHCPK2FA=");
+    OtherStrings.Add("-----END CERTIFICATE-----");
+
+    KeyText      = StrConcat(KeyStrings , Chars.LF) + Chars.LF;
+    LeafText     = StrConcat(LeafStrings , Chars.LF);
+    OtherText    = StrConcat(OtherStrings, Chars.LF);
+    ChainText    = LeafText + Chars.LF + OtherText + Chars.LF;
+    ReversedText = OtherText + Chars.LF + LeafText + Chars.LF;
+
+    CipherStrings = New Array;
+    CipherStrings.Add("-----BEGIN ENCRYPTED PRIVATE KEY-----");
+    CipherStrings.Add("not-a-real-key");
+    CipherStrings.Add("-----END ENCRYPTED PRIVATE KEY-----");
+    CipherText    = StrConcat(CipherStrings, Chars.LF) + Chars.LF;
+
+    KeyPath         = GetTempFileName("key");
+    CertificatePath = GetTempFileName("crt");
+
+    GetBinaryDataFromString(KeyText  , TextEncoding.UTF8, False).Write(KeyPath);
+    GetBinaryDataFromString(ChainText, TextEncoding.UTF8, False).Write(CertificatePath);
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("proto", Scheme);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+    Options.Insert("cert", "");
+    Options.Insert("clientkey", KeyPath);
+    Options.Insert("clientcert", CertificatePath);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Extended_ClientCertificate");
+    OPI_GRPC.CloseConnection(Result);
+
+    GetBinaryDataFromString("not a pem certificate", TextEncoding.UTF8, False).Write(CertificatePath);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Extended_ClientCertificate", "Repeat");
+
+    GetBinaryDataFromString(ReversedText, TextEncoding.UTF8, False).Write(CertificatePath);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Extended_ClientCertificate", "Order");
+
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+    Options.Insert("cert", "");
+    Options.Insert("clientkey", KeyPath);
+    Options.Insert("clientcert", "");
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Extended_ClientCertificate", "OnlyKey");
+
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+    Options.Insert("cert", "");
+    Options.Insert("clientkey", "");
+    Options.Insert("clientcert", CertificatePath);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Extended_ClientCertificate", "OnlyCertificate");
+
+    MissingPath = CertificatePath + ".missing";
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+    Options.Insert("cert", "");
+    Options.Insert("clientkey", KeyPath);
+    Options.Insert("clientcert", MissingPath);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result
+        , "GRPC"
+        , "Extended_ClientCertificate"
+        , "File"
+        , MissingPath);
+
+    GetBinaryDataFromString(CipherText, TextEncoding.UTF8, False).Write(KeyPath);
+    GetBinaryDataFromString(ChainText , TextEncoding.UTF8, False).Write(CertificatePath);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+    Options.Insert("cert", "");
+    Options.Insert("clientkey", KeyPath);
+    Options.Insert("clientcert", CertificatePath);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "Extended_ClientCertificate", "Encrypted");
+
+    DeleteFiles(KeyPath);
+    DeleteFiles(CertificatePath);
 
 EndProcedure
 
