@@ -8,6 +8,8 @@ Bitrix
 битрикс
 clientid
 clientsecret
+clientkey
+clientcert
 токену
 вебхука
 вебхук
