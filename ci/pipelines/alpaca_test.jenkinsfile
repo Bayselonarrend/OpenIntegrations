@@ -43,10 +43,15 @@ def alpacaLog(String jobName, int number, int count) {
 }
 
 def alpacaCursor(String mode) {
-    lua('ci/alpaca/clear-outputs.lua')
+    def keepTree = (mode == 'translate-dict')
+    if (!keepTree) {
+        lua('ci/alpaca/clear-outputs.lua')
+    }
     alpacaGh('ci/alpaca/prepare-task.lua', "${mode}")
     def status = lua(args: 'ci/alpaca/out/task.md', returnStatus: true, 'ci/alpaca/run-cursor.lua')
-    lua('ci/alpaca/restore-tree.lua')
+    if (!keepTree) {
+        lua('ci/alpaca/restore-tree.lua')
+    }
     return status
 }
 
@@ -180,6 +185,20 @@ pipeline {
                     }
                     def pending = lua(returnStatus: true, 'ci/alpaca/git-dirty.lua')
                     if (pending == 0) {
+                        def dict = load('ci/alpaca/fill-dict.groovy').fill { alpacaCursor('translate-dict') }
+                        if (dict < 0) {
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nПеревод новых слов словаря завершился с кодом ${-dict}. Коммит не сделан.\n"
+                            alpacaPost()
+                            error "Dictionary translation failed: ${-dict}"
+                        }
+                        if (dict == 111) {
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nВ словаре остались пустые переводы. Коммит не сделан.\n"
+                            alpacaPost()
+                            error 'Dictionary still has empty translations'
+                        }
+                        if (dict != 0) {
+                            error "Dictionary update failed: ${dict}"
+                        }
                         def committed = 1
                         withCredentials([
                             gitUsernamePassword(credentialsId: env.ALPACA_CREDENTIAL, gitToolName: 'Default'),
@@ -202,7 +221,22 @@ pipeline {
                             .findAll { it && !it.startsWith('#') }
                     }
                     def skipRun = jobs.isEmpty() || (jobs.size() == 1 && jobs[0].equalsIgnoreCase('none'))
+                    def buildOk = true
                     if (!skipRun) {
+                        def downstream
+                        try {
+                            downstream = load('ci/alpaca/bsl-build.groovy').run()
+                        } catch (err) {
+                            buildOk = false
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nСборка зеркал не стартовала, тесты OneScript не запускались.\n\n${err}\n"
+                        }
+                        if (buildOk && (downstream.result ?: 'UNKNOWN') != 'SUCCESS') {
+                            buildOk = false
+                            def log = alpacaLog('BigFloppa', downstream.number as int, 500)
+                            writeFile file: 'ci/alpaca/out/comment.md', text: "<!-- alpaca -->\n\nСборка зеркал не прошла, тесты OneScript не запускались. Правка BSL в зеркало ещё не попала.\n\n${downstream.absoluteUrl}\n\n${log}\n"
+                        }
+                    }
+                    if (!skipRun && buildOk) {
                         def expanded = []
                         for (int i = 0; i < jobs.size(); i++) {
                             def jobName = jobs[i]
