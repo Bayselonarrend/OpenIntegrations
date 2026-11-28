@@ -1,4 +1,7 @@
 ﻿{
  "use_tls": true,
- "accept_invalid_certs": true
+ "accept_invalid_certs": true,
+ "ca_cert_path": "ca.pem",
+ "client_key_path": "***",
+ "client_cert_path": "***"
 }
