@@ -245,6 +245,7 @@ Function ExecuteMethod(Val Connection
     BDCall        = OPI_AddIns.SerializeJanx(CallStructure);
     ResultBD      = Connector.Call(BDCall);
     Result        = OPI_AddIns.DesrializeJanx(ResultBD);
+    ClarifyRequestLimitError(Connection, Result);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -1000,6 +1001,31 @@ EndFunction
 #EndRegion
 
 #Region Private
+
+Procedure ClarifyRequestLimitError(Val Connection, Result)
+
+    // A component build without a length check returns a protocol break instead of a limit error.
+    If IsConnector(Connection) Or Not OPI_Tools.ThisIsCollection(Result, True) Then
+        Return;
+    EndIf;
+
+    RequestLimit = OPI_Tools.GetOr(Connection, "max_encoding_message_size", 0);
+    ErrorText    = Lower(String(OPI_Tools.GetOr(Result, "error", "")));
+
+    If Not ValueIsFilled(RequestLimit) Or Result["result"] <> False Then
+        Return;
+    EndIf;
+
+    If StrFind(ErrorText, "protocol error") = 0 Then
+        Return;
+    EndIf;
+
+    Result.Insert("error"
+        , "Error, encoded message length too large: the limit is: "
+        + String(RequestLimit)
+        + " bytes");
+
+EndProcedure
 
 Function SetTlsConnection(Connector, Val TLSSettings)
 

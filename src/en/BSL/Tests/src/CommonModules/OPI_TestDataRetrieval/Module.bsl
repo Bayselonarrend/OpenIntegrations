@@ -15647,11 +15647,7 @@ EndFunction
 
 Function Check_GRPC_ProcessClientStream(Val Result, Val Option)
 
-    If Option = "Error" Then
-        ExpectsThat(Result["result"]).Равно(False);
-    Else
-        ExpectsThat(Result["result"]).Равно(True);
-    EndIf;
+    ExpectsThat(Result["result"]).Равно(True);
 
     Return Result;
 

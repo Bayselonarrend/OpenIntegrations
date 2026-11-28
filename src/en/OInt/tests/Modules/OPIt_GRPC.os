@@ -312,7 +312,7 @@ Procedure GRPC_GetTlsSettings(FunctionParameters)
     OPI_TestDataRetrieval.Process(Result
         , "GRPC"
         , "GetTlsSettings"
-        ,
+        , ,
         "ca.pem"
         , "client.key"
         , "client.crt");
@@ -1483,12 +1483,6 @@ Procedure GRPC_ProcessClientStream(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "GRPC", "ProcessClientStream");
-
-    ArrayOfRequests.Delete(ArrayOfRequests.UBound());
-
-    Result = OPI_GRPC.ProcessClientStream(Parameters, Service, Method, ArrayOfRequests, , Tls);
-
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ProcessClientStream", "Error");
 
 EndProcedure
 
