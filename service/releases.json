@@ -138,6 +138,12 @@
                 "description_en": "`GetTlsSettings` accepts a client key and certificate chain for mTLS; both are sent as binary data on every connection"
             },
             {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "Ошибка подключения gRPC без TLS включает цепочку причин, поэтому в тексте таймаута видно истечение срока",
+                "description_en": "A non-TLS gRPC connection error includes the cause chain, so a timeout shows that the deadline elapsed"
+            },
+            {
                 "lib": "SSH",
                 "icon": "media/SSH.png",
                 "description_ru": "Восстановлена поддержка устаревшего алгоритма хост-ключа `ssh-rsa` для SSH/SFTP-серверов, которые больше не отдают современные ключи #119",

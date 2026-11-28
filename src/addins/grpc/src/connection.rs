@@ -74,7 +74,41 @@ pub async fn establish_connection(
     apply_endpoint_options(endpoint, options)?
         .connect()
         .await
-        .map_err(|e| format!("Connection failed: {}", e))
+        .map_err(|e| format!("Connection failed: {}", format_error_chain(&e)))
+}
+
+/// tonic печатает только свой Display (`transport error`).
+/// Таймаут connect лежит глубже: hyper кладёт `Elapsed` (`deadline has elapsed`)
+/// внутрь `io::Error`, а первый `source()` ещё показывает `tcp connect error`.
+fn format_error_chain(error: &(dyn std::error::Error + 'static)) -> String {
+    let mut parts = Vec::new();
+    let mut current = Some(error);
+    let mut depth = 0;
+
+    while let Some(item) = current {
+        if depth >= 16 {
+            break;
+        }
+        depth += 1;
+
+        push_unique_error_part(&mut parts, item.to_string());
+        if let Some(io_error) = item.downcast_ref::<std::io::Error>() {
+            if let Some(inner) = io_error.get_ref() {
+                push_unique_error_part(&mut parts, inner.to_string());
+            }
+        }
+        current = item.source();
+    }
+
+    parts.join(": ")
+}
+
+fn push_unique_error_part(parts: &mut Vec<String>, text: String) {
+    let text = text.trim();
+    if text.is_empty() || parts.iter().any(|part| part == text) {
+        return;
+    }
+    parts.push(text.to_string());
 }
 
 async fn establish_rustls_connection(
@@ -231,5 +265,93 @@ fn parse_i64(value: &JanxValue) -> Option<i64> {
         Some(number as i64)
     } else {
         None
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::format_error_chain;
+    use std::error::Error;
+    use std::fmt;
+    use std::io;
+    use std::time::Duration;
+
+    #[derive(Debug)]
+    struct Deadline;
+
+    impl fmt::Display for Deadline {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            f.write_str("deadline has elapsed")
+        }
+    }
+
+    impl Error for Deadline {}
+
+    #[derive(Debug)]
+    struct Connect {
+        source: io::Error,
+    }
+
+    impl fmt::Display for Connect {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            f.write_str("tcp connect error")
+        }
+    }
+
+    impl Error for Connect {
+        fn source(&self) -> Option<&(dyn Error + 'static)> {
+            Some(&self.source)
+        }
+    }
+
+    #[derive(Debug)]
+    struct Transport {
+        source: Connect,
+    }
+
+    impl fmt::Display for Transport {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            f.write_str("transport error")
+        }
+    }
+
+    impl Error for Transport {
+        fn source(&self) -> Option<&(dyn Error + 'static)> {
+            Some(&self.source)
+        }
+    }
+
+    #[test]
+    fn connection_timeout_chain_includes_deadline() {
+        let error = Transport {
+            source: Connect {
+                source: io::Error::new(io::ErrorKind::TimedOut, Deadline),
+            },
+        };
+
+        let text = format_error_chain(&error);
+        assert!(text.contains("transport error"), "{text}");
+        assert!(text.contains("tcp connect error"), "{text}");
+        assert!(text.contains("deadline has elapsed"), "{text}");
+    }
+
+    #[test]
+    fn tokio_elapsed_inside_io_error_is_visible() {
+        let runtime = tokio::runtime::Builder::new_current_thread()
+            .enable_time()
+            .build()
+            .expect("tokio runtime");
+
+        runtime.block_on(async {
+            let elapsed = tokio::time::timeout(
+                Duration::from_millis(1),
+                std::future::pending::<()>(),
+            )
+            .await
+            .expect_err("pending future must time out");
+            let io_error = io::Error::new(io::ErrorKind::TimedOut, elapsed);
+            let text = format_error_chain(&io_error);
+            assert!(text.contains("deadline has elapsed"), "{text}");
+        });
     }
 }
