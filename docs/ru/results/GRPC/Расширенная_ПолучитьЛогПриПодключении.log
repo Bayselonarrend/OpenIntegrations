@@ -1,8 +1,8 @@
 ﻿{
  "logs": [
-  "[2026-11-28 11:56:39.565] Connecting to gRPC server https://127.0.0.1:9001",
-  "[2026-11-28 11:56:39.584] Connected to gRPC server",
-  "[2026-11-28 11:56:39.623] Call grpcbin.GRPCBin/DummyUnary"
+  "[2026-11-28 13:19:18.270] Connecting to gRPC server https://127.0.0.1:9001",
+  "[2026-11-28 13:19:18.281] Connected to gRPC server",
+  "[2026-11-28 13:19:18.315] Call grpcbin.GRPCBin/DummyUnary"
  ],
  "result": true,
  "returned": 3,
