@@ -15978,7 +15978,7 @@
     }
    ],
    "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Address = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\"; // String, path to file or URL\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\"; // String, path to file or URL\n\n    Scheme = New Map;\n    Scheme.Insert(\"main.proto\"    , Proto1); // Primary\n    Scheme.Insert(\"my_types.proto\", Proto2); // For import in primary\n\n    Meta   = New Structure(\"somekey\", \"somevalue\");\n    Result = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);\n```",
-   "result": "```json title=\"Result\"\n{\n \"address\": \"https://grpcb.in:9001\",\n \"metadata\": {\n  \"somekey\": \"***\"\n },\n \"proto\": {\n  \"main.proto\": \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\",\n  \"my_types.proto\": \"https://hut.openintegrations.dev/test_data/mt.proto\"\n }\n}\n```"
+   "result": "```json title=\"Result\"\n{\n \"address\": \"https://127.0.0.1:9001\",\n \"metadata\": {\n  \"somekey\": \"***\"\n },\n \"connect_timeout_ms\": 10000,\n \"proto\": {\n  \"main.proto\": \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\",\n  \"my_types.proto\": \"https://hut.openintegrations.dev/test_data/mt.proto\"\n }\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16021,7 +16021,7 @@
     }
    ],
    "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Result = OPI_GRPC.GetTlsSettings(True, \"ca.pem\", \"client.key\", \"client.crt\");\n```",
-   "result": "```json title=\"Result\"\n{\n \"use_tls\": true,\n \"accept_invalid_certs\": true\n}\n```"
+   "result": "```json title=\"Result\"\n{\n \"use_tls\": true,\n \"accept_invalid_certs\": true,\n \"ca_cert_path\": \"ca.pem\",\n \"client_key_path\": \"***\",\n \"client_cert_path\": \"***\"\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16057,7 +16057,7 @@
     }
    ],
    "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Result = OPI_GRPC.GetLoggingSettings(True, 100, GetTempFileName());\n```",
-   "result": "```json title=\"Result\"\n{\n \"mode\": \"both\",\n \"max_entries\": 100,\n \"file_path\": \"/tmp/1jmvwusb.doz\"\n}\n```"
+   "result": "```json title=\"Result\"\n{\n \"mode\": \"both\",\n \"max_entries\": 100,\n \"file_path\": \"C:\\\\Users\\\\bayselonarrend\\\\AppData\\\\Local\\\\Temp\\\\v003e535.dge\"\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16093,7 +16093,7 @@
     }
    ],
    "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    LogFile         = GetTempFileName(\"txt\");\n    LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);\n\n    Address = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\";\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\";\n\n    Scheme = New Map;\n    Scheme.Insert(\"main.proto\"    , Proto1);\n    Scheme.Insert(\"my_types.proto\", Proto2);\n\n    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);\n    Tls        = OPI_GRPC.GetTlsSettings(True);\n\n    Connection = OPI_GRPC.CreateConnection(Parameters, Tls, LoggingSettings);\n\n    If Not OPI_GRPC.IsConnector(Connection) Then\n        Raise OPI_Tools.JSONString(Connection);\n    EndIf;\n\n    Service = \"grpcbin.GRPCBin\";\n    Method  = \"DummyUnary\";\n\n    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method);\n\n    Result = OPI_GRPC.GetLog(Connection);\n```",
-   "result": "```json title=\"Result\"\n{\n \"logs\": [\n  \"[2026-07-19 17:06:56.388] Connecting to gRPC server https://grpcb.in:9001\",\n  \"[2026-07-19 17:06:56.661] Connected to gRPC server\",\n  \"[2026-07-19 17:06:56.728] Call grpcbin.GRPCBin/DummyUnary\"\n ],\n \"result\": true,\n \"returned\": 3,\n \"total\": 3\n}\n```"
+   "result": "```json title=\"Result\"\n{\n \"logs\": [\n  \"[2026-11-28 11:59:28.339] Connecting to gRPC server https://127.0.0.1:9001\",\n  \"[2026-11-28 11:59:28.352] Connected to gRPC server\",\n  \"[2026-11-28 11:59:28.379] Call grpcbin.GRPCBin/DummyUnary\"\n ],\n \"result\": true,\n \"returned\": 3,\n \"total\": 3\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16251,7 +16251,7 @@
     }
    ],
    "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Address = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\"; // String, path to file or URL\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\"; // String, path to file or URL\n\n    Scheme = New Map;\n    Scheme.Insert(\"main.proto\"    , Proto1); // Primary\n    Scheme.Insert(\"my_types.proto\", Proto2); // For import in primary\n\n    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);\n    Tls        = OPI_GRPC.GetTlsSettings(True);\n\n    Service = \"grpcbin.GRPCBin\";\n    Method  = \"DummyServerStream\";\n\n    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);\n\n    If Not OPI_GRPC.IsConnector(Connection) Then\n        Raise Connection[\"error\"];\n    EndIf;\n\n    StingsArray = New Array;\n    StingsArray.Add(\"one\");\n    StingsArray.Add(\"two\");\n    StingsArray.Add(\"three\");\n\n    Data = New Map;\n    Data.Insert(\"f_string\" , \"Test message\");\n    Data.Insert(\"f_int32\"  , 123);\n    Data.Insert(\"f_bool\"   , True);\n    Data.Insert(\"f_strings\", StingsArray);\n    Data.Insert(\"f_sub\"    , New Structure(\"f_string\", \"Nested value\"));\n\n    Result = OPI_GRPC.InitializeServerStream(Connection, Service, Method, Data); // <---\n\n    If Not Result[\"result\"] Then\n        Raise Result[\"error\"];\n    Else\n        StreamID = Result[\"streamId\"];\n    EndIf;\n\n    MessagesArray = New Array;\n\n    While True Do\n\n        CurrentMessage = OPI_GRPC.GetMessage(Connection, StreamID);\n\n        If Not CurrentMessage[\"result\"] Then\n\n            Error = CurrentMessage[\"error\"];\n\n            If Error    = \"Timeout\" Then\n                Continue;\n            ElsIf Error = \"Closed\" Then\n                Break;\n            Else\n                Raise Error;\n            EndIf;\n\n        Else\n\n            MessageData = CurrentMessage[\"message\"];\n\n            If ValueIsFilled(MessageData) Then\n                MessagesArray.Add(MessageData);\n            EndIf;\n\n        EndIf;\n\n    EndDo;\n```",
-   "result": "```json title=\"Result\"\n{\n \"result\": true,\n \"streamId\": \"ae2b1263-3934-4a65-a753-5ce86e3c5a3f\"\n}\n```"
+   "result": "```json title=\"Result\"\n{\n \"result\": true,\n \"streamId\": \"cace605f-e3c6-47ce-96e6-698e6c265de4\"\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16337,7 +16337,7 @@
     }
    ],
    "example": "```bsl title=\"1C:Enterprise/OneScript code example\"\n    Address = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\"; // String, path to file or URL\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\"; // String, path to file or URL\n\n    Scheme = New Map;\n    Scheme.Insert(\"main.proto\"    , Proto1); // Primary\n    Scheme.Insert(\"my_types.proto\", Proto2); // For import in primary\n\n    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);\n    Tls        = OPI_GRPC.GetTlsSettings(True);\n\n    Service = \"grpcbin.GRPCBin\";\n    Method  = \"DummyBidirectionalStreamStream\";\n\n    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);\n\n    If Not OPI_GRPC.IsConnector(Connection) Then\n        Raise Connection[\"error\"];\n    EndIf;\n\n    StingsArray = New Array;\n    StingsArray.Add(\"one\");\n    StingsArray.Add(\"two\");\n    StingsArray.Add(\"three\");\n\n    Data = New Map;\n    Data.Insert(\"f_string\" , \"Test message\");\n    Data.Insert(\"f_bool\"   , True);\n    Data.Insert(\"f_strings\", StingsArray);\n    Data.Insert(\"f_sub\"    , New Structure(\"f_string\", \"Nested value\"));\n\n    Result = OPI_GRPC.InitializeBidirectionalStream(Connection, Service, Method); // <---\n\n    If Not Result[\"result\"] Then\n        Raise Result[\"error\"];\n    Else\n        StreamID = Result[\"streamId\"];\n    EndIf;\n\n    ResultArray = New Array;\n    Counter     = 0;\n\n    While Counter < 10 Do\n\n        Data.Insert(\"f_int32\", Counter + 1);\n\n        CurrentSend = OPI_GRPC.SendMessage(Connection, StreamID, Data);\n\n        If Not CurrentSend[\"result\"] Then\n\n            Error = CurrentSend[\"error\"];\n\n            If Error = \"Timeout\" Then\n                Continue;\n            Else\n                 Raise StrTemplate(\"Send error: %1 (processed messages %2)\", Error, Counter);\n            EndIf;\n\n        EndIf;\n\n        CurrentReceive = OPI_GRPC.GetMessage(Connection, StreamID);\n\n        If Not CurrentReceive[\"result\"] Then\n            Raise StrTemplate(\"Receive error: %1 (processed messages %2)\", Error, Counter);\n        EndIf;\n\n        ResultArray.Add(CurrentReceive[\"message\"]);\n        Counter = Counter + 1;\n\n    EndDo;\n\n    OPI_GRPC.CloseStream(Connection, StreamID);\n```",
-   "result": "```json title=\"Result\"\n{\n \"result\": true,\n \"streamId\": \"7d715ce2-7e34-4166-bc88-a42b859e0031\"\n}\n```"
+   "result": "```json title=\"Result\"\n{\n \"result\": true,\n \"streamId\": \"ba9b9eda-7f6d-48af-bcc0-15f23f74f0fd\"\n}\n```"
   },
   {
    "library": "GRPC",

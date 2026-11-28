@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-28T11:23:19",
+ "generatedAt": "2026-11-28T12:49:01",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -178,6 +178,12 @@
      "icon": "media/GRPC.png",
      "description_ru": "`ПолучитьНастройкиTls` принимает клиентский ключ и цепочку сертификатов для mTLS: при каждом соединении они передаются двоичными данными",
      "description_en": "`GetTlsSettings` accepts a client key and certificate chain for mTLS; both are sent as binary data on every connection"
+    },
+    {
+     "lib": "GRPC",
+     "icon": "media/GRPC.png",
+     "description_ru": "Ошибка подключения gRPC без TLS включает цепочку причин, поэтому в тексте таймаута видно истечение срока",
+     "description_en": "A non-TLS gRPC connection error includes the cause chain, so a timeout shows that the deadline elapsed"
     },
     {
      "lib": "SSH",

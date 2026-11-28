@@ -15978,7 +15978,7 @@
     }
    ],
    "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Адрес = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\"; // Строка, путь к файлу или URL\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\";     // Строка, путь к файлу или URL\n\n    Схемы = Новый Соответствие;\n    Схемы.Вставить(\"main.proto\"    , Proto1); // Основной\n    Схемы.Вставить(\"my_types.proto\", Proto2); // Для импорта в основной\n\n    Мета      = Новый Структура(\"somekey\", \"somevalue\");\n    Результат = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схемы, Мета);\n```",
-   "result": "```json title=\"Результат\"\n{\n \"address\": \"https://grpcb.in:9001\",\n \"metadata\": {\n  \"somekey\": \"***\"\n },\n \"proto\": {\n  \"main.proto\": \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\",\n  \"my_types.proto\": \"https://hut.openintegrations.dev/test_data/mt.proto\"\n }\n}\n```"
+   "result": "```json title=\"Результат\"\n{\n \"address\": \"https://127.0.0.1:9001\",\n \"metadata\": {\n  \"somekey\": \"***\"\n },\n \"connect_timeout_ms\": 10000,\n \"proto\": {\n  \"main.proto\": \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\",\n  \"my_types.proto\": \"https://hut.openintegrations.dev/test_data/mt.proto\"\n }\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16021,7 +16021,7 @@
     }
    ],
    "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Результат = OPI_GRPC.ПолучитьНастройкиTls(Истина, \"ca.pem\", \"client.key\", \"client.crt\");\n```",
-   "result": "```json title=\"Результат\"\n{\n \"use_tls\": true,\n \"accept_invalid_certs\": true\n}\n```"
+   "result": "```json title=\"Результат\"\n{\n \"use_tls\": true,\n \"accept_invalid_certs\": true,\n \"ca_cert_path\": \"ca.pem\",\n \"client_key_path\": \"***\",\n \"client_cert_path\": \"***\"\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16057,7 +16057,7 @@
     }
    ],
    "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Результат = OPI_GRPC.ПолучитьНастройкиЛогирования(Истина, 100, ПолучитьИмяВременногоФайла());\n```",
-   "result": "```json title=\"Результат\"\n{\n \"mode\": \"both\",\n \"max_entries\": 100,\n \"file_path\": \"C:\\\\Users\\\\bayselonarrend\\\\AppData\\\\Local\\\\Temp\\\\3uh3jmuo.3do\"\n}\n```"
+   "result": "```json title=\"Результат\"\n{\n \"mode\": \"both\",\n \"max_entries\": 100,\n \"file_path\": \"C:\\\\Users\\\\bayselonarrend\\\\AppData\\\\Local\\\\Temp\\\\spohdynz.gf1\"\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16093,7 +16093,7 @@
     }
    ],
    "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    ФайлЛога             = ПолучитьИмяВременногоФайла(\"txt\");\n    НастройкиЛогирования = OPI_GRPC.ПолучитьНастройкиЛогирования(Истина, 100, ФайлЛога);\n\n    Адрес = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\";\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\";\n\n    Схемы = Новый Соответствие;\n    Схемы.Вставить(\"main.proto\"    , Proto1);\n    Схемы.Вставить(\"my_types.proto\", Proto2);\n\n    Параметры = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схемы);\n    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина);\n\n    Соединение = OPI_GRPC.ОткрытьСоединение(Параметры, Tls, НастройкиЛогирования);\n\n    Если Не OPI_GRPC.ЭтоКоннектор(Соединение) Тогда\n        ВызватьИсключение OPI_Инструменты.JSONСтрокой(Соединение);\n    КонецЕсли;\n\n    Сервис = \"grpcbin.GRPCBin\";\n    Метод  = \"DummyUnary\";\n\n    Результат = OPI_GRPC.ВызватьМетод(Соединение, Сервис, Метод);\n\n    Результат = OPI_GRPC.ПолучитьЛог(Соединение);\n```",
-   "result": "```json title=\"Результат\"\n{\n \"logs\": [\n  \"[2026-09-01 20:11:07.401] Connecting to gRPC server https://grpcb.in:9001\",\n  \"[2026-09-01 20:11:07.572] Connected to gRPC server\",\n  \"[2026-09-01 20:11:07.639] Call grpcbin.GRPCBin/DummyUnary\"\n ],\n \"result\": true,\n \"returned\": 3,\n \"total\": 3\n}\n```"
+   "result": "```json title=\"Результат\"\n{\n \"logs\": [\n  \"[2026-11-28 11:56:33.824] Connecting to gRPC server https://127.0.0.1:9001\",\n  \"[2026-11-28 11:56:33.838] Connected to gRPC server\",\n  \"[2026-11-28 11:56:33.863] Call grpcbin.GRPCBin/DummyUnary\"\n ],\n \"result\": true,\n \"returned\": 3,\n \"total\": 3\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16251,7 +16251,7 @@
     }
    ],
    "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Адрес = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\"; // Строка, путь к файлу или URL\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\";     // Строка, путь к файлу или URL\n\n    Схемы = Новый Соответствие;\n    Схемы.Вставить(\"main.proto\"    , Proto1); // Основной\n    Схемы.Вставить(\"my_types.proto\", Proto2); // Для импорта в основной\n\n    Параметры = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схемы);\n    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина);\n\n    Сервис = \"grpcbin.GRPCBin\";\n    Метод  = \"DummyServerStream\";\n\n    Соединение = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);\n\n    Если Не OPI_GRPC.ЭтоКоннектор(Соединение) Тогда\n        ВызватьИсключение Соединение[\"error\"];\n    КонецЕсли;\n\n    МассивСтрок = Новый Массив;\n    МассивСтрок.Добавить(\"one\");\n    МассивСтрок.Добавить(\"two\");\n    МассивСтрок.Добавить(\"three\");\n\n    Данные = Новый Соответствие;\n    Данные.Вставить(\"f_string\" , \"Test message\");\n    Данные.Вставить(\"f_int32\"  , 123);\n    Данные.Вставить(\"f_bool\"   , Истина);\n    Данные.Вставить(\"f_strings\", МассивСтрок);\n    Данные.Вставить(\"f_sub\"    , Новый Структура(\"f_string\", \"Nested value\"));\n\n    Результат = OPI_GRPC.ИнициализироватьСерверныйПоток(Соединение, Сервис, Метод, Данные); // <---\n\n    Если Не Результат[\"result\"] Тогда\n        ВызватьИсключение Результат[\"error\"];\n    Иначе\n        IDПотока = Результат[\"streamId\"];\n    КонецЕсли;\n\n    МассивСообщений = Новый Массив;\n\n    Пока Истина Цикл\n\n        ТекущееСообщение = OPI_GRPC.ПолучитьСообщение(Соединение, IDПотока);\n\n        Если Не ТекущееСообщение[\"result\"] Тогда\n\n            Ошибка = ТекущееСообщение[\"error\"];\n\n            Если Ошибка = \"Timeout\" Тогда\n                Продолжить;\n            ИначеЕсли Ошибка = \"Closed\" Тогда\n                Прервать;\n            Иначе\n                ВызватьИсключение Ошибка;\n            КонецЕсли;\n\n        Иначе\n\n            ДанныеСообщения = ТекущееСообщение[\"message\"];\n\n            Если ЗначениеЗаполнено(ДанныеСообщения) Тогда\n                МассивСообщений.Добавить(ДанныеСообщения);\n            КонецЕсли;\n\n        КонецЕсли;\n\n    КонецЦикла;\n```",
-   "result": "```json title=\"Результат\"\n{\n \"result\": true,\n \"streamId\": \"d0af636b-0386-488f-a6ee-cd9e3708b3da\"\n}\n```"
+   "result": "```json title=\"Результат\"\n{\n \"result\": true,\n \"streamId\": \"f3387bc1-de81-4269-ba69-72c3e97d7cdf\"\n}\n```"
   },
   {
    "library": "GRPC",
@@ -16337,7 +16337,7 @@
     }
    ],
    "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Адрес = \"https://grpcb.in:9001\";\n\n    Proto1 = \"https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto\"; // Строка, путь к файлу или URL\n    Proto2 = \"https://hut.openintegrations.dev/test_data/mt.proto\";     // Строка, путь к файлу или URL\n\n    Схемы = Новый Соответствие;\n    Схемы.Вставить(\"main.proto\"    , Proto1); // Основной\n    Схемы.Вставить(\"my_types.proto\", Proto2); // Для импорта в основной\n\n    Параметры = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схемы);\n    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина);\n\n    Сервис = \"grpcbin.GRPCBin\";\n    Метод  = \"DummyBidirectionalStreamStream\";\n\n    Соединение = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);\n\n    Если Не OPI_GRPC.ЭтоКоннектор(Соединение) Тогда\n        ВызватьИсключение Соединение[\"error\"];\n    КонецЕсли;\n\n    МассивСтрок = Новый Массив;\n    МассивСтрок.Добавить(\"one\");\n    МассивСтрок.Добавить(\"two\");\n    МассивСтрок.Добавить(\"three\");\n\n    Данные = Новый Соответствие;\n    Данные.Вставить(\"f_string\" , \"Test message\");\n    Данные.Вставить(\"f_bool\"   , Истина);\n    Данные.Вставить(\"f_strings\", МассивСтрок);\n    Данные.Вставить(\"f_sub\"    , Новый Структура(\"f_string\", \"Nested value\"));\n\n    Результат = OPI_GRPC.ИнициализироватьДвунаправленныйПоток(Соединение, Сервис, Метод); // <---\n\n    Если Не Результат[\"result\"] Тогда\n        ВызватьИсключение Результат[\"error\"];\n    Иначе\n        IDПотока = Результат[\"streamId\"];\n    КонецЕсли;\n\n    МассивРезультата = Новый Массив;\n    Счетчик          = 0;\n\n    Пока Счетчик < 10 Цикл\n\n        Данные.Вставить(\"f_int32\", Счетчик + 1);\n\n        ТекущаяОтправка = OPI_GRPC.ОтправитьСообщение(Соединение, IDПотока, Данные);\n\n        Если Не ТекущаяОтправка[\"result\"] Тогда\n\n            Ошибка = ТекущаяОтправка[\"error\"];\n\n            Если Ошибка = \"Timeout\" Тогда\n                Продолжить;\n            Иначе\n                 ВызватьИсключение СтрШаблон(\"Ошибка отправки: %1 (обработано сообщений %2)\", Ошибка, Счетчик);\n            КонецЕсли;\n\n        КонецЕсли;\n\n        ТекущееПолучение = OPI_GRPC.ПолучитьСообщение(Соединение, IDПотока);\n\n        Если Не ТекущееПолучение[\"result\"] Тогда\n            ВызватьИсключение СтрШаблон(\"Ошибка получения: %1 (обработано сообщений %2)\", Ошибка, Счетчик);\n        КонецЕсли;\n\n        МассивРезультата.Добавить(ТекущееПолучение[\"message\"]);\n        Счетчик = Счетчик + 1;\n\n    КонецЦикла;\n\n    OPI_GRPC.ЗакрытьПоток(Соединение, IDПотока);\n```",
-   "result": "```json title=\"Результат\"\n{\n \"result\": true,\n \"streamId\": \"37995abf-fd15-40bd-93a9-f5b8f91d2d69\"\n}\n```"
+   "result": "```json title=\"Результат\"\n{\n \"result\": true,\n \"streamId\": \"3a11537d-cc5b-4e84-9a07-ced0de07a372\"\n}\n```"
   },
   {
    "library": "GRPC",
