@@ -1,10 +1,14 @@
 use std::collections::HashMap;
 use std::sync::Arc;
-use tokio::sync::{mpsc, oneshot, Mutex};
-use tokio::task::AbortHandle;
+
+use prost::Message;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
 use tokio::sync::mpsc::Receiver;
+use tokio::sync::{mpsc, oneshot, Mutex};
+use tokio::task::AbortHandle;
 use uuid::Uuid;
+
+use crate::connection::check_encoding_limit;
 
 pub struct StreamMessage {
     pub message: DynamicMessage,
@@ -18,6 +22,7 @@ pub struct StreamInfo {
     pub input_descriptor: Option<MessageDescriptor>,
     pub output_descriptor: Option<MessageDescriptor>,
     pub timeout_ms: Option<u64>,
+    pub max_encoding_message_size: Option<usize>,
     pub task_handle: Option<AbortHandle>,
 }
 
@@ -36,6 +41,7 @@ impl StreamInfo {
             input_descriptor,
             output_descriptor,
             timeout_ms,
+            max_encoding_message_size: None,
             task_handle: None,
         }
     }
@@ -77,15 +83,21 @@ impl StreamManager {
         let stream = self.get_stream(stream_id).await
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
-        let (sender, timeout_ms) = {
+        let (sender, timeout_ms, max_encoding_message_size) = {
             let stream_info = stream.lock().await;
 
             let sender = stream_info.sender.as_ref()
                 .ok_or_else(|| format!("Stream '{}' does not support sending", stream_id))?
                 .clone();
 
-            (sender, stream_info.timeout_ms)
+            (
+                sender,
+                stream_info.timeout_ms,
+                stream_info.max_encoding_message_size,
+            )
         };
+
+        check_encoding_limit(message.encoded_len(), max_encoding_message_size)?;
 
         if sender.is_closed() {
             return Err("Closed".to_string());

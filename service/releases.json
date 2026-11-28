@@ -122,6 +122,12 @@
             {
                 "lib": "GRPC",
                 "icon": "media/GRPC.png",
+                "description_ru": "Превышение максимального размера исходящего сообщения gRPC возвращает ошибку о пределе, а не обрыв HTTP/2",
+                "description_en": "Exceeding the maximum outgoing gRPC message size returns a limit error instead of an HTTP/2 abort"
+            },
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
                 "description_ru": "Подключение и вызов метода ограничены таймаутом: ожидание готовности канала входит в таймаут вызова",
                 "description_en": "Connection and method calls are limited by a timeout: channel readiness is included in the call timeout"
             },
