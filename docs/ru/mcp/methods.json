@@ -16004,9 +16004,23 @@
      "types": "Строка",
      "description": "Путь к корневому PEM файлу сертификата, если его нет в системном хранилище",
      "required": false
+    },
+    {
+     "name": "ПутьККлиентскомуКлючу",
+     "cli": "--clientkey",
+     "types": "Строка",
+     "description": "Путь к незашифрованному PEM файлу приватного ключа клиента для mTLS",
+     "required": false
+    },
+    {
+     "name": "ПутьККлиентскомуСертификату",
+     "cli": "--clientcert",
+     "types": "Строка",
+     "description": "Путь к PEM файлу цепочки сертификатов клиента: лист, затем промежуточные",
+     "required": false
     }
    ],
-   "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Результат = OPI_GRPC.ПолучитьНастройкиTls(Истина);\n```",
+   "example": "```bsl title=\"Пример использования для 1С:Предприятие/OneScript\"\n    Результат = OPI_GRPC.ПолучитьНастройкиTls(Истина, \"ca.pem\", \"client.key\", \"client.crt\");\n```",
    "result": "```json title=\"Результат\"\n{\n \"use_tls\": true,\n \"accept_invalid_certs\": true\n}\n```"
   },
   {

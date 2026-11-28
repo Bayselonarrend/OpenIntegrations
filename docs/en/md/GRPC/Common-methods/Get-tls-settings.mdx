@@ -17,12 +17,14 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export`
+`Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "", Val ClientKeyPath = "", Val ClientCertificatePath = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | DisableCertVerification | --trust | Boolean | &#x2714; | Allows to work with invalid certificates, including self signed |
   | CertFilepath | --cert | String | &#x2716; | Path to the root PEM file of the certificate if it is not in the system repository |
+  | ClientKeyPath | --clientkey | String | &#x2716; | Path to the unencrypted PEM file of the client private key for mTLS |
+  | ClientCertificatePath | --clientcert | String | &#x2716; | Path to the PEM file of the client certificate chain: leaf, then intermediates |
 
 
 <div className="return-value-note">
@@ -44,13 +46,17 @@ import Admonition from '@theme/Admonition';
 </Tabs>
 
 :::tip
-Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function or implicit, when passing settings
+Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function or implicit, when passing settings.
+
+The client key and certificate are specified together and enable mTLS. The certificate file is a PEM chain: leaf first, then intermediate certificates.
+
+Each time a connection is opened, this chain and key are read again and passed to the add-in as binary data. An encrypted key is not supported
 :::
 <br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_GRPC.GetTlsSettings(True);
+    Result = OPI_GRPC.GetTlsSettings(True, "ca.pem", "client.key", "client.crt");
 ```
  
 

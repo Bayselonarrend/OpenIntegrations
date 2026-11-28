@@ -4,7 +4,7 @@ use rustls::client::danger::{HandshakeSignatureValid, ServerCertVerified, Server
 #[cfg(feature = "rustls")]
 use rustls::crypto::ring;
 #[cfg(feature = "rustls")]
-use rustls::pki_types::{CertificateDer, ServerName, UnixTime};
+use rustls::pki_types::{CertificateDer, PrivateKeyDer, ServerName, UnixTime};
 #[cfg(feature = "rustls")]
 use rustls::{ClientConfig, DigitallySignedStruct};
 #[cfg(feature = "rustls")]
@@ -64,7 +64,7 @@ impl TlsSettings {
         let config_builder =
             ClientConfig::builder_with_protocol_versions(versions).with_root_certificates(root_store);
 
-        let mut config = config_builder.with_no_client_auth();
+        let mut config = client_config(config_builder, &self.client_cert_chain, &self.client_key)?;
 
         if self.accept_invalid_certs {
             config
@@ -75,6 +75,56 @@ impl TlsSettings {
         config.resumption = rustls::client::Resumption::default();
         Ok(config)
     }
+}
+
+#[cfg(feature = "rustls")]
+fn client_config(
+    config_builder: rustls::ConfigBuilder<ClientConfig, rustls::client::WantsClientCert>,
+    client_cert_chain: &[u8],
+    client_key: &[u8],
+) -> Result<ClientConfig, String> {
+    if client_cert_chain.is_empty() && client_key.is_empty() {
+        return Ok(config_builder.with_no_client_auth());
+    }
+    if client_cert_chain.is_empty() || client_key.is_empty() {
+        return Err(
+            "Client certificate chain and private key must both be provided for mTLS".to_string(),
+        );
+    }
+
+    let certs = parse_client_chain(client_cert_chain)?;
+    let key = parse_client_key(client_key)?;
+    config_builder
+        .with_client_auth_cert(certs, key)
+        .map_err(|e| format!("Failed to set client certificate: {}", e))
+}
+
+#[cfg(feature = "rustls")]
+fn parse_client_chain(pem: &[u8]) -> Result<Vec<CertificateDer<'static>>, String> {
+    let mut cursor = std::io::Cursor::new(pem);
+    let certs = rustls_pemfile::certs(&mut cursor)
+        .collect::<Result<Vec<_>, _>>()
+        .map_err(|e| format!("Failed to parse client certificate chain: {}", e))?;
+
+    if certs.is_empty() {
+        return Err(
+            "Client certificate chain is empty: expected PEM certificates, leaf certificate first"
+                .to_string(),
+        );
+    }
+
+    Ok(certs)
+}
+
+#[cfg(feature = "rustls")]
+fn parse_client_key(pem: &[u8]) -> Result<PrivateKeyDer<'static>, String> {
+    let mut cursor = std::io::Cursor::new(pem);
+    rustls_pemfile::private_key(&mut cursor)
+        .map_err(|e| format!("Failed to parse client private key: {}", e))?
+        .ok_or_else(|| {
+            "Failed to parse client private key: expected an unencrypted PEM private key"
+                .to_string()
+        })
 }
 
 impl Debug for NoCertificateVerification {

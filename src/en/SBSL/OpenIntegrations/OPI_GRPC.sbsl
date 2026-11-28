@@ -107,11 +107,13 @@
     ;
 
     @Глобально
-    метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено): Объект?
+    метод GetTlsSettings(DisableCertVerification: Объект?, CertFilepath: Объект? = Неопределено, ClientKeyPath: Объект? = Неопределено, ClientCertificatePath: Объект? = Неопределено): Объект?
         
         пер Опции = новый Соответствие<Строка, Объект?>() 
         Опции.Вставить("-t", DisableCertVerification)
         Опции.Вставить("-c", CertFilepath)
+        Опции.Вставить("-l", ClientKeyPath)
+        Опции.Вставить("-n", ClientCertificatePath)
         
         возврат Исполнитель.Выполнить(КомандаCLI, "GetTlsSettings", Опции)
         

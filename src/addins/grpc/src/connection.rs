@@ -116,6 +116,20 @@ async fn establish_rustls_connection(
         })
 }
 
+/// tonic 0.13 при превышении `max_encoding_message_size` теряет `OutOfRange`
+/// и возвращает обрыв HTTP/2. Длину нужно отклонить до передачи сообщения в кодек.
+pub fn check_encoding_limit(encoded_len: usize, limit: Option<usize>) -> Result<(), String> {
+    let Some(limit) = limit else {
+        return Ok(());
+    };
+    if encoded_len > limit {
+        return Err(format!(
+            "Error, encoded message length too large: found {encoded_len} bytes, the limit is: {limit} bytes"
+        ));
+    }
+    Ok(())
+}
+
 fn apply_endpoint_options(
     endpoint: Endpoint,
     options: &ConnectionOptions,

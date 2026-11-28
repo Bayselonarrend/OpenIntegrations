@@ -9,7 +9,7 @@ use tonic::metadata::{Ascii, MetadataKey, MetadataValue};
 use tonic::transport::Channel;
 use tonic::Request;
 
-use crate::connection::ConnectionOptions;
+use crate::connection::{check_encoding_limit, ConnectionOptions};
 use crate::identity_codec::IdentityCodec;
 use crate::message_converter::{dynamic_message_to_value, value_to_dynamic_message};
 
@@ -131,6 +131,7 @@ pub async fn execute_grpc_call(
         create_request_message(&params.request, &method.input())?;
 
     let request_bytes = request_message.encode_to_vec();
+    check_encoding_limit(request_bytes.len(), options.max_encoding_message_size)?;
 
     let mut grpc_request = Request::new(request_bytes);
 

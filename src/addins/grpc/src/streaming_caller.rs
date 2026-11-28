@@ -9,7 +9,7 @@ use tonic::transport::Channel;
 use tonic::{Request, Streaming};
 
 use crate::ack_stream::AckStream;
-use crate::connection::ConnectionOptions;
+use crate::connection::{check_encoding_limit, ConnectionOptions};
 use crate::grpc_caller::{
     apply_metadata, configure_client, create_request_message, enforce_timeout, CallParams,
 };
@@ -48,6 +48,7 @@ pub async fn start_server_stream(
     let request_message =
         create_request_message(&params.request, &method_desc.input())?;
     let request_bytes = request_message.encode_to_vec();
+    check_encoding_limit(request_bytes.len(), options.max_encoding_message_size)?;
 
     let mut grpc_request = Request::new(request_bytes);
 
@@ -172,6 +173,7 @@ pub async fn start_client_stream(
         Some(method_desc.output()),
         params.timeout_ms,
     );
+    stream_info.max_encoding_message_size = options.max_encoding_message_size;
     stream_info.add_task_handle(task.abort_handle());
     let stream_id = stream_manager.add_stream(stream_info).await;
 
@@ -272,6 +274,7 @@ pub async fn start_bidi_stream(
         Some(method_desc.output()),
         params.timeout_ms,
     );
+    stream_info.max_encoding_message_size = options.max_encoding_message_size;
     stream_info.add_task_handle(task.abort_handle());
     let stream_id = stream_manager.add_stream(stream_info).await;
 

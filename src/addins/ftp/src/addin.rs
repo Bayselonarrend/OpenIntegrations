@@ -64,6 +64,7 @@ impl AddIn {
             use_tls,
             accept_invalid_certs,
             ca_cert_path: ca_cert_path.to_string(),
+            ..Default::default()
         }) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),

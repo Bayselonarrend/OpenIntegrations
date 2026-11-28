@@ -96,6 +96,7 @@
 Процедура GR_ОсновныеМетоды() Экспорт
 
     ПараметрыТеста = OPI_ПолучениеДанныхТестов.ПолучитьТестовыеДанные();
+    ПодменитьАдресСтенда(ПараметрыТеста);
     GRPC_ОткрытьСоединение(ПараметрыТеста);
     GRPC_ЗакрытьСоединение(ПараметрыТеста);
     GRPC_ЭтоКоннектор(ПараметрыТеста);
@@ -118,6 +119,7 @@
     КонецЕсли;
 
     ПараметрыТеста = OPI_ПолучениеДанныхТестов.ПолучитьТестовыеДанные();
+    ПодменитьАдресСтенда(ПараметрыТеста);
     GRPC_Расширенная_ВызватьМетодБезПодключения(ПараметрыТеста);
     GRPC_Расширенная_ПодключениеБезАдреса(ПараметрыТеста);
     GRPC_Расширенная_ПовторноеПодключение(ПараметрыТеста);
@@ -129,12 +131,14 @@
     GRPC_Расширенная_ПределРазмераСообщения(ПараметрыТеста);
     GRPC_Расширенная_ТаймаутПодключения(ПараметрыТеста);
     GRPC_Расширенная_ТаймаутВызова(ПараметрыТеста);
+    GRPC_Расширенная_СертификатКлиента(ПараметрыТеста);
 
 КонецПроцедуры
 
 Процедура GR_Интроспекция() Экспорт
 
     ПараметрыТеста = OPI_ПолучениеДанныхТестов.ПолучитьТестовыеДанные();
+    ПодменитьАдресСтенда(ПараметрыТеста);
     GRPC_ПолучитьСписокСервисов(ПараметрыТеста);
     GRPC_ПолучитьСписокМетодов(ПараметрыТеста);
     GRPC_ПолучитьМетод(ПараметрыТеста);
@@ -144,6 +148,7 @@
 Процедура GR_Стриминг() Экспорт
 
     ПараметрыТеста = OPI_ПолучениеДанныхТестов.ПолучитьТестовыеДанные();
+    ПодменитьАдресСтенда(ПараметрыТеста);
     GRPC_ИнициализироватьСерверныйПоток(ПараметрыТеста);
     GRPC_ИнициализироватьКлиентскийПоток(ПараметрыТеста);
     GRPC_ИнициализироватьДвунаправленныйПоток(ПараметрыТеста);
@@ -164,6 +169,26 @@
 #КонецОбласти // СлужебныйПрограммныйИнтерфейс
 
 #Область СлужебныеПроцедурыИФункции
+
+#Область Подготовка
+
+Процедура ПодменитьАдресСтенда(ПараметрыТеста)
+
+    Локалхост = OPI_ПолучениеДанныхТестов.ПолучитьLocalhost();
+
+    АдресTls = ПараметрыТеста["GRPC_Address"];
+    АдресTls = СтрЗаменить(АдресTls, "grpcb.in" , Локалхост);
+    АдресTls = СтрЗаменить(АдресTls, "127.0.0.1", Локалхост);
+    ПараметрыТеста.Вставить("GRPC_Address", АдресTls);
+
+    АдресБезTls = ПараметрыТеста["GRPC_AddressNoTls"];
+    АдресБезTls = СтрЗаменить(АдресБезTls, "grpcb.in" , Локалхост);
+    АдресБезTls = СтрЗаменить(АдресБезTls, "127.0.0.1", Локалхост);
+    ПараметрыТеста.Вставить("GRPC_AddressNoTls", АдресБезTls);
+
+КонецПроцедуры
+
+#КонецОбласти // Подготовка
 
 #Область АтомарныеТесты
 
@@ -280,11 +305,21 @@
 
 Процедура GRPC_ПолучитьНастройкиTls(ПараметрыФункции)
 
-    Результат = OPI_GRPC.ПолучитьНастройкиTls(Истина);
+    Результат = OPI_GRPC.ПолучитьНастройкиTls(Истина, "ca.pem", "client.key", "client.crt");
 
     // END
 
-    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "ПолучитьНастройкиTls");
+    OPI_ПолучениеДанныхТестов.Обработать(Результат
+        , "GRPC"
+        , "ПолучитьНастройкиTls"
+        ,
+        "ca.pem"
+        , "client.key"
+        , "client.crt");
+
+    Результат = OPI_GRPC.ПолучитьНастройкиTls(Истина);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "ПолучитьНастройкиTls", "БезКлиента");
 
 КонецПроцедуры
 
@@ -740,6 +775,158 @@
 
     OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_ТаймаутВызова");
     OPI_GRPC.ЗакрытьСоединение(Соединение);
+
+КонецПроцедуры
+
+Процедура GRPC_Расширенная_СертификатКлиента(ПараметрыФункции)
+
+    СтрокиКлюча = Новый Массив;
+    СтрокиКлюча.Добавить("-----BEGIN PRIVATE KEY-----");
+    СтрокиКлюча.Добавить("MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDFviVmSJmbB+ig");
+    СтрокиКлюча.Добавить("TZ2d1CWHm9GmPgXVJbghj1/cfP8l5GnYUZnCxj9ZD64nT46rB7xu4Y+pVqjVnjWT");
+    СтрокиКлюча.Добавить("Rs4qdsVFkfmiWgkPFL/Q4Vo5INNMFSLVI1iCn/lGh/fRa65cOlCJ3Yi8mkJMPBeK");
+    СтрокиКлюча.Добавить("/l5RFWEFsGKp/w0xCuImviqlJHBukUHhjA2SdZ9bXs+PgAzKd1kF7Byi1P5aGv8r");
+    СтрокиКлюча.Добавить("ROzBAL24DVsGHaINey8TsTrBVCojjI1js5msbNiMOEN31obiiunBy+QK4yYePIVk");
+    СтрокиКлюча.Добавить("Id2g2+MMWdOh855I1IC5sByBbftkTpwg1pmL2UENtl7fFqLHRr6HQ+fMR3Y4ggl+");
+    СтрокиКлюча.Добавить("K5dsna9LAgMBAAECggEAD3trkTO7ob7qRewdxuwubgzTSs6jWpoOmG4R0Cu8jFpz");
+    СтрокиКлюча.Добавить("C7vugSilcBMsDFQ3Ht6cWxrE9ToIPlrEkL3j9BYtgYdu105w/sxzQjxKpJtp1RSj");
+    СтрокиКлюча.Добавить("OrMplxHwYfHRA4Vd9vGdOatt18UaI2mMYau4dbpp823pI6yI+18smreb6NHOuGal");
+    СтрокиКлюча.Добавить("hEXMW4de6CjM3EP7QbT7KxBxr2hkvmTPDect1ccswD2yqTZOHCQJ+LMm0yNMy4dI");
+    СтрокиКлюча.Добавить("keK4YGF90h6Of1LN1YGoayP4SgB+lt/tch3ZwVmU7AGJUFX7OCi8ZXOugxAXjQEl");
+    СтрокиКлюча.Добавить("mRFdm2fs1iPsSnaLNeTH8/CrD2C6Zr11wvsA91fWWQKBgQDhnNwqR00tas9CzSyC");
+    СтрокиКлюча.Добавить("qbz4bfOAo/Xm5xxGuLYSDB9kpKOGE6Bqf76HtT1e+Ih4AsnwH6YWPspEzkhn/zog");
+    СтрокиКлюча.Добавить("xA4vEeqSaVkugP9dY6rfO2vfMQMOgKmUhPr5ADKYUXDl8ICv0PetqMFqMVYQ6WcJ");
+    СтрокиКлюча.Добавить("AAaWjx5im0TsBwpvVRzgN4p5QwKBgQDgYFPj7QTAStQZbqzNVqgoGRE5/eLmlUSD");
+    СтрокиКлюча.Добавить("Nhpr3ftW/i/wIDMQCMLcESxc/PNhGLts0kUP/dxGR8R4meGyvqnNJgUNg6o3o7Lu");
+    СтрокиКлюча.Добавить("8NNmCyJjL6g59OVySdOQvtmGnJJT3qcz0f9EY4lQIn5eDihSBXLer0ykrcX9wmqU");
+    СтрокиКлюча.Добавить("m9oob0htWQKBgCFCG16MJj9kuGrzjfUxCm9g3f1/rhc8yHlQb16XtOUENCrmp8Yr");
+    СтрокиКлюча.Добавить("UK32tLZUUuHGH3irYbNzzCN6eUgDYtFDtYeQz5CHwSLO11YwBBdmTg+XzQiNRPJk");
+    СтрокиКлюча.Добавить("7A5azhqQHuF2o7HHT0ulTeXWogZaMdssysvVCzikBPP6Ubp5xIj1Bw+7AoGATYrc");
+    СтрокиКлюча.Добавить("0yNhhfcWT+fAzoIJQTpQisMkPF4PvGzhOrAPoaPc+1aVbxAoD5fbxhMhJUg/1b7h");
+    СтрокиКлюча.Добавить("YUJxctRwoOFFb9mWozBlhKMhG3N2bj9KP7TPYIni0IzDEvlSpW5fjLbllxiWnkEP");
+    СтрокиКлюча.Добавить("wBnKJaiWFXk9FAOQDEd27F6l0ynyXYNzJJA47pkCgYARjf3bsQEmdRRpKN/K6M5A");
+    СтрокиКлюча.Добавить("XujPlWQwIkSoPj7tD6+ZOO4mfZ8VJDEH4+jZm+DhQCTMPMs7xHKwaXZ6PtK5Ix6B");
+    СтрокиКлюча.Добавить("3PIOR6UE8CNxltgJx2fPS2X6r2hw/YJa3pvScBO0CotjP+A1pIFxWi7W1kAXNSUB");
+    СтрокиКлюча.Добавить("Qb6miwjiuykVqHAWAUt9fA==");
+    СтрокиКлюча.Добавить("-----END PRIVATE KEY-----");
+
+    СтрокиЛиста = Новый Массив;
+    СтрокиЛиста.Добавить("-----BEGIN CERTIFICATE-----");
+    СтрокиЛиста.Добавить("MIIDETCCAfmgAwIBAgIUKb/KGjlhpEXP0tt0Eo9rWHx1MY0wDQYJKoZIhvcNAQEL");
+    СтрокиЛиста.Добавить("BQAwGDEWMBQGA1UEAwwNb3BpLW10bHMtbGVhZjAeFw0yNjExMjYyMzEyMDlaFw0z");
+    СтрокиЛиста.Добавить("NjExMjMyMzEyMDlaMBgxFjAUBgNVBAMMDW9waS1tdGxzLWxlYWYwggEiMA0GCSqG");
+    СтрокиЛиста.Добавить("SIb3DQEBAQUAA4IBDwAwggEKAoIBAQDFviVmSJmbB+igTZ2d1CWHm9GmPgXVJbgh");
+    СтрокиЛиста.Добавить("j1/cfP8l5GnYUZnCxj9ZD64nT46rB7xu4Y+pVqjVnjWTRs4qdsVFkfmiWgkPFL/Q");
+    СтрокиЛиста.Добавить("4Vo5INNMFSLVI1iCn/lGh/fRa65cOlCJ3Yi8mkJMPBeK/l5RFWEFsGKp/w0xCuIm");
+    СтрокиЛиста.Добавить("viqlJHBukUHhjA2SdZ9bXs+PgAzKd1kF7Byi1P5aGv8rROzBAL24DVsGHaINey8T");
+    СтрокиЛиста.Добавить("sTrBVCojjI1js5msbNiMOEN31obiiunBy+QK4yYePIVkId2g2+MMWdOh855I1IC5");
+    СтрокиЛиста.Добавить("sByBbftkTpwg1pmL2UENtl7fFqLHRr6HQ+fMR3Y4ggl+K5dsna9LAgMBAAGjUzBR");
+    СтрокиЛиста.Добавить("MB0GA1UdDgQWBBQOR5ZL+ZJcMu9KQGcsoU91OnsU+DAfBgNVHSMEGDAWgBQOR5ZL");
+    СтрокиЛиста.Добавить("+ZJcMu9KQGcsoU91OnsU+DAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUA");
+    СтрокиЛиста.Добавить("A4IBAQCEPRasDY6K8N6XVnokH0pzevjKAjqWJGXY9txAsA4fPX2t/h2ReGmlOZDF");
+    СтрокиЛиста.Добавить("+aCjP49KxIUdGt9RiWAWQCOP+E9EQYvz50qG65xu/oCQ1dqbENyC3mfS4W37QRQb");
+    СтрокиЛиста.Добавить("0zY+CvZtyXijQwkpkiMmIjs56KYqkQjmxGMWuQnxlRunE6k3B5erBNapiyutKI0M");
+    СтрокиЛиста.Добавить("LaMk+WXTpz1UZFOR142iVV4olWvAT1T2yA9pwWsdNZziilmJJYi5f7qtJZrgKRzg");
+    СтрокиЛиста.Добавить("uPkid+nv5dmhE7SjCX6D2nusqYtvzsNOCoe69lbfM9TsZtSkKw7WGb4YIAQnT7Qs");
+    СтрокиЛиста.Добавить("9kDbQ5FemaAIcxW37XBGZW7OOoKU");
+    СтрокиЛиста.Добавить("-----END CERTIFICATE-----");
+
+    СтрокиДругого = Новый Массив;
+    СтрокиДругого.Добавить("-----BEGIN CERTIFICATE-----");
+    СтрокиДругого.Добавить("MIIDEzCCAfugAwIBAgIULj/kN0bH+57cZ4k6F9r4oz2v/gwwDQYJKoZIhvcNAQEL");
+    СтрокиДругого.Добавить("BQAwGTEXMBUGA1UEAwwOb3BpLW10bHMtb3RoZXIwHhcNMjYxMTI2MjMxMjA5WhcN");
+    СтрокиДругого.Добавить("MzYxMTIzMjMxMjA5WjAZMRcwFQYDVQQDDA5vcGktbXRscy1vdGhlcjCCASIwDQYJ");
+    СтрокиДругого.Добавить("KoZIhvcNAQEBBQADggEPADCCAQoCggEBANZqBbQR5WO/+3td1SgQk/G8M01d845X");
+    СтрокиДругого.Добавить("7QBAQV/v3WHPjn+olktwg4l2mGcglmVmHMmS6glwgnKjpVA/uqUT7WkL8SvNXanh");
+    СтрокиДругого.Добавить("sGFNbN81yDYK+HbbG1qGCGnLcDTDTLLnLw/maOOaDk46X+c12TRFR5x+00TOcpvw");
+    СтрокиДругого.Добавить("/PsOeXyFo3RsrCg6Ir/gaDpZ0iIagTy1x8gQJhBL+BLTSrn5YX6KKQKDuRCjleum");
+    СтрокиДругого.Добавить("fU0pm+riSVlx/qdXbd9VpZ0b3VsLtoV/zwrnY0beoyuGH3F9ukccihc3a9wJ+iOa");
+    СтрокиДругого.Добавить("PombWRUbB/C/UViwHqD9KYnMorHLIdxvaMLh7qcFXnyDdNwjJz9EVykCAwEAAaNT");
+    СтрокиДругого.Добавить("MFEwHQYDVR0OBBYEFFXE2vvHrtlDyqDl6VYTHJgAcXHmMB8GA1UdIwQYMBaAFFXE");
+    СтрокиДругого.Добавить("2vvHrtlDyqDl6VYTHJgAcXHmMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQEL");
+    СтрокиДругого.Добавить("BQADggEBABGcU4DQWu0NMaQPnUpBmaV/q04pPcI/pB7Zn52KrtIjRjQtrNLcK+qn");
+    СтрокиДругого.Добавить("5pkvAxL1oSv+j9IFYizUYU9rmvvOMnwwok2Uoik7pON5E2/HlNR8P7FSljoJpdBw");
+    СтрокиДругого.Добавить("MFNurAkjRCp4B3I9HjzOpx3/eDWJSs8vsyZC8A+sXfyfrC5nLGO0hSMYBKhbSeVS");
+    СтрокиДругого.Добавить("venmkXmDKljExr/SZWNYX4hMaiPxuPiAG6tgSqCK/3fINgXhtoxmuciuzCT6TaqR");
+    СтрокиДругого.Добавить("h+gVW2JMtmacQgK7po440qChYYb2EtZ7Lmno0F5Uh2Cv1N9dALPNWMbioIiDlG0w");
+    СтрокиДругого.Добавить("1V/aZyEy9+ENlDl3bCkPZUxTHCPK2FA=");
+    СтрокиДругого.Добавить("-----END CERTIFICATE-----");
+
+    ТекстКлюча    = СтрСоединить(СтрокиКлюча  , Символы.ПС) + Символы.ПС;
+    ТекстЛиста    = СтрСоединить(СтрокиЛиста  , Символы.ПС);
+    ТекстДругого  = СтрСоединить(СтрокиДругого, Символы.ПС);
+    ТекстЦепочки  = ТекстЛиста + Символы.ПС + ТекстДругого + Символы.ПС;
+    ТекстНаоборот = ТекстДругого + Символы.ПС + ТекстЛиста + Символы.ПС;
+
+    СтрокиШифра = Новый Массив;
+    СтрокиШифра.Добавить("-----BEGIN ENCRYPTED PRIVATE KEY-----");
+    СтрокиШифра.Добавить("not-a-real-key");
+    СтрокиШифра.Добавить("-----END ENCRYPTED PRIVATE KEY-----");
+    ТекстШифра  = СтрСоединить(СтрокиШифра, Символы.ПС) + Символы.ПС;
+
+    ПутьКлюча       = ПолучитьИмяВременногоФайла("key");
+    ПутьСертификата = ПолучитьИмяВременногоФайла("crt");
+
+    ПолучитьДвоичныеДанныеИзСтроки(ТекстКлюча  , КодировкаТекста.UTF8, Ложь).Записать(ПутьКлюча);
+    ПолучитьДвоичныеДанныеИзСтроки(ТекстЦепочки, КодировкаТекста.UTF8, Ложь).Записать(ПутьСертификата);
+
+    Адрес = ПараметрыФункции["GRPC_Address"];
+
+    Proto1 = ПараметрыФункции["GRPC_ProtoImport"];
+    Proto2 = ПараметрыФункции["GRPC_ProtoTS"];
+
+    Схемы = Новый Соответствие;
+    Схемы.Вставить("main.proto"    , Proto1);
+    Схемы.Вставить("my_types.proto", Proto2);
+
+    Параметры = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схемы);
+    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина, "", ПутьКлюча, ПутьСертификата);
+    Результат = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_СертификатКлиента");
+    OPI_GRPC.ЗакрытьСоединение(Результат);
+
+    ПолучитьДвоичныеДанныеИзСтроки("not a pem certificate", КодировкаТекста.UTF8, Ложь).Записать(ПутьСертификата);
+    Результат = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_СертификатКлиента", "Повтор");
+
+    ПолучитьДвоичныеДанныеИзСтроки(ТекстНаоборот, КодировкаТекста.UTF8, Ложь).Записать(ПутьСертификата);
+    Результат = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_СертификатКлиента", "Порядок");
+
+    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина, "", ПутьКлюча, "");
+    Результат = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_СертификатКлиента", "ТолькоКлюч");
+
+    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина, "", "", ПутьСертификата);
+    Результат = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_СертификатКлиента", "ТолькоСертификат");
+
+    ПутьОтсутствует = ПутьСертификата + ".missing";
+    Tls             = OPI_GRPC.ПолучитьНастройкиTls(Истина, "", ПутьКлюча, ПутьОтсутствует);
+    Результат       = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат
+        , "GRPC"
+        , "Расширенная_СертификатКлиента"
+        , "Файл"
+        , ПутьОтсутствует);
+
+    ПолучитьДвоичныеДанныеИзСтроки(ТекстШифра  , КодировкаТекста.UTF8, Ложь).Записать(ПутьКлюча);
+    ПолучитьДвоичныеДанныеИзСтроки(ТекстЦепочки, КодировкаТекста.UTF8, Ложь).Записать(ПутьСертификата);
+    Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина, "", ПутьКлюча, ПутьСертификата);
+    Результат = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "GRPC", "Расширенная_СертификатКлиента", "Зашифрованный");
+
+    УдалитьФайлы(ПутьКлюча);
+    УдалитьФайлы(ПутьСертификата);
 
 КонецПроцедуры
 

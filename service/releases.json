@@ -122,8 +122,20 @@
             {
                 "lib": "GRPC",
                 "icon": "media/GRPC.png",
+                "description_ru": "Превышение максимального размера исходящего сообщения gRPC возвращает ошибку о пределе, а не обрыв HTTP/2",
+                "description_en": "Exceeding the maximum outgoing gRPC message size returns a limit error instead of an HTTP/2 abort"
+            },
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
                 "description_ru": "Подключение и вызов метода ограничены таймаутом: ожидание готовности канала входит в таймаут вызова",
                 "description_en": "Connection and method calls are limited by a timeout: channel readiness is included in the call timeout"
+            },
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "`ПолучитьНастройкиTls` принимает клиентский ключ и цепочку сертификатов для mTLS: при каждом соединении они передаются двоичными данными",
+                "description_en": "`GetTlsSettings` accepts a client key and certificate chain for mTLS; both are sent as binary data on every connection"
             },
             {
                 "lib": "SSH",
